@@ -10,3 +10,9 @@ class MainWindow(VCPMainWindow):
         super(MainWindow, self).__init__(*args, **kwargs)
 
     # add any custom methods here
+    
+    def setMode(self):
+        print "main window initalise"
+    
+    
+ 
