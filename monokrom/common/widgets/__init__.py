@@ -81,3 +81,9 @@ class MkTabWidget_Plugin(_DesignerPlugin):
                      </attribute>
                     </widget>
                   </widget>"""
+
+from mk_led_hal import mkHalLedIndicator
+class mkHalLedIndicator_Plugin(_DesignerPlugin):
+    def pluginClass(self):
+        return mkHalLedIndicator
+    
