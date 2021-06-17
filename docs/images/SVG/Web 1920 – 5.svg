@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="365" height="455" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-Web_1920_5">
+      <rect width="1600" height="900"/>
+    </clipPath>
+  </defs>
+  <g id="Web_1920_5" data-name="Web 1920 – 5" clip-path="url(#clip-Web_1920_5)">
+    <rect width="1600" height="900" fill="rgba(0,0,0,0.95)"/>
+    <g id="Group_70" data-name="Group 70" transform="translate(113 190.51)">
+      <rect id="Rectangle_72" data-name="Rectangle 72" width="1600" height="900" transform="translate(-113 -190.51)" fill="none"/>
+      <g id="Rectangle_70" data-name="Rectangle 70" transform="translate(503 23.49)" fill="#16160e" stroke="#ffee06" stroke-width="2">
+        <rect width="369" height="494" rx="10" stroke="none"/>
+        <rect x="1" y="1" width="367" height="492" rx="9" fill="none"/>
+      </g>
+      <g id="Repeat_Grid_1" data-name="Repeat Grid 1" transform="translate(505 51.49)" clip-path="url(#clip-path)">
+        <g transform="translate(-35 -53)">
+          <rect id="Rectangle_27" data-name="Rectangle 27" width="533" height="30" transform="translate(35 53)"/>
+        </g>
+        <g transform="translate(-35 7)">
+          <rect id="Rectangle_27-2" data-name="Rectangle 27" width="533" height="30" transform="translate(35 53)"/>
+        </g>
+        <g transform="translate(-35 67)">
+          <rect id="Rectangle_27-3" data-name="Rectangle 27" width="533" height="30" transform="translate(35 53)"/>
+        </g>
+        <g transform="translate(-35 127)">
+          <rect id="Rectangle_27-4" data-name="Rectangle 27" width="533" height="30" transform="translate(35 53)"/>
+        </g>
+        <g transform="translate(-35 187)">
+          <rect id="Rectangle_27-5" data-name="Rectangle 27" width="533" height="30" transform="translate(35 53)"/>
+        </g>
+        <g transform="translate(-35 247)">
+          <rect id="Rectangle_27-6" data-name="Rectangle 27" width="533" height="30" transform="translate(35 53)"/>
+        </g>
+        <g transform="translate(-35 307)">
+          <rect id="Rectangle_27-7" data-name="Rectangle 27" width="533" height="30" transform="translate(35 53)"/>
+        </g>
+        <g transform="translate(-35 367)">
+          <rect id="Rectangle_27-8" data-name="Rectangle 27" width="533" height="30" transform="translate(35 53)"/>
+        </g>
+      </g>
+      <path id="Rectangle_71" data-name="Rectangle 71" d="M10,0H359a10,10,0,0,1,10,10V28a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V10A10,10,0,0,1,10,0Z" transform="translate(503 23.49)" fill="#ffee06"/>
+      <text id="USB-DISK" transform="translate(669 45.49)" fill="#16160e" font-size="21" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="-53.203" y="0">USB-DISK</tspan></text>
+      <path id="usb-brands" d="M30,69.261a.393.393,0,0,1-.21.351l-4.167,2.5a.413.413,0,0,1-.21.065.437.437,0,0,1-.21-.051.42.42,0,0,1-.21-.365V70.1H13.829c1.183,1.852,1.894,5,3.255,5h1.249V73.844a.411.411,0,0,1,.416-.416h4.167a.411.411,0,0,1,.416.416v4.167a.411.411,0,0,1-.416.416H18.748a.411.411,0,0,1-.416-.416V76.763H17.083c-3.526,0-3.793-6.664-5.832-6.664H6.561a3.337,3.337,0,1,1,0-1.67c1.829,0,2.053.444,3.489-2.825,1.875-4.167,2.717-3.839,5.093-3.839a2.5,2.5,0,1,1,0,1.674H13.749c-1.361,0-2.072,3.152-3.255,5H25V66.773a.42.42,0,0,1,.21-.365.393.393,0,0,1,.416.014l4.167,2.5A.357.357,0,0,1,30,69.261Z" transform="translate(729 -31.61)"/>
+    </g>
+    <g id="Group_71" data-name="Group 71" transform="translate(41 1)">
+      <path id="folder-solid" d="M24.167,67.333h-10L10.833,64H2.5A2.5,2.5,0,0,0,0,66.5v15A2.5,2.5,0,0,0,2.5,84H24.167a2.5,2.5,0,0,0,2.5-2.5V69.833A2.5,2.5,0,0,0,24.167,67.333Z" transform="translate(629 241)" fill="#ffee06"/>
+      <text id="NEW_DESIGNS" data-name="NEW DESIGNS" transform="translate(668 321)" fill="#ffee06" font-size="17" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">NEW DESIGNS</tspan></text>
+    </g>
+    <g id="Group_72" data-name="Group 72" transform="translate(41 31)">
+      <path id="folder-solid-2" data-name="folder-solid" d="M24.167,67.333h-10L10.833,64H2.5A2.5,2.5,0,0,0,0,66.5v15A2.5,2.5,0,0,0,2.5,84H24.167a2.5,2.5,0,0,0,2.5-2.5V69.833A2.5,2.5,0,0,0,24.167,67.333Z" transform="translate(629 241)" fill="#ffee06"/>
+      <text id="OLD_DESIGNS" data-name="OLD DESIGNS" transform="translate(668 321)" fill="#ffee06" font-size="17" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">OLD DESIGNS</tspan></text>
+    </g>
+    <g id="Group_73" data-name="Group 73" transform="translate(41 61)">
+      <path id="folder-solid-3" data-name="folder-solid" d="M24.167,67.333h-10L10.833,64H2.5A2.5,2.5,0,0,0,0,66.5v15A2.5,2.5,0,0,0,2.5,84H24.167a2.5,2.5,0,0,0,2.5-2.5V69.833A2.5,2.5,0,0,0,24.167,67.333Z" transform="translate(629 241)" fill="#ffee06"/>
+      <text id="CAM_PROFILES" data-name="CAM PROFILES" transform="translate(668 321)" fill="#ffee06" font-size="17" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">CAM PROFILES</tspan></text>
+    </g>
+    <g id="Group_74" data-name="Group 74" transform="translate(41 91)">
+      <path id="folder-solid-4" data-name="folder-solid" d="M24.167,67.333h-10L10.833,64H2.5A2.5,2.5,0,0,0,0,66.5v15A2.5,2.5,0,0,0,2.5,84H24.167a2.5,2.5,0,0,0,2.5-2.5V69.833A2.5,2.5,0,0,0,24.167,67.333Z" transform="translate(629 241)" fill="#ffee06"/>
+      <text id="URGENT" transform="translate(668 321)" fill="#ffee06" font-size="17" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">URGENT</tspan></text>
+    </g>
+    <path id="folder-solid-5" data-name="folder-solid" d="M24.167,67.333h-10L10.833,64H2.5A2.5,2.5,0,0,0,0,66.5v15A2.5,2.5,0,0,0,2.5,84H24.167a2.5,2.5,0,0,0,2.5-2.5V69.833A2.5,2.5,0,0,0,24.167,67.333Z" transform="translate(643 213)" fill="#ffee06"/>
+    <text id="plasma_files" data-name="plasma files" transform="translate(682 293)" fill="#ffee06" font-size="17" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">plasma files</tspan></text>
+    <path id="arrow-up-solid" d="M6.588,40.209,5.876,39.5a.766.766,0,0,1,0-1.087l6.23-6.234a.766.766,0,0,1,1.087,0l6.23,6.23a.766.766,0,0,1,0,1.087l-.712.712a.77.77,0,0,1-1.1-.013l-3.678-3.861v9.216a.768.768,0,0,1-.77.77H12.139a.768.768,0,0,1-.77-.77V36.332L7.688,40.2a.765.765,0,0,1-1.1.013Z" transform="translate(643.35 250.05)" fill="#16160e"/>
+    <g id="Group_76" data-name="Group 76">
+      <g id="Group_75" data-name="Group 75" transform="translate(41 121)">
+        <text id="wrench.nc" transform="translate(668 321)" fill="#ffee06" font-size="17" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">wrench.nc</tspan></text>
+      </g>
+      <path id="file-alt-solid" d="M8.75,5.313V0H.938A.935.935,0,0,0,0,.938V19.063A.935.935,0,0,0,.938,20H14.063A.935.935,0,0,0,15,19.063V6.25H9.688A.94.94,0,0,1,8.75,5.313Zm2.5,9.219a.47.47,0,0,1-.469.469H4.219a.47.47,0,0,1-.469-.469v-.313a.47.47,0,0,1,.469-.469h6.563a.47.47,0,0,1,.469.469Zm0-2.5a.47.47,0,0,1-.469.469H4.219a.47.47,0,0,1-.469-.469v-.312a.47.47,0,0,1,.469-.469h6.563a.47.47,0,0,1,.469.469Zm0-2.812v.313a.47.47,0,0,1-.469.469H4.219a.47.47,0,0,1-.469-.469V9.219a.47.47,0,0,1,.469-.469h6.563A.47.47,0,0,1,11.25,9.219ZM15,4.762V5H10V0h.238A.937.937,0,0,1,10.9.273L14.727,4.1A.935.935,0,0,1,15,4.762Z" transform="translate(676 426)" fill="#ffee06"/>
+    </g>
+    <g id="Group_77" data-name="Group 77" transform="translate(0 30)">
+      <g id="Group_75-2" data-name="Group 75" transform="translate(41 121)">
+        <text id="gear.nc" transform="translate(668 321)" fill="#ffee06" font-size="17" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">gear.nc</tspan></text>
+      </g>
+      <path id="file-alt-solid-2" data-name="file-alt-solid" d="M8.75,5.313V0H.938A.935.935,0,0,0,0,.938V19.063A.935.935,0,0,0,.938,20H14.063A.935.935,0,0,0,15,19.063V6.25H9.688A.94.94,0,0,1,8.75,5.313Zm2.5,9.219a.47.47,0,0,1-.469.469H4.219a.47.47,0,0,1-.469-.469v-.313a.47.47,0,0,1,.469-.469h6.563a.47.47,0,0,1,.469.469Zm0-2.5a.47.47,0,0,1-.469.469H4.219a.47.47,0,0,1-.469-.469v-.312a.47.47,0,0,1,.469-.469h6.563a.47.47,0,0,1,.469.469Zm0-2.812v.313a.47.47,0,0,1-.469.469H4.219a.47.47,0,0,1-.469-.469V9.219a.47.47,0,0,1,.469-.469h6.563A.47.47,0,0,1,11.25,9.219ZM15,4.762V5H10V0h.238A.937.937,0,0,1,10.9.273L14.727,4.1A.935.935,0,0,1,15,4.762Z" transform="translate(676 426)" fill="#ffee06"/>
+    </g>
+    <g id="Group_78" data-name="Group 78" transform="translate(0 60)">
+      <g id="Group_75-3" data-name="Group 75" transform="translate(41 121)">
+        <text id="side-plate.nc" transform="translate(668 321)" fill="#ffee06" font-size="17" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">side-plate.nc</tspan></text>
+      </g>
+      <path id="file-alt-solid-3" data-name="file-alt-solid" d="M8.75,5.313V0H.938A.935.935,0,0,0,0,.938V19.063A.935.935,0,0,0,.938,20H14.063A.935.935,0,0,0,15,19.063V6.25H9.688A.94.94,0,0,1,8.75,5.313Zm2.5,9.219a.47.47,0,0,1-.469.469H4.219a.47.47,0,0,1-.469-.469v-.313a.47.47,0,0,1,.469-.469h6.563a.47.47,0,0,1,.469.469Zm0-2.5a.47.47,0,0,1-.469.469H4.219a.47.47,0,0,1-.469-.469v-.312a.47.47,0,0,1,.469-.469h6.563a.47.47,0,0,1,.469.469Zm0-2.812v.313a.47.47,0,0,1-.469.469H4.219a.47.47,0,0,1-.469-.469V9.219a.47.47,0,0,1,.469-.469h6.563A.47.47,0,0,1,11.25,9.219ZM15,4.762V5H10V0h.238A.937.937,0,0,1,10.9.273L14.727,4.1A.935.935,0,0,1,15,4.762Z" transform="translate(676 426)" fill="#ffee06"/>
+    </g>
+  </g>
+</svg>
