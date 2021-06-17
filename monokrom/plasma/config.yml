@@ -60,3 +60,17 @@ application:
     # Specify the application wide stylesheet.
     stylesheet: {{ file.dir }}/../common/monokrom.qss
     custom_fonts: {{ file.dir }}/../common/fonts/ttf
+
+file_locations:
+    provider: qtpyvcp.plugins.file_locations:FileLocations
+    log_level: debug
+    kwargs:
+      default_location: NC Files
+      local_locations:
+        # format: Location Name: path
+        Home: ~/
+        Desktop: ~/Desktop
+        NC Files: ~/linuxcnc/nc_files
+      #network_locations:
+      #  DropBox: ~/DropBox/gcode
+      
