@@ -42,6 +42,15 @@ class MonokromDroWidget(QWidget):
 
         self.updateAxis()
 
+    @Property(int)
+    def useWorkCoordinates(self):
+        return self.dro_entry.referenceType
+    
+    @useWorkCoordinates.setter
+    def useWorkCoordinates(self, refType):
+        # 0 = Machine, 1 = Work
+        self.dro_entry.referenceType = refType
+
     @Property(str)
     def styleClass(self):
         return self._style
