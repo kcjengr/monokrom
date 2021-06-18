@@ -2,12 +2,9 @@ from qtpy.QtCore import Qt, QTimer
 from qtpy.QtGui import QColor, QPainter, QBrush
 from qtpyvcp.widgets.hal_widgets.hal_led import HalLedIndicator
 
-class mkHalLedIndicator(HalLedIndicator):
+class MkHalLedIndicator(HalLedIndicator):
     def __init__(self, parent=None):
-        super(mkHalLedIndicator, self).__init__(parent)
-
-        #self.setText("mkHalLedIndicator")
-        print "mkHalLedIndicator"
+        super(MkHalLedIndicator, self).__init__(parent)
 
     # Override paint to implement monokrom visual
     def paintEvent(self, event):
