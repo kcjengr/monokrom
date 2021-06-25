@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>1024</height>
+    <height>768</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -52,7 +52,7 @@
        <attribute name="title">
         <string>MAIN</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="4,1,6">
+       <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="4,6">
         <property name="spacing">
          <number>15</number>
         </property>
@@ -74,94 +74,6 @@
            <number>14</number>
           </property>
           <item>
-           <widget class="QFrame" name="file_frame">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <property name="styleClass" stdset="0">
-             <string>comboFrame</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_8">
-             <property name="spacing">
-              <number>2</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_6">
-               <property name="spacing">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_7">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text">
-                  <string>OPEN:</string>
-                 </property>
-                 <property name="styleClass" stdset="0">
-                  <string>comboFrame</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="RecentFileComboBox" name="recentfilecombobox_2">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <widget class="GcodeTextEdit" name="gcodetextedit_3">
-               <property name="currentLineBackground" stdset="0">
-                <color>
-                 <red>40</red>
-                 <green>40</green>
-                 <blue>28</blue>
-                </color>
-               </property>
-               <property name="marginBackground" stdset="0">
-                <color>
-                 <red>22</red>
-                 <green>22</green>
-                 <blue>14</blue>
-                </color>
-               </property>
-               <property name="marginCurrentLineBackground" stdset="0">
-                <color>
-                 <red>33</red>
-                 <green>33</green>
-                 <blue>24</blue>
-                </color>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
            <widget class="MkTabWidget" name="tabWidget_2">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
@@ -173,7 +85,7 @@
              <enum>QTabWidget::Rounded</enum>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="tab_4">
              <attribute name="icon">
@@ -446,417 +358,353 @@
             </widget>
            </widget>
           </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <property name="spacing">
-           <number>14</number>
-          </property>
           <item>
-           <widget class="MkTabWidget" name="tabWidget_5">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <widget class="QWidget" name="tabWidget_5Page1">
-             <attribute name="title">
-              <string>FILE</string>
-             </attribute>
-             <layout class="QGridLayout" name="gridLayout_3">
-              <property name="leftMargin">
-               <number>14</number>
-              </property>
-              <property name="topMargin">
-               <number>14</number>
-              </property>
-              <property name="rightMargin">
-               <number>14</number>
-              </property>
-              <property name="bottomMargin">
-               <number>14</number>
-              </property>
-              <item row="0" column="0">
-               <widget class="DialogButton" name="dialogbutton">
-                <property name="text">
-                 <string>OPEN</string>
-                </property>
-                <property name="dialogName" stdset="0">
-                 <string>open_file</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="ActionButton" name="actionbutton_3">
-                <property name="text">
-                 <string>CLEAR</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="ActionButton" name="actionbutton_2">
-                <property name="text">
-                 <string>EDIT</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="DialogButton" name="dialogbutton_2">
-                <property name="text">
-                 <string>RECENT</string>
-                </property>
-                <property name="dialogName" stdset="0">
-                 <string>recent_files</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="MkTabWidget" name="tabWidget_2">
-            <widget class="QWidget" name="tabWidget_2Page1">
-             <attribute name="title">
-              <string>CONTROL</string>
-             </attribute>
-             <layout class="QGridLayout" name="gridLayout">
-              <property name="leftMargin">
-               <number>14</number>
-              </property>
-              <property name="topMargin">
-               <number>14</number>
-              </property>
-              <property name="rightMargin">
-               <number>14</number>
-              </property>
-              <property name="bottomMargin">
-               <number>14</number>
-              </property>
-              <property name="spacing">
-               <number>10</number>
-              </property>
-              <item row="0" column="0" colspan="2">
-               <widget class="ActionButton" name="actionbutton_5">
-                <property name="text">
-                 <string>CYCLE START</string>
-                </property>
-                <property name="actionName" stdset="0">
-                 <string>program.run</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0" colspan="2">
-               <layout class="QGridLayout" name="gridLayout_2">
-                <item row="1" column="1">
-                 <layout class="QVBoxLayout" name="verticalLayout_7">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="StatusLabel" name="statuslabel_5">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>50</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>DSEG7 Classic</family>
-                      <pointsize>10</pointsize>
-                      <weight>75</weight>
-                      <italic>true</italic>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">font: bold italic 10pt &quot;DSEG7 Classic&quot;;</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="rules" stdset="0">
-                     <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:feedrate&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0%}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label_9">
-                    <property name="font">
-                     <font>
-                      <family>Sans</family>
-                      <weight>75</weight>
-                      <italic>false</italic>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>FEED</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item row="0" column="1">
-                 <widget class="ActionSlider" name="actionslider_2">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>machine.feed-override.set</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="ActionSlider" name="actionslider">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>machine.rapid-override.set</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <layout class="QVBoxLayout" name="verticalLayout">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="StatusLabel" name="statuslabel_4">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>50</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>DSEG7 Classic</family>
-                      <weight>75</weight>
-                      <italic>true</italic>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">font: bold italic 10pt &quot;DSEG7 Classic&quot;;</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="rules" stdset="0">
-                     <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:rapidrate&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0%}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label_8">
-                    <property name="font">
-                     <font>
-                      <family>Sans</family>
-                      <weight>75</weight>
-                      <italic>false</italic>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>RAPID</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item row="1" column="2">
-                 <layout class="QVBoxLayout" name="verticalLayout_9">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="StatusLabel" name="statuslabel_6">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>50</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>DSEG7 Classic</family>
-                      <pointsize>10</pointsize>
-                      <weight>75</weight>
-                      <italic>true</italic>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">font: bold italic 10pt &quot;DSEG7 Classic&quot;;</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="rules" stdset="0">
-                     <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;settings:machine.jog.linear-speed-percentage&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0f}%\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label_10">
-                    <property name="font">
-                     <font>
-                      <family>Sans</family>
-                      <weight>75</weight>
-                      <italic>false</italic>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>JOG</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item row="0" column="2">
-                 <widget class="VCPSettingsSlider" name="settings_slider">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="settingName" stdset="0">
-                   <string>machine.jog.linear-speed-percentage</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="4" column="0">
-               <widget class="QPushButton" name="pushButton_7">
-                <property name="text">
-                 <string>PIERCE
+           <widget class="QWidget" name="widget_16" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_23">
+             <item>
+              <widget class="MkTabWidget" name="tabWidget_2">
+               <widget class="QWidget" name="tabWidget_2Page1">
+                <attribute name="title">
+                 <string>CONTROL</string>
+                </attribute>
+                <layout class="QGridLayout" name="gridLayout">
+                 <property name="leftMargin">
+                  <number>14</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>14</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>14</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>14</number>
+                 </property>
+                 <property name="spacing">
+                  <number>10</number>
+                 </property>
+                 <item row="4" column="0">
+                  <widget class="QPushButton" name="pushButton_7">
+                   <property name="text">
+                    <string>PIERCE
 AND CUT</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="checked">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="0" colspan="2">
-               <widget class="ActionButton" name="actionbutton_10">
-                <property name="text">
-                 <string>MACHINE POWER</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="actionName" stdset="0">
-                 <string>machine.power.toggle</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QPushButton" name="pushButton_8">
-                <property name="text">
-                 <string>THC
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="checked">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="QPushButton" name="pushButton_8">
+                   <property name="text">
+                    <string>THC
 ENABLE</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="checked">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="ActionButton" name="actionbutton_6">
-                <property name="text">
-                 <string>FEED
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="checked">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="ActionButton" name="actionbutton_6">
+                   <property name="text">
+                    <string>FEED
 HOLD</string>
-                </property>
-                <property name="actionName" stdset="0">
-                 <string>program.pause</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="ActionButton" name="actionbutton_7">
-                <property name="text">
-                 <string>M1
+                   </property>
+                   <property name="actionName" stdset="0">
+                    <string>program.pause</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="ActionButton" name="actionbutton_7">
+                   <property name="text">
+                    <string>M1
 BREAK</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="actionName" stdset="0">
-                 <string>program.optional-stop.toggle</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="ActionButton" name="actionbutton_8">
-                <property name="text">
-                 <string>STOP
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="actionName" stdset="0">
+                    <string>program.optional-stop.toggle</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="ActionButton" name="actionbutton_8">
+                   <property name="text">
+                    <string>STOP
 ABORT</string>
-                </property>
-                <property name="actionName" stdset="0">
-                 <string>program.abort</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="ActionButton" name="actionbutton_9">
-                <property name="text">
-                 <string>REVERSE
+                   </property>
+                   <property name="actionName" stdset="0">
+                    <string>program.abort</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="ActionButton" name="actionbutton_9">
+                   <property name="text">
+                    <string>REVERSE
 RUN</string>
-                </property>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0" colspan="2">
+                  <widget class="ActionButton" name="actionbutton_5">
+                   <property name="text">
+                    <string>CYCLE START</string>
+                   </property>
+                   <property name="actionName" stdset="0">
+                    <string>program.run</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0" colspan="2">
+                  <widget class="ActionButton" name="actionbutton_10">
+                   <property name="text">
+                    <string>MACHINE POWER</string>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="actionName" stdset="0">
+                    <string>machine.power.toggle</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
-              </item>
-             </layout>
-            </widget>
+              </widget>
+             </item>
+             <item>
+              <layout class="QGridLayout" name="layout_overrides">
+               <item row="1" column="1">
+                <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="StatusLabel" name="statuslabel_5">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>DSEG7 Classic</family>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <italic>true</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font: bold italic 10pt &quot;DSEG7 Classic&quot;;</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="rules" stdset="0">
+                    <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:feedrate&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0%}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_9">
+                   <property name="font">
+                    <font>
+                     <family>Sans</family>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>FEED</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="0" column="1">
+                <widget class="ActionSlider" name="actionslider_2">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.feed-override.set</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="ActionSlider" name="actionslider">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.rapid-override.set</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="StatusLabel" name="statuslabel_4">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>DSEG7 Classic</family>
+                     <weight>75</weight>
+                     <italic>true</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font: bold italic 10pt &quot;DSEG7 Classic&quot;;</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="rules" stdset="0">
+                    <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:rapidrate&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0%}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_8">
+                   <property name="font">
+                    <font>
+                     <family>Sans</family>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>RAPID</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="2">
+                <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="StatusLabel" name="statuslabel_6">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>DSEG7 Classic</family>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <italic>true</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font: bold italic 10pt &quot;DSEG7 Classic&quot;;</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="rules" stdset="0">
+                    <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;settings:machine.jog.linear-speed-percentage&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0f}%\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_10">
+                   <property name="font">
+                    <font>
+                     <family>Sans</family>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>JOG</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="0" column="2">
+                <widget class="VCPSettingsSlider" name="settings_slider">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>machine.jog.linear-speed-percentage</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
@@ -869,7 +717,7 @@ RUN</string>
           <item>
            <widget class="MkTabWidget" name="tabWidget_3">
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="tab_7">
              <attribute name="title">
@@ -903,6 +751,178 @@ RUN</string>
               </item>
              </layout>
             </widget>
+            <widget class="QWidget" name="tab_5">
+             <attribute name="title">
+              <string>GCODE</string>
+             </attribute>
+             <layout class="QHBoxLayout" name="horizontalLayout_17">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>9</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="file_frame">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <property name="styleClass" stdset="0">
+                 <string>comboFrame</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_8">
+                 <property name="spacing">
+                  <number>2</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>9</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="label_7">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="text">
+                      <string>OPEN:</string>
+                     </property>
+                     <property name="styleClass" stdset="0">
+                      <string>comboFrame</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="RecentFileComboBox" name="recentfilecombobox_2">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="GcodeTextEdit" name="gcodetextedit_3">
+                   <property name="currentLineBackground" stdset="0">
+                    <color>
+                     <red>40</red>
+                     <green>40</green>
+                     <blue>28</blue>
+                    </color>
+                   </property>
+                   <property name="marginBackground" stdset="0">
+                    <color>
+                     <red>22</red>
+                     <green>22</green>
+                     <blue>14</blue>
+                    </color>
+                   </property>
+                   <property name="marginCurrentLineBackground" stdset="0">
+                    <color>
+                     <red>33</red>
+                     <green>33</green>
+                     <blue>24</blue>
+                    </color>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_12" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_20">
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="ActionButton" name="actionbutton_3">
+                   <property name="text">
+                    <string>CLEAR</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="ActionButton" name="actionbutton_2">
+                   <property name="text">
+                    <string>EDIT</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="DialogButton" name="dialogbutton">
+                   <property name="text">
+                    <string>OPEN</string>
+                   </property>
+                   <property name="dialogName" stdset="0">
+                    <string>open_file</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="DialogButton" name="dialogbutton_2">
+                   <property name="text">
+                    <string>RECENT</string>
+                   </property>
+                   <property name="dialogName" stdset="0">
+                    <string>recent_files</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </widget>
           </item>
           <item>
@@ -910,456 +930,6 @@ RUN</string>
             <property name="spacing">
              <number>14</number>
             </property>
-            <item>
-             <widget class="MkTabWidget" name="tabWidget_6">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>350</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>350</height>
-               </size>
-              </property>
-              <property name="currentIndex">
-               <number>0</number>
-              </property>
-              <widget class="QWidget" name="tab_16">
-               <attribute name="title">
-                <string>JOG</string>
-               </attribute>
-               <layout class="QVBoxLayout" name="verticalLayout_19">
-                <item>
-                 <widget class="QWidget" name="widget_12" native="true">
-                  <layout class="QHBoxLayout" name="horizontalLayout_17">
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
-                   <item>
-                    <spacer name="horizontalSpacer_7">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>30</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QWidget" name="widget_10" native="true">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>190</width>
-                       <height>130</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>190</width>
-                       <height>130</height>
-                      </size>
-                     </property>
-                     <layout class="QGridLayout" name="gridLayout_8">
-                      <property name="leftMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="topMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="bottomMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="spacing">
-                       <number>0</number>
-                      </property>
-                      <item row="1" column="0">
-                       <widget class="ActionButton" name="actionbutton_21">
-                        <property name="icon">
-                         <iconset>
-                          <normaloff>../common/icons/x-left.png</normaloff>../common/icons/x-left.png</iconset>
-                        </property>
-                        <property name="iconSize">
-                         <size>
-                          <width>46</width>
-                          <height>40</height>
-                         </size>
-                        </property>
-                        <property name="flat">
-                         <bool>true</bool>
-                        </property>
-                        <property name="actionName" stdset="0">
-                         <string>machine.jog.axis:x,neg</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="1">
-                       <widget class="ActionButton" name="actionbutton">
-                        <property name="icon">
-                         <iconset>
-                          <normaloff>../common/icons/y-up.png</normaloff>../common/icons/y-up.png</iconset>
-                        </property>
-                        <property name="iconSize">
-                         <size>
-                          <width>46</width>
-                          <height>40</height>
-                         </size>
-                        </property>
-                        <property name="flat">
-                         <bool>true</bool>
-                        </property>
-                        <property name="actionName" stdset="0">
-                         <string>machine.jog.axis:y,pos</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="2">
-                       <widget class="ActionButton" name="actionbutton_22">
-                        <property name="icon">
-                         <iconset>
-                          <normaloff>../common/icons/x-right.png</normaloff>../common/icons/x-right.png</iconset>
-                        </property>
-                        <property name="iconSize">
-                         <size>
-                          <width>46</width>
-                          <height>40</height>
-                         </size>
-                        </property>
-                        <property name="flat">
-                         <bool>true</bool>
-                        </property>
-                        <property name="actionName" stdset="0">
-                         <string>machine.jog.axis:x,pos</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="2" column="1">
-                       <widget class="ActionButton" name="actionbutton_4">
-                        <property name="icon">
-                         <iconset>
-                          <normaloff>../common/icons/y-down.png</normaloff>../common/icons/y-down.png</iconset>
-                        </property>
-                        <property name="iconSize">
-                         <size>
-                          <width>46</width>
-                          <height>40</height>
-                         </size>
-                        </property>
-                        <property name="flat">
-                         <bool>true</bool>
-                        </property>
-                        <property name="actionName" stdset="0">
-                         <string>machine.jog.axis:y,neg</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="2" colspan="2">
-                       <widget class="QWidget" name="widget_14" native="true">
-                        <layout class="QHBoxLayout" name="horizontalLayout_19">
-                         <property name="spacing">
-                          <number>0</number>
-                         </property>
-                         <property name="leftMargin">
-                          <number>40</number>
-                         </property>
-                         <property name="topMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="rightMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="bottomMargin">
-                          <number>0</number>
-                         </property>
-                         <item>
-                          <widget class="ActionButton" name="actionbutton_24">
-                           <property name="icon">
-                            <iconset>
-                             <normaloff>../common/icons/z-up.png</normaloff>../common/icons/z-up.png</iconset>
-                           </property>
-                           <property name="iconSize">
-                            <size>
-                             <width>46</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                           <property name="flat">
-                            <bool>true</bool>
-                           </property>
-                           <property name="actionName" stdset="0">
-                            <string>machine.jog.axis:z,pos</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item row="2" column="2" colspan="2">
-                       <widget class="QWidget" name="widget_15" native="true">
-                        <layout class="QHBoxLayout" name="horizontalLayout_20">
-                         <property name="spacing">
-                          <number>0</number>
-                         </property>
-                         <property name="leftMargin">
-                          <number>40</number>
-                         </property>
-                         <property name="topMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="rightMargin">
-                          <number>0</number>
-                         </property>
-                         <property name="bottomMargin">
-                          <number>0</number>
-                         </property>
-                         <item>
-                          <widget class="ActionButton" name="actionbutton_25">
-                           <property name="icon">
-                            <iconset>
-                             <normaloff>../common/icons/z-down.png</normaloff>../common/icons/z-down.png</iconset>
-                           </property>
-                           <property name="iconSize">
-                            <size>
-                             <width>46</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                           <property name="flat">
-                            <bool>true</bool>
-                           </property>
-                           <property name="actionName" stdset="0">
-                            <string>machine.jog.axis:z,neg</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_8">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>31</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QWidget" name="widget_11" native="true">
-                  <layout class="QHBoxLayout" name="horizontalLayout_18">
-                   <item>
-                    <widget class="QWidget" name="widget_13" native="true">
-                     <layout class="QGridLayout" name="gridLayout_9">
-                      <item row="3" column="1">
-                       <widget class="ActionButton" name="actionbutton_29">
-                        <property name="text">
-                         <string>.01</string>
-                        </property>
-                        <property name="checkable">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoExclusive">
-                         <bool>true</bool>
-                        </property>
-                        <property name="actionName" stdset="0">
-                         <string>machine.jog.set-increment:0.01</string>
-                        </property>
-                        <attribute name="buttonGroup">
-                         <string notr="true">stepSize</string>
-                        </attribute>
-                       </widget>
-                      </item>
-                      <item row="2" column="0">
-                       <widget class="ActionButton" name="actionbutton_27">
-                        <property name="text">
-                         <string>5</string>
-                        </property>
-                        <property name="checkable">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoExclusive">
-                         <bool>true</bool>
-                        </property>
-                        <property name="actionName" stdset="0">
-                         <string>machine.jog.set-increment:5</string>
-                        </property>
-                        <attribute name="buttonGroup">
-                         <string notr="true">stepSize</string>
-                        </attribute>
-                       </widget>
-                      </item>
-                      <item row="3" column="0">
-                       <widget class="ActionButton" name="actionbutton_28">
-                        <property name="text">
-                         <string>.1</string>
-                        </property>
-                        <property name="checkable">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoExclusive">
-                         <bool>true</bool>
-                        </property>
-                        <property name="actionName" stdset="0">
-                         <string>machine.jog.set-increment:0.1</string>
-                        </property>
-                        <attribute name="buttonGroup">
-                         <string notr="true">stepSize</string>
-                        </attribute>
-                       </widget>
-                      </item>
-                      <item row="2" column="1">
-                       <widget class="ActionButton" name="actionbutton_26">
-                        <property name="text">
-                         <string>1</string>
-                        </property>
-                        <property name="checkable">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoExclusive">
-                         <bool>true</bool>
-                        </property>
-                        <property name="actionName" stdset="0">
-                         <string>machine.jog.set-increment:1</string>
-                        </property>
-                        <attribute name="buttonGroup">
-                         <string notr="true">stepSize</string>
-                        </attribute>
-                       </widget>
-                      </item>
-                      <item row="1" column="0" colspan="2">
-                       <widget class="QLabel" name="label_21">
-                        <property name="text">
-                         <string>STEP SIZE</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="4" column="0">
-                       <widget class="ActionButton" name="actionbutton_23">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="minimumSize">
-                         <size>
-                          <width>0</width>
-                          <height>0</height>
-                         </size>
-                        </property>
-                        <property name="text">
-                         <string>CONT</string>
-                        </property>
-                        <property name="checkable">
-                         <bool>true</bool>
-                        </property>
-                        <property name="checked">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoExclusive">
-                         <bool>true</bool>
-                        </property>
-                        <property name="actionName" stdset="0">
-                         <string>machine.jog-mode.continuous</string>
-                        </property>
-                        <attribute name="buttonGroup">
-                         <string notr="true">jog_type</string>
-                        </attribute>
-                       </widget>
-                      </item>
-                      <item row="4" column="1">
-                       <widget class="ActionButton" name="actionbutton_35">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="text">
-                         <string>INC</string>
-                        </property>
-                        <property name="checkable">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoExclusive">
-                         <bool>true</bool>
-                        </property>
-                        <property name="actionName" stdset="0">
-                         <string>machine.jog-mode.incremental</string>
-                        </property>
-                        <attribute name="buttonGroup">
-                         <string notr="true">jog_type</string>
-                        </attribute>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
-              </widget>
-             </widget>
-            </item>
             <item>
              <widget class="MkTabWidget" name="tabWidget_4">
               <property name="sizePolicy">
@@ -1383,6 +953,381 @@ RUN</string>
               <property name="currentIndex">
                <number>0</number>
               </property>
+              <widget class="QWidget" name="tab_6">
+               <attribute name="title">
+                <string>JOG</string>
+               </attribute>
+               <widget class="QWidget" name="widget_11" native="true">
+                <property name="geometry">
+                 <rect>
+                  <x>320</x>
+                  <y>10</y>
+                  <width>212</width>
+                  <height>154</height>
+                 </rect>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_18">
+                 <item>
+                  <widget class="QWidget" name="widget_13" native="true">
+                   <layout class="QGridLayout" name="gridLayout_9">
+                    <item row="3" column="1">
+                     <widget class="ActionButton" name="actionbutton_29">
+                      <property name="text">
+                       <string>.01</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <property name="actionName" stdset="0">
+                       <string>machine.jog.set-increment:0.01</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">stepSize</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="ActionButton" name="actionbutton_27">
+                      <property name="text">
+                       <string>5</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <property name="actionName" stdset="0">
+                       <string>machine.jog.set-increment:5</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">stepSize</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                    <item row="3" column="0">
+                     <widget class="ActionButton" name="actionbutton_28">
+                      <property name="text">
+                       <string>.1</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <property name="actionName" stdset="0">
+                       <string>machine.jog.set-increment:0.1</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">stepSize</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="ActionButton" name="actionbutton_26">
+                      <property name="text">
+                       <string>1</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <property name="actionName" stdset="0">
+                       <string>machine.jog.set-increment:1</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">stepSize</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                    <item row="1" column="0" colspan="2">
+                     <widget class="QLabel" name="label_21">
+                      <property name="text">
+                       <string>STEP SIZE</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="0">
+                     <widget class="ActionButton" name="actionbutton_23">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>CONT</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="checked">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <property name="actionName" stdset="0">
+                       <string>machine.jog-mode.continuous</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">jog_type</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                    <item row="4" column="1">
+                     <widget class="ActionButton" name="actionbutton_35">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>INC</string>
+                      </property>
+                      <property name="checkable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoExclusive">
+                       <bool>true</bool>
+                      </property>
+                      <property name="actionName" stdset="0">
+                       <string>machine.jog-mode.incremental</string>
+                      </property>
+                      <attribute name="buttonGroup">
+                       <string notr="true">jog_type</string>
+                      </attribute>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="widget_10" native="true">
+                <property name="geometry">
+                 <rect>
+                  <x>30</x>
+                  <y>30</y>
+                  <width>190</width>
+                  <height>130</height>
+                 </rect>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>190</width>
+                  <height>130</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>190</width>
+                  <height>130</height>
+                 </size>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_8">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item row="1" column="0">
+                  <widget class="ActionButton" name="actionbutton_21">
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>../common/icons/x-left.png</normaloff>../common/icons/x-left.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>46</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="flat">
+                    <bool>true</bool>
+                   </property>
+                   <property name="actionName" stdset="0">
+                    <string>machine.jog.axis:x,neg</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="ActionButton" name="actionbutton">
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>../common/icons/y-up.png</normaloff>../common/icons/y-up.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>46</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="flat">
+                    <bool>true</bool>
+                   </property>
+                   <property name="actionName" stdset="0">
+                    <string>machine.jog.axis:y,pos</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="2">
+                  <widget class="ActionButton" name="actionbutton_22">
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>../common/icons/x-right.png</normaloff>../common/icons/x-right.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>46</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="flat">
+                    <bool>true</bool>
+                   </property>
+                   <property name="actionName" stdset="0">
+                    <string>machine.jog.axis:x,pos</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="ActionButton" name="actionbutton_4">
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>../common/icons/y-down.png</normaloff>../common/icons/y-down.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>46</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="flat">
+                    <bool>true</bool>
+                   </property>
+                   <property name="actionName" stdset="0">
+                    <string>machine.jog.axis:y,neg</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2" colspan="2">
+                  <widget class="QWidget" name="widget_14" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_19">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>40</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="ActionButton" name="actionbutton_24">
+                      <property name="icon">
+                       <iconset>
+                        <normaloff>../common/icons/z-up.png</normaloff>../common/icons/z-up.png</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>46</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="flat">
+                       <bool>true</bool>
+                      </property>
+                      <property name="actionName" stdset="0">
+                       <string>machine.jog.axis:z,pos</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="2" column="2" colspan="2">
+                  <widget class="QWidget" name="widget_15" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_20">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>40</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="ActionButton" name="actionbutton_25">
+                      <property name="icon">
+                       <iconset>
+                        <normaloff>../common/icons/z-down.png</normaloff>../common/icons/z-down.png</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>46</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="flat">
+                       <bool>true</bool>
+                      </property>
+                      <property name="actionName" stdset="0">
+                       <string>machine.jog.axis:z,neg</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
               <widget class="QWidget" name="tab_14">
                <attribute name="title">
                 <string>THC</string>
@@ -3313,7 +3258,7 @@ T</string>
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -3346,8 +3291,8 @@ T</string>
            <widget class="QLabel" name="label_49">
             <property name="geometry">
              <rect>
-              <x>20</x>
-              <y>240</y>
+              <x>110</x>
+              <y>490</y>
               <width>331</width>
               <height>391</height>
              </rect>
