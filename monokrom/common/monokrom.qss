@@ -27,7 +27,7 @@ QPushButton {
   background: #1c1c12;
   border: 2px solid #ffee06;
   border-radius: 8px;
-  min-height: 25px;
+  min-height: 40px;
   min-width: 30px; }
 
 QPushButton:hover,
@@ -56,7 +56,7 @@ QPushButton:flat {
   background: transparent;
   border: none;
   border-radius: 3px;
-  min-height: 25px;
+  min-height: 40px;
   min-width: 25px; }
 
 QPushButton:flat:hover {
@@ -424,7 +424,7 @@ QTabBar::tab {
 QTabBar::tab:top,
 QTabBar::tab:bottom {
   min-width: 10ex;
-  min-height: 25px;
+  min-height: 40px;
   padding: 0px 0px 0px 10px; }
 
 QTabBar::tab:top {
