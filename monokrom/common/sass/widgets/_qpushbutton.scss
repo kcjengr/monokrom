@@ -7,7 +7,7 @@ QPushButton {
   background: lighten( $background, 2%);
   border: $border;
   border-radius: $border-radius;
-  min-height: 25px;
+  min-height: 40px;
   min-width: 30px;
 }
 
@@ -42,7 +42,7 @@ QPushButton:flat {
   background: transparent;
   border: none;
   border-radius: 3px;
-  min-height: 25px;
+  min-height: 40px;
   min-width: 25px;
 }
 
