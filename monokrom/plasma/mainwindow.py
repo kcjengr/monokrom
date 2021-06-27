@@ -12,7 +12,7 @@ class MainWindow(VCPMainWindow):
     # add any custom methods here
     
     def setMode(self):
-        print "main window initalise"
+        print("main window initalise")
     
     
  
