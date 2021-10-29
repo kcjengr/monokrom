@@ -68,7 +68,10 @@ class MkRecentFileListView(QListWidget):
     def update(self, files):
         self.clear()
         for i, fname in enumerate(files):
-            fname = fname.encode('utf-8')
+            # encode breaks the qlistwidget call. So comment out and
+            # eventually remove.
+            #TODO: Remove
+            #fname = fname.encode('utf-8')
             text = os.path.basename(fname)
             icon = QIcon(FILE_ICON)
             item = QListWidgetItem(icon, text)

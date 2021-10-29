@@ -74,3 +74,114 @@ file_locations:
       #network_locations:
       #  DropBox: ~/DropBox/gcode
       
+
+settings:
+   thc_delay:
+      default_value: 0.5
+      persistent: true
+
+   thc_threshold:
+      default_value: 1.0
+      persistent: true
+
+   thc_pid_p_gain:
+      default_value: 1
+      persistent: true
+   
+   thc_pid_i_gain:
+      default_value: 0
+      persistent: true
+   
+   thc_pid_d_gain:
+      default_value: 0
+      persistent: true
+   
+   thc_vad_threshold:
+      default_value: 90
+      persistent: true
+   
+   thc_void_override:
+      default_value: 100
+      persistent: true
+   
+   thc_safe_height:
+      default_value: 5
+      persistent: true
+   
+   probe_float_travel:
+      default_value: 1.5
+      persistent: true
+   
+   probe_speed:
+      default_value: 300
+      persistent: true
+   
+   probe_height:
+      default_value: 25
+      persistent: true
+   
+   probe_offset:
+      default_value: 0
+      persistent: true
+   
+   probe_ohmic_retries:
+      default_value: 0
+      persistent: true
+   
+   probe_skip_ihs:
+      default_value: 0
+      persistent: true
+   
+   probe_setup_speed:
+      default_value: 0
+      persistent: true
+   
+   arc_fail_timeout:
+      default_value: 3
+      persistent: true
+   
+   arc_max_starts:
+      default_value: 3
+      persistent: true
+   
+   arc_retry_delay:
+      default_value: 60
+      persistent: true
+   
+   arc_voltage_scale:
+      default_value: 1.000000
+      persistent: true
+   
+   arc_voltage_offset:
+      default_value: 0.000
+      persistent: true
+   
+   arc_height_per_volt:
+      default_value: 0.100
+      persistent: true
+   
+   arc_ok_high_volts:
+      default_value: 99999.0
+      persistent: true
+   
+   arc_ok_low_volts:
+      default_value: 60
+      persistent: true
+   
+   scribe_arm_delay:
+      default_value: 0
+      persistent: true
+   
+   scribe_on_delay:
+      default_value: 0
+      persistent: true
+   
+   spot_threshold:
+      default_value: 0
+      persistent: true
+   
+   spot_delay:
+      default_value: 0
+      persistent: true
+   
+   
