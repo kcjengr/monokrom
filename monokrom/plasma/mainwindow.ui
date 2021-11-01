@@ -358,16 +358,6 @@
               <string>CONTROL</string>
              </property>
              <layout class="QGridLayout" name="gridLayout">
-              <item row="0" column="0" colspan="2">
-               <widget class="ActionButton" name="actionbutton_5">
-                <property name="text">
-                 <string>CYCLE START</string>
-                </property>
-                <property name="actionName" stdset="0">
-                 <string>program.run</string>
-                </property>
-               </widget>
-              </item>
               <item row="1" column="0">
                <widget class="ActionButton" name="actionbutton_6">
                 <property name="text">
@@ -376,6 +366,27 @@ HOLD</string>
                 </property>
                 <property name="actionName" stdset="0">
                  <string>program.pause</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="ActionButton" name="actionbutton_8">
+                <property name="text">
+                 <string>STOP
+ABORT</string>
+                </property>
+                <property name="actionName" stdset="0">
+                 <string>program.abort</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="2">
+               <widget class="ActionButton" name="actionbutton_5">
+                <property name="text">
+                 <string>CYCLE START</string>
+                </property>
+                <property name="actionName" stdset="0">
+                 <string>program.run</string>
                 </property>
                </widget>
               </item>
@@ -393,14 +404,16 @@ BREAK</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="ActionButton" name="actionbutton_8">
+              <item row="4" column="0" colspan="2">
+               <widget class="ActionButton" name="actionbutton_10">
                 <property name="text">
-                 <string>STOP
-ABORT</string>
+                 <string>MACHINE POWER</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
                 </property>
                 <property name="actionName" stdset="0">
-                 <string>program.abort</string>
+                 <string>machine.power.toggle</string>
                 </property>
                </widget>
               </item>
@@ -416,7 +429,7 @@ RUN</string>
                <widget class="QPushButton" name="pushButton_7">
                 <property name="text">
                  <string>PIERCE
-AND CUT</string>
+ONLY</string>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -440,16 +453,13 @@ ENABLE</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="0" colspan="2">
-               <widget class="ActionButton" name="actionbutton_10">
+              <item row="5" column="0" colspan="2">
+               <widget class="HalButton" name="btn_estopReset">
                 <property name="text">
-                 <string>MACHINE POWER</string>
+                 <string>E STOP STATE</string>
                 </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="actionName" stdset="0">
-                 <string>machine.power.toggle</string>
+                <property name="rules" stdset="0">
+                 <string>[{&quot;name&quot;: &quot;estopState&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;estop_triggered\&quot; if ch[0] == 1 else \&quot;estop_armed\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:estop&quot;, &quot;trigger&quot;: true}]}]</string>
                 </property>
                </widget>
               </item>
@@ -861,7 +871,7 @@ ENABLE</string>
                 </widget>
                </item>
                <item>
-                <widget class="DialogButton" name="dialogbutton">
+                <widget class="DialogButton" name="btn_open_dialog">
                  <property name="text">
                   <string>OPEN</string>
                  </property>
@@ -1305,7 +1315,7 @@ ENABLE</string>
             </widget>
             <widget class="QWidget" name="tab_14">
              <attribute name="title">
-              <string>THC</string>
+              <string>THC &amp;&amp; ARC</string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_4">
               <item row="0" column="1">
@@ -1516,64 +1526,6 @@ ENABLE</string>
                 </layout>
                </widget>
               </item>
-              <item row="4" column="0">
-               <widget class="HalButton" name="halbutton_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>34</width>
-                  <height>44</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>44</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>ANTI
-DIVE</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="HalButton" name="halbutton">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>34</width>
-                  <height>44</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>44</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>VOID
-SENSE</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
               <item row="2" column="0">
                <widget class="QWidget" name="widget_7" native="true">
                 <layout class="QHBoxLayout" name="horizontalLayout_15">
@@ -1678,7 +1630,7 @@ SENSE</string>
                 </layout>
                </widget>
               </item>
-              <item row="5" column="0" rowspan="3" colspan="2">
+              <item row="5" column="0" rowspan="3">
                <widget class="QWidget" name="widget_9" native="true">
                 <layout class="QVBoxLayout" name="verticalLayout_18">
                  <property name="spacing">
@@ -1764,6 +1716,64 @@ SENSE</string>
                   </widget>
                  </item>
                 </layout>
+               </widget>
+              </item>
+              <item row="7" column="1">
+               <widget class="HalButton" name="halbutton">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>34</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>VOID
+SENSE</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="HalButton" name="halbutton_2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>34</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>ANTI
+DIVE</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
              </layout>
@@ -1966,6 +1976,9 @@ SENSE</string>
                    <property name="buttonSymbols">
                     <enum>QAbstractSpinBox::PlusMinus</enum>
                    </property>
+                   <property name="suffix">
+                    <string> S</string>
+                   </property>
                   </widget>
                  </item>
                  <item row="3" column="0">
@@ -2017,6 +2030,9 @@ SENSE</string>
                    <property name="buttonSymbols">
                     <enum>QAbstractSpinBox::PlusMinus</enum>
                    </property>
+                   <property name="suffix">
+                    <string> A</string>
+                   </property>
                   </widget>
                  </item>
                  <item row="6" column="0">
@@ -2033,6 +2049,9 @@ SENSE</string>
                    </property>
                    <property name="buttonSymbols">
                     <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="suffix">
+                    <string> V</string>
                    </property>
                   </widget>
                  </item>
@@ -2051,6 +2070,9 @@ SENSE</string>
                    <property name="buttonSymbols">
                     <enum>QAbstractSpinBox::PlusMinus</enum>
                    </property>
+                   <property name="suffix">
+                    <string> %</string>
+                   </property>
                   </widget>
                  </item>
                  <item row="8" column="0">
@@ -2068,6 +2090,9 @@ SENSE</string>
                    <property name="buttonSymbols">
                     <enum>QAbstractSpinBox::PlusMinus</enum>
                    </property>
+                   <property name="suffix">
+                    <string> S</string>
+                   </property>
                   </widget>
                  </item>
                  <item row="9" column="0">
@@ -2084,6 +2109,9 @@ SENSE</string>
                    </property>
                    <property name="buttonSymbols">
                     <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="suffix">
+                    <string> S</string>
                    </property>
                   </widget>
                  </item>
@@ -2336,7 +2364,7 @@ SENSE</string>
                 <item row="0" column="0">
                  <widget class="QLabel" name="label_6">
                   <property name="text">
-                   <string>X-START</string>
+                   <string>X-LENGTH</string>
                   </property>
                  </widget>
                 </item>
@@ -2363,7 +2391,7 @@ SENSE</string>
                 <item row="1" column="0">
                  <widget class="QLabel" name="label_12">
                   <property name="text">
-                   <string>Y-START</string>
+                   <string>Y-LENGTH</string>
                   </property>
                  </widget>
                 </item>
@@ -2376,11 +2404,7 @@ SENSE</string>
                    </sizepolicy>
                   </property>
                   <property name="text">
-                   <string>S
-T
-A
-R
-T</string>
+                   <string>START</string>
                   </property>
                  </widget>
                 </item>
@@ -2430,40 +2454,6 @@ T</string>
              <string>THC</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_3">
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_22">
-               <property name="text">
-                <string>DELAY</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="HalDoubleSpinBox" name="thc_delay">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="suffix">
-                <string> S</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_23">
-               <property name="text">
-                <string>THRESHOLD</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="HalDoubleSpinBox" name="thc_threshold">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="suffix">
-                <string> V</string>
-               </property>
-              </widget>
-             </item>
              <item row="2" column="0">
               <widget class="QLabel" name="label_24">
                <property name="text">
@@ -2471,55 +2461,10 @@ T</string>
                </property>
               </widget>
              </item>
-             <item row="2" column="1">
-              <widget class="HalDoubleSpinBox" name="thc_pid_p_gain">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_27">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_22">
                <property name="text">
-                <string>PID I GAIN</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="HalDoubleSpinBox" name="thc_pid_i_gain">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_28">
-               <property name="text">
-                <string>PID D GAIN</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="HalDoubleSpinBox" name="thc_pid_d_gain">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0">
-              <widget class="QLabel" name="label_25">
-               <property name="text">
-                <string>VAD THRESHOLD</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1">
-              <widget class="HalDoubleSpinBox" name="thc_vad_threshold">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="suffix">
-                <string> %</string>
+                <string>DELAY</string>
                </property>
               </widget>
              </item>
@@ -2530,13 +2475,10 @@ T</string>
                </property>
               </widget>
              </item>
-             <item row="6" column="1">
-              <widget class="HalDoubleSpinBox" name="thc_void_override">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="suffix">
-                <string> %</string>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_28">
+               <property name="text">
+                <string>PID D GAIN</string>
                </property>
               </widget>
              </item>
@@ -2547,10 +2489,95 @@ T</string>
                </property>
               </widget>
              </item>
-             <item row="7" column="1">
-              <widget class="HalDoubleSpinBox" name="thc_safe_height">
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_23">
+               <property name="text">
+                <string>THRESHOLD</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_27">
+               <property name="text">
+                <string>PID I GAIN</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_25">
+               <property name="text">
+                <string>VAD THRESHOLD</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="thc_delay">
                <property name="buttonSymbols">
                 <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="suffix">
+                <string> S</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>thc_delay</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="thc_threshold">
+               <property name="suffix">
+                <string> V</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>thc_threshold</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_p_gain">
+               <property name="settingName" stdset="0">
+                <string>thc_pid_p_gain</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_i_gain">
+               <property name="settingName" stdset="0">
+                <string>thc_pid_i_gain</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_d_gain">
+               <property name="settingName" stdset="0">
+                <string>thc_pid_d_gain</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="thc_vad_threshold">
+               <property name="suffix">
+                <string> %</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>thc_vad_threshold</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="thc_void_override">
+               <property name="suffix">
+                <string> %</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>thc_void_override</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="thc_safe_height">
+               <property name="settingName" stdset="0">
+                <string>thc_safe_height</string>
                </property>
               </widget>
              </item>
@@ -2566,20 +2593,10 @@ T</string>
              <property name="topMargin">
               <number>9</number>
              </property>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_30">
+             <item row="7" column="0">
+              <widget class="QLabel" name="label_37">
                <property name="text">
-                <string>FAIL TIMEOUT</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="HalDoubleSpinBox" name="arc_fail_timeout">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="suffix">
-                <string> S</string>
+                <string>OK LOW VOLTS</string>
                </property>
               </widget>
              </item>
@@ -2590,81 +2607,10 @@ T</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
-              <widget class="HalDoubleSpinBox" name="arc_max_starts">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="decimals">
-                <number>0</number>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_32">
-               <property name="text">
-                <string>RETRY DELAY</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="HalDoubleSpinBox" name="arc_retry_delay">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="suffix">
-                <string> S</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_33">
-               <property name="text">
-                <string>VOLTAGE SCALE</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="HalDoubleSpinBox" name="arc_voltage_scale">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="decimals">
-                <number>6</number>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_34">
-               <property name="text">
-                <string>VOLTAGE OFFSET</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="HalDoubleSpinBox" name="arc_voltage_offset">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="decimals">
-                <number>3</number>
-               </property>
-              </widget>
-             </item>
              <item row="5" column="0">
               <widget class="QLabel" name="label_35">
                <property name="text">
                 <string>HEIGHT PER VOLT</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1">
-              <widget class="HalDoubleSpinBox" name="arc_height_per_volt">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="decimals">
-                <number>3</number>
                </property>
               </widget>
              </item>
@@ -2675,30 +2621,114 @@ T</string>
                </property>
               </widget>
              </item>
-             <item row="6" column="1">
-              <widget class="HalDoubleSpinBox" name="arc_ok_high_volts">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="maximum">
-                <double>99999.990000000005239</double>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="0">
-              <widget class="QLabel" name="label_37">
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_33">
                <property name="text">
-                <string>OK LOW VOLTS</string>
+                <string>VOLTAGE SCALE</string>
                </property>
               </widget>
              </item>
-             <item row="7" column="1">
-              <widget class="HalDoubleSpinBox" name="arc_ok_low_volts">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_32">
+               <property name="text">
+                <string>RETRY DELAY</string>
                </property>
-               <property name="maximum">
-                <double>99999.990000000005239</double>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_30">
+               <property name="text">
+                <string>FAIL TIMEOUT</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_34">
+               <property name="text">
+                <string>VOLTAGE OFFSET</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="arc_fail_timeout">
+               <property name="suffix">
+                <string> S</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>arc_fail_timeout</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="PlasmaHalSpinBox" name="arc_max_starts">
+               <property name="settingName" stdset="0">
+                <string>arc_max_starts</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="arc_retry_delay">
+               <property name="suffix">
+                <string> S</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>arc_retry_delay</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_scale">
+               <property name="suffix">
+                <string> V</string>
+               </property>
+               <property name="decimals">
+                <number>6</number>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>arc_voltage_scale</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_offset">
+               <property name="suffix">
+                <string> V</string>
+               </property>
+               <property name="decimals">
+                <number>3</number>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>arc_voltage_offset</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="arc_height_per_volt">
+               <property name="decimals">
+                <number>3</number>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>arc_height_per_volt</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_high_volts">
+               <property name="suffix">
+                <string> V</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>arc_ok_high_volts</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_low_volts">
+               <property name="suffix">
+                <string> V</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>arc_ok_low_volts</string>
                </property>
               </widget>
              </item>
@@ -2711,69 +2741,6 @@ T</string>
              <string>PROBING &amp;&amp; MOTION</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_10">
-             <item row="11" column="0">
-              <widget class="QLabel" name="label_43">
-               <property name="text">
-                <string>SKIP IHS</string>
-               </property>
-              </widget>
-             </item>
-             <item row="12" column="1">
-              <widget class="HalDoubleSpinBox" name="probe_setup_speed">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1">
-              <widget class="HalDoubleSpinBox" name="probe_height">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="8" column="1">
-              <widget class="HalDoubleSpinBox" name="probe_offset">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="12" column="0">
-              <widget class="QLabel" name="label_44">
-               <property name="text">
-                <string>SETUP SPEED (3600)</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1">
-              <widget class="HalDoubleSpinBox" name="probe_speed">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="11" column="1">
-              <widget class="HalDoubleSpinBox" name="probe_skip_ihs">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="HalDoubleSpinBox" name="probe_float_travel">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label_40">
-               <property name="text">
-                <string>PROBE HEIGHT</string>
-               </property>
-              </widget>
-             </item>
              <item row="5" column="0">
               <widget class="QLabel" name="label_39">
                <property name="text">
@@ -2781,17 +2748,10 @@ T</string>
                </property>
               </widget>
              </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_38">
+             <item row="11" column="0">
+              <widget class="QLabel" name="label_43">
                <property name="text">
-                <string>FLOAT TRAVEL</string>
-               </property>
-              </widget>
-             </item>
-             <item row="8" column="0">
-              <widget class="QLabel" name="label_41">
-               <property name="text">
-                <string>PROBE OFFSET</string>
+                <string>SKIP IHS</string>
                </property>
               </widget>
              </item>
@@ -2802,13 +2762,80 @@ T</string>
                </property>
               </widget>
              </item>
-             <item row="9" column="1">
-              <widget class="HalDoubleSpinBox" name="probe_ohmic_retries">
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
+             <item row="8" column="0">
+              <widget class="QLabel" name="label_41">
+               <property name="text">
+                <string>PROBE OFFSET</string>
                </property>
-               <property name="decimals">
-                <number>0</number>
+              </widget>
+             </item>
+             <item row="12" column="0">
+              <widget class="QLabel" name="label_44">
+               <property name="text">
+                <string>SETUP SPEED (3600)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_38">
+               <property name="text">
+                <string>FLOAT TRAVEL</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="label_40">
+               <property name="text">
+                <string>PROBE HEIGHT</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="probe_offset">
+               <property name="settingName" stdset="0">
+                <string>probe_offset</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="probe_height">
+               <property name="settingName" stdset="0">
+                <string>probe_height</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="2">
+              <widget class="PlasmaHalSpinBox" name="probe_speed">
+               <property name="settingName" stdset="0">
+                <string>probe_speed</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="probe_float_travel">
+               <property name="settingName" stdset="0">
+                <string>probe_float_travel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="2">
+              <widget class="PlasmaHalSpinBox" name="probe_ohmic_retries">
+               <property name="settingName" stdset="0">
+                <string>probe_ohmic_retries</string>
+               </property>
+              </widget>
+             </item>
+             <item row="11" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="probe_skip_ihs">
+               <property name="settingName" stdset="0">
+                <string>probe_skip_ihs</string>
+               </property>
+              </widget>
+             </item>
+             <item row="12" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="probe_setup_speed">
+               <property name="settingName" stdset="0">
+                <string>probe_setup_speed</string>
                </property>
               </widget>
              </item>
@@ -2824,37 +2851,10 @@ T</string>
                 <string>SCRIBE &amp;&amp; SPOT</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_13">
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_45">
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_48">
                   <property name="text">
-                   <string>SCRIBE ARM DELAY</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="HalDoubleSpinBox" name="scribe_arm_delay">
-                  <property name="buttonSymbols">
-                   <enum>QAbstractSpinBox::PlusMinus</enum>
-                  </property>
-                  <property name="suffix">
-                   <string> S</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="label_46">
-                  <property name="text">
-                   <string>SCRIBE ON DELAY</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="HalDoubleSpinBox" name="scribe_on_delay">
-                  <property name="buttonSymbols">
-                   <enum>QAbstractSpinBox::PlusMinus</enum>
-                  </property>
-                  <property name="suffix">
-                   <string> S</string>
+                   <string>SPOT DELAY</string>
                   </property>
                  </widget>
                 </item>
@@ -2865,33 +2865,57 @@ T</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="1">
-                 <widget class="HalDoubleSpinBox" name="spot_threshold">
-                  <property name="buttonSymbols">
-                   <enum>QAbstractSpinBox::PlusMinus</enum>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_45">
+                  <property name="text">
+                   <string>SCRIBE ARM DELAY</string>
                   </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_46">
+                  <property name="text">
+                   <string>SCRIBE ON DELAY</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="PlasmaHalDoubleSpinBox" name="scribe_arm_delay">
+                  <property name="suffix">
+                   <string> S</string>
+                  </property>
+                  <property name="settingName" stdset="0">
+                   <string>scribe_arm_delay</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="PlasmaHalDoubleSpinBox" name="scribe_on_delay">
+                  <property name="suffix">
+                   <string> S</string>
+                  </property>
+                  <property name="settingName" stdset="0">
+                   <string>scribe_on_delay</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="PlasmaHalDoubleSpinBox" name="spot_threshold">
                   <property name="suffix">
                    <string> V</string>
                   </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="label_48">
-                  <property name="text">
-                   <string>SPOT DELAY</string>
+                  <property name="settingName" stdset="0">
+                   <string>spot_threshold</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="1">
-                 <widget class="HalDoubleSpinBox" name="spot_delay">
-                  <property name="buttonSymbols">
-                   <enum>QAbstractSpinBox::PlusMinus</enum>
-                  </property>
+                <item row="3" column="2">
+                 <widget class="PlasmaHalDoubleSpinBox" name="spot_delay">
                   <property name="suffix">
                    <string> mS</string>
                   </property>
-                  <property name="decimals">
-                   <number>0</number>
+                  <property name="settingName" stdset="0">
+                   <string>spot_delay</string>
                   </property>
                  </widget>
                 </item>
@@ -2905,14 +2929,14 @@ T</string>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout">
                 <item>
-                 <widget class="QPushButton" name="pushButton_11">
+                 <widget class="QPushButton" name="btn_config_save">
                   <property name="text">
                    <string>SAVE</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_12">
+                 <widget class="QPushButton" name="btn_config_reload">
                   <property name="text">
                    <string>RELOAD</string>
                   </property>
@@ -2930,6 +2954,141 @@ T</string>
          <attribute name="title">
           <string>STATISTICS</string>
          </attribute>
+         <widget class="MkGroupBox" name="groupbox_10">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>20</y>
+            <width>591</width>
+            <height>751</height>
+           </rect>
+          </property>
+          <property name="title">
+           <string>JOB &amp;&amp; TOTAL</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="1" column="0">
+            <widget class="QPushButton" name="pushButton_11">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>34</width>
+               <height>44</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>RESET</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QLabel" name="label_58">
+             <property name="text">
+              <string>RAPID TIME</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="label_54">
+             <property name="text">
+              <string>CUT LENGTH</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_50">
+             <property name="text">
+              <string>JOB</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLabel" name="label_55">
+             <property name="text">
+              <string>CUT TIME</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLabel" name="label_56">
+             <property name="text">
+              <string>TORCH ON TIME</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QLabel" name="label_57">
+             <property name="text">
+              <string>PROG RUN TIME</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="label_53">
+             <property name="text">
+              <string>PIERCE COUNT</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_51">
+             <property name="text">
+              <string>ITEM</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="4">
+            <widget class="QLabel" name="label_52">
+             <property name="text">
+              <string>TOTAL</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QLabel" name="label_59">
+             <property name="text">
+              <string>PROBE TIME</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="MkGroupBox" name="groupbox_11">
+          <property name="geometry">
+           <rect>
+            <x>630</x>
+            <y>20</y>
+            <width>601</width>
+            <height>751</height>
+           </rect>
+          </property>
+          <property name="title">
+           <string>LOG</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="NotificationWidget" name="notificationwidget"/>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </widget>
       </item>
@@ -3322,6 +3481,11 @@ T</string>
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>NotificationWidget</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.display_widgets.notification_widget</header>
+  </customwidget>
+  <customwidget>
    <class>GcodeTextEdit</class>
    <extends>QPlainTextEdit</extends>
    <header>qtpyvcp.widgets.input_widgets.gcode_text_edit</header>
@@ -3355,6 +3519,11 @@ T</string>
    <class>VCPSettingsComboBox</class>
    <extends>QComboBox</extends>
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+  </customwidget>
+  <customwidget>
+   <class>HalQSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>qtpyvcp.widgets.hal_widgets.hal_spinbox</header>
   </customwidget>
   <customwidget>
    <class>HalDoubleSpinBox</class>
@@ -3403,26 +3572,19 @@ T</string>
    <header>monokrom.common.widgets.tab_widget</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>PlasmaHalDoubleSpinBox</class>
+   <extends>HalDoubleSpinBox</extends>
+   <header>monokrom.plasma.widgets.plasma_hal_double_spinbox</header>
+  </customwidget>
+  <customwidget>
+   <class>PlasmaHalSpinBox</class>
+   <extends>HalQSpinBox</extends>
+   <header>monokrom.plasma.widgets.plasma_hal_spinbox</header>
+  </customwidget>
  </customwidgets>
  <resources/>
- <connections>
-  <connection>
-   <sender>settings_slider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>actionslider_2</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>470</x>
-     <y>443</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>412</x>
-     <y>443</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
  <buttongroups>
   <buttongroup name="jog_type"/>
   <buttongroup name="stepSize"/>
