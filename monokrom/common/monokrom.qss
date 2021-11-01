@@ -67,6 +67,14 @@ QPushButton:flat:pressed {
   border: 2px solid #ffee06;
   border-color: #ecdb00; }
 
+QPushButton[style='estop_triggered'] {
+  color: black;
+  background: orangered; }
+
+QPushButton[style='estop_armed'] {
+  color: black;
+  background: lightgreen; }
+
 /*===========================================================================*/
 /*                             QToolButton                                   */
 /*===========================================================================*/

@@ -55,3 +55,13 @@ QPushButton:flat:pressed {
   border: $border;
   border-color: darken($border-color, 5%);
 }
+
+QPushButton[style='estop_triggered'] {
+  color: black;
+  background: orangered;
+}
+
+QPushButton[style='estop_armed'] {
+  color: black;
+  background: lightgreen;
+}
