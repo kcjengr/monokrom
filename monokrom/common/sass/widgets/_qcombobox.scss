@@ -8,6 +8,7 @@ QComboBox {
     border-radius: $border-radius;
     min-width: 6em;
     min-height: 25px;
+    font-weight: bold;
 }
 
 QComboBox::drop-down {
