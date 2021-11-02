@@ -192,7 +192,8 @@ QLineEdit:focus {
 /*===========================================================================*/
 QSpinBox,
 QDoubleSpinBox {
-  font: bold italic 14pt "DSEG7 Classic";
+  /* font: bold italic 14pt "DSEG7 Classic"; */
+  font: bold 14pt;
   color: #16160e;
   height: 29px;
   max-height: 29px;
@@ -761,7 +762,8 @@ QSizeGrip {
   min-width: 320px; }
 
 .MonokromDroWidget DROLineEdit {
-  font: bold italic 30pt "DSEG7 Classic";
+  /*  font: bold italic 30pt "DSEG7 Classic"; */
+  font: bold 30pt;
   border-color: transparent;
   background: transparent; }
 
