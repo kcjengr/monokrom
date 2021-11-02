@@ -2525,6 +2525,9 @@ DIVE</string>
              </item>
              <item row="1" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="thc_threshold">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="suffix">
                 <string> V</string>
                </property>
@@ -2535,6 +2538,9 @@ DIVE</string>
              </item>
              <item row="2" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_p_gain">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="settingName" stdset="0">
                 <string>thc_pid_p_gain</string>
                </property>
@@ -2542,6 +2548,9 @@ DIVE</string>
              </item>
              <item row="3" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_i_gain">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="settingName" stdset="0">
                 <string>thc_pid_i_gain</string>
                </property>
@@ -2549,6 +2558,9 @@ DIVE</string>
              </item>
              <item row="4" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_d_gain">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="settingName" stdset="0">
                 <string>thc_pid_d_gain</string>
                </property>
@@ -2566,6 +2578,9 @@ DIVE</string>
              </item>
              <item row="6" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="thc_void_override">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="suffix">
                 <string> %</string>
                </property>
@@ -2576,6 +2591,9 @@ DIVE</string>
              </item>
              <item row="7" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="thc_safe_height">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="settingName" stdset="0">
                 <string>thc_safe_height</string>
                </property>
@@ -2651,6 +2669,9 @@ DIVE</string>
              </item>
              <item row="0" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="arc_fail_timeout">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="suffix">
                 <string> S</string>
                </property>
@@ -2661,6 +2682,9 @@ DIVE</string>
              </item>
              <item row="1" column="2">
               <widget class="PlasmaHalSpinBox" name="arc_max_starts">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="settingName" stdset="0">
                 <string>arc_max_starts</string>
                </property>
@@ -2668,6 +2692,9 @@ DIVE</string>
              </item>
              <item row="2" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="arc_retry_delay">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="suffix">
                 <string> S</string>
                </property>
@@ -2678,6 +2705,9 @@ DIVE</string>
              </item>
              <item row="3" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_scale">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="suffix">
                 <string> V</string>
                </property>
@@ -2691,6 +2721,9 @@ DIVE</string>
              </item>
              <item row="4" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_offset">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="suffix">
                 <string> V</string>
                </property>
@@ -2704,6 +2737,9 @@ DIVE</string>
              </item>
              <item row="5" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="arc_height_per_volt">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="decimals">
                 <number>3</number>
                </property>
@@ -2714,6 +2750,9 @@ DIVE</string>
              </item>
              <item row="6" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_high_volts">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="suffix">
                 <string> V</string>
                </property>
@@ -2724,6 +2763,9 @@ DIVE</string>
              </item>
              <item row="7" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_low_volts">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="suffix">
                 <string> V</string>
                </property>
@@ -2792,6 +2834,9 @@ DIVE</string>
              </item>
              <item row="8" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="probe_offset">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="settingName" stdset="0">
                 <string>probe_offset</string>
                </property>
@@ -2799,6 +2844,9 @@ DIVE</string>
              </item>
              <item row="6" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="probe_height">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="settingName" stdset="0">
                 <string>probe_height</string>
                </property>
@@ -2806,6 +2854,9 @@ DIVE</string>
              </item>
              <item row="5" column="2">
               <widget class="PlasmaHalSpinBox" name="probe_speed">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="settingName" stdset="0">
                 <string>probe_speed</string>
                </property>
@@ -2813,6 +2864,9 @@ DIVE</string>
              </item>
              <item row="4" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="probe_float_travel">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="settingName" stdset="0">
                 <string>probe_float_travel</string>
                </property>
@@ -2820,6 +2874,9 @@ DIVE</string>
              </item>
              <item row="9" column="2">
               <widget class="PlasmaHalSpinBox" name="probe_ohmic_retries">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="settingName" stdset="0">
                 <string>probe_ohmic_retries</string>
                </property>
@@ -2827,6 +2884,9 @@ DIVE</string>
              </item>
              <item row="11" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="probe_skip_ihs">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="settingName" stdset="0">
                 <string>probe_skip_ihs</string>
                </property>
@@ -2834,6 +2894,9 @@ DIVE</string>
              </item>
              <item row="12" column="2">
               <widget class="PlasmaHalDoubleSpinBox" name="probe_setup_speed">
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="settingName" stdset="0">
                 <string>probe_setup_speed</string>
                </property>
@@ -2881,6 +2944,9 @@ DIVE</string>
                 </item>
                 <item row="0" column="2">
                  <widget class="PlasmaHalDoubleSpinBox" name="scribe_arm_delay">
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::PlusMinus</enum>
+                  </property>
                   <property name="suffix">
                    <string> S</string>
                   </property>
@@ -2891,6 +2957,9 @@ DIVE</string>
                 </item>
                 <item row="1" column="2">
                  <widget class="PlasmaHalDoubleSpinBox" name="scribe_on_delay">
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::PlusMinus</enum>
+                  </property>
                   <property name="suffix">
                    <string> S</string>
                   </property>
@@ -2901,6 +2970,9 @@ DIVE</string>
                 </item>
                 <item row="2" column="2">
                  <widget class="PlasmaHalDoubleSpinBox" name="spot_threshold">
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::PlusMinus</enum>
+                  </property>
                   <property name="suffix">
                    <string> V</string>
                   </property>
@@ -2911,6 +2983,9 @@ DIVE</string>
                 </item>
                 <item row="3" column="2">
                  <widget class="PlasmaHalDoubleSpinBox" name="spot_delay">
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::PlusMinus</enum>
+                  </property>
                   <property name="suffix">
                    <string> mS</string>
                   </property>
@@ -3586,7 +3661,7 @@ DIVE</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="jog_type"/>
   <buttongroup name="stepSize"/>
+  <buttongroup name="jog_type"/>
  </buttongroups>
 </ui>
