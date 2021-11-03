@@ -3,7 +3,9 @@
 /*===========================================================================*/
 
 QComboBox {
-    background-color: lighten($background, 4%);
+    /*background-color: lighten($background, 4%);*/
+    background: $border-color;
+    color: $background;
     border: $border;
     border-radius: $border-radius;
     min-width: 6em;

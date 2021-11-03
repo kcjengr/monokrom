@@ -128,7 +128,9 @@ QCheckBox::indicator:checked:disabled {
 /*                              QComboBox                                    */
 /*===========================================================================*/
 QComboBox {
-  background-color: #222216;
+  /*background-color: lighten($background, 4%);*/
+  background: #ffee06;
+  color: #16160e;
   border: 2px solid #ffee06;
   border-radius: 8px;
   min-width: 6em;
