@@ -1,9 +1,9 @@
 
 from qtpy.QtWidgets import QPushButton
+from qtpyvcp.widgets import VCPButton
 
-
-class MyPushButton(QPushButton):
+class MkPushButton(VCPButton):
     def __init__(self, parent=None):
-        super(MyPushButton, self).__init__(parent)
+        super(MkPushButton, self).__init__(parent)
 
-        self.setText("MyPushButton")
+        self.setText("MkPushButton")

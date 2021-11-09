@@ -5,10 +5,10 @@ class MyLineEdit_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MyLineEdit
 
-from .mk_push_button import MyPushButton
+from .mk_push_button import MkPushButton
 class MkPushButton_Plugin(_DesignerPlugin):
     def pluginClass(self):
-        return MyPushButton
+        return MkPushButton
 
 from .mk_dro import MonokromDroWidget, MonokromDroGroup
 class MkDroWidget_Plugin(_DesignerPlugin):
