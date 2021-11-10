@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1980</width>
+    <width>2022</width>
     <height>1080</height>
    </rect>
   </property>
@@ -358,61 +358,27 @@
                 <string>CONTROL</string>
                </property>
                <layout class="QGridLayout" name="gridLayout">
-                <item row="1" column="1">
-                 <widget class="ActionButton" name="actionbutton_7">
+                <item row="7" column="1">
+                 <widget class="MDIButton" name="btn_move_home">
                   <property name="text">
-                   <string>M1
-BREAK</string>
+                   <string>MOVE
+HOME</string>
                   </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.optional-stop.toggle</string>
+                  <property name="MDICommand" stdset="0">
+                   <string>G53 G0Z0 G0X0Y0</string>
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="0" colspan="2">
-                 <widget class="HalButton" name="btn_estopReset">
+                <item row="5" column="0">
+                 <widget class="MDIButton" name="mdibutton_3">
                   <property name="text">
-                   <string>E STOP STATE</string>
-                  </property>
-                  <property name="rules" stdset="0">
-                   <string>[{&quot;name&quot;: &quot;estopState&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;estop_triggered\&quot; if ch[0] == 1 else \&quot;estop_armed\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:estop&quot;, &quot;trigger&quot;: true}]}]</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="ActionButton" name="actionbutton_6">
-                  <property name="text">
-                   <string>FEED
-HOLD</string>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.pause</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="1">
-                 <widget class="ActionButton" name="actionbutton_9">
-                  <property name="text">
-                   <string>REVERSE
-RUN</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0" colspan="2">
-                 <widget class="ActionButton" name="actionbutton_5">
-                  <property name="text">
-                   <string>CYCLE START</string>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.run</string>
+                   <string>CHANGE
+TIP</string>
                   </property>
                  </widget>
                 </item>
                 <item row="3" column="0">
-                 <widget class="QPushButton" name="pushButton_7">
+                 <widget class="QPushButton" name="btn_pierce_only">
                   <property name="text">
                    <string>PIERCE
 ONLY</string>
@@ -426,7 +392,7 @@ ONLY</string>
                  </widget>
                 </item>
                 <item row="3" column="1">
-                 <widget class="QPushButton" name="pushButton_8">
+                 <widget class="QPushButton" name="btn_thc_enable">
                   <property name="text">
                    <string>THC
 ENABLE</string>
@@ -439,19 +405,30 @@ ENABLE</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
-                 <widget class="ActionButton" name="actionbutton_8">
+                <item row="2" column="1">
+                 <widget class="ActionButton" name="actionbutton_9">
                   <property name="text">
-                   <string>STOP
-ABORT</string>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.abort</string>
+                   <string>REVERSE
+RUN</string>
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="0">
-                 <widget class="ActionButton" name="actionbutton_10">
+                <item row="1" column="1">
+                 <widget class="ActionButton" name="btn_m1_break">
+                  <property name="text">
+                   <string>M1
+BREAK</string>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>program.optional-stop.toggle</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="0">
+                 <widget class="ActionButton" name="btn_machine_power_toggle">
                   <property name="text">
                    <string>MACHINE
 POWER</string>
@@ -464,10 +441,79 @@ POWER</string>
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="1">
+                <item row="4" column="1">
                  <widget class="SubCallButton" name="sc_park">
                   <property name="text">
                    <string>PARK</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2">
+                 <widget class="ActionButton" name="btn_cycle_start">
+                  <property name="text">
+                   <string>CYCLE START</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>program.run</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="8" column="0" colspan="2">
+                 <widget class="HalButton" name="btn_estopReset">
+                  <property name="text">
+                   <string>E STOP STATE</string>
+                  </property>
+                  <property name="rules" stdset="0">
+                   <string>[{&quot;name&quot;: &quot;estopState&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;estop_triggered\&quot; if ch[0] == 1 else \&quot;estop_armed\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:estop&quot;, &quot;trigger&quot;: true}]}]</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="MDIButton" name="btn_g5x_home">
+                  <property name="text">
+                   <string>GOTO
+ WORK ZERO</string>
+                  </property>
+                  <property name="MDICommand" stdset="0">
+                   <string>G0Z0 G0X0Y0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="ActionButton" name="btn_feed_hold">
+                  <property name="text">
+                   <string>FEED
+HOLD</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>program.pause</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="SubCallButton" name="subcallbutton">
+                  <property name="text">
+                   <string>PULSE
+TORCH</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="ActionButton" name="btn_stop_abort">
+                  <property name="text">
+                   <string>STOP
+ABORT</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>program.abort</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="0">
+                 <widget class="QPushButton" name="btn_frame_job">
+                  <property name="text">
+                   <string>FRAME
+JOB</string>
                   </property>
                  </widget>
                 </item>
@@ -724,6 +770,9 @@ POWER</string>
             <string>Run &amp;&amp; Monitor</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_4">
+            <item row="16" column="0">
+             <widget class="SubCallButton" name="user10"/>
+            </item>
             <item row="3" column="0">
              <widget class="QWidget" name="widget_2" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_12">
@@ -776,109 +825,46 @@ POWER</string>
               </layout>
              </widget>
             </item>
-            <item row="0" column="0">
-             <widget class="QWidget" name="widget" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_11">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_13">
-                 <property name="text">
-                  <string>PROBE</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led_probe</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+            <item row="4" column="0">
+             <widget class="HalButton" name="halbutton">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>34</width>
+                <height>44</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>44</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>VOID
+SENSE</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
-            <item row="2" column="0">
-             <widget class="QWidget" name="widget_3" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_13">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_15">
-                 <property name="text">
-                  <string>FLOAT</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_3">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_3">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led_float</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+            <item row="13" column="0">
+             <widget class="SubCallButton" name="user7"/>
+            </item>
+            <item row="7" column="0">
+             <widget class="SubCallButton" name="user1"/>
+            </item>
+            <item row="14" column="0">
+             <widget class="SubCallButton" name="user8"/>
+            </item>
+            <item row="13" column="1">
+             <widget class="SubCallButton" name="user17"/>
             </item>
             <item row="3" column="1">
              <widget class="QWidget" name="widget_4" native="true">
@@ -932,6 +918,231 @@ POWER</string>
               </layout>
              </widget>
             </item>
+            <item row="10" column="1">
+             <widget class="SubCallButton" name="user14"/>
+            </item>
+            <item row="6" column="0" colspan="2">
+             <widget class="QWidget" name="widget_9" native="true">
+              <layout class="QVBoxLayout" name="verticalLayout_18">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QWidget" name="widget_5" native="true">
+                 <layout class="QVBoxLayout" name="verticalLayout_17">
+                  <item>
+                   <widget class="QLabel" name="label_17">
+                    <property name="text">
+                     <string>ARC Voltage</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="HalLabel" name="hallabel">
+                    <property name="styleSheet">
+                     <string notr="true">font: bold 14pt;</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="pinBaseName" stdset="0">
+                     <string>lbl_voltage</string>
+                    </property>
+                    <property name="textFormat" stdset="0">
+                     <string>.2f</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QWidget" name="widget_6" native="true">
+                 <layout class="QVBoxLayout" name="verticalLayout_15">
+                  <item>
+                   <widget class="QLabel" name="label_18">
+                    <property name="text">
+                     <string>OVERRIDE</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="HalDoubleSpinBox" name="spin_voltage_override">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="frame">
+                     <bool>false</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="buttonSymbols">
+                     <enum>QAbstractSpinBox::PlusMinus</enum>
+                    </property>
+                    <property name="suffix">
+                     <string> V</string>
+                    </property>
+                    <property name="decimals">
+                     <number>1</number>
+                    </property>
+                    <property name="minimum">
+                     <double>-100.000000000000000</double>
+                    </property>
+                    <property name="pinBaseName" stdset="0">
+                     <string>voltage-override</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="8" column="0">
+             <widget class="SubCallButton" name="user2"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QWidget" name="widget_3" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_13">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_15">
+                 <property name="text">
+                  <string>FLOAT</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_3">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led_float</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="9" column="0">
+             <widget class="SubCallButton" name="user3"/>
+            </item>
+            <item row="7" column="1">
+             <widget class="SubCallButton" name="user11"/>
+            </item>
+            <item row="10" column="0">
+             <widget class="SubCallButton" name="user4"/>
+            </item>
+            <item row="12" column="1">
+             <widget class="SubCallButton" name="user16"/>
+            </item>
+            <item row="9" column="1">
+             <widget class="SubCallButton" name="user13"/>
+            </item>
+            <item row="0" column="0">
+             <widget class="QWidget" name="widget" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_11">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_13">
+                 <property name="text">
+                  <string>PROBE</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led_probe</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="8" column="1">
+             <widget class="SubCallButton" name="user12"/>
+            </item>
             <item row="2" column="1">
              <widget class="QWidget" name="widget_8" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_16">
@@ -984,6 +1195,9 @@ POWER</string>
               </layout>
              </widget>
             </item>
+            <item row="15" column="0">
+             <widget class="SubCallButton" name="user9"/>
+            </item>
             <item row="4" column="1">
              <widget class="HalButton" name="halbutton_2">
               <property name="sizePolicy">
@@ -1013,122 +1227,11 @@ DIVE</string>
               </property>
              </widget>
             </item>
-            <item row="4" column="0">
-             <widget class="HalButton" name="halbutton">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>34</width>
-                <height>44</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>44</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>VOID
-SENSE</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-             </widget>
+            <item row="12" column="0">
+             <widget class="SubCallButton" name="user6"/>
             </item>
-            <item row="6" column="0" colspan="2">
-             <widget class="QWidget" name="widget_9" native="true">
-              <layout class="QVBoxLayout" name="verticalLayout_18">
-               <property name="spacing">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QWidget" name="widget_5" native="true">
-                 <layout class="QVBoxLayout" name="verticalLayout_17">
-                  <item>
-                   <widget class="QLabel" name="label_17">
-                    <property name="text">
-                     <string>ARC Voltage</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="HalLabel" name="hallabel">
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="pinBaseName" stdset="0">
-                     <string>lbl_voltage</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QWidget" name="widget_6" native="true">
-                 <layout class="QVBoxLayout" name="verticalLayout_15">
-                  <item>
-                   <widget class="QLabel" name="label_18">
-                    <property name="text">
-                     <string>OVERRIDE</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="HalDoubleSpinBox" name="haldoublespinbox">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">font: 10pt ;</string>
-                    </property>
-                    <property name="frame">
-                     <bool>false</bool>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::PlusMinus</enum>
-                    </property>
-                    <property name="decimals">
-                     <number>1</number>
-                    </property>
-                    <property name="minimum">
-                     <double>-100.000000000000000</double>
-                    </property>
-                    <property name="pinBaseName" stdset="0">
-                     <string>spin_volt_override</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+            <item row="16" column="1">
+             <widget class="SubCallButton" name="user20"/>
             </item>
             <item row="0" column="1">
              <widget class="QWidget" name="widget_7" native="true">
@@ -1182,18 +1285,17 @@ SENSE</string>
               </layout>
              </widget>
             </item>
-            <item row="7" column="0">
-             <spacer name="verticalSpacer_7">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
+            <item row="11" column="1">
+             <widget class="SubCallButton" name="user15"/>
+            </item>
+            <item row="14" column="1">
+             <widget class="SubCallButton" name="user18"/>
+            </item>
+            <item row="11" column="0">
+             <widget class="SubCallButton" name="user5"/>
+            </item>
+            <item row="15" column="1">
+             <widget class="SubCallButton" name="user19"/>
             </item>
            </layout>
           </widget>
@@ -1204,14 +1306,14 @@ SENSE</string>
            <widget class="QWidget" name="widget_10" native="true">
             <property name="geometry">
              <rect>
-              <x>10</x>
+              <x>40</x>
               <y>30</y>
-              <width>190</width>
-              <height>130</height>
+              <width>250</width>
+              <height>200</height>
              </rect>
             </property>
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -1224,25 +1326,25 @@ SENSE</string>
             </property>
             <property name="maximumSize">
              <size>
-              <width>190</width>
-              <height>130</height>
+              <width>250</width>
+              <height>200</height>
              </size>
             </property>
             <layout class="QGridLayout" name="gridLayout_8">
              <property name="leftMargin">
-              <number>0</number>
+              <number>9</number>
              </property>
              <property name="topMargin">
-              <number>0</number>
+              <number>9</number>
              </property>
              <property name="rightMargin">
-              <number>0</number>
+              <number>9</number>
              </property>
              <property name="bottomMargin">
-              <number>0</number>
+              <number>9</number>
              </property>
              <property name="spacing">
-              <number>0</number>
+              <number>9</number>
              </property>
              <item row="1" column="0">
               <widget class="ActionButton" name="actionbutton_21">
@@ -1455,16 +1557,6 @@ SENSE</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="0" colspan="2">
-              <widget class="QLabel" name="label_21">
-               <property name="text">
-                <string>STEP SIZE</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
              <item row="2" column="0">
               <widget class="ActionButton" name="actionbutton_27">
                <property name="text">
@@ -1551,6 +1643,16 @@ SENSE</string>
                </property>
               </widget>
              </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_21">
+               <property name="text">
+                <string>STEP SIZE</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
             </layout>
            </widget>
           </widget>
@@ -1564,7 +1666,7 @@ SENSE</string>
           <item>
            <widget class="MkTabWidget" name="tabWidget_3">
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="tab_7">
              <attribute name="title">
@@ -1594,6 +1696,94 @@ SENSE</string>
                   <blue>6</blue>
                  </color>
                 </property>
+                <widget class="QWidget" name="widget_19" native="true">
+                 <property name="geometry">
+                  <rect>
+                   <x>820</x>
+                   <y>0</y>
+                   <width>120</width>
+                   <height>391</height>
+                  </rect>
+                 </property>
+                 <widget class="QPushButton" name="pushButton_13">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>20</y>
+                    <width>88</width>
+                    <height>44</height>
+                   </rect>
+                  </property>
+                  <property name="text">
+                   <string>PushButton</string>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="pushButton_15">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>80</y>
+                    <width>88</width>
+                    <height>44</height>
+                   </rect>
+                  </property>
+                  <property name="text">
+                   <string>PushButton</string>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="pushButton_16">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>140</y>
+                    <width>88</width>
+                    <height>44</height>
+                   </rect>
+                  </property>
+                  <property name="text">
+                   <string>PushButton</string>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="pushButton_17">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>200</y>
+                    <width>88</width>
+                    <height>44</height>
+                   </rect>
+                  </property>
+                  <property name="text">
+                   <string>PushButton</string>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="pushButton_18">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>260</y>
+                    <width>88</width>
+                    <height>44</height>
+                   </rect>
+                  </property>
+                  <property name="text">
+                   <string>PushButton</string>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="pushButton_19">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>320</y>
+                    <width>88</width>
+                    <height>44</height>
+                   </rect>
+                  </property>
+                  <property name="text">
+                   <string>PushButton</string>
+                  </property>
+                 </widget>
+                </widget>
                </widget>
               </item>
              </layout>
@@ -1770,6 +1960,101 @@ SENSE</string>
               </item>
              </layout>
             </widget>
+            <widget class="QWidget" name="tab_13">
+             <attribute name="title">
+              <string>JOB CARD LIST</string>
+             </attribute>
+             <widget class="MkGroupBox" name="groupbox_20">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>10</y>
+                <width>481</width>
+                <height>391</height>
+               </rect>
+              </property>
+              <property name="title">
+               <string>TO DO</string>
+              </property>
+              <widget class="QListWidget" name="jobs_to_process">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>30</y>
+                 <width>461</width>
+                 <height>351</height>
+                </rect>
+               </property>
+              </widget>
+             </widget>
+             <widget class="MkGroupBox" name="groupbox_21">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>490</y>
+                <width>481</width>
+                <height>391</height>
+               </rect>
+              </property>
+              <property name="title">
+               <string>DONE</string>
+              </property>
+              <widget class="QListView" name="jobs_done">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>30</y>
+                 <width>461</width>
+                 <height>351</height>
+                </rect>
+               </property>
+              </widget>
+             </widget>
+             <widget class="MkGroupBox" name="groupbox_22">
+              <property name="geometry">
+               <rect>
+                <x>510</x>
+                <y>10</y>
+                <width>451</width>
+                <height>881</height>
+               </rect>
+              </property>
+              <property name="title">
+               <string>JOB DESCRIPTION/INSTRUCTIONS</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_11">
+               <item>
+                <widget class="QTextBrowser" name="job_instructions"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="widget_11" native="true">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>410</y>
+                <width>481</width>
+                <height>71</height>
+               </rect>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_22">
+               <item row="0" column="0">
+                <widget class="QPushButton" name="pushButton_12">
+                 <property name="text">
+                  <string>LOAD NEXT</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QPushButton" name="pushButton_14">
+                 <property name="text">
+                  <string>RESTART JOB SEQUENCE</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
            </widget>
           </item>
           <item>
@@ -1785,7 +2070,7 @@ SENSE</string>
       </widget>
       <widget class="QWidget" name="tab_parameters">
        <attribute name="title">
-        <string>JOB SETUP</string>
+        <string>CUT &amp;&amp; MATERIAL</string>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0">
         <property name="spacing">
@@ -1810,7 +2095,7 @@ SENSE</string>
           </property>
           <widget class="QWidget" name="tab_8">
            <attribute name="title">
-            <string>JOB &amp;&amp; PROCESS</string>
+            <string>CUT &amp;&amp; PROCESS</string>
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout_8">
             <property name="spacing">
@@ -2181,30 +2466,33 @@ SENSE</string>
                   <number>12</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QPushButton" name="pushButton">
+                  <widget class="MkPushButton" name="btn_save_run_process">
                    <property name="text">
                     <string>SAVE</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="1">
-                  <widget class="QPushButton" name="pushButton_2">
-                   <property name="text">
-                    <string>RELOAD</string>
-                   </property>
-                  </widget>
-                 </item>
                  <item row="0" column="2">
-                  <widget class="QPushButton" name="pushButton_3">
+                  <widget class="MkPushButton" name="btn_del_run_process">
                    <property name="text">
                     <string>DELETE</string>
                    </property>
                   </widget>
                  </item>
                  <item row="0" column="3">
-                  <widget class="QPushButton" name="pushButton_4">
+                  <widget class="DialogButton" name="btn_new_run_process">
                    <property name="text">
                     <string>NEW</string>
+                   </property>
+                   <property name="dialogName" stdset="0">
+                    <string>new_process</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QPushButton" name="btn_reload">
+                   <property name="text">
+                    <string>RELOAD</string>
                    </property>
                   </widget>
                  </item>
@@ -3222,7 +3510,7 @@ SENSE</string>
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -3435,27 +3723,6 @@ SENSE</string>
          <string>DRO FORMAT</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_15">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>Inch Format</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="VCPSettingsLineEdit" name="settings_lineedit">
-           <property name="settingName" stdset="0">
-            <string>dro.inch-format</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_2">
-           <property name="text">
-            <string>Millimeter Format</string>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="1">
           <widget class="VCPSettingsLineEdit" name="settings_lineedit_2">
            <property name="settingName" stdset="0">
@@ -3463,10 +3730,10 @@ SENSE</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Degree Format</string>
+         <item row="0" column="1">
+          <widget class="VCPSettingsLineEdit" name="settings_lineedit">
+           <property name="settingName" stdset="0">
+            <string>dro.inch-format</string>
            </property>
           </widget>
          </item>
@@ -3484,6 +3751,13 @@ SENSE</string>
            </property>
           </widget>
          </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Degree Format</string>
+           </property>
+          </widget>
+         </item>
          <item row="3" column="1">
           <widget class="VCPSettingsComboBox" name="settingscombobox">
            <property name="settingName" stdset="0">
@@ -3491,17 +3765,17 @@ SENSE</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_5">
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>Lathe X-axis Mode</string>
+            <string>Millimeter Format</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="1">
-          <widget class="VCPSettingsComboBox" name="settingscombobox_2">
-           <property name="settingName" stdset="0">
-            <string>dro.lathe-radius-mode</string>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Inch Format</string>
            </property>
           </widget>
          </item>
@@ -3670,6 +3944,11 @@ SENSE</string>
    <header>qtpyvcp.widgets.button_widgets.subcall_button</header>
   </customwidget>
   <customwidget>
+   <class>MDIButton</class>
+   <extends>QPushButton</extends>
+   <header>qtpyvcp.widgets.button_widgets.mdi_button</header>
+  </customwidget>
+  <customwidget>
    <class>DialogButton</class>
    <extends>QPushButton</extends>
    <header>qtpyvcp.widgets.button_widgets.dialog_button</header>
@@ -3772,6 +4051,11 @@ SENSE</string>
    <header>monokrom.common.widgets.mk_led_hal</header>
   </customwidget>
   <customwidget>
+   <class>MkPushButton</class>
+   <extends>QPushButton</extends>
+   <header>monokrom.common.widgets.mk_push_button</header>
+  </customwidget>
+  <customwidget>
    <class>MkTabWidget</class>
    <extends>QTabWidget</extends>
    <header>monokrom.common.widgets.tab_widget</header>
@@ -3780,18 +4064,14 @@ SENSE</string>
   <customwidget>
    <class>PlasmaHalDoubleSpinBox</class>
    <extends>HalDoubleSpinBox</extends>
-   <header>monokrom.plasma.widgets.plasma_hal_double_spinbox</header>
+   <header>widgets.plasma_hal_double_spinbox</header>
   </customwidget>
   <customwidget>
    <class>PlasmaHalSpinBox</class>
    <extends>HalQSpinBox</extends>
-   <header>monokrom.plasma.widgets.plasma_hal_spinbox</header>
+   <header>widgets.plasma_hal_spinbox</header>
   </customwidget>
  </customwidgets>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="stepSize"/>
-  <buttongroup name="jog_type"/>
- </buttongroups>
 </ui>
