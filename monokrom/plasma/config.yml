@@ -33,6 +33,12 @@ data_plugins:
       serialization_method: pickle
       # persistence_file: .vcp_data.json
 
+  plasmaprocesses:
+    provider: qtpyvcp.plugins.plasma_processes:PlasmaProcesses
+    kwargs:
+        db_type: "sqlite"
+        #db_type: "mysql"
+        #connect_string: "mysql+pymysql://james:xxxxx@localhost/plasma_table"
 
 windows:
 
@@ -62,6 +68,13 @@ dialogs:
     provider: monokrom.common.widgets.input_overlay:MkInputOverlay
     kwargs:
       ui_file: {{ file.dir}}/../common/widgets/recent_file_chooser.ui
+
+  new_process:
+    #provider: monokrom.plasma.widgets.new_process:MkNewProcess
+    provider: monokrom.common.widgets.input_overlay:MkInputOverlay
+    kwargs:
+      ui_file: {{ file.dir}}/widgets/new_process.ui
+    
 
 application:
   kwargs:

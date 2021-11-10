@@ -19,3 +19,9 @@ from .plasma_hal_spinbox import PlasmaHalSpinBox
 class PlasmaHalSpinBox_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return PlasmaHalSpinBox
+
+
+from .plasma_add_process import PlasmaAddProcess
+class PlasmaAddProcess_Plugin(_DesignerPlugin):
+    def pluginClass(self):
+        return PlasmaAddProcess
