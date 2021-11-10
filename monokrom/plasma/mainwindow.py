@@ -67,7 +67,10 @@ class MainWindow(VCPMainWindow):
     # Filter content has changed
     def param_update_from_filters(self, index=0):
         sender = self.sender()
-        LOG.debug("Update params '{}' '{}'".format(index, sender.currentText()))
+        if hasattr(sender, 'currentText'):
+            LOG.debug("Update params '{}' '{}'".format(index, sender.currentText()))
+        else:
+            LOG.debug('Update params.')
         arglist = []
         for v in MainWindow.filter_fld_map.values():
             uifld = getattr(self, v)
