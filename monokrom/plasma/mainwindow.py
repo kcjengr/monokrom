@@ -65,7 +65,7 @@ class MainWindow(VCPMainWindow):
                 ui_fld.addItem(data.name, data.id)
 
     # Filter content has changed
-    def param_update_from_filters(self, index):
+    def param_update_from_filters(self, index=0):
         sender = self.sender()
         LOG.debug("Update params '{}' '{}'".format(index, sender.currentText()))
         arglist = []
@@ -92,9 +92,29 @@ class MainWindow(VCPMainWindow):
                     ui_fld = getattr(self, v)
                     ui_fld.setValue(0)
     
-    
     def setMode(self):
         print("main window initalise")
     
-    
- 
+    def add_new_cut_process(self, name=None):
+        if name == None:
+            LOG.debug('No name set for cut process Add. Do nothing.')
+            return
+        
+        # gather filter and cut params
+        arglist = {}
+        for k in MainWindow.filter_fld_map:
+            uifld = getattr(self, MainWindow.filter_fld_map[k])
+            arglist[k] = uifld.currentData()
+        # get cut params
+        for k in MainWindow.param_fld_map:
+            uifld = getattr(self, MainWindow.param_fld_map[k])
+            if hasattr(uifld, 'value'):
+                arglist[k] = uifld.value()
+            else:
+                # must be a label
+                arglist[k] = uifld.text()
+        # correctly set the name
+        arglist['name'] = name
+        self._plasma_plugin.addCut(**arglist)
+        # update the UI with the newly loaded item
+        self.param_update_from_filters()
