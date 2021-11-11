@@ -205,4 +205,12 @@ settings:
       default_value: 0
       persistent: true
    
+   run_save_confirm:
+      default_value: 0
+      persistent: true
+      
+   run_delete_confirm:
+      default_value: 1
+      persistent: true
+    
    
