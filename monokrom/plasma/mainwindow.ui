@@ -2594,7 +2594,7 @@ DIVE</string>
                   </widget>
                  </item>
                  <item row="0" column="1">
-                  <widget class="QPushButton" name="btn_reload">
+                  <widget class="QPushButton" name="btn_run_reload">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                      <horstretch>1</horstretch>
@@ -4030,6 +4030,41 @@ DIVE</string>
          </item>
         </layout>
        </widget>
+       <widget class="MkGroupBox" name="groupbox_23">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>490</y>
+          <width>325</width>
+          <height>93</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>PROCESS RUN SAVE/DELETE CONFIRMS</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_12">
+         <item>
+          <widget class="VCPSettingsCheckBox" name="ask_on_run_save">
+           <property name="text">
+            <string>Ask before Process Run save</string>
+           </property>
+           <property name="settingName" stdset="0">
+            <string>run_save_confirm</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="VCPSettingsCheckBox" name="ask_on_run_delete">
+           <property name="text">
+            <string>Ask before Process Run delete</string>
+           </property>
+           <property name="settingName" stdset="0">
+            <string>run_delete_confirm</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_diagnostics">
        <attribute name="title">
@@ -4318,7 +4353,7 @@ DIVE</string>
   <tabstop>btn_save_run_process</tabstop>
   <tabstop>btn_del_run_process</tabstop>
   <tabstop>btn_new_run_process</tabstop>
-  <tabstop>btn_reload</tabstop>
+  <tabstop>btn_run_reload</tabstop>
   <tabstop>chkb_hole_detect_enable</tabstop>
   <tabstop>chkb_slot_detect_enable</tabstop>
   <tabstop>pushButton_5</tabstop>
