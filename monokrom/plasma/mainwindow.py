@@ -58,6 +58,11 @@ class MainWindow(VCPMainWindow):
             self._linear_setting = 'inch'
         self._pressure_setting = INFO.ini.find('PLASMAC', 'PRESSURE')
         self._machine = INFO.ini.find('PLASMAC', 'MACHINE') 
+
+        # link in UI signals for buttons back to Mainwindow methods
+        self.btn_save_run_process.clicked.connect(self.update_cut)
+        self.btn_run_reload.clicked.connect(self.param_update_from_filters)
+        
         
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
@@ -156,15 +161,16 @@ class MainWindow(VCPMainWindow):
         self.param_update_from_filters()
 
     def update_cut(self):
-        q = self.get_filter_values()
+        q = self.get_filter_query()
         if q == None:
             return
-        data = q[0]
+        
+        arglst = {}
         for k in MainWindow.param_fld_map:
-            fld_data = getattr(data, k)
             ui_fld = getattr(self, MainWindow.param_fld_map[k])
             if isinstance(ui_fld, QLabel):
-                ui_fld.setText(fld_data)
+                arglst[k] = ui_fld.text()
             else:
-                ui_fld.setValue(fld_data) 
+                arglst[k] = ui_fld.value() 
         
+        self._plasma_plugin.updateCut(q, **arglst)
