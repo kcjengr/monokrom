@@ -2,15 +2,24 @@ from qtpy.QtCore import Qt
 from qtpy.QtWidgets import QLabel
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.plugins import getPlugin
+from qtpyvcp.utilities.info import Info
+
 
 # Setup logging
 from qtpyvcp.utilities import logger
 LOG = logger.getLogger('qtpyvcp.' + __name__)
+INFO = Info()
 
 class MainWindow(VCPMainWindow):
     """Main window class for the VCP."""
 
     # field map of <plugin data getter>:<ui obj name>
+    locked_fld_map = {
+        'machines':'filter_machine',
+        'linearsystems':'filter_distance_system',
+        'pressuresystems':'filter_pressure_system'
+        }
+    
     filter_fld_map = {
         'gases':'filter_gas',
         'machines':'filter_machine',
@@ -29,6 +38,7 @@ class MainWindow(VCPMainWindow):
         'pierce_delay':'param_piercedelay',
         'cut_height':'param_cutheight',
         'cut_speed':'param_cutfeedrate',
+        'plunge_rate':'param_plungefeedrate',
         'volts':'param_cutvolts',
         'kerf_width':'param_kirfwidth',
         'puddle_height':'param_puddlejumpheight',
@@ -42,8 +52,20 @@ class MainWindow(VCPMainWindow):
         super(MainWindow, self).__init__(*args, **kwargs)
         self._plasma_plugin = getPlugin('plasmaprocesses')
         
+        if INFO.getIsMachineMetric():
+            self._linear_setting = 'mm'
+        else:
+            self._linear_setting = 'inch'
+        self._pressure_setting = INFO.ini.find('PLASMAC', 'PRESSURE')
+        self._machine = INFO.ini.find('PLASMAC', 'MACHINE') 
+        
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
+        
+        # set the locked filters on settings page
+        self.filter_machine.setCurrentText(self._machine)
+        self.filter_distance_system.setCurrentText(self._linear_setting)
+        self.filter_pressure_system.setCurrentText(self._pressure_setting)
         
         # create filter signals
         for val in MainWindow.filter_fld_map.values():
@@ -64,6 +86,17 @@ class MainWindow(VCPMainWindow):
                 # add the str name, and the ID as part of user_role data
                 ui_fld.addItem(data.name, data.id)
 
+    def get_filter_query(self):
+        arglist = []
+        for v in MainWindow.filter_fld_map.values():
+            uifld = getattr(self, v)
+            arglist.append(uifld.currentData())
+        cutlist = self._plasma_plugin.cut(arglist)
+        if len(cutlist) == 1:
+            return cutlist
+        else:
+            return None
+
     # Filter content has changed
     def param_update_from_filters(self, index=0):
         sender = self.sender()
@@ -76,8 +109,9 @@ class MainWindow(VCPMainWindow):
             uifld = getattr(self, v)
             arglist.append(uifld.currentData())
         cutlist = self._plasma_plugin.cut(arglist)
-        if len(cutlist) == 1:
-            data = cutlist[0]
+        data = self.get_filter_query()
+        if data != None:
+            data = data[0]
             for k in MainWindow.param_fld_map:
                 fld_data = getattr(data, k)
                 ui_fld = getattr(self, MainWindow.param_fld_map[k])
@@ -86,7 +120,6 @@ class MainWindow(VCPMainWindow):
                 else:
                     ui_fld.setValue(fld_data) 
         else:
-            data = None
             # set cut params to 0
             ui_fld = getattr(self, 'param_name')
             ui_fld.setText('NONE')
@@ -121,3 +154,17 @@ class MainWindow(VCPMainWindow):
         self._plasma_plugin.addCut(**arglist)
         # update the UI with the newly loaded item
         self.param_update_from_filters()
+
+    def update_cut(self):
+        q = self.get_filter_values()
+        if q == None:
+            return
+        data = q[0]
+        for k in MainWindow.param_fld_map:
+            fld_data = getattr(data, k)
+            ui_fld = getattr(self, MainWindow.param_fld_map[k])
+            if isinstance(ui_fld, QLabel):
+                ui_fld.setText(fld_data)
+            else:
+                ui_fld.setValue(fld_data) 
+        

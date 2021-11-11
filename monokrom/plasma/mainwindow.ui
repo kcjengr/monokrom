@@ -2123,6 +2123,24 @@ DIVE</string>
               </property>
               <item row="0" column="0">
                <widget class="MkGroupBox" name="groupbox_15">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>300</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
                 <property name="title">
                  <string>PROCESS FILTERS</string>
                 </property>
@@ -2208,6 +2226,24 @@ DIVE</string>
               </item>
               <item row="0" column="1" rowspan="3">
                <widget class="MkGroupBox" name="groupbox_16">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>600</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>600</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
                 <property name="title">
                  <string>PROCESS PARAMETERS</string>
                 </property>
@@ -2215,8 +2251,128 @@ DIVE</string>
                  <property name="verticalSpacing">
                   <number>12</number>
                  </property>
-                 <item row="3" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_piercedelay">
+                 <item row="9" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_8">
+                   <property name="text">
+                    <string>P-JUMP HEIGHT</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_pierceheight">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="maximum">
+                    <double>10.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_4">
+                   <property name="text">
+                    <string>PIERCE DELAY</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_69">
+                   <property name="text">
+                    <string>PROCESS NAME</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="9" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_puddlejumpheight">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="suffix">
+                    <string> %</string>
+                   </property>
+                   <property name="maximum">
+                    <double>100.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_cutfeedrate">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="maximum">
+                    <double>10000.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_3">
+                   <property name="text">
+                    <string>CUT HEIGHT</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="8" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_7">
+                   <property name="text">
+                    <string>CUT VOLTS</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="13" column="1">
+                  <spacer name="verticalSpacer_5">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="8" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_cutvolts">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="suffix">
+                    <string> V</string>
+                   </property>
+                   <property name="maximum">
+                    <double>300.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel">
+                   <property name="text">
+                    <string>KIRF WIDTH</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="10" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_9">
+                   <property name="text">
+                    <string>P-JUMP DELAY</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="11" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_pauseatend">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
                    </property>
@@ -2226,12 +2382,15 @@ DIVE</string>
                    <property name="suffix">
                     <string> S</string>
                    </property>
+                   <property name="maximum">
+                    <double>10.000000000000000</double>
+                   </property>
                   </widget>
                  </item>
-                 <item row="8" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_8">
+                 <item row="0" column="1">
+                  <widget class="QLabel" name="param_name">
                    <property name="text">
-                    <string>P-JUMP HEIGHT</string>
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -2246,29 +2405,18 @@ DIVE</string>
                    <property name="decimals">
                     <number>3</number>
                    </property>
+                   <property name="maximum">
+                    <double>10.000000000000000</double>
+                   </property>
                    <property name="singleStep">
                     <double>0.010000000000000</double>
                    </property>
-                  </widget>
-                 </item>
-                 <item row="10" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_10">
-                   <property name="text">
-                    <string>PAUSE AT END</string>
+                   <property name="value">
+                    <double>0.000000000000000</double>
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_pierceheight">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="11" column="1">
+                 <item row="12" column="1">
                   <widget class="HalDoubleSpinBox" name="param_gaspressure">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -2276,9 +2424,76 @@ DIVE</string>
                    <property name="buttonSymbols">
                     <enum>QAbstractSpinBox::PlusMinus</enum>
                    </property>
+                   <property name="maximum">
+                    <double>200.000000000000000</double>
+                   </property>
                   </widget>
                  </item>
-                 <item row="9" column="1">
+                 <item row="11" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_10">
+                   <property name="text">
+                    <string>PAUSE AT END</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_5">
+                   <property name="text">
+                    <string>CUT FEED RATE</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_piercedelay">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="suffix">
+                    <string> S</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="12" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_11">
+                   <property name="text">
+                    <string>GAS PRESURE</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_2">
+                   <property name="text">
+                    <string>PIERCE HEIGHT</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_6">
+                   <property name="text">
+                    <string>CUT AMPS</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_cutamps">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="suffix">
+                    <string> A</string>
+                   </property>
+                   <property name="maximum">
+                    <double>400.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="10" column="1">
                   <widget class="HalDoubleSpinBox" name="param_puddlejumpdelay">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -2291,130 +2506,6 @@ DIVE</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="8" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_puddlejumpheight">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="suffix">
-                    <string> %</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="5" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_cutfeedrate">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="7" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_cutvolts">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="suffix">
-                    <string> V</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="6" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_cutamps">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="suffix">
-                    <string> A</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="4" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_3">
-                   <property name="text">
-                    <string>CUT HEIGHT</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="7" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_7">
-                   <property name="text">
-                    <string>CUT VOLTS</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="5" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_5">
-                   <property name="text">
-                    <string>CUT FEED RATE</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_2">
-                   <property name="text">
-                    <string>PIERCE HEIGHT</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_4">
-                   <property name="text">
-                    <string>PIERCE DELAY</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="9" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_9">
-                   <property name="text">
-                    <string>P-JUMP DELAY</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="12" column="1">
-                  <spacer name="verticalSpacer_5">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item row="10" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_pauseatend">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="suffix">
-                    <string> S</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="11" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_11">
-                   <property name="text">
-                    <string>GAS PRESURE</string>
-                   </property>
-                  </widget>
-                 </item>
                  <item row="4" column="1">
                   <widget class="HalDoubleSpinBox" name="param_cutheight">
                    <property name="alignment">
@@ -2423,33 +2514,28 @@ DIVE</string>
                    <property name="buttonSymbols">
                     <enum>QAbstractSpinBox::PlusMinus</enum>
                    </property>
+                   <property name="maximum">
+                    <double>10.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="1">
+                  <widget class="PlasmaHalDoubleSpinBox" name="param_plungefeedrate">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="maximum">
+                    <double>10000.000000000000000</double>
+                   </property>
                   </widget>
                  </item>
                  <item row="6" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_6">
+                  <widget class="QLabel" name="label_5">
                    <property name="text">
-                    <string>CUT AMPS</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel">
-                   <property name="text">
-                    <string>KIRF WIDTH</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="QLabel" name="param_name">
-                   <property name="text">
-                    <string/>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_69">
-                   <property name="text">
-                    <string>PROCESS NAME</string>
+                    <string>SETUP FEED RATE</string>
                    </property>
                   </widget>
                  </item>
@@ -2467,6 +2553,12 @@ DIVE</string>
                  </property>
                  <item row="0" column="0">
                   <widget class="MkPushButton" name="btn_save_run_process">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="text">
                     <string>SAVE</string>
                    </property>
@@ -2474,6 +2566,12 @@ DIVE</string>
                  </item>
                  <item row="0" column="2">
                   <widget class="MkPushButton" name="btn_del_run_process">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="text">
                     <string>DELETE</string>
                    </property>
@@ -2481,6 +2579,12 @@ DIVE</string>
                  </item>
                  <item row="0" column="3">
                   <widget class="DialogButton" name="btn_new_run_process">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="text">
                     <string>NEW</string>
                    </property>
@@ -2491,6 +2595,12 @@ DIVE</string>
                  </item>
                  <item row="0" column="1">
                   <widget class="QPushButton" name="btn_reload">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="text">
                     <string>RELOAD</string>
                    </property>
@@ -2503,6 +2613,12 @@ DIVE</string>
             </item>
             <item>
              <widget class="QWidget" name="widget_18" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>1</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <layout class="QVBoxLayout" name="verticalLayout_10">
                <item>
                 <widget class="MkGroupBox" name="groupbox_18">
@@ -2554,6 +2670,12 @@ DIVE</string>
               </property>
               <item>
                <widget class="MkGroupBox" name="groupbox_14">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="title">
                  <string>THC</string>
                 </property>
@@ -2694,10 +2816,22 @@ DIVE</string>
                  <item row="0" column="2" rowspan="2">
                   <widget class="QPushButton" name="pushButton_10">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>34</width>
+                     <height>44</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>65</width>
+                     <height>16777215</height>
+                    </size>
                    </property>
                    <property name="text">
                     <string>START</string>
@@ -3831,6 +3965,9 @@ DIVE</string>
          </item>
          <item row="0" column="1">
           <widget class="QComboBox" name="filter_distance_system">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <item>
             <property name="text">
              <string>mm</string>
@@ -3852,6 +3989,9 @@ DIVE</string>
          </item>
          <item row="1" column="1">
           <widget class="QComboBox" name="filter_pressure_system">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <item>
             <property name="text">
              <string>psi</string>
@@ -3868,6 +4008,9 @@ DIVE</string>
          </item>
          <item row="2" column="1">
           <widget class="QComboBox" name="filter_machine">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <item>
             <property name="text">
              <string>Cutskill 60</string>
@@ -4064,14 +4207,173 @@ DIVE</string>
   <customwidget>
    <class>PlasmaHalDoubleSpinBox</class>
    <extends>HalDoubleSpinBox</extends>
-   <header>widgets.plasma_hal_double_spinbox</header>
+   <header>monokrom.plasma.widgets.plasma_hal_double_spinbox</header>
   </customwidget>
   <customwidget>
    <class>PlasmaHalSpinBox</class>
    <extends>HalQSpinBox</extends>
-   <header>widgets.plasma_hal_spinbox</header>
+   <header>monokrom.plasma.widgets.plasma_hal_spinbox</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>filter_material</tabstop>
+  <tabstop>filter_thickness</tabstop>
+  <tabstop>filter_consumable</tabstop>
+  <tabstop>filter_operation</tabstop>
+  <tabstop>filter_gas</tabstop>
+  <tabstop>filter_quality</tabstop>
+  <tabstop>param_kirfwidth</tabstop>
+  <tabstop>param_pierceheight</tabstop>
+  <tabstop>param_piercedelay</tabstop>
+  <tabstop>param_cutheight</tabstop>
+  <tabstop>param_cutfeedrate</tabstop>
+  <tabstop>param_cutamps</tabstop>
+  <tabstop>param_cutvolts</tabstop>
+  <tabstop>param_puddlejumpheight</tabstop>
+  <tabstop>param_puddlejumpdelay</tabstop>
+  <tabstop>param_pauseatend</tabstop>
+  <tabstop>param_gaspressure</tabstop>
+  <tabstop>btn_estopReset</tabstop>
+  <tabstop>btn_g5x_home</tabstop>
+  <tabstop>btn_feed_hold</tabstop>
+  <tabstop>subcallbutton</tabstop>
+  <tabstop>btn_stop_abort</tabstop>
+  <tabstop>btn_frame_job</tabstop>
+  <tabstop>actionslider_2</tabstop>
+  <tabstop>actionslider</tabstop>
+  <tabstop>settings_slider</tabstop>
+  <tabstop>tabwidget_2</tabstop>
+  <tabstop>user10</tabstop>
+  <tabstop>halbutton</tabstop>
+  <tabstop>user7</tabstop>
+  <tabstop>user1</tabstop>
+  <tabstop>user8</tabstop>
+  <tabstop>user17</tabstop>
+  <tabstop>user14</tabstop>
+  <tabstop>spin_voltage_override</tabstop>
+  <tabstop>user2</tabstop>
+  <tabstop>user3</tabstop>
+  <tabstop>user11</tabstop>
+  <tabstop>user4</tabstop>
+  <tabstop>user16</tabstop>
+  <tabstop>user13</tabstop>
+  <tabstop>user12</tabstop>
+  <tabstop>user9</tabstop>
+  <tabstop>halbutton_2</tabstop>
+  <tabstop>user6</tabstop>
+  <tabstop>user20</tabstop>
+  <tabstop>user15</tabstop>
+  <tabstop>user18</tabstop>
+  <tabstop>user5</tabstop>
+  <tabstop>user19</tabstop>
+  <tabstop>actionbutton_21</tabstop>
+  <tabstop>actionbutton</tabstop>
+  <tabstop>actionbutton_22</tabstop>
+  <tabstop>actionbutton_4</tabstop>
+  <tabstop>actionbutton_24</tabstop>
+  <tabstop>actionbutton_25</tabstop>
+  <tabstop>actionbutton_23</tabstop>
+  <tabstop>actionbutton_27</tabstop>
+  <tabstop>actionbutton_29</tabstop>
+  <tabstop>actionbutton_26</tabstop>
+  <tabstop>actionbutton_28</tabstop>
+  <tabstop>actionbutton_35</tabstop>
+  <tabstop>tabWidget_3</tabstop>
+  <tabstop>vtkbackplot</tabstop>
+  <tabstop>pushButton_13</tabstop>
+  <tabstop>pushButton_15</tabstop>
+  <tabstop>pushButton_16</tabstop>
+  <tabstop>pushButton_17</tabstop>
+  <tabstop>pushButton_18</tabstop>
+  <tabstop>pushButton_19</tabstop>
+  <tabstop>recentfilecombobox_2</tabstop>
+  <tabstop>gcodetextedit_3</tabstop>
+  <tabstop>actionbutton_3</tabstop>
+  <tabstop>actionbutton_2</tabstop>
+  <tabstop>btn_open_dialog</tabstop>
+  <tabstop>dialogbutton_2</tabstop>
+  <tabstop>jobs_to_process</tabstop>
+  <tabstop>jobs_done</tabstop>
+  <tabstop>job_instructions</tabstop>
+  <tabstop>pushButton_12</tabstop>
+  <tabstop>pushButton_14</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>actionbutton_12</tabstop>
+  <tabstop>actionbutton_11</tabstop>
+  <tabstop>mainTabWidget</tabstop>
+  <tabstop>actionbutton_14</tabstop>
+  <tabstop>actionbutton_13</tabstop>
+  <tabstop>tabWidget_2</tabstop>
+  <tabstop>btn_move_home</tabstop>
+  <tabstop>actionbutton_15</tabstop>
+  <tabstop>actionbutton_36</tabstop>
+  <tabstop>btn_cycle_start</tabstop>
+  <tabstop>btn_machine_power_toggle</tabstop>
+  <tabstop>btn_m1_break</tabstop>
+  <tabstop>btn_pierce_only</tabstop>
+  <tabstop>actionbutton_9</tabstop>
+  <tabstop>btn_thc_enable</tabstop>
+  <tabstop>sc_park</tabstop>
+  <tabstop>mdibutton_3</tabstop>
+  <tabstop>btn_save_run_process</tabstop>
+  <tabstop>btn_del_run_process</tabstop>
+  <tabstop>btn_new_run_process</tabstop>
+  <tabstop>btn_reload</tabstop>
+  <tabstop>chkb_hole_detect_enable</tabstop>
+  <tabstop>chkb_slot_detect_enable</tabstop>
+  <tabstop>pushButton_5</tabstop>
+  <tabstop>pushButton_6</tabstop>
+  <tabstop>pushButton_9</tabstop>
+  <tabstop>checkBox</tabstop>
+  <tabstop>checkBox_2</tabstop>
+  <tabstop>checkBox_3</tabstop>
+  <tabstop>checkBox_4</tabstop>
+  <tabstop>doubleSpinBox_3</tabstop>
+  <tabstop>pushButton_10</tabstop>
+  <tabstop>doubleSpinBox_4</tabstop>
+  <tabstop>thc_delay</tabstop>
+  <tabstop>thc_threshold</tabstop>
+  <tabstop>thc_pid_p_gain</tabstop>
+  <tabstop>thc_pid_i_gain</tabstop>
+  <tabstop>thc_pid_d_gain</tabstop>
+  <tabstop>thc_vad_threshold</tabstop>
+  <tabstop>thc_void_override</tabstop>
+  <tabstop>thc_safe_height</tabstop>
+  <tabstop>arc_fail_timeout</tabstop>
+  <tabstop>arc_max_starts</tabstop>
+  <tabstop>arc_retry_delay</tabstop>
+  <tabstop>arc_voltage_scale</tabstop>
+  <tabstop>arc_voltage_offset</tabstop>
+  <tabstop>arc_height_per_volt</tabstop>
+  <tabstop>arc_ok_high_volts</tabstop>
+  <tabstop>arc_ok_low_volts</tabstop>
+  <tabstop>probe_offset</tabstop>
+  <tabstop>probe_height</tabstop>
+  <tabstop>probe_speed</tabstop>
+  <tabstop>probe_float_travel</tabstop>
+  <tabstop>probe_ohmic_retries</tabstop>
+  <tabstop>probe_skip_ihs</tabstop>
+  <tabstop>probe_setup_speed</tabstop>
+  <tabstop>scribe_arm_delay</tabstop>
+  <tabstop>scribe_on_delay</tabstop>
+  <tabstop>spot_threshold</tabstop>
+  <tabstop>spot_delay</tabstop>
+  <tabstop>btn_config_save</tabstop>
+  <tabstop>btn_config_reload</tabstop>
+  <tabstop>pushButton_11</tabstop>
+  <tabstop>tabwidget</tabstop>
+  <tabstop>spinBox</tabstop>
+  <tabstop>doubleSpinBox</tabstop>
+  <tabstop>doubleSpinBox_2</tabstop>
+  <tabstop>settings_lineedit_2</tabstop>
+  <tabstop>settings_lineedit</tabstop>
+  <tabstop>settings_lineedit_3</tabstop>
+  <tabstop>settingscombobox</tabstop>
+  <tabstop>settings_checkbox</tabstop>
+  <tabstop>filter_distance_system</tabstop>
+  <tabstop>filter_pressure_system</tabstop>
+  <tabstop>filter_machine</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
