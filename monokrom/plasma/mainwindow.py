@@ -1,8 +1,10 @@
-from qtpy.QtCore import Qt
-from qtpy.QtWidgets import QLabel
+from qtpy.QtCore import Qt, QItemSelectionModel
+from qtpy.QtWidgets import QLabel, QListWidgetItem
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
+
+#import pydevd;pydevd.settrace()
 
 
 # Setup logging
@@ -58,10 +60,13 @@ class MainWindow(VCPMainWindow):
             self._linear_setting = 'inch'
         self._pressure_setting = INFO.ini.find('PLASMAC', 'PRESSURE')
         self._machine = INFO.ini.find('PLASMAC', 'MACHINE') 
+        
+        self.grp_filter_sub_list.hide()
 
         # link in UI signals for buttons back to Mainwindow methods
         self.btn_save_run_process.clicked.connect(self.update_cut)
         self.btn_run_reload.clicked.connect(self.param_update_from_filters)
+        self.filter_sub_list.itemClicked.connect(self.filter_sub_list_select)
         
         
         # prepare widget filter data
@@ -97,7 +102,7 @@ class MainWindow(VCPMainWindow):
             uifld = getattr(self, v)
             arglist.append(uifld.currentData())
         cutlist = self._plasma_plugin.cut(arglist)
-        if len(cutlist) == 1:
+        if len(cutlist) > 0:
             return cutlist
         else:
             return None
@@ -116,6 +121,18 @@ class MainWindow(VCPMainWindow):
         cutlist = self._plasma_plugin.cut(arglist)
         data = self.get_filter_query()
         if data != None:
+            if len(data) > 1:
+                self.grp_filter_sub_list.show()
+                # if there is more than one item in the list then do special processing
+                self.filter_sub_list.clear()
+                for nm in data:
+                    item = QListWidgetItem(nm.name)
+                    item.setData(Qt.UserRole, nm.id)
+                    self.filter_sub_list.addItem(item)
+                    self.filter_sub_list.setCurrentRow(0, QItemSelectionModel.ClearAndSelect)
+            else:
+                self.grp_filter_sub_list.hide()
+
             data = data[0]
             for k in MainWindow.param_fld_map:
                 fld_data = getattr(data, k)
@@ -125,6 +142,7 @@ class MainWindow(VCPMainWindow):
                 else:
                     ui_fld.setValue(fld_data) 
         else:
+            self.grp_filter_sub_list.hide()
             # set cut params to 0
             ui_fld = getattr(self, 'param_name')
             ui_fld.setText('NONE')
@@ -132,6 +150,20 @@ class MainWindow(VCPMainWindow):
                 if v != 'param_name':
                     ui_fld = getattr(self, v)
                     ui_fld.setValue(0)
+    
+    def filter_sub_list_select(self, item):
+        data = self.get_filter_query()
+        item_id = item.data(Qt.UserRole)
+        for d in data:
+            if d.id == item_id:
+                for k in MainWindow.param_fld_map:
+                    fld_data = getattr(d, k)
+                    ui_fld = getattr(self, MainWindow.param_fld_map[k])
+                    if isinstance(ui_fld, QLabel):
+                        ui_fld.setText(fld_data)
+                    else:
+                        ui_fld.setValue(fld_data) 
+                
     
     def setMode(self):
         print("main window initalise")
