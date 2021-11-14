@@ -1,3 +1,5 @@
+import os
+
 from qtpy.QtCore import Qt, QItemSelectionModel
 from qtpy.QtWidgets import QLabel, QListWidgetItem
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
@@ -60,6 +62,10 @@ class MainWindow(VCPMainWindow):
             self._linear_setting = 'inch'
         self._pressure_setting = INFO.ini.find('PLASMAC', 'PRESSURE')
         self._machine = INFO.ini.find('PLASMAC', 'MACHINE') 
+        # need to hold linear setting ID so can filter thicknesses based on measurement system
+        for s in self._plasma_plugin.linearsystems():
+            if s.name == self._linear_setting:
+                self._linear_setting_id = s.id 
         
         self.grp_filter_sub_list.hide()
 
@@ -67,6 +73,7 @@ class MainWindow(VCPMainWindow):
         self.btn_save_run_process.clicked.connect(self.update_cut)
         self.btn_run_reload.clicked.connect(self.param_update_from_filters)
         self.filter_sub_list.itemClicked.connect(self.filter_sub_list_select)
+        self.btn_seed_db.clicked.connect(self.seed_database)
         
         
         # prepare widget filter data
@@ -87,7 +94,10 @@ class MainWindow(VCPMainWindow):
         # in the UI
         for k in MainWindow.filter_fld_map:
             # get filter data and set to self
-            setattr(self, '_'+k, getattr(self._plasma_plugin, k)())
+            if k == 'thicknesses':
+                setattr(self, '_'+k, getattr(self._plasma_plugin, k)(self._linear_setting_id))
+            else:
+                setattr(self, '_'+k, getattr(self._plasma_plugin, k)())
             # with this key populate the data into UI field
             ui_fld = getattr(self, MainWindow.filter_fld_map[k])
             # clear down this combo list before adding starting data
@@ -206,3 +216,14 @@ class MainWindow(VCPMainWindow):
                 arglst[k] = ui_fld.value() 
         
         self._plasma_plugin.updateCut(q, **arglst)
+        
+    def seed_database(self):
+        # get db source file and initiate seed
+        src = self.lne_seed_source.text()
+        if not os.path.isfile(src):
+            LOG.debug('DB seed file not found')
+            return
+        
+        # file exists. Assume is correct format else things will fail
+        self._plasma_plugin.seed_data_base(src)
+        
