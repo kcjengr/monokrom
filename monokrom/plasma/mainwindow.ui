@@ -4130,7 +4130,7 @@ font-weight: bold;
           <x>20</x>
           <y>610</y>
           <width>622</width>
-          <height>126</height>
+          <height>211</height>
          </rect>
         </property>
         <property name="title">
@@ -4169,7 +4169,7 @@ font-weight: bold;
            </property>
            <property name="minimumSize">
             <size>
-             <width>150</width>
+             <width>34</width>
              <height>44</height>
             </size>
            </property>
@@ -4181,6 +4181,13 @@ font-weight: bold;
            </property>
            <property name="text">
             <string>Seed DB from file</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="lbl_seed_status">
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>

@@ -220,10 +220,13 @@ class MainWindow(VCPMainWindow):
     def seed_database(self):
         # get db source file and initiate seed
         src = self.lne_seed_source.text()
+
         if not os.path.isfile(src):
             LOG.debug('DB seed file not found')
+            self.lbl_seed_status.setText('DB seed file not found.')
             return
-        
+
+        self.lbl_seed_status.setText('DB seeding started.')        
         # file exists. Assume is correct format else things will fail
         self._plasma_plugin.seed_data_base(src)
-        
+        self.lbl_seed_status.setText('DB seeding Done.')
