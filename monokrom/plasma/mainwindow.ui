@@ -4134,7 +4134,7 @@ font-weight: bold;
          </rect>
         </property>
         <property name="title">
-         <string>MkGroupBox</string>
+         <string>DB SEEDING</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_23">
          <item row="1" column="0">
