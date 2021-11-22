@@ -5,8 +5,9 @@ from qtpy.QtWidgets import QLabel, QListWidgetItem
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
+from qtpyvcp import hal
 
-#import pydevd;pydevd.settrace()
+import pydevd;pydevd.settrace()
 
 
 # Setup logging
@@ -24,6 +25,7 @@ class MainWindow(VCPMainWindow):
         'pressuresystems':'filter_pressure_system'
         }
     
+    # field map of <plugin data getter>:<ui obj name>
     filter_fld_map = {
         'gases':'filter_gas',
         'machines':'filter_machine',
@@ -35,6 +37,20 @@ class MainWindow(VCPMainWindow):
         'qualities':'filter_quality',
         'consumables':'filter_consumable'
         }
+
+    # field map of <plugin data getter>:<cutchart orm relationship field>
+    relationship_fld_map = {
+        'gases':'gas',
+        'machines':'machine',
+        'materials':'material',
+        'thicknesses':'thickness',
+        'linearsystems':'linearsystem',
+        'pressuresystems':'pressuresystem',
+        'operations':'operation',
+        'qualities':'quality',
+        'consumables':'consumable'
+        }
+    
     
     param_fld_map = {
         'name':'param_name',
@@ -55,13 +71,17 @@ class MainWindow(VCPMainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
         self._plasma_plugin = getPlugin('plasmaprocesses')
+        self.filter_cutchart_id = None
+        
         
         if INFO.getIsMachineMetric():
             self._linear_setting = 'mm'
         else:
             self._linear_setting = 'inch'
+        
         self._pressure_setting = INFO.ini.find('PLASMAC', 'PRESSURE')
         self._machine = INFO.ini.find('PLASMAC', 'MACHINE') 
+        
         # need to hold linear setting ID so can filter thicknesses based on measurement system
         for s in self._plasma_plugin.linearsystems():
             if s.name == self._linear_setting:
@@ -75,7 +95,6 @@ class MainWindow(VCPMainWindow):
         self.filter_sub_list.itemClicked.connect(self.filter_sub_list_select)
         self.btn_seed_db.clicked.connect(self.seed_database)
         
-        
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
         
@@ -88,6 +107,25 @@ class MainWindow(VCPMainWindow):
         for val in MainWindow.filter_fld_map.values():
             filter_widget = getattr(self, val)
             filter_widget.currentIndexChanged.connect(self.param_update_from_filters)
+
+        # create the cutchart hal pin for feedback loop from filter prog
+        comp = hal.getComponent()
+        self.hal_cutchart_id = comp.addPin('cutchart-id', 'u32', 'in')
+        comp.addListener('cutchart-id', self.cutchart_pin_update)
+
+    def cutchart_pin_update(self, value):
+        LOG.debug(f"Cutchart_ID Pin = {value}")
+        self.filter_cutchart_id = value
+        # Get the cutchart record based on the pin value.
+        cut = self._plasma_plugin.cut_by_id(value)[0]
+        # Cycle through all the filters and set them to the correct value
+        for k in MainWindow.relationship_fld_map:
+            # get handle to UI field
+            ui_fld = getattr(self, MainWindow.filter_fld_map[k])
+            new_index = ui_fld.findData(getattr(cut, MainWindow.relationship_fld_map[k]).id)
+            ui_fld.setCurrentIndex(new_index)
+        # check to see if there is a sub select required, if so select it
+        
 
     def load_plasma_ui_filter_data(self):
         # build up the starting position data for process filters
@@ -131,6 +169,7 @@ class MainWindow(VCPMainWindow):
         cutlist = self._plasma_plugin.cut(arglist)
         data = self.get_filter_query()
         if data != None:
+            select_row = 0
             if len(data) > 1:
                 self.grp_filter_sub_list.show()
                 # if there is more than one item in the list then do special processing
@@ -139,11 +178,13 @@ class MainWindow(VCPMainWindow):
                     item = QListWidgetItem(nm.name)
                     item.setData(Qt.UserRole, nm.id)
                     self.filter_sub_list.addItem(item)
-                    self.filter_sub_list.setCurrentRow(0, QItemSelectionModel.ClearAndSelect)
+                    if nm.id == self.filter_cutchart_id:
+                        select_row = self.filter_sub_list.row(item)
+                    self.filter_sub_list.setCurrentRow(select_row, QItemSelectionModel.ClearAndSelect)
             else:
                 self.grp_filter_sub_list.hide()
 
-            data = data[0]
+            data = data[select_row]
             for k in MainWindow.param_fld_map:
                 fld_data = getattr(data, k)
                 ui_fld = getattr(self, MainWindow.param_fld_map[k])
