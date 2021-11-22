@@ -7,7 +7,7 @@ from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
 from qtpyvcp import hal
 
-import pydevd;pydevd.settrace()
+#import pydevd;pydevd.settrace()
 
 
 # Setup logging
