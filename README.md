@@ -38,6 +38,16 @@ cd monokrom-vcp
 python3 -m pip install -e .
 ```
 
+Monokrom plasma requires the plasma_db branch from qtpyvcp.  To get access to this branch it is recommended to use a developer install of qtpyvcp. If you already have such an install you will need to install sqlalchemy via pip.
+
+If you have yet to install a developer version of qtpyvcp then BEFORE performing the pip install per normal dev instructions you need to
+
+`git checkout plasma_db`
+
+THEN
+
+`python3 -m pip install -e .`
+
 This will create an editable installe of Monokrom.  To update to the latest development state cd into monokrom-vcp and perform
 
 `git pull`
