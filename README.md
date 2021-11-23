@@ -2,15 +2,16 @@
 
 Monochrome style VCPs for LinuxCNC controlled Lathes, Mills and Plasma cutters.
 
-*Main page*
+*Mill*
 ![](docs/images/Web19201.png)
 
-*Main page 1024pxx768px*
-![](docs/images/screenshot.png)
+
+*Plasma*
+![](docs/images/plasma/main.png)
+![](docs/images/plasma/cut_material.png)
+![](docs/images/plasma/cut_material_config.png)
 
 
-*Plasma Settigns page*
-![](docs/images/screenshot-1.png)
 
 ## Installation
 
