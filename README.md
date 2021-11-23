@@ -30,10 +30,12 @@ https://github.com/joco-nz/monokrom-vcp
 
 If the Plasma UI is of interest then the recommended install is:
 
-```cd <directory where you want to have the git cloned repo>
+```
+cd <directory where you want to have the git cloned repo>
 git clone https://github.com/joco-nz/monokrom-vcp
 cd monokrom-vcp
-python3 -m pip install -e .```
+python3 -m pip install -e .
+```
 
 This will create an editable installe of Monokrom.  To update to the latest development state cd into monokrom-vcp and perform
 
