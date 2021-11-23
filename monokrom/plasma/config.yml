@@ -37,8 +37,6 @@ data_plugins:
     provider: qtpyvcp.plugins.plasma_processes:PlasmaProcesses
     kwargs:
         db_type: "sqlite"
-        #db_type: "mysql"
-        #connect_string: "mysql+pymysql://james:xxxxx@localhost/plasma_table"
 
 windows:
 

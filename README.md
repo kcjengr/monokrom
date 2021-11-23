@@ -18,15 +18,23 @@ If you have not already done so, install the [QtPyVCP software dependencies](htt
 
 Install QtPyVCP
 
-`pip install qtpyvcp`
+`python3 -m pip install qtpyvcp`
 
 Install MonoKrom (includes lathe, mill and plasma VCPs)
 
-`pip install git+https://github.com/kurtjacobson/monokrom-vcp`
+`python3 -m pip install git+https://github.com/kurtjacobson/monokrom-vcp`
 
 To install the MonoKrom LinuxCNC sim configs run 
 
 `monokrom --install-sim`
+
+The current Plasma development version which is under active development is located at:
+https://github.com/joco-nz/monokrom-vcp
+
+If the Plasma UI is of interest then the recommended install is:
+`python3 -m pip install git+https://github.com/joco-nz/monokrom-vcp`
+
+
 
 ## Acknowledgements
 
