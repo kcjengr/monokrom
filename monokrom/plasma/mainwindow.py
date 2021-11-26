@@ -82,6 +82,10 @@ class MainWindow(VCPMainWindow):
         self._pressure_setting = INFO.ini.find('PLASMAC', 'PRESSURE')
         self._machine = INFO.ini.find('PLASMAC', 'MACHINE') 
         
+        # setup some default UI settings
+        self.vtkbackplot.setViewZ()
+        self.vtkbackplot.enable_panning(True)
+        
         # need to hold linear setting ID so can filter thicknesses based on measurement system
         for s in self._plasma_plugin.linearsystems():
             if s.name == self._linear_setting:

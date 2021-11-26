@@ -7,15 +7,10 @@ qtdesigner:
 
 vcp:
   name: MonoKrom Plasma
-  version: v0.0.1
-  author: Kurt Jacobson
+  version: v0.0.5
+  author: Kurt Jacobson, James Walker
   description: >
-    Put a short description of your VCP here. This will be
-    shown in the VCP Chooser when launching QtPyVCP with the
-    --chooser option.
-
-
-    Examples of what to included here:
+    Plasma UI leveraging the qtpyvcp plasma processes plugin.
       * VCP Features
       * Type of machine the VCP is for
       * Development status

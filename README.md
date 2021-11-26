@@ -3,10 +3,12 @@
 Monochrome style VCPs for LinuxCNC controlled Lathes, Mills and Plasma cutters.
 
 *Mill*
+
 ![](docs/images/Web19201.png)
 
 
 *Plasma*
+
 ![](docs/images/plasma/main.png)
 ![](docs/images/plasma/cut_material.png)
 ![](docs/images/plasma/cut_material_config.png)
@@ -50,6 +52,7 @@ To install the MonoKrom LinuxCNC sim configs run:
 
 
 *Dependency*
+
 Monokrom plasma requires the plasma_db branch from qtpyvcp.  To get access to this branch it is recommended to use a developer install of qtpyvcp. If you already have such an install you will need to install sqlalchemy via pip.
 
 If you have yet to install a developer version of qtpyvcp then BEFORE performing the pip install per normal dev instructions you need to

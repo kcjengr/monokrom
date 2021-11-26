@@ -1666,7 +1666,7 @@ DIVE</string>
           <item>
            <widget class="MkTabWidget" name="tabWidget_3">
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="tab_7">
              <attribute name="title">
@@ -1699,90 +1699,68 @@ DIVE</string>
                 <widget class="QWidget" name="widget_19" native="true">
                  <property name="geometry">
                   <rect>
-                   <x>820</x>
+                   <x>10</x>
                    <y>0</y>
-                   <width>120</width>
-                   <height>391</height>
+                   <width>511</width>
+                   <height>71</height>
                   </rect>
                  </property>
-                 <widget class="QPushButton" name="pushButton_13">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>20</y>
-                    <width>88</width>
-                    <height>44</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string>PushButton</string>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="pushButton_15">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>80</y>
-                    <width>88</width>
-                    <height>44</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string>PushButton</string>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="pushButton_16">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>140</y>
-                    <width>88</width>
-                    <height>44</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string>PushButton</string>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="pushButton_17">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>200</y>
-                    <width>88</width>
-                    <height>44</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string>PushButton</string>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="pushButton_18">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>260</y>
-                    <width>88</width>
-                    <height>44</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string>PushButton</string>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="pushButton_19">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>320</y>
-                    <width>88</width>
-                    <height>44</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string>PushButton</string>
-                  </property>
-                 </widget>
+                 <property name="autoFillBackground">
+                  <bool>false</bool>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_24">
+                  <item row="0" column="3">
+                   <widget class="QPushButton" name="vtk_clear">
+                    <property name="text">
+                     <string>CLEAR</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QPushButton" name="vtk_minus">
+                    <property name="text">
+                     <string>-</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QPushButton" name="vtk_center">
+                    <property name="text">
+                     <string>CENTER
+PLOT</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QPushButton" name="vtk_plus">
+                    <property name="text">
+                     <string>+</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="4">
+                   <widget class="QPushButton" name="vtk_prog_extent">
+                    <property name="text">
+                     <string>PROG
+EXTENT</string>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="5">
+                   <widget class="QPushButton" name="vtk_mach_extent">
+                    <property name="text">
+                     <string>MACH
+EXTENT</string>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </widget>
                </widget>
               </item>
@@ -4442,13 +4420,7 @@ font-weight: bold;
   <tabstop>actionbutton_28</tabstop>
   <tabstop>actionbutton_35</tabstop>
   <tabstop>tabWidget_3</tabstop>
-  <tabstop>vtkbackplot</tabstop>
-  <tabstop>pushButton_13</tabstop>
-  <tabstop>pushButton_15</tabstop>
-  <tabstop>pushButton_16</tabstop>
-  <tabstop>pushButton_17</tabstop>
-  <tabstop>pushButton_18</tabstop>
-  <tabstop>pushButton_19</tabstop>
+  <tabstop>vtk_center</tabstop>
   <tabstop>recentfilecombobox_2</tabstop>
   <tabstop>gcodetextedit_3</tabstop>
   <tabstop>actionbutton_3</tabstop>
@@ -4538,5 +4510,102 @@ font-weight: bold;
   <tabstop>filter_machine</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>vtk_plus</sender>
+   <signal>clicked()</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>zoomIn()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1817</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1514</x>
+     <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vtk_minus</sender>
+   <signal>clicked()</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>zoomOut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1881</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1514</x>
+     <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vtk_center</sender>
+   <signal>clicked()</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>setViewZ()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1949</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1514</x>
+     <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vtk_clear</sender>
+   <signal>clicked()</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>clearLivePlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1949</x>
+     <y>165</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1514</x>
+     <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vtk_prog_extent</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>showProgramBounds(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1949</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1514</x>
+     <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vtk_mach_extent</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>showMachineBounds(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1949</x>
+     <y>265</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1514</x>
+     <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
