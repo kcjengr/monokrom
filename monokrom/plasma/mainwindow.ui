@@ -2666,10 +2666,16 @@ font-weight: bold;
                   <property name="verticalSpacing">
                    <number>20</number>
                   </property>
-                  <item row="1" column="1">
-                   <widget class="QLabel" name="label_11">
-                    <property name="text">
-                     <string>Hole Size ratio relative to Material Thickness (x:1)</string>
+                  <item row="1" column="0">
+                   <widget class="PlasmaHalSpinBox" name="spn_hole_thickness_ratio">
+                    <property name="buttonSymbols">
+                     <enum>QAbstractSpinBox::PlusMinus</enum>
+                    </property>
+                    <property name="pinBaseName" stdset="0">
+                     <string>plasma-hole-thickness-ratio</string>
+                    </property>
+                    <property name="settingName" stdset="0">
+                     <string>plasma_hole_thickness_ratio</string>
                     </property>
                    </widget>
                   </item>
@@ -2710,6 +2716,26 @@ font-weight: bold;
                     </property>
                    </widget>
                   </item>
+                  <item row="3" column="0" colspan="2">
+                   <widget class="QLabel" name="label_71">
+                    <property name="text">
+                     <string>The value used is the larger of the two supplied once calculated and processing commences.</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLabel" name="label_70">
+                    <property name="text">
+                     <string>Maximum hole size to process</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="2" column="0">
                    <widget class="PlasmaHalDoubleSpinBox" name="spn_max_hole_size">
                     <property name="buttonSymbols">
@@ -2729,37 +2755,98 @@ font-weight: bold;
                     </property>
                    </widget>
                   </item>
-                  <item row="1" column="0">
-                   <widget class="PlasmaHalSpinBox" name="spn_hole_thickness_ratio">
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::PlusMinus</enum>
-                    </property>
-                    <property name="pinBaseName" stdset="0">
-                     <string>plasma-hole-thickness-ratio</string>
-                    </property>
-                    <property name="settingName" stdset="0">
-                     <string>plasma_hole_thickness_ratio</string>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="label_11">
+                    <property name="text">
+                     <string>Hole Size ratio relative to Material Thickness (x:1)</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="2" column="1">
-                   <widget class="QLabel" name="label_70">
-                    <property name="text">
-                     <string>Maximum hole size to process</string>
+                  <item row="4" column="0" colspan="2">
+                   <widget class="QWidget" name="widget_21" native="true">
+                    <property name="sizeIncrement">
+                     <size>
+                      <width>0</width>
+                      <height>0</height>
+                     </size>
                     </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="0" colspan="2">
-                   <widget class="QLabel" name="label_71">
-                    <property name="text">
-                     <string>The value used is the larger of the two supplied once calculated and processing commences.</string>
+                    <property name="baseSize">
+                     <size>
+                      <width>0</width>
+                      <height>0</height>
+                     </size>
                     </property>
-                    <property name="alignment">
-                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                    </property>
-                    <property name="wordWrap">
-                     <bool>true</bool>
-                    </property>
+                    <layout class="QGridLayout" name="gridLayout_26">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_72">
+                       <property name="text">
+                        <string>Arc 1</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="PlasmaHalDoubleSpinBox" name="spn_arc1_percent">
+                       <property name="buttonSymbols">
+                        <enum>QAbstractSpinBox::PlusMinus</enum>
+                       </property>
+                       <property name="suffix">
+                        <string> %</string>
+                       </property>
+                       <property name="pinBaseName" stdset="0">
+                        <string>plasma-arc1-percent</string>
+                       </property>
+                       <property name="settingName" stdset="0">
+                        <string>plasma-arc1-percent</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="2">
+                      <widget class="QLabel" name="label_74">
+                       <property name="text">
+                        <string>Overburn</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="3">
+                      <widget class="PlasmaHalDoubleSpinBox" name="spn_arc3_percent">
+                       <property name="buttonSymbols">
+                        <enum>QAbstractSpinBox::PlusMinus</enum>
+                       </property>
+                       <property name="suffix">
+                        <string> %</string>
+                       </property>
+                       <property name="pinBaseName" stdset="0">
+                        <string>plasma-arc3-percent</string>
+                       </property>
+                       <property name="settingName" stdset="0">
+                        <string>plasma-arc3-percent</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_73">
+                       <property name="text">
+                        <string>Arc 2</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="PlasmaHalDoubleSpinBox" name="spn_arc2_percent">
+                       <property name="buttonSymbols">
+                        <enum>QAbstractSpinBox::PlusMinus</enum>
+                       </property>
+                       <property name="suffix">
+                        <string> %</string>
+                       </property>
+                       <property name="pinBaseName" stdset="0">
+                        <string>plasma-arc2-percent</string>
+                       </property>
+                       <property name="settingName" stdset="0">
+                        <string>plasma-arc2-percent</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
                   </item>
                  </layout>
@@ -2770,19 +2857,28 @@ font-weight: bold;
                  <property name="title">
                   <string>SLOT DETECTION</string>
                  </property>
-                 <widget class="QCheckBox" name="chkb_slot_detect_enable">
-                  <property name="geometry">
-                   <rect>
-                    <x>0</x>
-                    <y>40</y>
-                    <width>151</width>
-                    <height>25</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string>Enable</string>
-                  </property>
-                 </widget>
+                 <layout class="QGridLayout" name="gridLayout_27">
+                  <item row="0" column="0">
+                   <widget class="QCheckBox" name="chkb_slot_detect_enable">
+                    <property name="text">
+                     <string>Enable</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <spacer name="verticalSpacer_7">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>411</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
                 </widget>
                </item>
               </layout>

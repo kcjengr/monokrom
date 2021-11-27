@@ -217,4 +217,16 @@ settings:
    plasma_hole_detect_enable:
         default_value: true
         persistent: true
+    
+    plasma-arc1-percent:
+        default_value: 60
+        persistent: true
+        
+    plasma-arc2-percent:
+        default_value: 40
+        persistent: true
+        
+    plasma-arc3-percent:
+        defualt_value: 100
+        persistent: true
         
