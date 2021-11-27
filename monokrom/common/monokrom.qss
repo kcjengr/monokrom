@@ -109,8 +109,8 @@ QCheckBox:disabled {
   background: transparent; }
 
 QCheckBox::indicator {
-  width: 20px;
-  height: 20px; }
+  width: 42px;
+  height: 42px; }
 
 QCheckBox::indicator:unchecked {
   image: url(icons/checkbox.unchecked.png); }

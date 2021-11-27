@@ -7,6 +7,9 @@ from qtpyvcp import hal
 from qtpyvcp.widgets.hal_widgets.hal_checkbox import HalCheckBox
 
 from qtpyvcp import SETTINGS
+from qtpyvcp.utilities.logger import getLogger
+
+LOG = getLogger(__name__)
 
 
 class PlasmaHalCheckBox(HalCheckBox):
@@ -27,10 +30,12 @@ class PlasmaHalCheckBox(HalCheckBox):
     """
     def __init__(self, parent=None):
         super(PlasmaHalCheckBox, self).__init__(parent)
+        self._setting = None
+        self._setting_name = None
 
-        self._enable_pin = None
-        self._check_pin = None
-        self._checked_pin = None
+        # self._enable_pin = None
+        # self._check_pin = None
+        # self._checked_pin = None
 
         self.toggled.connect(self.onCheckedStateChanged)
 

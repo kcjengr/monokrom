@@ -2662,19 +2662,95 @@ font-weight: bold;
                  <property name="title">
                   <string>HOLE DETECTION</string>
                  </property>
-                 <widget class="QCheckBox" name="chkb_hole_detect_enable">
-                  <property name="geometry">
-                   <rect>
-                    <x>-10</x>
-                    <y>40</y>
-                    <width>141</width>
-                    <height>25</height>
-                   </rect>
+                 <layout class="QGridLayout" name="gridLayout_25">
+                  <property name="verticalSpacing">
+                   <number>20</number>
                   </property>
-                  <property name="text">
-                   <string>Enable</string>
-                  </property>
-                 </widget>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="label_11">
+                    <property name="text">
+                     <string>Hole Size ratio relative to Material Thickness (x:1)</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="PlasmaHalCheckBox" name="chkb_hole_detect_enable">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>42</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>42</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Sans</family>
+                      <pointsize>14</pointsize>
+                      <weight>75</weight>
+                      <italic>false</italic>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">font: bold 14pt;</string>
+                    </property>
+                    <property name="text">
+                     <string>Enable</string>
+                    </property>
+                    <property name="pinBaseName" stdset="0">
+                     <string>mk-hole-detect-enable</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="PlasmaHalDoubleSpinBox" name="spn_max_hole_size">
+                    <property name="buttonSymbols">
+                     <enum>QAbstractSpinBox::PlusMinus</enum>
+                    </property>
+                    <property name="maximum">
+                     <double>200.000000000000000</double>
+                    </property>
+                    <property name="pinBaseName" stdset="0">
+                     <string>mk-max-hole-size</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="PlasmaHalSpinBox" name="spn_hole_thickness_ratio">
+                    <property name="buttonSymbols">
+                     <enum>QAbstractSpinBox::PlusMinus</enum>
+                    </property>
+                    <property name="pinBaseName" stdset="0">
+                     <string>mk-hole-thickness-ratio</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLabel" name="label_70">
+                    <property name="text">
+                     <string>Maximum hole size to process</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0" colspan="2">
+                   <widget class="QLabel" name="label_71">
+                    <property name="text">
+                     <string>The value used is the larger of the two supplied once calculated and processing commences.</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </widget>
                </item>
                <item>
@@ -3885,7 +3961,7 @@ font-weight: bold;
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>80</y>
+          <y>110</y>
           <width>358</width>
           <height>216</height>
          </rect>
@@ -3957,8 +4033,8 @@ font-weight: bold;
          <rect>
           <x>20</x>
           <y>0</y>
-          <width>257</width>
-          <height>67</height>
+          <width>361</width>
+          <height>81</height>
          </rect>
         </property>
         <property name="title">
@@ -3981,7 +4057,7 @@ font-weight: bold;
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>320</y>
+          <y>340</y>
           <width>433</width>
           <height>146</height>
          </rect>
@@ -4071,9 +4147,9 @@ font-weight: bold;
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>490</y>
-          <width>325</width>
-          <height>93</height>
+          <y>510</y>
+          <width>431</width>
+          <height>131</height>
          </rect>
         </property>
         <property name="title">
@@ -4106,7 +4182,7 @@ font-weight: bold;
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>610</y>
+          <y>650</y>
           <width>622</width>
           <height>211</height>
          </rect>
@@ -4289,6 +4365,11 @@ font-weight: bold;
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
   </customwidget>
   <customwidget>
+   <class>HalCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>qtpyvcp.widgets.hal_widgets.hal_checkbox</header>
+  </customwidget>
+  <customwidget>
    <class>HalQSpinBox</class>
    <extends>QSpinBox</extends>
    <header>qtpyvcp.widgets.hal_widgets.hal_spinbox</header>
@@ -4344,6 +4425,11 @@ font-weight: bold;
    <extends>QTabWidget</extends>
    <header>monokrom.common.widgets.tab_widget</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PlasmaHalCheckBox</class>
+   <extends>HalCheckBox</extends>
+   <header>monokrom.plasma.widgets.plasma_hal_checkbox</header>
   </customwidget>
   <customwidget>
    <class>PlasmaHalDoubleSpinBox</class>
@@ -4454,7 +4540,6 @@ font-weight: bold;
   <tabstop>btn_del_run_process</tabstop>
   <tabstop>btn_new_run_process</tabstop>
   <tabstop>btn_run_reload</tabstop>
-  <tabstop>chkb_hole_detect_enable</tabstop>
   <tabstop>chkb_slot_detect_enable</tabstop>
   <tabstop>pushButton_5</tabstop>
   <tabstop>pushButton_6</tabstop>

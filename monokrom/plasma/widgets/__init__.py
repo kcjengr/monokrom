@@ -25,3 +25,9 @@ from .plasma_add_process import PlasmaAddProcess
 class PlasmaAddProcess_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return PlasmaAddProcess
+
+
+from .plasma_hal_checkbox import PlasmaHalCheckBox
+class PlasmaHalCheckBox_Plugin(_DesignerPlugin):
+    def pluginClass(self):
+        return PlasmaHalCheckBox
