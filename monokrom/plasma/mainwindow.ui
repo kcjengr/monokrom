@@ -2703,7 +2703,10 @@ font-weight: bold;
                      <string>Enable</string>
                     </property>
                     <property name="pinBaseName" stdset="0">
-                     <string>mk-hole-detect-enable</string>
+                     <string>plasma-hole-detect-enable</string>
+                    </property>
+                    <property name="settingName" stdset="0">
+                     <string>plasma_hole_detect_enable</string>
                     </property>
                    </widget>
                   </item>
@@ -2712,11 +2715,17 @@ font-weight: bold;
                     <property name="buttonSymbols">
                      <enum>QAbstractSpinBox::PlusMinus</enum>
                     </property>
+                    <property name="decimals">
+                     <number>4</number>
+                    </property>
                     <property name="maximum">
                      <double>200.000000000000000</double>
                     </property>
                     <property name="pinBaseName" stdset="0">
-                     <string>mk-max-hole-size</string>
+                     <string>plasma-max-hole-size</string>
+                    </property>
+                    <property name="settingName" stdset="0">
+                     <string>plasma_max_hole_size</string>
                     </property>
                    </widget>
                   </item>
@@ -2726,7 +2735,10 @@ font-weight: bold;
                      <enum>QAbstractSpinBox::PlusMinus</enum>
                     </property>
                     <property name="pinBaseName" stdset="0">
-                     <string>mk-hole-thickness-ratio</string>
+                     <string>plasma-hole-thickness-ratio</string>
+                    </property>
+                    <property name="settingName" stdset="0">
+                     <string>plasma_hole_thickness_ratio</string>
                     </property>
                    </widget>
                   </item>

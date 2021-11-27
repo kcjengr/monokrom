@@ -205,5 +205,16 @@ settings:
    run_delete_confirm:
       default_value: 1
       persistent: true
+
+   plasma_hole_thickness_ratio:
+      default_value: 5
+      persistent: true
     
-   
+   plasma_max_hole_size:
+      default_value: 50
+      persistent: true
+         
+   plasma_hole_detect_enable:
+        default_value: true
+        persistent: true
+        
