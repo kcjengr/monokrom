@@ -2069,7 +2069,7 @@ EXTENT</string>
         <item>
          <widget class="MkTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab_8">
            <attribute name="title">
@@ -2124,7 +2124,7 @@ EXTENT</string>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_19">
                  <property name="verticalSpacing">
-                  <number>12</number>
+                  <number>18</number>
                  </property>
                  <item row="3" column="0">
                   <widget class="QLabel" name="label_63">
@@ -2281,7 +2281,7 @@ EXTENT</string>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_20">
                  <property name="verticalSpacing">
-                  <number>12</number>
+                  <number>18</number>
                  </property>
                  <item row="9" column="0">
                   <widget class="QLabel" name="paramKirfWidthLabel_8">
@@ -2658,227 +2658,524 @@ font-weight: bold;
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_10">
                <item>
-                <widget class="MkGroupBox" name="groupbox_18">
-                 <property name="title">
-                  <string>HOLE DETECTION</string>
+                <widget class="MkTabWidget" name="tab_holes_and_slots">
+                 <property name="currentIndex">
+                  <number>0</number>
                  </property>
-                 <layout class="QGridLayout" name="gridLayout_25">
-                  <property name="verticalSpacing">
-                   <number>20</number>
+                 <widget class="QWidget" name="tab_14">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
                   </property>
-                  <item row="1" column="0">
-                   <widget class="PlasmaHalSpinBox" name="spn_hole_thickness_ratio">
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::PlusMinus</enum>
-                    </property>
-                    <property name="pinBaseName" stdset="0">
-                     <string>plasma-hole-thickness-ratio</string>
-                    </property>
-                    <property name="settingName" stdset="0">
-                     <string>plasma_hole_thickness_ratio</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0">
-                   <widget class="PlasmaHalCheckBox" name="chkb_hole_detect_enable">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>42</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>42</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Sans</family>
-                      <pointsize>14</pointsize>
-                      <weight>75</weight>
-                      <italic>false</italic>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">font: bold 14pt;</string>
-                    </property>
-                    <property name="text">
-                     <string>Enable</string>
-                    </property>
-                    <property name="pinBaseName" stdset="0">
-                     <string>plasma-hole-detect-enable</string>
-                    </property>
-                    <property name="settingName" stdset="0">
-                     <string>plasma_hole_detect_enable</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="0" colspan="2">
-                   <widget class="QLabel" name="label_71">
-                    <property name="text">
-                     <string>The value used is the larger of the two supplied once calculated and processing commences.</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                    </property>
-                    <property name="wordWrap">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QLabel" name="label_70">
-                    <property name="text">
-                     <string>Maximum hole size to process</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="0">
-                   <widget class="PlasmaHalDoubleSpinBox" name="spn_max_hole_size">
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::PlusMinus</enum>
-                    </property>
-                    <property name="decimals">
-                     <number>4</number>
-                    </property>
-                    <property name="maximum">
-                     <double>200.000000000000000</double>
-                    </property>
-                    <property name="pinBaseName" stdset="0">
-                     <string>plasma-max-hole-size</string>
-                    </property>
-                    <property name="settingName" stdset="0">
-                     <string>plasma_max_hole_size</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="1">
-                   <widget class="QLabel" name="label_11">
-                    <property name="text">
-                     <string>Hole Size ratio relative to Material Thickness (x:1)</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="0" colspan="2">
-                   <widget class="QWidget" name="widget_21" native="true">
-                    <property name="sizeIncrement">
-                     <size>
-                      <width>0</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="baseSize">
-                     <size>
-                      <width>0</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <layout class="QGridLayout" name="gridLayout_26">
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="label_72">
-                       <property name="text">
-                        <string>Arc 1</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="1">
-                      <widget class="PlasmaHalDoubleSpinBox" name="spn_arc1_percent">
-                       <property name="buttonSymbols">
-                        <enum>QAbstractSpinBox::PlusMinus</enum>
-                       </property>
-                       <property name="suffix">
-                        <string> %</string>
-                       </property>
-                       <property name="pinBaseName" stdset="0">
-                        <string>plasma-arc1-percent</string>
-                       </property>
-                       <property name="settingName" stdset="0">
-                        <string>plasma-arc1-percent</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="2">
-                      <widget class="QLabel" name="label_74">
-                       <property name="text">
-                        <string>Overburn</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="3">
-                      <widget class="PlasmaHalDoubleSpinBox" name="spn_arc3_percent">
-                       <property name="buttonSymbols">
-                        <enum>QAbstractSpinBox::PlusMinus</enum>
-                       </property>
-                       <property name="suffix">
-                        <string> %</string>
-                       </property>
-                       <property name="pinBaseName" stdset="0">
-                        <string>plasma-arc3-percent</string>
-                       </property>
-                       <property name="settingName" stdset="0">
-                        <string>plasma-arc3-percent</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="0">
-                      <widget class="QLabel" name="label_73">
-                       <property name="text">
-                        <string>Arc 2</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="1">
-                      <widget class="PlasmaHalDoubleSpinBox" name="spn_arc2_percent">
-                       <property name="buttonSymbols">
-                        <enum>QAbstractSpinBox::PlusMinus</enum>
-                       </property>
-                       <property name="suffix">
-                        <string> %</string>
-                       </property>
-                       <property name="pinBaseName" stdset="0">
-                        <string>plasma-arc2-percent</string>
-                       </property>
-                       <property name="settingName" stdset="0">
-                        <string>plasma-arc2-percent</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="MkGroupBox" name="groupbox_19">
-                 <property name="title">
-                  <string>SLOT DETECTION</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_27">
-                  <item row="0" column="0">
-                   <widget class="QCheckBox" name="chkb_slot_detect_enable">
-                    <property name="text">
-                     <string>Enable</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="1">
-                   <spacer name="verticalSpacer_7">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>411</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>850</height>
+                   </size>
+                  </property>
+                  <attribute name="title">
+                   <string>HOLES</string>
+                  </attribute>
+                  <layout class="QVBoxLayout" name="verticalLayout_19">
+                   <item>
+                    <widget class="QWidget" name="widget_22" native="true">
+                     <layout class="QGridLayout" name="gridLayout_28">
+                      <item row="1" column="1">
+                       <widget class="QLabel" name="label_11">
+                        <property name="text">
+                         <string>Hole Size ratio relative to Material Thickness (x:1)</string>
+                        </property>
+                        <property name="wordWrap">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="0">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_max_hole_size">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="decimals">
+                         <number>4</number>
+                        </property>
+                        <property name="maximum">
+                         <double>200.000000000000000</double>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-max-hole-size</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_max_hole_size</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="0">
+                       <widget class="PlasmaHalSpinBox" name="spn_hole_thickness_ratio">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-hole-thickness-ratio</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_hole_thickness_ratio</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="0">
+                       <widget class="PlasmaHalCheckBox" name="chkb_hole_detect_enable">
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>42</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>42</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>Sans</family>
+                          <pointsize>14</pointsize>
+                          <weight>75</weight>
+                          <italic>false</italic>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">font: bold 14pt;</string>
+                        </property>
+                        <property name="text">
+                         <string>ENABLE</string>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-hole-detect-enable</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_hole_detect_enable</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="1">
+                       <widget class="QLabel" name="label_79">
+                        <property name="text">
+                         <string>Leadin Arc Radius
+(if circle is large enough).
+0 = Auto calculate leadin.</string>
+                        </property>
+                        <property name="wordWrap">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="0">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_leadin_radius">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-leadin-radius</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_leadin_radius</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="1">
+                       <widget class="QLabel" name="label_70">
+                        <property name="text">
+                         <string>Maximum hole size to process</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="4" column="0" colspan="2">
+                       <widget class="QLabel" name="label_71">
+                        <property name="text">
+                         <string>The value used is the larger of the two supplied once calculated and processing commences.</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                        </property>
+                        <property name="wordWrap">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget_21" native="true">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="sizeIncrement">
+                      <size>
+                       <width>0</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="baseSize">
+                      <size>
+                       <width>0</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <layout class="QGridLayout" name="gridLayout_29">
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="spacing">
+                       <number>18</number>
+                      </property>
+                      <item row="0" column="1">
+                       <widget class="QLabel" name="label_83">
+                        <property name="text">
+                         <string>% OF FEED</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="0">
+                       <widget class="QLabel" name="label_82">
+                        <property name="text">
+                         <string>LEAD-IN</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="1">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc1_percent_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string> %</string>
+                        </property>
+                        <property name="decimals">
+                         <number>1</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc1-percent</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc1_percent</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="2">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc2_distance_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string/>
+                        </property>
+                        <property name="decimals">
+                         <number>4</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc2-distance</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc2_distance</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="2">
+                       <widget class="QLabel" name="label_85">
+                        <property name="text">
+                         <string>ARC LENGTH</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="5" column="0">
+                       <widget class="QLabel" name="label_81">
+                        <property name="text">
+                         <string>OVERBURN</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="5" column="2">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc3_distance_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string/>
+                        </property>
+                        <property name="decimals">
+                         <number>4</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc3-distance</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc3_distance</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="5" column="1">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc3_percent_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string> %</string>
+                        </property>
+                        <property name="decimals">
+                         <number>1</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc3-percent</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc3_percent</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="0">
+                       <widget class="QLabel" name="label_84">
+                        <property name="text">
+                         <string>ARC 2</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="0">
+                       <widget class="QLabel" name="label_80">
+                        <property name="text">
+                         <string>ARC 1</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="1">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc2_percent_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string> %</string>
+                        </property>
+                        <property name="decimals">
+                         <number>1</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc2-percent</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc2_percent</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="1">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_leadin_percent_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string> %</string>
+                        </property>
+                        <property name="decimals">
+                         <number>1</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-leadin-percent</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_leadin_percent</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="4" column="0">
+                       <widget class="QLabel" name="label_72">
+                        <property name="text">
+                         <string>TORCH-OFF BEFORE ZERO</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="4" column="2">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_troch_off_distance">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="decimals">
+                         <number>4</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-torch-off-distance</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_torch_off_distance</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget_23" native="true">
+                     <layout class="QHBoxLayout" name="horizontalLayout_7">
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <spacer name="horizontalSpacer_7">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_76">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>250</width>
+                          <height>250</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>250</width>
+                          <height>250</height>
+                         </size>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="pixmap">
+                         <pixmap>../common/icons/holes/hole-ui-graphic.png</pixmap>
+                        </property>
+                        <property name="scaledContents">
+                         <bool>true</bool>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_8">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="tab_16">
+                  <attribute name="title">
+                   <string>SLOTS</string>
+                  </attribute>
+                  <layout class="QVBoxLayout" name="verticalLayout_22">
+                   <property name="topMargin">
+                    <number>20</number>
+                   </property>
+                   <item>
+                    <widget class="MkGroupBox" name="groupbox_19">
+                     <property name="title">
+                      <string>SLOT DETECTION (PLACE HOLDER)</string>
+                     </property>
+                     <layout class="QGridLayout" name="gridLayout_27">
+                      <item row="1" column="1">
+                       <spacer name="verticalSpacer_7">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>411</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item row="0" column="0">
+                       <widget class="QCheckBox" name="chkb_slot_detect_enable">
+                        <property name="text">
+                         <string>Enable</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
                 </widget>
                </item>
               </layout>
@@ -3015,7 +3312,7 @@ font-weight: bold;
                 </property>
                 <layout class="QGridLayout" name="gridLayout_12">
                  <property name="verticalSpacing">
-                  <number>12</number>
+                  <number>20</number>
                  </property>
                  <item row="0" column="0">
                   <widget class="QLabel" name="label_6">
@@ -3026,6 +3323,23 @@ font-weight: bold;
                  </item>
                  <item row="0" column="1">
                   <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_12">
+                   <property name="text">
+                    <string>Y-LENGTH</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
                    </property>
@@ -3056,23 +3370,6 @@ font-weight: bold;
                    </property>
                    <property name="text">
                     <string>START</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="label_12">
-                   <property name="text">
-                    <string>Y-LENGTH</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
                    </property>
                   </widget>
                  </item>
@@ -3239,6 +3536,9 @@ font-weight: bold;
                </item>
                <item row="5" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="thc_vad_threshold">
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
                  <property name="suffix">
                   <string> %</string>
                  </property>
@@ -3865,7 +4165,7 @@ font-weight: bold;
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -4023,8 +4323,8 @@ font-weight: bold;
        <widget class="QSpinBox" name="spinBox">
         <property name="geometry">
          <rect>
-          <x>620</x>
-          <y>110</y>
+          <x>460</x>
+          <y>10</y>
           <width>171</width>
           <height>29</height>
          </rect>
@@ -4039,8 +4339,8 @@ font-weight: bold;
        <widget class="QDoubleSpinBox" name="doubleSpinBox">
         <property name="geometry">
          <rect>
-          <x>620</x>
-          <y>160</y>
+          <x>460</x>
+          <y>50</y>
           <width>171</width>
           <height>29</height>
          </rect>
@@ -4055,8 +4355,8 @@ font-weight: bold;
        <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
         <property name="geometry">
          <rect>
-          <x>620</x>
-          <y>210</y>
+          <x>460</x>
+          <y>90</y>
           <width>171</width>
           <height>29</height>
          </rect>
@@ -4353,6 +4653,30 @@ font-weight: bold;
            </property>
           </widget>
          </item>
+        </layout>
+       </widget>
+       <widget class="MkGroupBox" name="groupbox_18">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>20</y>
+          <width>591</width>
+          <height>811</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>HOLE DETECTION &amp;&amp; PARAMETERS</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_25">
+         <property name="topMargin">
+          <number>9</number>
+         </property>
+         <property name="bottomMargin">
+          <number>9</number>
+         </property>
+         <property name="verticalSpacing">
+          <number>18</number>
+         </property>
         </layout>
        </widget>
       </widget>
@@ -4657,7 +4981,6 @@ font-weight: bold;
   <tabstop>checkBox_3</tabstop>
   <tabstop>checkBox_4</tabstop>
   <tabstop>doubleSpinBox_3</tabstop>
-  <tabstop>pushButton_10</tabstop>
   <tabstop>doubleSpinBox_4</tabstop>
   <tabstop>thc_delay</tabstop>
   <tabstop>thc_threshold</tabstop>
