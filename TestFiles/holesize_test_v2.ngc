@@ -1,0 +1,127 @@
+  (Filename: holesize test.ngc)
+  (Post processor: SpaceShipPlasma-rev6-plasmac.scpost)
+  (Date: 6/10/2021)
+  G21 (Units: Metric)
+  G90 G40
+  F69
+  M52 P1 (Enable Adaptive Feed for arcs)
+  G64 P0.254 Q0.025 (tracking tolerances set to 0.254) 
+  (Part: holesize test)
+  (Operation: Outside Offset, 0, T11: A120 Mild Steel 60 amp, 2mm [129V,5.9 bar])
+  (Preset Volts: 49) ( Suggested Tip Size: 45 )
+  ( Min Cut Length for DTHC ON : 1 units ) 
+  (Preset Volts set to 49 Volts)
+  T2 M6 (Load Plasmac Plasma Controller Tool #)
+  M66 P3 L3 Q2  (Wait for the Plasmac Plasma Controller to acknowledge the change)
+  ( Settings Check)
+  ( ###########################)
+  ( Paused:  Check the Plasmac Plasma Controller Settings )
+  ( Hit RUN to continue)
+  ( ###########################)
+  G0 
+  X105.208 Y38.044
+  F10
+  M3 S1
+  G1
+  G3 I2.758 J2.758
+  G1 X105.209 Y38.045 (Add tiny extension)
+  M5
+  G0  X105.208 Y38.044
+  X100.523 Y12.421
+  F10
+  M3 S1
+  G1
+  G3 I-9.829 J9.829
+  G1 X100.524 Y12.422 (Add tiny extension)
+  M5
+  G0  X100.523 Y12.421
+  X127.920 Y21.287
+  F10
+  M3 S1
+  G1
+  G3 I-3.465 J3.465
+  G1 X127.921 Y21.288 (Add tiny extension)
+  M5
+  G0  X127.920 Y21.287
+  X169.595 Y12.291
+  F10
+  M3 S1
+  G1
+  G3 I-13.364 J13.364
+  G1 X169.596 Y12.292 (Add tiny extension)
+  M5
+  G0  X169.595 Y12.291
+  X220.615 Y17.602
+  F10
+  M3 S1
+  G1
+  G3 I-16.900 J16.900
+  G1 X220.616 Y17.603 (Add tiny extension)
+  M5
+  G0  X220.615 Y17.602
+  X185.145 Y66.830
+  F10
+  M3 S1
+  G1
+  G3 I-0.636 J-0.636
+  G1 X185.146 Y66.831 (Add tiny extension)
+  M5
+  G0  X185.145 Y66.830
+  X163.871 Y56.789
+  F10
+  M3 S1
+  G1
+  G3 I1.344 J-1.344
+  G1 X163.872 Y56.790 (Add tiny extension)
+  M5
+  G0  X163.871 Y56.789
+  X148.290 Y58.758
+  F10
+  M3 S1
+  G1
+  G3 I2.051 J2.051
+  G1 X148.291 Y58.759 (Add tiny extension)
+  M5
+  G0  X148.290 Y58.758
+  X113.138 Y56.717
+  F10
+  M3 S1
+  G1
+  G3 I4.879 J4.879
+  G1 X113.139 Y56.718 (Add tiny extension)
+  M5
+  G0  X113.138 Y56.717
+  X84.298 Y58.555
+  F10
+  M3 S1
+  G1
+  G3 I6.293 J-6.293
+  G1 X84.299 Y58.556 (Add tiny extension)
+  M5
+  G0  X84.298 Y58.555
+  X16.928 Y58.989
+  F10
+  M3 S1
+  G1
+  G3 I20.435 J-20.435
+  G1 X16.929 Y58.990 (Add tiny extension)
+  M5
+  G0  X16.928 Y58.989
+  X-1.100 Y77.060
+  F10
+  M3 S1
+  G1
+  G2 X0.000 Y78.160 I1.100 J0.000
+  G1 X235.000
+  G2 X236.100 Y77.060 I0.000 J-1.100
+  G1 Y0.000
+  G2 X235.000 Y-1.100 I-1.100 J0.000
+  G1 X0.000
+  G2 X-1.100 Y0.000 I0.000 J1.100
+  G1 Y77.060
+  X-1.099 Y77.061 (Add tiny extension)
+  M5
+  G0  X-1.100 Y77.060
+  (No Parking values detected.  Moving back to zero, zero)
+   X0.000 Y0.000
+  M5 M30
