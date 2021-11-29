@@ -2069,7 +2069,7 @@ EXTENT</string>
         <item>
          <widget class="MkTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_8">
            <attribute name="title">
@@ -2848,77 +2848,6 @@ font-weight: bold;
                       <property name="spacing">
                        <number>18</number>
                       </property>
-                      <item row="0" column="1">
-                       <widget class="QLabel" name="label_83">
-                        <property name="text">
-                         <string>% OF FEED</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="0">
-                       <widget class="QLabel" name="label_82">
-                        <property name="text">
-                         <string>LEAD-IN</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="2" column="1">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc1_percent_2">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="suffix">
-                         <string> %</string>
-                        </property>
-                        <property name="decimals">
-                         <number>1</number>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-arc1-percent</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_arc1_percent</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="3" column="2">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc2_distance_2">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="suffix">
-                         <string/>
-                        </property>
-                        <property name="decimals">
-                         <number>4</number>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-arc2-distance</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_arc2_distance</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="2">
-                       <widget class="QLabel" name="label_85">
-                        <property name="text">
-                         <string>ARC LENGTH</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                       </widget>
-                      </item>
                       <item row="5" column="0">
                        <widget class="QLabel" name="label_81">
                         <property name="text">
@@ -2926,83 +2855,10 @@ font-weight: bold;
                         </property>
                        </widget>
                       </item>
-                      <item row="5" column="2">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc3_distance_2">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="suffix">
-                         <string/>
-                        </property>
-                        <property name="decimals">
-                         <number>4</number>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-arc3-distance</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_arc3_distance</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="5" column="1">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc3_percent_2">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="suffix">
-                         <string> %</string>
-                        </property>
-                        <property name="decimals">
-                         <number>1</number>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-arc3-percent</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_arc3_percent</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="3" column="0">
-                       <widget class="QLabel" name="label_84">
-                        <property name="text">
-                         <string>ARC 2</string>
-                        </property>
-                       </widget>
-                      </item>
                       <item row="2" column="0">
                        <widget class="QLabel" name="label_80">
                         <property name="text">
                          <string>ARC 1</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="3" column="1">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc2_percent_2">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="suffix">
-                         <string> %</string>
-                        </property>
-                        <property name="decimals">
-                         <number>1</number>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-arc2-percent</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_arc2_percent</string>
                         </property>
                        </widget>
                       </item>
@@ -3028,17 +2884,164 @@ font-weight: bold;
                         </property>
                        </widget>
                       </item>
+                      <item row="3" column="0">
+                       <widget class="QLabel" name="label_84">
+                        <property name="text">
+                         <string>ARC 2</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="2">
+                       <widget class="QLabel" name="label_85">
+                        <property name="text">
+                         <string>ARC LENGTH</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="2">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc2_distance_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string/>
+                        </property>
+                        <property name="decimals">
+                         <number>4</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc2-distance</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc2_distance</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="5" column="1">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc3_percent_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string> %</string>
+                        </property>
+                        <property name="decimals">
+                         <number>1</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc3-percent</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc3_percent</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="1">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc2_percent_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string> %</string>
+                        </property>
+                        <property name="decimals">
+                         <number>1</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc2-percent</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc2_percent</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="0">
+                       <widget class="QLabel" name="label_82">
+                        <property name="text">
+                         <string>LEAD-IN</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="5" column="2">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc3_distance_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string/>
+                        </property>
+                        <property name="decimals">
+                         <number>4</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc3-distance</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc3_distance</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="1">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc1_percent_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string> %</string>
+                        </property>
+                        <property name="decimals">
+                         <number>1</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc1-percent</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc1_percent</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="1">
+                       <widget class="QLabel" name="label_83">
+                        <property name="text">
+                         <string>% OF FEED</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
                       <item row="4" column="0">
                        <widget class="QLabel" name="label_72">
                         <property name="text">
-                         <string>TORCH-OFF BEFORE ZERO</string>
+                         <string>TORCH-OFF DIST FROM 0</string>
                         </property>
                        </widget>
                       </item>
                       <item row="4" column="2">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_troch_off_distance">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_torch_off_distance">
                         <property name="alignment">
                          <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
                         </property>
                         <property name="decimals">
                          <number>4</number>
