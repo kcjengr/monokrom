@@ -475,7 +475,7 @@ POWER</string>
  WORK ZERO</string>
                   </property>
                   <property name="MDICommand" stdset="0">
-                   <string>G0Z0 G0X0Y0</string>
+                   <string>G0X0Y0Z0</string>
                   </property>
                  </widget>
                 </item>
@@ -2682,13 +2682,142 @@ font-weight: bold;
                    <item>
                     <widget class="QWidget" name="widget_22" native="true">
                      <layout class="QGridLayout" name="gridLayout_28">
+                      <item row="1" column="0">
+                       <widget class="PlasmaHalSpinBox" name="spn_hole_thickness_ratio">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-hole-thickness-ratio</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_hole_thickness_ratio</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="4" column="0">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_small_hole_threshold">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="decimals">
+                         <number>4</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-small-hole-threshold</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_small_hole_threshold</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="4" column="1">
+                       <widget class="QLabel" name="label_73">
+                        <property name="text">
+                         <string>Small hole threshold</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="0">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_leadin_radius">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-leadin-radius</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_leadin_radius</string>
+                        </property>
+                       </widget>
+                      </item>
                       <item row="1" column="1">
                        <widget class="QLabel" name="label_11">
                         <property name="text">
-                         <string>Hole Size ratio relative to Material Thickness (x:1)</string>
+                         <string>Hole Size ratio relative to Material Thickness (x:1) *</string>
                         </property>
                         <property name="wordWrap">
                          <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="1">
+                       <widget class="QLabel" name="label_79">
+                        <property name="text">
+                         <string>Leadin Arc Radius
+0 = Auto calculate leadin.</string>
+                        </property>
+                        <property name="wordWrap">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="0">
+                       <widget class="PlasmaHalCheckBox" name="chkb_hole_detect_enable">
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>42</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>42</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>Sans</family>
+                          <pointsize>12</pointsize>
+                          <weight>75</weight>
+                          <italic>false</italic>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">font: bold 12pt;</string>
+                        </property>
+                        <property name="text">
+                         <string>ENABLE</string>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-hole-detect-enable</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_hole_detect_enable</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="1">
+                       <widget class="PlasmaHalCheckBox" name="chkb_small_hole_detect">
+                        <property name="styleSheet">
+                         <string notr="true">font: bold 12pt;</string>
+                        </property>
+                        <property name="text">
+                         <string>SMALL HOLE MARKING</string>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-small-hole-detect</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_small_hole_detect</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="1">
+                       <widget class="QLabel" name="label_70">
+                        <property name="text">
+                         <string>Maximum hole size to process *</string>
                         </property>
                        </widget>
                       </item>
@@ -2711,107 +2840,6 @@ font-weight: bold;
                         </property>
                         <property name="settingName" stdset="0">
                          <string>plasma_max_hole_size</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="0">
-                       <widget class="PlasmaHalSpinBox" name="spn_hole_thickness_ratio">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-hole-thickness-ratio</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_hole_thickness_ratio</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="0">
-                       <widget class="PlasmaHalCheckBox" name="chkb_hole_detect_enable">
-                        <property name="minimumSize">
-                         <size>
-                          <width>0</width>
-                          <height>42</height>
-                         </size>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>16777215</width>
-                          <height>42</height>
-                         </size>
-                        </property>
-                        <property name="font">
-                         <font>
-                          <family>Sans</family>
-                          <pointsize>14</pointsize>
-                          <weight>75</weight>
-                          <italic>false</italic>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">font: bold 14pt;</string>
-                        </property>
-                        <property name="text">
-                         <string>ENABLE</string>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-hole-detect-enable</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_hole_detect_enable</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="3" column="1">
-                       <widget class="QLabel" name="label_79">
-                        <property name="text">
-                         <string>Leadin Arc Radius
-(if circle is large enough).
-0 = Auto calculate leadin.</string>
-                        </property>
-                        <property name="wordWrap">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="3" column="0">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_leadin_radius">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-leadin-radius</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_leadin_radius</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="2" column="1">
-                       <widget class="QLabel" name="label_70">
-                        <property name="text">
-                         <string>Maximum hole size to process</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="4" column="0" colspan="2">
-                       <widget class="QLabel" name="label_71">
-                        <property name="text">
-                         <string>The value used is the larger of the two supplied once calculated and processing commences.</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                        </property>
-                        <property name="wordWrap">
-                         <bool>true</bool>
                         </property>
                        </widget>
                       </item>
@@ -3135,6 +3163,47 @@ font-weight: bold;
                         </property>
                        </spacer>
                       </item>
+                      <item>
+                       <widget class="QWidget" name="widget_24" native="true">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>50</width>
+                          <height>0</height>
+                         </size>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_23">
+                         <item>
+                          <widget class="QLabel" name="label_71">
+                           <property name="text">
+                            <string>* The value used is the larger of the two supplied once calculated and processing commences.</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                           </property>
+                           <property name="wordWrap">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="label_74">
+                           <property name="text">
+                            <string>Arc1 is auto calculated based on the torch off distance, Arc2 and the circumferance of the hole.</string>
+                           </property>
+                           <property name="wordWrap">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
                      </layout>
                     </widget>
                    </item>
@@ -3251,29 +3320,50 @@ font-weight: bold;
                   </layout>
                  </item>
                  <item>
-                  <widget class="QCheckBox" name="checkBox">
-                   <property name="enabled">
-                    <bool>false</bool>
+                  <widget class="PlasmaHalCheckBox" name="chkb_auto_volts">
+                   <property name="styleSheet">
+                    <string notr="true">font: bold 12pt;</string>
                    </property>
                    <property name="text">
                     <string>USE AUTO VOLTS</string>
                    </property>
+                   <property name="pinBaseName" stdset="0">
+                    <string>plasma-auto-volts</string>
+                   </property>
+                   <property name="settingName" stdset="0">
+                    <string>plasma_auto_volts</string>
+                   </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QCheckBox" name="checkBox_2">
+                  <widget class="PlasmaHalCheckBox" name="chkb_vad">
+                   <property name="styleSheet">
+                    <string notr="true">font: bold 12pt;</string>
+                   </property>
                    <property name="text">
                     <string>VELOCITY ANTI-DIVE</string>
                    </property>
-                   <property name="checked">
-                    <bool>false</bool>
+                   <property name="pinBaseName" stdset="0">
+                    <string>plasma-vad</string>
+                   </property>
+                   <property name="settingName" stdset="0">
+                    <string>plasma_vad</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QCheckBox" name="checkBox_3">
+                  <widget class="PlasmaHalCheckBox" name="chkb_void_sense">
+                   <property name="styleSheet">
+                    <string notr="true">font: bold 12pt;</string>
+                   </property>
                    <property name="text">
                     <string>VOID SENSE ENABLE</string>
+                   </property>
+                   <property name="pinBaseName" stdset="0">
+                    <string>plasma-void-sense</string>
+                   </property>
+                   <property name="settingName" stdset="0">
+                    <string>plasma_void_sense</string>
                    </property>
                   </widget>
                  </item>
@@ -3290,12 +3380,12 @@ font-weight: bold;
                   <number>12</number>
                  </property>
                  <item row="0" column="0">
-                  <widget class="QCheckBox" name="checkBox_4">
+                  <widget class="PlasmaHalCheckBox" name="plasmahalcheckbox">
+                   <property name="styleSheet">
+                    <string notr="true">font: bold 12pt;</string>
+                   </property>
                    <property name="text">
                     <string>OHMIC SENSING ENABLE</string>
-                   </property>
-                   <property name="checked">
-                    <bool>false</bool>
                    </property>
                   </widget>
                  </item>
@@ -4979,10 +5069,6 @@ font-weight: bold;
   <tabstop>pushButton_5</tabstop>
   <tabstop>pushButton_6</tabstop>
   <tabstop>pushButton_9</tabstop>
-  <tabstop>checkBox</tabstop>
-  <tabstop>checkBox_2</tabstop>
-  <tabstop>checkBox_3</tabstop>
-  <tabstop>checkBox_4</tabstop>
   <tabstop>doubleSpinBox_3</tabstop>
   <tabstop>doubleSpinBox_4</tabstop>
   <tabstop>thc_delay</tabstop>
