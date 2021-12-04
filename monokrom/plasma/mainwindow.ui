@@ -1666,7 +1666,7 @@ DIVE</string>
           <item>
            <widget class="MkTabWidget" name="tabWidget_3">
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="tab_7">
              <attribute name="title">
@@ -1842,6 +1842,12 @@ EXTENT</string>
                        <verstretch>0</verstretch>
                       </sizepolicy>
                      </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>106</width>
+                       <height>32</height>
+                      </size>
+                     </property>
                     </widget>
                    </item>
                   </layout>
@@ -1994,17 +2000,22 @@ EXTENT</string>
                 <x>510</x>
                 <y>10</y>
                 <width>451</width>
-                <height>881</height>
+                <height>391</height>
                </rect>
               </property>
               <property name="title">
                <string>JOB DESCRIPTION/INSTRUCTIONS</string>
               </property>
-              <layout class="QVBoxLayout" name="verticalLayout_11">
-               <item>
-                <widget class="QTextBrowser" name="job_instructions"/>
-               </item>
-              </layout>
+              <widget class="QTextBrowser" name="job_instructions">
+               <property name="geometry">
+                <rect>
+                 <x>11</x>
+                 <y>36</y>
+                 <width>256</width>
+                 <height>192</height>
+                </rect>
+               </property>
+              </widget>
              </widget>
              <widget class="QWidget" name="widget_11" native="true">
               <property name="geometry">
@@ -2031,6 +2042,19 @@ EXTENT</string>
                 </widget>
                </item>
               </layout>
+             </widget>
+             <widget class="MkGroupBox" name="groupbox_25">
+              <property name="geometry">
+               <rect>
+                <x>510</x>
+                <y>490</y>
+                <width>451</width>
+                <height>391</height>
+               </rect>
+              </property>
+              <property name="title">
+               <string>FAVORATES</string>
+              </property>
              </widget>
             </widget>
            </widget>
@@ -4258,7 +4282,7 @@ font-weight: bold;
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -4344,6 +4368,43 @@ font-weight: bold;
            <attribute name="title">
             <string/>
            </attribute>
+           <widget class="QLabel" name="label_77">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>500</y>
+              <width>400</width>
+              <height>400</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>400</width>
+              <height>400</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>400</width>
+              <height>400</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap>../common/icons/conversational/bolt-hole.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
           </widget>
           <widget class="QWidget" name="tab_25">
            <attribute name="icon">
@@ -4374,6 +4435,43 @@ font-weight: bold;
            <attribute name="title">
             <string/>
            </attribute>
+           <widget class="QLabel" name="label_75">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>500</y>
+              <width>400</width>
+              <height>400</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>400</width>
+              <height>400</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>400</width>
+              <height>400</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap>../common/icons/conversational/gusset.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
           </widget>
           <widget class="QWidget" name="tab_28">
            <attribute name="icon">
@@ -4751,26 +4849,41 @@ font-weight: bold;
        <widget class="MkGroupBox" name="groupbox_18">
         <property name="geometry">
          <rect>
-          <x>670</x>
-          <y>20</y>
+          <x>1410</x>
+          <y>0</y>
           <width>591</width>
           <height>811</height>
          </rect>
         </property>
         <property name="title">
-         <string>HOLE DETECTION &amp;&amp; PARAMETERS</string>
+         <string>JOB FAVORITES</string>
         </property>
-        <layout class="QGridLayout" name="gridLayout_25">
-         <property name="topMargin">
-          <number>9</number>
+        <widget class="QPushButton" name="pushButton">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>430</y>
+           <width>111</width>
+           <height>44</height>
+          </rect>
          </property>
-         <property name="bottomMargin">
-          <number>9</number>
+         <property name="text">
+          <string>ADD</string>
          </property>
-         <property name="verticalSpacing">
-          <number>18</number>
+        </widget>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="geometry">
+          <rect>
+           <x>210</x>
+           <y>430</y>
+           <width>88</width>
+           <height>44</height>
+          </rect>
          </property>
-        </layout>
+         <property name="text">
+          <string>NEW</string>
+         </property>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_diagnostics">

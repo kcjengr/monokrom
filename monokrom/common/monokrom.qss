@@ -134,7 +134,7 @@ QComboBox {
   border: 2px solid #ffee06;
   border-radius: 8px;
   min-width: 6em;
-  min-height: 25px;
+  min-height: 32px;
   font-weight: bold; }
 
 QComboBox::drop-down {
@@ -162,7 +162,8 @@ QComboBox:item {
   color: #16160e;
   font-weight: bold;
   background: #ffee06;
-  max-height: 25px;
+  min-height: 32px;
+  max-height: 32px;
   padding-left: 20px; }
 
 QComboBox:item:checked {
@@ -198,9 +199,10 @@ QDoubleSpinBox {
   /* font: bold italic 14pt "DSEG7 Classic"; */
   font: bold 14pt;
   color: #16160e;
-  height: 29px;
-  max-height: 29px;
+  height: 32px;
+  max-height: 32px;
   min-width: 140px;
+  max-width: 200px;
   border: 2px solid #ffee06;
   border-radius: 8px;
   background-color: #ffee06; }

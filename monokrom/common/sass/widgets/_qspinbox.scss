@@ -7,9 +7,10 @@ QDoubleSpinBox {
   /* font: bold italic 14pt "DSEG7 Classic"; */
   font: bold 14pt;
   color: $background;
-  height: 29px;
-  max-height: 29px;
+  height: 32px;
+  max-height: 32px;
   min-width: 140px;
+  max-width: 200px;
   border: $border;
   border-radius: $border-radius;
   background-color: $border-color;
