@@ -120,15 +120,19 @@ class MainWindow(VCPMainWindow):
     def cutchart_pin_update(self, value):
         LOG.debug(f"Cutchart_ID Pin = {value}")
         self.filter_cutchart_id = value
-        # Get the cutchart record based on the pin value.
-        cut = self._plasma_plugin.cut_by_id(value)[0]
-        # Cycle through all the filters and set them to the correct value
-        for k in MainWindow.relationship_fld_map:
-            # get handle to UI field
-            ui_fld = getattr(self, MainWindow.filter_fld_map[k])
-            new_index = ui_fld.findData(getattr(cut, MainWindow.relationship_fld_map[k]).id)
-            ui_fld.setCurrentIndex(new_index)
-        # check to see if there is a sub select required, if so select it
+        try:
+            # Get the cutchart record based on the pin value.
+            cut = self._plasma_plugin.cut_by_id(value)[0]
+        except NoneType:
+            LOG.warn('No Tool / Cutchart found')
+        else:
+            # Cycle through all the filters and set them to the correct value
+            for k in MainWindow.relationship_fld_map:
+                # get handle to UI field
+                ui_fld = getattr(self, MainWindow.filter_fld_map[k])
+                new_index = ui_fld.findData(getattr(cut, MainWindow.relationship_fld_map[k]).id)
+                ui_fld.setCurrentIndex(new_index)
+            # check to see if there is a sub select required, if so select it
         
 
     def load_plasma_ui_filter_data(self):
