@@ -1666,7 +1666,7 @@ DIVE</string>
           <item>
            <widget class="MkTabWidget" name="tabWidget_3">
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="tab_7">
              <attribute name="title">
@@ -4511,51 +4511,6 @@ font-weight: bold;
        <attribute name="title">
         <string>SETTINGS</string>
        </attribute>
-       <widget class="QSpinBox" name="spinBox">
-        <property name="geometry">
-         <rect>
-          <x>460</x>
-          <y>10</y>
-          <width>171</width>
-          <height>29</height>
-         </rect>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="buttonSymbols">
-         <enum>QAbstractSpinBox::PlusMinus</enum>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="doubleSpinBox">
-        <property name="geometry">
-         <rect>
-          <x>460</x>
-          <y>50</y>
-          <width>171</width>
-          <height>29</height>
-         </rect>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="buttonSymbols">
-         <enum>QAbstractSpinBox::PlusMinus</enum>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
-        <property name="geometry">
-         <rect>
-          <x>460</x>
-          <y>90</y>
-          <width>171</width>
-          <height>29</height>
-         </rect>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
        <widget class="MkGroupBox" name="groupbox_7">
         <property name="geometry">
          <rect>
@@ -4658,7 +4613,7 @@ font-weight: bold;
           <x>20</x>
           <y>340</y>
           <width>433</width>
-          <height>146</height>
+          <height>181</height>
          </rect>
         </property>
         <property name="title">
@@ -4746,7 +4701,7 @@ font-weight: bold;
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>510</y>
+          <y>540</y>
           <width>431</width>
           <height>131</height>
          </rect>
@@ -4781,7 +4736,7 @@ font-weight: bold;
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>650</y>
+          <y>680</y>
           <width>622</width>
           <height>211</height>
          </rect>
@@ -4884,6 +4839,82 @@ font-weight: bold;
           <string>NEW</string>
          </property>
         </widget>
+       </widget>
+       <widget class="MkGroupBox" name="groupbox_26">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>540</y>
+          <width>399</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>HOLE MARKING</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_25">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_78">
+           <property name="text">
+            <string>VOLTAGE THRESHOLD</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="PlasmaHalDoubleSpinBox" name="spn_marking_voltage">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::PlusMinus</enum>
+           </property>
+           <property name="pinBaseName" stdset="0">
+            <string>plasma-marking-voltage</string>
+           </property>
+           <property name="settingName" stdset="0">
+            <string>plasma_marking_voltage</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_86">
+           <property name="text">
+            <string>DELAY</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="PlasmaHalDoubleSpinBox" name="spn_marking_delay">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::PlusMinus</enum>
+           </property>
+           <property name="suffix">
+            <string> S</string>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <double>2.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.300000000000000</double>
+           </property>
+           <property name="pinBaseName" stdset="0">
+            <string>plasma-marking-delay</string>
+           </property>
+           <property name="settingName" stdset="0">
+            <string>plasma_marking_delay</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_diagnostics">
@@ -5215,9 +5246,6 @@ font-weight: bold;
   <tabstop>btn_config_reload</tabstop>
   <tabstop>pushButton_11</tabstop>
   <tabstop>tabwidget</tabstop>
-  <tabstop>spinBox</tabstop>
-  <tabstop>doubleSpinBox</tabstop>
-  <tabstop>doubleSpinBox_2</tabstop>
   <tabstop>settings_lineedit_2</tabstop>
   <tabstop>settings_lineedit</tabstop>
   <tabstop>settings_lineedit_3</tabstop>

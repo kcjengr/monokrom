@@ -253,4 +253,19 @@ settings:
     plasma_torch_off_distance:
          default_value: 0
          persistent: true
+         
+    plasma_small_hole_detect:
+        default_value: false
+        persistent: true
     
+    plasma_marking_voltage:
+        default_value: 10
+        persistent: true
+        
+    plasma_marking_delay:
+        default_value: 0.3
+        persistent: true
+        
+    plasma_small_hole_threshold:
+        default_value: 3.5
+        persistent: true

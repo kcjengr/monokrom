@@ -11,7 +11,7 @@
   (Preset Volts: 49) ( Suggested Tip Size: 45 )
   ( Min Cut Length for DTHC ON : 1 units ) 
   (Preset Volts set to 49 Volts)
-  T2 M6 (Load Plasmac Plasma Controller Tool #)
+  T6 M6 (Load Plasmac Plasma Controller Tool #)
   M66 P3 L3 Q2  (Wait for the Plasmac Plasma Controller to acknowledge the change)
   ( Settings Check)
   ( ###########################)
