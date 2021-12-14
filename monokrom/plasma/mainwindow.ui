@@ -1303,69 +1303,16 @@ DIVE</string>
            <attribute name="title">
             <string>JOG</string>
            </attribute>
-           <widget class="QWidget" name="widget_10" native="true">
+           <widget class="VCPWidget" name="widget_25">
             <property name="geometry">
              <rect>
-              <x>40</x>
-              <y>30</y>
-              <width>250</width>
-              <height>200</height>
+              <x>29</x>
+              <y>10</y>
+              <width>231</width>
+              <height>211</height>
              </rect>
             </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>190</width>
-              <height>130</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>250</width>
-              <height>200</height>
-             </size>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_8">
-             <property name="leftMargin">
-              <number>9</number>
-             </property>
-             <property name="topMargin">
-              <number>9</number>
-             </property>
-             <property name="rightMargin">
-              <number>9</number>
-             </property>
-             <property name="bottomMargin">
-              <number>9</number>
-             </property>
-             <property name="spacing">
-              <number>9</number>
-             </property>
-             <item row="1" column="0">
-              <widget class="ActionButton" name="actionbutton_21">
-               <property name="icon">
-                <iconset>
-                 <normaloff>../common/icons/x-left.png</normaloff>../common/icons/x-left.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>46</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.axis:x,neg</string>
-               </property>
-              </widget>
-             </item>
+            <layout class="QGridLayout" name="gridLayout_25">
              <item row="0" column="1">
               <widget class="ActionButton" name="actionbutton">
                <property name="icon">
@@ -1386,47 +1333,7 @@ DIVE</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="2">
-              <widget class="ActionButton" name="actionbutton_22">
-               <property name="icon">
-                <iconset>
-                 <normaloff>../common/icons/x-right.png</normaloff>../common/icons/x-right.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>46</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.axis:x,pos</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="ActionButton" name="actionbutton_4">
-               <property name="icon">
-                <iconset>
-                 <normaloff>../common/icons/y-down.png</normaloff>../common/icons/y-down.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>46</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.axis:y,neg</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2" colspan="2">
+             <item row="0" column="2">
               <widget class="QWidget" name="widget_14" native="true">
                <layout class="QHBoxLayout" name="horizontalLayout_19">
                 <property name="spacing">
@@ -1473,7 +1380,67 @@ DIVE</string>
                </layout>
               </widget>
              </item>
-             <item row="2" column="2" colspan="2">
+             <item row="1" column="0">
+              <widget class="ActionButton" name="actionbutton_21">
+               <property name="icon">
+                <iconset>
+                 <normaloff>../common/icons/x-left.png</normaloff>../common/icons/x-left.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>46</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+               <property name="actionName" stdset="0">
+                <string>machine.jog.axis:x,neg</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="ActionButton" name="actionbutton_22">
+               <property name="icon">
+                <iconset>
+                 <normaloff>../common/icons/x-right.png</normaloff>../common/icons/x-right.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>46</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+               <property name="actionName" stdset="0">
+                <string>machine.jog.axis:x,pos</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="ActionButton" name="actionbutton_4">
+               <property name="icon">
+                <iconset>
+                 <normaloff>../common/icons/y-down.png</normaloff>../common/icons/y-down.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>46</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+               <property name="actionName" stdset="0">
+                <string>machine.jog.axis:y,neg</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
               <widget class="QWidget" name="widget_15" native="true">
                <layout class="QHBoxLayout" name="horizontalLayout_20">
                 <property name="spacing">
@@ -1516,17 +1483,113 @@ DIVE</string>
              </item>
             </layout>
            </widget>
-           <widget class="QWidget" name="widget_13" native="true">
+           <widget class="VCPWidget" name="widget_10">
             <property name="geometry">
              <rect>
-              <x>30</x>
-              <y>270</y>
-              <width>252</width>
-              <height>406</height>
+              <x>20</x>
+              <y>210</y>
+              <width>271</width>
+              <height>351</height>
              </rect>
             </property>
-            <layout class="QGridLayout" name="gridLayout_9">
-             <item row="7" column="0">
+            <layout class="QGridLayout" name="gridLayout_8">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_21">
+               <property name="text">
+                <string>STEP SIZE</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="ActionButton" name="actionbutton_27">
+               <property name="text">
+                <string>5</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="autoExclusive">
+                <bool>true</bool>
+               </property>
+               <property name="actionName" stdset="0">
+                <string>machine.jog.set-increment:5</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="ActionButton" name="actionbutton_26">
+               <property name="text">
+                <string>1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="autoExclusive">
+                <bool>true</bool>
+               </property>
+               <property name="actionName" stdset="0">
+                <string>machine.jog.set-increment:1</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="ActionButton" name="actionbutton_28">
+               <property name="text">
+                <string>.1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="autoExclusive">
+                <bool>true</bool>
+               </property>
+               <property name="actionName" stdset="0">
+                <string>machine.jog.set-increment:0.1</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="ActionButton" name="actionbutton_29">
+               <property name="text">
+                <string>.01</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="autoExclusive">
+                <bool>true</bool>
+               </property>
+               <property name="actionName" stdset="0">
+                <string>machine.jog.set-increment:0.01</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="ActionButton" name="actionbutton_35">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>INC</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="autoExclusive">
+                <bool>true</bool>
+               </property>
+               <property name="actionName" stdset="0">
+                <string>machine.jog-mode.incremental</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
               <widget class="ActionButton" name="actionbutton_23">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -1557,103 +1620,77 @@ DIVE</string>
                </property>
               </widget>
              </item>
-             <item row="2" column="0">
-              <widget class="ActionButton" name="actionbutton_27">
-               <property name="text">
-                <string>5</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="autoExclusive">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.set-increment:5</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0">
-              <widget class="ActionButton" name="actionbutton_29">
-               <property name="text">
-                <string>.01</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="autoExclusive">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.set-increment:0.01</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="ActionButton" name="actionbutton_26">
-               <property name="text">
-                <string>1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="autoExclusive">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.set-increment:1</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="ActionButton" name="actionbutton_28">
-               <property name="text">
-                <string>.1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="autoExclusive">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.set-increment:0.1</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="0">
-              <widget class="ActionButton" name="actionbutton_35">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>INC</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="autoExclusive">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog-mode.incremental</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_21">
-               <property name="text">
-                <string>STEP SIZE</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
             </layout>
+           </widget>
+           <widget class="VCPWidget" name="widget_13">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>590</y>
+              <width>251</width>
+              <height>291</height>
+             </rect>
+            </property>
+            <property name="rules" stdset="0">
+             <string>[{&quot;name&quot;: &quot;Visible&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}]</string>
+            </property>
+            <widget class="QPushButton" name="btn_cut_recover_rev">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>20</y>
+               <width>88</width>
+               <height>44</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>REVERSE</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="btn_cut_recover_fwd">
+             <property name="geometry">
+              <rect>
+               <x>150</x>
+               <y>20</y>
+               <width>88</width>
+               <height>44</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>FORWARD</string>
+             </property>
+            </widget>
+            <widget class="QSlider" name="cut_recovery_speed">
+             <property name="geometry">
+              <rect>
+               <x>90</x>
+               <y>70</y>
+               <width>61</width>
+               <height>211</height>
+              </rect>
+             </property>
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="value">
+              <number>50</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="invertedAppearance">
+              <bool>false</bool>
+             </property>
+             <property name="invertedControls">
+              <bool>false</bool>
+             </property>
+             <property name="tickPosition">
+              <enum>QSlider::TicksBothSides</enum>
+             </property>
+             <property name="tickInterval">
+              <number>10</number>
+             </property>
+            </widget>
            </widget>
           </widget>
          </widget>
@@ -3597,6 +3634,9 @@ font-weight: bold;
                </item>
                <item row="0" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="thc_delay">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3610,6 +3650,9 @@ font-weight: bold;
                </item>
                <item row="1" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="thc_threshold">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3623,6 +3666,9 @@ font-weight: bold;
                </item>
                <item row="2" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_p_gain">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3633,6 +3679,9 @@ font-weight: bold;
                </item>
                <item row="3" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_i_gain">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3643,6 +3692,9 @@ font-weight: bold;
                </item>
                <item row="4" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_d_gain">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3653,6 +3705,9 @@ font-weight: bold;
                </item>
                <item row="5" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="thc_vad_threshold">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3666,6 +3721,9 @@ font-weight: bold;
                </item>
                <item row="6" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="thc_void_override">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3679,6 +3737,9 @@ font-weight: bold;
                </item>
                <item row="7" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="thc_safe_height">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3760,6 +3821,9 @@ font-weight: bold;
                </item>
                <item row="0" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="arc_fail_timeout">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3773,6 +3837,9 @@ font-weight: bold;
                </item>
                <item row="1" column="2">
                 <widget class="PlasmaHalSpinBox" name="arc_max_starts">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3783,6 +3850,9 @@ font-weight: bold;
                </item>
                <item row="2" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="arc_retry_delay">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3796,6 +3866,9 @@ font-weight: bold;
                </item>
                <item row="3" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_scale">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3812,6 +3885,9 @@ font-weight: bold;
                </item>
                <item row="4" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_offset">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3828,6 +3904,9 @@ font-weight: bold;
                </item>
                <item row="5" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="arc_height_per_volt">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3841,6 +3920,9 @@ font-weight: bold;
                </item>
                <item row="6" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_high_volts">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3854,6 +3936,9 @@ font-weight: bold;
                </item>
                <item row="7" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_low_volts">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3928,6 +4013,9 @@ font-weight: bold;
                </item>
                <item row="8" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="probe_offset">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3938,6 +4026,9 @@ font-weight: bold;
                </item>
                <item row="6" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="probe_height">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3948,6 +4039,9 @@ font-weight: bold;
                </item>
                <item row="5" column="2">
                 <widget class="PlasmaHalSpinBox" name="probe_speed">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3958,6 +4052,9 @@ font-weight: bold;
                </item>
                <item row="4" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="probe_float_travel">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3968,6 +4065,9 @@ font-weight: bold;
                </item>
                <item row="9" column="2">
                 <widget class="PlasmaHalSpinBox" name="probe_ohmic_retries">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3978,6 +4078,9 @@ font-weight: bold;
                </item>
                <item row="11" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="probe_skip_ihs">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -3988,6 +4091,9 @@ font-weight: bold;
                </item>
                <item row="12" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="probe_setup_speed">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
@@ -4041,6 +4147,9 @@ font-weight: bold;
                   </item>
                   <item row="0" column="2">
                    <widget class="PlasmaHalDoubleSpinBox" name="scribe_arm_delay">
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
                     <property name="buttonSymbols">
                      <enum>QAbstractSpinBox::PlusMinus</enum>
                     </property>
@@ -4054,6 +4163,9 @@ font-weight: bold;
                   </item>
                   <item row="1" column="2">
                    <widget class="PlasmaHalDoubleSpinBox" name="scribe_on_delay">
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
                     <property name="buttonSymbols">
                      <enum>QAbstractSpinBox::PlusMinus</enum>
                     </property>
@@ -4067,6 +4179,9 @@ font-weight: bold;
                   </item>
                   <item row="2" column="2">
                    <widget class="PlasmaHalDoubleSpinBox" name="spot_threshold">
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
                     <property name="buttonSymbols">
                      <enum>QAbstractSpinBox::PlusMinus</enum>
                     </property>
@@ -4080,6 +4195,9 @@ font-weight: bold;
                   </item>
                   <item row="3" column="2">
                    <widget class="PlasmaHalDoubleSpinBox" name="spot_delay">
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
                     <property name="buttonSymbols">
                      <enum>QAbstractSpinBox::PlusMinus</enum>
                     </property>
@@ -4282,7 +4400,7 @@ font-weight: bold;
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="iconSize">
            <size>
@@ -4840,82 +4958,6 @@ font-weight: bold;
          </property>
         </widget>
        </widget>
-       <widget class="MkGroupBox" name="groupbox_26">
-        <property name="geometry">
-         <rect>
-          <x>460</x>
-          <y>540</y>
-          <width>399</width>
-          <height>131</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>HOLE MARKING</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_25">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_78">
-           <property name="text">
-            <string>VOLTAGE THRESHOLD</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="PlasmaHalDoubleSpinBox" name="spn_marking_voltage">
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::PlusMinus</enum>
-           </property>
-           <property name="pinBaseName" stdset="0">
-            <string>plasma-marking-voltage</string>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>plasma_marking_voltage</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_86">
-           <property name="text">
-            <string>DELAY</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="PlasmaHalDoubleSpinBox" name="spn_marking_delay">
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::PlusMinus</enum>
-           </property>
-           <property name="suffix">
-            <string> S</string>
-           </property>
-           <property name="decimals">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <double>2.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-           <property name="value">
-            <double>0.300000000000000</double>
-           </property>
-           <property name="pinBaseName" stdset="0">
-            <string>plasma-marking-delay</string>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>plasma_marking_delay</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
       </widget>
       <widget class="QWidget" name="tab_diagnostics">
        <attribute name="title">
@@ -5064,6 +5106,12 @@ font-weight: bold;
    <header>qtpyvcp.widgets.hal_widgets.hal_button</header>
   </customwidget>
   <customwidget>
+   <class>VCPWidget</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.containers.widget</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>MonokromDroGroup</class>
    <extends>QWidget</extends>
    <header>monokrom.common.widgets.mk_dro.mk_dro</header>
@@ -5162,18 +5210,6 @@ font-weight: bold;
   <tabstop>user18</tabstop>
   <tabstop>user5</tabstop>
   <tabstop>user19</tabstop>
-  <tabstop>actionbutton_21</tabstop>
-  <tabstop>actionbutton</tabstop>
-  <tabstop>actionbutton_22</tabstop>
-  <tabstop>actionbutton_4</tabstop>
-  <tabstop>actionbutton_24</tabstop>
-  <tabstop>actionbutton_25</tabstop>
-  <tabstop>actionbutton_23</tabstop>
-  <tabstop>actionbutton_27</tabstop>
-  <tabstop>actionbutton_29</tabstop>
-  <tabstop>actionbutton_26</tabstop>
-  <tabstop>actionbutton_28</tabstop>
-  <tabstop>actionbutton_35</tabstop>
   <tabstop>tabWidget_3</tabstop>
   <tabstop>vtk_center</tabstop>
   <tabstop>recentfilecombobox_2</tabstop>

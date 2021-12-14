@@ -1,5 +1,7 @@
 import os
 
+import hal as cnchal
+
 from qtpy.QtCore import Qt, QItemSelectionModel
 from qtpy.QtWidgets import QLabel, QListWidgetItem
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
@@ -98,6 +100,10 @@ class MainWindow(VCPMainWindow):
         self.btn_run_reload.clicked.connect(self.param_update_from_filters)
         self.filter_sub_list.itemClicked.connect(self.filter_sub_list_select)
         self.btn_seed_db.clicked.connect(self.seed_database)
+        self.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
+        self.btn_cut_recover_fwd.pressed.connect(lambda:self.cut_recovery_direction(1))
+        self.btn_cut_recover_rev.released.connect(lambda:self.cut_recovery_direction(0))
+        self.btn_cut_recover_fwd.released.connect(lambda:self.cut_recovery_direction(0))
         
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
@@ -116,6 +122,10 @@ class MainWindow(VCPMainWindow):
         comp = hal.getComponent()
         self.hal_cutchart_id = comp.addPin('cutchart-id', 'u32', 'in')
         comp.addListener('cutchart-id', self.cutchart_pin_update)
+
+    def cut_recovery_direction(self, direction):
+        speed = self.cut_recovery_speed.value() * 0.01 * direction
+        cnchal.set_p('plasmac.paused-motion-speed',str(speed))
 
     def cutchart_pin_update(self, value):
         LOG.debug(f"Cutchart_ID Pin = {value}")
