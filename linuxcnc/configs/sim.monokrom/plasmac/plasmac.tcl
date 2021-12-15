@@ -70,6 +70,21 @@ net plasmac:pierce-height                                        plasmac.pierce-
 net plasmac:probe-feed-rate                                      plasmac.probe-feed-rate
 net plasmac:probe-start-height                                   plasmac.probe-start-height
 net plasmac:puddle-jump-delay                                    plasmac.puddle-jump-delay
+net plasmac:puddle-jump-height                                   plasmac.puddle-jump-height
+net plasmac:restart-delay                                        plasmac.restart-delay
+net plasmac:safe-height                                          plasmac.safe-height
+net plasmac:scribe-arm-delay                                     plasmac.scribe-arm-delay
+net plasmac:scribe-on-delay                                      plasmac.scribe-on-delay
+net plasmac:setup-feed-rate                                      plasmac.setup-feed-rate
+net plasmac:skip-ihs-distance                                    plasmac:skip-ihs-distance
+net plasmac:spotting-threshold                                   plasmac.spotting-threshold
+net plasmac:spotting-time                                        plasmac.spotting-time
+net plasmac:thc-delay                                            plasmac.thc-delay
+net plasmac:thc-enable                                           plasmac.thc-enable
+net plasmac:thc-feed-rate                                        plasmac.thc-feed-rate
+net plasmac:thc-threshold                                        plasmac.thc-threshold
+net plasmac:torch-enable                                         plasmac.torch-enable
+net plasmac:use-auto-volts                                       plasmac.use-auto-volts
 
 
 
@@ -114,6 +129,10 @@ net plasmac:led-down                plasmac.led-down
 net plasmac:led-up                  plasmac.led-up
 net plasmac:pierce-count            plasmac.pierce-count
 net plasmac:probe-test-error        plasmac.probe-test-error
+net plasmac:state                   plasmac.state-out
+net plasmac:thc-active              plasmac.thc-active
+net plasmac:thc-enable              plasmac.thc-enabled
+net plasmac:z-height                plasmac.z-height
 
 
 
