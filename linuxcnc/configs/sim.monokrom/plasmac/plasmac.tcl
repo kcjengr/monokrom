@@ -41,8 +41,6 @@ net plasmac:x-offset-current     axis.x.eoffset              =>  plasmac.x-offse
 net plasmac:y-offset-current     axis.y.eoffset              =>  plasmac.y-offset-current
 net plasmac:z-offset-current     axis.z.eoffset              =>  plasmac.z-offset-current
 
-net plasmac:axis-max-limit       ini.z.max_limit             =>  plasmac.axis-z-max-limit
-net plasmac:axis-min-limit       ini.z.min_limit             =>  plasmac.axis-z-min-limit
 
 net plasmac:cornerlock-enable                                    plasmac.cornerlock-enable
 net plasmac:cornerlock-threshold                                 plasmac.cornerlock-threshold
@@ -76,7 +74,7 @@ net plasmac:safe-height                                          plasmac.safe-he
 net plasmac:scribe-arm-delay                                     plasmac.scribe-arm-delay
 net plasmac:scribe-on-delay                                      plasmac.scribe-on-delay
 net plasmac:setup-feed-rate                                      plasmac.setup-feed-rate
-net plasmac:skip-ihs-distance                                    plasmac:skip-ihs-distance
+net plasmac:skip-ihs-distance                                    plasmac.skip-ihs-distance
 net plasmac:spotting-threshold                                   plasmac.spotting-threshold
 net plasmac:spotting-time                                        plasmac.spotting-time
 net plasmac:thc-delay                                            plasmac.thc-delay

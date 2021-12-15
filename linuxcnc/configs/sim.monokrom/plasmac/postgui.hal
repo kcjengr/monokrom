@@ -14,6 +14,9 @@
 # Then connect the plasmac:thc-enable signal to your switch:
 # net plasmac:thc-enable your.switch-pin
 
+net plasmac:axis-max-limit       ini.z.max_limit             =>  plasmac.axis-z-max-limit
+net plasmac:axis-min-limit       ini.z.min_limit             =>  plasmac.axis-z-min-limit
+
 
 # simulator panel connections
 loadusr -Wn qtplasmac_sim qtvcp qtplasmac_sim.ui
@@ -25,3 +28,5 @@ net sim:float           qtplasmac_sim.sensor_float      =>  db_float.in         
 net sim:breakaway       qtplasmac_sim.sensor_breakaway  =>  db_breakaway.in
 net sim:move-up         qtplasmac_sim.move_up           =>  plasmac.move-up         qtpyvcp.led_thc_up.on
 net sim:move-down       qtplasmac_sim.move_down         =>  plasmac.move-down       qtpyvcp.led_thc_down.on
+
+
