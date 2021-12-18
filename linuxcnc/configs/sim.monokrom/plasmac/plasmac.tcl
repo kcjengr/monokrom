@@ -1,9 +1,23 @@
 # do not change the contents of this file as it will be overwiten by updates
 # make custom changes in <machinename>_connections.hal
 
+
 #***** PLASMAC COMPONENT *****
 loadrt  plasmac
 addf    plasmac  servo-thread
+
+#***** All Homed logic *****
+loadrt logic names=allhomed personality=0x10${numJoints}
+addf allhomed servo-thread
+for {set jnum 0} {$jnum < $numJoints} {incr jnum} {
+    net allhomed:in-${jnum}    halui.joint.${jnum}.is-homed  => allhomed.in-[format "%02u" $jnum]
+}
+
+# Set Plasmac Mode
+setp plasmac.mode 0
+
+# Debug
+setp plasmac.debug-print 1
 
 # QTPLASMAC/MONOKROM-PLASMA TOOLCHANGE PASSTHROUGH
 net tool-number <= iocontrol.0.tool-prep-number
@@ -40,49 +54,7 @@ net plasmac:units-per-mm         halui.machine.units-per-mm  =>  plasmac.units-p
 net plasmac:x-offset-current     axis.x.eoffset              =>  plasmac.x-offset-current
 net plasmac:y-offset-current     axis.y.eoffset              =>  plasmac.y-offset-current
 net plasmac:z-offset-current     axis.z.eoffset              =>  plasmac.z-offset-current
-
-
-net plasmac:cornerlock-enable                                    plasmac.cornerlock-enable
-net plasmac:cornerlock-threshold                                 plasmac.cornerlock-threshold
-net plasmac:cut-feed-rate                                        plasmac.cut-feed-rate
-net plasmac:cut-height                                           plasmac.cut-height
-net plasmac:cut-length                                           plasmac.cut-length
-net plasmac:cut-time                                             plasmac.cut-time
-net plasmac:cut-volts                                            plasmac.cut-volts
-net plasmac:float-switch-travel                                  plasmac.float-switch-travel
-net plasmac:height-override                                      plasmac.height-override
-net plasmac:height-per-volt                                      plasmac.height-per-volt
-net plasmac:ignore-arc-ok-1                                      plasmac.ignore-arc-ok-1
-net plasmac:kerfcross-enable                                     plasmac.kerfcross-enable
-net plasmac:kerfcross-override                                   plasmac.kerfcross-override
-net plasmac:mesh-enable                                          plasmac.mesh-enable
-net plasmac:ohmic-max-attempts                                   plasmac.ohmic-max-attempts
-net plasmac:ohmic-probe-enable                                   plasmac.ohmic-probe-enable
-net plasmac:ohmic-probe-offset                                   plasmac.ohmic-probe-offset
-net plasmac:pause-at-end                                         plasmac.pause-at-end
-net plasmac:pid-d-gain                                           plasmac.pid-d-gain
-net plasmac:pid-i-gain                                           plasmac.pid-i-gain
-net plasmac:pid-p-gain                                           plasmac.pid-p-gain
-net plasmac:pierce-delay                                         plasmac.pierce-delay
-net plasmac:pierce-height                                        plasmac.pierce-height
-net plasmac:probe-feed-rate                                      plasmac.probe-feed-rate
-net plasmac:probe-start-height                                   plasmac.probe-start-height
-net plasmac:puddle-jump-delay                                    plasmac.puddle-jump-delay
-net plasmac:puddle-jump-height                                   plasmac.puddle-jump-height
-net plasmac:restart-delay                                        plasmac.restart-delay
-net plasmac:safe-height                                          plasmac.safe-height
-net plasmac:scribe-arm-delay                                     plasmac.scribe-arm-delay
-net plasmac:scribe-on-delay                                      plasmac.scribe-on-delay
-net plasmac:setup-feed-rate                                      plasmac.setup-feed-rate
-net plasmac:skip-ihs-distance                                    plasmac.skip-ihs-distance
-net plasmac:spotting-threshold                                   plasmac.spotting-threshold
-net plasmac:spotting-time                                        plasmac.spotting-time
-net plasmac:thc-delay                                            plasmac.thc-delay
-net plasmac:thc-enable                                           plasmac.thc-enable
-net plasmac:thc-feed-rate                                        plasmac.thc-feed-rate
-net plasmac:thc-threshold                                        plasmac.thc-threshold
-net plasmac:torch-enable                                         plasmac.torch-enable
-net plasmac:use-auto-volts                                       plasmac.use-auto-volts
+net plasmac:machine-is-homed     allhomed.and                =>  plasmac.homed
 
 
 
@@ -114,23 +86,13 @@ net plasmac:program-pause           plasmac.program-pause       =>  halui.progra
 net plasmac:program-resume          plasmac.program-resume      =>  halui.program.resume
 net plasmac:program-run             plasmac.program-run         =>  halui.program.run
 net plasmac:program-stop            plasmac.program-stop        =>  halui.program.stop
-net plasmac:torch-on                plasmac.torch-on
+#net plasmac:torch-on                plasmac.torch-on
 net plasmac:x-offset-counts         plasmac.x-offset-counts     =>  axis.x.eoffset-counts
 net plasmac:y-offset-counts         plasmac.y-offset-counts     =>  axis.y.eoffset-counts
 net plasmac:xy-offset-enable        plasmac.xy-offset-enable    =>  axis.x.eoffset-enable axis.y.eoffset-enable
 net plasmac:z-offset-counts         plasmac.z-offset-counts     =>  axis.z.eoffset-counts
 net plasmac:z-offset-enable         plasmac.z-offset-enable     =>  axis.z.eoffset-enable
-net plasmac:consumable-changing     plasmac.consumable-changing
-net plasmac:cornerlock-is-locked    plasmac.cornerlock-is-locked
-net plasmac:kerfcross-is-locked     plasmac.kerfcross-is-locked
-net plasmac:led-down                plasmac.led-down
-net plasmac:led-up                  plasmac.led-up
-net plasmac:pierce-count            plasmac.pierce-count
-net plasmac:probe-test-error        plasmac.probe-test-error
-net plasmac:state                   plasmac.state-out
-net plasmac:thc-active              plasmac.thc-active
-net plasmac:thc-enable              plasmac.thc-enabled
-net plasmac:z-height                plasmac.z-height
+
 
 
 

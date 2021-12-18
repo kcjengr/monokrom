@@ -10,6 +10,7 @@ addf db_float     servo-thread
 addf db_ohmic     servo-thread
 addf db_breakaway servo-thread
 addf db_arc-ok    servo-thread
+
 # for the float and ohmic inputs
 # each increment in delay is a 0.001mm (0.00004") increase in any probed height result
 setp db_float.delay     5
@@ -46,3 +47,5 @@ net plasmac:axis-position   joint.3.pos-fb                 =>  plasmac.axis-z-po
 #***** SCRIBE CONNECTIONS *****
 #net plasmac:scribe-arm plasmac.scribe-arm => ***YOUR_SCRIBE_ARMING_OUTPUT***
 #net plasmac:scribe-on  plasmac.scribe-on  => ***YOUR_SCRIBE_ON_OUTPUT***
+
+
