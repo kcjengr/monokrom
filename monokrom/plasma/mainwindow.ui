@@ -250,10 +250,7 @@
                   <height>200</height>
                  </size>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_21">
-                 <property name="spacing">
-                  <number>8</number>
-                 </property>
+                <layout class="QGridLayout" name="gridLayout_9">
                  <property name="leftMargin">
                   <number>0</number>
                  </property>
@@ -266,14 +263,7 @@
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
-                 <item>
-                  <widget class="MonokromDroWidget" name="monokromdrowidget">
-                   <property name="useWorkCoordinates" stdset="0">
-                    <number>0</number>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
+                 <item row="1" column="1">
                   <widget class="MonokromDroWidget" name="monokromdrowidget_2">
                    <property name="axisNumber" stdset="0">
                     <number>1</number>
@@ -283,13 +273,98 @@
                    </property>
                   </widget>
                  </item>
-                 <item>
+                 <item row="2" column="1">
                   <widget class="MonokromDroWidget" name="monokromdrowidget_3">
                    <property name="axisNumber" stdset="0">
                     <number>2</number>
                    </property>
                    <property name="useWorkCoordinates" stdset="0">
                     <number>0</number>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="MonokromDroWidget" name="monokromdrowidget">
+                   <property name="useWorkCoordinates" stdset="0">
+                    <number>0</number>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="ActionButton" name="actionbutton_5">
+                   <property name="minimumSize">
+                    <size>
+                     <width>44</width>
+                     <height>44</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>44</width>
+                     <height>44</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(255, 238, 6)</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>../common/icons/unhomed.png</normaloff>../common/icons/unhomed.png</iconset>
+                   </property>
+                   <property name="actionName" stdset="0">
+                    <string>machine.unhome.axis:x</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="ActionButton" name="actionbutton_6">
+                   <property name="minimumSize">
+                    <size>
+                     <width>44</width>
+                     <height>44</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>44</width>
+                     <height>44</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(255, 238, 6)</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>../common/icons/unhomed.png</normaloff>../common/icons/unhomed.png</iconset>
+                   </property>
+                   <property name="actionName" stdset="0">
+                    <string>machine.unhome.axis:y</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="ActionButton" name="actionbutton_7">
+                   <property name="minimumSize">
+                    <size>
+                     <width>44</width>
+                     <height>44</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>44</width>
+                     <height>44</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(255, 238, 6)</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>../common/icons/unhomed.png</normaloff>../common/icons/unhomed.png</iconset>
+                   </property>
+                   <property name="actionName" stdset="0">
+                    <string>machine.unhome.axis:z</string>
                    </property>
                   </widget>
                  </item>
@@ -514,6 +589,17 @@ ABORT</string>
                   <property name="text">
                    <string>FRAME
 JOB</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="1">
+                 <widget class="HalButton" name="torch_enable">
+                  <property name="text">
+                   <string>TORCH
+ENABLE</string>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -818,7 +904,7 @@ JOB</string>
                   <bool>false</bool>
                  </property>
                  <property name="pinBaseName" stdset="0">
-                  <string>led_arc_ok</string>
+                  <string>led-arc-ok</string>
                  </property>
                 </widget>
                </item>
@@ -911,7 +997,7 @@ SENSE</string>
                   <bool>false</bool>
                  </property>
                  <property name="pinBaseName" stdset="0">
-                  <string>led_torch</string>
+                  <string>led-torch-on</string>
                  </property>
                 </widget>
                </item>
@@ -955,7 +1041,7 @@ SENSE</string>
                      <set>Qt::AlignCenter</set>
                     </property>
                     <property name="pinBaseName" stdset="0">
-                     <string>lbl_voltage</string>
+                     <string>mk-arc-voltage</string>
                     </property>
                     <property name="textFormat" stdset="0">
                      <string>.2f</string>
@@ -1066,7 +1152,7 @@ SENSE</string>
                   <bool>false</bool>
                  </property>
                  <property name="pinBaseName" stdset="0">
-                  <string>led_float</string>
+                  <string>led-float</string>
                  </property>
                 </widget>
                </item>
@@ -1133,7 +1219,7 @@ SENSE</string>
                   <bool>false</bool>
                  </property>
                  <property name="pinBaseName" stdset="0">
-                  <string>led_probe</string>
+                  <string>led-probe</string>
                  </property>
                 </widget>
                </item>
@@ -1188,7 +1274,7 @@ SENSE</string>
                   <bool>false</bool>
                  </property>
                  <property name="pinBaseName" stdset="0">
-                  <string>led_thc_down</string>
+                  <string>led-thc-down</string>
                  </property>
                 </widget>
                </item>
@@ -1278,7 +1364,7 @@ DIVE</string>
                   <bool>false</bool>
                  </property>
                  <property name="pinBaseName" stdset="0">
-                  <string>led_thc_up</string>
+                  <string>led-thc-up</string>
                  </property>
                 </widget>
                </item>
@@ -1622,75 +1708,84 @@ DIVE</string>
              </item>
             </layout>
            </widget>
-           <widget class="VCPWidget" name="widget_13">
+           <widget class="MkGroupBox" name="groupbox_26">
             <property name="geometry">
              <rect>
-              <x>30</x>
-              <y>590</y>
-              <width>251</width>
-              <height>291</height>
+              <x>10</x>
+              <y>570</y>
+              <width>301</width>
+              <height>341</height>
              </rect>
             </property>
-            <property name="rules" stdset="0">
-             <string>[{&quot;name&quot;: &quot;Visible&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}]</string>
+            <property name="title">
+             <string>CUT RECOVERY</string>
             </property>
-            <widget class="QPushButton" name="btn_cut_recover_rev">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>20</y>
-               <width>88</width>
-               <height>44</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>REVERSE</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="btn_cut_recover_fwd">
-             <property name="geometry">
-              <rect>
-               <x>150</x>
-               <y>20</y>
-               <width>88</width>
-               <height>44</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>FORWARD</string>
-             </property>
-            </widget>
-            <widget class="QSlider" name="cut_recovery_speed">
-             <property name="geometry">
-              <rect>
-               <x>90</x>
-               <y>70</y>
-               <width>61</width>
-               <height>211</height>
-              </rect>
-             </property>
-             <property name="maximum">
-              <number>100</number>
-             </property>
-             <property name="value">
-              <number>50</number>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="invertedAppearance">
-              <bool>false</bool>
-             </property>
-             <property name="invertedControls">
-              <bool>false</bool>
-             </property>
-             <property name="tickPosition">
-              <enum>QSlider::TicksBothSides</enum>
-             </property>
-             <property name="tickInterval">
-              <number>10</number>
-             </property>
-            </widget>
+            <layout class="QVBoxLayout" name="verticalLayout_11">
+             <item>
+              <widget class="VCPWidget" name="widget_13">
+               <property name="rules" stdset="0">
+                <string>[{&quot;name&quot;: &quot;Visible&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}]</string>
+               </property>
+               <widget class="QPushButton" name="btn_cut_recover_rev_2">
+                <property name="geometry">
+                 <rect>
+                  <x>10</x>
+                  <y>20</y>
+                  <width>88</width>
+                  <height>44</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>REVERSE</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="btn_cut_recover_fwd_2">
+                <property name="geometry">
+                 <rect>
+                  <x>150</x>
+                  <y>20</y>
+                  <width>88</width>
+                  <height>44</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>FORWARD</string>
+                </property>
+               </widget>
+               <widget class="QSlider" name="cut_recovery_speed_2">
+                <property name="geometry">
+                 <rect>
+                  <x>90</x>
+                  <y>70</y>
+                  <width>61</width>
+                  <height>211</height>
+                 </rect>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="value">
+                 <number>50</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="invertedAppearance">
+                 <bool>false</bool>
+                </property>
+                <property name="invertedControls">
+                 <bool>false</bool>
+                </property>
+                <property name="tickPosition">
+                 <enum>QSlider::TicksBothSides</enum>
+                </property>
+                <property name="tickInterval">
+                 <number>10</number>
+                </property>
+               </widget>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </widget>
          </widget>
@@ -3337,43 +3432,11 @@ font-weight: bold;
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_10">
                    <item>
-                    <widget class="QPushButton" name="pushButton_5">
-                     <property name="text">
-                      <string>DISABLED</string>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                     <property name="checked">
-                      <bool>true</bool>
-                     </property>
-                     <property name="autoExclusive">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButton_6">
-                     <property name="text">
-                      <string>AUTO</string>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                     <property name="autoExclusive">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButton_9">
+                    <widget class="HalButton" name="thc_enabled">
                      <property name="text">
                       <string>ENABLED</string>
                      </property>
                      <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                     <property name="autoExclusive">
                       <bool>true</bool>
                      </property>
                     </widget>
@@ -3447,6 +3510,12 @@ font-weight: bold;
                    </property>
                    <property name="text">
                     <string>OHMIC SENSING ENABLE</string>
+                   </property>
+                   <property name="pinBaseName" stdset="0">
+                    <string>ohmic-sensing-enabled</string>
+                   </property>
+                   <property name="settingName" stdset="0">
+                    <string>ohmic_sensing_enabled</string>
                    </property>
                   </widget>
                  </item>
@@ -3929,6 +3998,9 @@ font-weight: bold;
                  <property name="suffix">
                   <string> V</string>
                  </property>
+                 <property name="maximum">
+                  <double>9999.000000000000000</double>
+                 </property>
                  <property name="settingName" stdset="0">
                   <string>arc_ok_high_volts</string>
                  </property>
@@ -3944,6 +4016,9 @@ font-weight: bold;
                  </property>
                  <property name="suffix">
                   <string> V</string>
+                 </property>
+                 <property name="maximum">
+                  <double>60.000000000000000</double>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>arc_ok_low_volts</string>
@@ -4019,6 +4094,9 @@ font-weight: bold;
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
+                 <property name="maximum">
+                  <double>999.000000000000000</double>
+                 </property>
                  <property name="settingName" stdset="0">
                   <string>probe_offset</string>
                  </property>
@@ -4031,6 +4109,9 @@ font-weight: bold;
                  </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <double>999.000000000000000</double>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>probe_height</string>
@@ -4058,6 +4139,9 @@ font-weight: bold;
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
+                 <property name="maximum">
+                  <double>999.000000000000000</double>
+                 </property>
                  <property name="settingName" stdset="0">
                   <string>probe_float_travel</string>
                  </property>
@@ -4084,6 +4168,9 @@ font-weight: bold;
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
+                 <property name="maximum">
+                  <double>999.000000000000000</double>
+                 </property>
                  <property name="settingName" stdset="0">
                   <string>probe_skip_ihs</string>
                  </property>
@@ -4096,6 +4183,9 @@ font-weight: bold;
                  </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <double>9999.000000000000000</double>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>probe_setup_speed</string>
@@ -5246,9 +5336,6 @@ font-weight: bold;
   <tabstop>btn_new_run_process</tabstop>
   <tabstop>btn_run_reload</tabstop>
   <tabstop>chkb_slot_detect_enable</tabstop>
-  <tabstop>pushButton_5</tabstop>
-  <tabstop>pushButton_6</tabstop>
-  <tabstop>pushButton_9</tabstop>
   <tabstop>doubleSpinBox_3</tabstop>
   <tabstop>doubleSpinBox_4</tabstop>
   <tabstop>thc_delay</tabstop>
