@@ -294,7 +294,7 @@
                   <widget class="ActionButton" name="actionbutton_5">
                    <property name="minimumSize">
                     <size>
-                     <width>44</width>
+                     <width>34</width>
                      <height>44</height>
                     </size>
                    </property>
@@ -320,7 +320,7 @@
                   <widget class="ActionButton" name="actionbutton_6">
                    <property name="minimumSize">
                     <size>
-                     <width>44</width>
+                     <width>34</width>
                      <height>44</height>
                     </size>
                    </property>
@@ -346,7 +346,7 @@
                   <widget class="ActionButton" name="actionbutton_7">
                    <property name="minimumSize">
                     <size>
-                     <width>44</width>
+                     <width>34</width>
                      <height>44</height>
                     </size>
                    </property>
@@ -1726,7 +1726,7 @@ DIVE</string>
                <property name="rules" stdset="0">
                 <string>[{&quot;name&quot;: &quot;Visible&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}]</string>
                </property>
-               <widget class="QPushButton" name="btn_cut_recover_rev_2">
+               <widget class="QPushButton" name="btn_cut_recover_rev">
                 <property name="geometry">
                  <rect>
                   <x>10</x>
@@ -1739,7 +1739,7 @@ DIVE</string>
                  <string>REVERSE</string>
                 </property>
                </widget>
-               <widget class="QPushButton" name="btn_cut_recover_fwd_2">
+               <widget class="QPushButton" name="btn_cut_recover_fwd">
                 <property name="geometry">
                  <rect>
                   <x>150</x>
@@ -1752,7 +1752,7 @@ DIVE</string>
                  <string>FORWARD</string>
                 </property>
                </widget>
-               <widget class="QSlider" name="cut_recovery_speed_2">
+               <widget class="QSlider" name="cut_recovery_speed">
                 <property name="geometry">
                  <rect>
                   <x>90</x>

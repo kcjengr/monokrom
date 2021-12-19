@@ -14,7 +14,7 @@ for {set jnum 0} {$jnum < $numJoints} {incr jnum} {
 }
 
 # Set Plasmac Mode
-setp plasmac.mode 0
+setp plasmac.mode 1
 
 # Debug
 setp plasmac.debug-print 1
@@ -28,7 +28,7 @@ net tool-prepare-loopback iocontrol.0.tool-prepare => iocontrol.0.tool-prepared
 
 # INPUTS
 # ---PLASMAC COMPONENT INPUTS---
-net plasmac:arc-ok               db_arc-ok.out               =>  plasmac.arc-ok-in
+#net plasmac:arc-ok               db_arc-ok.out               =>  plasmac.arc-ok-in
 net plasmac:axis-position        joint.${z-axis}.pos-fb      =>  plasmac.axis-z-position
 net plasmac:axis-x-position      axis.x.pos-cmd              =>  plasmac.axis-x-position
 net plasmac:axis-y-position      axis.y.pos-cmd              =>  plasmac.axis-y-position
@@ -66,16 +66,16 @@ if {[hal list sig machine-is-on] != {}} {
 }
 
 # v0.173 and later use dbounce in lieu of debounce
-if [info exists ::PLASMAC(DBOUNCE)] {
-    net plasmac:float-switch-out        db_float.out            =>  plasmac.float-switch
-    net plasmac:breakaway-switch-out    db_breakaway.out        =>  plasmac.breakaway
-    net plasmac:ohmic-probe-out         db_ohmic.out            =>  plasmac.ohmic-probe
-    net plasmac:arc-ok                  db_arc-ok.out           =>  plasmac.arc-ok-in
-} else {
-    net plasmac:float-switch-out        debounce.0.0.out        =>  plasmac.float-switch
-    net plasmac:breakaway-switch-out    debounce.0.1.out        =>  plasmac.breakaway
-    net plasmac:ohmic-probe-out         debounce.0.2.out        =>  plasmac.ohmic-probe
-}
+#if [info exists ::PLASMAC(DBOUNCE)] {
+net plasmac:float-switch-out        db_float.out            =>  plasmac.float-switch
+net plasmac:breakaway-switch-out    db_breakaway.out        =>  plasmac.breakaway
+net plasmac:ohmic-probe-out         db_ohmic.out            =>  plasmac.ohmic-probe
+net plasmac:arc-ok                  db_arc-ok.out           =>  plasmac.arc-ok-in
+#} else {
+#    net plasmac:float-switch-out        debounce.0.0.out        =>  plasmac.float-switch
+#    net plasmac:breakaway-switch-out    debounce.0.1.out        =>  plasmac.breakaway
+#    net plasmac:ohmic-probe-out         debounce.0.2.out        =>  plasmac.ohmic-probe
+#}
 
 # OUTPUTS
 net plasmac:adaptive-feed           plasmac.adaptive-feed       =>  motion.adaptive-feed

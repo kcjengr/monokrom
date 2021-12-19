@@ -53,7 +53,9 @@ net plasmac:pierce-delay                  qtpyvcp.param-piercedelay.out => plasm
 net plasmac:pierce-height                qtpyvcp.param-pierceheight.out => plasmac.pierce-height
 net plasmac:puddle-jump-delay         qtpyvcp.param-puddlejumpdelay.out => plasmac.puddle-jump-delay
 net plasmac:puddle-jump-height       qtpyvcp.param-puddlejumpheight.out => plasmac.puddle-jump-height
-#net plasmac:restart-delay                                        plasmac.restart-delay
+net plasmac:restart-delay                   qtpyvcp.arc-retry-delay.out => plasmac.restart-delay
+net plasmac:arc-fail-delay                 qtpyvcp.arc-fail-timeout.out => plasmac.arc-fail-delay
+net plasmac:arc-max-starts                   qtpyvcp.arc-max-starts.out => plasmac.arc-max-starts
 #net plasmac:scribe-arm-delay                                     plasmac.scribe-arm-delay
 #net plasmac:scribe-on-delay                                      plasmac.scribe-on-delay
 
@@ -84,15 +86,15 @@ net plasmac:arc-ok-low                     qtpyvcp.arc-ok-low-volts.out => plasm
 net plasmac:consumable-changing     plasmac.consumable-changing
 net plasmac:cornerlock-is-locked    plasmac.cornerlock-is-locked
 net plasmac:kerfcross-is-locked     plasmac.kerfcross-is-locked
-net plasmac:led-down                plasmac.led-down                    => qtpyvcp.led-thc-down
-net plasmac:led-up                  plasmac.led-up                      => qtpyvcp.led-thc-up
+net plasmac:led-down                plasmac.led-down                    => qtpyvcp.led-thc-down.on
+net plasmac:led-up                  plasmac.led-up                      => qtpyvcp.led-thc-up.on
 net plasmac:pierce-count            plasmac.pierce-count
 net plasmac:probe-test-error        plasmac.probe-test-error
 net plasmac:state                   plasmac.state-out
 net plasmac:thc-active              plasmac.thc-active
 net plasmac:z-height                plasmac.z-height
 net plasmac:arc-ok-out              plasmac.arc-ok-out                  => qtpyvcp.led-arc-ok.on
-net plasmac:torch-on                plasmac.torch-on                    => qtpyvcp.led-torch-on
+net plasmac:torch-on                plasmac.torch-on                    => qtpyvcp.led-torch-on.on
 
 
 # simulator panel connections
@@ -103,8 +105,8 @@ net sim:arc-ok          qtplasmac_sim.arc_ok            =>  db_arc-ok.in
 net sim:ohmic           qtplasmac_sim.sensor_ohmic      =>  db_ohmic.in             qtpyvcp.led-probe.on
 net sim:float           qtplasmac_sim.sensor_float      =>  db_float.in             qtpyvcp.led-float.on
 net sim:breakaway       qtplasmac_sim.sensor_breakaway  =>  db_breakaway.in
-net sim:move-up         qtplasmac_sim.move_up           =>  plasmac.move-up         qtpyvcp.led-thc-up.on
-net sim:move-down       qtplasmac_sim.move_down         =>  plasmac.move-down       qtpyvcp.led-thc-down.on
+net sim:move-up         qtplasmac_sim.move_up           =>  plasmac.move-up
+net sim:move-down       qtplasmac_sim.move_down         =>  plasmac.move-down
 
 
 
