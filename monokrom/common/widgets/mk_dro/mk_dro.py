@@ -6,7 +6,9 @@ from qtpy.QtGui import QIcon, QPixmap
 from qtpy.QtWidgets import QWidget, QVBoxLayout, QFrame
 
 from qtpyvcp.plugins import getPlugin
+from qtpyvcp.utilities.info import Info
 
+INFO = Info()
 BASE_PATH = os.path.join(os.path.dirname(__file__))
 UI_FILE = os.path.join(os.path.dirname(__file__), "mk_dro.ui")
 
@@ -76,12 +78,17 @@ class MonokromDroWidget(QWidget):
         self.axis_actions_button.setText(self._aletter.upper())
 
     def updateHomedStatus(self, homed):
-        if homed[self._anum] == 1:
-            self.homed_indicator.setPixmap(self.getPixmap('unhomed.png'))
-            self.axisHomed = True
-        else:
+        axis_ltr = INFO.AXIS_LETTER_LIST[self._anum]
+        axis_homed = []
+        for ax in INFO.ALETTER_JNUM_DICT:
+            if axis_ltr == ax[0]:
+                axis_homed.append(homed[INFO.ALETTER_JNUM_DICT[ax]])
+        if 0 in axis_homed:
             self.homed_indicator.setPixmap(self.getPixmap('homed.png'))
             self.axisHomed = False
+        else:
+            self.homed_indicator.setPixmap(self.getPixmap('unhomed.png'))
+            self.axisHomed = True
 
         # self.homed_indicator.style().unpolish(self.homed_indicator)
         # self.homed_indicator.style().polish(self.homed_indicator)
