@@ -63,7 +63,19 @@ To install the MonoKrom LinuxCNC sim configs run:
 `monokrom --install-sim`
 
 
+## Final Adjustments
+This section collects the final "tweaks" that may be needed to get success.
 
+[1] Ensure there is write access to /tmp
+The simplest is to assume the access permissions looks like:
+```
+drwxrwxrwt  26 root root  4096 Dec 20 21:26 tmp
+```
+
+If adjustment is needed use the command:
+```
+sudo chmod o+rw tmp
+```
 
 
 ## Acknowledgements
