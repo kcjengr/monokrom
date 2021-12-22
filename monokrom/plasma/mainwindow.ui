@@ -452,20 +452,6 @@ TIP</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="0">
-                 <widget class="QPushButton" name="btn_pierce_only">
-                  <property name="text">
-                   <string>PIERCE
-ONLY</string>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="checked">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
                 <item row="3" column="1">
                  <widget class="QPushButton" name="btn_thc_enable">
                   <property name="text">
@@ -600,6 +586,20 @@ ENABLE</string>
                   </property>
                   <property name="checkable">
                    <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="HalButton" name="btn_pierce_only">
+                  <property name="text">
+                   <string>PIERCE
+ONLY</string>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="pinBaseName" stdset="0">
+                   <string>plasma-pierce-only-enable</string>
                   </property>
                  </widget>
                 </item>
@@ -1383,7 +1383,7 @@ SENSE</string>
                   <bool>true</bool>
                  </property>
                  <property name="checked">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                  <property name="autoExclusive">
                   <bool>true</bool>
@@ -5368,7 +5368,6 @@ font-weight: bold;
   <tabstop>btn_cycle_start</tabstop>
   <tabstop>btn_machine_power_toggle</tabstop>
   <tabstop>btn_m1_break</tabstop>
-  <tabstop>btn_pierce_only</tabstop>
   <tabstop>actionbutton_9</tabstop>
   <tabstop>btn_thc_enable</tabstop>
   <tabstop>sc_park</tabstop>
