@@ -32,13 +32,6 @@ THEN
 
 `python3 -m pip install -e .`
 
-You will need to manually copy two files from the qtpyvcp/tools folder to .local/bin
-
-These are:
-```
-plasma_gcode_preprocessor.py
-plasma_tooldbpipe.py
-```
 
 Install MonoKrom (includes mill and plasma VCPs)
 
