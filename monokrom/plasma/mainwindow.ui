@@ -433,18 +433,17 @@
                 <string>CONTROL</string>
                </property>
                <layout class="QGridLayout" name="gridLayout">
-                <item row="7" column="1">
-                 <widget class="MDIButton" name="btn_move_home">
+                <item row="0" column="0" colspan="2">
+                 <widget class="ActionButton" name="btn_cycle_start">
                   <property name="text">
-                   <string>MOVE
-HOME</string>
+                   <string>CYCLE START</string>
                   </property>
-                  <property name="MDICommand" stdset="0">
-                   <string>G53 G0Z0 G0X0Y0</string>
+                  <property name="actionName" stdset="0">
+                   <string>program.run</string>
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="0">
+                <item row="6" column="0">
                  <widget class="MDIButton" name="mdibutton_3">
                   <property name="text">
                    <string>CHANGE
@@ -452,25 +451,46 @@ TIP</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="1">
-                 <widget class="QPushButton" name="btn_thc_enable">
+                <item row="7" column="1">
+                 <widget class="MDIButton" name="btn_g5x_home">
                   <property name="text">
-                   <string>THC
-ENABLE</string>
+                   <string>GOTO
+ WORK ZERO</string>
                   </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="checked">
-                   <bool>false</bool>
+                  <property name="MDICommand" stdset="0">
+                   <string>G0X0Y0Z0</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="1">
-                 <widget class="ActionButton" name="actionbutton_9">
+                <item row="2" column="0">
+                 <widget class="ActionButton" name="btn_stop_abort">
                   <property name="text">
-                   <string>REVERSE
-RUN</string>
+                   <string>STOP
+ABORT</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>program.abort</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="10" column="0" colspan="2">
+                 <widget class="HalButton" name="btn_estopReset">
+                  <property name="text">
+                   <string>E STOP STATE</string>
+                  </property>
+                  <property name="rules" stdset="0">
+                   <string>[{&quot;name&quot;: &quot;estopState&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;estop_triggered\&quot; if ch[0] == 1 else \&quot;estop_armed\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:estop&quot;, &quot;trigger&quot;: true}]}]</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="ActionButton" name="btn_feed_hold">
+                  <property name="text">
+                   <string>FEED
+HOLD</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>program.pause</string>
                   </property>
                  </widget>
                 </item>
@@ -488,7 +508,44 @@ BREAK</string>
                   </property>
                  </widget>
                 </item>
-                <item row="7" column="0">
+                <item row="6" column="1">
+                 <widget class="SubCallButton" name="sc_park">
+                  <property name="text">
+                   <string>PARK</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="HalButton" name="torch_enable">
+                  <property name="text">
+                   <string>TORCH
+ENABLE</string>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="9" column="1">
+                 <widget class="MDIButton" name="btn_move_home">
+                  <property name="text">
+                   <string>MOVE
+HOME</string>
+                  </property>
+                  <property name="MDICommand" stdset="0">
+                   <string>G53 G0Z0 G0X0Y0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="ActionButton" name="actionbutton_9">
+                  <property name="text">
+                   <string>REVERSE
+RUN</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="9" column="0">
                  <widget class="ActionButton" name="btn_machine_power_toggle">
                   <property name="text">
                    <string>MACHINE
@@ -502,75 +559,7 @@ POWER</string>
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="1">
-                 <widget class="SubCallButton" name="sc_park">
-                  <property name="text">
-                   <string>PARK</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0" colspan="2">
-                 <widget class="ActionButton" name="btn_cycle_start">
-                  <property name="text">
-                   <string>CYCLE START</string>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.run</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="8" column="0" colspan="2">
-                 <widget class="HalButton" name="btn_estopReset">
-                  <property name="text">
-                   <string>E STOP STATE</string>
-                  </property>
-                  <property name="rules" stdset="0">
-                   <string>[{&quot;name&quot;: &quot;estopState&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;estop_triggered\&quot; if ch[0] == 1 else \&quot;estop_armed\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:estop&quot;, &quot;trigger&quot;: true}]}]</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="1">
-                 <widget class="MDIButton" name="btn_g5x_home">
-                  <property name="text">
-                   <string>GOTO
- WORK ZERO</string>
-                  </property>
-                  <property name="MDICommand" stdset="0">
-                   <string>G0X0Y0Z0</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="ActionButton" name="btn_feed_hold">
-                  <property name="text">
-                   <string>FEED
-HOLD</string>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.pause</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="0">
-                 <widget class="SubCallButton" name="subcallbutton">
-                  <property name="text">
-                   <string>PULSE
-TORCH</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="ActionButton" name="btn_stop_abort">
-                  <property name="text">
-                   <string>STOP
-ABORT</string>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.abort</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="6" column="0">
+                <item row="7" column="0">
                  <widget class="QPushButton" name="btn_frame_job">
                   <property name="text">
                    <string>FRAME
@@ -578,18 +567,15 @@ JOB</string>
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="1">
-                 <widget class="HalButton" name="torch_enable">
+                <item row="5" column="0">
+                 <widget class="SubCallButton" name="subcallbutton">
                   <property name="text">
-                   <string>TORCH
-ENABLE</string>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
+                   <string>PULSE
+TORCH</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="0">
+                <item row="4" column="0">
                  <widget class="HalButton" name="btn_pierce_only">
                   <property name="text">
                    <string>PIERCE
@@ -856,234 +842,11 @@ ONLY</string>
             <string>Run &amp;&amp; Monitor</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_4">
-            <item row="4" column="1">
-             <widget class="HalButton" name="halbutton_2">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>34</width>
-                <height>44</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>44</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>ANTI
-DIVE</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-             </widget>
+            <item row="13" column="3">
+             <widget class="SubCallButton" name="user14"/>
             </item>
-            <item row="3" column="1">
-             <widget class="QWidget" name="widget_4" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_14">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_16">
-                 <property name="text">
-                  <string>TORCH</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_6">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_4">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-torch-on</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="HalButton" name="halbutton">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>34</width>
-                <height>44</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>44</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>VOID
-SENSE</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="10" column="1">
-             <widget class="SubCallButton" name="user11"/>
-            </item>
-            <item row="2" column="1">
-             <widget class="QWidget" name="widget_8" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_16">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_20">
-                 <property name="text">
-                  <string>DOWN</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_4">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_6">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-thc-down</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="11" column="0">
-             <widget class="SubCallButton" name="user4"/>
-            </item>
-            <item row="8" column="0">
-             <widget class="SubCallButton" name="user1"/>
-            </item>
-            <item row="15" column="1">
-             <widget class="SubCallButton" name="user16"/>
-            </item>
-            <item row="3" column="0">
-             <widget class="QWidget" name="widget_2" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_12">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_14">
-                 <property name="text">
-                  <string>ARC-OK</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_5">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_2">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-arc-ok</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="15" column="0">
-             <widget class="SubCallButton" name="user8"/>
+            <item row="12" column="0">
+             <widget class="SubCallButton" name="user5"/>
             </item>
             <item row="0" column="0">
              <widget class="QWidget" name="widget" native="true">
@@ -1137,84 +900,11 @@ SENSE</string>
               </layout>
              </widget>
             </item>
-            <item row="12" column="0">
-             <widget class="SubCallButton" name="user5"/>
+            <item row="11" column="0">
+             <widget class="SubCallButton" name="user4"/>
             </item>
-            <item row="13" column="1">
-             <widget class="SubCallButton" name="user14"/>
-            </item>
-            <item row="11" column="1">
-             <widget class="SubCallButton" name="user12"/>
-            </item>
-            <item row="0" column="1">
-             <widget class="QWidget" name="widget_7" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_15">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_19">
-                 <property name="text">
-                  <string>UP</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_2">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_5">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-thc-up</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="9" column="1">
-             <widget class="SubCallButton" name="user10"/>
-            </item>
-            <item row="13" column="0">
-             <widget class="SubCallButton" name="user6"/>
-            </item>
-            <item row="9" column="0">
-             <widget class="SubCallButton" name="user2"/>
-            </item>
-            <item row="12" column="1">
-             <widget class="SubCallButton" name="user13"/>
-            </item>
-            <item row="14" column="1">
-             <widget class="SubCallButton" name="user15"/>
-            </item>
-            <item row="8" column="1">
-             <widget class="SubCallButton" name="user9"/>
+            <item row="10" column="3">
+             <widget class="SubCallButton" name="user11"/>
             </item>
             <item row="2" column="0">
              <widget class="QWidget" name="widget_3" native="true">
@@ -1268,13 +958,10 @@ SENSE</string>
               </layout>
              </widget>
             </item>
-            <item row="14" column="0">
-             <widget class="SubCallButton" name="user7"/>
+            <item row="15" column="0">
+             <widget class="SubCallButton" name="user8"/>
             </item>
-            <item row="10" column="0">
-             <widget class="SubCallButton" name="user3"/>
-            </item>
-            <item row="6" column="0" colspan="2">
+            <item row="6" column="0" colspan="4">
              <widget class="QWidget" name="widget_9" native="true">
               <layout class="QVBoxLayout" name="verticalLayout_18">
                <property name="spacing">
@@ -1288,8 +975,8 @@ SENSE</string>
                </property>
                <item>
                 <widget class="QWidget" name="widget_5" native="true">
-                 <layout class="QVBoxLayout" name="verticalLayout_17">
-                  <item>
+                 <layout class="QGridLayout" name="gridLayout_30">
+                  <item row="0" column="0">
                    <widget class="QLabel" name="label_17">
                     <property name="text">
                      <string>ARC Voltage</string>
@@ -1299,7 +986,7 @@ SENSE</string>
                     </property>
                    </widget>
                   </item>
-                  <item>
+                  <item row="1" column="0">
                    <widget class="HalLabel" name="hallabel">
                     <property name="styleSheet">
                      <string notr="true">font: bold 14pt;</string>
@@ -1320,8 +1007,8 @@ SENSE</string>
                </item>
                <item>
                 <widget class="QWidget" name="widget_6" native="true">
-                 <layout class="QVBoxLayout" name="verticalLayout_15">
-                  <item>
+                 <layout class="QGridLayout" name="gridLayout_26">
+                  <item row="0" column="0">
                    <widget class="QLabel" name="label_18">
                     <property name="text">
                      <string>OVERRIDE</string>
@@ -1331,7 +1018,7 @@ SENSE</string>
                     </property>
                    </widget>
                   </item>
-                  <item>
+                  <item row="1" column="0">
                    <widget class="HalDoubleSpinBox" name="spin_voltage_override">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -1371,7 +1058,233 @@ SENSE</string>
               </layout>
              </widget>
             </item>
-            <item row="7" column="0" colspan="2">
+            <item row="3" column="0">
+             <widget class="QWidget" name="widget_2" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_12">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_14">
+                 <property name="text">
+                  <string>ARC-OK</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_5">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_2">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-arc-ok</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="14" column="3">
+             <widget class="SubCallButton" name="user15"/>
+            </item>
+            <item row="9" column="3">
+             <widget class="SubCallButton" name="user10"/>
+            </item>
+            <item row="11" column="3">
+             <widget class="SubCallButton" name="user12"/>
+            </item>
+            <item row="14" column="0">
+             <widget class="SubCallButton" name="user7"/>
+            </item>
+            <item row="9" column="0">
+             <widget class="SubCallButton" name="user2"/>
+            </item>
+            <item row="3" column="3">
+             <widget class="QWidget" name="widget_4" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_14">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_16">
+                 <property name="text">
+                  <string>TORCH</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_6">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_4">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-torch-on</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="15" column="3">
+             <widget class="SubCallButton" name="user16"/>
+            </item>
+            <item row="2" column="3">
+             <widget class="QWidget" name="widget_8" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_16">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_20">
+                 <property name="text">
+                  <string>DOWN</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_6">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-thc-down</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QWidget" name="widget_7" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_15">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_19">
+                 <property name="text">
+                  <string>UP</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_5">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-thc-up</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="7" column="0" colspan="4">
              <widget class="QWidget" name="widget_26" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_9">
                <item>
@@ -1435,6 +1348,57 @@ SENSE</string>
                 </widget>
                </item>
               </layout>
+             </widget>
+            </item>
+            <item row="10" column="0">
+             <widget class="SubCallButton" name="user3"/>
+            </item>
+            <item row="8" column="3">
+             <widget class="SubCallButton" name="user9"/>
+            </item>
+            <item row="13" column="0">
+             <widget class="SubCallButton" name="user6"/>
+            </item>
+            <item row="8" column="0">
+             <widget class="SubCallButton" name="user1"/>
+            </item>
+            <item row="12" column="3">
+             <widget class="SubCallButton" name="user13"/>
+            </item>
+            <item row="5" column="3">
+             <widget class="QPushButton" name="btn_vad">
+              <property name="text">
+               <string>ANTI
+DIVE</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="3">
+             <widget class="QPushButton" name="btn_void_sense">
+              <property name="text">
+               <string>VOID
+SENSE</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0" colspan="3">
+             <widget class="QPushButton" name="btn_thc_enable">
+              <property name="text">
+               <string>THC
+ENABLE</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>false</bool>
+              </property>
              </widget>
             </item>
            </layout>
@@ -1796,7 +1760,7 @@ SENSE</string>
                <widget class="QPushButton" name="btn_cut_recover_fwd">
                 <property name="geometry">
                  <rect>
-                  <x>150</x>
+                  <x>170</x>
                   <y>20</y>
                   <width>88</width>
                   <height>44</height>
@@ -1809,7 +1773,7 @@ SENSE</string>
                <widget class="QSlider" name="cut_recovery_speed">
                 <property name="geometry">
                  <rect>
-                  <x>90</x>
+                  <x>100</x>
                   <y>70</y>
                   <width>61</width>
                   <height>211</height>
@@ -4510,24 +4474,6 @@ font-weight: bold;
              </item>
             </layout>
            </widget>
-           <widget class="MkGroupBox" name="groupbox_11">
-            <property name="geometry">
-             <rect>
-              <x>630</x>
-              <y>20</y>
-              <width>601</width>
-              <height>751</height>
-             </rect>
-            </property>
-            <property name="title">
-             <string>LOG</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <item>
-              <widget class="NotificationWidget" name="notificationwidget"/>
-             </item>
-            </layout>
-           </widget>
           </widget>
          </widget>
         </item>
@@ -5107,33 +5053,23 @@ font-weight: bold;
        <attribute name="title">
         <string>DIAGNOSTICS</string>
        </attribute>
-       <widget class="MonokromDroGroup" name="compositedrogroup_3">
+       <widget class="MkGroupBox" name="groupbox_11">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>10</y>
-          <width>400</width>
-          <height>211</height>
+          <y>0</y>
+          <width>711</width>
+          <height>971</height>
          </rect>
         </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+        <property name="title">
+         <string>LOG</string>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>400</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>10000</width>
-          <height>16777215</height>
-         </size>
-        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="NotificationWidget" name="notificationwidget"/>
+         </item>
+        </layout>
        </widget>
       </widget>
      </widget>
@@ -5324,14 +5260,11 @@ font-weight: bold;
   <tabstop>btn_estopReset</tabstop>
   <tabstop>btn_g5x_home</tabstop>
   <tabstop>btn_feed_hold</tabstop>
-  <tabstop>subcallbutton</tabstop>
   <tabstop>btn_stop_abort</tabstop>
-  <tabstop>btn_frame_job</tabstop>
   <tabstop>actionslider_2</tabstop>
   <tabstop>actionslider</tabstop>
   <tabstop>settings_slider</tabstop>
   <tabstop>tabwidget_2</tabstop>
-  <tabstop>halbutton</tabstop>
   <tabstop>user7</tabstop>
   <tabstop>user1</tabstop>
   <tabstop>user8</tabstop>
@@ -5339,7 +5272,6 @@ font-weight: bold;
   <tabstop>user2</tabstop>
   <tabstop>user3</tabstop>
   <tabstop>user4</tabstop>
-  <tabstop>halbutton_2</tabstop>
   <tabstop>user6</tabstop>
   <tabstop>user5</tabstop>
   <tabstop>tabWidget_3</tabstop>
@@ -5369,9 +5301,7 @@ font-weight: bold;
   <tabstop>btn_machine_power_toggle</tabstop>
   <tabstop>btn_m1_break</tabstop>
   <tabstop>actionbutton_9</tabstop>
-  <tabstop>btn_thc_enable</tabstop>
   <tabstop>sc_park</tabstop>
-  <tabstop>mdibutton_3</tabstop>
   <tabstop>btn_save_run_process</tabstop>
   <tabstop>btn_del_run_process</tabstop>
   <tabstop>btn_new_run_process</tabstop>
@@ -5514,6 +5444,102 @@ font-weight: bold;
     <hint type="destinationlabel">
      <x>1514</x>
      <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_vad</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>chkb_vad</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>924</x>
+     <y>337</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1812</x>
+     <y>269</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chkb_vad</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_vad</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1812</x>
+     <y>269</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>924</x>
+     <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_void_sense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>chkb_void_sense</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>773</x>
+     <y>337</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1812</x>
+     <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chkb_void_sense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_void_sense</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1812</x>
+     <y>323</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>773</x>
+     <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_thc_enable</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>thc_enabled</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>776</x>
+     <y>293</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1812</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>thc_enabled</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_thc_enable</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1812</x>
+     <y>159</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>776</x>
+     <y>293</y>
     </hint>
    </hints>
   </connection>
