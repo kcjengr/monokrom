@@ -88,6 +88,19 @@ class MainWindow(VCPMainWindow):
         self.vtkbackplot.setViewZ()
         self.vtkbackplot.enable_panning(True)
         
+        # find and set all user buttons
+        for user_i in range(1,17):
+            user_btn_txt = f"user{user_i}"
+            user_name_key = f"USER{user_i}_NAME"
+            user_action_key = f"USER{user_i}_ACTION"
+            user_name = INFO.ini.find('DISPLAY', user_name_key)
+            user_action = INFO.ini.find('DISPLAY', user_action_key)
+            user_btn = getattr(self, user_btn_txt)
+            if user_btn is not None:
+                if user_name:
+                    user_btn.setText(user_name)
+                    user_btn.filename = user_action
+        
         # need to hold linear setting ID so can filter thicknesses based on measurement system
         for s in self._plasma_plugin.linearsystems():
             if s.name == self._linear_setting:
