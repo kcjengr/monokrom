@@ -261,3 +261,28 @@ settings:
     plasma_small_hole_threshold:
         default_value: 3.5
         persistent: true
+    
+    laser_offset_x:
+        default_value: 0
+        persistent: true 
+
+    laser_offset_y:
+        default_value: 0
+        persistent: true
+        
+    camera_offset_x:
+        default_value: 0
+        persistent: true 
+
+    camera_offset_y:
+        default_value: 0
+        persistent: true 
+
+    scribe_offset_x:
+        default_value: 0
+        persistent: true 
+
+    scribe_offset_y:
+        default_value: 0
+        persistent: true 
+

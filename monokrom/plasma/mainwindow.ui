@@ -5048,6 +5048,176 @@ font-weight: bold;
          </property>
         </widget>
        </widget>
+       <widget class="MkGroupBox" name="groupbox_27">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>0</y>
+          <width>481</width>
+          <height>195</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>LASER, CAMERA &amp;&amp; SCRIBE OFFSETS</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_31">
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_86">
+           <property name="text">
+            <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_87">
+           <property name="text">
+            <string>Y</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_78">
+           <property name="text">
+            <string>LASER</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="VCPSettingsDoubleSpinBox" name="laser_offset_x">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::PlusMinus</enum>
+           </property>
+           <property name="decimals">
+            <number>5</number>
+           </property>
+           <property name="maximum">
+            <double>200.000000000000000</double>
+           </property>
+           <property name="settingName" stdset="0">
+            <string>laser_offset_x</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="VCPSettingsDoubleSpinBox" name="laser_offset_y">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::PlusMinus</enum>
+           </property>
+           <property name="decimals">
+            <number>5</number>
+           </property>
+           <property name="maximum">
+            <double>200.000000000000000</double>
+           </property>
+           <property name="settingName" stdset="0">
+            <string>laser_offset_y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_89">
+           <property name="text">
+            <string>CAMERA</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="VCPSettingsDoubleSpinBox" name="camera_offset_x">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::PlusMinus</enum>
+           </property>
+           <property name="decimals">
+            <number>5</number>
+           </property>
+           <property name="maximum">
+            <double>200.000000000000000</double>
+           </property>
+           <property name="settingName" stdset="0">
+            <string>camera_offset_x</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="VCPSettingsDoubleSpinBox" name="camera_offset_y">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::PlusMinus</enum>
+           </property>
+           <property name="decimals">
+            <number>5</number>
+           </property>
+           <property name="maximum">
+            <double>200.000000000000000</double>
+           </property>
+           <property name="settingName" stdset="0">
+            <string>camera_offset_y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_88">
+           <property name="text">
+            <string>SCRIBE</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="PlasmaHalDoubleSpinBox" name="scribe_offset_x">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::PlusMinus</enum>
+           </property>
+           <property name="decimals">
+            <number>5</number>
+           </property>
+           <property name="maximum">
+            <double>200.000000000000000</double>
+           </property>
+           <property name="settingName" stdset="0">
+            <string>scribe_offset_x</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="PlasmaHalDoubleSpinBox" name="scribe_offset_y">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::PlusMinus</enum>
+           </property>
+           <property name="decimals">
+            <number>5</number>
+           </property>
+           <property name="maximum">
+            <double>200.000000000000000</double>
+           </property>
+           <property name="settingName" stdset="0">
+            <string>scribe_offset_y</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_diagnostics">
        <attribute name="title">
@@ -5143,6 +5313,11 @@ font-weight: bold;
   <customwidget>
    <class>VCPSettingsSlider</class>
    <extends>QSlider</extends>
+   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+  </customwidget>
+  <customwidget>
+   <class>VCPSettingsDoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
   </customwidget>
   <customwidget>
