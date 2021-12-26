@@ -286,3 +286,7 @@ settings:
         default_value: 0
         persistent: true 
 
+    plasma_torch_pulse_sec:
+        default_value: 0.3
+        persistent: true
+        

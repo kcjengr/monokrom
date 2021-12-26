@@ -74,9 +74,10 @@ net plasmac:safe-height                     qtpyvcp.thc-safe-height.out => plasm
 
 net plasmac:use-auto-volts            qtpyvcp.plasma-auto-volts.checked => plasmac.use-auto-volts
 
-
 net plasmac:torch-enable                   qtpyvcp.torch-enable.checked => plasmac.torch-enable
 
+net plasmac:torch-pulse                  qtpyvcp.plasma-torch-pulse.out => plasmac.torch-pulse-start
+net plasmac:torch-pulse-time         qtpyvcp.plasma-torch-pulse-sec.out => plasmac.torch-pulse-time
 
 net plasmac:arc-ok-high                   qtpyvcp.arc-ok-high-volts.out => plasmac.arc-ok-high
 net plasmac:arc-ok-low                     qtpyvcp.arc-ok-low-volts.out => plasmac.arc-ok-low
