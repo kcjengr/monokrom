@@ -1,0 +1,14 @@
+; Set g5x work system to 0,0
+; Based on Laser position offset
+; Offset on Settings Tab and collected
+; from those fields.
+O<laser_off> sub
+#<laser_offset_x> = #1
+#<laser_offset_y> = #2
+
+G21
+G91
+G0 X#<laser_offset_x> Y#<laser_offset_y>
+g10 l20 p0 x0 y0
+G90
+O<laser_off> endsub
