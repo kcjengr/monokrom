@@ -151,7 +151,7 @@ settings:
        persistent: true
     
     arc_fail_timeout:
-       default_value: 3
+       default_value: 3.0
        persistent: true
     
     arc_max_starts:
@@ -159,7 +159,7 @@ settings:
        persistent: true
     
     arc_retry_delay:
-       default_value: 60
+       default_value: 60.0
        persistent: true
     
     arc_voltage_scale:
@@ -183,7 +183,7 @@ settings:
        persistent: true
     
     scribe_arm_delay:
-       default_value: 0
+       default_value: 0.0
        persistent: true
     
     scribe_on_delay:
@@ -211,7 +211,7 @@ settings:
        persistent: true
      
     plasma_max_hole_size:
-       default_value: 50
+       default_value: 50.0
        persistent: true
           
     plasma_hole_detect_enable:
@@ -227,31 +227,31 @@ settings:
          persistent: true
          
     plasma_arc3_percent:
-         default_value: 100
+         default_value: 100.0
          persistent: true
      
     plasma_leadin_percent:
-         default_value: 60
+         default_value: 60.0
          persistent: true
          
     plasma_arc1_distance:
-         default_value: 80
+         default_value: 80.0
          persistent: true
 
     plasma_arc2_distance:
-         default_value: 20
+         default_value: 20.0
          persistent: true
 
     plasma_arc3_distance:
-         default_value: 20
+         default_value: 20.0
          persistent: true
 
     plasma_leadin_radius:
-         default_value: 3
+         default_value: 3.0
          persistent: true
     
     plasma_torch_off_distance:
-         default_value: 0
+         default_value: 0.0
          persistent: true
          
     plasma_small_hole_detect:
@@ -263,27 +263,27 @@ settings:
         persistent: true
     
     laser_offset_x:
-        default_value: 0
+        default_value: 0.0
         persistent: true 
 
     laser_offset_y:
-        default_value: 0
+        default_value: 0.0
         persistent: true
         
     camera_offset_x:
-        default_value: 0
+        default_value: 0.0
         persistent: true 
 
     camera_offset_y:
-        default_value: 0
+        default_value: 0.0
         persistent: true 
 
     scribe_offset_x:
-        default_value: 0
+        default_value: 0.0
         persistent: true 
 
     scribe_offset_y:
-        default_value: 0
+        default_value: 0.0
         persistent: true 
 
     plasma_torch_pulse_sec:

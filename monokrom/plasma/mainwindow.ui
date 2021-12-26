@@ -2933,7 +2933,7 @@ font-weight: bold;
                          <enum>QAbstractSpinBox::PlusMinus</enum>
                         </property>
                         <property name="decimals">
-                         <number>4</number>
+                         <number>3</number>
                         </property>
                         <property name="pinBaseName" stdset="0">
                          <string>plasma-small-hole-threshold</string>
@@ -3235,9 +3235,6 @@ font-weight: bold;
                         </property>
                         <property name="buttonSymbols">
                          <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="suffix">
-                         <string/>
                         </property>
                         <property name="decimals">
                          <number>4</number>
@@ -5184,25 +5181,6 @@ font-weight: bold;
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="VCPSettingsDoubleSpinBox" name="laser_offset_x">
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::PlusMinus</enum>
-           </property>
-           <property name="decimals">
-            <number>5</number>
-           </property>
-           <property name="maximum">
-            <double>200.000000000000000</double>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>laser_offset_x</string>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="2">
           <widget class="VCPSettingsDoubleSpinBox" name="laser_offset_y">
            <property name="alignment">
@@ -5213,6 +5191,9 @@ font-weight: bold;
            </property>
            <property name="decimals">
             <number>5</number>
+           </property>
+           <property name="minimum">
+            <double>-200.000000000000000</double>
            </property>
            <property name="maximum">
             <double>200.000000000000000</double>
@@ -5240,6 +5221,9 @@ font-weight: bold;
            <property name="decimals">
             <number>5</number>
            </property>
+           <property name="minimum">
+            <double>-200.000000000000000</double>
+           </property>
            <property name="maximum">
             <double>200.000000000000000</double>
            </property>
@@ -5258,6 +5242,9 @@ font-weight: bold;
            </property>
            <property name="decimals">
             <number>5</number>
+           </property>
+           <property name="minimum">
+            <double>-200.000000000000000</double>
            </property>
            <property name="maximum">
             <double>200.000000000000000</double>
@@ -5285,6 +5272,9 @@ font-weight: bold;
            <property name="decimals">
             <number>5</number>
            </property>
+           <property name="minimum">
+            <double>-200.000000000000000</double>
+           </property>
            <property name="maximum">
             <double>200.000000000000000</double>
            </property>
@@ -5304,11 +5294,36 @@ font-weight: bold;
            <property name="decimals">
             <number>5</number>
            </property>
+           <property name="minimum">
+            <double>-200.000000000000000</double>
+           </property>
            <property name="maximum">
             <double>200.000000000000000</double>
            </property>
            <property name="settingName" stdset="0">
             <string>scribe_offset_y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="VCPSettingsDoubleSpinBox" name="laser_offset_x">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::PlusMinus</enum>
+           </property>
+           <property name="decimals">
+            <number>5</number>
+           </property>
+           <property name="minimum">
+            <double>-200.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>200.000000000000000</double>
+           </property>
+           <property name="settingName" stdset="0">
+            <string>laser_offset_x</string>
            </property>
           </widget>
          </item>
