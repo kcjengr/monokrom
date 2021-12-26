@@ -156,6 +156,10 @@ class MainWindow(VCPMainWindow):
                 new_index = ui_fld.findData(getattr(cut, MainWindow.relationship_fld_map[k]).id)
                 ui_fld.setCurrentIndex(new_index)
             # check to see if there is a sub select required, if so select it
+
+            # All fields have been set, update any slave displays
+            ui_fld = getattr(self, 'param_name')
+            self.lbl_process_name.setText(ui_fld.text())
         
 
     def load_plasma_ui_filter_data(self):
@@ -232,6 +236,9 @@ class MainWindow(VCPMainWindow):
                 if v != 'param_name':
                     ui_fld = getattr(self, v)
                     ui_fld.setValue(0)
+        # All fields have been set, update any slave displays
+        ui_fld = getattr(self, 'param_name')
+        self.lbl_process_name.setText(ui_fld.text())
     
     def filter_sub_list_select(self, item):
         data = self.get_filter_query()
