@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>800</width>
     <height>600</height>
    </rect>
   </property>
@@ -18,13 +18,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
+    <width>800</width>
     <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>400</width>
+    <width>800</width>
     <height>600</height>
    </size>
   </property>
@@ -79,7 +79,7 @@
        </widget>
       </item>
       <item>
-       <widget class="MkFileListView" name="filelistview">
+       <widget class="MkFileTableView" name="filelistview">
         <property name="dragEnabled">
          <bool>true</bool>
         </property>
@@ -93,13 +93,16 @@
          <bool>true</bool>
         </property>
         <property name="selectionMode">
-         <enum>QAbstractItemView::ExtendedSelection</enum>
+         <enum>QAbstractItemView::SingleSelection</enum>
         </property>
         <property name="verticalScrollMode">
          <enum>QAbstractItemView::ScrollPerPixel</enum>
         </property>
         <property name="horizontalScrollMode">
          <enum>QAbstractItemView::ScrollPerPixel</enum>
+        </property>
+        <property name="showGrid">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
@@ -116,7 +119,7 @@
        <property name="minimumSize">
         <size>
          <width>34</width>
-         <height>34</height>
+         <height>44</height>
         </size>
        </property>
        <property name="maximumSize">
@@ -188,20 +191,20 @@ height: 30px;</string>
    <header>qtpyvcp.widgets.input_widgets.file_system</header>
   </customwidget>
   <customwidget>
-   <class>MkTransparentWidget</class>
-   <extends>QWidget</extends>
-   <header>monokrom.common.widgets.transparent_widget</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>MkFileListView</class>
-   <extends>QListView</extends>
+   <class>MkFileTableView</class>
+   <extends>QTableView</extends>
    <header>monokrom.common.widgets.file_list_view</header>
   </customwidget>
   <customwidget>
    <class>MkRemovableDeviceComboBox</class>
    <extends>RemovableDeviceComboBox</extends>
    <header>monokrom.common.widgets.file_list_view</header>
+  </customwidget>
+  <customwidget>
+   <class>MkTransparentWidget</class>
+   <extends>QWidget</extends>
+   <header>monokrom.common.widgets.transparent_widget</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -24,10 +24,10 @@ class MkMdiEntry_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MkMdiEntry
 
-from .file_list_view import MkFileListView
-class MkFileListView_Plugin(_DesignerPlugin):
+from .file_list_view import MkFileTableView
+class MkFileTableView_Plugin(_DesignerPlugin):
     def pluginClass(self):
-        return MkFileListView
+        return MkFileTableView
 
 from .recent_file_list_view import MkRecentFileListView
 class MkRecentFileListView_Plugin(_DesignerPlugin):

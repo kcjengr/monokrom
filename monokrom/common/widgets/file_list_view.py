@@ -4,7 +4,7 @@ import os
 from qtpy.QtCore import Qt
 from qtpy.QtCore import Slot, Property, Signal, QFile, QFileInfo, QDir, QIODevice, QModelIndex, QStringListModel
 from qtpy.QtGui import QIcon
-from qtpy.QtWidgets import QListView, QFileSystemModel, QFileIconProvider
+from qtpy.QtWidgets import QTableView, QFileSystemModel, QFileIconProvider
 
 from qtpyvcp.utilities.info import Info
 from qtpyvcp.utilities.logger import getLogger
@@ -88,12 +88,12 @@ class MkFileSystemModel(QFileSystemModel):
             self.setFilter(QDir.AllDirs | QDir.AllEntries | QDir.NoDot)
 
 
-class MkFileListView(QListView):
+class MkFileTableView(QTableView):
 
     rootChanged = Signal(str)
 
     def __init__(self, parent=None):
-        super(MkFileListView, self).__init__(parent)
+        super(MkFileTableView, self).__init__(parent)
 
         self.info = Info()
         self.nc_file_editor = self.info.getEditor()
@@ -187,14 +187,14 @@ class MkFileListView(QListView):
         if event.mimeData().hasUrls():
             event.accept()
         else:
-            super(MkFileListView, self).dragEnterEvent(event)
+            super(MkFileTableView, self).dragEnterEvent(event)
 
     def dragMoveEvent(self, event):
         if event.mimeData().hasUrls():
             event.setDropAction(Qt.MoveAction)
             event.accept()
         else:
-            super(MkFileListView, self).dragMoveEvent(event)
+            super(MkFileTableView, self).dragMoveEvent(event)
 
     def dropEvent(self, event):
         if event.mimeData().hasUrls():
@@ -207,7 +207,7 @@ class MkFileListView(QListView):
             # self.emit(QtCore.SIGNAL("dropped"), links)
         else:
             event.setDropAction(Qt.MoveAction)
-            super(MkFileListView, self).dropEvent(event)
+            super(MkFileTableView, self).dropEvent(event)
 
     def copyFiles(self, files):
         dst = self.model.filePath(self.rootIndex())
