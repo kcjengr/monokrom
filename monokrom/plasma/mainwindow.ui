@@ -1900,7 +1900,7 @@ ENABLE</string>
                   <rect>
                    <x>10</x>
                    <y>0</y>
-                   <width>511</width>
+                   <width>711</width>
                    <height>71</height>
                   </rect>
                  </property>
@@ -1908,25 +1908,22 @@ ENABLE</string>
                   <bool>false</bool>
                  </property>
                  <layout class="QGridLayout" name="gridLayout_24">
-                  <item row="0" column="3">
-                   <widget class="QPushButton" name="vtk_clear">
-                    <property name="text">
-                     <string>CLEAR</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QPushButton" name="vtk_minus">
-                    <property name="text">
-                     <string>-</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="0" column="2">
                    <widget class="QPushButton" name="vtk_center">
                     <property name="text">
                      <string>CENTER
 PLOT</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="6">
+                   <widget class="QPushButton" name="vtk_mach_extent">
+                    <property name="text">
+                     <string>MACH
+EXTENT</string>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
@@ -1948,11 +1945,25 @@ EXTENT</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="0" column="5">
-                   <widget class="QPushButton" name="vtk_mach_extent">
+                  <item row="0" column="1">
+                   <widget class="QPushButton" name="vtk_minus">
                     <property name="text">
-                     <string>MACH
-EXTENT</string>
+                     <string>-</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="3">
+                   <widget class="QPushButton" name="vtk_clear">
+                    <property name="text">
+                     <string>CLEAR</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="5">
+                   <widget class="QPushButton" name="vtk_prog_ticks">
+                    <property name="text">
+                     <string>PROG
+TICKS</string>
                     </property>
                     <property name="checkable">
                      <bool>true</bool>
@@ -3497,18 +3508,17 @@ font-weight: bold;
                   <number>12</number>
                  </property>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_10">
-                   <item>
-                    <widget class="HalButton" name="thc_enabled">
-                     <property name="text">
-                      <string>ENABLED</string>
-                     </property>
-                     <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="PlasmaHalCheckBox" name="thc_enabled">
+                   <property name="styleSheet">
+                    <string notr="true">font: bold 12pt;</string>
+                   </property>
+                   <property name="text">
+                    <string>THC ENABLED</string>
+                   </property>
+                   <property name="settingName" stdset="0">
+                    <string>thc_enabled</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="PlasmaHalCheckBox" name="chkb_auto_volts">
@@ -5807,22 +5817,6 @@ font-weight: bold;
    </hints>
   </connection>
   <connection>
-   <sender>btn_thc_enable</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>thc_enabled</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>776</x>
-     <y>293</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1812</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>thc_enabled</sender>
    <signal>toggled(bool)</signal>
    <receiver>btn_thc_enable</receiver>
@@ -5830,11 +5824,43 @@ font-weight: bold;
    <hints>
     <hint type="sourcelabel">
      <x>1812</x>
-     <y>159</y>
+     <y>157</y>
     </hint>
     <hint type="destinationlabel">
-     <x>776</x>
+     <x>929</x>
      <y>293</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_thc_enable</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>thc_enabled</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>929</x>
+     <y>293</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1812</x>
+     <y>157</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vtk_prog_ticks</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>showProgramTicks(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1604</x>
+     <y>129</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1514</x>
+     <y>536</y>
     </hint>
    </hints>
   </connection>
