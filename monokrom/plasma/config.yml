@@ -99,15 +99,15 @@ settings:
        persistent: true
     
     thc_pid_p_gain:
-       default_value: 1
+       default_value: 1.0
        persistent: true
     
     thc_pid_i_gain:
-       default_value: 0
+       default_value: 0.0
        persistent: true
     
     thc_pid_d_gain:
-       default_value: 0
+       default_value: 0.0
        persistent: true
     
     thc_vad_threshold:
@@ -119,7 +119,7 @@ settings:
        persistent: true
     
     thc_safe_height:
-       default_value: 5
+       default_value: 5.0
        persistent: true
     
     probe_float_travel:
@@ -131,11 +131,11 @@ settings:
        persistent: true
     
     probe_height:
-       default_value: 25
+       default_value: 25.0
        persistent: true
     
     probe_offset:
-       default_value: 0
+       default_value: 0.0
        persistent: true
     
     probe_ohmic_retries:
@@ -143,7 +143,7 @@ settings:
        persistent: true
     
     probe_skip_ihs:
-       default_value: 0
+       default_value: 0.0
        persistent: true
     
     probe_setup_speed:
@@ -195,7 +195,7 @@ settings:
        persistent: true
     
     spot_delay:
-       default_value: 0
+       default_value: 0.0
        persistent: true
     
     run_save_confirm:
@@ -219,11 +219,11 @@ settings:
          persistent: true
      
     plasma_arc1_percent:
-         default_value: 60
+         default_value: 60.0
          persistent: true
          
     plasma_arc2_percent:
-         default_value: 40
+         default_value: 40.0
          persistent: true
          
     plasma_arc3_percent:
