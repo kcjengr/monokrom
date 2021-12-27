@@ -139,7 +139,7 @@ settings:
        persistent: true
     
     probe_ohmic_retries:
-       default_value: 0
+       default_value: 3
        persistent: true
     
     probe_skip_ihs:
@@ -199,11 +199,11 @@ settings:
        persistent: true
     
     run_save_confirm:
-       default_value: 0
+       default_value: false
        persistent: true
        
     run_delete_confirm:
-       default_value: 1
+       default_value: true
        persistent: true
     
     plasma_hole_thickness_ratio:
@@ -291,19 +291,22 @@ settings:
         persistent: true
         
     ohmic_sensing_enabled:
-        default_value: 0
+        default_value: false
         persistent: true
     
     plasma_auto_volts:
-        default_value: 0
+        default_value: false
         persistent: true
         
     plasma_vad:
-        default_value: 0
+        default_value: false
         persistent: true
         
     plasma_void_sense:
-        default_value: 0
+        default_value: false
         persistent: true
         
+    thc_enabled:
+        default_value: false
+        persistent: true
     
