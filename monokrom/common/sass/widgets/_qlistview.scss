@@ -15,3 +15,7 @@ QListView::item {
 QListView::item:hover {
     // background-color: rgb(95, 95, 95);
 }
+
+QListView::item:selected {
+    border: 1px solid $border;
+}
