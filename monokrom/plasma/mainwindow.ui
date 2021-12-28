@@ -482,14 +482,10 @@
                 <string>CONTROL</string>
                </property>
                <layout class="QGridLayout" name="gridLayout">
-                <item row="1" column="0" colspan="2">
-                 <widget class="ActionButton" name="btn_feed_hold">
+                <item row="10" column="1">
+                 <widget class="SubCallButton" name="sc_park">
                   <property name="text">
-                   <string>FEED
-HOLD</string>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.pause</string>
+                   <string>PARK</string>
                   </property>
                  </widget>
                 </item>
@@ -501,21 +497,16 @@ RUN</string>
                   </property>
                  </widget>
                 </item>
-                <item row="16" column="0" colspan="2">
-                 <widget class="HalButton" name="btn_estopReset">
+                <item row="0" column="0" colspan="2">
+                 <widget class="ActionButton" name="btn_cycle_start">
                   <property name="text">
-                   <string>E STOP STATE</string>
+                   <string>CYCLE START</string>
                   </property>
                   <property name="rules" stdset="0">
-                   <string>[{&quot;name&quot;: &quot;estopState&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;estop_triggered\&quot; if ch[0] == 1 else \&quot;estop_armed\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:estop&quot;, &quot;trigger&quot;: true}]}]</string>
+                   <string>[{&quot;name&quot;: &quot;isrunning&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;\&quot; if ch[0] == 0 else \&quot;cycle_running\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:current_line&quot;, &quot;trigger&quot;: true}]}, {&quot;name&quot;: &quot;changetxt&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'CYCLE START' if ch[0] == 0 else 'CYCLE RUNNING'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:current_line&quot;, &quot;trigger&quot;: true}]}]</string>
                   </property>
-                 </widget>
-                </item>
-                <item row="10" column="0">
-                 <widget class="QPushButton" name="btn_frame_job">
-                  <property name="text">
-                   <string>FRAME
-JOB</string>
+                  <property name="actionName" stdset="0">
+                   <string>program.run</string>
                   </property>
                  </widget>
                 </item>
@@ -533,13 +524,6 @@ BREAK</string>
                   </property>
                  </widget>
                 </item>
-                <item row="10" column="1">
-                 <widget class="SubCallButton" name="sc_park">
-                  <property name="text">
-                   <string>PARK</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="2" column="0" colspan="2">
                  <widget class="ActionButton" name="btn_stop_abort">
                   <property name="text">
@@ -551,17 +535,7 @@ ABORT</string>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="0" colspan="2">
-                 <widget class="ActionButton" name="btn_cycle_start">
-                  <property name="text">
-                   <string>CYCLE START</string>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.run</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="11" column="0">
+                <item row="12" column="0">
                  <widget class="MDIButton" name="btn_g5x_home">
                   <property name="text">
                    <string>GOTO
@@ -572,18 +546,17 @@ ABORT</string>
                   </property>
                  </widget>
                 </item>
-                <item row="11" column="1">
-                 <widget class="MDIButton" name="btn_move_home">
+                <item row="17" column="0" colspan="2">
+                 <widget class="HalButton" name="btn_estopReset">
                   <property name="text">
-                   <string>GOTO
-HOME</string>
+                   <string>E STOP STATE</string>
                   </property>
-                  <property name="MDICommand" stdset="0">
-                   <string>G53 G0Z0X0Y0</string>
+                  <property name="rules" stdset="0">
+                   <string>[{&quot;name&quot;: &quot;estopState&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;estop_triggered\&quot; if ch[0] == 1 else \&quot;estop_armed\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:estop&quot;, &quot;trigger&quot;: true}]}]</string>
                   </property>
                  </widget>
                 </item>
-                <item row="15" column="0" colspan="2">
+                <item row="16" column="0" colspan="2">
                  <widget class="ActionButton" name="btn_machine_power_toggle">
                   <property name="text">
                    <string>MACHINE
@@ -594,6 +567,36 @@ POWER</string>
                   </property>
                   <property name="actionName" stdset="0">
                    <string>machine.power.toggle</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" colspan="2">
+                 <widget class="ActionButton" name="btn_feed_hold">
+                  <property name="text">
+                   <string>FEED
+HOLD</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>program.pause</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="12" column="1">
+                 <widget class="MDIButton" name="btn_move_home">
+                  <property name="text">
+                   <string>GOTO
+HOME</string>
+                  </property>
+                  <property name="MDICommand" stdset="0">
+                   <string>G53 G0Z0X0Y0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="10" column="0">
+                 <widget class="SubCallButton" name="btn_frame_job">
+                  <property name="text">
+                   <string>FRAME
+JOB</string>
                   </property>
                  </widget>
                 </item>

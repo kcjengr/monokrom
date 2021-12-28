@@ -75,6 +75,11 @@ QPushButton[style='estop_armed'] {
   color: black;
   background: lightgreen; }
 
+QPushButton[style='cycle_running'] {
+  color: #16160e;
+  background: #ffee06;
+  border: #ffee06; }
+
 /*===========================================================================*/
 /*                             QToolButton                                   */
 /*===========================================================================*/
