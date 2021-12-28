@@ -80,6 +80,11 @@ QPushButton[style='cycle_running'] {
   background: #ffee06;
   border: #ffee06; }
 
+QPushButton[style='cycle_stopped'] {
+  color: #ffee06;
+  background: #1c1c12;
+  border: 2px solid #ffee06; }
+
 /*===========================================================================*/
 /*                             QToolButton                                   */
 /*===========================================================================*/

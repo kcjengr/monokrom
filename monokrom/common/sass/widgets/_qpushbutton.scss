@@ -72,3 +72,8 @@ QPushButton[style='cycle_running'] {
   border: $border-color;
 }
 
+QPushButton[style='cycle_stopped'] {
+  color: $text-color;
+  background: lighten( $background, 2%);
+  border: $border;
+}
