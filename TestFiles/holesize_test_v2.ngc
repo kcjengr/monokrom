@@ -100,7 +100,7 @@
   G0  X84.298 Y58.555
   X16.928 Y58.989
   F10
-  M3 $0
+  M3 $0 S1
   G1
   G3 I20.435 J-20.435
   G1 X16.929 Y58.990 (Add tiny extension)
@@ -108,7 +108,7 @@
   G0  X16.928 Y58.989
   X-1.100 Y77.060
   F10
-  M3
+  M3 S1
   G1
   G2 X0.000 Y78.160 I1.100 J0.000
   G1 X235.000
@@ -123,4 +123,5 @@
   G0  X-1.100 Y77.060
   (No Parking values detected.  Moving back to zero, zero)
    X0.000 Y0.000
-  M5 M30
+  M5
+  M30
