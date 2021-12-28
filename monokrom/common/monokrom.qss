@@ -605,7 +605,7 @@ QAbstractItemView::item {
   color: #ffee06;
   background-color: transparent;
   selection-background-color: transparent;
-  min-height: 30px;
+  min-height: 32px;
   border: none; }
 
 QAbstractItemView::item::icon {
@@ -628,6 +628,17 @@ QListView::item {
   color: #ffee06; }
 
 QListView::item:selected {
+  border: 1px solid 2px solid #ffee06; }
+
+QTableView {
+  color: #ffee06;
+  background-color: #262618;
+  alternate-background-color: #1c1c12;
+  border: 2px solid #ffee06;
+  border-color: #29291a;
+  border-radius: 8px; }
+
+QTableView::item:selected {
   border: 1px solid 2px solid #ffee06; }
 
 /*===========================================================================*/

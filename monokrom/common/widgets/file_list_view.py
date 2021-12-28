@@ -116,6 +116,14 @@ class MkFileTableView(QTableView):
 
         # appearance
         self.setAlternatingRowColors(True)
+        self.verticalHeader().hide()
+        self.setSortingEnabled(True)
+        
+        # set default column widths
+        self.setColumnWidth(0, 350)
+        self.setColumnWidth(1, 120)
+        self.setColumnWidth(2, 100)
+        self.verticalHeader().setDefaultSectionSize(42)
 
         # signals
         self.clicked.connect(self.openLocation)

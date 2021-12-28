@@ -104,6 +104,9 @@
         <property name="showGrid">
          <bool>false</bool>
         </property>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
        </widget>
       </item>
      </layout>
@@ -115,7 +118,7 @@
       <number>14</number>
      </property>
      <item>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="btn_filechooser_removedev">
        <property name="minimumSize">
         <size>
          <width>34</width>
@@ -148,7 +151,7 @@ height: 30px;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="btn_filechooser_del">
        <property name="styleSheet">
         <string notr="true">width: 80px;
 height: 30px;</string>
@@ -159,7 +162,7 @@ height: 30px;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="btn_filechooser_rename">
        <property name="styleSheet">
         <string notr="true">width: 80px;
 height: 30px;</string>
@@ -170,7 +173,7 @@ height: 30px;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="btn_filechooser_open">
        <property name="styleSheet">
         <string notr="true">width: 80px;
 height: 30px;</string>
@@ -210,7 +213,7 @@ height: 30px;</string>
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton_3</sender>
+   <sender>btn_filechooser_open</sender>
    <signal>clicked()</signal>
    <receiver>filelistview</receiver>
    <slot>openSelectedItem()</slot>
@@ -244,7 +247,7 @@ height: 30px;</string>
   <connection>
    <sender>mkremovabledevicecombobox</sender>
    <signal>currentDeviceEjectable(bool)</signal>
-   <receiver>pushButton_4</receiver>
+   <receiver>btn_filechooser_removedev</receiver>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -258,7 +261,7 @@ height: 30px;</string>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_4</sender>
+   <sender>btn_filechooser_removedev</sender>
    <signal>clicked()</signal>
    <receiver>mkremovabledevicecombobox</receiver>
    <slot>ejectDevice()</slot>

@@ -1,0 +1,21 @@
+QTableView {
+  color: $border-color;
+  background-color: lighten($background, 5%);
+  alternate-background-color: lighten($background, 2%);
+  border: $border;
+  border-color: $layout-border-color;
+  border-radius: 8px;
+}
+
+//QTableView::item {
+//  color: $border-color;
+  // background-color: rgb(80, 80, 80);
+//}
+
+//QTableView::item:hover {
+    // background-color: rgb(95, 95, 95);
+//}
+
+QTableView::item:selected {
+    border: 1px solid $border;
+}
