@@ -1,0 +1,6 @@
+; Park gantry and head
+O<park> sub
+G21
+G90
+G53 G0 x[#<_ini[AXIS_X]MIN_LIMIT> + 1] y[#<_ini[AXIS_Y]MAX_LIMIT> - 1] 
+O<park> endsub

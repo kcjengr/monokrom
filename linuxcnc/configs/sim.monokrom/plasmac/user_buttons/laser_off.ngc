@@ -8,7 +8,7 @@ O<laser_off> sub
 
 G21
 G91
-G0 X#<laser_offset_x> Y#<laser_offset_y>
-g10 l20 p0 x0 y0
+g10 l20 p0 x#<laser_offset_x> y#<laser_offset_y>
 G90
+G0 x0 y0
 O<laser_off> endsub
