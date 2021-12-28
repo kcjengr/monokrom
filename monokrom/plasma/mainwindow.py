@@ -8,6 +8,7 @@ from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
 from qtpyvcp import hal
+from qtpyvcp.actions.program_actions import load as loadProgram
 
 #import pydevd;pydevd.settrace()
 
@@ -89,7 +90,7 @@ class MainWindow(VCPMainWindow):
         self.vtkbackplot.enable_panning(True)
         
         # find and set all user buttons
-        for user_i in range(1,17):
+        for user_i in range(1,15):
             user_btn_txt = f"user{user_i}"
             user_name_key = f"USER{user_i}_NAME"
             user_action_key = f"USER{user_i}_ACTION"
@@ -120,6 +121,7 @@ class MainWindow(VCPMainWindow):
         self.btn_reset_rapid.clicked.connect(lambda:self.rapid_slider.setValue(100))
         self.btn_reset_feed.clicked.connect(lambda:self.feed_slider.setValue(100))
         self.btn_reset_jog.clicked.connect(lambda:self.jog_slider.setValue(100))
+        self.btn_load_newest.clicked.connect(self.openLatest)
         
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
@@ -298,7 +300,24 @@ class MainWindow(VCPMainWindow):
                 arglst[k] = ui_fld.value() 
         
         self._plasma_plugin.updateCut(q, **arglst)
-        
+
+    def openLatest(self):
+        """Opens the latest file by date/time in the default ngc location"""
+        search_dir = os.path.expanduser('~/linuxcnc/nc_files')
+        newist = None
+        with os.scandir(search_dir) as it:
+            for entry in it:
+                if not entry.name.startswith('.') and entry.is_file():
+                    file_stat = entry.stat()
+                    if newist is None:
+                        newist = (entry.path, file_stat.st_mtime)
+                    elif newist[1] < file_stat.st_mtime:
+                        newist = (entry.path, file_stat.st_mtime)
+        # should have a latest file from standard directory
+        if newist is not None:
+            loadProgram(newist[0])
+
+
     def seed_database(self):
         # get db source file and initiate seed
         src = self.lne_seed_source.text()

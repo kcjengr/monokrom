@@ -191,6 +191,23 @@ class MkFileTableView(QTableView):
             return None
         return selection
 
+    @Slot()
+    def openLatest(self):
+        """Opens the latest file by date/time in the default ngc location"""
+        search_dir = self.model.filePath(self.rootIndex())
+        newist = None
+        with os.scandir(search_dir) as it:
+            for entry in it:
+                if not entry.name.startswith('.') and entry.is_file():
+                    file_stat = entry.stat()
+                    if newist is None:
+                        newist = (entry.path, file_stat.st_mtime)
+                    elif newist[1] < file_stat.st_mtime:
+                        newist = (entry.path, file_stat.st_mtime)
+        # should have a latest file from standard directory
+        if newist is not None:
+            loadProgram(newist[0])
+
     def dragEnterEvent(self, event):
         if event.mimeData().hasUrls():
             event.accept()
