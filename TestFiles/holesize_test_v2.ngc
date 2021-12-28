@@ -5,14 +5,13 @@
   G90 G40
   F69
   M52 P1 (Enable Adaptive Feed for arcs)
-  G64 P0.254 Q0.025 (tracking tolerances set to 0.254) 
+  G64 P0.025 Q0.025 (tracking tolerances set to 0.254) 
   (Part: holesize test)
   (Operation: Outside Offset, 0, T11: A120 Mild Steel 60 amp, 2mm [129V,5.9 bar])
   (Preset Volts: 49) ( Suggested Tip Size: 45 )
   ( Min Cut Length for DTHC ON : 1 units ) 
   (Preset Volts set to 49 Volts)
   T6 M6 (Load Plasmac Plasma Controller Tool #)
-  M66 P3 L3 Q2  (Wait for the Plasmac Plasma Controller to acknowledge the change)
   ( Settings Check)
   ( ###########################)
   ( Paused:  Check the Plasmac Plasma Controller Settings )
