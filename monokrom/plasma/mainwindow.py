@@ -117,6 +117,9 @@ class MainWindow(VCPMainWindow):
         self.btn_cut_recover_fwd.pressed.connect(lambda:self.cut_recovery_direction(1))
         self.btn_cut_recover_rev.released.connect(lambda:self.cut_recovery_direction(0))
         self.btn_cut_recover_fwd.released.connect(lambda:self.cut_recovery_direction(0))
+        self.btn_reset_rapid.clicked.connect(lambda:self.rapid_slider.setValue(100))
+        self.btn_reset_feed.clicked.connect(lambda:self.feed_slider.setValue(100))
+        self.btn_reset_jog.clicked.connect(lambda:self.jog_slider.setValue(100))
         
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
