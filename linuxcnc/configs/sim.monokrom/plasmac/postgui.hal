@@ -60,8 +60,8 @@ net plasmac:arc-max-starts                   qtpyvcp.arc-max-starts.out => plasm
 #net plasmac:scribe-on-delay                                      plasmac.scribe-on-delay
 
 
-#net plasmac:spotting-threshold                                   plasmac.spotting-threshold
-#net plasmac:spotting-time                                        plasmac.spotting-time
+net plasmac:spotting-threshold               qtpyvcp.spot-threshold.out => plasmac.spotting-threshold
+net plasmac:spotting-time                        qtpyvcp.spot-delay.out => plasmac.spotting-time
 
 net plasmac:thc-enable                      qtpyvcp.thc-enabled.checked => plasmac.thc-enable
 net plasmac:thc-delay                             qtpyvcp.thc-delay.out => plasmac.thc-delay
