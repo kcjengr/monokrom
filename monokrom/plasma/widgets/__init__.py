@@ -31,3 +31,8 @@ from .plasma_hal_checkbox import PlasmaHalCheckBox
 class PlasmaHalCheckBox_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return PlasmaHalCheckBox
+
+from .cyclestart_action_button import CycleStartActionButton
+class CycleStartActionButton_Plugin(_DesignerPlugin):
+    def pluginClass(self):
+        return CycleStartActionButton
