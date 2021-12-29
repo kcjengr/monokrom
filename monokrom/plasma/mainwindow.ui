@@ -4467,13 +4467,13 @@ font-weight: bold;
                      <enum>QAbstractSpinBox::PlusMinus</enum>
                     </property>
                     <property name="suffix">
-                     <string> S</string>
+                     <string> ms</string>
                     </property>
                     <property name="decimals">
-                     <number>3</number>
+                     <number>0</number>
                     </property>
                     <property name="maximum">
-                     <double>10.000000000000000</double>
+                     <double>3000.000000000000000</double>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>spot_delay</string>
