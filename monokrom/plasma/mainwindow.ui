@@ -482,36 +482,28 @@
                 <string>CONTROL</string>
                </property>
                <layout class="QGridLayout" name="gridLayout">
-                <item row="10" column="1">
-                 <widget class="SubCallButton" name="sc_park">
+                <item row="10" column="0">
+                 <widget class="SubCallButton" name="btn_frame_job">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
                   <property name="text">
-                   <string>PARK</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
-                 <widget class="ActionButton" name="actionbutton_9">
-                  <property name="text">
-                   <string>REVERSE
-RUN</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0" colspan="2">
-                 <widget class="ActionButton" name="btn_cycle_start">
-                  <property name="text">
-                   <string>CYCLE START</string>
-                  </property>
-                  <property name="rules" stdset="0">
-                   <string>[{&quot;name&quot;: &quot;isrunning&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;cycle_running\&quot; if ch[0] != 1 and not ch[1] else \&quot;cycle_stopped\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:interp_state&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}, {&quot;name&quot;: &quot;isrunningtext&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'CYCLE START' if ch[0] == 1 and not ch[1] else 'CYCLE RUNNING'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:interp_state&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: false}]}, {&quot;name&quot;: &quot;ispaused&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'CYCLE PAUSED' if ch[0] else 'CYCLE RUNNING'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}, {&quot;name&quot;: &quot;machine&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'CYCLE START'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:on&quot;, &quot;trigger&quot;: true}]}]</string>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.run</string>
+                   <string>FRAME
+JOB</string>
                   </property>
                  </widget>
                 </item>
                 <item row="3" column="0">
                  <widget class="ActionButton" name="btn_m1_break">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
                   <property name="text">
                    <string>M1
 BREAK</string>
@@ -524,40 +516,14 @@ BREAK</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0" colspan="2">
-                 <widget class="ActionButton" name="btn_stop_abort">
-                  <property name="text">
-                   <string>STOP
-ABORT</string>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.abort</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="12" column="0">
-                 <widget class="MDIButton" name="btn_g5x_home">
-                  <property name="text">
-                   <string>GOTO
- WORK ZERO</string>
-                  </property>
-                  <property name="MDICommand" stdset="0">
-                   <string>G0X0Y0Z0</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="17" column="0" colspan="2">
-                 <widget class="HalButton" name="btn_estopReset">
-                  <property name="text">
-                   <string>E STOP STATE</string>
-                  </property>
-                  <property name="rules" stdset="0">
-                   <string>[{&quot;name&quot;: &quot;estopState&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;estop_triggered\&quot; if ch[0] == 1 else \&quot;estop_armed\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:estop&quot;, &quot;trigger&quot;: true}]}]</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="16" column="0" colspan="2">
                  <widget class="ActionButton" name="btn_machine_power_toggle">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
                   <property name="text">
                    <string>MACHINE
 POWER</string>
@@ -570,19 +536,61 @@ POWER</string>
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="0" colspan="2">
-                 <widget class="ActionButton" name="btn_feed_hold">
-                  <property name="text">
-                   <string>FEED
-HOLD</string>
+                <item row="3" column="1">
+                 <widget class="ActionButton" name="actionbutton_9">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
                   </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.pause</string>
+                  <property name="text">
+                   <string>REVERSE
+RUN</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2">
+                 <widget class="CycleStartActionButton" name="btn_cycle_start">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>CYCLE START</string>
+                  </property>
+                  <property name="pinBaseName" stdset="0">
+                   <string>cycle-start</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="12" column="0">
+                 <widget class="MDIButton" name="btn_g5x_home">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>GOTO
+ WORK ZERO</string>
+                  </property>
+                  <property name="MDICommand" stdset="0">
+                   <string>G0X0Y0Z0</string>
                   </property>
                  </widget>
                 </item>
                 <item row="12" column="1">
                  <widget class="MDIButton" name="btn_move_home">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
                   <property name="text">
                    <string>GOTO
 HOME</string>
@@ -592,11 +600,66 @@ HOME</string>
                   </property>
                  </widget>
                 </item>
-                <item row="10" column="0">
-                 <widget class="SubCallButton" name="btn_frame_job">
+                <item row="2" column="0" colspan="2">
+                 <widget class="ActionButton" name="btn_stop_abort">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
                   <property name="text">
-                   <string>FRAME
-JOB</string>
+                   <string>STOP
+ABORT</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>program.abort</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="10" column="1">
+                 <widget class="SubCallButton" name="sc_park">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>PARK</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="17" column="0" colspan="2">
+                 <widget class="HalButton" name="btn_estopReset">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>E STOP STATE</string>
+                  </property>
+                  <property name="rules" stdset="0">
+                   <string>[{&quot;name&quot;: &quot;estopState&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;estop_triggered\&quot; if ch[0] == 1 else \&quot;estop_armed\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:estop&quot;, &quot;trigger&quot;: true}]}]</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" colspan="2">
+                 <widget class="ActionButton" name="btn_feed_hold">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>FEED
+HOLD</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>program.pause</string>
                   </property>
                  </widget>
                 </item>
@@ -5549,6 +5612,11 @@ font-weight: bold;
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>CycleStartActionButton</class>
+   <extends>QPushButton</extends>
+   <header>monokrom.plasma.widgets.cyclestart_action_button</header>
+  </customwidget>
+  <customwidget>
    <class>PlasmaHalCheckBox</class>
    <extends>HalCheckBox</extends>
    <header>monokrom.plasma.widgets.plasma_hal_checkbox</header>
@@ -5617,7 +5685,6 @@ font-weight: bold;
   <tabstop>tabWidget_2</tabstop>
   <tabstop>actionbutton_15</tabstop>
   <tabstop>actionbutton_36</tabstop>
-  <tabstop>btn_cycle_start</tabstop>
   <tabstop>btn_machine_power_toggle</tabstop>
   <tabstop>btn_save_run_process</tabstop>
   <tabstop>btn_del_run_process</tabstop>
