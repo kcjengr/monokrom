@@ -482,6 +482,103 @@
                 <string>CONTROL</string>
                </property>
                <layout class="QGridLayout" name="gridLayout">
+                <item row="16" column="0" colspan="2">
+                 <widget class="ActionButton" name="btn_machine_power_toggle">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>MACHINE
+POWER</string>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.power.toggle</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="10" column="1">
+                 <widget class="SubCallButton" name="sc_park">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>PARK</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="12" column="1">
+                 <widget class="MDIButton" name="btn_move_home">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>GOTO
+HOME</string>
+                  </property>
+                  <property name="MDICommand" stdset="0">
+                   <string>G53 G0Z0X0Y0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2">
+                 <widget class="CycleStartActionButton" name="btn_cycle_start">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>CYCLE START</string>
+                  </property>
+                  <property name="pinBaseName" stdset="0">
+                   <string>cycle-start</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0" colspan="2">
+                 <widget class="ActionButton" name="btn_stop_abort">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>STOP
+ABORT</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>program.abort</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="ActionButton" name="actionbutton_9">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>REVERSE
+RUN</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="10" column="0">
                  <widget class="SubCallButton" name="btn_frame_job">
                   <property name="maximumSize">
@@ -493,6 +590,40 @@
                   <property name="text">
                    <string>FRAME
 JOB</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="12" column="0">
+                 <widget class="MDIButton" name="btn_g5x_home">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>GOTO
+ WORK ZERO</string>
+                  </property>
+                  <property name="MDICommand" stdset="0">
+                   <string>G0X0Y0Z0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" colspan="2">
+                 <widget class="ActionButton" name="btn_feed_hold">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>FEED
+HOLD</string>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>program.pause</string>
                   </property>
                  </widget>
                 </item>
@@ -516,150 +647,16 @@ BREAK</string>
                   </property>
                  </widget>
                 </item>
-                <item row="16" column="0" colspan="2">
-                 <widget class="ActionButton" name="btn_machine_power_toggle">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>44</height>
-                   </size>
-                  </property>
+                <item row="17" column="0" colspan="2">
+                 <widget class="EstopActionButton" name="btn_estopReset">
                   <property name="text">
-                   <string>MACHINE
-POWER</string>
+                   <string>ESTOP</string>
                   </property>
                   <property name="checkable">
                    <bool>true</bool>
                   </property>
                   <property name="actionName" stdset="0">
-                   <string>machine.power.toggle</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
-                 <widget class="ActionButton" name="actionbutton_9">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>44</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>REVERSE
-RUN</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0" colspan="2">
-                 <widget class="CycleStartActionButton" name="btn_cycle_start">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>44</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>CYCLE START</string>
-                  </property>
-                  <property name="pinBaseName" stdset="0">
-                   <string>cycle-start</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="12" column="0">
-                 <widget class="MDIButton" name="btn_g5x_home">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>44</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>GOTO
- WORK ZERO</string>
-                  </property>
-                  <property name="MDICommand" stdset="0">
-                   <string>G0X0Y0Z0</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="12" column="1">
-                 <widget class="MDIButton" name="btn_move_home">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>44</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>GOTO
-HOME</string>
-                  </property>
-                  <property name="MDICommand" stdset="0">
-                   <string>G53 G0Z0X0Y0</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0" colspan="2">
-                 <widget class="ActionButton" name="btn_stop_abort">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>44</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>STOP
-ABORT</string>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.abort</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="10" column="1">
-                 <widget class="SubCallButton" name="sc_park">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>44</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>PARK</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="17" column="0" colspan="2">
-                 <widget class="HalButton" name="btn_estopReset">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>44</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>E STOP STATE</string>
-                  </property>
-                  <property name="rules" stdset="0">
-                   <string>[{&quot;name&quot;: &quot;estopState&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;estop_triggered\&quot; if ch[0] == 1 else \&quot;estop_armed\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:estop&quot;, &quot;trigger&quot;: true}]}]</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0" colspan="2">
-                 <widget class="ActionButton" name="btn_feed_hold">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>44</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>FEED
-HOLD</string>
-                  </property>
-                  <property name="actionName" stdset="0">
-                   <string>program.pause</string>
+                   <string>machine.estop.toggle</string>
                   </property>
                  </widget>
                 </item>
@@ -5617,6 +5614,11 @@ font-weight: bold;
    <header>monokrom.plasma.widgets.cyclestart_action_button</header>
   </customwidget>
   <customwidget>
+   <class>EstopActionButton</class>
+   <extends>QPushButton</extends>
+   <header>monokrom.plasma.widgets.estop_action_button</header>
+  </customwidget>
+  <customwidget>
    <class>PlasmaHalCheckBox</class>
    <extends>HalCheckBox</extends>
    <header>monokrom.plasma.widgets.plasma_hal_checkbox</header>
@@ -5650,7 +5652,6 @@ font-weight: bold;
   <tabstop>param_puddlejumpdelay</tabstop>
   <tabstop>param_pauseatend</tabstop>
   <tabstop>param_gaspressure</tabstop>
-  <tabstop>btn_estopReset</tabstop>
   <tabstop>feed_slider</tabstop>
   <tabstop>rapid_slider</tabstop>
   <tabstop>jog_slider</tabstop>
