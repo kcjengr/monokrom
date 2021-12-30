@@ -98,10 +98,13 @@ net plasmac:z-height                plasmac.z-height
 net plasmac:arc-ok-out              plasmac.arc-ok-out                  => qtpyvcp.led-arc-ok.on
 net plasmac:torch-on                plasmac.torch-on                    => qtpyvcp.led-torch-on.on
 
-# HalUI Connections
+# Cycle Start Connections
 net plasmac:program-is-paused                                           => qtpyvcp.cycle-start.program-is-paused
 net plasmac:program-is-running                                          => qtpyvcp.cycle-start.program-is-running
 net plasmac:program-is-idle                                             => qtpyvcp.cycle-start.program-is-idle
+
+# UI eStop Connections
+net estop:ok     qtpyvcp.estopbutton.not-checked => ui_estop.reset ui_estop.ok-in
 
 
 # simulator panel connections

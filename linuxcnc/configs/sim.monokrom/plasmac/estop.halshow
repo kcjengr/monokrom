@@ -1,0 +1,14 @@
+# halshow watchlist created Thu Dec 30 19:56:02 NZDT 2021
+
+pin+qtpyvcp.estopbutton.checked
+pin+qtpyvcp.estopbutton.not-checked
+pin+qtpyvcp.estopbutton.out
+pin+qtpyvcp.estopbutton.estop-reset
+pin+ui_estop.ok-in
+pin+ui_estop.reset
+pin+ui_estop.ok-out
+pin+ui_estop.fault-in
+pin+iocontrol.0.user-enable-out
+pin+iocontrol.0.user-request-enable
+pin+iocontrol.0.emc-enable-in
+pin+halui.estop.is-activated

@@ -79,16 +79,13 @@ for {set jnum 0} {$jnum < $numJoints} {incr jnum} {
 # Standard estop shape
 loadrt estop_latch names=ui_estop
 addf ui_estop servo-thread
-net estop:reset     iocontrol.0.user-request-enable => ui_estop.reset
 net estop:ok-out    ui_estop.ok-out => iocontrol.0.emc-enable-in
 
 
-
-
 # QTPLASMAC ESTOP HANDLING
-#~ loadrt or2 names=estop_or
+loadrt or2 names=estop_or
 #~ loadrt not names=estop_not
-#~ addf estop_or servo-thread
+addf estop_or servo-thread
 #~ addf estop_not servo-thread
 #~ net sim:estop-raw estop_or.out estop_not.in
 #~ net sim:estop-out estop_not.out iocontrol.0.emc-enable-in

@@ -12,7 +12,7 @@ from qtpyvcp.utilities.logger import getLogger
 LOG = getLogger(__name__)
 
 
-class EstopActionButton(VCPButton, HALWidget):
+class EstopButton(VCPButton, HALWidget):
     """eStop button for triggering QtPyVCP eStop action.
 
     Button for setting `bit` HAL pin values.
@@ -24,9 +24,9 @@ class EstopActionButton(VCPButton, HALWidget):
         =========================             ===== =========
         qtpyvcp.button.enable                 bit   in
         qtpyvcp.button.estop-reset            bit   in
-        qtpyvcp.button.estop-active           bit   in
         qtpyvcp.button.out                    bit   out
         qtpyvcp.button.checked                bit   out
+        qtpyvcp.button.not-checked            bit   out
         =========================             ===== =========
 
 
@@ -36,18 +36,13 @@ class EstopActionButton(VCPButton, HALWidget):
     """
 
     def __init__(self, parent=None):
-        super(EstopActionButton, self).__init__(parent)
+        super(EstopButton, self).__init__(parent)
 
-        self._action_name = ''
-        self.actionName = ''
         self._enable_pin = None
         self._estop_reset_pin = None
-        self._estop_active_pin = None
         self._pressed_pin = None
         self._checked_pin = None
-
-        self.pulse_timer = None
-        self.pulse_state = -1
+        self._not_checked_pin = None
 
         self.pressed.connect(self.onPress)
         self.released.connect(self.onRelease)
@@ -64,33 +59,12 @@ class EstopActionButton(VCPButton, HALWidget):
     def onCheckedStateChanged(self, checked):
         if self._checked_pin is not None:
             self._checked_pin.value = checked
-
-
-    @Property(str)
-    def actionName(self):
-        """Property for the name of the action the button triggers (str).
-
-        When this property is set it calls :meth:`QtPyVCP.actions.bindWidget`
-        to bind the widget to the action.
-        """
-        return self._action_name
-
-    @actionName.setter
-    def actionName(self, action_name):
-        self._action_name = action_name
-        try:
-            bindWidget(self, action_name)
-        except InvalidAction:
-            pass
-
-    def setReset(self, state):
-        LOG.debug(f'Reset = {state}')
-        if state:
-            LOG.debug('reset estop signal recieved')
-            estop.reset()
-    
-    def triggerEstop(self):
-            estop.activate()
+            self._not_checked_pin.value = not checked
+            # set style based on state
+            if checked:
+                self.setStyleClass('estop_triggered')
+            else:
+                self.setStyleClass('estop_armed')
 
     def setIsActive(self, state):
         LOG.debug(f'Active = {state}')
@@ -100,19 +74,14 @@ class EstopActionButton(VCPButton, HALWidget):
         else:
             self.setStyleClass('estop_armed')
 
-
-    def flashButton(self):
-        if self.pulse_state > 0:
-            self.setStyleClass('cycle_running')
-        else:
-            self.setStyleClass('cycle_stopped')
-        self.pulse_state *= -1
+    def reset_in(self, is_reset):
+        if is_reset:
+            self.setChecked(False)
 
 
     def initialize(self):
         comp = hal.getComponent()
         obj_name = self.getPinBaseName()
-
 
         # add button.enable HAL pin
         self._enable_pin = comp.addPin(obj_name + ".enable", "bit", "in")
@@ -120,10 +89,8 @@ class EstopActionButton(VCPButton, HALWidget):
         self._enable_pin.valueChanged.connect(self.setEnabled)
 
         self._estop_reset_pin = comp.addPin(obj_name + ".estop-reset", "bit", "in")
-        self._estop_reset_pin.valueChanged.connect(self.setReset)
-
-        self._estop_active_pin = comp.addPin(obj_name + ".estop-active", "bit", "in")
-        self._estop_active_pin.valueChanged.connect(self.setIsActive)
+        self._estop_reset_pin.value = False
+        self._estop_reset_pin.valueChanged.connect(self.reset_in)
 
 
         # add button.out HAL pin
@@ -132,7 +99,11 @@ class EstopActionButton(VCPButton, HALWidget):
         if self.isCheckable():
             # add button.checked HAL pin
             self._checked_pin = comp.addPin(obj_name + ".checked", "bit", "out")
+            self._not_checked_pin = comp.addPin(obj_name + ".not-checked", "bit", "out")
             self._checked_pin.value = self.isChecked()
+            self._not_checked_pin.value = not self.isChecked()
+            if self.isChecked():
+                self.setStyleClass('estop_triggered')
+            else:
+                self.setStyleClass('estop_armed')
 
-        self.pulse_timer = QTimer(self)
-        self.pulse_timer.timeout.connect(self.flashButton)
