@@ -3691,6 +3691,38 @@ font-weight: bold;
                  <property name="verticalSpacing">
                   <number>20</number>
                  </property>
+                 <item row="2" column="2">
+                  <widget class="QDoubleSpinBox" name="single_cut_y">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="decimals">
+                    <number>3</number>
+                   </property>
+                   <property name="maximum">
+                    <double>10000.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QDoubleSpinBox" name="single_cut_x">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="decimals">
+                    <number>3</number>
+                   </property>
+                   <property name="maximum">
+                    <double>10000.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
                  <item row="0" column="0">
                   <widget class="QLabel" name="label_6">
                    <property name="text">
@@ -3702,27 +3734,7 @@ LENGTH</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="1">
-                  <widget class="QDoubleSpinBox" name="single_cut_y">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="QDoubleSpinBox" name="single_cut_x">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
+                 <item row="2" column="0">
                   <widget class="QLabel" name="label_12">
                    <property name="text">
                     <string>Y
@@ -3733,8 +3745,20 @@ LENGTH</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="3" rowspan="2">
+                 <item row="0" column="3" rowspan="3">
                   <widget class="SubCallButton" name="btn_single_cut">
+                   <property name="minimumSize">
+                    <size>
+                     <width>34</width>
+                     <height>95</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>95</height>
+                    </size>
+                   </property>
                    <property name="text">
                     <string>SINGLE
 CUT</string>
