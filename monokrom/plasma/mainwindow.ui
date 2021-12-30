@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>2022</width>
-    <height>1080</height>
+    <width>1931</width>
+    <height>1100</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -2577,13 +2577,13 @@ TICKS</string>
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>500</width>
+                  <width>450</width>
                   <height>0</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>500</width>
+                  <width>450</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -2928,6 +2928,9 @@ font-weight: bold;
                    </property>
                    <property name="uniformItemSizes">
                     <bool>false</bool>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
                    </property>
                    <item>
                     <property name="text">
@@ -3726,8 +3729,7 @@ font-weight: bold;
                  <item row="0" column="0">
                   <widget class="QLabel" name="label_6">
                    <property name="text">
-                    <string>X
-LENGTH</string>
+                    <string>X-LENGTH</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -3737,20 +3739,19 @@ LENGTH</string>
                  <item row="2" column="0">
                   <widget class="QLabel" name="label_12">
                    <property name="text">
-                    <string>Y
-LENGTH</string>
+                    <string>Y-LENGTH</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="3" rowspan="3">
+                 <item row="3" column="0" colspan="3">
                   <widget class="SubCallButton" name="btn_single_cut">
                    <property name="minimumSize">
                     <size>
                      <width>34</width>
-                     <height>95</height>
+                     <height>44</height>
                     </size>
                    </property>
                    <property name="maximumSize">
@@ -5225,7 +5226,7 @@ CUT</string>
        <widget class="MkGroupBox" name="groupbox_18">
         <property name="geometry">
          <rect>
-          <x>1410</x>
+          <x>1270</x>
           <y>0</y>
           <width>591</width>
           <height>811</height>
