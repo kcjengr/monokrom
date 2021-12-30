@@ -317,6 +317,9 @@ class MainWindow(VCPMainWindow):
         if newist is not None:
             loadProgram(newist[0])
 
+    def single_cut_limits(self):
+        pass
+
 
     def seed_database(self):
         # get db source file and initiate seed

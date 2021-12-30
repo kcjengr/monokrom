@@ -1,0 +1,30 @@
+; Single cut for a fixed distance from current point
+
+O<single_cut> sub
+#<single_cut_x> = #1
+#<single_cut_y> = #2
+
+; save if metric
+#<is_metric> = #<_metric>
+
+#<_hal[halui.machine.units-per-mm]
+G21
+
+o110 if [#<_absolute> EQ 1]
+   #<is_absolute> = 1
+   G91
+o110 endif
+
+M3 $0
+G1 X[#<single_cut_x>/#<_hal[halui.machine.units-per-mm]] Y[#<single_cut_y>/#<_hal[halui.machine.units-per-mm]]
+M5 $-1
+
+o115 if [EXISTS[#<is_absolute>]]
+   G90
+o115 endif
+
+o120 if [<#is_metric> EQ 0]
+   G20
+o120
+
+O<single_cut> endsub

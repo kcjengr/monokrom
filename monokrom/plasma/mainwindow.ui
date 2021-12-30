@@ -3694,12 +3694,26 @@ font-weight: bold;
                  <item row="0" column="0">
                   <widget class="QLabel" name="label_6">
                    <property name="text">
-                    <string>X-LENGTH</string>
+                    <string>X
+LENGTH</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QDoubleSpinBox" name="single_cut_y">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
                    </property>
                   </widget>
                  </item>
                  <item row="0" column="1">
-                  <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
+                  <widget class="QDoubleSpinBox" name="single_cut_x">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
                    </property>
@@ -3711,42 +3725,22 @@ font-weight: bold;
                  <item row="1" column="0">
                   <widget class="QLabel" name="label_12">
                    <property name="text">
-                    <string>Y-LENGTH</string>
+                    <string>Y
+LENGTH</string>
                    </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
                    </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
                   </widget>
                  </item>
-                 <item row="0" column="2" rowspan="2">
-                  <widget class="QPushButton" name="pushButton_10">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>34</width>
-                     <height>44</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>65</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
+                 <item row="0" column="3" rowspan="2">
+                  <widget class="SubCallButton" name="btn_single_cut">
                    <property name="text">
-                    <string>START</string>
+                    <string>SINGLE
+CUT</string>
+                   </property>
+                   <property name="filename" stdset="0">
+                    <string>single_cut.ngc</string>
                    </property>
                   </widget>
                  </item>
@@ -5695,8 +5689,8 @@ font-weight: bold;
   <tabstop>btn_new_run_process</tabstop>
   <tabstop>btn_run_reload</tabstop>
   <tabstop>chkb_slot_detect_enable</tabstop>
-  <tabstop>doubleSpinBox_3</tabstop>
-  <tabstop>doubleSpinBox_4</tabstop>
+  <tabstop>single_cut_x</tabstop>
+  <tabstop>single_cut_y</tabstop>
   <tabstop>thc_delay</tabstop>
   <tabstop>thc_threshold</tabstop>
   <tabstop>thc_pid_p_gain</tabstop>
