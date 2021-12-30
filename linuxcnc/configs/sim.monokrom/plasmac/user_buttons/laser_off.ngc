@@ -7,8 +7,17 @@ O<laser_off> sub
 #<laser_offset_y> = #2
 
 G21
-G91
+
+o110 if [#<_absolute> EQ 1]
+   #<is_absolute> = 1
+   G91
+o110 endif
+
 g10 l20 p0 x#<laser_offset_x> y#<laser_offset_y>
-G90
 G0 x0 y0
+
+o115 if[EXISTS[#<is_absolute>]]
+   G90
+o115 endif
+
 O<laser_off> endsub
