@@ -76,27 +76,18 @@ for {set jnum 0} {$jnum < $numJoints} {incr jnum} {
 }
 
 
-# Standard estop shape
-loadrt estop_latch names=ui_estop
-addf ui_estop servo-thread
-net estop:reset     iocontrol.0.user-request-enable => ui_estop.reset
-net estop:ok-out    ui_estop.ok-out => iocontrol.0.emc-enable-in
-
-
-
-
 # QTPLASMAC ESTOP HANDLING
-#~ loadrt or2 names=estop_or
-#~ loadrt not names=estop_not
-#~ addf estop_or servo-thread
-#~ addf estop_not servo-thread
-#~ net sim:estop-raw estop_or.out estop_not.in
-#~ net sim:estop-out estop_not.out iocontrol.0.emc-enable-in
-#~ if {[info exists ::QTPLASMAC(ESTOP_TYPE)]} {
-    #~ if {$::QTPLASMAC(ESTOP_TYPE) == 2} {
-        #~ loadrt not names=estop_not_1
-        #~ addf estop_not_1 servo-thread
-        #~ net sim:estop-1-raw iocontrol.0.user-enable-out => estop_not_1.in
-        #~ net sim:estop-1-in estop_not_1.out => estop_or.in1
-    #~ }
-#~ }
+loadrt or2 names=estop_or
+loadrt not names=estop_not
+addf estop_or servo-thread
+addf estop_not servo-thread
+net sim:estop-raw estop_or.out estop_not.in
+net sim:estop-out estop_not.out iocontrol.0.emc-enable-in
+if {[info exists ::QTPLASMAC(ESTOP_TYPE)]} {
+    if {$::QTPLASMAC(ESTOP_TYPE) == 2} {
+        loadrt not names=estop_not_1
+        addf estop_not_1 servo-thread
+        net sim:estop-1-raw iocontrol.0.user-enable-out => estop_not_1.in
+        net sim:estop-1-in estop_not_1.out => estop_or.in1
+    }
+}

@@ -1,0 +1,13 @@
+# example of a machine specific settings
+windows:
+  mainwindow:
+    kwargs:
+      confirm_exit: false
+
+#data_plugins:
+#  plasmaprocesses:
+#    provider: qtpyvcp.plugins.plasma_processes:PlasmaProcesses
+#    kwargs:
+#        db_type: "mysql"
+#        connect_string: "mysql+pymysql://<user>:<password>@localhost/plasma_table"
+  
