@@ -3636,7 +3636,7 @@ font-weight: bold;
                  </sizepolicy>
                 </property>
                 <property name="title">
-                 <string>THC</string>
+                 <string>THC, TORCH &amp;&amp; OHMIC</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_6">
                  <property name="spacing">
@@ -3661,7 +3661,7 @@ font-weight: bold;
                     <string notr="true">font: bold 12pt;</string>
                    </property>
                    <property name="text">
-                    <string>USE AUTO VOLTS</string>
+                    <string>THC AUTO VOLTS</string>
                    </property>
                    <property name="pinBaseName" stdset="0">
                     <string>plasma-auto-volts</string>
@@ -3677,7 +3677,7 @@ font-weight: bold;
                     <string notr="true">font: bold 12pt;</string>
                    </property>
                    <property name="text">
-                    <string>VELOCITY ANTI-DIVE</string>
+                    <string>THC ANTI-DIVE</string>
                    </property>
                    <property name="pinBaseName" stdset="0">
                     <string>plasma-vad</string>
@@ -3693,7 +3693,7 @@ font-weight: bold;
                     <string notr="true">font: bold 12pt;</string>
                    </property>
                    <property name="text">
-                    <string>VOID SENSE ENABLE</string>
+                    <string>VOID SENSE</string>
                    </property>
                    <property name="pinBaseName" stdset="0">
                     <string>plasma-void-sense</string>
@@ -3703,25 +3703,29 @@ font-weight: bold;
                    </property>
                   </widget>
                  </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="MkGroupBox" name="groupbox_13">
-                <property name="title">
-                 <string>OHMIC SENSING</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_18">
-                 <property name="verticalSpacing">
-                  <number>12</number>
-                 </property>
-                 <item row="0" column="0">
+                 <item>
+                  <widget class="PlasmaHalCheckBox" name="chkb_mesh_sense">
+                   <property name="styleSheet">
+                    <string notr="true">font: bold 12pt;</string>
+                   </property>
+                   <property name="text">
+                    <string>MESH SENSE</string>
+                   </property>
+                   <property name="pinBaseName" stdset="0">
+                    <string>plasma-mesh-sense</string>
+                   </property>
+                   <property name="settingName" stdset="0">
+                    <string>plasma_mesh_sense</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
                   <widget class="PlasmaHalCheckBox" name="plasmahalcheckbox">
                    <property name="styleSheet">
                     <string notr="true">font: bold 12pt;</string>
                    </property>
                    <property name="text">
-                    <string>SENSING ENABLE</string>
+                    <string>OHMIC SENSE</string>
                    </property>
                    <property name="pinBaseName" stdset="0">
                     <string>ohmic-sensing-enabled</string>

@@ -16,8 +16,10 @@
 
 net plasmac:axis-max-limit       ini.z.max_limit             =>  plasmac.axis-z-max-limit
 net plasmac:axis-min-limit       ini.z.min_limit             =>  plasmac.axis-z-min-limit
-
-
+net plasmac:axis-x-max-limit     ini.x.max_limit             =>  plasmac.axis-x-max-limit
+net plasmac:axis-x-min-limit     ini.x.min_limit             =>  plasmac.axis-x-min-limit
+net plasmac:axis-y-max-limit     ini.y.max_limit             =>  plasmac.axis-y-max-limit
+net plasmac:axis-y-min-limit     ini.y.min_limit             =>  plasmac.axis-y-min-limit
 
 # Inputs
 

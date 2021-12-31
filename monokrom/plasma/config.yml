@@ -305,6 +305,10 @@ settings:
     plasma_void_sense:
         default_value: false
         persistent: true
+
+    plasma_mesh_sense:
+        default_value: false
+        persistent: true
         
     thc_enabled:
         default_value: false
