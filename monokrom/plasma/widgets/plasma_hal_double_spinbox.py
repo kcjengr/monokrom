@@ -1,4 +1,4 @@
-from qtpy.QtCore import Property
+from qtpy.QtCore import Property, Signal
 
 from qtpyvcp import hal
 from qtpyvcp.widgets.hal_widgets.hal_double_spinbox import HalDoubleSpinBox
@@ -26,6 +26,9 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
         qtpyvcp.spinbox.out       float     out
         ========================= ========= =========
     """
+    
+    focusReceived = Signal(object)
+    
     def __init__(self, parent=None):
         super(PlasmaHalDoubleSpinBox, self).__init__(parent)
         self._setting = None
@@ -47,6 +50,11 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
 
     def editingEnded(self):
         self._setting.setValue(self.value())
+
+    def focusInEvent(self, event):
+        # fire the focusReceived signal
+        self.focusReceived.emit(self)
+        super(PlasmaHalDoubleSpinBox, self).focusInEvent(event)
 
     def initialize(self):
         LOG.debug("Initalizing PlasmaHalDoubleSpinBox: '{}'".format(self._setting_name))

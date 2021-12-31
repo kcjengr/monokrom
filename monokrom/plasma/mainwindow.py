@@ -17,6 +17,9 @@ from qtpyvcp.actions.program_actions import load as loadProgram
 from qtpyvcp.utilities import logger
 LOG = logger.getLogger('qtpyvcp.' + __name__)
 INFO = Info()
+STATUS = getPlugin('status')
+STAT = STATUS.stat
+POS = getPlugin('position')
 
 class MainWindow(VCPMainWindow):
     """Main window class for the VCP."""
@@ -122,6 +125,7 @@ class MainWindow(VCPMainWindow):
         self.btn_reset_feed.clicked.connect(lambda:self.feed_slider.setValue(100))
         self.btn_reset_jog.clicked.connect(lambda:self.jog_slider.setValue(100))
         self.btn_load_newest.clicked.connect(self.openLatest)
+        self.single_cut_x.focusReceived.connect(self.single_cut_limits)
         
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
@@ -318,7 +322,15 @@ class MainWindow(VCPMainWindow):
             loadProgram(newist[0])
 
     def single_cut_limits(self):
-        pass
+        # Assumes an axis sequence of x:0, y:1, z:2
+        sender = self.sender()
+        print(f'single_cut_limits:  {sender.objectName()}')
+        if sender.objectName() == 'single_cut_x':
+            x_pos = POS.Absolute.getValue()[0]
+            print(f'Absolute X position = {x_pos}')
+        elif sender.objectName() == 'single_cut_y':
+            y_pos = POS.Absolute.getValue()[1]
+            print(f'Absolute Y position = {y_pos}')
 
 
     def seed_database(self):
