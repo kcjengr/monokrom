@@ -4545,29 +4545,6 @@ font-weight: bold;
               </layout>
              </widget>
             </item>
-            <item row="2" column="1">
-             <widget class="MkGroupBox" name="groupbox_5">
-              <property name="title">
-               <string>CONFIG SETTINGS</string>
-              </property>
-              <layout class="QHBoxLayout" name="horizontalLayout">
-               <item>
-                <widget class="QPushButton" name="btn_config_save">
-                 <property name="text">
-                  <string>SAVE</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="btn_config_reload">
-                 <property name="text">
-                  <string>RELOAD</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
             <item row="1" column="1">
              <widget class="MkGroupBox" name="groupbox_4">
               <property name="title">
