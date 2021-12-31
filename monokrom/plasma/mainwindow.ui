@@ -3803,574 +3803,6 @@ CUT</string>
             <property name="horizontalSpacing">
              <number>6</number>
             </property>
-            <item row="0" column="0">
-             <widget class="MkGroupBox" name="groupbox_2">
-              <property name="title">
-               <string>THC</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_3">
-               <property name="verticalSpacing">
-                <number>12</number>
-               </property>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_24">
-                 <property name="text">
-                  <string>PID P GAIN (SPEED)</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_22">
-                 <property name="text">
-                  <string>DELAY</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="0">
-                <widget class="QLabel" name="label_26">
-                 <property name="text">
-                  <string>VOID OVERRIDE</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="label_28">
-                 <property name="text">
-                  <string>PID D GAIN</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="7" column="0">
-                <widget class="QLabel" name="label_29">
-                 <property name="text">
-                  <string>SAFE HEIGHT</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="label_23">
-                 <property name="text">
-                  <string>THRESHOLD</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="label_27">
-                 <property name="text">
-                  <string>PID I GAIN</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="0">
-                <widget class="QLabel" name="label_25">
-                 <property name="text">
-                  <string>VAD THRESHOLD</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_delay">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> S</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_delay</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_threshold">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> V</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_threshold</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_p_gain">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_pid_p_gain</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_i_gain">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_pid_i_gain</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_d_gain">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_pid_d_gain</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_vad_threshold">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> %</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_vad_threshold</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_void_override">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> %</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_void_override</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="7" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_safe_height">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_safe_height</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="MkGroupBox" name="groupbox">
-              <property name="title">
-               <string>ARC</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_2">
-               <property name="topMargin">
-                <number>9</number>
-               </property>
-               <property name="verticalSpacing">
-                <number>12</number>
-               </property>
-               <item row="7" column="0">
-                <widget class="QLabel" name="label_37">
-                 <property name="text">
-                  <string>OK LOW VOLTS</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="label_31">
-                 <property name="text">
-                  <string>MAX. STARTS</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="0">
-                <widget class="QLabel" name="label_35">
-                 <property name="text">
-                  <string>HEIGHT PER VOLT</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="0">
-                <widget class="QLabel" name="label_36">
-                 <property name="text">
-                  <string>OK HIGH VOLTS</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="label_33">
-                 <property name="text">
-                  <string>VOLTAGE SCALE</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_32">
-                 <property name="text">
-                  <string>RETRY DELAY</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_30">
-                 <property name="text">
-                  <string>FAIL TIMEOUT</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="label_34">
-                 <property name="text">
-                  <string>VOLTAGE OFFSET</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_fail_timeout">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> S</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_fail_timeout</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="PlasmaHalSpinBox" name="arc_max_starts">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_max_starts</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_retry_delay">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> S</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_retry_delay</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_scale">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> V</string>
-                 </property>
-                 <property name="decimals">
-                  <number>6</number>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_voltage_scale</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_offset">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> V</string>
-                 </property>
-                 <property name="decimals">
-                  <number>3</number>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_voltage_offset</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_height_per_volt">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="decimals">
-                  <number>3</number>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_height_per_volt</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_high_volts">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> V</string>
-                 </property>
-                 <property name="maximum">
-                  <double>9999.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_ok_high_volts</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="7" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_low_volts">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> V</string>
-                 </property>
-                 <property name="maximum">
-                  <double>60.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_ok_low_volts</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="MkGroupBox" name="groupbox_3">
-              <property name="title">
-               <string>PROBING &amp;&amp; MOTION</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_10">
-               <property name="verticalSpacing">
-                <number>12</number>
-               </property>
-               <item row="5" column="0">
-                <widget class="QLabel" name="label_39">
-                 <property name="text">
-                  <string>PROBE SPEED</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="11" column="0">
-                <widget class="QLabel" name="label_43">
-                 <property name="text">
-                  <string>SKIP IHS</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="9" column="0">
-                <widget class="QLabel" name="label_42">
-                 <property name="text">
-                  <string>OHMIC RETRIES</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="8" column="0">
-                <widget class="QLabel" name="label_41">
-                 <property name="text">
-                  <string>PROBE OFFSET</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="12" column="0">
-                <widget class="QLabel" name="label_44">
-                 <property name="text">
-                  <string>SETUP SPEED (3600)</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="label_38">
-                 <property name="text">
-                  <string>FLOAT TRAVEL</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="0">
-                <widget class="QLabel" name="label_40">
-                 <property name="text">
-                  <string>PROBE HEIGHT</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="8" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="probe_offset">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="decimals">
-                  <number>3</number>
-                 </property>
-                 <property name="minimum">
-                  <double>-400.000000000000000</double>
-                 </property>
-                 <property name="maximum">
-                  <double>400.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_offset</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="probe_height">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="maximum">
-                  <double>999.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_height</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="2">
-                <widget class="PlasmaHalSpinBox" name="probe_speed">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="maximum">
-                  <number>10000</number>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_speed</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="probe_float_travel">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="maximum">
-                  <double>999.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_float_travel</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="9" column="2">
-                <widget class="PlasmaHalSpinBox" name="probe_ohmic_retries">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_ohmic_retries</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="11" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="probe_skip_ihs">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="maximum">
-                  <double>999.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_skip_ihs</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="12" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="probe_setup_speed">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="maximum">
-                  <double>9999.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_setup_speed</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
             <item row="1" column="1">
              <widget class="QWidget" name="widget_20" native="true">
               <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -4383,34 +3815,6 @@ CUT</string>
                   <property name="verticalSpacing">
                    <number>12</number>
                   </property>
-                  <item row="3" column="0">
-                   <widget class="QLabel" name="label_48">
-                    <property name="text">
-                     <string>SPOT DELAY</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="0">
-                   <widget class="QLabel" name="label_47">
-                    <property name="text">
-                     <string>SPOT THRESHOLD</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="label_45">
-                    <property name="text">
-                     <string>SCRIBE ARM DELAY</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="label_46">
-                    <property name="text">
-                     <string>SCRIBE ON DELAY</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="0" column="2">
                    <widget class="PlasmaHalDoubleSpinBox" name="scribe_arm_delay">
                     <property name="alignment">
@@ -4449,7 +3853,35 @@ CUT</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="2" column="2">
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_46">
+                    <property name="text">
+                     <string>SCRIBE ON DELAY</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="3">
+                   <widget class="QLabel" name="label_48">
+                    <property name="text">
+                     <string>SPOT DELAY</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_45">
+                    <property name="text">
+                     <string>SCRIBE ARM DELAY</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="3">
+                   <widget class="QLabel" name="label_47">
+                    <property name="text">
+                     <string>SPOT THRESHOLD</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="4">
                    <widget class="PlasmaHalDoubleSpinBox" name="spot_threshold">
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -4471,7 +3903,7 @@ CUT</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="3" column="2">
+                  <item row="1" column="4">
                    <widget class="PlasmaHalDoubleSpinBox" name="spot_delay">
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -4521,6 +3953,607 @@ CUT</string>
                </item>
               </layout>
              </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="MkGroupBox" name="groupbox_2">
+              <property name="title">
+               <string>THC</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_3">
+               <property name="verticalSpacing">
+                <number>12</number>
+               </property>
+               <item row="4" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_d_gain">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_pid_d_gain</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_threshold">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> V</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_threshold</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_27">
+                 <property name="text">
+                  <string>PID I GAIN</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_24">
+                 <property name="text">
+                  <string>PID P GAIN (SPEED)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_23">
+                 <property name="text">
+                  <string>THRESHOLD</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_delay">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> S</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_delay</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_28">
+                 <property name="text">
+                  <string>PID D GAIN</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_22">
+                 <property name="text">
+                  <string>DELAY</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_p_gain">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_pid_p_gain</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_i_gain">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_pid_i_gain</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QLabel" name="label_25">
+                 <property name="text">
+                  <string>VAD THRESHOLD</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_vad_threshold">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> %</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_vad_threshold</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QLabel" name="label_26">
+                 <property name="text">
+                  <string>VOID OVERRIDE</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QLabel" name="label_29">
+                 <property name="text">
+                  <string>SAFE HEIGHT</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <widget class="QLabel" name="label_93">
+                 <property name="text">
+                  <string>THC FEED RATE</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_feed_rate">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_feed_rate</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_safe_height">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_safe_height</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_void_override">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> %</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_void_override</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="MkGroupBox" name="groupbox">
+              <property name="title">
+               <string>ARC</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_2">
+               <property name="topMargin">
+                <number>9</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>12</number>
+               </property>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_31">
+                 <property name="text">
+                  <string>MAX. STARTS</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_scale">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> V</string>
+                 </property>
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_voltage_scale</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_32">
+                 <property name="text">
+                  <string>RETRY DELAY</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_retry_delay">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> S</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_retry_delay</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_offset">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> V</string>
+                 </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_voltage_offset</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QLabel" name="label_37">
+                 <property name="text">
+                  <string>OK LOW VOLTS</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_34">
+                 <property name="text">
+                  <string>VOLTAGE OFFSET</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QLabel" name="label_35">
+                 <property name="text">
+                  <string>HEIGHT PER VOLT</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QLabel" name="label_36">
+                 <property name="text">
+                  <string>OK HIGH VOLTS</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_33">
+                 <property name="text">
+                  <string>VOLTAGE SCALE</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_30">
+                 <property name="text">
+                  <string>FAIL TIMEOUT</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="PlasmaHalSpinBox" name="arc_max_starts">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_max_starts</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_fail_timeout">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> S</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_fail_timeout</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_height_per_volt">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_height_per_volt</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_high_volts">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> V</string>
+                 </property>
+                 <property name="maximum">
+                  <double>9999.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_ok_high_volts</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_low_volts">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> V</string>
+                 </property>
+                 <property name="maximum">
+                  <double>60.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_ok_low_volts</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="MkGroupBox" name="groupbox_3">
+              <property name="title">
+               <string>PROBING &amp;&amp; MOTION</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_10">
+               <property name="verticalSpacing">
+                <number>12</number>
+               </property>
+               <item row="6" column="3">
+                <widget class="QLabel" name="label_44">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;SETUP SPEED (units per min)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="0">
+                <widget class="QLabel" name="label_41">
+                 <property name="text">
+                  <string>PROBE OFFSET</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="3">
+                <widget class="QLabel" name="label_42">
+                 <property name="text">
+                  <string>OHMIC RETRIES</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_39">
+                 <property name="text">
+                  <string>PROBE SPEED</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="2">
+                <widget class="PlasmaHalSpinBox" name="probe_speed">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <number>10000</number>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_speed</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_38">
+                 <property name="text">
+                  <string>FLOAT TRAVEL</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="label_40">
+                 <property name="text">
+                  <string>PROBE HEIGHT</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="probe_height">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <double>999.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_height</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="probe_offset">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
+                 <property name="minimum">
+                  <double>-400.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>400.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_offset</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="probe_float_travel">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <double>999.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_float_travel</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="3">
+                <widget class="QLabel" name="label_43">
+                 <property name="text">
+                  <string>SKIP IHS</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="4">
+                <widget class="PlasmaHalSpinBox" name="probe_ohmic_retries">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_ohmic_retries</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="probe_skip_ihs">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <double>999.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_skip_ihs</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="probe_setup_speed">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <double>9999.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_setup_speed</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <spacer name="verticalSpacer_8">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </widget>
@@ -5713,28 +5746,17 @@ CUT</string>
   <tabstop>thc_pid_p_gain</tabstop>
   <tabstop>thc_pid_i_gain</tabstop>
   <tabstop>thc_pid_d_gain</tabstop>
-  <tabstop>thc_vad_threshold</tabstop>
-  <tabstop>thc_void_override</tabstop>
-  <tabstop>thc_safe_height</tabstop>
   <tabstop>arc_fail_timeout</tabstop>
   <tabstop>arc_max_starts</tabstop>
   <tabstop>arc_retry_delay</tabstop>
   <tabstop>arc_voltage_scale</tabstop>
   <tabstop>arc_voltage_offset</tabstop>
-  <tabstop>arc_height_per_volt</tabstop>
-  <tabstop>arc_ok_high_volts</tabstop>
-  <tabstop>arc_ok_low_volts</tabstop>
   <tabstop>probe_offset</tabstop>
   <tabstop>probe_height</tabstop>
   <tabstop>probe_speed</tabstop>
   <tabstop>probe_float_travel</tabstop>
-  <tabstop>probe_ohmic_retries</tabstop>
-  <tabstop>probe_skip_ihs</tabstop>
-  <tabstop>probe_setup_speed</tabstop>
   <tabstop>scribe_arm_delay</tabstop>
   <tabstop>scribe_on_delay</tabstop>
-  <tabstop>spot_threshold</tabstop>
-  <tabstop>spot_delay</tabstop>
   <tabstop>btn_config_save</tabstop>
   <tabstop>btn_config_reload</tabstop>
   <tabstop>pushButton_11</tabstop>

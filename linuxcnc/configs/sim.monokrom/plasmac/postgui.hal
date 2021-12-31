@@ -30,6 +30,7 @@ net plasmac:cut-height                      qtpyvcp.param-cutheight.out => plasm
 #net plasmac:cut-time                                             plasmac.cut-time
 net plasmac:cut-volts                        qtpyvcp.param-cutvolts.out => plasmac.cut-volts
 net plasmac:arc-voltage-scale             qtpyvcp.arc-voltage-scale.out => plasmac.arc-voltage-scale
+net plasmac:arc-voltage-offset           qtpyvcp.arc-voltage-offset.out => plasmac.arc-voltage-offset
 
 net plasmac:float-switch-travel          qtpyvcp.probe-float-travel.out => plasmac.float-switch-travel
 #net plasmac:height-override                                      plasmac.height-override
@@ -56,8 +57,9 @@ net plasmac:puddle-jump-height       qtpyvcp.param-puddlejumpheight.out => plasm
 net plasmac:restart-delay                   qtpyvcp.arc-retry-delay.out => plasmac.restart-delay
 net plasmac:arc-fail-delay                 qtpyvcp.arc-fail-timeout.out => plasmac.arc-fail-delay
 net plasmac:arc-max-starts                   qtpyvcp.arc-max-starts.out => plasmac.arc-max-starts
-#net plasmac:scribe-arm-delay                                     plasmac.scribe-arm-delay
-#net plasmac:scribe-on-delay                                      plasmac.scribe-on-delay
+
+net plasmac:scribe-arm-delay               qtpyvcp.scribe-arm-delay.out => plasmac.scribe-arm-delay
+net plasmac:scribe-on-delay                 qtpyvcp.scribe-on-delay.out => plasmac.scribe-on-delay
 
 
 net plasmac:spotting-threshold               qtpyvcp.spot-threshold.out => plasmac.spotting-threshold
@@ -65,11 +67,11 @@ net plasmac:spotting-time                        qtpyvcp.spot-delay.out => plasm
 
 net plasmac:thc-enable                      qtpyvcp.thc-enabled.checked => plasmac.thc-enable
 net plasmac:thc-delay                             qtpyvcp.thc-delay.out => plasmac.thc-delay
-net plasmac:thc-feed-rate                                        plasmac.thc-feed-rate
+net plasmac:thc-feed-rate                     qtpyvcp.thc-feed-rate.out => plasmac.thc-feed-rate
 net plasmac:thc-threshold                     qtpyvcp.thc-threshold.out => plasmac.thc-threshold
-net plasmac:pid-d-gain                                           plasmac.pid-d-gain
-net plasmac:pid-i-gain                                           plasmac.pid-i-gain
-net plasmac:pid-p-gain                                           plasmac.pid-p-gain
+net plasmac:pid-d-gain                       qtpyvcp.thc-pid-d-gain.out => plasmac.pid-d-gain
+net plasmac:pid-i-gain                       qtpyvcp.thc-pid-i-gain.out => plasmac.pid-i-gain
+net plasmac:pid-p-gain                       qtpyvcp.thc-pid-p-gain.out => plasmac.pid-p-gain
 net plasmac:safe-height                     qtpyvcp.thc-safe-height.out => plasmac.safe-height
 
 net plasmac:use-auto-volts            qtpyvcp.plasma-auto-volts.checked => plasmac.use-auto-volts

@@ -309,4 +309,8 @@ settings:
     thc_enabled:
         default_value: false
         persistent: true
-    
+        
+    thc_feed_rate:
+        default_value: 0.0
+        persistent: true
+        
