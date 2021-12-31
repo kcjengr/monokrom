@@ -1,6 +1,7 @@
 import os
 
 import hal as cnchal
+import linuxcnc
 
 from qtpy.QtCore import Qt, QItemSelectionModel
 from qtpy.QtWidgets import QLabel, QListWidgetItem
@@ -20,6 +21,7 @@ INFO = Info()
 STATUS = getPlugin('status')
 STAT = STATUS.stat
 POS = getPlugin('position')
+INI = linuxcnc.ini(os.environ['INI_FILE_NAME'])
 
 class MainWindow(VCPMainWindow):
     """Main window class for the VCP."""
@@ -78,6 +80,13 @@ class MainWindow(VCPMainWindow):
         super(MainWindow, self).__init__(*args, **kwargs)
         self._plasma_plugin = getPlugin('plasmaprocesses')
         self.filter_cutchart_id = None
+        
+        # get min x and y travel
+        self.min_x = float(INI.find('AXIS_X', 'MIN_LIMIT'))
+        self.min_y = float(INI.find('AXIS_Y', 'MIN_LIMIT'))
+        # get max x and y travel
+        self.max_x = float(INI.find('AXIS_X', 'MAX_LIMIT'))
+        self.max_y = float(INI.find('AXIS_Y', 'MAX_LIMIT'))
         
         
         if INFO.getIsMachineMetric():
@@ -325,12 +334,21 @@ class MainWindow(VCPMainWindow):
         # Assumes an axis sequence of x:0, y:1, z:2
         sender = self.sender()
         print(f'single_cut_limits:  {sender.objectName()}')
+        min = 0
+        max = 0
         if sender.objectName() == 'single_cut_x':
             x_pos = POS.Absolute.getValue()[0]
-            print(f'Absolute X position = {x_pos}')
+            min = self.min_x - x_pos
+            max = self.max_x - x_pos
+            #print(f'Absolute X position = {x_pos},  Min={min}, Max={max}, X-Max={self.max_x}')
         elif sender.objectName() == 'single_cut_y':
             y_pos = POS.Absolute.getValue()[1]
-            print(f'Absolute Y position = {y_pos}')
+            #print(f'Absolute Y position = {y_pos},  Min={min}, Max={max}, X-Max={self.max_y}')
+            min = self.min_y - y_pos
+            max = self.max_y - y_pos
+        # set the min/max ranges on the control
+        sender.setMaximum(max)
+        sender.setMinimum(min)
 
 
     def seed_database(self):

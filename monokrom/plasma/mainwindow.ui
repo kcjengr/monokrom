@@ -3694,22 +3694,6 @@ font-weight: bold;
                  <property name="verticalSpacing">
                   <number>9</number>
                  </property>
-                 <item row="2" column="2">
-                  <widget class="QDoubleSpinBox" name="single_cut_y">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="decimals">
-                    <number>3</number>
-                   </property>
-                   <property name="maximum">
-                    <double>10000.000000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
                  <item row="0" column="0">
                   <widget class="QLabel" name="label_6">
                    <property name="text">
@@ -3755,6 +3739,19 @@ CUT</string>
                  </item>
                  <item row="0" column="2">
                   <widget class="PlasmaHalDoubleSpinBox" name="single_cut_x">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="decimals">
+                    <number>3</number>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="2">
+                  <widget class="PlasmaHalDoubleSpinBox" name="single_cut_y">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
                    </property>
@@ -5711,7 +5708,6 @@ CUT</string>
   <tabstop>btn_new_run_process</tabstop>
   <tabstop>btn_run_reload</tabstop>
   <tabstop>chkb_slot_detect_enable</tabstop>
-  <tabstop>single_cut_y</tabstop>
   <tabstop>thc_delay</tabstop>
   <tabstop>thc_threshold</tabstop>
   <tabstop>thc_pid_p_gain</tabstop>
