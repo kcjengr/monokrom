@@ -35,14 +35,15 @@ net plasmac:arc-voltage-scale             qtpyvcp.arc-voltage-scale.out => plasm
 net plasmac:arc-voltage-offset           qtpyvcp.arc-voltage-offset.out => plasmac.arc-voltage-offset
 
 net plasmac:float-switch-travel          qtpyvcp.probe-float-travel.out => plasmac.float-switch-travel
-#net plasmac:height-override                                      plasmac.height-override
+net plasmac:height-override                qtpyvcp.voltage-override.out => plasmac.height-override
 net plasmac:height-per-volt             qtpyvcp.arc-height-per-volt.out => plasmac.height-per-volt
 #net plasmac:ignore-arc-ok-1                                      plasmac.ignore-arc-ok-1
-#net plasmac:kerfcross-enable                                     plasmac.kerfcross-enable
+net plasmac:kerfcross-enable          qtpyvcp.plasma-void-sense.checked => plasmac.kerfcross-enable
 net plasmac:kerfcross-override            qtpyvcp.thc-void-override.out => plasmac.kerfcross-override
-net plasmac:mesh-enable               qtpyvcp.plasma-void-sense.checked => plasmac.mesh-enable
+net plasmac:mesh-enable               qtpyvcp.plasma-mesh-sense.checked => plasmac.mesh-enable
 
 net plasmac:probe-feed-rate            qtpyvcp.param-plungefeedrate.out => plasmac.probe-feed-rate
+net plasmac:probe-final-speed                   qtpyvcp.probe-speed.out => plasmac.probe-final-speed
 net plasmac:probe-start-height                 qtpyvcp.probe-height.out => plasmac.probe-start-height
 net plasmac:ohmic-max-attempts          qtpyvcp.probe-ohmic-retries.out => plasmac.ohmic-max-attempts
 net plasmac:ohmic-probe-enable    qtpyvcp.ohmic-sensing-enabled.checked => plasmac.ohmic-probe-enable
