@@ -931,6 +931,12 @@ ABORT</string>
             <string>Run &amp;&amp; Monitor</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_4">
+            <item row="12" column="3">
+             <widget class="SubCallButton" name="user8"/>
+            </item>
+            <item row="14" column="0">
+             <widget class="SubCallButton" name="user3"/>
+            </item>
             <item row="0" column="3">
              <widget class="QWidget" name="widget_7" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_15">
@@ -983,83 +989,49 @@ ABORT</string>
               </layout>
              </widget>
             </item>
-            <item row="6" column="3">
-             <widget class="QPushButton" name="btn_void_sense">
+            <item row="10" column="0" colspan="4">
+             <widget class="QPushButton" name="btn_load_newest">
               <property name="text">
-               <string>VOID
-SENSE</string>
+               <string>LOAD NEWEST FILE</string>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="3">
+             <widget class="SubCallButton" name="user12"/>
+            </item>
+            <item row="13" column="0">
+             <widget class="SubCallButton" name="user2"/>
+            </item>
+            <item row="11" column="0">
+             <widget class="HalButton" name="btn_pierce_only">
+              <property name="text">
+               <string>PIERCE
+ONLY</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="pinBaseName" stdset="0">
+               <string>plasma-pierce-only-enable</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QPushButton" name="btn_vad">
+              <property name="text">
+               <string>ANTI
+DIVE</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
               </property>
              </widget>
             </item>
-            <item row="14" column="0">
-             <widget class="SubCallButton" name="user3"/>
-            </item>
-            <item row="16" column="0">
-             <widget class="SubCallButton" name="user5"/>
-            </item>
             <item row="15" column="0">
              <widget class="SubCallButton" name="user4"/>
             </item>
-            <item row="13" column="3">
-             <widget class="SubCallButton" name="user9"/>
-            </item>
-            <item row="0" column="0">
-             <widget class="QWidget" name="widget" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_11">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_13">
-                 <property name="text">
-                  <string>PROBE</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-probe</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="16" column="3">
-             <widget class="SubCallButton" name="user12"/>
+            <item row="18" column="0">
+             <widget class="SubCallButton" name="user7"/>
             </item>
             <item row="8" column="0" colspan="4">
              <widget class="QWidget" name="widget_26" native="true">
@@ -1127,9 +1099,9 @@ SENSE</string>
               </layout>
              </widget>
             </item>
-            <item row="3" column="3">
-             <widget class="QWidget" name="widget_4" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_14">
+            <item row="2" column="3">
+             <widget class="QWidget" name="widget_8" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_16">
                <property name="leftMargin">
                 <number>0</number>
                </property>
@@ -1137,14 +1109,14 @@ SENSE</string>
                 <number>0</number>
                </property>
                <item>
-                <widget class="QLabel" name="label_16">
+                <widget class="QLabel" name="label_20">
                  <property name="text">
-                  <string>TORCH</string>
+                  <string>DOWN</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <spacer name="horizontalSpacer_6">
+                <spacer name="horizontalSpacer_4">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
@@ -1157,7 +1129,7 @@ SENSE</string>
                 </spacer>
                </item>
                <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_4">
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_6">
                  <property name="diameter">
                   <number>20</number>
                  </property>
@@ -1172,26 +1144,130 @@ SENSE</string>
                   <bool>false</bool>
                  </property>
                  <property name="pinBaseName" stdset="0">
-                  <string>led-torch-on</string>
+                  <string>led-thc-down</string>
                  </property>
                 </widget>
                </item>
               </layout>
              </widget>
             </item>
-            <item row="5" column="3">
-             <widget class="QPushButton" name="btn_thc_enable">
+            <item row="0" column="0">
+             <widget class="QWidget" name="widget" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_11">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_13">
+                 <property name="text">
+                  <string>PROBE</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-probe</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="6" column="3">
+             <widget class="QPushButton" name="btn_void_sense">
               <property name="text">
-               <string>THC
-ENABLE</string>
+               <string>VOID
+SENSE</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
               </property>
-              <property name="checked">
-               <bool>false</bool>
-              </property>
              </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QWidget" name="widget_3" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_13">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_15">
+                 <property name="text">
+                  <string>FLOAT</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_3">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-float</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="14" column="3">
+             <widget class="SubCallButton" name="user10"/>
             </item>
             <item row="11" column="3">
              <widget class="HalButton" name="plasma_torch_pulse">
@@ -1201,11 +1277,75 @@ TORCH</string>
               </property>
              </widget>
             </item>
-            <item row="6" column="0">
-             <widget class="QPushButton" name="btn_vad">
+            <item row="13" column="3">
+             <widget class="SubCallButton" name="user9"/>
+            </item>
+            <item row="17" column="3">
+             <widget class="SubCallButton" name="user13"/>
+            </item>
+            <item row="12" column="0">
+             <widget class="SubCallButton" name="user1"/>
+            </item>
+            <item row="15" column="3">
+             <widget class="SubCallButton" name="user11"/>
+            </item>
+            <item row="3" column="0">
+             <widget class="QWidget" name="widget_2" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_12">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_14">
+                 <property name="text">
+                  <string>ARC-OK</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_5">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_2">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-arc-ok</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="5" column="0">
+             <widget class="HalButton" name="torch_enable">
               <property name="text">
-               <string>ANTI
-DIVE</string>
+               <string>TORCH
+ENABLE</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
@@ -1312,93 +1452,29 @@ DIVE</string>
               </layout>
              </widget>
             </item>
-            <item row="18" column="0">
-             <widget class="SubCallButton" name="user7"/>
-            </item>
-            <item row="13" column="0">
-             <widget class="SubCallButton" name="user2"/>
-            </item>
-            <item row="12" column="0">
-             <widget class="SubCallButton" name="user1"/>
-            </item>
-            <item row="17" column="3">
-             <widget class="SubCallButton" name="user13"/>
-            </item>
-            <item row="2" column="0">
-             <widget class="QWidget" name="widget_3" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_13">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_15">
-                 <property name="text">
-                  <string>FLOAT</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_3">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_3">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-float</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
             <item row="18" column="3">
              <widget class="SubCallButton" name="user14"/>
             </item>
-            <item row="5" column="0">
-             <widget class="HalButton" name="torch_enable">
+            <item row="5" column="3">
+             <widget class="QPushButton" name="btn_thc_enable">
               <property name="text">
-               <string>TORCH
+               <string>THC
 ENABLE</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
               </property>
+              <property name="checked">
+               <bool>false</bool>
+              </property>
              </widget>
             </item>
-            <item row="15" column="3">
-             <widget class="SubCallButton" name="user11"/>
+            <item row="16" column="0">
+             <widget class="SubCallButton" name="user5"/>
             </item>
-            <item row="12" column="3">
-             <widget class="SubCallButton" name="user8"/>
-            </item>
-            <item row="3" column="0">
-             <widget class="QWidget" name="widget_2" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_12">
+            <item row="3" column="3">
+             <widget class="QWidget" name="widget_4" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_14">
                <property name="leftMargin">
                 <number>0</number>
                </property>
@@ -1406,14 +1482,14 @@ ENABLE</string>
                 <number>0</number>
                </property>
                <item>
-                <widget class="QLabel" name="label_14">
+                <widget class="QLabel" name="label_16">
                  <property name="text">
-                  <string>ARC-OK</string>
+                  <string>TORCH</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <spacer name="horizontalSpacer_5">
+                <spacer name="horizontalSpacer_6">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
@@ -1426,7 +1502,7 @@ ENABLE</string>
                 </spacer>
                </item>
                <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_2">
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_4">
                  <property name="diameter">
                   <number>20</number>
                  </property>
@@ -1441,62 +1517,7 @@ ENABLE</string>
                   <bool>false</bool>
                  </property>
                  <property name="pinBaseName" stdset="0">
-                  <string>led-arc-ok</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="14" column="3">
-             <widget class="SubCallButton" name="user10"/>
-            </item>
-            <item row="2" column="3">
-             <widget class="QWidget" name="widget_8" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_16">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_20">
-                 <property name="text">
-                  <string>DOWN</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_4">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_6">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-thc-down</string>
+                  <string>led-torch-on</string>
                  </property>
                 </widget>
                </item>
@@ -1506,431 +1527,465 @@ ENABLE</string>
             <item row="17" column="0">
              <widget class="SubCallButton" name="user6"/>
             </item>
-            <item row="11" column="0">
-             <widget class="HalButton" name="btn_pierce_only">
-              <property name="text">
-               <string>PIERCE
-ONLY</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="pinBaseName" stdset="0">
-               <string>plasma-pierce-only-enable</string>
-              </property>
-             </widget>
-            </item>
-            <item row="10" column="0" colspan="4">
-             <widget class="QPushButton" name="btn_load_newest">
-              <property name="text">
-               <string>LOAD NEWEST FILE</string>
-              </property>
-             </widget>
-            </item>
            </layout>
           </widget>
           <widget class="QWidget" name="tab_11">
            <attribute name="title">
             <string>JOG</string>
            </attribute>
-           <widget class="VCPWidget" name="widget_25">
-            <property name="geometry">
-             <rect>
-              <x>29</x>
-              <y>10</y>
-              <width>231</width>
-              <height>211</height>
-             </rect>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_25">
-             <item row="0" column="1">
-              <widget class="ActionButton" name="actionbutton">
-               <property name="icon">
-                <iconset>
-                 <normaloff>../common/icons/y-up.png</normaloff>../common/icons/y-up.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>46</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.axis:y,pos</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QWidget" name="widget_14" native="true">
-               <layout class="QHBoxLayout" name="horizontalLayout_19">
-                <property name="spacing">
-                 <number>0</number>
-                </property>
-                <property name="leftMargin">
-                 <number>40</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item>
-                 <widget class="ActionButton" name="actionbutton_24">
-                  <property name="minimumSize">
-                   <size>
-                    <width>34</width>
-                    <height>44</height>
-                   </size>
+           <layout class="QVBoxLayout" name="verticalLayout_15">
+            <item>
+             <widget class="VCPWidget" name="widget_25">
+              <layout class="QGridLayout" name="gridLayout_25">
+               <item row="0" column="1">
+                <widget class="ActionButton" name="actionbutton">
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../common/icons/y-up.png</normaloff>../common/icons/y-up.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>46</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog.axis:y,pos</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QWidget" name="widget_14" native="true">
+                 <layout class="QHBoxLayout" name="horizontalLayout_19">
+                  <property name="spacing">
+                   <number>0</number>
                   </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>../common/icons/z-up.png</normaloff>../common/icons/z-up.png</iconset>
+                  <property name="leftMargin">
+                   <number>40</number>
                   </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>46</width>
-                    <height>40</height>
-                   </size>
+                  <property name="topMargin">
+                   <number>0</number>
                   </property>
-                  <property name="flat">
-                   <bool>true</bool>
+                  <property name="rightMargin">
+                   <number>0</number>
                   </property>
-                  <property name="actionName" stdset="0">
-                   <string>machine.jog.axis:z,pos</string>
+                  <property name="bottomMargin">
+                   <number>0</number>
                   </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="ActionButton" name="actionbutton_21">
-               <property name="icon">
-                <iconset>
-                 <normaloff>../common/icons/x-left.png</normaloff>../common/icons/x-left.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>46</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.axis:x,neg</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="ActionButton" name="actionbutton_22">
-               <property name="icon">
-                <iconset>
-                 <normaloff>../common/icons/x-right.png</normaloff>../common/icons/x-right.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>46</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.axis:x,pos</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="ActionButton" name="actionbutton_4">
-               <property name="icon">
-                <iconset>
-                 <normaloff>../common/icons/y-down.png</normaloff>../common/icons/y-down.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>46</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.axis:y,neg</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="2">
-              <widget class="QWidget" name="widget_15" native="true">
-               <layout class="QHBoxLayout" name="horizontalLayout_20">
-                <property name="spacing">
-                 <number>0</number>
-                </property>
-                <property name="leftMargin">
-                 <number>40</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item>
-                 <widget class="ActionButton" name="actionbutton_25">
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>../common/icons/z-down.png</normaloff>../common/icons/z-down.png</iconset>
+                  <item>
+                   <widget class="ActionButton" name="actionbutton_24">
+                    <property name="minimumSize">
+                     <size>
+                      <width>34</width>
+                      <height>44</height>
+                     </size>
+                    </property>
+                    <property name="icon">
+                     <iconset>
+                      <normaloff>../common/icons/z-up.png</normaloff>../common/icons/z-up.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>46</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <property name="actionName" stdset="0">
+                     <string>machine.jog.axis:z,pos</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="ActionButton" name="actionbutton_21">
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../common/icons/x-left.png</normaloff>../common/icons/x-left.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>46</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog.axis:x,neg</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="ActionButton" name="actionbutton_22">
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../common/icons/x-right.png</normaloff>../common/icons/x-right.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>46</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog.axis:x,pos</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="ActionButton" name="actionbutton_4">
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../common/icons/y-down.png</normaloff>../common/icons/y-down.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>46</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog.axis:y,neg</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QWidget" name="widget_15" native="true">
+                 <layout class="QHBoxLayout" name="horizontalLayout_20">
+                  <property name="spacing">
+                   <number>0</number>
                   </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>46</width>
-                    <height>40</height>
-                   </size>
+                  <property name="leftMargin">
+                   <number>40</number>
                   </property>
-                  <property name="flat">
-                   <bool>true</bool>
+                  <property name="topMargin">
+                   <number>0</number>
                   </property>
-                  <property name="actionName" stdset="0">
-                   <string>machine.jog.axis:z,neg</string>
+                  <property name="rightMargin">
+                   <number>0</number>
                   </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-           <widget class="VCPWidget" name="widget_10">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>210</y>
-              <width>271</width>
-              <height>351</height>
-             </rect>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_8">
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_21">
-               <property name="text">
-                <string>STEP SIZE</string>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="ActionButton" name="actionbutton_25">
+                    <property name="icon">
+                     <iconset>
+                      <normaloff>../common/icons/z-down.png</normaloff>../common/icons/z-down.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>46</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                    <property name="actionName" stdset="0">
+                     <string>machine.jog.axis:z,neg</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="VCPWidget" name="widget_10">
+              <layout class="QGridLayout" name="gridLayout_8">
+               <item row="3" column="1">
+                <widget class="ActionButton" name="actionbutton_29">
+                 <property name="text">
+                  <string>.01</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog.set-increment:0.01</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="ActionButton" name="actionbutton_26">
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog.set-increment:1</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="ActionButton" name="actionbutton_27">
+                 <property name="text">
+                  <string>5</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog.set-increment:5</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="ActionButton" name="actionbutton_28">
+                 <property name="text">
+                  <string>.1</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog.set-increment:0.1</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="ActionButton" name="actionbutton_35">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>INC</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog-mode.incremental</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="ActionButton" name="actionbutton_23">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>34</width>
+                   <height>44</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>CONT</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog-mode.continuous</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0" colspan="3">
+                <widget class="QLabel" name="label_21">
+                 <property name="text">
+                  <string>STEP SIZE</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="MkGroupBox" name="groupbox_12">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="title">
+               <string>SINGLE CUT</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_33">
+               <property name="verticalSpacing">
+                <number>9</number>
                </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="ActionButton" name="actionbutton_27">
-               <property name="text">
-                <string>5</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="autoExclusive">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.set-increment:5</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="ActionButton" name="actionbutton_26">
-               <property name="text">
-                <string>1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="autoExclusive">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.set-increment:1</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="ActionButton" name="actionbutton_28">
-               <property name="text">
-                <string>.1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="autoExclusive">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.set-increment:0.1</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="ActionButton" name="actionbutton_29">
-               <property name="text">
-                <string>.01</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="autoExclusive">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog.set-increment:0.01</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0">
-              <widget class="ActionButton" name="actionbutton_35">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>INC</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="autoExclusive">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog-mode.incremental</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="0">
-              <widget class="ActionButton" name="actionbutton_23">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>34</width>
-                 <height>44</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>CONT</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="checked">
-                <bool>true</bool>
-               </property>
-               <property name="autoExclusive">
-                <bool>true</bool>
-               </property>
-               <property name="actionName" stdset="0">
-                <string>machine.jog-mode.continuous</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-           <widget class="MkGroupBox" name="groupbox_26">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>570</y>
-              <width>301</width>
-              <height>341</height>
-             </rect>
-            </property>
-            <property name="title">
-             <string>CUT RECOVERY</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_11">
-             <item>
-              <widget class="VCPWidget" name="widget_13">
-               <property name="rules" stdset="0">
-                <string>[{&quot;name&quot;: &quot;Visible&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}]</string>
-               </property>
-               <widget class="QPushButton" name="btn_cut_recover_rev">
-                <property name="geometry">
-                 <rect>
-                  <x>10</x>
-                  <y>20</y>
-                  <width>88</width>
-                  <height>44</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>REVERSE</string>
-                </property>
-               </widget>
-               <widget class="QPushButton" name="btn_cut_recover_fwd">
-                <property name="geometry">
-                 <rect>
-                  <x>170</x>
-                  <y>20</y>
-                  <width>88</width>
-                  <height>44</height>
-                 </rect>
-                </property>
-                <property name="text">
-                 <string>FORWARD</string>
-                </property>
-               </widget>
-               <widget class="QSlider" name="cut_recovery_speed">
-                <property name="geometry">
-                 <rect>
-                  <x>100</x>
-                  <y>70</y>
-                  <width>61</width>
-                  <height>211</height>
-                 </rect>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-                <property name="value">
-                 <number>50</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="invertedAppearance">
-                 <bool>false</bool>
-                </property>
-                <property name="invertedControls">
-                 <bool>false</bool>
-                </property>
-                <property name="tickPosition">
-                 <enum>QSlider::TicksBothSides</enum>
-                </property>
-                <property name="tickInterval">
-                 <number>10</number>
-                </property>
-               </widget>
-              </widget>
-             </item>
-            </layout>
-           </widget>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_94">
+                 <property name="text">
+                  <string>X-LENGTH</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_95">
+                 <property name="text">
+                  <string>Y-LENGTH</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0" colspan="3">
+                <widget class="SubCallButton" name="btn_single_cut">
+                 <property name="minimumSize">
+                  <size>
+                   <width>34</width>
+                   <height>44</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>44</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>SINGLE
+CUT</string>
+                 </property>
+                 <property name="filename" stdset="0">
+                  <string>single_cut.ngc</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="single_cut_x">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="single_cut_y">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="MkGroupBox" name="groupbox_26">
+              <property name="title">
+               <string>CUT RECOVERY</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_11">
+               <item>
+                <widget class="VCPWidget" name="widget_13">
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;Visible&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}]</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_34">
+                  <item row="0" column="0">
+                   <widget class="QPushButton" name="btn_cut_recover_rev">
+                    <property name="text">
+                     <string>REVERSE</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QPushButton" name="btn_cut_recover_fwd">
+                    <property name="text">
+                     <string>FORWARD</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QSlider" name="cut_recovery_speed">
+                    <property name="maximum">
+                     <number>100</number>
+                    </property>
+                    <property name="value">
+                     <number>50</number>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="invertedAppearance">
+                     <bool>false</bool>
+                    </property>
+                    <property name="invertedControls">
+                     <bool>false</bool>
+                    </property>
+                    <property name="tickPosition">
+                     <enum>QSlider::TicksBothSides</enum>
+                    </property>
+                    <property name="tickInterval">
+                     <number>10</number>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>
@@ -3666,100 +3721,13 @@ font-weight: bold;
                     <string notr="true">font: bold 12pt;</string>
                    </property>
                    <property name="text">
-                    <string>OHMIC SENSING ENABLE</string>
+                    <string>SENSING ENABLE</string>
                    </property>
                    <property name="pinBaseName" stdset="0">
                     <string>ohmic-sensing-enabled</string>
                    </property>
                    <property name="settingName" stdset="0">
                     <string>ohmic_sensing_enabled</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="MkGroupBox" name="groupbox_12">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="title">
-                 <string>SINGLE CUT</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_12">
-                 <property name="verticalSpacing">
-                  <number>9</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_6">
-                   <property name="text">
-                    <string>X-LENGTH</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="label_12">
-                   <property name="text">
-                    <string>Y-LENGTH</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0" colspan="3">
-                  <widget class="SubCallButton" name="btn_single_cut">
-                   <property name="minimumSize">
-                    <size>
-                     <width>34</width>
-                     <height>44</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>95</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string>SINGLE
-CUT</string>
-                   </property>
-                   <property name="filename" stdset="0">
-                    <string>single_cut.ngc</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="2">
-                  <widget class="PlasmaHalDoubleSpinBox" name="single_cut_x">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="decimals">
-                    <number>3</number>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="2">
-                  <widget class="PlasmaHalDoubleSpinBox" name="single_cut_y">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="decimals">
-                    <number>3</number>
                    </property>
                   </widget>
                  </item>
@@ -3780,780 +3748,6 @@ CUT</string>
                </spacer>
               </item>
              </layout>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_9">
-           <attribute name="title">
-            <string>CONFIG</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_14">
-            <property name="leftMargin">
-             <number>6</number>
-            </property>
-            <property name="topMargin">
-             <number>12</number>
-            </property>
-            <property name="rightMargin">
-             <number>6</number>
-            </property>
-            <property name="bottomMargin">
-             <number>6</number>
-            </property>
-            <property name="horizontalSpacing">
-             <number>6</number>
-            </property>
-            <item row="1" column="1">
-             <widget class="QWidget" name="widget_20" native="true">
-              <layout class="QVBoxLayout" name="verticalLayout_2">
-               <item>
-                <widget class="MkGroupBox" name="groupbox_4">
-                 <property name="title">
-                  <string>SCRIBE &amp;&amp; SPOT</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_13">
-                  <property name="verticalSpacing">
-                   <number>12</number>
-                  </property>
-                  <item row="0" column="2">
-                   <widget class="PlasmaHalDoubleSpinBox" name="scribe_arm_delay">
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::PlusMinus</enum>
-                    </property>
-                    <property name="suffix">
-                     <string> S</string>
-                    </property>
-                    <property name="settingName" stdset="0">
-                     <string>scribe_arm_delay</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="2">
-                   <widget class="PlasmaHalDoubleSpinBox" name="scribe_on_delay">
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::PlusMinus</enum>
-                    </property>
-                    <property name="suffix">
-                     <string> ms</string>
-                    </property>
-                    <property name="decimals">
-                     <number>0</number>
-                    </property>
-                    <property name="maximum">
-                     <double>5000.000000000000000</double>
-                    </property>
-                    <property name="settingName" stdset="0">
-                     <string>scribe_on_delay</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="label_46">
-                    <property name="text">
-                     <string>SCRIBE ON DELAY</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="3">
-                   <widget class="QLabel" name="label_48">
-                    <property name="text">
-                     <string>SPOT DELAY</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="label_45">
-                    <property name="text">
-                     <string>SCRIBE ARM DELAY</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="3">
-                   <widget class="QLabel" name="label_47">
-                    <property name="text">
-                     <string>SPOT THRESHOLD</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="4">
-                   <widget class="PlasmaHalDoubleSpinBox" name="spot_threshold">
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::PlusMinus</enum>
-                    </property>
-                    <property name="suffix">
-                     <string> V</string>
-                    </property>
-                    <property name="decimals">
-                     <number>0</number>
-                    </property>
-                    <property name="maximum">
-                     <double>200.000000000000000</double>
-                    </property>
-                    <property name="settingName" stdset="0">
-                     <string>spot_threshold</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="4">
-                   <widget class="PlasmaHalDoubleSpinBox" name="spot_delay">
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::PlusMinus</enum>
-                    </property>
-                    <property name="suffix">
-                     <string> ms</string>
-                    </property>
-                    <property name="decimals">
-                     <number>0</number>
-                    </property>
-                    <property name="maximum">
-                     <double>3000.000000000000000</double>
-                    </property>
-                    <property name="settingName" stdset="0">
-                     <string>spot_delay</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="MkGroupBox" name="groupbox_5">
-                 <property name="title">
-                  <string>CONFIG SETTINGS</string>
-                 </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout">
-                  <item>
-                   <widget class="QPushButton" name="btn_config_save">
-                    <property name="text">
-                     <string>SAVE</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="btn_config_reload">
-                    <property name="text">
-                     <string>RELOAD</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="MkGroupBox" name="groupbox_2">
-              <property name="title">
-               <string>THC</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_3">
-               <property name="verticalSpacing">
-                <number>12</number>
-               </property>
-               <item row="4" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_d_gain">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_pid_d_gain</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_threshold">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> V</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_threshold</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="label_27">
-                 <property name="text">
-                  <string>PID I GAIN</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_24">
-                 <property name="text">
-                  <string>PID P GAIN (SPEED)</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="label_23">
-                 <property name="text">
-                  <string>THRESHOLD</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_delay">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> S</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_delay</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="label_28">
-                 <property name="text">
-                  <string>PID D GAIN</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_22">
-                 <property name="text">
-                  <string>DELAY</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_p_gain">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_pid_p_gain</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_i_gain">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_pid_i_gain</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="3">
-                <widget class="QLabel" name="label_25">
-                 <property name="text">
-                  <string>VAD THRESHOLD</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="4">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_vad_threshold">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> %</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_vad_threshold</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="3">
-                <widget class="QLabel" name="label_26">
-                 <property name="text">
-                  <string>VOID OVERRIDE</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="3">
-                <widget class="QLabel" name="label_29">
-                 <property name="text">
-                  <string>SAFE HEIGHT</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="3">
-                <widget class="QLabel" name="label_93">
-                 <property name="text">
-                  <string>THC FEED RATE</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="4">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_feed_rate">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="maximum">
-                  <double>10000.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_feed_rate</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="4">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_safe_height">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_safe_height</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="4">
-                <widget class="PlasmaHalDoubleSpinBox" name="thc_void_override">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> %</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>thc_void_override</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="MkGroupBox" name="groupbox">
-              <property name="title">
-               <string>ARC</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_2">
-               <property name="topMargin">
-                <number>9</number>
-               </property>
-               <property name="verticalSpacing">
-                <number>12</number>
-               </property>
-               <item row="1" column="0">
-                <widget class="QLabel" name="label_31">
-                 <property name="text">
-                  <string>MAX. STARTS</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_scale">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> V</string>
-                 </property>
-                 <property name="decimals">
-                  <number>6</number>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_voltage_scale</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_32">
-                 <property name="text">
-                  <string>RETRY DELAY</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_retry_delay">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> S</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_retry_delay</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_offset">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> V</string>
-                 </property>
-                 <property name="decimals">
-                  <number>3</number>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_voltage_offset</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="3">
-                <widget class="QLabel" name="label_37">
-                 <property name="text">
-                  <string>OK LOW VOLTS</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="label_34">
-                 <property name="text">
-                  <string>VOLTAGE OFFSET</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="3">
-                <widget class="QLabel" name="label_35">
-                 <property name="text">
-                  <string>HEIGHT PER VOLT</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="3">
-                <widget class="QLabel" name="label_36">
-                 <property name="text">
-                  <string>OK HIGH VOLTS</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="label_33">
-                 <property name="text">
-                  <string>VOLTAGE SCALE</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_30">
-                 <property name="text">
-                  <string>FAIL TIMEOUT</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="PlasmaHalSpinBox" name="arc_max_starts">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_max_starts</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_fail_timeout">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> S</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_fail_timeout</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="4">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_height_per_volt">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="decimals">
-                  <number>3</number>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_height_per_volt</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="4">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_high_volts">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> V</string>
-                 </property>
-                 <property name="maximum">
-                  <double>9999.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_ok_high_volts</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="4">
-                <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_low_volts">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="suffix">
-                  <string> V</string>
-                 </property>
-                 <property name="maximum">
-                  <double>60.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>arc_ok_low_volts</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="MkGroupBox" name="groupbox_3">
-              <property name="title">
-               <string>PROBING &amp;&amp; MOTION</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_10">
-               <property name="verticalSpacing">
-                <number>12</number>
-               </property>
-               <item row="6" column="3">
-                <widget class="QLabel" name="label_44">
-                 <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;SETUP SPEED (units per min)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="8" column="0">
-                <widget class="QLabel" name="label_41">
-                 <property name="text">
-                  <string>PROBE OFFSET</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="3">
-                <widget class="QLabel" name="label_42">
-                 <property name="text">
-                  <string>OHMIC RETRIES</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="0">
-                <widget class="QLabel" name="label_39">
-                 <property name="text">
-                  <string>PROBE SPEED</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="2">
-                <widget class="PlasmaHalSpinBox" name="probe_speed">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="maximum">
-                  <number>10000</number>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_speed</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="label_38">
-                 <property name="text">
-                  <string>FLOAT TRAVEL</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="0">
-                <widget class="QLabel" name="label_40">
-                 <property name="text">
-                  <string>PROBE HEIGHT</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="probe_height">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="maximum">
-                  <double>999.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_height</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="8" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="probe_offset">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="decimals">
-                  <number>3</number>
-                 </property>
-                 <property name="minimum">
-                  <double>-400.000000000000000</double>
-                 </property>
-                 <property name="maximum">
-                  <double>400.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_offset</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="probe_float_travel">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="maximum">
-                  <double>999.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_float_travel</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="3">
-                <widget class="QLabel" name="label_43">
-                 <property name="text">
-                  <string>SKIP IHS</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="4">
-                <widget class="PlasmaHalSpinBox" name="probe_ohmic_retries">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_ohmic_retries</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="4">
-                <widget class="PlasmaHalDoubleSpinBox" name="probe_skip_ihs">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="maximum">
-                  <double>999.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_skip_ihs</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="4">
-                <widget class="PlasmaHalDoubleSpinBox" name="probe_setup_speed">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="maximum">
-                  <double>9999.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_setup_speed</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <spacer name="verticalSpacer_8">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
             </item>
            </layout>
           </widget>
@@ -4928,555 +4122,1322 @@ CUT</string>
        <attribute name="title">
         <string>SETTINGS</string>
        </attribute>
-       <widget class="MkGroupBox" name="groupbox_7">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>110</y>
-          <width>358</width>
-          <height>216</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>DRO FORMAT</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_15">
-         <item row="1" column="1">
-          <widget class="VCPSettingsLineEdit" name="settings_lineedit_2">
-           <property name="settingName" stdset="0">
-            <string>dro.millimeter-format</string>
-           </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_10">
+        <item>
+         <widget class="MkTabWidget" name="tabwidget_3">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab_18">
+           <attribute name="title">
+            <string>THC / ARC / PROBE &amp;&amp; MARKING</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_12">
+            <item row="0" column="1">
+             <widget class="MkGroupBox" name="groupbox">
+              <property name="title">
+               <string>ARC</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_2">
+               <property name="topMargin">
+                <number>9</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>12</number>
+               </property>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_31">
+                 <property name="text">
+                  <string>MAX. STARTS</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_scale">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> V</string>
+                 </property>
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_voltage_scale</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_32">
+                 <property name="text">
+                  <string>RETRY DELAY</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_retry_delay">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> S</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_retry_delay</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_voltage_offset">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> V</string>
+                 </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_voltage_offset</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QLabel" name="label_37">
+                 <property name="text">
+                  <string>OK LOW VOLTS</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_34">
+                 <property name="text">
+                  <string>VOLTAGE OFFSET</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QLabel" name="label_35">
+                 <property name="text">
+                  <string>HEIGHT PER VOLT</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QLabel" name="label_36">
+                 <property name="text">
+                  <string>OK HIGH VOLTS</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_33">
+                 <property name="text">
+                  <string>VOLTAGE SCALE</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_30">
+                 <property name="text">
+                  <string>FAIL TIMEOUT</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="PlasmaHalSpinBox" name="arc_max_starts">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_max_starts</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_fail_timeout">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> S</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_fail_timeout</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_height_per_volt">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_height_per_volt</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_high_volts">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> V</string>
+                 </property>
+                 <property name="maximum">
+                  <double>9999.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_ok_high_volts</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="arc_ok_low_volts">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> V</string>
+                 </property>
+                 <property name="maximum">
+                  <double>60.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>arc_ok_low_volts</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="MkGroupBox" name="groupbox_2">
+              <property name="title">
+               <string>THC</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_3">
+               <property name="verticalSpacing">
+                <number>12</number>
+               </property>
+               <item row="4" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_d_gain">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_pid_d_gain</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_threshold">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> V</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_threshold</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_27">
+                 <property name="text">
+                  <string>PID I GAIN</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_24">
+                 <property name="text">
+                  <string>PID P GAIN (SPEED)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_23">
+                 <property name="text">
+                  <string>THRESHOLD</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_delay">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> S</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_delay</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_28">
+                 <property name="text">
+                  <string>PID D GAIN</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_22">
+                 <property name="text">
+                  <string>DELAY</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_p_gain">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_pid_p_gain</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_pid_i_gain">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_pid_i_gain</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QLabel" name="label_25">
+                 <property name="text">
+                  <string>VAD THRESHOLD</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_vad_threshold">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> %</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_vad_threshold</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QLabel" name="label_26">
+                 <property name="text">
+                  <string>VOID OVERRIDE</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QLabel" name="label_29">
+                 <property name="text">
+                  <string>SAFE HEIGHT</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <widget class="QLabel" name="label_93">
+                 <property name="text">
+                  <string>THC FEED RATE</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_feed_rate">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_feed_rate</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_safe_height">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_safe_height</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="thc_void_override">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> %</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>thc_void_override</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="MkGroupBox" name="groupbox_5">
+              <property name="title">
+               <string>CONFIG SETTINGS</string>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item>
+                <widget class="QPushButton" name="btn_config_save">
+                 <property name="text">
+                  <string>SAVE</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btn_config_reload">
+                 <property name="text">
+                  <string>RELOAD</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="MkGroupBox" name="groupbox_4">
+              <property name="title">
+               <string>SCRIBE &amp;&amp; SPOT</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_13">
+               <property name="verticalSpacing">
+                <number>12</number>
+               </property>
+               <item row="0" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="scribe_arm_delay">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> S</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>scribe_arm_delay</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="scribe_on_delay">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> ms</string>
+                 </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
+                 <property name="maximum">
+                  <double>5000.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>scribe_on_delay</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_46">
+                 <property name="text">
+                  <string>SCRIBE ON DELAY</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QLabel" name="label_48">
+                 <property name="text">
+                  <string>SPOT DELAY</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_45">
+                 <property name="text">
+                  <string>SCRIBE ARM DELAY</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QLabel" name="label_47">
+                 <property name="text">
+                  <string>SPOT THRESHOLD</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="spot_threshold">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> V</string>
+                 </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
+                 <property name="maximum">
+                  <double>200.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>spot_threshold</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="spot_delay">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="suffix">
+                  <string> ms</string>
+                 </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
+                 <property name="maximum">
+                  <double>3000.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>spot_delay</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="0" rowspan="2">
+             <widget class="MkGroupBox" name="groupbox_3">
+              <property name="title">
+               <string>PROBING &amp;&amp; MOTION</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_10">
+               <property name="verticalSpacing">
+                <number>12</number>
+               </property>
+               <item row="6" column="3">
+                <widget class="QLabel" name="label_44">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;SETUP SPEED (units per min)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="0">
+                <widget class="QLabel" name="label_41">
+                 <property name="text">
+                  <string>PROBE OFFSET</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="3">
+                <widget class="QLabel" name="label_42">
+                 <property name="text">
+                  <string>OHMIC RETRIES</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_39">
+                 <property name="text">
+                  <string>PROBE SPEED</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="2">
+                <widget class="PlasmaHalSpinBox" name="probe_speed">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <number>10000</number>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_speed</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_38">
+                 <property name="text">
+                  <string>FLOAT TRAVEL</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="label_40">
+                 <property name="text">
+                  <string>PROBE HEIGHT</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="probe_height">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <double>999.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_height</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="probe_offset">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
+                 <property name="minimum">
+                  <double>-400.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>400.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_offset</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="probe_float_travel">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <double>999.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_float_travel</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="3">
+                <widget class="QLabel" name="label_43">
+                 <property name="text">
+                  <string>SKIP IHS</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="4">
+                <widget class="PlasmaHalSpinBox" name="probe_ohmic_retries">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_ohmic_retries</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="probe_skip_ihs">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <double>999.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_skip_ihs</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="4">
+                <widget class="PlasmaHalDoubleSpinBox" name="probe_setup_speed">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <double>9999.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_setup_speed</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <spacer name="verticalSpacer_8">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="VCPSettingsLineEdit" name="settings_lineedit">
-           <property name="settingName" stdset="0">
-            <string>dro.inch-format</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="VCPSettingsLineEdit" name="settings_lineedit_3">
-           <property name="settingName" stdset="0">
-            <string>dro.degree-format</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_4">
-           <property name="text">
-            <string>Display Units</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Degree Format</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="VCPSettingsComboBox" name="settingscombobox">
-           <property name="settingName" stdset="0">
-            <string>dro.display-units</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_2">
-           <property name="text">
-            <string>Millimeter Format</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>Inch Format</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="MkGroupBox" name="groupbox_8">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>0</y>
-          <width>361</width>
-          <height>81</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>USER INPUT</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_16">
-         <item row="0" column="0">
-          <widget class="VCPSettingsCheckBox" name="settings_checkbox">
-           <property name="text">
-            <string>On-Screen Keyboard </string>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>virtual-input.enable</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="MkGroupBox" name="groupbox_17">
-        <property name="geometry">
-         <rect>
-          <x>400</x>
-          <y>210</y>
-          <width>481</width>
-          <height>281</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>MACHINE &amp;&amp; TABLE SETTINGS</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_21">
-         <property name="verticalSpacing">
-          <number>12</number>
-         </property>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="filter_distance_system">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <item>
-            <property name="text">
-             <string>mm</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>inch</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="filter_pressure_system">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <item>
-            <property name="text">
-             <string>psi</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_62">
-           <property name="text">
+          <widget class="QWidget" name="tab_17">
+           <attribute name="title">
             <string>MACHINE</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_60">
-           <property name="text">
-            <string>DISTANCE SYSTEM</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_61">
-           <property name="text">
-            <string>PRESSURE SYSTEM</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QComboBox" name="filter_machine">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <item>
-            <property name="text">
-             <string>Cutskill 60</string>
+           </attribute>
+           <widget class="MkGroupBox" name="groupbox_18">
+            <property name="geometry">
+             <rect>
+              <x>1240</x>
+              <y>20</y>
+              <width>591</width>
+              <height>811</height>
+             </rect>
             </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Hypertherm 45</string>
+            <property name="title">
+             <string>JOB FAVORITES</string>
             </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Thermal Dynamics A120</string>
+            <widget class="QPushButton" name="pushButton">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>430</y>
+               <width>111</width>
+               <height>44</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>ADD</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="geometry">
+              <rect>
+               <x>210</x>
+               <y>430</y>
+               <width>88</width>
+               <height>44</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>NEW</string>
+             </property>
+            </widget>
+           </widget>
+           <widget class="MkGroupBox" name="groupbox_17">
+            <property name="geometry">
+             <rect>
+              <x>380</x>
+              <y>210</y>
+              <width>481</width>
+              <height>281</height>
+             </rect>
             </property>
-           </item>
+            <property name="title">
+             <string>MACHINE &amp;&amp; TABLE SETTINGS</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_21">
+             <property name="verticalSpacing">
+              <number>12</number>
+             </property>
+             <item row="0" column="1">
+              <widget class="QComboBox" name="filter_distance_system">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <item>
+                <property name="text">
+                 <string>mm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>inch</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QComboBox" name="filter_pressure_system">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <item>
+                <property name="text">
+                 <string>psi</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_62">
+               <property name="text">
+                <string>MACHINE</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_60">
+               <property name="text">
+                <string>DISTANCE SYSTEM</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_61">
+               <property name="text">
+                <string>PRESSURE SYSTEM</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QComboBox" name="filter_machine">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Cutskill 60</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Hypertherm 45</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Thermal Dynamics A120</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_92">
+               <property name="text">
+                <string>TORCH PULSE DURATION</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="PlasmaHalDoubleSpinBox" name="plasma_torch_pulse_sec">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="suffix">
+                <string> S</string>
+               </property>
+               <property name="decimals">
+                <number>3</number>
+               </property>
+               <property name="maximum">
+                <double>5.000000000000000</double>
+               </property>
+               <property name="singleStep">
+                <double>0.100000000000000</double>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>plasma_torch_pulse_sec</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="MkGroupBox" name="groupbox_27">
+            <property name="geometry">
+             <rect>
+              <x>380</x>
+              <y>10</y>
+              <width>481</width>
+              <height>195</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>LASER, CAMERA &amp;&amp; SCRIBE OFFSETS</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_31">
+             <item row="0" column="1">
+              <widget class="QLabel" name="label_86">
+               <property name="text">
+                <string>X</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QLabel" name="label_87">
+               <property name="text">
+                <string>Y</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_78">
+               <property name="text">
+                <string>LASER</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="VCPSettingsDoubleSpinBox" name="laser_offset_y">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="decimals">
+                <number>5</number>
+               </property>
+               <property name="minimum">
+                <double>-200.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>200.000000000000000</double>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>laser_offset_y</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_89">
+               <property name="text">
+                <string>CAMERA</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="VCPSettingsDoubleSpinBox" name="camera_offset_x">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="decimals">
+                <number>5</number>
+               </property>
+               <property name="minimum">
+                <double>-200.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>200.000000000000000</double>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>camera_offset_x</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="VCPSettingsDoubleSpinBox" name="camera_offset_y">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="decimals">
+                <number>5</number>
+               </property>
+               <property name="minimum">
+                <double>-200.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>200.000000000000000</double>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>camera_offset_y</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_88">
+               <property name="text">
+                <string>SCRIBE</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="PlasmaHalDoubleSpinBox" name="scribe_offset_x">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="decimals">
+                <number>5</number>
+               </property>
+               <property name="minimum">
+                <double>-200.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>200.000000000000000</double>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>scribe_offset_x</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="scribe_offset_y">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="decimals">
+                <number>5</number>
+               </property>
+               <property name="minimum">
+                <double>-200.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>200.000000000000000</double>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>scribe_offset_y</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="VCPSettingsDoubleSpinBox" name="laser_offset_x">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="decimals">
+                <number>5</number>
+               </property>
+               <property name="minimum">
+                <double>-200.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>200.000000000000000</double>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>laser_offset_x</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="MkGroupBox" name="groupbox_24">
+            <property name="geometry">
+             <rect>
+              <x>240</x>
+              <y>640</y>
+              <width>622</width>
+              <height>211</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>DB SEEDING</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_23">
+             <item row="1" column="0">
+              <widget class="QLineEdit" name="lne_seed_source">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>600</width>
+                 <height>29</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>600</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="ActionButton" name="btn_seed_db">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>34</width>
+                 <height>44</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>150</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Seed DB from file</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="lbl_seed_status">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="MkGroupBox" name="groupbox_23">
+            <property name="geometry">
+             <rect>
+              <x>380</x>
+              <y>500</y>
+              <width>431</width>
+              <height>131</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>PROCESS RUN SAVE/DELETE CONFIRMS</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_12">
+             <item>
+              <widget class="VCPSettingsCheckBox" name="ask_on_run_save">
+               <property name="text">
+                <string>Ask before Process Run save</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>run_save_confirm</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="VCPSettingsCheckBox" name="ask_on_run_delete">
+               <property name="text">
+                <string>Ask before Process Run delete</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>run_delete_confirm</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="MkGroupBox" name="groupbox_7">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>100</y>
+              <width>358</width>
+              <height>216</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>DRO FORMAT</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_15">
+             <item row="1" column="1">
+              <widget class="VCPSettingsLineEdit" name="settings_lineedit_2">
+               <property name="settingName" stdset="0">
+                <string>dro.millimeter-format</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="VCPSettingsLineEdit" name="settings_lineedit">
+               <property name="settingName" stdset="0">
+                <string>dro.inch-format</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="VCPSettingsLineEdit" name="settings_lineedit_3">
+               <property name="settingName" stdset="0">
+                <string>dro.degree-format</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>Display Units</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>Degree Format</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="VCPSettingsComboBox" name="settingscombobox">
+               <property name="settingName" stdset="0">
+                <string>dro.display-units</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>Millimeter Format</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Inch Format</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="MkGroupBox" name="groupbox_8">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>10</y>
+              <width>361</width>
+              <height>81</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>USER INPUT</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_16">
+             <item row="0" column="0">
+              <widget class="VCPSettingsCheckBox" name="settings_checkbox">
+               <property name="text">
+                <string>On-Screen Keyboard </string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>virtual-input.enable</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_92">
-           <property name="text">
-            <string>TORCH PULSE DURATION</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="PlasmaHalDoubleSpinBox" name="plasma_torch_pulse_sec">
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::PlusMinus</enum>
-           </property>
-           <property name="suffix">
-            <string> S</string>
-           </property>
-           <property name="decimals">
-            <number>3</number>
-           </property>
-           <property name="maximum">
-            <double>5.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>plasma_torch_pulse_sec</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="MkGroupBox" name="groupbox_23">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>540</y>
-          <width>431</width>
-          <height>131</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>PROCESS RUN SAVE/DELETE CONFIRMS</string>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_12">
-         <item>
-          <widget class="VCPSettingsCheckBox" name="ask_on_run_save">
-           <property name="text">
-            <string>Ask before Process Run save</string>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>run_save_confirm</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="VCPSettingsCheckBox" name="ask_on_run_delete">
-           <property name="text">
-            <string>Ask before Process Run delete</string>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>run_delete_confirm</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="MkGroupBox" name="groupbox_24">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>680</y>
-          <width>622</width>
-          <height>211</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>DB SEEDING</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_23">
-         <item row="1" column="0">
-          <widget class="QLineEdit" name="lne_seed_source">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>600</width>
-             <height>29</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>600</width>
-             <height>16777215</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="ActionButton" name="btn_seed_db">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>34</width>
-             <height>44</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>150</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Seed DB from file</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="lbl_seed_status">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="MkGroupBox" name="groupbox_18">
-        <property name="geometry">
-         <rect>
-          <x>1270</x>
-          <y>0</y>
-          <width>591</width>
-          <height>811</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>JOB FAVORITES</string>
-        </property>
-        <widget class="QPushButton" name="pushButton">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>430</y>
-           <width>111</width>
-           <height>44</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>ADD</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="geometry">
-          <rect>
-           <x>210</x>
-           <y>430</y>
-           <width>88</width>
-           <height>44</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>NEW</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="MkGroupBox" name="groupbox_27">
-        <property name="geometry">
-         <rect>
-          <x>400</x>
-          <y>0</y>
-          <width>481</width>
-          <height>195</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>LASER, CAMERA &amp;&amp; SCRIBE OFFSETS</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_31">
-         <item row="0" column="1">
-          <widget class="QLabel" name="label_86">
-           <property name="text">
-            <string>X</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLabel" name="label_87">
-           <property name="text">
-            <string>Y</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_78">
-           <property name="text">
-            <string>LASER</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="VCPSettingsDoubleSpinBox" name="laser_offset_y">
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::PlusMinus</enum>
-           </property>
-           <property name="decimals">
-            <number>5</number>
-           </property>
-           <property name="minimum">
-            <double>-200.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>200.000000000000000</double>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>laser_offset_y</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_89">
-           <property name="text">
-            <string>CAMERA</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="VCPSettingsDoubleSpinBox" name="camera_offset_x">
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::PlusMinus</enum>
-           </property>
-           <property name="decimals">
-            <number>5</number>
-           </property>
-           <property name="minimum">
-            <double>-200.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>200.000000000000000</double>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>camera_offset_x</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="VCPSettingsDoubleSpinBox" name="camera_offset_y">
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::PlusMinus</enum>
-           </property>
-           <property name="decimals">
-            <number>5</number>
-           </property>
-           <property name="minimum">
-            <double>-200.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>200.000000000000000</double>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>camera_offset_y</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_88">
-           <property name="text">
-            <string>SCRIBE</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="PlasmaHalDoubleSpinBox" name="scribe_offset_x">
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::PlusMinus</enum>
-           </property>
-           <property name="decimals">
-            <number>5</number>
-           </property>
-           <property name="minimum">
-            <double>-200.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>200.000000000000000</double>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>scribe_offset_x</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="2">
-          <widget class="PlasmaHalDoubleSpinBox" name="scribe_offset_y">
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::PlusMinus</enum>
-           </property>
-           <property name="decimals">
-            <number>5</number>
-           </property>
-           <property name="minimum">
-            <double>-200.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>200.000000000000000</double>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>scribe_offset_y</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="VCPSettingsDoubleSpinBox" name="laser_offset_x">
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="buttonSymbols">
-            <enum>QAbstractSpinBox::PlusMinus</enum>
-           </property>
-           <property name="decimals">
-            <number>5</number>
-           </property>
-           <property name="minimum">
-            <double>-200.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>200.000000000000000</double>
-           </property>
-           <property name="settingName" stdset="0">
-            <string>laser_offset_x</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_diagnostics">
        <attribute name="title">
@@ -5741,34 +5702,8 @@ CUT</string>
   <tabstop>btn_new_run_process</tabstop>
   <tabstop>btn_run_reload</tabstop>
   <tabstop>chkb_slot_detect_enable</tabstop>
-  <tabstop>thc_delay</tabstop>
-  <tabstop>thc_threshold</tabstop>
-  <tabstop>thc_pid_p_gain</tabstop>
-  <tabstop>thc_pid_i_gain</tabstop>
-  <tabstop>thc_pid_d_gain</tabstop>
-  <tabstop>arc_fail_timeout</tabstop>
-  <tabstop>arc_max_starts</tabstop>
-  <tabstop>arc_retry_delay</tabstop>
-  <tabstop>arc_voltage_scale</tabstop>
-  <tabstop>arc_voltage_offset</tabstop>
-  <tabstop>probe_offset</tabstop>
-  <tabstop>probe_height</tabstop>
-  <tabstop>probe_speed</tabstop>
-  <tabstop>probe_float_travel</tabstop>
-  <tabstop>scribe_arm_delay</tabstop>
-  <tabstop>scribe_on_delay</tabstop>
-  <tabstop>btn_config_save</tabstop>
-  <tabstop>btn_config_reload</tabstop>
   <tabstop>pushButton_11</tabstop>
   <tabstop>tabwidget</tabstop>
-  <tabstop>settings_lineedit_2</tabstop>
-  <tabstop>settings_lineedit</tabstop>
-  <tabstop>settings_lineedit_3</tabstop>
-  <tabstop>settingscombobox</tabstop>
-  <tabstop>settings_checkbox</tabstop>
-  <tabstop>filter_distance_system</tabstop>
-  <tabstop>filter_pressure_system</tabstop>
-  <tabstop>filter_machine</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -5869,6 +5804,22 @@ CUT</string>
    </hints>
   </connection>
   <connection>
+   <sender>vtk_prog_ticks</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>showProgramTicks(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1604</x>
+     <y>129</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1514</x>
+     <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>btn_vad</sender>
    <signal>toggled(bool)</signal>
    <receiver>chkb_vad</receiver>
@@ -5896,38 +5847,6 @@ CUT</string>
     </hint>
     <hint type="destinationlabel">
      <x>924</x>
-     <y>337</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_void_sense</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>chkb_void_sense</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>773</x>
-     <y>337</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1812</x>
-     <y>323</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>chkb_void_sense</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>btn_void_sense</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1812</x>
-     <y>323</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>773</x>
      <y>337</y>
     </hint>
    </hints>
@@ -5965,18 +5884,34 @@ CUT</string>
    </hints>
   </connection>
   <connection>
-   <sender>vtk_prog_ticks</sender>
+   <sender>btn_void_sense</sender>
    <signal>toggled(bool)</signal>
-   <receiver>vtkbackplot</receiver>
-   <slot>showProgramTicks(bool)</slot>
+   <receiver>chkb_void_sense</receiver>
+   <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1604</x>
-     <y>129</y>
+     <x>773</x>
+     <y>337</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1514</x>
-     <y>536</y>
+     <x>1812</x>
+     <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chkb_void_sense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_void_sense</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1812</x>
+     <y>323</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>773</x>
+     <y>337</y>
     </hint>
    </hints>
   </connection>

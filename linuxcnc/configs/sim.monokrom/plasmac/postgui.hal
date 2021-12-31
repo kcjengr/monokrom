@@ -21,8 +21,8 @@ net plasmac:axis-min-limit       ini.z.min_limit             =>  plasmac.axis-z-
 
 # Inputs
 
-#net plasmac:cornerlock-enable                                    plasmac.cornerlock-enable
-#net plasmac:cornerlock-threshold                                 plasmac.cornerlock-threshold
+net plasmac:cornerlock-enable                qtpyvcp.plasma-vad.checked => plasmac.cornerlock-enable
+net plasmac:cornerlock-threshold          qtpyvcp.thc-vad-threshold.out => plasmac.cornerlock-threshold
 
 net plasmac:cut-feed-rate                 qtpyvcp.param-cutfeedrate.out => plasmac.cut-feed-rate
 net plasmac:cut-height                      qtpyvcp.param-cutheight.out => plasmac.cut-height
@@ -37,7 +37,7 @@ net plasmac:float-switch-travel          qtpyvcp.probe-float-travel.out => plasm
 net plasmac:height-per-volt             qtpyvcp.arc-height-per-volt.out => plasmac.height-per-volt
 #net plasmac:ignore-arc-ok-1                                      plasmac.ignore-arc-ok-1
 #net plasmac:kerfcross-enable                                     plasmac.kerfcross-enable
-#net plasmac:kerfcross-override                                   plasmac.kerfcross-override
+net plasmac:kerfcross-override            qtpyvcp.thc-void-override.out => plasmac.kerfcross-override
 net plasmac:mesh-enable               qtpyvcp.plasma-void-sense.checked => plasmac.mesh-enable
 
 net plasmac:probe-feed-rate            qtpyvcp.param-plungefeedrate.out => plasmac.probe-feed-rate
