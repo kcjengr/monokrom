@@ -2,6 +2,14 @@
 # make custom changes in <machinename>_connections.hal
 
 
+# ---SET CONSTANTS---
+if {![info exists numJoints]} {
+    set numJoints $::KINS(JOINTS)
+}
+if {![info exists z-axis]} {
+    set z-axis [string first "z" [string tolower $::TRAJ(COORDINATES)]]
+}
+
 #***** PLASMAC COMPONENT *****
 loadrt  plasmac
 addf    plasmac  servo-thread
