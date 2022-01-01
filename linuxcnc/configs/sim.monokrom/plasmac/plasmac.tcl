@@ -63,7 +63,7 @@ net plasmac:x-offset-current     axis.x.eoffset              =>  plasmac.x-offse
 net plasmac:y-offset-current     axis.y.eoffset              =>  plasmac.y-offset-current
 net plasmac:z-offset-current     axis.z.eoffset              =>  plasmac.z-offset-current
 net plasmac:machine-is-homed     allhomed.and                =>  plasmac.homed
-
+net plasmac:feed-upm             motion.feed-upm             =>  plasmac.feed-upm
 
 
 # use existing machine-is-on signal from pncconf if it exists

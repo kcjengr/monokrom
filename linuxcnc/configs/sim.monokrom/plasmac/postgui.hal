@@ -28,8 +28,6 @@ net plasmac:cornerlock-threshold          qtpyvcp.thc-vad-threshold.out => plasm
 
 net plasmac:cut-feed-rate                 qtpyvcp.param-cutfeedrate.out => plasmac.cut-feed-rate
 net plasmac:cut-height                      qtpyvcp.param-cutheight.out => plasmac.cut-height
-#net plasmac:cut-length                                           plasmac.cut-length
-#net plasmac:cut-time                                             plasmac.cut-time
 net plasmac:cut-volts                        qtpyvcp.param-cutvolts.out => plasmac.cut-volts
 net plasmac:arc-voltage-scale             qtpyvcp.arc-voltage-scale.out => plasmac.arc-voltage-scale
 net plasmac:arc-voltage-offset           qtpyvcp.arc-voltage-offset.out => plasmac.arc-voltage-offset
@@ -102,6 +100,8 @@ net plasmac:thc-active              plasmac.thc-active                  => qtpyv
 net plasmac:z-height                plasmac.z-height
 net plasmac:arc-ok-out              plasmac.arc-ok-out                  => qtpyvcp.led-arc-ok.on
 net plasmac:torch-on                plasmac.torch-on                    => qtpyvcp.led-torch-on.on
+net plasmac:cut-length              plasmac.cut-length                  => qtpyvcp.stats-cut-length.in
+net plasmac:cut-time                plasmac.cut-time                    => qtpyvcp.stats-cut-time.in
 
 # Cycle Start Connections
 net plasmac:program-is-paused                                           => qtpyvcp.cycle-start.program-is-paused
