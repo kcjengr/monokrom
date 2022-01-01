@@ -159,7 +159,8 @@ class MainWindow(VCPMainWindow):
         
         # setup default cut chart load.
         default_cut_chart = INFO.ini.find('PLASMAC', 'DEFAULT_CUTCHART')
-        self.cutchart_pin_update(default_cut_chart)
+        if default_cut_chart is not None:
+            self.cutchart_pin_update(default_cut_chart)
 
     def cut_recovery_direction(self, direction):
         speed = self.cut_recovery_speed.value() * 0.01 * direction
