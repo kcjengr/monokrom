@@ -442,17 +442,7 @@
              <item row="0" column="0">
               <widget class="QLabel" name="label_90">
                <property name="text">
-                <string>ACTIVE GCODES:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1" colspan="2">
-              <widget class="StatusLabel" name="statuslabel">
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="rules" stdset="0">
-                <string>[{&quot;name&quot;: &quot;active_gcodes&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes?string&quot;, &quot;trigger&quot;: true}]}]</string>
+                <string>VELOCITY</string>
                </property>
               </widget>
              </item>
@@ -467,6 +457,16 @@
               <widget class="QLabel" name="lbl_process_name">
                <property name="text">
                 <string>None</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="StatusLabel" name="lbl_velocity">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="rules" stdset="0">
+                <string>[{&quot;name&quot;: &quot;velocity&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f'{ch[0]*60:8.2f} units/min'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:current_vel&quot;, &quot;trigger&quot;: true}]}]</string>
                </property>
               </widget>
              </item>
@@ -3971,7 +3971,7 @@ font-weight: bold;
              <rect>
               <x>20</x>
               <y>20</y>
-              <width>591</width>
+              <width>711</width>
               <height>751</height>
              </rect>
             </property>
@@ -4078,6 +4078,20 @@ font-weight: bold;
                </property>
                <property name="text">
                 <string>RESET</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="HalLabel" name="hallabel_2">
+               <property name="pinBaseName" stdset="0">
+                <string>stats-cut-length</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="HalLabel" name="hallabel_3">
+               <property name="pinBaseName" stdset="0">
+                <string>stats-cut-time</string>
                </property>
               </widget>
              </item>
@@ -5641,6 +5655,47 @@ font-weight: bold;
         <layout class="QVBoxLayout" name="verticalLayout_5">
          <item>
           <widget class="NotificationWidget" name="notificationwidget"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="MkGroupBox" name="groupbox_5">
+        <property name="geometry">
+         <rect>
+          <x>730</x>
+          <y>0</y>
+          <width>490</width>
+          <height>171</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>490</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>ACTIVE G-CODES &amp;&amp; M-CODES</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="StatusLabel" name="statuslabel">
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+           <property name="rules" stdset="0">
+            <string>[{&quot;name&quot;: &quot;gcodes&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes?string&quot;, &quot;trigger&quot;: true}]}]</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="StatusLabel" name="statuslabel_2">
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+           <property name="rules" stdset="0">
+            <string>[{&quot;name&quot;: &quot;mcodes&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:mcodes?string&quot;, &quot;trigger&quot;: true}]}]</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
