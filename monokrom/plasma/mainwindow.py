@@ -64,6 +64,7 @@ class MainWindow(VCPMainWindow):
     
     param_fld_map = {
         'name':'param_name',
+        'id':'param_process_id',
         'pierce_height':'param_pierceheight',
         'pierce_delay':'param_piercedelay',
         'cut_height':'param_cutheight',
@@ -248,7 +249,7 @@ class MainWindow(VCPMainWindow):
                 fld_data = getattr(data, k)
                 ui_fld = getattr(self, MainWindow.param_fld_map[k])
                 if isinstance(ui_fld, QLabel):
-                    ui_fld.setText(fld_data)
+                    ui_fld.setText(str(fld_data))
                 else:
                     ui_fld.setValue(fld_data) 
         else:
@@ -256,8 +257,10 @@ class MainWindow(VCPMainWindow):
             # set cut params to 0
             ui_fld = getattr(self, 'param_name')
             ui_fld.setText('NONE')
+            ui_fld = getattr(self, 'param_process_id')
+            ui_fld.setText('NONE')
             for v in MainWindow.param_fld_map.values():
-                if v != 'param_name':
+                if v not in ('param_name', 'param_process_id'):
                     ui_fld = getattr(self, v)
                     ui_fld.setValue(0)
         # All fields have been set, update any slave displays
@@ -273,7 +276,7 @@ class MainWindow(VCPMainWindow):
                     fld_data = getattr(d, k)
                     ui_fld = getattr(self, MainWindow.param_fld_map[k])
                     if isinstance(ui_fld, QLabel):
-                        ui_fld.setText(fld_data)
+                        ui_fld.setText(str(fld_data))
                     else:
                         ui_fld.setValue(fld_data) 
                 

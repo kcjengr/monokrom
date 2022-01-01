@@ -2851,57 +2851,7 @@ TICKS</string>
                  <property name="verticalSpacing">
                   <number>18</number>
                  </property>
-                 <item row="9" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_8">
-                   <property name="text">
-                    <string>P-JUMP HEIGHT</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_pierceheight">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="maximum">
-                    <double>10.000000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_4">
-                   <property name="text">
-                    <string>PIERCE DELAY</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_69">
-                   <property name="text">
-                    <string>PROCESS NAME</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="9" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_puddlejumpheight">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="suffix">
-                    <string> %</string>
-                   </property>
-                   <property name="maximum">
-                    <double>100.000000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="5" column="1">
+                 <item row="6" column="1">
                   <widget class="HalDoubleSpinBox" name="param_cutfeedrate">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -2914,64 +2864,7 @@ TICKS</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="4" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_3">
-                   <property name="text">
-                    <string>CUT HEIGHT</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="8" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_7">
-                   <property name="text">
-                    <string>CUT VOLTS</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="13" column="1">
-                  <spacer name="verticalSpacer_5">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item row="8" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_cutvolts">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="suffix">
-                    <string> V</string>
-                   </property>
-                   <property name="maximum">
-                    <double>300.000000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel">
-                   <property name="text">
-                    <string>KERF WIDTH</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="10" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_9">
-                   <property name="text">
-                    <string>P-JUMP DELAY</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="11" column="1">
+                 <item row="12" column="1">
                   <widget class="HalDoubleSpinBox" name="param_pauseatend">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -2987,6 +2880,119 @@ TICKS</string>
                    </property>
                   </widget>
                  </item>
+                 <item row="6" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_5">
+                   <property name="text">
+                    <string>CUT FEED RATE</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="11" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_puddlejumpdelay">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="suffix">
+                    <string> S</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="8" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_6">
+                   <property name="text">
+                    <string>CUT AMPS</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_2">
+                   <property name="text">
+                    <string>PIERCE HEIGHT</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="13" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_gaspressure">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="maximum">
+                    <double>200.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="0">
+                  <widget class="QLabel" name="label_5">
+                   <property name="text">
+                    <string>SETUP FEED RATE</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="8" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_cutamps">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="suffix">
+                    <string> A</string>
+                   </property>
+                   <property name="maximum">
+                    <double>400.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_3">
+                   <property name="text">
+                    <string>CUT HEIGHT</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_piercedelay">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="suffix">
+                    <string> S</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="9" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_cutvolts">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="suffix">
+                    <string> V</string>
+                   </property>
+                   <property name="maximum">
+                    <double>300.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel">
+                   <property name="text">
+                    <string>KERF WIDTH</string>
+                   </property>
+                  </widget>
+                 </item>
                  <item row="0" column="1">
                   <widget class="QLabel" name="param_name">
                    <property name="text">
@@ -2997,7 +3003,55 @@ TICKS</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="1">
+                 <item row="9" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_7">
+                   <property name="text">
+                    <string>CUT VOLTS</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="10" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_8">
+                   <property name="text">
+                    <string>P-JUMP HEIGHT</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="11" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_9">
+                   <property name="text">
+                    <string>P-JUMP DELAY</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="14" column="1">
+                  <spacer name="verticalSpacer_5">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="12" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_10">
+                   <property name="text">
+                    <string>PAUSE AT END</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="paramKirfWidthLabel_4">
+                   <property name="text">
+                    <string>PIERCE DELAY</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
                   <widget class="HalDoubleSpinBox" name="param_kirfwidth">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -3019,97 +3073,21 @@ TICKS</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="12" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_gaspressure">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="maximum">
-                    <double>200.000000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="11" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_10">
-                   <property name="text">
-                    <string>PAUSE AT END</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="5" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_5">
-                   <property name="text">
-                    <string>CUT FEED RATE</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_piercedelay">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="suffix">
-                    <string> S</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="12" column="0">
+                 <item row="13" column="0">
                   <widget class="QLabel" name="paramKirfWidthLabel_11">
                    <property name="text">
                     <string>GAS PRESURE</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_2">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_69">
                    <property name="text">
-                    <string>PIERCE HEIGHT</string>
+                    <string>PROCESS NAME</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="7" column="0">
-                  <widget class="QLabel" name="paramKirfWidthLabel_6">
-                   <property name="text">
-                    <string>CUT AMPS</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="7" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_cutamps">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="suffix">
-                    <string> A</string>
-                   </property>
-                   <property name="maximum">
-                    <double>400.000000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="10" column="1">
-                  <widget class="HalDoubleSpinBox" name="param_puddlejumpdelay">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="suffix">
-                    <string> S</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="4" column="1">
+                 <item row="5" column="1">
                   <widget class="HalDoubleSpinBox" name="param_cutheight">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -3122,7 +3100,36 @@ TICKS</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="6" column="1">
+                 <item row="3" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_pierceheight">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="maximum">
+                    <double>10.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="10" column="1">
+                  <widget class="HalDoubleSpinBox" name="param_puddlejumpheight">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="suffix">
+                    <string> %</string>
+                   </property>
+                   <property name="maximum">
+                    <double>100.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="1">
                   <widget class="PlasmaHalDoubleSpinBox" name="param_plungefeedrate">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -3135,10 +3142,21 @@ TICKS</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="6" column="0">
-                  <widget class="QLabel" name="label_5">
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_90">
                    <property name="text">
-                    <string>SETUP FEED RATE</string>
+                    <string>PROCESS / CUTCHART  
+/ TOOL ID</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLabel" name="param_process_id">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
                    </property>
                   </widget>
                  </item>
