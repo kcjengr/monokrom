@@ -90,15 +90,15 @@ net plasmac:arc-ok-low                     qtpyvcp.arc-ok-low-volts.out => plasm
 
 
 # Outputs
-net plasmac:consumable-changing     plasmac.consumable-changing
-net plasmac:cornerlock-is-locked    plasmac.cornerlock-is-locked
-net plasmac:kerfcross-is-locked     plasmac.kerfcross-is-locked
+net plasmac:consumable-changing     plasmac.consumable-changing         => qtpyvcp.led-change-consumable.on
+net plasmac:cornerlock-is-locked    plasmac.cornerlock-is-locked        => qtpyvcp.led-corner-lock.on
+net plasmac:kerfcross-is-locked     plasmac.kerfcross-is-locked         => qtpyvcp.led-kerf-cross.on
 net plasmac:led-down                plasmac.led-down                    => qtpyvcp.led-thc-down.on
 net plasmac:led-up                  plasmac.led-up                      => qtpyvcp.led-thc-up.on
 net plasmac:pierce-count            plasmac.pierce-count
 net plasmac:probe-test-error        plasmac.probe-test-error
 net plasmac:state                   plasmac.state-out
-net plasmac:thc-active              plasmac.thc-active
+net plasmac:thc-active              plasmac.thc-active                  => qtpyvcp.led-thc-active.on
 net plasmac:z-height                plasmac.z-height
 net plasmac:arc-ok-out              plasmac.arc-ok-out                  => qtpyvcp.led-arc-ok.on
 net plasmac:torch-on                plasmac.torch-on                    => qtpyvcp.led-torch-on.on

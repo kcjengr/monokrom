@@ -23,6 +23,8 @@ STAT = STATUS.stat
 POS = getPlugin('position')
 INI = linuxcnc.ini(os.environ['INI_FILE_NAME'])
 
+USER_BUTTONS = 10
+
 class MainWindow(VCPMainWindow):
     """Main window class for the VCP."""
 
@@ -102,7 +104,7 @@ class MainWindow(VCPMainWindow):
         self.vtkbackplot.enable_panning(True)
         
         # find and set all user buttons
-        for user_i in range(1,15):
+        for user_i in range(1,USER_BUTTONS+1):
             user_btn_txt = f"user{user_i}"
             user_name_key = f"USER{user_i}_NAME"
             user_action_key = f"USER{user_i}_ACTION"
