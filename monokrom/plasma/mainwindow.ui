@@ -439,13 +439,6 @@
              </size>
             </property>
             <layout class="QGridLayout" name="gridLayout_32">
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_90">
-               <property name="text">
-                <string>VELOCITY</string>
-               </property>
-              </widget>
-             </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label_91">
                <property name="text">
@@ -463,10 +456,17 @@
              <item row="0" column="2">
               <widget class="StatusLabel" name="lbl_velocity">
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                </property>
                <property name="rules" stdset="0">
-                <string>[{&quot;name&quot;: &quot;velocity&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f'{ch[0]*60:8.2f} units/min'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:current_vel&quot;, &quot;trigger&quot;: true}]}]</string>
+                <string>[{&quot;name&quot;: &quot;velocity&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f'VELOCITY: {ch[0]*60:8.2f} units/min'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:current_vel&quot;, &quot;trigger&quot;: true}]}]</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="StatusLabel" name="statuslabel_3">
+               <property name="rules" stdset="0">
+                <string>[{&quot;name&quot;: &quot;feed_rate&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f'FEED RATE: {ch[0]:8.2f}'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:feedrate&quot;, &quot;trigger&quot;: true}]}]</string>
                </property>
               </widget>
              </item>
@@ -4799,13 +4799,13 @@ font-weight: bold;
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
                  <property name="suffix">
-                  <string> ms</string>
+                  <string> S</string>
                  </property>
                  <property name="decimals">
-                  <number>0</number>
+                  <number>2</number>
                  </property>
                  <property name="maximum">
-                  <double>5000.000000000000000</double>
+                  <double>10.000000000000000</double>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>scribe_on_delay</string>
