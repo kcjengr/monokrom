@@ -97,7 +97,7 @@ class MainWindow(VCPMainWindow):
             self._linear_setting = 'inch'
         
         self._pressure_setting = INFO.ini.find('PLASMAC', 'PRESSURE')
-        self._machine = INFO.ini.find('PLASMAC', 'MACHINE') 
+        self._machine = INFO.ini.find('PLASMAC', 'MACHINE')
         
         # setup some default UI settings
         self.vtkbackplot.setViewZ()
@@ -155,6 +155,10 @@ class MainWindow(VCPMainWindow):
         comp = hal.getComponent()
         self.hal_cutchart_id = comp.addPin('cutchart-id', 'u32', 'in')
         comp.addListener('cutchart-id', self.cutchart_pin_update)
+        
+        # setup default cut chart load.
+        default_cut_chart = INFO.ini.find('PLASMAC', 'DEFAULT_CUTCHART')
+        self.cutchart_pin_update(default_cut_chart)
 
     def cut_recovery_direction(self, direction):
         speed = self.cut_recovery_speed.value() * 0.01 * direction
