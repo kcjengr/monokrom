@@ -109,7 +109,7 @@ net plasmac:program-is-running                                          => qtpyv
 net plasmac:program-is-idle                                             => qtpyvcp.cycle-start.program-is-idle
 
 # UI eStop Connections
-net estop:ok     qtpyvcp.estopbutton.not-checked => ui_estop.reset ui_estop.ok-in
+#net estop:ok     qtpyvcp.estopbutton.not-checked => ui_estop.reset ui_estop.ok-in
 
 
 # simulator panel connections

@@ -1,0 +1,8 @@
+# halshow watchlist created Sun Jan 02 22:08:01 NZDT 2022
+
+pin+iocontrol.0.user-request-enable
+pin+iocontrol.0.user-enable-out
+pin+iocontrol.0.emc-enable-in
+pin+halui.estop.is-activated
+pin+halui.estop.activate
+pin+halui.estop.reset
