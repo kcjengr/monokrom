@@ -14,9 +14,10 @@
 *~
 *#
 
-# Compiled Qt resource and ui files
+# Compiled Qt resource, ui files and associated Qt '.' files/directories
 *_rc.py
 *_ui.py
+.qt_for_python/
 
 # update INI backups
 linuxcnc/configs/**/*.old
@@ -25,6 +26,6 @@ linuxcnc/configs/**/*.old
 linuxcnc/configs/**/.*.json
 linuxcnc/configs/**/.*.pickle
 
+# editor work files and locations
 .project
-
 .pydevproject
