@@ -64,6 +64,7 @@ class MainWindow(VCPMainWindow):
     
     param_fld_map = {
         'name':'param_name',
+        'id':'param_process_id',
         'pierce_height':'param_pierceheight',
         'pierce_delay':'param_piercedelay',
         'cut_height':'param_cutheight',
@@ -97,7 +98,7 @@ class MainWindow(VCPMainWindow):
             self._linear_setting = 'inch'
         
         self._pressure_setting = INFO.ini.find('PLASMAC', 'PRESSURE')
-        self._machine = INFO.ini.find('PLASMAC', 'MACHINE') 
+        self._machine = INFO.ini.find('PLASMAC', 'MACHINE')
         
         # setup some default UI settings
         self.vtkbackplot.setViewZ()
@@ -155,6 +156,11 @@ class MainWindow(VCPMainWindow):
         comp = hal.getComponent()
         self.hal_cutchart_id = comp.addPin('cutchart-id', 'u32', 'in')
         comp.addListener('cutchart-id', self.cutchart_pin_update)
+        
+        # setup default cut chart load.
+        default_cut_chart = INFO.ini.find('PLASMAC', 'DEFAULT_CUTCHART')
+        if default_cut_chart is not None:
+            self.cutchart_pin_update(default_cut_chart)
 
     def cut_recovery_direction(self, direction):
         speed = self.cut_recovery_speed.value() * 0.01 * direction
@@ -244,7 +250,7 @@ class MainWindow(VCPMainWindow):
                 fld_data = getattr(data, k)
                 ui_fld = getattr(self, MainWindow.param_fld_map[k])
                 if isinstance(ui_fld, QLabel):
-                    ui_fld.setText(fld_data)
+                    ui_fld.setText(str(fld_data))
                 else:
                     ui_fld.setValue(fld_data) 
         else:
@@ -252,8 +258,10 @@ class MainWindow(VCPMainWindow):
             # set cut params to 0
             ui_fld = getattr(self, 'param_name')
             ui_fld.setText('NONE')
+            ui_fld = getattr(self, 'param_process_id')
+            ui_fld.setText('NONE')
             for v in MainWindow.param_fld_map.values():
-                if v != 'param_name':
+                if v not in ('param_name', 'param_process_id'):
                     ui_fld = getattr(self, v)
                     ui_fld.setValue(0)
         # All fields have been set, update any slave displays
@@ -269,7 +277,7 @@ class MainWindow(VCPMainWindow):
                     fld_data = getattr(d, k)
                     ui_fld = getattr(self, MainWindow.param_fld_map[k])
                     if isinstance(ui_fld, QLabel):
-                        ui_fld.setText(fld_data)
+                        ui_fld.setText(str(fld_data))
                     else:
                         ui_fld.setValue(fld_data) 
                 

@@ -84,18 +84,7 @@ for {set jnum 0} {$jnum < $numJoints} {incr jnum} {
 # estop loopback
 net estop-loop iocontrol.0.user-enable-out iocontrol.0.emc-enable-in
 
-# QTPLASMAC ESTOP HANDLING
+# QTPLASMAC SIM ESTOP HANDLING - these are here to keep
+# qtplasmac-sim happy
 loadrt or2 names=estop_or
-#~ loadrt not names=estop_not
 addf estop_or servo-thread
-#~ addf estop_not servo-thread
-#~ net sim:estop-raw estop_or.out estop_not.in
-#~ net sim:estop-out estop_not.out iocontrol.0.emc-enable-in
-#~ if {[info exists ::QTPLASMAC(ESTOP_TYPE)]} {
-    #~ if {$::QTPLASMAC(ESTOP_TYPE) == 2} {
-        #~ loadrt not names=estop_not_1
-        #~ addf estop_not_1 servo-thread
-        #~ net sim:estop-1-raw iocontrol.0.user-enable-out => estop_not_1.in
-        #~ net sim:estop-1-in estop_not_1.out => estop_or.in1
-    #~ }
-#~ }
