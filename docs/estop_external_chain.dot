@@ -1,0 +1,10 @@
+digraph estop_external_chain {
+    unknown -> {user_enable_out user_request_enable}
+    user_enable_out -> control_box [label="ok-in"];
+    control_box -> console [label="ok-out\nok-in"];
+    console -> pendant [label="ok-out\nok-in"];
+    pendant -> UI  [label="ok-out\nok-in"];
+    UI -> emc_enable_in  [label="ok-out"];
+    user_request_enable -> {control_box console pendant UI}  [label="reset"];
+    estop_source -> {control_box console pendant UI}  [label="fault-in"];
+}

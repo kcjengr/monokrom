@@ -1,0 +1,6 @@
+digraph estop_external_chain {
+    user_enable_out -> hal_estop_latch [label="ok-in"];
+    UI -> {hal_estop_latch}  [label="fault-in"];
+    user_request_enable -> {UI hal_estop_latch}  [label="reset"];
+    hal_estop_latch -> emc_enable_in [label="ok-out"];
+}
