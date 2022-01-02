@@ -111,3 +111,6 @@ net plasmac:program-is-idle                                             => qtpyv
 # UI eStop Connections
 #net estop:ok     qtpyvcp.estopbutton.not-checked => ui_estop.reset ui_estop.ok-in
 
+
+# Connections to uncomment when not using a SIM
+# net plasmac:arc-voltage-out plasmac.arc-voltage-out => qtpyvcp.mk-arc-voltage.in
