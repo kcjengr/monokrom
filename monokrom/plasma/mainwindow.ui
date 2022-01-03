@@ -439,6 +439,27 @@
              </size>
             </property>
             <layout class="QGridLayout" name="gridLayout_32">
+             <item row="0" column="2">
+              <widget class="HalLabel" name="mk_feedrate">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_98">
+               <property name="text">
+                <string>FEED RATE</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2" colspan="4">
+              <widget class="QLabel" name="lbl_process_name">
+               <property name="text">
+                <string>None</string>
+               </property>
+              </widget>
+             </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label_91">
                <property name="text">
@@ -446,27 +467,17 @@
                </property>
               </widget>
              </item>
-             <item row="1" column="1" colspan="2">
-              <widget class="QLabel" name="lbl_process_name">
+             <item row="0" column="3">
+              <widget class="QLabel" name="label_99">
                <property name="text">
-                <string>None</string>
+                <string>CURRENT VELOCITY</string>
                </property>
               </widget>
              </item>
-             <item row="0" column="2">
-              <widget class="StatusLabel" name="lbl_velocity">
+             <item row="0" column="4" colspan="2">
+              <widget class="HalLabel" name="mk_current_velcoity">
                <property name="alignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-               </property>
-               <property name="rules" stdset="0">
-                <string>[{&quot;name&quot;: &quot;velocity&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f'VELOCITY: {ch[0]*60:8.2f} units/min'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:current_vel&quot;, &quot;trigger&quot;: true}]}]</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="StatusLabel" name="statuslabel_3">
-               <property name="rules" stdset="0">
-                <string>[{&quot;name&quot;: &quot;feed_rate&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f'FEED RATE: {ch[0]:8.2f}'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:feedrate&quot;, &quot;trigger&quot;: true}]}]</string>
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2141,12 +2152,18 @@ CUT</string>
               <layout class="QVBoxLayout" name="verticalLayout_11">
                <item>
                 <widget class="VCPWidget" name="widget_13">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
                  <property name="rules" stdset="0">
-                  <string>[{&quot;name&quot;: &quot;Visible&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}]</string>
+                  <string>[]</string>
                  </property>
                  <layout class="QGridLayout" name="gridLayout_34">
                   <item row="0" column="0">
                    <widget class="QPushButton" name="btn_cut_recover_rev">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
                     <property name="text">
                      <string>REVERSE</string>
                     </property>
@@ -2154,6 +2171,9 @@ CUT</string>
                   </item>
                   <item row="0" column="2">
                    <widget class="QPushButton" name="btn_cut_recover_fwd">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
                     <property name="text">
                      <string>FORWARD</string>
                     </property>
@@ -2500,7 +2520,7 @@ TICKS</string>
                <rect>
                 <x>20</x>
                 <y>10</y>
-                <width>481</width>
+                <width>431</width>
                 <height>391</height>
                </rect>
               </property>
@@ -2512,7 +2532,7 @@ TICKS</string>
                 <rect>
                  <x>10</x>
                  <y>30</y>
-                 <width>461</width>
+                 <width>411</width>
                  <height>351</height>
                 </rect>
                </property>
@@ -2523,7 +2543,7 @@ TICKS</string>
                <rect>
                 <x>20</x>
                 <y>490</y>
-                <width>481</width>
+                <width>431</width>
                 <height>391</height>
                </rect>
               </property>
@@ -2535,7 +2555,7 @@ TICKS</string>
                 <rect>
                  <x>10</x>
                  <y>30</y>
-                 <width>461</width>
+                 <width>411</width>
                  <height>351</height>
                 </rect>
                </property>
@@ -2544,9 +2564,9 @@ TICKS</string>
              <widget class="MkGroupBox" name="groupbox_22">
               <property name="geometry">
                <rect>
-                <x>510</x>
+                <x>460</x>
                 <y>10</y>
-                <width>451</width>
+                <width>421</width>
                 <height>391</height>
                </rect>
               </property>
@@ -2569,11 +2589,18 @@ TICKS</string>
                <rect>
                 <x>20</x>
                 <y>410</y>
-                <width>481</width>
+                <width>711</width>
                 <height>71</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_22">
+               <item row="0" column="2">
+                <widget class="QPushButton" name="pushButton_14">
+                 <property name="text">
+                  <string>RESTART JOB SEQUENCE</string>
+                 </property>
+                </widget>
+               </item>
                <item row="0" column="0">
                 <widget class="QPushButton" name="pushButton_12">
                  <property name="text">
@@ -2582,9 +2609,9 @@ TICKS</string>
                 </widget>
                </item>
                <item row="0" column="1">
-                <widget class="QPushButton" name="pushButton_14">
+                <widget class="QPushButton" name="pushButton_3">
                  <property name="text">
-                  <string>RESTART JOB SEQUENCE</string>
+                  <string>REPEAT SAME</string>
                  </property>
                 </widget>
                </item>
@@ -2593,9 +2620,9 @@ TICKS</string>
              <widget class="MkGroupBox" name="groupbox_25">
               <property name="geometry">
                <rect>
-                <x>510</x>
+                <x>460</x>
                 <y>490</y>
-                <width>451</width>
+                <width>421</width>
                 <height>391</height>
                </rect>
               </property>

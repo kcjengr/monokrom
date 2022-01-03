@@ -108,6 +108,10 @@ net plasmac:program-is-paused                                           => qtpyv
 net plasmac:program-is-running                                          => qtpyvcp.cycle-start.program-is-running
 net plasmac:program-is-idle                                             => qtpyvcp.cycle-start.program-is-idle
 
+# Feed and Current Velocity display links
+net plasmac:feed-upm                                                    => qtpyvcp.mk-feedrate.in
+net plasmac:current-velocity                                            => qtpyvcp.mk-current-velcoity.in
+
 # UI eStop Connections
 #net estop:ok     qtpyvcp.estopbutton.not-checked => ui_estop.reset ui_estop.ok-in
 
