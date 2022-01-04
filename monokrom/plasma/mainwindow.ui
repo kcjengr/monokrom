@@ -938,7 +938,7 @@ HOME</string>
            </size>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab_6">
            <attribute name="title">
@@ -2151,9 +2151,9 @@ CUT</string>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_11">
                <item>
-                <widget class="VCPWidget" name="widget_13">
+                <widget class="VCPWidget" name="widget_recovery">
                  <property name="enabled">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                  <property name="rules" stdset="0">
                   <string>[]</string>
@@ -2162,7 +2162,7 @@ CUT</string>
                   <item row="0" column="0">
                    <widget class="QPushButton" name="btn_cut_recover_rev">
                     <property name="enabled">
-                     <bool>true</bool>
+                     <bool>false</bool>
                     </property>
                     <property name="text">
                      <string>REVERSE</string>
@@ -2172,7 +2172,7 @@ CUT</string>
                   <item row="0" column="2">
                    <widget class="QPushButton" name="btn_cut_recover_fwd">
                     <property name="enabled">
-                     <bool>true</bool>
+                     <bool>false</bool>
                     </property>
                     <property name="text">
                      <string>FORWARD</string>
@@ -2181,6 +2181,9 @@ CUT</string>
                   </item>
                   <item row="1" column="1">
                    <widget class="QSlider" name="cut_recovery_speed">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="maximum">
                      <number>100</number>
                     </property>

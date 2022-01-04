@@ -98,6 +98,9 @@ class CycleStartActionButton(VCPButton, HALWidget):
         else:
             self.pulse_timer.stop()
 
+    def isPaused(self):
+        return bool(self._program_is_paused_pin.value)
+
 
     def setIsIdle(self, idle):
         LOG.debug(f'Idle state = {idle}')

@@ -138,6 +138,7 @@ class MainWindow(VCPMainWindow):
         self.btn_reset_jog.clicked.connect(lambda:self.jog_slider.setValue(100))
         self.btn_load_newest.clicked.connect(self.openLatest)
         self.single_cut_x.focusReceived.connect(self.single_cut_limits)
+        self.btn_feed_hold.clicked.connect(self.cut_recovery)
         
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
@@ -165,6 +166,17 @@ class MainWindow(VCPMainWindow):
     def cut_recovery_direction(self, direction):
         speed = self.cut_recovery_speed.value() * 0.01 * direction
         cnchal.set_p('plasmac.paused-motion-speed',str(speed))
+
+    def cut_recovery(self):
+        # feed hold btn has been clicked.
+        # Determine the
+        print('cut recovery  called')
+        if self.widget_recovery.isEnabled():
+            self.widget_recovery.setEnabled(False)
+            print('cut recovery  called - False')
+        else:
+            self.widget_recovery.setEnabled(True)
+            print('cut recovery  called - True')
 
     def cutchart_pin_update(self, value):
         LOG.debug(f"Cutchart_ID Pin = {value}")
