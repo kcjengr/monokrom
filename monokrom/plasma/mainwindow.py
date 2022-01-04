@@ -103,6 +103,8 @@ class MainWindow(VCPMainWindow):
         # setup some default UI settings
         self.vtkbackplot.setViewZ()
         self.vtkbackplot.enable_panning(True)
+        self.widget_recovery.setEnabled(False)
+        self.cut_recovery_status = False
         
         # find and set all user buttons
         for user_i in range(1,USER_BUTTONS+1):
@@ -139,6 +141,10 @@ class MainWindow(VCPMainWindow):
         self.btn_load_newest.clicked.connect(self.openLatest)
         self.single_cut_x.focusReceived.connect(self.single_cut_limits)
         self.btn_feed_hold.clicked.connect(self.cut_recovery)
+        self.btn_cycle_start.clicked.connect(self.cut_recovery)
+        self.btn_stop_abort.clicked.connect(self.cut_recovery)
+        
+        self.vtk_center.clicked.connect(lambda:self.vtkbackplot.setViewProgram('Z2'))
         
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
@@ -168,15 +174,22 @@ class MainWindow(VCPMainWindow):
         cnchal.set_p('plasmac.paused-motion-speed',str(speed))
 
     def cut_recovery(self):
-        # feed hold btn has been clicked.
-        # Determine the
-        print('cut recovery  called')
-        if self.widget_recovery.isEnabled():
-            self.widget_recovery.setEnabled(False)
-            print('cut recovery  called - False')
-        else:
-            self.widget_recovery.setEnabled(True)
-            print('cut recovery  called - True')
+        sender = self.sender()
+        obj_name = sender.objectName()
+        if obj_name == 'btn_stop_abort':
+                self.widget_recovery.setEnabled(False)
+                self.cut_recovery_status = False
+                return
+
+        if obj_name == 'btn_cycle_start':
+                self.widget_recovery.setEnabled(False)
+                self.cut_recovery_status = False
+                return
+
+        if obj_name == 'btn_feed_hold':
+                self.widget_recovery.setEnabled(True)
+                self.cut_recovery_status = True
+
 
     def cutchart_pin_update(self, value):
         LOG.debug(f"Cutchart_ID Pin = {value}")

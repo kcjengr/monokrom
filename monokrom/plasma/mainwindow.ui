@@ -938,7 +938,7 @@ HOME</string>
            </size>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_6">
            <attribute name="title">
@@ -2153,7 +2153,7 @@ CUT</string>
                <item>
                 <widget class="VCPWidget" name="widget_recovery">
                  <property name="enabled">
-                  <bool>false</bool>
+                  <bool>true</bool>
                  </property>
                  <property name="rules" stdset="0">
                   <string>[]</string>
@@ -2162,7 +2162,7 @@ CUT</string>
                   <item row="0" column="0">
                    <widget class="QPushButton" name="btn_cut_recover_rev">
                     <property name="enabled">
-                     <bool>false</bool>
+                     <bool>true</bool>
                     </property>
                     <property name="text">
                      <string>REVERSE</string>
@@ -2172,7 +2172,7 @@ CUT</string>
                   <item row="0" column="2">
                    <widget class="QPushButton" name="btn_cut_recover_fwd">
                     <property name="enabled">
-                     <bool>false</bool>
+                     <bool>true</bool>
                     </property>
                     <property name="text">
                      <string>FORWARD</string>
@@ -2182,7 +2182,7 @@ CUT</string>
                   <item row="1" column="1">
                    <widget class="QSlider" name="cut_recovery_speed">
                     <property name="enabled">
-                     <bool>false</bool>
+                     <bool>true</bool>
                     </property>
                     <property name="maximum">
                      <number>100</number>
@@ -2268,32 +2268,6 @@ CUT</string>
                   <bool>false</bool>
                  </property>
                  <layout class="QGridLayout" name="gridLayout_24">
-                  <item row="0" column="2">
-                   <widget class="QPushButton" name="vtk_center">
-                    <property name="text">
-                     <string>CENTER
-PLOT</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="6">
-                   <widget class="QPushButton" name="vtk_mach_extent">
-                    <property name="text">
-                     <string>MACH
-EXTENT</string>
-                    </property>
-                    <property name="checkable">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0">
-                   <widget class="QPushButton" name="vtk_plus">
-                    <property name="text">
-                     <string>+</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="0" column="4">
                    <widget class="QPushButton" name="vtk_prog_extent">
                     <property name="text">
@@ -2312,10 +2286,36 @@ EXTENT</string>
                     </property>
                    </widget>
                   </item>
+                  <item row="0" column="0">
+                   <widget class="QPushButton" name="vtk_plus">
+                    <property name="text">
+                     <string>+</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="0" column="3">
                    <widget class="QPushButton" name="vtk_clear">
                     <property name="text">
                      <string>CLEAR</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="6">
+                   <widget class="QPushButton" name="vtk_mach_extent">
+                    <property name="text">
+                     <string>MACH
+EXTENT</string>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QPushButton" name="vtk_center">
+                    <property name="text">
+                     <string>CENTER
+PLOT</string>
                     </property>
                    </widget>
                   </item>
@@ -6022,22 +6022,6 @@ font-weight: bold;
    </hints>
   </connection>
   <connection>
-   <sender>vtk_center</sender>
-   <signal>clicked()</signal>
-   <receiver>vtkbackplot</receiver>
-   <slot>setViewZ()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1949</x>
-     <y>115</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1514</x>
-     <y>536</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>vtk_clear</sender>
    <signal>clicked()</signal>
    <receiver>vtkbackplot</receiver>
@@ -6078,22 +6062,6 @@ font-weight: bold;
     <hint type="sourcelabel">
      <x>1949</x>
      <y>265</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1514</x>
-     <y>536</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>vtk_prog_ticks</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>vtkbackplot</receiver>
-   <slot>showProgramTicks(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1604</x>
-     <y>129</y>
     </hint>
     <hint type="destinationlabel">
      <x>1514</x>
@@ -6194,6 +6162,22 @@ font-weight: bold;
     <hint type="destinationlabel">
      <x>773</x>
      <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vtk_prog_ticks</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>showProgramTicks(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1604</x>
+     <y>129</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1514</x>
+     <y>536</y>
     </hint>
    </hints>
   </connection>
