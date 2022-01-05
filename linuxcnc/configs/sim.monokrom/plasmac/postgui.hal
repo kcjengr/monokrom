@@ -110,7 +110,12 @@ net plasmac:program-is-idle                                             => qtpyv
 
 # Feed and Current Velocity display links
 net plasmac:feed-upm                                                    => qtpyvcp.mk-feedrate.in
-net plasmac:current-velocity                                            => qtpyvcp.mk-current-velcoity.in
+# velocity needs to be scaled to units/min not units/sec
+loadrt scale names=mk:_secs_to_mins
+addf mk:_secs_to_mins servo-thread
+setp mk:_secs_to_mins.gain 60
+net plasmac:current-velocity                                            => mk:_secs_to_mins.in
+net mk:current-velocity              mk:_secs_to_mins.out               => qtpyvcp.mk-current-velcoity.in
 
 # UI eStop Connections
 #net estop:ok     qtpyvcp.estopbutton.not-checked => ui_estop.reset ui_estop.ok-in
