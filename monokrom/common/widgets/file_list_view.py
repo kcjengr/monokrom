@@ -18,6 +18,7 @@ FILE_ICON = os.path.join(ICON_DIR, 'file.png')
 FOLDER_ICON = os.path.join(ICON_DIR, 'folder.png')
 USB_ICON = os.path.join(ICON_DIR, 'usb.png')
 
+
 LOG = getLogger(__name__)
 
 
@@ -100,6 +101,8 @@ class MkFileTableView(QTableView):
         self.nc_file_dir = self.info.getProgramPrefix()
         self.nc_file_exts = self.info.getProgramExtentions()
 
+        LOG.debug(f'nc_file_dir = {self.nc_file_dir}')
+
         # file system model
         self.model = MkFileSystemModel()
         # self.model.setReadOnly(True)
@@ -131,15 +134,17 @@ class MkFileTableView(QTableView):
 
         self.model.rootPathChanged.connect(self.updateRootPath)
 
-        self.setRootPath(os.path.expanduser('~/linuxcnc/nc_files'))
+        self.setRootPath(os.path.expanduser(self.nc_file_dir))
 
     def updateRootPath(self, root_path):
+        LOG.debug(f'updateRootPath = {root_path}')
         self.setRootIndex(self.model.index(root_path))
 
     @Slot(str)
     def setRootPath(self, root_path):
         """Sets the currently displayed path."""
 
+        LOG.debug(f'setRootPath = {root_path}')
         # self.rootChanged.emit(root_path)
         self.model.setRootPath(root_path)
         self.setRootIndex(self.model.index(root_path))

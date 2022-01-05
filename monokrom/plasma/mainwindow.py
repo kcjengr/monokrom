@@ -22,6 +22,9 @@ STATUS = getPlugin('status')
 STAT = STATUS.stat
 POS = getPlugin('position')
 INI = linuxcnc.ini(os.environ['INI_FILE_NAME'])
+NGC_LOC = INI.find('DISPLAY', 'PROGRAM_PREFIX')
+if NGC_LOC == None:
+    NGC_LOC = '~/linuxcnc/nc_files'
 
 USER_BUTTONS = 10
 
@@ -351,7 +354,7 @@ class MainWindow(VCPMainWindow):
 
     def openLatest(self):
         """Opens the latest file by date/time in the default ngc location"""
-        search_dir = os.path.expanduser('~/linuxcnc/nc_files')
+        search_dir = os.path.expanduser(NGC_LOC)
         newist = None
         with os.scandir(search_dir) as it:
             for entry in it:
