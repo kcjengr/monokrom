@@ -36,8 +36,3 @@ from .cyclestart_action_button import CycleStartActionButton
 class CycleStartActionButton_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return CycleStartActionButton
-
-from .estop_button import EstopButton
-class EstopButton_Plugin(_DesignerPlugin):
-    def pluginClass(self):
-        return EstopButton
