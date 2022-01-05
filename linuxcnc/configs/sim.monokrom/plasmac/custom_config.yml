@@ -4,10 +4,23 @@ windows:
     kwargs:
       confirm_exit: false
 
-#data_plugins:
+data_plugins:
 #  plasmaprocesses:
 #    provider: qtpyvcp.plugins.plasma_processes:PlasmaProcesses
 #    kwargs:
 #        db_type: "mysql"
 #        connect_string: "mysql+pymysql://<user>:<password>@localhost/plasma_table"
   
+  file_locations:
+      provider: qtpyvcp.plugins.file_locations:FileLocations
+      log_level: debug
+      kwargs:
+        default_location: NC Files
+        local_locations:
+          # format: Location Name: path
+          Home: ~/
+          Desktop: ~/Desktop
+          NC Files: ~/Documents
+        #network_locations:
+        #  DropBox: ~/DropBox/gcode
+        
