@@ -504,6 +504,9 @@
                   <property name="text">
                    <string>PARK</string>
                   </property>
+                  <property name="filename" stdset="0">
+                   <string>park.ngc</string>
+                  </property>
                  </widget>
                 </item>
                 <item row="2" column="0" colspan="2">
