@@ -147,7 +147,7 @@ class MainWindow(VCPMainWindow):
         self.btn_cycle_start.clicked.connect(self.cut_recovery)
         self.btn_stop_abort.clicked.connect(self.cut_recovery)
         
-        self.vtk_center.clicked.connect(lambda:self.vtkbackplot.setViewProgram('Z2'))
+        self.vtk_center.clicked.connect(lambda:self.vtkbackplot.setViewProgram('Z'))
         
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
