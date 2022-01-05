@@ -17,21 +17,36 @@ vcp:
       * Acknowledgments
 
 data_plugins:
-  status:
-    kwargs:
-      cycle_time: 50
-
-  persistent_data_manager:
-    provider: qtpyvcp.plugins.persistent_data_manager:PersistentDataManager
-    kwargs:
-      # serialization method to use: json or pickle
-      serialization_method: pickle
-      # persistence_file: .vcp_data.json
-
-  plasmaprocesses:
-    provider: qtpyvcp.plugins.plasma_processes:PlasmaProcesses
-    kwargs:
-        db_type: "sqlite"
+    status:
+      kwargs:
+        cycle_time: 50
+    
+    persistent_data_manager:
+      provider: qtpyvcp.plugins.persistent_data_manager:PersistentDataManager
+      kwargs:
+        # serialization method to use: json or pickle
+        serialization_method: pickle
+        # persistence_file: .vcp_data.json
+    
+    plasmaprocesses:
+      provider: qtpyvcp.plugins.plasma_processes:PlasmaProcesses
+      kwargs:
+          db_type: "sqlite"
+    
+    file_locations:
+        provider: qtpyvcp.plugins.file_locations:FileLocations
+        log_level: debug
+        kwargs:
+          default_location: NC Files
+          local_locations:
+            # format: Location Name: path
+            Home: ~/
+            Desktop: ~/Desktop
+            NC Files: ~/linuxcnc/nc_files
+          #network_locations:
+          #  DropBox: ~/DropBox/gcode
+          
+    
 
 windows:
 
@@ -75,19 +90,6 @@ application:
     stylesheet: {{ file.dir }}/../common/monokrom.qss
     custom_fonts: {{ file.dir }}/../common/fonts/ttf
 
-file_locations:
-    provider: qtpyvcp.plugins.file_locations:FileLocations
-    log_level: debug
-    kwargs:
-      default_location: NC Files
-      local_locations:
-        # format: Location Name: path
-        Home: ~/
-        Desktop: ~/Desktop
-        NC Files: ~/linuxcnc/nc_files
-      #network_locations:
-      #  DropBox: ~/DropBox/gcode
-      
 
 settings:
     thc_delay:
