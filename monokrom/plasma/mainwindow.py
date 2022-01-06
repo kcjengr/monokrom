@@ -2,14 +2,16 @@ import os
 
 import hal as cnchal
 import linuxcnc
-
-from qtpy.QtCore import Qt, QItemSelectionModel
-from qtpy.QtWidgets import QLabel, QListWidgetItem
+### Supports the @Slot decorator to solve property type issues.
+from qtpy.QtCore import Qt, QItemSelectionModel, Slot
+from qtpy.QtWidgets import QLabel, QListWidgetItem, QAbstractButton
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
 from qtpyvcp import hal
 from qtpyvcp.actions.program_actions import load as loadProgram
+### mdi GCODE text created by JT from linuxcnc
+import mdi_text as mdiText
 
 #import pydevd;pydevd.settrace()
 
@@ -107,6 +109,7 @@ class MainWindow(VCPMainWindow):
         self.vtkbackplot.setViewZ()
         self.vtkbackplot.enable_panning(True)
         self.widget_recovery.setEnabled(False)
+        self.mdiFrame.hide()
         self.cut_recovery_status = False
         
         # find and set all user buttons
@@ -148,6 +151,11 @@ class MainWindow(VCPMainWindow):
         self.btn_stop_abort.clicked.connect(self.cut_recovery)
         
         self.vtk_center.clicked.connect(lambda:self.vtkbackplot.setViewProgram('Z'))
+        
+        self.btnMdiParams.clicked.connect(self.btnParams_clicked)
+        self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
+        self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
+
         
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
@@ -402,3 +410,63 @@ class MainWindow(VCPMainWindow):
         # file exists. Assume is correct format else things will fail
         self._plasma_plugin.seed_data_base(src)
         self.lbl_seed_status.setText('DB seeding Done.')
+
+
+    #
+    # MDI Panel
+    #
+    @Slot(QAbstractButton)
+    def on_btngrpMdi_buttonClicked(self, button):
+        char = str(button.text())
+        text = self.mdiEntry.text() or 'null'
+        if text != 'null':
+            text += char
+        else:
+            text = char
+        self.mdiEntry.setText(text)
+
+    def btnParams_clicked(self):
+        # get mdi entry
+        text = self.mdiEntry.text() or 'null'
+        print(text)
+        if text != 'null':
+            # we have something to check so get the gcode words
+            words = mdiText.gcode_words()
+            if text in words:
+                # clear the mdi line
+                self.mdiClear()
+                for index, value in enumerate(words[text], start=1):
+                    # search and populate the params available for that gcode word
+                    print(value)
+                    getattr(self, 'btnGcodeP' + str(index)).setText(value)
+            else:
+                self.mdiClear()
+            # All help related so not used yet
+            # titles = mdiText.gcode_titles()
+            # if text in titles:
+            #     self.lblGcodeHelp.setText(titles[text])
+            # else:
+            #     self.mdiClear()
+            # self.lblGcodeHelp.setText(mdiText.gcode_descriptions(text))
+        else:
+            self.mdiClear()
+            print('No Match')
+
+
+    def mdiClear(self):
+        for index in range(1,11):
+            getattr(self, 'btnGcodeP' + str(index)).setText('')
+        # All help related so not used yet
+        # self.lblGcodeHelp.setText('')
+
+    def mdiBackSpace_clicked(parent):
+        if len(parent.mdiEntry.text()) > 0:
+            text = parent.mdiEntry.text()[:-1]
+            parent.mdiEntry.setText(text)
+
+    def mdiSpace_clicked(parent):
+        text = parent.mdiEntry.text() or 'null'
+        # if no text then do not add a space
+        if text != 'null':
+            text += ' '
+            parent.mdiEntry.setText(text)
