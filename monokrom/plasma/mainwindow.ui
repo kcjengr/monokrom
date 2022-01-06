@@ -2542,7 +2542,7 @@ FROM</string>
                   </widget>
                  </item>
                  <item row="10" column="4">
-                  <widget class="QPushButton" name="pushButton_22">
+                  <widget class="QPushButton" name="btnToEditor">
                    <property name="text">
                     <string>TO
 EDITOR</string>
@@ -2839,7 +2839,7 @@ DOWN</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="RecentFileComboBox" name="recentfilecombobox_2">
+                    <widget class="RecentFileComboBox" name="gcode_recentfile">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -2857,7 +2857,13 @@ DOWN</string>
                   </layout>
                  </item>
                  <item>
-                  <widget class="GcodeTextEdit" name="gcodetextedit_3">
+                  <widget class="GcodeTextEdit" name="gcode_editor">
+                   <property name="syntaxHighlighting" stdset="0">
+                    <bool>true</bool>
+                   </property>
+                   <property name="readOnly" stdset="0">
+                    <bool>true</bool>
+                   </property>
                    <property name="currentLineBackground" stdset="0">
                     <color>
                      <red>40</red>
@@ -2897,16 +2903,32 @@ DOWN</string>
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="ActionButton" name="actionbutton_3">
+                  <widget class="ActionButton" name="btn_syntax_highlight">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
                    <property name="text">
-                    <string>CLEAR</string>
+                    <string>COLORISE</string>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="ActionButton" name="actionbutton_2">
+                  <widget class="ActionButton" name="btn_edit">
                    <property name="text">
                     <string>EDIT</string>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="ActionButton" name="btn_save">
+                   <property name="text">
+                    <string>SAVE</string>
                    </property>
                   </widget>
                  </item>
@@ -3645,8 +3667,32 @@ DOWN</string>
                  <property name="sizeConstraint">
                   <enum>QLayout::SetDefaultConstraint</enum>
                  </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>6</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>6</number>
+                 </property>
                  <item>
                   <widget class="QListWidget" name="filter_sub_list">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>0</height>
+                    </size>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">QListView::item {
 min-height: 42px; 
@@ -3654,7 +3700,12 @@ min-height: 42px;
 
 QListView {
 font-weight: bold;
-}</string>
+}
+
+QListView::item:selected {
+    border: 1px solid rgb(255, 238, 6);
+}
+</string>
                    </property>
                    <property name="defaultDropAction">
                     <enum>Qt::IgnoreAction</enum>
@@ -6441,10 +6492,9 @@ font-weight: bold;
   <tabstop>user5</tabstop>
   <tabstop>tabWidget_3</tabstop>
   <tabstop>vtk_center</tabstop>
-  <tabstop>recentfilecombobox_2</tabstop>
-  <tabstop>gcodetextedit_3</tabstop>
-  <tabstop>actionbutton_3</tabstop>
-  <tabstop>actionbutton_2</tabstop>
+  <tabstop>gcode_recentfile</tabstop>
+  <tabstop>gcode_editor</tabstop>
+  <tabstop>btn_edit</tabstop>
   <tabstop>btn_open_dialog</tabstop>
   <tabstop>dialogbutton_2</tabstop>
   <tabstop>jobs_to_process</tabstop>
@@ -6856,9 +6906,41 @@ font-weight: bold;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btnToEditor</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>copySelectionToGcodeEditor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1373</x>
+     <y>955</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1198</x>
+     <y>718</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_edit</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>gcode_editor</receiver>
+   <slot>EditorReadWrite(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1823</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1377</x>
+     <y>568</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="machine_state"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>

@@ -156,6 +156,7 @@ class MainWindow(VCPMainWindow):
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
 
+        self.btn_save.clicked.connect(self.save_file)
         
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
@@ -470,3 +471,21 @@ class MainWindow(VCPMainWindow):
         if text != 'null':
             text += ' '
             parent.mdiEntry.setText(text)
+            
+    #
+    # GCode Editor
+    #
+    def save_file(self):
+        # Get the current loaded file per the recent file combo
+        # and use that as the save name.
+        # Need to do as the STATs  file name will be the temp file
+        # generated as part of the filter program mechanic.
+        # Once save trigger a linuxcnc level program reload to force
+        # filter program reprocessing.
+        real_file = self.gcode_recentfile.currentData()
+        if real_file == None:
+            return
+        
+        self.gcode_editor.saveFile(real_file)
+        loadProgram(real_file)
+    
