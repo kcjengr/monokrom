@@ -10,6 +10,7 @@ from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
 from qtpyvcp import hal
 from qtpyvcp.actions.program_actions import load as loadProgram
+from qtpyvcp.actions.machine_actions import issue_mdi
 ### mdi GCODE text created by JT from linuxcnc
 import mdi_text as mdiText
 
@@ -110,6 +111,7 @@ class MainWindow(VCPMainWindow):
         # setup some default UI settings
         self.vtkbackplot.setViewZ()
         self.vtkbackplot.enable_panning(True)
+        self.vtkbackplot.setProgramViewWhenLoadingProgram(True, 'z')
         self.widget_recovery.setEnabled(False)
         self.mdiFrame.hide()
         self.cut_recovery_status = False
@@ -497,6 +499,29 @@ class MainWindow(VCPMainWindow):
     # Frame prog on work piece
     #
     def frame_work(self):
-        extents = GCODEPROPS.file_extents()
-        LOG.debug(f'work extents {extents}')
-
+        # hack into VTK to get at some internals ot get prog bounds
+        vtk = self.vtkbackplot
+        program_bounds = vtk.program_bounds_actors[vtk.active_wcs_index].GetBounds()
+        LOG.debug(f'prog bounds = {program_bounds}')
+        # sample bounds response: (5.659999976158142, 242.86000610351562, 6.462499976158142, 85.72250366210938, 0.0, 0.0)
+        # in min/max pairs for X, Y and Z
+        x_length = program_bounds[1] - program_bounds[0]
+        y_length = program_bounds[3] - program_bounds[2]
+        # ignore Z as we don't use it for bounding
+        # get max z-height, x-current, y-current
+        x_current = POS.abs(0)
+        y_current = POS.abs(1)
+        # boundaries for move
+        min_max_x = INFO.getAxisMinMax('X')[0]
+        min_max_x = INFO.getAxisMinMax('Y')[0]
+        min_max_z = INFO.getAxisMinMax('Z')[0]
+        feed_rate = 1500
+        move_cmd = (
+            f"F{feed_rate};"
+            f"G53 G0 Z{min_max_z[1]};"
+            f"G53 G1 Y{y_current + y_length};"
+            f"G53 G1 X{x_current + x_length};"
+            f"G53 G1 Y{y_current};"
+            f"G53 G1 X{x_current}"
+        )
+        issue_mdi(move_cmd)
