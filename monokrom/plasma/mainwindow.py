@@ -23,6 +23,8 @@ INFO = Info()
 STATUS = getPlugin('status')
 STAT = STATUS.stat
 POS = getPlugin('position')
+GCODEPROPS = getPlugin('gcode_properties')
+
 INI = linuxcnc.ini(os.environ['INI_FILE_NAME'])
 NGC_LOC = INI.find('DISPLAY', 'PROGRAM_PREFIX')
 if NGC_LOC == None:
@@ -157,6 +159,7 @@ class MainWindow(VCPMainWindow):
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
 
         self.btn_save.clicked.connect(self.save_file)
+        self.btn_frame_job.clicked.connect(self.frame_work)
         
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
@@ -489,3 +492,11 @@ class MainWindow(VCPMainWindow):
         self.gcode_editor.saveFile(real_file)
         loadProgram(real_file)
     
+
+    #
+    # Frame prog on work piece
+    #
+    def frame_work(self):
+        extents = GCODEPROPS.file_extents()
+        LOG.debug(f'work extents {extents}')
+
