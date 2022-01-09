@@ -535,27 +535,26 @@ class MainWindow(VCPMainWindow):
         min_max_x = INFO.getAxisMinMax('X')[0]
         min_max_y = INFO.getAxisMinMax('Y')[0]
         min_max_z = INFO.getAxisMinMax('Z')[0]
-        
-        if (y_current + y_length) > min_max_y[1]:
-            LOG.error(f'FRAMING ERROR: Y will exceed Y-Max')
-            return
-        if (x_current + x_length) > min_max_x[1]:
-            LOG.error(f'FRAMING ERROR: X will exceed X-Max')
-            return
-        if (y_current + y_length) < min_max_y[0]:
-            LOG.error(f'FRAMING ERROR: Y will exceed Y-Min')
-            return
-        if (x_current + x_length) < min_max_x[0]:
-            LOG.error(f'FRAMING ERROR: X will exceed X-Min')
-            return
-        
-        feed_rate = self.framing_feed_rate.value()
         x_laser_offset = self.laser_offset_x.value()
         y_laser_offset = self.laser_offset_y.value()
         if not self.btn_laser.isChecked():
             x_laser_offset = 0
             y_laser_offset = 0
-
+        
+        if (y_current + y_length + y_laser_offset) > min_max_y[1]:
+            LOG.error(f'FRAMING ERROR: Y will exceed Y-Max')
+            return
+        if (x_current + x_length + x_laser_offset) > min_max_x[1]:
+            LOG.error(f'FRAMING ERROR: X will exceed X-Max')
+            return
+        if (y_current + y_length + y_laser_offset) < min_max_y[0]:
+            LOG.error(f'FRAMING ERROR: Y will exceed Y-Min')
+            return
+        if (x_current + x_length + x_laser_offset) < min_max_x[0]:
+            LOG.error(f'FRAMING ERROR: X will exceed X-Min')
+            return
+        
+        feed_rate = self.framing_feed_rate.value()
         move_cmd = (
             f"F{feed_rate};"
             f"G53 G0 Z{min_max_z[1]};"
