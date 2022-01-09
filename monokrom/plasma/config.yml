@@ -322,3 +322,7 @@ settings:
         default_value: 0.0
         persistent: true
         
+    framing_feed_rate:
+        default_value: 0.0
+        persistent: true
+    
