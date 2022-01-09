@@ -552,6 +552,10 @@ class MainWindow(VCPMainWindow):
         feed_rate = self.framing_feed_rate.value()
         x_laser_offset = self.laser_offset_x.value()
         y_laser_offset = self.laser_offset_y.value()
+        if not self.btn_laser.isChecked():
+            x_laser_offset = 0
+            y_laser_offset = 0
+
         move_cmd = (
             f"F{feed_rate};"
             f"G53 G0 Z{min_max_z[1]};"
