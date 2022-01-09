@@ -113,6 +113,7 @@ class MainWindow(VCPMainWindow):
         self.vtkbackplot.enable_panning(True)
         self.vtkbackplot.setProgramViewWhenLoadingProgram(True, 'z')
         self.widget_recovery.setEnabled(False)
+        self.btn_reverse_run.setEnabled(False)
         self.mdiFrame.hide()
         self.cut_recovery_status = False
         
@@ -141,6 +142,8 @@ class MainWindow(VCPMainWindow):
         self.btn_run_reload.clicked.connect(self.param_update_from_filters)
         self.filter_sub_list.itemClicked.connect(self.filter_sub_list_select)
         self.btn_seed_db.clicked.connect(self.seed_database)
+        self.btn_reverse_run.pressed.connect(lambda:self.cut_recovery_direction(-1))
+        self.btn_reverse_run.released.connect(lambda:self.cut_recovery_direction(0))
         self.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
         self.btn_cut_recover_fwd.pressed.connect(lambda:self.cut_recovery_direction(1))
         self.btn_cut_recover_rev.released.connect(lambda:self.cut_recovery_direction(0))
@@ -153,6 +156,9 @@ class MainWindow(VCPMainWindow):
         self.btn_feed_hold.clicked.connect(self.cut_recovery)
         self.btn_cycle_start.clicked.connect(self.cut_recovery)
         self.btn_stop_abort.clicked.connect(self.cut_recovery)
+        self.btn_feed_hold.clicked.connect(self.reverse_run)
+        self.btn_cycle_start.clicked.connect(self.reverse_run)
+        self.btn_stop_abort.clicked.connect(self.reverse_run)
         
         self.vtk_center.clicked.connect(lambda:self.vtkbackplot.setViewProgram('Z'))
         
@@ -207,6 +213,20 @@ class MainWindow(VCPMainWindow):
                 self.widget_recovery.setEnabled(True)
                 self.cut_recovery_status = True
 
+    def reverse_run(self):
+        sender = self.sender()
+        obj_name = sender.objectName()
+        if obj_name == 'btn_stop_abort':
+                self.btn_reverse_run.setEnabled(False)
+                return
+
+        if obj_name == 'btn_cycle_start':
+                self.btn_reverse_run.setEnabled(False)
+                return
+
+        if obj_name == 'btn_feed_hold':
+                self.btn_reverse_run.setEnabled(True)
+        
 
     def cutchart_pin_update(self, value):
         LOG.debug(f"Cutchart_ID Pin = {value}")
@@ -535,6 +555,7 @@ class MainWindow(VCPMainWindow):
         move_cmd = (
             f"F{feed_rate};"
             f"G53 G0 Z{min_max_z[1]};"
+            f"G53 G0 X{x_current + x_laser_offset} Y{y_current + y_laser_offset};"
             f"G53 G1 Y{y_current + y_laser_offset + y_length};"
             f"G53 G1 X{x_current + x_laser_offset + x_length};"
             f"G53 G1 Y{y_current + y_laser_offset};"
