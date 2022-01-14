@@ -114,6 +114,7 @@ class MainWindow(VCPMainWindow):
         self.vtkbackplot.setProgramViewWhenLoadingProgram(True, 'z')
         self.widget_recovery.setEnabled(False)
         self.btn_reverse_run.setEnabled(False)
+        self.btn_consumable_change.setEnabled(False)
         self.mdiFrame.hide()
         self.cut_recovery_status = False
         
@@ -142,24 +143,37 @@ class MainWindow(VCPMainWindow):
         self.btn_run_reload.clicked.connect(self.param_update_from_filters)
         self.filter_sub_list.itemClicked.connect(self.filter_sub_list_select)
         self.btn_seed_db.clicked.connect(self.seed_database)
+        # cut recovery direction
         self.btn_reverse_run.pressed.connect(lambda:self.cut_recovery_direction(-1))
         self.btn_reverse_run.released.connect(lambda:self.cut_recovery_direction(0))
         self.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
         self.btn_cut_recover_fwd.pressed.connect(lambda:self.cut_recovery_direction(1))
         self.btn_cut_recover_rev.released.connect(lambda:self.cut_recovery_direction(0))
         self.btn_cut_recover_fwd.released.connect(lambda:self.cut_recovery_direction(0))
+        # slider resets
         self.btn_reset_rapid.clicked.connect(lambda:self.rapid_slider.setValue(100))
         self.btn_reset_feed.clicked.connect(lambda:self.feed_slider.setValue(100))
         self.btn_reset_jog.clicked.connect(lambda:self.jog_slider.setValue(100))
+        # load newest
         self.btn_load_newest.clicked.connect(self.openLatest)
+        # single cut limits
         self.single_cut_x.focusReceived.connect(self.single_cut_limits)
+        # cut recovery block
         self.btn_feed_hold.clicked.connect(self.cut_recovery)
         self.btn_cycle_start.clicked.connect(self.cut_recovery)
         self.btn_stop_abort.clicked.connect(self.cut_recovery)
         self.btn_feed_hold.clicked.connect(self.reverse_run)
         self.btn_cycle_start.clicked.connect(self.reverse_run)
         self.btn_stop_abort.clicked.connect(self.reverse_run)
-        
+        # consumable change block
+        self.btn_feed_hold.clicked.connect(self.consumable_change)
+        self.btn_cycle_start.clicked.connect(self.consumable_change)
+        self.btn_stop_abort.clicked.connect(self.consumable_change)
+        self.btn_feed_hold.clicked.connect(self.consumable_change)
+        self.btn_cycle_start.clicked.connect(self.consumable_change)
+        self.btn_stop_abort.clicked.connect(self.consumable_change)
+        self.btn_consumable_change.toggled.connect(self.consumable_toggle)
+        # VTK block
         self.vtk_center.clicked.connect(lambda:self.vtkbackplot.setViewProgram('Z'))
         
         self.btnMdiParams.clicked.connect(self.btnParams_clicked)
@@ -227,6 +241,38 @@ class MainWindow(VCPMainWindow):
         if obj_name == 'btn_feed_hold':
                 self.btn_reverse_run.setEnabled(True)
         
+    def consumable_change(self):
+        sender = self.sender()
+        obj_name = sender.objectName()
+        if obj_name == 'btn_stop_abort':
+                self.btn_consumable_change.setEnabled(False)
+                self.btn_consumable_change.setChecked(False)
+                return
+
+        if obj_name == 'btn_cycle_start':
+                self.btn_consumable_change.setEnabled(False)
+                self.btn_consumable_change.setChecked(False)
+                return
+
+        if obj_name == 'btn_feed_hold':
+                self.btn_consumable_change.setEnabled(True)
+                return
+
+    def consumable_toggle(self, state):
+        if state:
+            x_current_pos = float(POS.Absolute(0))
+            y_current_pos = float(POS.Absolute(1))
+            x_offset = self.consumable_offset_x.value()
+            y_offset = self.consumable_offset_y.value()
+            scale = cnchal.get_value('plasmac.offset-scale')
+            cnchal.set_p('plasmac.x-offset', f'{(x_offset - x_current_pos)/scale:.0f}')
+            cnchal.set_p('plasmac.y-offset', f'{(y_offset - y_current_pos)/scale:.0f}')
+            cnchal.set_p('plasmac.consumable-change','1')
+        else:
+            cnchal.set_p('plasmac.x-offset', f'{0:.0f}')
+            cnchal.set_p('plasmac.y-offset', f'{0:.0f}')
+            cnchal.set_p('plasmac.consumable-change','0')
+            
 
     def cutchart_pin_update(self, value):
         LOG.debug(f"Cutchart_ID Pin = {value}")

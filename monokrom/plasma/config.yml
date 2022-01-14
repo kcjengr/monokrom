@@ -326,3 +326,14 @@ settings:
         default_value: 0.0
         persistent: true
     
+    consumable_xy_feed_rate:
+        default_value: 0.0
+        persistent: true
+
+    consumable_offset_x:
+        default_value: 0.0
+        persistent: true
+
+    consumable_offset_y:
+        default_value: 0.0
+        persistent: true
