@@ -6363,20 +6363,6 @@ QListView::item:selected {
          </item>
         </layout>
        </widget>
-       <widget class="QPushButton" name="btn_reverse_run">
-        <property name="geometry">
-         <rect>
-          <x>1260</x>
-          <y>610</y>
-          <width>131</width>
-          <height>44</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>REVERSE
-RUN</string>
-        </property>
-       </widget>
       </widget>
      </widget>
     </item>

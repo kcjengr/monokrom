@@ -105,6 +105,8 @@ class MainWindow(VCPMainWindow):
         else:
             self._linear_setting = 'inch'
         
+        self.units_per_mm = cnchal.get_value('halui.machine.units-per-mm')
+        
         self._pressure_setting = INFO.ini.find('PLASMAC', 'PRESSURE')
         self._machine = INFO.ini.find('PLASMAC', 'MACHINE')
         
@@ -113,12 +115,15 @@ class MainWindow(VCPMainWindow):
         self.vtkbackplot.enable_panning(True)
         self.vtkbackplot.setProgramViewWhenLoadingProgram(True, 'z')
         self.widget_recovery.setEnabled(False)
-        self.btn_reverse_run.setEnabled(False)
         self.btn_consumable_change.setEnabled(False)
         self.mdiFrame.hide()
         self.cut_recovery_status = False
-        
-        # find and set all user buttons
+        self.consumable_offset_x.setMinimum(self.min_x + (10 * self.units_per_mm))
+        self.consumable_offset_y.setMinimum(self.min_y + (10 * self.units_per_mm))
+        self.consumable_offset_x.setMaximum(self.max_x - (10 * self.units_per_mm))
+        self.consumable_offset_y.setMaximum(self.max_y - (10 * self.units_per_mm))
+
+    # find and set all user buttons
         for user_i in range(1,USER_BUTTONS+1):
             user_btn_txt = f"user{user_i}"
             user_name_key = f"USER{user_i}_NAME"
@@ -143,39 +148,41 @@ class MainWindow(VCPMainWindow):
         self.btn_run_reload.clicked.connect(self.param_update_from_filters)
         self.filter_sub_list.itemClicked.connect(self.filter_sub_list_select)
         self.btn_seed_db.clicked.connect(self.seed_database)
+
         # cut recovery direction
-        self.btn_reverse_run.pressed.connect(lambda:self.cut_recovery_direction(-1))
-        self.btn_reverse_run.released.connect(lambda:self.cut_recovery_direction(0))
         self.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
         self.btn_cut_recover_fwd.pressed.connect(lambda:self.cut_recovery_direction(1))
         self.btn_cut_recover_rev.released.connect(lambda:self.cut_recovery_direction(0))
         self.btn_cut_recover_fwd.released.connect(lambda:self.cut_recovery_direction(0))
+
         # slider resets
         self.btn_reset_rapid.clicked.connect(lambda:self.rapid_slider.setValue(100))
         self.btn_reset_feed.clicked.connect(lambda:self.feed_slider.setValue(100))
         self.btn_reset_jog.clicked.connect(lambda:self.jog_slider.setValue(100))
+
         # load newest
         self.btn_load_newest.clicked.connect(self.openLatest)
+
         # single cut limits
         self.single_cut_x.focusReceived.connect(self.single_cut_limits)
+        self.single_cut_y.focusReceived.connect(self.single_cut_limits)
+
         # cut recovery block
         self.btn_feed_hold.clicked.connect(self.cut_recovery)
         self.btn_cycle_start.clicked.connect(self.cut_recovery)
         self.btn_stop_abort.clicked.connect(self.cut_recovery)
-        self.btn_feed_hold.clicked.connect(self.reverse_run)
-        self.btn_cycle_start.clicked.connect(self.reverse_run)
-        self.btn_stop_abort.clicked.connect(self.reverse_run)
+
         # consumable change block
         self.btn_feed_hold.clicked.connect(self.consumable_change)
         self.btn_cycle_start.clicked.connect(self.consumable_change)
         self.btn_stop_abort.clicked.connect(self.consumable_change)
-        self.btn_feed_hold.clicked.connect(self.consumable_change)
-        self.btn_cycle_start.clicked.connect(self.consumable_change)
-        self.btn_stop_abort.clicked.connect(self.consumable_change)
+        
         self.btn_consumable_change.toggled.connect(self.consumable_toggle)
+
         # VTK block
         self.vtk_center.clicked.connect(lambda:self.vtkbackplot.setViewProgram('Z'))
-        
+
+        # MDI        
         self.btnMdiParams.clicked.connect(self.btnParams_clicked)
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
@@ -226,20 +233,6 @@ class MainWindow(VCPMainWindow):
         if obj_name == 'btn_feed_hold':
                 self.widget_recovery.setEnabled(True)
                 self.cut_recovery_status = True
-
-    def reverse_run(self):
-        sender = self.sender()
-        obj_name = sender.objectName()
-        if obj_name == 'btn_stop_abort':
-                self.btn_reverse_run.setEnabled(False)
-                return
-
-        if obj_name == 'btn_cycle_start':
-                self.btn_reverse_run.setEnabled(False)
-                return
-
-        if obj_name == 'btn_feed_hold':
-                self.btn_reverse_run.setEnabled(True)
         
     def consumable_change(self):
         sender = self.sender()
@@ -260,6 +253,9 @@ class MainWindow(VCPMainWindow):
 
     def consumable_toggle(self, state):
         if state:
+            # ensure machine can not be restarted while consumable is active
+            self.btn_cycle_start.setEnabled(False)
+            
             x_current_pos = float(POS.Absolute(0))
             y_current_pos = float(POS.Absolute(1))
             x_offset = self.consumable_offset_x.value()
@@ -272,6 +268,7 @@ class MainWindow(VCPMainWindow):
             cnchal.set_p('plasmac.x-offset', f'{0:.0f}')
             cnchal.set_p('plasmac.y-offset', f'{0:.0f}')
             cnchal.set_p('plasmac.consumable-change','0')
+            self.btn_cycle_start.setEnabled(True)
             
 
     def cutchart_pin_update(self, value):
@@ -451,7 +448,7 @@ class MainWindow(VCPMainWindow):
     def single_cut_limits(self):
         # Assumes an axis sequence of x:0, y:1, z:2
         sender = self.sender()
-        print(f'single_cut_limits:  {sender.objectName()}')
+        # print(f'single_cut_limits:  {sender.objectName()}')
         min = 0
         max = 0
         if sender.objectName() == 'single_cut_x':
@@ -466,8 +463,7 @@ class MainWindow(VCPMainWindow):
             max = self.max_y - y_pos
         # set the min/max ranges on the control
         sender.setMaximum(max)
-        sender.setMinimum(min)
-
+        sender.setMinimum(min)        
 
     def seed_database(self):
         # get db source file and initiate seed
