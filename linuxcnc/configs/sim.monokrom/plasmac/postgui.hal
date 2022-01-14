@@ -86,6 +86,7 @@ net plasmac:torch-pulse-time         qtpyvcp.plasma-torch-pulse-sec.out => plasm
 net plasmac:arc-ok-high                   qtpyvcp.arc-ok-high-volts.out => plasmac.arc-ok-high
 net plasmac:arc-ok-low                     qtpyvcp.arc-ok-low-volts.out => plasmac.arc-ok-low
 
+net plasmac:xy-feed-rate            qtpyvcp.consumable-xy-feed-rate.out => plasmac.xy-feed-rate
 
 # Outputs
 net plasmac:consumable-changing     plasmac.consumable-changing         => qtpyvcp.led-change-consumable.on
