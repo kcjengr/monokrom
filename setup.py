@@ -37,10 +37,10 @@ data_files.extend(data_files_from_dirs(DATA_DIRS))
 
 setup(
     name="monokrom-vcp",
-    version="0.0.1",
-    author="Kurt Jacobson",
-    author_email="<doe.john@example.com>",
-    description="Monochrome style VCPs for LinuxCNC controlled Lathes, Mills and Plasma cutters.",
+    version="0.1.0",
+    author="Kurt Jacobson, James Walker",
+    author_email="james.walker.nz@me.com",
+    description="Monochrome style VCPs for LinuxCNC controlled Plasma cutters.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/kurtjacobson/monokrom-vcp",
