@@ -3046,16 +3046,11 @@ DOWN</string>
               <property name="title">
                <string>JOB DESCRIPTION/INSTRUCTIONS</string>
               </property>
-              <widget class="QTextBrowser" name="job_instructions">
-               <property name="geometry">
-                <rect>
-                 <x>11</x>
-                 <y>36</y>
-                 <width>256</width>
-                 <height>192</height>
-                </rect>
-               </property>
-              </widget>
+              <layout class="QVBoxLayout" name="verticalLayout_17">
+               <item>
+                <widget class="QTextBrowser" name="job_instructions"/>
+               </item>
+              </layout>
              </widget>
              <widget class="QWidget" name="widget_11" native="true">
               <property name="geometry">
@@ -3100,8 +3095,13 @@ DOWN</string>
                </rect>
               </property>
               <property name="title">
-               <string>FAVORATES</string>
+               <string>JOB BUNDLE</string>
               </property>
+              <layout class="QVBoxLayout" name="verticalLayout_21">
+               <item>
+                <widget class="QListWidget" name="listWidget"/>
+               </item>
+              </layout>
              </widget>
             </widget>
            </widget>
