@@ -24,7 +24,7 @@ INFO = Info()
 STATUS = getPlugin('status')
 STAT = STATUS.stat
 POS = getPlugin('position')
-GCODEPROPS = getPlugin('gcode_properties')
+#GCODEPROPS = getPlugin('gcode_properties')
 
 INI = linuxcnc.ini(os.environ['INI_FILE_NAME'])
 NGC_LOC = INI.find('DISPLAY', 'PROGRAM_PREFIX')

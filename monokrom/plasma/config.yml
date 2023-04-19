@@ -46,8 +46,8 @@ data_plugins:
           #network_locations:
           #  DropBox: ~/DropBox/gcode
           
-    gcode_properties:
-        provider: qtpyvcp.plugins.gcode_properties:GCodeProperties
+    #gcode_properties:
+    #    provider: qtpyvcp.plugins.gcode_properties:GCodeProperties
         
 
 windows:

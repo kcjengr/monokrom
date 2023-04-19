@@ -94,7 +94,7 @@ net plasmac:program-pause           plasmac.program-pause       =>  halui.progra
 net plasmac:program-resume          plasmac.program-resume      =>  halui.program.resume
 net plasmac:program-run             plasmac.program-run         =>  halui.program.run
 net plasmac:program-stop            plasmac.program-stop        =>  halui.program.stop
-#net plasmac:torch-on                plasmac.torch-on
+net plasmac:torch-on                plasmac.torch-on
 net plasmac:x-offset-counts         plasmac.x-offset-counts     =>  axis.x.eoffset-counts
 net plasmac:y-offset-counts         plasmac.y-offset-counts     =>  axis.y.eoffset-counts
 net plasmac:xy-offset-enable        plasmac.xy-offset-enable    =>  axis.x.eoffset-enable axis.y.eoffset-enable
