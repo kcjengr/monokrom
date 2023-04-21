@@ -18,6 +18,8 @@ Monochrome style VCPs for LinuxCNC controlled Lathes, Mills and Plasma cutters.
 ## Installation
 
 
+>>> UPDATE NEEDED due to changes to use python virtual env framework <<<
+
 If you have not already done so, install the [QtPyVCP software dependencies](http://www.qtpyvcp.com/install/prerequisites.html#software-dependencies)
 
 *Dependency*
