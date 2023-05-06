@@ -33,9 +33,9 @@ monokrom-plasma = "monokrom-plasma"
 monokrom-mill = "monokrom-mill"
 
 [tool.poetry.plugins."qtpyvcp.widgets"]
-probe_basic_widgets = "monokrom.commmon.widgets"
-probe_basic_widgets = "monokrom.plasma.widgets"
-probe_basic_widgets = "monokrom.mill.widgets"
+monokrom_common_widgets = "monokrom.commmon.widgets"
+monokrom_plasma_widgets = "monokrom.plasma.widgets"
+monokrom_mill_widgets = "monokrom.mill.widgets"
 
 
 [tool.versioneer]
