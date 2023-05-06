@@ -1,15 +1,15 @@
 
 /****** DEFAULT ************/
 * {
-    color: #ffee06;
-    background: #16160e;
-    font: 10pt Lato }
+    color: ;
+    background: ;
+    font: 10pt DejaVuSans }
 
 /****** BUTTONS ************/
 QPushButton {
-    color: #ffee06;
-    background: #16160e;
-    border: 1px solid #ffee06;
+    color: ;
+    background: ;
+    border: 1px solid ;
     border-radius: 4px;
 }
 
@@ -20,19 +20,22 @@ QSlider::groove:horizontal {
     height: 20px }
 
 QSlider::handle:horizontal {
-    background: #ffee06;
-    border: 0px solid #ffee06;
+    background: ;
+    border: 0px solid ;
     border-radius: 4px;
     width: 24px }
 
+QSlider::handle:horizontal:disabled {
+    background:  }
+
 QSlider::add-page:horizontal {
-    background: #36362e;
-    border: 1px solid #36362e;
+    background: ;
+    border: 1px solid ;
     border-radius: 4px }
 
 QSlider::sub-page:horizontal {
-    background: #36362e;
-    border: 1px solid #36362e;
+    background: ;
+    border: 1px solid ;
     border-radius: 4px }
 
 Line {
@@ -43,16 +46,16 @@ QCheckBox {
     spacing: 20px }
 
 QCheckBox::indicator {
-    border: 1px solid #ffee06;
+    border: 1px solid ;
     border-radius: 4px;
     width: 20px;
     height: 20px }
 
 QCheckBox::indicator:pressed {
-    background: #ffee06 }
+    background:  }
 
 QCheckBox::indicator:checked {
-    background: #ffee06 }
+    background:  }
 
 QCheckBox::indicator:checked:pressed {
-    background: #16160e }
+    background:  }

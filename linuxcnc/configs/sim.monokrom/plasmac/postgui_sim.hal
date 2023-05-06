@@ -7,14 +7,14 @@ loadusr -Wn sim-torch sim-torch
 loadusr -Wn qtplasmac_sim qtvcp qtplasmac_sim.ui
 
 # connect plasmac connections
-net plasmac:torch-on   =>  qtplasmac_sim.torch_on sim-torch.start
+net plasmac:torch-on        =>  qtplasmac_sim.torch_on  sim-torch.start
 net plasmac:cut-volts       =>  sim-torch.voltage-in
 
-net sim:arc-ok          qtplasmac_sim.arc_ok            =>  db_arc-ok.in            
-net sim:arc-voltage-in      sim-torch.voltage-out               =>  plasmac.arc-voltage-in   qtpyvcp.mk-arc-voltage.in
+net sim:arc-ok              qtplasmac_sim.arc_ok                =>  db_arc-ok.in            
+net sim:arc-voltage-in      sim-torch.voltage-out               =>  plasmac.arc-voltage-in  qtpyvcp.mk-arc-voltage.in
 net sim:arc_voltage_offset  qtplasmac_sim.arc_voltage_offset-f  =>  sim-torch.offset-in
-net sim:breakaway       qtplasmac_sim.sensor_breakaway  =>  db_breakaway.in
-net sim:float           qtplasmac_sim.sensor_float      =>  db_float.in             qtpyvcp.led-float.on
-net sim:move-down       qtplasmac_sim.move_down         =>  plasmac.move-down
-net sim:move-up         qtplasmac_sim.move_up           =>  plasmac.move-up
-net sim:ohmic           qtplasmac_sim.sensor_ohmic      =>  db_ohmic.in             qtpyvcp.led-probe.on
+net sim:breakaway           qtplasmac_sim.sensor_breakaway      =>  db_breakaway.in
+net sim:float               qtplasmac_sim.sensor_float          =>  db_float.in             qtpyvcp.led-float.on
+net sim:move-down           qtplasmac_sim.move_down             =>  plasmac.move-down
+net sim:move-up             qtplasmac_sim.move_up               =>  plasmac.move-up
+net sim:ohmic               qtplasmac_sim.sensor_ohmic          =>  db_ohmic.in             qtpyvcp.led-probe.on

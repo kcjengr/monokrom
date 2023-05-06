@@ -29,3 +29,5 @@ linuxcnc/configs/**/.*.pickle
 # editor work files and locations
 .project
 .pydevproject
+
+*.preferences

@@ -6907,7 +6907,7 @@ QListView::item:selected {
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="machine_state"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="machine_state"/>
  </buttongroups>
 </ui>
