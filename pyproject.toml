@@ -1,0 +1,47 @@
+[build-system]
+requires = ["poetry-core", "versioneer[toml]"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "monokrom"
+authors = [
+  "Kurt Jacobson <kcjengr@gmail.com>",
+  "Joco <false.123@email.123>",
+]
+description = "Monochrome style VCPs for LinuxCNC controlled Plasma cutters."
+readme = "README.md"
+version = "0.0"
+
+packages = [
+    { include = "monokrom", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+
+[tool.poetry.scripts]
+monokrom = "monokrom:main"
+monokrom-plasma = "monokrom.plasma:main"
+monokrom-mill = "monokrom.mill:main"
+
+[tool.poetry.plugins]
+
+[tool.poetry.plugins."qtpyvcp.vcp"]
+monokrom = "monokrom"
+monokrom-plasma = "monokrom-plasma"
+monokrom-mill = "monokrom-mill"
+
+[tool.poetry.plugins."qtpyvcp.widgets"]
+probe_basic_widgets = "monokrom.commmon.widgets"
+probe_basic_widgets = "monokrom.plasma.widgets"
+probe_basic_widgets = "monokrom.mill.widgets"
+
+
+[tool.versioneer]
+VCS = "git"
+style = "pep440"
+versionfile_source = "monokrom/_version.py"
+versionfile_build = "monokrom/_version.py"
+tag_prefix = ""
+parentdir_prefix = ""
