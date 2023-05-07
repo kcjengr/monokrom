@@ -22,18 +22,18 @@ python = "^3.7"
 
 [tool.poetry.scripts]
 monokrom = "monokrom:main"
-monokrom-plasma = "monokrom.plasma:main"
-monokrom-mill = "monokrom.mill:main"
+monokrom_plasma = "monokrom.plasma:main"
+monokrom_mill = "monokrom.mill:main"
 
 [tool.poetry.plugins]
 
 [tool.poetry.plugins."qtpyvcp.vcp"]
-monokrom = "monokrom"
-monokrom-plasma = "monokrom-plasma"
-monokrom-mill = "monokrom-mill"
+mk = "monokrom"
+mk_plasma = "monokrom_plasma"
+mk_mill = "monokrom_mill"
 
 [tool.poetry.plugins."qtpyvcp.widgets"]
-monokrom_common_widgets = "monokrom.commmon.widgets"
+monokrom_common_widgets = "monokrom.common.widgets"
 monokrom_plasma_widgets = "monokrom.plasma.widgets"
 monokrom_mill_widgets = "monokrom.mill.widgets"
 
@@ -41,7 +41,7 @@ monokrom_mill_widgets = "monokrom.mill.widgets"
 [tool.versioneer]
 VCS = "git"
 style = "pep440"
-versionfile_source = "monokrom/_version.py"
-versionfile_build = "monokrom/_version.py"
+versionfile_source = "src/monokrom/_version.py"
+versionfile_build = "src/monokrom/_version.py"
 tag_prefix = ""
 parentdir_prefix = ""
