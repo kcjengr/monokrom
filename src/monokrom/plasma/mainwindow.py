@@ -14,7 +14,7 @@ from qtpyvcp.actions.machine_actions import issue_mdi
 ### mdi GCODE text created by JT from linuxcnc
 import mdi_text as mdiText
 
-#import pydevd;pydevd.settrace()
+# import pydevd;pydevd.settrace()
 
 
 # Setup logging

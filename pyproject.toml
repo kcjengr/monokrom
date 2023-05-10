@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 name = "monokrom"
 authors = [
   "Kurt Jacobson <kcjengr@gmail.com>",
-  "Joco <false.123@email.123>",
+  "Joco <james@snaggingpixels.com>",
 ]
 description = "Monochrome style VCPs for LinuxCNC controlled Plasma cutters."
 readme = "README.md"
@@ -28,9 +28,9 @@ monokrom_mill = "monokrom.mill:main"
 [tool.poetry.plugins]
 
 [tool.poetry.plugins."qtpyvcp.vcp"]
-mk = "monokrom"
-mk_plasma = "monokrom_plasma"
-mk_mill = "monokrom_mill"
+monokrom = "monokrom"
+monokrom_plasma = "monokrom_plasma"
+monokrom_mill = "monokrom_mill"
 
 [tool.poetry.plugins."qtpyvcp.widgets"]
 monokrom_common_widgets = "monokrom.common.widgets"
