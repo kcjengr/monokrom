@@ -12,6 +12,8 @@
   ( Min Cut Length for DTHC ON : 1 units ) 
   (Preset Volts set to 49 Volts)
   T6 M6 (Load Plasmac Plasma Controller Tool #)
+  S60 $0 (Set Spindle Speed for Torch at Amps)
+  G10 L20 P0 Z0
   ( Settings Check)
   ( ###########################)
   ( Paused:  Check the Plasmac Plasma Controller Settings )
@@ -21,6 +23,7 @@
   X105.208 Y38.044
   F10
   M3 $0
+  G10 L20 P0 Z0
   G1
   G3 I2.758 J2.758
   G1 X105.209 Y38.045 (Add tiny extension)

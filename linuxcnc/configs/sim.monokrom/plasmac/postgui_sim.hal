@@ -2,19 +2,27 @@
 
 # load the simulated torch
 loadusr -Wn sim-torch sim-torch
+loadrt comp names=arc_voltage_check,float_trigger
+addf arc_voltage_check      servo-thread
+addf float_trigger          servo-thread
 
 # load the sim GUI
-loadusr -Wn qtplasmac_sim qtvcp qtplasmac_sim.ui
+#loadusr -Wn qtplasmac_sim qtvcp qtplasmac_sim.ui
 
 # connect plasmac connections
-net plasmac:torch-on        =>  qtplasmac_sim.torch_on  sim-torch.start
+net plasmac:torch-on        =>  sim-torch.start
 net plasmac:cut-volts       =>  sim-torch.voltage-in
 
-net sim:arc-ok              qtplasmac_sim.arc_ok                =>  db_arc-ok.in            
-net sim:arc-voltage-in      sim-torch.voltage-out               =>  plasmac.arc-voltage-in  qtpyvcp.mk-arc-voltage.in
-net sim:arc_voltage_offset  qtplasmac_sim.arc_voltage_offset-f  =>  sim-torch.offset-in
-net sim:breakaway           qtplasmac_sim.sensor_breakaway      =>  db_breakaway.in
-net sim:float               qtplasmac_sim.sensor_float          =>  db_float.in             qtpyvcp.led-float.on
-net sim:move-down           qtplasmac_sim.move_down             =>  plasmac.move-down
-net sim:move-up             qtplasmac_sim.move_up               =>  plasmac.move-up
-net sim:ohmic               qtplasmac_sim.sensor_ohmic          =>  db_ohmic.in             qtpyvcp.led-probe.on
+setp arc_voltage_check.in0  80
+setp float_trigger.in1      -50
+
+net plasmac:axis-position   =>  float_trigger.in0
+
+net sim:arc-ok              arc_voltage_check.out       =>  db_arc-ok.in
+net sim:arc-voltage-in      sim-torch.voltage-out       =>  plasmac.arc-voltage-in  qtpyvcp.mk-arc-voltage.in arc_voltage_check.in1
+#net sim:arc_voltage_offset  qtplasmac_sim.arc_voltage_offset-f  =>  sim-torch.offset-in
+#net sim:breakaway           qtplasmac_sim.sensor_breakaway      =>  db_breakaway.in
+net sim:float               float_trigger.out           =>  db_float.in  qtpyvcp.led-float.on
+#net sim:move-down           qtplasmac_sim.move_down             =>  plasmac.move-down
+#net sim:move-up             qtplasmac_sim.move_up               =>  plasmac.move-up
+#net sim:ohmic               qtplasmac_sim.sensor_ohmic          =>  db_ohmic.in             qtpyvcp.led-probe.on
