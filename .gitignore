@@ -43,3 +43,5 @@ debian/debhelper-build-stamp
 debian/python3-monokrom.postinst.debhelper
 debian/python3-monokrom.prerm.debhelper
 debian/python3-monokrom.substvars
+
+*.halshow
