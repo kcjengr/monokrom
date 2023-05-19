@@ -38,6 +38,7 @@ linuxcnc/configs/**/.*.pickle
 
 debian/.debhelper
 debian/files
+debian/changelog
 debian/python3-monokrom
 debian/debhelper-build-stamp
 debian/python3-monokrom.postinst.debhelper
