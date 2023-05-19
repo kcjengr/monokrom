@@ -1,0 +1,325 @@
+-- *****************************************************************************
+-- * USER OPTIONS: change to suit                                              *
+-- *                                                                           *
+-- * cParms & pmx485 show custom PlasmaC parameters in the SheetCam tool file. *
+-- * They are read by PlasmaCs materialverter to import parameters into the    *
+-- * PlasmaC material file from a SheetCam toolset file.                       *
+-- * If you have useTool enabled they are also used to generate temporary      *
+-- * material file entries.                                                    *
+-- *                                                                           *
+-- * NOTE: For best results set the plunge rate to 0 in your tool definitions  *
+-- *                                                                           *
+-- * The PlasmaC GCode parser will remove line numbers so they don't show in   *
+-- * in the GUI but if enabled here they will appear in any GCode file saved   *
+-- * from SheetCam.                                                            *
+-- *****************************************************************************
+-- *****************************************************************************
+
+--Use true or false to enable or disable these features
+cParms       = true -- set to true to show basic custom parameters
+pmx485       = false -- set to true to show RS485 parameters
+lineNumbers  = false -- set to true to show linenumbers
+noArcs       = false -- set to true to convert arcs to line segments
+
+useTool      = true  -- Set to true to use SheetCam's tool table to generate a temporary material file entry
+
+holeMode     = 2     -- Set the hole cutting mode. 0=disabled, 1=diameter velocity reduction,
+					 --                            2= vel reduction+ overcut, 3=include arcs, 4=arcs + overcut
+holeVelocity = 60    -- Set the velocity for hole cutting mode as a percentage of feedrate
+holeDia      = 32    -- Set the hole diameter (in mm)
+holeOvercut  = 4     -- Set the whole overcut distance (in mm)
+
+-- *** DO NOT CHANGE ANYTHING BELOW THIS LINE **********************************
+
+revNum  = '0.5'
+
+if cParms then
+   post.DefineCustomToolParam('PlasmaTool', 'Puddle jump height', 'pjHeight', sc.unit1DECPLACE, 0, 0, 200)
+   post.DefineCustomToolParam('PlasmaTool', 'Puddle jump delay', 'pjDelay', sc.unit2DECPLACE, 0, 0, 9)
+   post.DefineCustomToolParam('PlasmaTool', 'THC enable', 'thcEnable', sc.unitBOOLEAN, 1, 0, 1)
+   post.DefineCustomToolParam('PlasmaTool', 'Cut voltage', 'cutVolts', sc.unit0DECPLACE, 99, 0, 200)
+
+   post.DefineCustomToolParam('PlasmaTool', 'Machine Name', 'machineName', sc.unitTEXT, 'Generic', '', '')
+   post.DefineCustomToolParam('PlasmaTool', 'Material Name', 'materialName', sc.unitTEXT, 'Mild Steel', '', '')
+   post.DefineCustomToolParam('PlasmaTool', 'Material Thickness', 'mtlThickness', sc.unit6DECPLACE, 0, 0, 200)
+   if scale == metric then
+      post.DefineCustomToolParam('PlasmaTool', 'Metric', 'units', sc.unitBOOLEAN, 1, 0, 1)
+   else
+      post.DefineCustomToolParam('PlasmaTool', 'Metric', 'units', sc.unitBOOLEAN, 0, 0, 1)
+   end
+end
+
+if pmx485 then
+   post.DefineCustomToolParam('PlasmaTool', 'Cut current', 'cutAmps', sc.unit0DECPLACE, 45, 10, 200)
+   post.DefineCustomToolParam('PlasmaTool', 'Gas pressure', 'gasPressure', sc.unit0DECPLACE, 0, 0, 150)
+   post.DefineCustomToolParam('PlasmaTool', 'Cut mode', 'cutMode', sc.unit0DECPLACE, 1, 1, 3)
+end
+
+function OnAbout(event)
+   ctrl = event:GetTextCtrl()
+   ctrl:AppendText('For a PlasmaC configuration on LinuxCNC\n\n')
+   ctrl:AppendText('Revision: ' .. revNum)
+end
+
+function OnInit()
+   post.SetCommentChars ('();', '[]:')  --ensure ( ) characters do not appear in system text
+   post.Text (';     file name: ', fileName, '\n')
+   post.Text ('; date and time: ', os.date('%a') , ' ', os.date('%b') , ' ', os.date('%d') , ' ', os.date('%Y') , '    ', time, '\n')
+   post.Text ('; postprocessor: ', postName, ' rev: ', revNum, '\n')
+   post.Text (';\n')
+   post.Text (';begin pre-amble\n')
+
+   if scale == metric then
+     minimumMove = '0.000001'
+     post.Text (' G21 (units: metric)\n') --metric mode
+     units = 'mm'
+     precision = '0.###'	 
+   else
+     post.Text (' G20 (units: inches)\n') --inch mode
+     minimumMove = '0.00000004'
+     units = '"'
+     precision = '0.#####'
+   end
+   post.Text (' G40 (cutter compensation: off)\n')
+   post.Text (' G90 (distance mode: absolute)\n')
+   post.Text (' M52 P1 (adaptive feed: on)\n') 
+   post.Text (' M65 P2 (enable THC)\n')
+   post.Text (' M65 P3 (enable torch)\n')
+   post.Text (' M68 E3 Q0 (velocity 100%)\n')
+   if scale == metric then
+     post.Text (' G64 P0.254 Q0.025 (tracking tolerances: 0.254mm)\n') 
+   else
+     post.Text (' G64 P0.01 Q0.001 (tracking tolerances: 0.01")\n')
+     
+   end
+   if  holeMode > 0 then
+	 post.NonModalNumber("#<holes>      = ", holeMode, "0")
+	 post.Text('\n')
+	 post.NonModalNumber("#<h_velocity> = ", holeVelocity, "0")
+	 post.Text('\n')
+	 post.NonModalNumber("#<h_diameter> = ", holeDia * scale, "0")
+	 post.Text('\n')
+	 post.NonModalNumber("#<oclength>   = ", holeOvercut * scale, "0")
+	 post.Text('\n')
+   end 
+   post.Text (';end pre-amble\n')
+   bigArcs = 1 --stitch arc segments together
+   minArcSize = 0.2 --arcs smaller than this are converted to moves
+   cutLength = 0
+   pierces = 0
+   spots = 0
+   scribes = 0
+   scribeLength = 0
+   oldTool = -1
+   toolNum = -1
+end
+
+function OnNewLine()
+   if lineNumbers then
+      post.Text ('N')
+      post.Number (lineNumber, '00000')
+      lineNumber = lineNumber + 10
+   end
+end
+
+function OnComment()
+    post.Text('(',commentText,')\n')
+end
+
+function OnToolChange()
+   local name
+   post.Text (';\n;begin material setup\n')
+   if toolClass == 'MarkerTool' then
+      toolNum = 1
+      name = "scriber"
+   else
+      toolNum = 0
+      name = "plasma"
+   end
+   if toolNum ~= oldTool then
+     post.Text (' T', toolNum, ' M6 (select ', name, ' tool)\n')
+     post.Text (' G43 H0 (apply tool offsets)\n')
+     oldTool = toolNum
+   end
+   if useTool then
+      post.Text(" (o=0")
+      post.NonModalNumber(",kw=", toolDia * scale, precision)
+      post.NonModalNumber(", ph=", pierceHeight * scale, precision)
+      post.NonModalNumber(", pd=", pierceDelay, precision)
+      post.NonModalNumber(", ch=", cutHeight * scale, precision)
+      post.NonModalNumber(", fr=", GetFeedRate() * scale, precision)
+      if thcEnable then
+         post.NonModalNumber(", th=", thcEnable, "0")
+      end
+      if cutAmps then
+         post.NonModalNumber(", ca=", cutAmps, "0")
+      end
+      if cutVolts then
+         post.NonModalNumber(", cv=", cutVolts, "0")
+      end
+      post.NonModalNumber(", pe=", endDelay, precision)
+      if gasPressure then
+         post.NonModalNumber(", gp=", gasPressure, precision)
+      end
+      if cutMode then
+         post.NonModalNumber(", cm=", cutMode, "0")
+      end
+      if pjHeight then
+         post.NonModalNumber(", jh=", pjHeight, precision)
+      end
+      if pjDelay then
+         post.NonModalNumber(", jd=", pjDelay, precision)
+      end
+      post.Text(")\n")
+   else
+      post.Text (' M190 P' , tool,' (',string.lower(toolName), ' material)\n')            
+      post.Text (' M66 P3 L3 Q2 (wait for valid change)\n')         
+   end
+   post.Text (' F#<_hal[plasmac.cut-feed-rate]>\n')
+   post.Text (';end material setup\n')
+end
+
+function OnPenDown()
+   if toolClass == 'MarkerTool' then
+      post.Text (' M3 $1 S1 (marker start)\n')
+      scribeLength = scribeLength + entityLength
+      scribes = scribes + 1
+   else
+      post.Text (' M3 $0 S1 (plasma start)\n')
+      cutLength = cutLength + entityLength
+	  pierces = pierces + 1
+   end
+end
+
+function OnPenUp()
+   if toolClass == 'MarkerTool' then
+      post.Text (' M5 $1 (marker end)\n')
+      post.Text (' G4 P1 (pause for scribe retract)\n')
+   else
+      post.Text (' M5 $0 (plasma end)\n')
+   end
+end
+
+function OnRapid()
+    if math.hypot(endX - currentX, endY - currentY) < 0.001 then
+        return
+    end
+    post.Text (' G0')
+    post.NonModalNumber (' X', endX * scale, precision)
+    post.NonModalNumber (' Y', endY * scale, precision)
+    post.Text ('\n')
+end
+
+function OnMove()
+   if math.hypot(endX - currentX, endY - currentY) < 0.001 then
+     return
+   end
+   post.Text (' G1')
+   post.NonModalNumber (' X', endX * scale, precision)
+   post.NonModalNumber (' Y', endY * scale, precision)
+   post.Text ('\n')
+end
+
+function OnArc()
+   if noArcs then
+      post.ArcAsMoves(0.25)
+      return
+   end
+   if(arcAngle < 0) then
+       post.Text (' G3')
+   else
+       post.Text (' G2')
+   end
+   post.NonModalNumber (' X', endX * scale, precision)
+   post.NonModalNumber (' Y', endY * scale, precision)
+   post.Text (' I')
+   post.Number ((arcCentreX - currentX) * scale, precision)
+   post.Text (' J')
+   post.Number ((arcCentreY - currentY) * scale, precision)
+   post.Text ('\n')
+end
+
+function GetFeedRate()
+   local pts = sc.Parts.Get()
+   local pt = pts:op_index(partIndex):GetParentPart()
+   if pt then
+      local op = pt.operations:op_index(operationIndex)
+      if op then
+         op = op:DynamicCast("OperationWithRoundTool")
+         if op then --operation has feed rate
+            return op.feedRate:op_get() --Get the operation's feed rate
+         end
+      end
+   end
+   return feedRate
+end
+
+
+function OnSetFeed()
+   if not operationIndex or feedRate == plungeRate then
+      return
+   end
+   local toolFeed = GetFeedRate()
+
+   local ratio = 0.001
+   if toolFeed > 0 then
+      ratio = feedRate / toolFeed
+   end
+   if ratio < 0.1 then
+      ratio = 0.1
+   end 
+   if ratio > 1 then
+      ratio = 1
+   end
+   post.ModalNumber(" M67 E3 Q", ratio * 100, "0")
+   post.Eol()
+end
+
+
+function OnDrill()
+   if toolClass == "DrillTool" then
+      post.Error("Drilling is not currently supported")
+   end
+   OnRapid()
+   post.Text (' M3 $2 S1 (spot start)\n')
+   post.Text (' G91 (relative distance mode)\n')
+   post.Text (' G1 X', minimumMove, ' (tiny move)\n')
+   post.Text (' G90 (absolute distance mode)\n')
+   post.Text (' M5 $2 (spot end)\n')
+   spots = spots + 1
+end
+
+function OnFinish()
+   post.Text (' ;\n ;begin post-amble\n')
+   if toolNum > 0 then
+      post.Text (' T0 M6 (select torch)\n')
+      post.Text (' G43 H0 (apply tool offsets)\n')
+      post.Text (' M65 P0\n')
+   end
+   post.Text (' G40 (cutter compensation: off)\n')
+   post.Text (' G90 (distance mode: absolute)\n')
+   post.Text (' M65 P2 (enable THC)\n')
+   post.Text (' M65 P3 (enable torch)\n')
+   post.Text (' M68 E3 Q0 (velocity 100%)\n')
+   post.Text (' M5 $-1 (backup stop)\n')
+   post.Text (' ;end post-amble\n')
+   post.Text (' ;\n')
+   post.Text (' ;begin statistics\n')
+   if spots > 0 then
+     post.Text('\n ;  Spots = ', spots, '\n')
+   end
+   if pierces > 0 then
+     post.Text('\n ;Pierces = ', pierces, '\n')
+     post.Text('\n ;   Cuts = ', pierces , ',    Length = ')
+     post.Number (cutLength * scale, '0.00')
+     post.Text (units, '\n')
+   end
+   if scribes > 0 then
+     post.Text('\n ;Scribes = ', scribes , ',    Length = ')
+     post.Number (scribeLength * scale, '0.00')
+     post.Text (units, '\n')
+   end
+   post.Text (' ;end statistics\n')
+   post.Text (' ;\n')
+   post.Text (' M30 (end program)\n')
+end
