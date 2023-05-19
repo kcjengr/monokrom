@@ -6905,9 +6905,105 @@ QListView::item:selected {
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>vtk_clear</sender>
+   <signal>clicked()</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>clearLivePlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1416</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1416</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vtk_plus</sender>
+   <signal>clicked()</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>zoomIn()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1043</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1416</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vtk_minus</sender>
+   <signal>clicked()</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>zoomOut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1167</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1416</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vtk_prog_extent</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>toggleProgramBounds()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1541</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1416</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vtk_prog_ticks</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>toggleMachineTicks()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1665</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1416</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vtk_mach_extent</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>toggleMachineBounds()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1790</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1416</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="machine_state"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>
