@@ -72,7 +72,8 @@ class MainWindow(VCPMainWindow):
     
     param_fld_map = {
         'name':'param_name',
-        'id':'param_process_id',
+        'tool_number':'param_process_id',
+        #'id':'param_process_id',
         'pierce_height':'param_pierceheight',
         'pierce_delay':'param_piercedelay',
         'cut_height':'param_cutheight',
@@ -123,7 +124,7 @@ class MainWindow(VCPMainWindow):
         self.consumable_offset_x.setMaximum(self.max_x - (10 * self.units_per_mm))
         self.consumable_offset_y.setMaximum(self.max_y - (10 * self.units_per_mm))
 
-    # find and set all user buttons
+        # find and set all user buttons
         for user_i in range(1,USER_BUTTONS+1):
             user_btn_txt = f"user{user_i}"
             user_name_key = f"USER{user_i}_NAME"
@@ -276,7 +277,7 @@ class MainWindow(VCPMainWindow):
         self.filter_cutchart_id = value
         try:
             # Get the cutchart record based on the pin value.
-            cut = self._plasma_plugin.cut_by_id(value)[0]
+            cut = self._plasma_plugin.tool_id(value)[0]
         except NoneType:
             LOG.warn('No Tool / Cutchart found')
         else:
