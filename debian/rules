@@ -1,9 +1,10 @@
 #!/usr/bin/make -f
 
 %:
-	dh $@ --with python3 --buildsystem=pybuild
+    dh $@ --with python3 --buildsystem=pybuild
 
 override_dh_auto_test:
+
 
 override_dh_auto_install:
     dh_auto_install
@@ -20,12 +21,12 @@ override_dh_auto_install:
     #cp -r src/probe_basic/images/probe_basic_icon_lathe.png debian/python3-probe-basic/usr/share/icons/
 
     # create configs directory if it doesn't exist
-    mkdir -p debian/python3-probe-basic/usr/share/configs/
+    mkdir -p debian/python3-monokrom/usr/share/configs/
     # Install the config file contents
-    cp -r configs debian/python3-probe-basic/usr/share/
+    cp -r configs debian/python3-monokrom/usr/share/
 
 
 
 override_dh_install:
-	dh_install
-	qcompile debian/python3-monokrom
+    dh_install
+    qcompile debian/python3-monokrom
