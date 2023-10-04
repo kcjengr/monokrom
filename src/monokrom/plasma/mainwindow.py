@@ -468,7 +468,7 @@ class MainWindow(VCPMainWindow):
 
     def seed_database(self):
         # get db source file and initiate seed
-        src = self.lne_seed_source.text()
+        src = os.path.expanduser(self.lne_seed_source.text())
 
         if not os.path.isfile(src):
             LOG.debug('DB seed file not found')

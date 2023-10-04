@@ -6097,6 +6097,9 @@ QListView::item:selected {
                  <height>16777215</height>
                 </size>
                </property>
+               <property name="text">
+                <string>~/linuxcnc/configs/sim.monokrom/plasmac/master-seed-source.csv</string>
+               </property>
               </widget>
              </item>
              <item row="0" column="0">
