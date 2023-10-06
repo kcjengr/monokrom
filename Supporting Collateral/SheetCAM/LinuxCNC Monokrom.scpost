@@ -23,7 +23,7 @@ noArcs       = false -- set to true to convert arcs to line segments
 
 useTool      = true  -- Set to true to use SheetCam's tool table to generate a temporary material file entry
 
-holeMode     = 2     -- Set the hole cutting mode. 0=disabled, 1=diameter velocity reduction,
+holeMode     = 0     -- Set the hole cutting mode. 0=disabled, 1=diameter velocity reduction,
 					 --                            2= vel reduction+ overcut, 3=include arcs, 4=arcs + overcut
 holeVelocity = 60    -- Set the velocity for hole cutting mode as a percentage of feedrate
 holeDia      = 32    -- Set the hole diameter (in mm)
@@ -83,8 +83,8 @@ function OnInit()
    post.Text (' G40 (cutter compensation: off)\n')
    post.Text (' G90 (distance mode: absolute)\n')
    post.Text (' M52 P1 (adaptive feed: on)\n') 
-   post.Text (' M65 P2 (enable THC)\n')
-   post.Text (' M65 P3 (enable torch)\n')
+   post.Text (' M65 P2 (disable THC)\n')
+   post.Text (' M65 P3 (disable torch)\n')
    post.Text (' M68 E3 Q0 (velocity 100%)\n')
    if scale == metric then
      post.Text (' G64 P0.254 Q0.025 (tracking tolerances: 0.254mm)\n') 
@@ -136,11 +136,6 @@ function OnToolChange()
       toolNum = 0
       name = "plasma"
    end
-   if toolNum ~= oldTool then
-     post.Text (' T', toolNum, ' M6 (select ', name, ' tool)\n')
-     post.Text (' G43 H0 (apply tool offsets)\n')
-     oldTool = toolNum
-   end
    if useTool then
       post.Text(" (o=0")
       post.NonModalNumber(",kw=", toolDia * scale, precision)
@@ -148,6 +143,7 @@ function OnToolChange()
       post.NonModalNumber(", pd=", pierceDelay, precision)
       post.NonModalNumber(", ch=", cutHeight * scale, precision)
       post.NonModalNumber(", fr=", GetFeedRate() * scale, precision)
+      post.NonModalNumber(", mt=", materialThick * scale, precision)
       if thcEnable then
          post.NonModalNumber(", th=", thcEnable, "0")
       end
@@ -172,6 +168,11 @@ function OnToolChange()
       end
       post.Text(")\n")
    else
+      if toolNum ~= oldTool then
+         post.Text (' T', toolNum, ' M6 (select ', name, ' tool)\n')
+         post.Text (' G43 H0 (apply tool offsets)\n')
+         oldTool = toolNum
+      end
       post.Text (' M190 P' , tool,' (',string.lower(toolName), ' material)\n')            
       post.Text (' M66 P3 L3 Q2 (wait for valid change)\n')         
    end
