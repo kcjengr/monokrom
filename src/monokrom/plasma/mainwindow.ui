@@ -1367,7 +1367,7 @@ ENABLE</string>
                      <string>mk-arc-voltage</string>
                     </property>
                     <property name="textFormat" stdset="0">
-                     <string>.2f</string>
+                     <string>.0f</string>
                     </property>
                    </widget>
                   </item>
