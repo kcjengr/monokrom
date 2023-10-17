@@ -4928,6 +4928,9 @@ QListView::item:selected {
                  <property name="suffix">
                   <string> S</string>
                  </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
                  <property name="settingName" stdset="0">
                   <string>arc_retry_delay</string>
                  </property>
@@ -4946,6 +4949,9 @@ QListView::item:selected {
                  </property>
                  <property name="decimals">
                   <number>3</number>
+                 </property>
+                 <property name="maximum">
+                  <double>1000000.000000000000000</double>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>arc_voltage_offset</string>
@@ -5034,6 +5040,9 @@ QListView::item:selected {
                  <property name="decimals">
                   <number>3</number>
                  </property>
+                 <property name="maximum">
+                  <double>10.000000000000000</double>
+                 </property>
                  <property name="settingName" stdset="0">
                   <string>arc_height_per_volt</string>
                  </property>
@@ -5097,6 +5106,12 @@ QListView::item:selected {
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
+                 <property name="maximum">
+                  <double>1000.000000000000000</double>
+                 </property>
                  <property name="settingName" stdset="0">
                   <string>thc_pid_d_gain</string>
                  </property>
@@ -5112,6 +5127,9 @@ QListView::item:selected {
                  </property>
                  <property name="suffix">
                   <string> V</string>
+                 </property>
+                 <property name="maximum">
+                  <double>200.000000000000000</double>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>thc_threshold</string>
@@ -5177,6 +5195,12 @@ QListView::item:selected {
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
+                 <property name="maximum">
+                  <double>1000.000000000000000</double>
+                 </property>
                  <property name="settingName" stdset="0">
                   <string>thc_pid_p_gain</string>
                  </property>
@@ -5189,6 +5213,12 @@ QListView::item:selected {
                  </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
+                 <property name="maximum">
+                  <double>1000.000000000000000</double>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>thc_pid_i_gain</string>
@@ -5212,6 +5242,9 @@ QListView::item:selected {
                  </property>
                  <property name="suffix">
                   <string> %</string>
+                 </property>
+                 <property name="decimals">
+                  <number>0</number>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>thc_vad_threshold</string>
@@ -5244,8 +5277,11 @@ QListView::item:selected {
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
                  </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
                  <property name="maximum">
-                  <double>10000.000000000000000</double>
+                  <double>30000.000000000000000</double>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>thc_feed_rate</string>
@@ -5259,6 +5295,12 @@ QListView::item:selected {
                  </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
+                 <property name="maximum">
+                  <double>200.000000000000000</double>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>thc_safe_height</string>
@@ -5275,6 +5317,9 @@ QListView::item:selected {
                  </property>
                  <property name="suffix">
                   <string> %</string>
+                 </property>
+                 <property name="decimals">
+                  <number>0</number>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>thc_void_override</string>
@@ -5304,6 +5349,9 @@ QListView::item:selected {
                  <property name="suffix">
                   <string> S</string>
                  </property>
+                 <property name="decimals">
+                  <number>1</number>
+                 </property>
                  <property name="settingName" stdset="0">
                   <string>scribe_arm_delay</string>
                  </property>
@@ -5321,7 +5369,7 @@ QListView::item:selected {
                   <string> S</string>
                  </property>
                  <property name="decimals">
-                  <number>2</number>
+                  <number>1</number>
                  </property>
                  <property name="maximum">
                   <double>10.000000000000000</double>
@@ -5454,6 +5502,9 @@ QListView::item:selected {
                  <property name="maximum">
                   <number>10000</number>
                  </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
                  <property name="settingName" stdset="0">
                   <string>probe_speed</string>
                  </property>
@@ -5555,6 +5606,9 @@ QListView::item:selected {
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
                  <property name="maximum">
                   <double>999.000000000000000</double>
                  </property>
@@ -5571,8 +5625,11 @@ QListView::item:selected {
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::PlusMinus</enum>
                  </property>
+                 <property name="decimals">
+                  <number>0</number>
+                 </property>
                  <property name="maximum">
-                  <double>9999.000000000000000</double>
+                  <double>30000.000000000000000</double>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>probe_setup_speed</string>
