@@ -187,9 +187,9 @@ function OnPenDown()
       post.Text (' M3 $1 S1 (marker start)\n')
       scribeLength = scribeLength + entityLength
       scribes = scribes + 1
-   elseif m259Params ~= nil then
+   else
       -- Set up Plasmac M259 if the params are not blank.
-      if string.len(m259Params) > 0 then
+      if m259Params ~= nil and string.len(m259Params) > 0 then
          post.Text (' M259 ')
          post.Text (m259Params)
          post.Text ('\n')
