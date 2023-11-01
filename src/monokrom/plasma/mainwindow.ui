@@ -106,6 +106,16 @@
               <property name="spacing">
                <number>10</number>
               </property>
+              <item row="1" column="0" colspan="4">
+               <widget class="MonokromDroGroup" name="compositedrogroup_2">
+                <property name="maximumSize">
+                 <size>
+                  <width>10000</width>
+                  <height>200</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
               <item row="0" column="0">
                <widget class="ActionButton" name="actionbutton_13">
                 <property name="minimumSize">
@@ -119,64 +129,6 @@
                 </property>
                 <property name="actionName" stdset="0">
                  <string>machine.set-work-coord:G54</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="ActionButton" name="actionbutton_12">
-                <property name="minimumSize">
-                 <size>
-                  <width>34</width>
-                  <height>44</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>G55</string>
-                </property>
-                <property name="actionName" stdset="0">
-                 <string>machine.set-work-coord:G55</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="ActionButton" name="actionbutton_11">
-                <property name="minimumSize">
-                 <size>
-                  <width>34</width>
-                  <height>44</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>G56</string>
-                </property>
-                <property name="actionName" stdset="0">
-                 <string>machine.set-work-coord:G56</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <widget class="ActionButton" name="actionbutton_14">
-                <property name="minimumSize">
-                 <size>
-                  <width>34</width>
-                  <height>44</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>G57</string>
-                </property>
-                <property name="actionName" stdset="0">
-                 <string>machine.set-work-coord:G57</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0" colspan="4">
-               <widget class="MonokromDroGroup" name="compositedrogroup_2">
-                <property name="maximumSize">
-                 <size>
-                  <width>10000</width>
-                  <height>200</height>
-                 </size>
                 </property>
                </widget>
               </item>
@@ -211,6 +163,75 @@
                 <property name="actionName" stdset="0">
                  <string>machine.home.all</string>
                 </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="ActionButton" name="actionbutton_11">
+                <property name="minimumSize">
+                 <size>
+                  <width>34</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>G56</string>
+                </property>
+                <property name="actionName" stdset="0">
+                 <string>machine.set-work-coord:G56</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="ActionButton" name="actionbutton_12">
+                <property name="minimumSize">
+                 <size>
+                  <width>34</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>G55</string>
+                </property>
+                <property name="actionName" stdset="0">
+                 <string>machine.set-work-coord:G55</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="ActionButton" name="actionbutton_14">
+                <property name="minimumSize">
+                 <size>
+                  <width>34</width>
+                  <height>44</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>G57</string>
+                </property>
+                <property name="actionName" stdset="0">
+                 <string>machine.set-work-coord:G57</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QWidget" name="widget_19" native="true">
+                <widget class="MDIButton" name="mdibutton">
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>50</y>
+                   <width>71</width>
+                   <height>111</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>ZERO XY
+in G5x</string>
+                 </property>
+                 <property name="MDICommand" stdset="0">
+                  <string>G10L20P0X0Y0</string>
+                 </property>
+                </widget>
                </widget>
               </item>
              </layout>
@@ -542,7 +563,7 @@ BREAK</string>
  WORK ZERO</string>
                   </property>
                   <property name="MDICommand" stdset="0">
-                   <string>G0X0Y0Z0</string>
+                   <string>G0X0Y0</string>
                   </property>
                  </widget>
                 </item>
@@ -679,64 +700,21 @@ CHANGE</string>
              </item>
              <item>
               <layout class="QGridLayout" name="layout_overrides">
-               <item row="2" column="2">
-                <layout class="QVBoxLayout" name="verticalLayout_9">
-                 <property name="spacing">
-                  <number>0</number>
+               <item row="1" column="1">
+                <widget class="ActionSlider" name="feed_slider">
+                 <property name="enabled">
+                  <bool>false</bool>
                  </property>
-                 <item>
-                  <widget class="StatusLabel" name="statuslabel_6">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>50</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>DSEG7 Classic</family>
-                     <pointsize>10</pointsize>
-                     <weight>75</weight>
-                     <italic>true</italic>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">font: bold italic 10pt &quot;DSEG7 Classic&quot;;</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="rules" stdset="0">
-                    <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;settings:machine.jog.linear-speed-percentage&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0f}%\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_10">
-                   <property name="font">
-                    <font>
-                     <family>Sans</family>
-                     <weight>75</weight>
-                     <italic>false</italic>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>JOG</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.feed-override.set</string>
+                 </property>
+                </widget>
                </item>
                <item row="1" column="0">
                 <widget class="ActionSlider" name="rapid_slider">
@@ -751,19 +729,30 @@ CHANGE</string>
                  </property>
                 </widget>
                </item>
-               <item row="1" column="1">
-                <widget class="ActionSlider" name="feed_slider">
-                 <property name="enabled">
-                  <bool>false</bool>
+               <item row="0" column="1">
+                <widget class="QPushButton" name="btn_reset_feed">
+                 <property name="text">
+                  <string>RESET</string>
                  </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QPushButton" name="btn_reset_jog">
+                 <property name="text">
+                  <string>RESET</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="VCPSettingsSlider" name="jog_slider">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
-                 <property name="actionName" stdset="0">
-                  <string>machine.feed-override.set</string>
+                 <property name="settingName" stdset="0">
+                  <string>machine.jog.linear-speed-percentage</string>
                  </property>
                 </widget>
                </item>
@@ -885,19 +874,6 @@ CHANGE</string>
                  </item>
                 </layout>
                </item>
-               <item row="1" column="2">
-                <widget class="VCPSettingsSlider" name="jog_slider">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>machine.jog.linear-speed-percentage</string>
-                 </property>
-                </widget>
-               </item>
                <item row="0" column="0">
                 <widget class="QPushButton" name="btn_reset_rapid">
                  <property name="text">
@@ -905,19 +881,64 @@ CHANGE</string>
                  </property>
                 </widget>
                </item>
-               <item row="0" column="1">
-                <widget class="QPushButton" name="btn_reset_feed">
-                 <property name="text">
-                  <string>RESET</string>
+               <item row="2" column="2">
+                <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <property name="spacing">
+                  <number>0</number>
                  </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="QPushButton" name="btn_reset_jog">
-                 <property name="text">
-                  <string>RESET</string>
-                 </property>
-                </widget>
+                 <item>
+                  <widget class="StatusLabel" name="statuslabel_6">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>DSEG7 Classic</family>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <italic>true</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font: bold italic 10pt &quot;DSEG7 Classic&quot;;</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="rules" stdset="0">
+                    <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;settings:machine.jog.linear-speed-percentage&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0f}%\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_10">
+                   <property name="font">
+                    <font>
+                     <family>Sans</family>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>JOG</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </item>
               </layout>
              </item>
@@ -4632,7 +4653,7 @@ QListView::item:selected {
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -7063,7 +7084,7 @@ QListView::item:selected {
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="machine_state"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="machine_state"/>
  </buttongroups>
 </ui>

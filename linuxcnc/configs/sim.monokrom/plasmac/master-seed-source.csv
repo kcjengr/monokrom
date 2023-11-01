@@ -1,158 +1,165 @@
-machine_name	material	thickness	thickness_unit	thickness_name	name	tool_number	kerf_width	plunge_rate	pierce_delay	pause_at_end	pierce_height	cut_height	cut_speed	amps	pressure	volts	puddle_height	puddle_delay
-A120	Mild Steel	1	mm	1mm	A120 Mild Steel 40 amp, 1mm (108V, 5.2 bar)	1	1.4	100	0	0	4.1	4.1	3266	40	75.4	99	0	0
-A120	Mild Steel	2	mm	2mm	A120 Mild Steel 40 amp, 2mm (108V, 5.2 bar)	2	1.5	100	0	0	4.1	4.1	2239	40	75.4	99	0	0
-A120	Mild Steel	3	mm	3mm	A120 Mild Steel, 40 amp 3mm (112V, 5.2bar)	3	1.7	100	0.1	0	4.1	4.1	1794	40	75.4	99	0	0
-A120	Mild Steel	4	mm	4mm	A120 Mild Steel, 40 amp 4mm (114, 5.2bar)	4	1.7	100	0.2	0	4.1	4.1	1651	40	75.4	99	0	0
-A120	Mild Steel	5	mm	5mm	A120 Mild Steel, 40 amp 5mm (115V, 5.2bar)	5	1.7	100	0.3	0	4.1	4.1	485	40	75.4	99	0	0
-A120	Mild Steel	6	mm	6mm	A120 Mild Steel, 40 amp 6mm (117V, 5.2bar)	6	1.7	100	0.2	0	4	4.1	1256	40	75.4	99	0	0
-A120	Mild Steel	8	mm	8mm	A120 Mild steel, 40 amp, 8mm (121v, 5.2 Bar)	7	1.7	100	0.5	0	4.1	4.8	853	40	75.4	99	0	0
-A120	Mild Steel	10	mm	10mm	A120 Mild Steel, 40 amp 10mm (121V, 5.2bar)	8	1.8	100	1.2	0	4.1	4.8	565	40	75.4	99	0	0
-A120	Mild Steel	12	mm	12mm	A120 Mild Steel, 40 amp 12mm (127V, 5.2bar)	9	1.9	100	2	0	4.1	4.1	485	40	75.4	99	0	0
-A120	Mild Steel	1	mm	1mm	A120 Mild Steel 60 amp, 1mm (127V,5.9 bar)	10	2.2	100	0	0	4.1	4.8	6804	60	85.5	99	0	0
-A120	Mild Steel	2	mm	2mm	A120 Mild Steel 60 amp, 2mm (129V,5.9 bar)	11	2.2	100	0	0	4.8	4.1	5942	60	85.5	99	0	0
-A120	Mild Steel	3	mm	3mm	A120 Mild Steel 60 amp, 3mm (127V,5.9 bar)	12	2.1	100	0.1	0	4.8	4.1	5080	60	85.5	99	0	0
-A120	Mild Steel	4	mm	4mm	A120 Mild Steel 60 amp, 4mm (127V,5.9 bar)	13	2.2	100	0	0	4.8	4.1	3316	60	85.5	99	0	0
-A120	Mild Steel	5	mm	5mm	A120 Mild Steel 60 amp, 5mm (127V,5.9 bar)	14	2.2	100	0.2	0	4.8	4.1	2794	60	85.5	99	0	0
-A120	Mild Steel	6	mm	6mm	A120 Mild Steel 60 amp, 6mm (134V,5.9 bar)	15	2.1	100	0.3	0	4.8	4.1	2230	60	85.5	99	0	0
-A120	Mild Steel	8	mm	8mm	A120 Mild Steel, 80 amp, 8mm (131v, 5.9bar)	16	2.5	100	0.5	0	5.1	4.8	1425	80	85.5	99	0	0
-A120	Mild Steel	10	mm	10mm	A120 Mild Steel 60 amp, 10mm (134V,5.9 bar)	17	2.5	100	0.6	0	4.8	4.1	822	60	85.5	99	0	0
-A120	Mild Steel	12	mm	12mm	A120 Mild Steel 60 amp, 12mm (141V,5.9 bar)	18	2.5	100	0.6	0	4.8	4.1	646	60	85.5	99	0	0
-A120	Mild Steel	1	mm	1mm	A120 Mild Steel 80 amp, 1mm (116V,5.9 bar)	19	1.6	100	0	0	5.1	3.3	7895	80	85.5	99	0	0
-A120	Mild Steel	2	mm	2mm	A120 Mild Steel 80 amp, 2mm (114V,5.9 bar)	20	1.6	100	0.1	0	5.1	3.3	6395	80	85.5	99	0	0
-A120	Mild Steel	3	mm	3mm	A120 Mild Steel 80 amp, 3mm (112V,5.9 bar)	21	1.5	100	0.1	0	5.1	3.3	4895	80	85.5	99	0	0
-A120	Mild Steel	4	mm	4mm	A120 Mild Steel 80 amp, 4mm (115V,5.9 bar)	22	1.7	100	0.3	0	5.1	4.8	4025	80	85.5	99	0	0
-A120	Mild Steel	5	mm	5mm	A120 Mild Steel 80 amp, 5mm (123V,5.9 bar)	23	2	100	0.3	0	5.1	4.8	3300	80	85.5	99	0	0
-A120	Mild Steel	6	mm	6mm	A120 Mild Steel 80 amp, 6mm (126V,5.9 bar)	24	2.2	100	0.4	0	5.1	4.8	2735	80	85.5	99	0	0
-A120	Mild Steel	8	mm	8mm	A120 Mild Steel 80 amp, 8mm (131V,5.9 bar)	25	2.5	100	0.5	0	5.1	4.8	1745	80	85.5	99	0	0
-A120	Mild Steel	10	mm	10mm	A120 Mild Steel 80 amp, 10mm (134V,5.9 bar)	26	2.6	100	0.5	0	5.1	4.8	1000	80	85.5	99	0	0
-A120	Mild Steel	12	mm	12mm	A120 Mild Steel 80 amp, 12mm (136V,5.9 bar)	27	2.6	100	0.5	0	5.1	4.8	935	80	85.5	99	0	0
-A120	Mild Steel	15	mm	15mm	A120 Mild Steel 80 amp, 15mm (143V,5.9 bar)	28	2.6	100	0.5	0	5.1	4.8	580	80	85.5	99	0	0
-A120	Mild Steel	6	mm	6mm	A120 Mild Steel 100 amp, 6mm (114V,5.2 bar)	29	2	100	0	0	4.6	4.1	2210	100	75.4	99	0	0
-A120	Mild Steel	8	mm	8mm	A120 Mild Steel 100 amp, 8mm (113V,5.2 bar)	30	2.2	100	0.1	0	4.6	4.1	1960	100	75.4	99	0	0
-A120	Mild Steel	10	mm	10mm	A120 Mild Steel 100 amp, 10mm (112V,5.2 bar)	31	2.3	100	0.2	0	4.6	4.1	1665	100	75.4	99	0	0
-A120	Mild Steel	12	mm	12mm	A120 Mild Steel 100 amp, 12mm (114V,5.2 bar)	32	2.4	100	0.3	0	4.6	4.1	1185	100	75.4	99	0	0
-A120	Mild Steel	15	mm	15mm	A120 Mild Steel 100 amp, 15mm (121V,5.2 bar)	33	2.5	100	0.4	0	4.6	4.1	1185	100	75.4	99	0	0
-A120	Mild Steel	20	mm	20mm	A120 Mild Steel 100 amp, 20mm (128V, 5.2 bar)	34	2.8	100	0.8	0	5	4.1	1185	100	75.4	99	0	0
-A120	Mild Steel	6	mm	6mm	A120 Mild Steel 120 amp, 6mm (139V,5.5 bar)	35	2.8	100	0.2	0	5.1	3.2	2210	120	79.8	99	0	0
-A120	Mild Steel	8	mm	8mm	A120 Mild Steel 120 amp, 8mm (140V,5.5 bar)	36	2.8	100	0.2	0	5.1	3.2	3070	120	79.8	99	0	0
-A120	Mild Steel	10	mm	10mm	A120 Mild Steel 120 amp, 10mm (142V,5.5 bar)	37	2.8	100	0.3	0	5.1	3.2	2120	120	79.8	99	0	0
-A120	Mild Steel	12	mm	12mm	A120 Mild Steel 120 amp, 12mm (142V,5.5 bar)	38	2.8	100	0.5	0	5.1	3.2	2210	120	79.8	99	0	0
-A120	Mild Steel	15	mm	15mm	A120 Mild Steel 120 amp, 15mm (143V,5.5 bar)	39	2.8	100	0.7	0	4.8	3.2	1355	120	79.8	99	0	0
-A120	Mild Steel	20	mm	20mm	A120 Mild Steel 120 amp, 20mm (152V,5.5 bar)	40	2.8	100	1.6	0	6.4	4.4	725	120	79.8	99	0	0
-HyperTherm 45	Mild Steel	0.01875	inch	26g	45 amp 26 gauge steel	1	0.889	3810	0	0.5	1.524	1.524	8890	45	75	128	0	0
-HyperTherm 45	Mild Steel	0.03125	inch	22g	45 amp 22 gauge steel	2	0.889	3810	0	0.5	1.524	1.524	8890	45	75	128	0	0
-HyperTherm 45	Mild Steel	0.05	inch	18g	45 amp 18 gauge steel	3	1.3716	3810	0	0.5	3.81	1.524	8255	45	75	129	0	0
-HyperTherm 45	Mild Steel	0.0625	inch	16g	45 amp 16 gauge steel	4	1.397	3810	0	0.5	3.81	1.524	6985	45	75	130	0	0
-HyperTherm 45	Mild Steel	0.078125	inch	14g	45 amp 14 gauge steel	5	1.397	3810	0	0.5	3.81	1.524	5588	45	75	130	0	0
-HyperTherm 45	Mild Steel	0.109375	inch	12g	45 amp 12 gauge steel	6	1.524	3810	0	0.5	3.81	1.524	4572	45	75	133	0	0
-HyperTherm 45	Mild Steel	0.140625	inch	10g	45 amp 10 gauge steel	7	1.016	3810	0	0.5	3.81	1.524	2540	45	75	134	0	0
-HyperTherm 45	Mild Steel	0.1875	inch	3/16	45 amp 3/16 steel	8	1.651	3810	0.5	0.5	3.81	1.524	1600.2	45	75	135	0	0
-HyperTherm 45	Mild Steel	0.25	inch	1/4	45 amp 1/4 steel	9	1.6764	3810	0.6	0.5	3.81	1.524	1143	45	75	137	0	0
-HyperTherm 45	Aluminium	0.03125	inch	1/32	45 amp 1/32 aluminum	10	1.4986	3810	0	0.5	3.81	1.524	8255	45	75	136	0	0
-HyperTherm 45	Aluminium	0.0625	inch	1/16	45 amp 1/16 aluminum	11	1.5494	3810	0	0.5	3.81	1.524	8255	45	75	136	0	0
-HyperTherm 45	Aluminium	0.09375	inch	3/32	45 amp 3/32 aluminum	12	1.6256	3810	0	0.5	3.81	1.524	5080	45	75	136	0	0
-HyperTherm 45	Aluminium	0.125	inch	1/8	45 amp 1/8 aluminum	13	1.016	3810	0	0.5	3.81	1.524	2540	45	75	142	0	0
-HyperTherm 45	Aluminium	0.25	inch	1/4	45 amp 1/4 aluminum	14	1.524	3810	0	0.5	3.81	1.524	1371.6	45	75	142	0	0
-HyperTherm 45	Stainless Steel	0.01875	inch	26g	45 amp 26g stainless steel	15	0.889	3810	0	0.5	1.524	1.524	8890	45	75	130	0	0
-HyperTherm 45	Stainless Steel	0.03125	inch	22g	45 amp 22g stainless steel	16	0.889	3810	0	0.5	1.524	1.524	8890	45	75	130	0	0
-HyperTherm 45	Stainless Steel	0.05	inch	18g	45 amp 18g stainless steel	17	1.3716	3810	0	0.5	1.524	1.524	8890	45	75	130	0	0
-HyperTherm 45	Stainless Steel	0.0625	inch	16g	45 amp 16g stainless steel	18	1.3716	3810	0	0.5	2.032	1.524	8890	45	75	130	0	0
-HyperTherm 45	Stainless Steel	0.078125	inch	14g	45 amp 14g stainless steel	19	1.397	3810	0	0.5	3.81	1.524	6350	45	75	132	0	0
-HyperTherm 45	Stainless Steel	0.109375	inch	12g	45 amp 12g stainless steel	20	1.4732	3810	0.5	0.5	3.81	1.524	3556	45	75	132	0	0
-HyperTherm 45	Stainless Steel	0.140625	inch	10g	45 amp 10g  stainless steel	21	1.5494	3810	0.7	0.5	3.81	1.524	2540	45	75	133	0	0
-HyperTherm 45	Stainless Steel	0.1875	inch	3/16	"""45 amp 3/16"""" stainless steel"""	22	1.651	3810	0.7	0.5	3.81	1.524	2540	45	75	135	0	0
-HyperTherm 45	Stainless Steel	0.25	inch	1/4	"""45 amp 1/4"""" stainless steel"""	23	1.6764	3810	1	0.5	3.81	1.524	762	45	75	141	0	0
-HyperTherm 65	Mild Steel	0.0625	inch	16g	65 amp 16 gauge steel	1	1.524	3810	0	0.5	3.81	1.524	6350	65	75	123	0	0
-HyperTherm 65	Mild Steel	0.140625	inch	10g	65 amp 10 gauge steel	2	1.651	3810	0	0.5	3.81	1.524	4826	65	75	125	0	0
-HyperTherm 65	Mild Steel	0.1875	inch	3/16	65 amp 3/16 steel	3	1.7272	3810	0	0.5	3.81	1.524	3378.2	65	75	126	0	0
-HyperTherm 65	Mild Steel	0.25	inch	1/4	65 amp 1/4 steel	4	1.778	3810	0.3	0.5	3.81	1.524	2286	65	75	127	0	0
-HyperTherm 65	Mild Steel	0.375	inch	3/8	65 amp 3/8 steel	5	1.9304	3810	0.7	0.5	3.81	1.524	1016	65	75	130	0	0
-HyperTherm 65	Mild Steel	0.5	inch	1/2	65 amp 1/2 steel	6	2.2352	3810	1.3	0.5	4.572	1.524	762	65	75	135	0	0
-HyperTherm 65	Mild Steel	0.625	inch	5/8	65 amp 5/8 steel	7	2.286	3810	2	0.5	6.096	1.524	508	65	75	138	0	0
-HyperTherm 65	Aluminium	0.0625	inch	1/16	65 amp 1/16 aluminum	8	1.8542	3810	0	0.5	3.81	1.524	8890	65	75	121	0	0
-HyperTherm 65	Aluminium	0.125	inch	1/8	65 amp 1/8 aluminum	9	1.8796	3810	0	0.5	3.81	1.524	6858	65	75	124	0	0
-HyperTherm 65	Aluminium	0.25	inch	1/4	65 amp 1/4 aluminum	10	1.905	3810	0.5	0.5	3.81	1.524	2286	65	75	131	0	0
-HyperTherm 65	Aluminium	0.375	inch	3/8	65 amp 3/8 aluminum	11	2.1082	3810	0.7	0.5	3.81	1.524	1270	65	75	135	0	0
-HyperTherm 65	Aluminium	0.5	inch	1/2	65 amp 1/2 aluminum	12	2.3114	3810	1.2	0.5	4.572	1.524	838.2	65	75	139	0	0
-HyperTherm 65	Stainless Steel	0.0625	inch	16g	65 amp 16g stainless steel	13	1.524	3810	0	0.5	3.81	1.524	8255	65	75	124	0	0
-HyperTherm 65	Stainless Steel	0.140625	inch	10g	65 amp 10g stainless steel	14	1.651	3810	0	0.5	3.81	1.524	5715	65	75	125	0	0
-HyperTherm 65	Stainless Steel	0.1875	inch	3/16	65 amp 3/16 stainless steel	15	1.7272	3810	0.5	0.5	3.81	1.524	3937	65	75	126	0	0
-HyperTherm 65	Stainless Steel	0.25	inch	1/4	65 amp 1/4 stainless steel	16	1.778	3810	0.5	0.5	3.81	1.524	2032	65	75	126	0	0
-HyperTherm 65	Stainless Steel	0.375	inch	3/8	65 amp 3/8 stainless steel	17	1.9304	3810	1	0.5	3.81	1.524	1016	65	75	131	0	0
-HyperTherm 65	Stainless Steel	0.5	inch	1/2	65 amp 1/2 stainless steel	18	2.2352	3810	1.5	0.5	4.572	1.524	660.4	65	75	136	0	0
-HyperTherm 65	Stainless Steel	0.625	inch	5/8	65 amp 5/8 stainless steel	19	2.286	3810	1.75	0.5	4.572	1.524	660.4	65	75	139	0	0
-HyperTherm 85	Mild Steel	0.140625	inch	10g	85 amp 10 gauge steel	1	1.7272	3810	0	0.5	3.81	1.524	6350	85	75	122	0	0
-HyperTherm 85	Mild Steel	0.1875	inch	3/16	85 amp 3/16 steel	2	1.8034	3810	0	0.5	3.81	1.524	4699	85	75	123	0	0
-HyperTherm 85	Mild Steel	0.25	inch	1/4	85 amp 1/4 steel	3	1.8542	3810	0	0.5	3.81	1.524	3048	85	75	123	0	0
-HyperTherm 85	Mild Steel	0.375	inch	3/8	85 amp 3/8 steel	4	1.9812	3810	0.7	0.5	3.81	1.524	1778	85	75	126	0	0
-HyperTherm 85	Mild Steel	0.5	inch	1/2	85 amp 1/2 steel	5	2.286	3810	0.7	0.5	4.572	1.524	1143	85	75	131	0	0
-HyperTherm 85	Mild Steel	0.625	inch	5/8	85 amp 5/8 steel	6	2.413	3810	1	0.5	4.572	1.524	889	85	75	134	0	0
-HyperTherm 85	Mild Steel	0.75	inch	3/4	85 amp 3/4 steel	7	2.54	3810	1.5	0.5	6.096	1.524	609.6	85	75	136	0	0
-HyperTherm 85	Mild Steel	0.875	inch	7/8	85 amp 7/8 steel	8	2.54	3810	2	0.5	6.096	1.524	482.6	85	75	139	0	0
-HyperTherm 85	Mild Steel	1	inch	1”	85 amp 1.0 steel	9	3.048	3810	2.25	0.5	6.096	1.524	330.2	85	75	142	0	0
-HyperTherm 85	Stainless Steel	0.140625	inch	10g	85 amp 10g stainless steel	10	1.7272	3810	0	0.5	3.81	1.524	6350	85	75	122	0	0
-HyperTherm 85	Stainless Steel	0.1875	inch	3/16	85 amp 3/16 stainless steel	11	1.8034	3810	0	0.5	3.81	1.524	5080	85	75	122	0	0
-HyperTherm 85	Stainless Steel	0.25	inch	1/4	85 amp 1/4 stainless steel	12	1.8542	3810	0.5	0.5	3.81	1.524	3302	85	75	122	0	0
-HyperTherm 85	Stainless Steel	0.375	inch	3/8	85 amp 3/8 stainless steel	13	1.9812	3810	0.5	0.5	3.81	1.524	1651	85	75	126	0	0
-HyperTherm 85	Stainless Steel	0.5	inch	1/2	85 amp 1/2 stainless steel	14	2.286	3810	1	0.5	4.572	1.524	914.4	85	75	132	0	0
-HyperTherm 85	Stainless Steel	0.625	inch	5/8	85 amp 5/8 stainless steel	15	2.413	3810	2	0.5	4.572	1.524	711.2	85	75	135	0	0
-HyperTherm 105	Mild Steel	0.25	inch	1/4	105 amp 1/4 steel	1	2.1082	3810	0.5	0.5	6.35	3.175	3962.4	105	75	144	0	0
-HyperTherm 105	Mild Steel	0.375	inch	3/8	105 amp 3/8 steel	2	2.2352	3810	0.75	0.5	6.35	3.175	2387.6	105	75	145	0	0
-HyperTherm 105	Mild Steel	0.5	inch	1/2	105 amp 1/2 steel	3	2.2606	3810	0.75	0.5	6.35	3.175	1574.8	105	75	146	0	0
-HyperTherm 105	Mild Steel	0.625	inch	5/8	105 amp 5/8 steel	4	2.54	3810	1	0.5	6.35	3.175	1066.8	105	75	149	0	0
-HyperTherm 105	Mild Steel	0.75	inch	3/4	105 amp 3/4 steel	5	2.5654	3810	1.5	0.5	6.35	3.175	838.2	105	75	151	0	0
-HyperTherm 105	Mild Steel	0.875	inch	7/8	105 amp 7/8 steel	6	2.921	3810	1.5	0.5	6.35	3.175	660.4	105	75	154	0	0
-HyperTherm 105	Mild Steel	1	inch	1”	105 amp 1.0 steel edge start	7	3.3782	3810	2	0.5	0	3.175	533.4	105	75	160	0	0
-HyperTherm 105	Mild Steel	1.125	inch	1-1/8	105 amp 1 1/8 steel edge start	8	3.81	3810	2	0.5	0	3.175	381	105	75	162	0	0
-HyperTherm 105	Mild Steel	1.25	inch	1-1/4	105 amp 1 1/4 steel edge start	9	4.572	3810	2	0.5	0	3.175	355.6	105	75	166	0	0
-HyperTherm 105	Mild Steel	1.5	inch	1-1/2	105 amp 1 1/2 steel edge start	10	5.08	3810	0	0.5	0	3.175	228.6	105	75	49	0	0
-HyperTherm 105	Stainless Steel	0.25	inch	1/4	105 amp 1/4 stainless	11	1.9304	3810	0.5	0.5	6.35	3.175	4699	105	75	139	0	0
-HyperTherm 105	Stainless Steel	0.375	inch	3/8	105 amp 3/8 stainless	12	2.2606	3810	0.05	0.5	6.35	3.175	2387.6	105	75	143	0	0
-HyperTherm 105	Stainless Steel	0.5	inch	1/2	105 amp 1/2 stainless	13	2.3114	3810	1	0.5	6.35	3.175	1397	105	75	148	0	0
-HyperTherm 105	Stainless Steel	0.625	inch	5/8	105 amp 5/8 stainless	14	2.3368	3810	1.25	0.5	6.35	3.175	965.2	105	75	149	0	0
-HyperTherm 105	Stainless Steel	0.75	inch	3/4	105 amp 3/4 stainless	15	2.5146	3810	1.5	0.5	7.874	3.175	711.2	105	75	153	0	0
-HyperTherm 105	Stainless Steel	0.875	inch	7/8	105 amp 7/8 stainless edge start	16	2.413	3810	1.5	0.5	0	3.175	558.8	105	75	156	0	0
-HyperTherm 105	Stainless Steel	1	inch	1”	105 amp 1.0 stainless edge start	17	2.8702	3810	2	0.5	0	3.175	431.8	105	75	158	0	0
-HyperTherm 105	Stainless Steel	1.125	inch	1-1/8	105 amp 1 1/8 stainless edge start	18	3.2512	3810	2	0.5	0	3.175	355.6	105	75	162	0	0
-HyperTherm 105	Stainless Steel	1.25	inch	1-1/4	105 amp 1 1/4 stainless edge start	19	3.6576	3810	2.1	0.5	0	3.175	279.4	105	75	166	0	0
-HyperTherm 105	Aluminium	0.25	inch	1/4	105 amp 1/4 aluminum	20	2.3114	3810	0.5	0.5	6.35	3.175	5664.2	105	75	146	0	0
-HyperTherm 105	Aluminium	0.375	inch	3/8	105 amp 3/8 aluminum	21	2.3368	3810	0.75	0.5	6.35	3.175	2794	105	75	151	0	0
-HyperTherm 105	Aluminium	0.5	inch	1/2	105 amp 1/2 aluminum	22	2.5908	3810	1	0.5	6.35	3.175	1803.4	105	75	156	0	0
-HyperTherm 105	Aluminium	0.625	inch	5/8	105 amp 5/8 aluminum	23	2.7178	3810	1	0.5	6.35	3.175	1295.4	105	75	157	0	0
-HyperTherm 105	Aluminium	0.75	inch	3/4	105 amp 3/4 aluminum	24	2.8194	3810	1.25	0.5	6.35	3.175	1092.2	105	75	162	0	0
-HyperTherm 105	Aluminium	0.875	inch	7/8	105 amp 7/8 aluminum edge start	25	3.1496	3810	1.5	0.5	0	3.175	863.6	105	75	164	0	0
-HyperTherm 105	Aluminium	1	inch	1”	105 amp 1.0 aluminum edge start	26	3.5052	3810	1.75	0.5	0	3.175	635	105	75	166	0	0
-HyperTherm 105	Aluminium	1.125	inch	1-1/8	105 amp 1 1/8 aluminum edge start	27	4.191	3810	2	0.5	0	3.175	508	105	75	171	0	0
-HyperTherm 105	Aluminium	1.25	inch	1-1/4	105 amp 1 1/4 aluminum edge start	28	4.8768	3810	0	0.5	0	3.175	381	105	75	175	0	0
-Generic	Mild Steel	0.5	mm	0.5mm	20 amp 0.5mm Mild Steel	1	1.4	3800	0	0.5	3.8	1.5	6000	20	40	0	0	0
-Generic	Mild Steel	1.6	mm	1.6mm	30 amp 1.6mm Mild Steel	2	1.4	3800	0	0.5	3.8	1.5	2800	30	50	0	0	0
-Generic	Mild Steel	3.4	mm	3.4mm	40 amp 3.4mm Mild Steel	3	1.4	3800	0	0.5	3.8	1.5	2200	40	55	0	0	0
-Generic	Mild Steel	5	mm	5mm	45 amp 5mm Mild Steel	4	1.7	3800	0	0.5	3.8	1.5	1600	45	60	0	0	0
-Generic	Mild Steel	6	mm	6mm	45 amp 6mm Mild Steel	5	1.7	3800	0	0.5	3.8	1.5	1200	45	60	0	0	0
-Generic	Mild Steel	8	mm	8mm	50 amp 8mm Mild Steel	6	1.7	3800	0	0.5	3.8	1.5	1100	50	65	0	0	0
-Generic	Mild Steel	10	mm	10mm	55 amp 10mm Mild Steel	7	1.7	3800	0	0.5	3.8	1.5	1000	55	70	0	0	0
-Generic	Mild Steel	12	mm	12mm	60 amp 12mm Mild Steel	8	2	3800	0	0.5	3.8	1.5	600	60	75	0	0	0
-Generic	Mild Steel	16	mm	16mm	60 amp 16mm Mild Steel	9	2	3800	0	0.5	3.8	1.5	450	60	75	0	0	0
-Generic	Mild Steel	20	mm	20mm	60 amp 20mm Mild Steel	10	2	3800	0	0.5	3.8	1.5	300	60	75	0	0	0
-Generic	Stainless Steel	0.5	mm	0.5mm	20 amp 0.5mm Stainless Steel	11	1.4	3800	0	0.5	3.8	1.5	4800	20	40	0	0	0
-Generic	Stainless Steel	1.6	mm	1.6mm	30 amp 1.6mm Stainless Steel	12	1.4	3800	0	0.5	3.8	1.5	2240	30	50	0	0	0
-Generic	Stainless Steel	3.4	mm	3.4mm	40 amp 3.4mm Stainless Steel	13	1.4	3800	0	0.5	3.8	1.5	1760	40	55	0	0	0
-Generic	Stainless Steel	5	mm	5mm	45 amp 5mm Stainless Steel	14	1.7	3800	0	0.5	3.8	1.5	1280	45	60	0	0	0
-Generic	Stainless Steel	6	mm	6mm	45 amp 6mm Stainless Steel	15	1.7	3800	0	0.5	3.8	1.5	960	45	60	0	0	0
-Generic	Stainless Steel	8	mm	8mm	50 amp 8mm Stainless Steel	16	1.7	3800	0	0.5	3.8	1.5	880	50	65	0	0	0
-Generic	Stainless Steel	10	mm	10mm	55 amp 10mm Stainless Steel	17	1.7	3800	0	0.5	3.8	1.5	800	55	70	0	0	0
-Generic	Stainless Steel	12	mm	12mm	60 amp 12mm Stainless Steel	18	2	3800	0	0.5	3.8	1.5	480	60	75	0	0	0
-Generic	Stainless Steel	16	mm	16mm	60 amp 16mm Stainless Steel	19	2	3800	0	0.5	3.8	1.5	360	60	75	0	0	0
-Generic	Stainless Steel	20	mm	20mm	60 amp 20mm Stainless Steel	20	2	3800	0	0.5	3.8	1.5	240	60	75	0	0	0
-Generic	Aluminium	0.5	mm	0.5mm	20 amp 0.5mm Aluminium	21	1.4	3800	0	0.5	3.8	1.5	6900	20	40	0	0	0
-Generic	Aluminium	1.6	mm	1.6mm	30 amp 1.6mm Aluminium	22	1.4	3800	0	0.5	3.8	1.5	3220	30	50	0	0	0
-Generic	Aluminium	3.4	mm	3.4mm	40 amp 3.4mm Aluminium	23	1.4	3800	0	0.5	3.8	1.5	2530	40	55	0	0	0
-Generic	Aluminium	5	mm	5mm	45 amp 5mm Aluminium	24	1.7	3800	0	0.5	3.8	1.5	1840	45	60	0	0	0
-Generic	Aluminium	6	mm	6mm	45 amp 6mm Aluminium	25	1.7	3800	0	0.5	3.8	1.5	1380	45	60	0	0	0
-Generic	Aluminium	8	mm	8mm	50 amp 8mm Aluminium	26	1.7	3800	0	0.5	3.8	1.5	1265	50	65	0	0	0
-Generic	Aluminium	10	mm	10mm	55 amp 10mm Aluminium	27	1.7	3800	0	0.5	3.8	1.5	1150	55	70	0	0	0
-Generic	Aluminium	12	mm	12mm	60 amp 12mm Aluminium	28	2	3800	0	0.5	3.8	1.5	690	60	75	0	0	0
-Generic	Aluminium	16	mm	16mm	60 amp 16mm Aluminium	29	2	3800	0	0.5	3.8	1.5	517.5	60	75	0	0	0
-Generic	Aluminium	20	mm	20mm	60 amp 20mm Aluminium	30	2	3800	0	0.5	3.8	1.5	345	60	75	0	0	0
-Cutskill 60	Mild Steel	2	mm	2mm	40 amp 2mm Mild Steel	1	1.5	3600	0	0	3.5	1.5	1700	40	90	0	0	0
-Cutskill 60	Mild Steel	6	mm	6mm	45 amp 6mm Mild Steel	2	1.65	3600	0.5	0.2	3.5	1.5	1200	45	95	0	0	0
+machine_name	material	thickness	thickness_unit	thickness_name	name	consumable	tool_number	kerf_width	plunge_rate	pierce_delay	pause_at_end	pierce_height	cut_height	cut_speed	amps	pressure	pressuresys	volts	puddle_height	puddle_delay
+A120	Generic	0	mm	0mm	Auto Material	Shielded	99999	0	0	0	0	0	0	0	0	0	bar	0	0	0
+A120	Mild Steel	1	mm	1mm	A120 Mild Steel 40 amp, 1mm (108V, 5.2 bar)	Shielded	1	1.4	100	0	0	4.1	4.1	3266	40	5.2	bar	99	0	0
+A120	Mild Steel	2	mm	2mm	A120 Mild Steel 40 amp, 2mm (108V, 5.2 bar)	Shielded	2	1.5	100	0	0	4.1	4.1	2239	40	5.2	bar	99	0	0
+A120	Mild Steel	3	mm	3mm	A120 Mild Steel, 40 amp 3mm (112V, 5.2bar)	Shielded	3	1.7	100	0.1	0	4.1	4.1	1794	40	5.2	bar	99	0	0
+A120	Mild Steel	4	mm	4mm	A120 Mild Steel, 40 amp 4mm (114, 5.2bar)	Shielded	4	1.7	100	0.2	0	4.1	4.1	1651	40	5.2	bar	99	0	0
+A120	Mild Steel	5	mm	5mm	A120 Mild Steel, 40 amp 5mm (115V, 5.2bar)	Shielded	5	1.7	100	0.3	0	4.1	4.1	485	40	5.2	bar	99	0	0
+A120	Mild Steel	6	mm	6mm	A120 Mild Steel, 40 amp 6mm (117V, 5.2bar)	Shielded	6	1.7	100	0.2	0	4	4.1	1256	40	5.2	bar	99	0	0
+A120	Mild Steel	8	mm	8mm	A120 Mild steel, 40 amp, 8mm (121v, 5.2 Bar)	Shielded	7	1.7	100	0.5	0	4.1	4.8	853	40	5.2	bar	99	0	0
+A120	Mild Steel	10	mm	10mm	A120 Mild Steel, 40 amp 10mm (121V, 5.2bar)	Shielded	8	1.8	100	1.2	0	4.1	4.8	565	40	5.2	bar	99	0	0
+A120	Mild Steel	12	mm	12mm	A120 Mild Steel, 40 amp 12mm (127V, 5.2bar)	Shielded	9	1.9	100	2	0	4.1	4.1	485	40	5.2	bar	99	0	0
+A120	Mild Steel	1	mm	1mm	A120 Mild Steel 60 amp, 1mm (127V,5.9 bar)	Shielded	10	2.2	100	0	0	4.1	4.8	6804	60	5.9	bar	99	0	0
+A120	Mild Steel	2	mm	2mm	A120 Mild Steel 60 amp, 2mm (129V,5.9 bar)	Shielded	11	2.2	100	0	0	4.8	4.1	5942	60	5.9	bar	99	0	0
+A120	Mild Steel	3	mm	3mm	A120 Mild Steel 60 amp, 3mm (127V,5.9 bar)	Shielded	12	2.1	100	0.1	0	4.8	4.1	5080	60	5.9	bar	99	0	0
+A120	Mild Steel	4	mm	4mm	A120 Mild Steel 60 amp, 4mm (127V,5.9 bar)	Shielded	13	2.2	100	0	0	4.8	4.1	3316	60	5.9	bar	99	0	0
+A120	Mild Steel	5	mm	5mm	A120 Mild Steel 60 amp, 5mm (127V,5.9 bar)	Shielded	14	2.2	100	0.2	0	4.8	4.1	2794	60	5.9	bar	99	0	0
+A120	Mild Steel	6	mm	6mm	A120 Mild Steel 60 amp, 6mm (134V,5.9 bar)	Shielded	15	2.1	100	0.3	0	4.8	4.1	2230	60	5.9	bar	99	0	0
+A120	Mild Steel	8	mm	8mm	A120 Mild Steel, 80 amp, 8mm (131v, 5.9bar)	Shielded	16	2.5	100	0.5	0	5.1	4.8	1425	80	5.9	bar	99	0	0
+A120	Mild Steel	10	mm	10mm	A120 Mild Steel 60 amp, 10mm (134V,5.9 bar)	Shielded	17	2.5	100	0.6	0	4.8	4.1	822	60	5.9	bar	99	0	0
+A120	Mild Steel	12	mm	12mm	A120 Mild Steel 60 amp, 12mm (141V,5.9 bar)	Shielded	18	2.5	100	0.6	0	4.8	4.1	646	60	5.9	bar	99	0	0
+A120	Mild Steel	1	mm	1mm	A120 Mild Steel 80 amp, 1mm (116V,5.9 bar)	Shielded	19	1.6	100	0	0	5.1	3.3	7895	80	5.9	bar	99	0	0
+A120	Mild Steel	2	mm	2mm	A120 Mild Steel 80 amp, 2mm (114V,5.9 bar)	Shielded	20	1.6	100	0.1	0	5.1	3.3	6395	80	5.9	bar	99	0	0
+A120	Mild Steel	3	mm	3mm	A120 Mild Steel 80 amp, 3mm (112V,5.9 bar)	Shielded	21	1.5	100	0.1	0	5.1	3.3	4895	80	5.9	bar	99	0	0
+A120	Mild Steel	4	mm	4mm	A120 Mild Steel 80 amp, 4mm (115V,5.9 bar)	Shielded	22	1.7	100	0.3	0	5.1	4.8	4025	80	5.9	bar	99	0	0
+A120	Mild Steel	5	mm	5mm	A120 Mild Steel 80 amp, 5mm (123V,5.9 bar)	Shielded	23	2	100	0.3	0	5.1	4.8	3300	80	5.9	bar	99	0	0
+A120	Mild Steel	6	mm	6mm	A120 Mild Steel 80 amp, 6mm (126V,5.9 bar)	Shielded	24	2.2	100	0.4	0	5.1	4.8	2735	80	5.9	bar	99	0	0
+A120	Mild Steel	8	mm	8mm	A120 Mild Steel 80 amp, 8mm (131V,5.9 bar)	Shielded	25	2.5	100	0.5	0	5.1	4.8	1745	80	5.9	bar	99	0	0
+A120	Mild Steel	10	mm	10mm	A120 Mild Steel 80 amp, 10mm (134V,5.9 bar)	Shielded	26	2.6	100	0.5	0	5.1	4.8	1000	80	5.9	bar	99	0	0
+A120	Mild Steel	12	mm	12mm	A120 Mild Steel 80 amp, 12mm (136V,5.9 bar)	Shielded	27	2.6	100	0.5	0	5.1	4.8	935	80	5.9	bar	99	0	0
+A120	Mild Steel	15	mm	15mm	A120 Mild Steel 80 amp, 15mm (143V,5.9 bar)	Shielded	28	2.6	100	0.5	0	5.1	4.8	580	80	5.9	bar	99	0	0
+A120	Mild Steel	6	mm	6mm	A120 Mild Steel 100 amp, 6mm (114V,5.2 bar)	Shielded	29	2	100	0	0	4.6	4.1	2210	100	5.2	bar	99	0	0
+A120	Mild Steel	8	mm	8mm	A120 Mild Steel 100 amp, 8mm (113V,5.2 bar)	Shielded	30	2.2	100	0.1	0	4.6	4.1	1960	100	5.2	bar	99	0	0
+A120	Mild Steel	10	mm	10mm	A120 Mild Steel 100 amp, 10mm (112V,5.2 bar)	Shielded	31	2.3	100	0.2	0	4.6	4.1	1665	100	5.2	bar	99	0	0
+A120	Mild Steel	12	mm	12mm	A120 Mild Steel 100 amp, 12mm (114V,5.2 bar)	Shielded	32	2.4	100	0.3	0	4.6	4.1	1185	100	5.2	bar	99	0	0
+A120	Mild Steel	15	mm	15mm	A120 Mild Steel 100 amp, 15mm (121V,5.2 bar)	Shielded	33	2.5	100	0.4	0	4.6	4.1	1185	100	5.2	bar	99	0	0
+A120	Mild Steel	20	mm	20mm	A120 Mild Steel 100 amp, 20mm (128V, 5.2 bar)	Shielded	34	2.8	100	0.8	0	5	4.1	1185	100	5.2	bar	99	0	0
+A120	Mild Steel	6	mm	6mm	A120 Mild Steel 120 amp, 6mm (139V,5.5 bar)	Shielded	35	2.8	100	0.2	0	5.1	3.2	2210	120	5.5	bar	99	0	0
+A120	Mild Steel	8	mm	8mm	A120 Mild Steel 120 amp, 8mm (140V,5.5 bar)	Shielded	36	2.8	100	0.2	0	5.1	3.2	3070	120	5.5	bar	99	0	0
+A120	Mild Steel	10	mm	10mm	A120 Mild Steel 120 amp, 10mm (142V,5.5 bar)	Shielded	37	2.8	100	0.3	0	5.1	3.2	2120	120	5.5	bar	99	0	0
+A120	Mild Steel	12	mm	12mm	A120 Mild Steel 120 amp, 12mm (142V,5.5 bar)	Shielded	38	2.8	100	0.5	0	5.1	3.2	2210	120	5.5	bar	99	0	0
+A120	Mild Steel	15	mm	15mm	A120 Mild Steel 120 amp, 15mm (143V,5.5 bar)	Shielded	39	2.8	100	0.7	0	4.8	3.2	1355	120	5.5	bar	99	0	0
+A120	Mild Steel	20	mm	20mm	A120 Mild Steel 120 amp, 20mm (152V,5.5 bar)	Shielded	40	2.8	100	1.6	0	6.4	4.4	725	120	5.5	bar	99	0	0
+HyperTherm 45	Generic	0	inch	0”	Auto Material	Shielded	99999	0	0	0	0	0	0	0	0	0	psi	0	0	0
+HyperTherm 45	Mild Steel	0.01875	inch	26g	45 amp 26 gauge steel	Shielded	1	0.889	3810	0	0.5	1.524	1.524	8890	45	75	psi	128	0	0
+HyperTherm 45	Mild Steel	0.03125	inch	22g	45 amp 22 gauge steel	Shielded	2	0.889	3810	0	0.5	1.524	1.524	8890	45	75	psi	128	0	0
+HyperTherm 45	Mild Steel	0.05	inch	18g	45 amp 18 gauge steel	Shielded	3	1.3716	3810	0	0.5	3.81	1.524	8255	45	75	psi	129	0	0
+HyperTherm 45	Mild Steel	0.0625	inch	16g	45 amp 16 gauge steel	Shielded	4	1.397	3810	0	0.5	3.81	1.524	6985	45	75	psi	130	0	0
+HyperTherm 45	Mild Steel	0.078125	inch	14g	45 amp 14 gauge steel	Shielded	5	1.397	3810	0	0.5	3.81	1.524	5588	45	75	psi	130	0	0
+HyperTherm 45	Mild Steel	0.109375	inch	12g	45 amp 12 gauge steel	Shielded	6	1.524	3810	0	0.5	3.81	1.524	4572	45	75	psi	133	0	0
+HyperTherm 45	Mild Steel	0.140625	inch	10g	45 amp 10 gauge steel	Shielded	7	1.016	3810	0	0.5	3.81	1.524	2540	45	75	psi	134	0	0
+HyperTherm 45	Mild Steel	0.1875	inch	3/16	45 amp 3/16 steel	Shielded	8	1.651	3810	0.5	0.5	3.81	1.524	1600.2	45	75	psi	135	0	0
+HyperTherm 45	Mild Steel	0.25	inch	1/4	45 amp 1/4 steel	Shielded	9	1.6764	3810	0.6	0.5	3.81	1.524	1143	45	75	psi	137	0	0
+HyperTherm 45	Aluminium	0.03125	inch	1/32	45 amp 1/32 aluminum	Shielded	10	1.4986	3810	0	0.5	3.81	1.524	8255	45	75	psi	136	0	0
+HyperTherm 45	Aluminium	0.0625	inch	1/16	45 amp 1/16 aluminum	Shielded	11	1.5494	3810	0	0.5	3.81	1.524	8255	45	75	psi	136	0	0
+HyperTherm 45	Aluminium	0.09375	inch	3/32	45 amp 3/32 aluminum	Shielded	12	1.6256	3810	0	0.5	3.81	1.524	5080	45	75	psi	136	0	0
+HyperTherm 45	Aluminium	0.125	inch	1/8	45 amp 1/8 aluminum	Shielded	13	1.016	3810	0	0.5	3.81	1.524	2540	45	75	psi	142	0	0
+HyperTherm 45	Aluminium	0.25	inch	1/4	45 amp 1/4 aluminum	Shielded	14	1.524	3810	0	0.5	3.81	1.524	1371.6	45	75	psi	142	0	0
+HyperTherm 45	Stainless Steel	0.01875	inch	26g	45 amp 26g stainless steel	Shielded	15	0.889	3810	0	0.5	1.524	1.524	8890	45	75	psi	130	0	0
+HyperTherm 45	Stainless Steel	0.03125	inch	22g	45 amp 22g stainless steel	Shielded	16	0.889	3810	0	0.5	1.524	1.524	8890	45	75	psi	130	0	0
+HyperTherm 45	Stainless Steel	0.05	inch	18g	45 amp 18g stainless steel	Shielded	17	1.3716	3810	0	0.5	1.524	1.524	8890	45	75	psi	130	0	0
+HyperTherm 45	Stainless Steel	0.0625	inch	16g	45 amp 16g stainless steel	Shielded	18	1.3716	3810	0	0.5	2.032	1.524	8890	45	75	psi	130	0	0
+HyperTherm 45	Stainless Steel	0.078125	inch	14g	45 amp 14g stainless steel	Shielded	19	1.397	3810	0	0.5	3.81	1.524	6350	45	75	psi	132	0	0
+HyperTherm 45	Stainless Steel	0.109375	inch	12g	45 amp 12g stainless steel	Shielded	20	1.4732	3810	0.5	0.5	3.81	1.524	3556	45	75	psi	132	0	0
+HyperTherm 45	Stainless Steel	0.140625	inch	10g	45 amp 10g  stainless steel	Shielded	21	1.5494	3810	0.7	0.5	3.81	1.524	2540	45	75	psi	133	0	0
+HyperTherm 45	Stainless Steel	0.1875	inch	3/16	"""45 amp 3/16"""" stainless steel"""	Shielded	22	1.651	3810	0.7	0.5	3.81	1.524	2540	45	75	psi	135	0	0
+HyperTherm 45	Stainless Steel	0.25	inch	1/4	"""45 amp 1/4"""" stainless steel"""	Shielded	23	1.6764	3810	1	0.5	3.81	1.524	762	45	75	psi	141	0	0
+HyperTherm 65	Generic	0	inch	0”	Auto Material	Shielded	99999	0	0	0	0	0	0	0	0	0	psi	0	0	0
+HyperTherm 65	Mild Steel	0.0625	inch	16g	65 amp 16 gauge steel	Shielded	1	1.524	3810	0	0.5	3.81	1.524	6350	65	75	psi	123	0	0
+HyperTherm 65	Mild Steel	0.140625	inch	10g	65 amp 10 gauge steel	Shielded	2	1.651	3810	0	0.5	3.81	1.524	4826	65	75	psi	125	0	0
+HyperTherm 65	Mild Steel	0.1875	inch	3/16	65 amp 3/16 steel	Shielded	3	1.7272	3810	0	0.5	3.81	1.524	3378.2	65	75	psi	126	0	0
+HyperTherm 65	Mild Steel	0.25	inch	1/4	65 amp 1/4 steel	Shielded	4	1.778	3810	0.3	0.5	3.81	1.524	2286	65	75	psi	127	0	0
+HyperTherm 65	Mild Steel	0.375	inch	3/8	65 amp 3/8 steel	Shielded	5	1.9304	3810	0.7	0.5	3.81	1.524	1016	65	75	psi	130	0	0
+HyperTherm 65	Mild Steel	0.5	inch	1/2	65 amp 1/2 steel	Shielded	6	2.2352	3810	1.3	0.5	4.572	1.524	762	65	75	psi	135	0	0
+HyperTherm 65	Mild Steel	0.625	inch	5/8	65 amp 5/8 steel	Shielded	7	2.286	3810	2	0.5	6.096	1.524	508	65	75	psi	138	0	0
+HyperTherm 65	Aluminium	0.0625	inch	1/16	65 amp 1/16 aluminum	Shielded	8	1.8542	3810	0	0.5	3.81	1.524	8890	65	75	psi	121	0	0
+HyperTherm 65	Aluminium	0.125	inch	1/8	65 amp 1/8 aluminum	Shielded	9	1.8796	3810	0	0.5	3.81	1.524	6858	65	75	psi	124	0	0
+HyperTherm 65	Aluminium	0.25	inch	1/4	65 amp 1/4 aluminum	Shielded	10	1.905	3810	0.5	0.5	3.81	1.524	2286	65	75	psi	131	0	0
+HyperTherm 65	Aluminium	0.375	inch	3/8	65 amp 3/8 aluminum	Shielded	11	2.1082	3810	0.7	0.5	3.81	1.524	1270	65	75	psi	135	0	0
+HyperTherm 65	Aluminium	0.5	inch	1/2	65 amp 1/2 aluminum	Shielded	12	2.3114	3810	1.2	0.5	4.572	1.524	838.2	65	75	psi	139	0	0
+HyperTherm 65	Stainless Steel	0.0625	inch	16g	65 amp 16g stainless steel	Shielded	13	1.524	3810	0	0.5	3.81	1.524	8255	65	75	psi	124	0	0
+HyperTherm 65	Stainless Steel	0.140625	inch	10g	65 amp 10g stainless steel	Shielded	14	1.651	3810	0	0.5	3.81	1.524	5715	65	75	psi	125	0	0
+HyperTherm 65	Stainless Steel	0.1875	inch	3/16	65 amp 3/16 stainless steel	Shielded	15	1.7272	3810	0.5	0.5	3.81	1.524	3937	65	75	psi	126	0	0
+HyperTherm 65	Stainless Steel	0.25	inch	1/4	65 amp 1/4 stainless steel	Shielded	16	1.778	3810	0.5	0.5	3.81	1.524	2032	65	75	psi	126	0	0
+HyperTherm 65	Stainless Steel	0.375	inch	3/8	65 amp 3/8 stainless steel	Shielded	17	1.9304	3810	1	0.5	3.81	1.524	1016	65	75	psi	131	0	0
+HyperTherm 65	Stainless Steel	0.5	inch	1/2	65 amp 1/2 stainless steel	Shielded	18	2.2352	3810	1.5	0.5	4.572	1.524	660.4	65	75	psi	136	0	0
+HyperTherm 65	Stainless Steel	0.625	inch	5/8	65 amp 5/8 stainless steel	Shielded	19	2.286	3810	1.75	0.5	4.572	1.524	660.4	65	75	psi	139	0	0
+HyperTherm 85	Generic	0	inch	0”	Auto Material	Shielded	99999	0	0	0	0	0	0	0	0	0	psi	0	0	0
+HyperTherm 85	Mild Steel	0.140625	inch	10g	85 amp 10 gauge steel	Shielded	1	1.7272	3810	0	0.5	3.81	1.524	6350	85	75	psi	122	0	0
+HyperTherm 85	Mild Steel	0.1875	inch	3/16	85 amp 3/16 steel	Shielded	2	1.8034	3810	0	0.5	3.81	1.524	4699	85	75	psi	123	0	0
+HyperTherm 85	Mild Steel	0.25	inch	1/4	85 amp 1/4 steel	Shielded	3	1.8542	3810	0	0.5	3.81	1.524	3048	85	75	psi	123	0	0
+HyperTherm 85	Mild Steel	0.375	inch	3/8	85 amp 3/8 steel	Shielded	4	1.9812	3810	0.7	0.5	3.81	1.524	1778	85	75	psi	126	0	0
+HyperTherm 85	Mild Steel	0.5	inch	1/2	85 amp 1/2 steel	Shielded	5	2.286	3810	0.7	0.5	4.572	1.524	1143	85	75	psi	131	0	0
+HyperTherm 85	Mild Steel	0.625	inch	5/8	85 amp 5/8 steel	Shielded	6	2.413	3810	1	0.5	4.572	1.524	889	85	75	psi	134	0	0
+HyperTherm 85	Mild Steel	0.75	inch	3/4	85 amp 3/4 steel	Shielded	7	2.54	3810	1.5	0.5	6.096	1.524	609.6	85	75	psi	136	0	0
+HyperTherm 85	Mild Steel	0.875	inch	7/8	85 amp 7/8 steel	Shielded	8	2.54	3810	2	0.5	6.096	1.524	482.6	85	75	psi	139	0	0
+HyperTherm 85	Mild Steel	1	inch	1”	85 amp 1.0 steel	Shielded	9	3.048	3810	2.25	0.5	6.096	1.524	330.2	85	75	psi	142	0	0
+HyperTherm 85	Stainless Steel	0.140625	inch	10g	85 amp 10g stainless steel	Shielded	10	1.7272	3810	0	0.5	3.81	1.524	6350	85	75	psi	122	0	0
+HyperTherm 85	Stainless Steel	0.1875	inch	3/16	85 amp 3/16 stainless steel	Shielded	11	1.8034	3810	0	0.5	3.81	1.524	5080	85	75	psi	122	0	0
+HyperTherm 85	Stainless Steel	0.25	inch	1/4	85 amp 1/4 stainless steel	Shielded	12	1.8542	3810	0.5	0.5	3.81	1.524	3302	85	75	psi	122	0	0
+HyperTherm 85	Stainless Steel	0.375	inch	3/8	85 amp 3/8 stainless steel	Shielded	13	1.9812	3810	0.5	0.5	3.81	1.524	1651	85	75	psi	126	0	0
+HyperTherm 85	Stainless Steel	0.5	inch	1/2	85 amp 1/2 stainless steel	Shielded	14	2.286	3810	1	0.5	4.572	1.524	914.4	85	75	psi	132	0	0
+HyperTherm 85	Stainless Steel	0.625	inch	5/8	85 amp 5/8 stainless steel	Shielded	15	2.413	3810	2	0.5	4.572	1.524	711.2	85	75	psi	135	0	0
+HyperTherm 105	Generic	0	inch	0”	Auto Material	Shielded	99999	0	0	0	0	0	0	0	0	0	psi	0	0	0
+HyperTherm 105	Mild Steel	0.25	inch	1/4	105 amp 1/4 steel	Shielded	1	2.1082	3810	0.5	0.5	6.35	3.175	3962.4	105	75	psi	144	0	0
+HyperTherm 105	Mild Steel	0.375	inch	3/8	105 amp 3/8 steel	Shielded	2	2.2352	3810	0.75	0.5	6.35	3.175	2387.6	105	75	psi	145	0	0
+HyperTherm 105	Mild Steel	0.5	inch	1/2	105 amp 1/2 steel	Shielded	3	2.2606	3810	0.75	0.5	6.35	3.175	1574.8	105	75	psi	146	0	0
+HyperTherm 105	Mild Steel	0.625	inch	5/8	105 amp 5/8 steel	Shielded	4	2.54	3810	1	0.5	6.35	3.175	1066.8	105	75	psi	149	0	0
+HyperTherm 105	Mild Steel	0.75	inch	3/4	105 amp 3/4 steel	Shielded	5	2.5654	3810	1.5	0.5	6.35	3.175	838.2	105	75	psi	151	0	0
+HyperTherm 105	Mild Steel	0.875	inch	7/8	105 amp 7/8 steel	Shielded	6	2.921	3810	1.5	0.5	6.35	3.175	660.4	105	75	psi	154	0	0
+HyperTherm 105	Mild Steel	1	inch	1”	105 amp 1.0 steel edge start	Shielded	7	3.3782	3810	2	0.5	0	3.175	533.4	105	75	psi	160	0	0
+HyperTherm 105	Mild Steel	1.125	inch	1-1/8	105 amp 1 1/8 steel edge start	Shielded	8	3.81	3810	2	0.5	0	3.175	381	105	75	psi	162	0	0
+HyperTherm 105	Mild Steel	1.25	inch	1-1/4	105 amp 1 1/4 steel edge start	Shielded	9	4.572	3810	2	0.5	0	3.175	355.6	105	75	psi	166	0	0
+HyperTherm 105	Mild Steel	1.5	inch	1-1/2	105 amp 1 1/2 steel edge start	Shielded	10	5.08	3810	0	0.5	0	3.175	228.6	105	75	psi	49	0	0
+HyperTherm 105	Stainless Steel	0.25	inch	1/4	105 amp 1/4 stainless	Shielded	11	1.9304	3810	0.5	0.5	6.35	3.175	4699	105	75	psi	139	0	0
+HyperTherm 105	Stainless Steel	0.375	inch	3/8	105 amp 3/8 stainless	Shielded	12	2.2606	3810	0.05	0.5	6.35	3.175	2387.6	105	75	psi	143	0	0
+HyperTherm 105	Stainless Steel	0.5	inch	1/2	105 amp 1/2 stainless	Shielded	13	2.3114	3810	1	0.5	6.35	3.175	1397	105	75	psi	148	0	0
+HyperTherm 105	Stainless Steel	0.625	inch	5/8	105 amp 5/8 stainless	Shielded	14	2.3368	3810	1.25	0.5	6.35	3.175	965.2	105	75	psi	149	0	0
+HyperTherm 105	Stainless Steel	0.75	inch	3/4	105 amp 3/4 stainless	Shielded	15	2.5146	3810	1.5	0.5	7.874	3.175	711.2	105	75	psi	153	0	0
+HyperTherm 105	Stainless Steel	0.875	inch	7/8	105 amp 7/8 stainless edge start	Shielded	16	2.413	3810	1.5	0.5	0	3.175	558.8	105	75	psi	156	0	0
+HyperTherm 105	Stainless Steel	1	inch	1”	105 amp 1.0 stainless edge start	Shielded	17	2.8702	3810	2	0.5	0	3.175	431.8	105	75	psi	158	0	0
+HyperTherm 105	Stainless Steel	1.125	inch	1-1/8	105 amp 1 1/8 stainless edge start	Shielded	18	3.2512	3810	2	0.5	0	3.175	355.6	105	75	psi	162	0	0
+HyperTherm 105	Stainless Steel	1.25	inch	1-1/4	105 amp 1 1/4 stainless edge start	Shielded	19	3.6576	3810	2.1	0.5	0	3.175	279.4	105	75	psi	166	0	0
+HyperTherm 105	Aluminium	0.25	inch	1/4	105 amp 1/4 aluminum	Shielded	20	2.3114	3810	0.5	0.5	6.35	3.175	5664.2	105	75	psi	146	0	0
+HyperTherm 105	Aluminium	0.375	inch	3/8	105 amp 3/8 aluminum	Shielded	21	2.3368	3810	0.75	0.5	6.35	3.175	2794	105	75	psi	151	0	0
+HyperTherm 105	Aluminium	0.5	inch	1/2	105 amp 1/2 aluminum	Shielded	22	2.5908	3810	1	0.5	6.35	3.175	1803.4	105	75	psi	156	0	0
+HyperTherm 105	Aluminium	0.625	inch	5/8	105 amp 5/8 aluminum	Shielded	23	2.7178	3810	1	0.5	6.35	3.175	1295.4	105	75	psi	157	0	0
+HyperTherm 105	Aluminium	0.75	inch	3/4	105 amp 3/4 aluminum	Shielded	24	2.8194	3810	1.25	0.5	6.35	3.175	1092.2	105	75	psi	162	0	0
+HyperTherm 105	Aluminium	0.875	inch	7/8	105 amp 7/8 aluminum edge start	Shielded	25	3.1496	3810	1.5	0.5	0	3.175	863.6	105	75	psi	164	0	0
+HyperTherm 105	Aluminium	1	inch	1”	105 amp 1.0 aluminum edge start	Shielded	26	3.5052	3810	1.75	0.5	0	3.175	635	105	75	psi	166	0	0
+HyperTherm 105	Aluminium	1.125	inch	1-1/8	105 amp 1 1/8 aluminum edge start	Shielded	27	4.191	3810	2	0.5	0	3.175	508	105	75	psi	171	0	0
+HyperTherm 105	Aluminium	1.25	inch	1-1/4	105 amp 1 1/4 aluminum edge start	Shielded	28	4.8768	3810	0	0.5	0	3.175	381	105	75	psi	175	0	0
+Generic	Generic	0	mm	0mm	Auto Material	Unshielded	99999	0	0	0	0	0	0	0	0	0	psi	0	0	0
+Generic	Mild Steel	0.5	mm	0.5mm	20 amp 0.5mm Mild Steel	Unshielded	1	1.4	3800	0	0.5	3.8	1.5	6000	20	40	psi	0	0	0
+Generic	Mild Steel	1.6	mm	1.6mm	30 amp 1.6mm Mild Steel	Unshielded	2	1.4	3800	0	0.5	3.8	1.5	2800	30	50	psi	0	0	0
+Generic	Mild Steel	3.4	mm	3.4mm	40 amp 3.4mm Mild Steel	Unshielded	3	1.4	3800	0	0.5	3.8	1.5	2200	40	55	psi	0	0	0
+Generic	Mild Steel	5	mm	5mm	45 amp 5mm Mild Steel	Unshielded	4	1.7	3800	0	0.5	3.8	1.5	1600	45	60	psi	0	0	0
+Generic	Mild Steel	6	mm	6mm	45 amp 6mm Mild Steel	Unshielded	5	1.7	3800	0	0.5	3.8	1.5	1200	45	60	psi	0	0	0
+Generic	Mild Steel	8	mm	8mm	50 amp 8mm Mild Steel	Unshielded	6	1.7	3800	0	0.5	3.8	1.5	1100	50	65	psi	0	0	0
+Generic	Mild Steel	10	mm	10mm	55 amp 10mm Mild Steel	Unshielded	7	1.7	3800	0	0.5	3.8	1.5	1000	55	70	psi	0	0	0
+Generic	Mild Steel	12	mm	12mm	60 amp 12mm Mild Steel	Unshielded	8	2	3800	0	0.5	3.8	1.5	600	60	75	psi	0	0	0
+Generic	Mild Steel	16	mm	16mm	60 amp 16mm Mild Steel	Unshielded	9	2	3800	0	0.5	3.8	1.5	450	60	75	psi	0	0	0
+Generic	Mild Steel	20	mm	20mm	60 amp 20mm Mild Steel	Unshielded	10	2	3800	0	0.5	3.8	1.5	300	60	75	psi	0	0	0
+Generic	Stainless Steel	0.5	mm	0.5mm	20 amp 0.5mm Stainless Steel	Unshielded	11	1.4	3800	0	0.5	3.8	1.5	4800	20	40	psi	0	0	0
+Generic	Stainless Steel	1.6	mm	1.6mm	30 amp 1.6mm Stainless Steel	Unshielded	12	1.4	3800	0	0.5	3.8	1.5	2240	30	50	psi	0	0	0
+Generic	Stainless Steel	3.4	mm	3.4mm	40 amp 3.4mm Stainless Steel	Unshielded	13	1.4	3800	0	0.5	3.8	1.5	1760	40	55	psi	0	0	0
+Generic	Stainless Steel	5	mm	5mm	45 amp 5mm Stainless Steel	Unshielded	14	1.7	3800	0	0.5	3.8	1.5	1280	45	60	psi	0	0	0
+Generic	Stainless Steel	6	mm	6mm	45 amp 6mm Stainless Steel	Unshielded	15	1.7	3800	0	0.5	3.8	1.5	960	45	60	psi	0	0	0
+Generic	Stainless Steel	8	mm	8mm	50 amp 8mm Stainless Steel	Unshielded	16	1.7	3800	0	0.5	3.8	1.5	880	50	65	psi	0	0	0
+Generic	Stainless Steel	10	mm	10mm	55 amp 10mm Stainless Steel	Unshielded	17	1.7	3800	0	0.5	3.8	1.5	800	55	70	psi	0	0	0
+Generic	Stainless Steel	12	mm	12mm	60 amp 12mm Stainless Steel	Unshielded	18	2	3800	0	0.5	3.8	1.5	480	60	75	psi	0	0	0
+Generic	Stainless Steel	16	mm	16mm	60 amp 16mm Stainless Steel	Unshielded	19	2	3800	0	0.5	3.8	1.5	360	60	75	psi	0	0	0
+Generic	Stainless Steel	20	mm	20mm	60 amp 20mm Stainless Steel	Unshielded	20	2	3800	0	0.5	3.8	1.5	240	60	75	psi	0	0	0
+Generic	Aluminium	0.5	mm	0.5mm	20 amp 0.5mm Aluminium	Unshielded	21	1.4	3800	0	0.5	3.8	1.5	6900	20	40	psi	0	0	0
+Generic	Aluminium	1.6	mm	1.6mm	30 amp 1.6mm Aluminium	Unshielded	22	1.4	3800	0	0.5	3.8	1.5	3220	30	50	psi	0	0	0
+Generic	Aluminium	3.4	mm	3.4mm	40 amp 3.4mm Aluminium	Unshielded	23	1.4	3800	0	0.5	3.8	1.5	2530	40	55	psi	0	0	0
+Generic	Aluminium	5	mm	5mm	45 amp 5mm Aluminium	Unshielded	24	1.7	3800	0	0.5	3.8	1.5	1840	45	60	psi	0	0	0
+Generic	Aluminium	6	mm	6mm	45 amp 6mm Aluminium	Unshielded	25	1.7	3800	0	0.5	3.8	1.5	1380	45	60	psi	0	0	0
+Generic	Aluminium	8	mm	8mm	50 amp 8mm Aluminium	Unshielded	26	1.7	3800	0	0.5	3.8	1.5	1265	50	65	psi	0	0	0
+Generic	Aluminium	10	mm	10mm	55 amp 10mm Aluminium	Unshielded	27	1.7	3800	0	0.5	3.8	1.5	1150	55	70	psi	0	0	0
+Generic	Aluminium	12	mm	12mm	60 amp 12mm Aluminium	Unshielded	28	2	3800	0	0.5	3.8	1.5	690	60	75	psi	0	0	0
+Generic	Aluminium	16	mm	16mm	60 amp 16mm Aluminium	Unshielded	29	2	3800	0	0.5	3.8	1.5	517.5	60	75	psi	0	0	0
+Generic	Aluminium	20	mm	20mm	60 amp 20mm Aluminium	Unshielded	30	2	3800	0	0.5	3.8	1.5	345	60	75	psi	0	0	0
+Cutskill 60	Generic	0	mm	0mm	Auto Material	Unshielded	99999	0	0	0	0	0	0	0	0	0	MPa	0	0	0
+Cutskill 60	Mild Steel	2	mm	2mm	40 amp 2mm Mild Steel	Unshielded	1	1.5	3600	0	0	3.5	1.5	1700	40	0.62	MPa	0	0	0
+Cutskill 60	Mild Steel	6	mm	6mm	45 amp 6mm Mild Steel	Unshielded	2	1.65	3600	0.5	0.2	3.5	1.5	1200	45	0.65	MPa	0	0	0
