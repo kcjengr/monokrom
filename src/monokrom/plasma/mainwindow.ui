@@ -980,14 +980,627 @@ CHANGE</string>
             <property name="rightMargin">
              <number>6</number>
             </property>
-            <item row="17" column="3">
+            <item row="3" column="0">
+             <widget class="QWidget" name="widget_2" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_12">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_14">
+                 <property name="text">
+                  <string>ARC-OK</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_5">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_2">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-arc-ok</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="4" column="3">
+             <widget class="QWidget" name="widget_20" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_6">
+                 <property name="text">
+                  <string>CRNR LOCK</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_9">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>9</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_7">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-corner-lock</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="14" column="0" colspan="2">
+             <widget class="QPushButton" name="btn_load_newest">
+              <property name="text">
+               <string>LOAD NEWEST
+FILE</string>
+              </property>
+             </widget>
+            </item>
+            <item row="20" column="3">
              <widget class="SubCallButton" name="user10"/>
             </item>
-            <item row="16" column="0">
+            <item row="12" column="0" colspan="4">
+             <widget class="QWidget" name="widget_26" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <item>
+                <widget class="ActionButton" name="btnManualState">
+                 <property name="text">
+                  <string>MANUAL</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.mode.manual</string>
+                 </property>
+                 <attribute name="buttonGroup">
+                  <string notr="true">machine_state</string>
+                 </attribute>
+                </widget>
+               </item>
+               <item>
+                <widget class="ActionButton" name="btnMdiState">
+                 <property name="text">
+                  <string>MDI</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.mode.mdi</string>
+                 </property>
+                 <attribute name="buttonGroup">
+                  <string notr="true">machine_state</string>
+                 </attribute>
+                </widget>
+               </item>
+               <item>
+                <widget class="ActionButton" name="btnAutoState">
+                 <property name="text">
+                  <string>AUTO</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.mode.auto</string>
+                 </property>
+                 <attribute name="buttonGroup">
+                  <string notr="true">machine_state</string>
+                 </attribute>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QWidget" name="widget" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_11">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_13">
+                 <property name="text">
+                  <string>PROBE</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-probe</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="8" column="3">
+             <widget class="QPushButton" name="btn_thc_enable">
+              <property name="text">
+               <string>THC ENABLE</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QWidget" name="widget_28" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_18">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_12">
+                 <property name="text">
+                  <string>KERF CROSS</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_10">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>3</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_8">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-kerf-cross</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="5" column="3">
+             <widget class="QWidget" name="widget_30" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_21">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_97">
+                 <property name="text">
+                  <string>CHG CON</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_12">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>15</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_10">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-change-consumable</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QWidget" name="widget_8" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_16">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_20">
+                 <property name="text">
+                  <string>DOWN</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_6">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-thc-down</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="18" column="0">
+             <widget class="SubCallButton" name="user3"/>
+            </item>
+            <item row="14" column="3">
+             <widget class="HalButton" name="btn_laser">
+              <property name="text">
+               <string>LASER</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="pinBaseName" stdset="0">
+               <string>laser</string>
+              </property>
+             </widget>
+            </item>
+            <item row="18" column="3">
+             <widget class="SubCallButton" name="user8"/>
+            </item>
+            <item row="3" column="3">
+             <widget class="QWidget" name="widget_4" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_14">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_16">
+                 <property name="text">
+                  <string>TORCH</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_6">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_4">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-torch-on</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QWidget" name="widget_31" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_25">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_105">
+                 <property name="text">
+                  <string>THC AUTO Vs</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_14">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkLedIndicator" name="mkled_thc_auto_volts">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="20" column="0">
+             <widget class="SubCallButton" name="user5"/>
+            </item>
+            <item row="19" column="0">
              <widget class="SubCallButton" name="user4"/>
             </item>
-            <item row="13" column="0">
+            <item row="17" column="0">
+             <widget class="SubCallButton" name="user2"/>
+            </item>
+            <item row="10" column="0">
+             <widget class="QPushButton" name="btn_vad">
+              <property name="text">
+               <string>VELOCITY
+ANTI DIVE</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="17" column="3">
+             <widget class="SubCallButton" name="user7"/>
+            </item>
+            <item row="19" column="3">
+             <widget class="SubCallButton" name="user9"/>
+            </item>
+            <item row="10" column="3">
+             <widget class="QPushButton" name="btn_void_sense">
+              <property name="text">
+               <string>VOID
+ANTI DIVE</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="0">
              <widget class="SubCallButton" name="user1"/>
+            </item>
+            <item row="15" column="0">
+             <widget class="HalButton" name="btn_pierce_only">
+              <property name="text">
+               <string>PIERCE
+ONLY</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="pinBaseName" stdset="0">
+               <string>plasma-pierce-only-enable</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="3">
+             <widget class="QWidget" name="widget_32" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_26">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_106">
+                 <property name="text">
+                  <string>MESH</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_15">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkLedIndicator" name="mkled_mesh_sense">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
             </item>
             <item row="2" column="0">
              <widget class="QWidget" name="widget_3" native="true">
@@ -1041,76 +1654,7 @@ CHANGE</string>
               </layout>
              </widget>
             </item>
-            <item row="0" column="3">
-             <widget class="QWidget" name="widget_7" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_15">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_19">
-                 <property name="text">
-                  <string>UP</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_2">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_5">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-thc-up</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="13" column="3">
-             <widget class="SubCallButton" name="user6"/>
-            </item>
-            <item row="12" column="0">
-             <widget class="HalButton" name="btn_pierce_only">
-              <property name="text">
-               <string>PIERCE
-ONLY</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="pinBaseName" stdset="0">
-               <string>plasma-pierce-only-enable</string>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="0" colspan="4">
+            <item row="11" column="0" colspan="4">
              <widget class="QWidget" name="widget_9" native="true">
               <layout class="QVBoxLayout" name="verticalLayout_18">
                <property name="spacing">
@@ -1209,249 +1753,70 @@ ONLY</string>
               </layout>
              </widget>
             </item>
-            <item row="7" column="0">
-             <widget class="HalButton" name="btn_vad">
+            <item row="0" column="3">
+             <widget class="QWidget" name="widget_7" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_15">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_19">
+                 <property name="text">
+                  <string>UP</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_5">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-thc-up</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="8" column="0">
+             <widget class="HalButton" name="torch_enable">
               <property name="text">
-               <string>VELOCITY
-ANTI DIVE</string>
+               <string>TORCH
+ENABLE</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
               </property>
-              <property name="pinBaseName" stdset="0">
-               <string>vad</string>
-              </property>
              </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QWidget" name="widget_28" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_18">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_12">
-                 <property name="text">
-                  <string>KERF CROSS</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_10">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>3</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_8">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-kerf-cross</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="14" column="0">
-             <widget class="SubCallButton" name="user2"/>
             </item>
             <item row="15" column="3">
-             <widget class="SubCallButton" name="user8"/>
-            </item>
-            <item row="3" column="3">
-             <widget class="QWidget" name="widget_4" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_14">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_16">
-                 <property name="text">
-                  <string>TORCH</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_6">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_4">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-torch-on</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="11" column="0" colspan="2">
-             <widget class="QPushButton" name="btn_load_newest">
-              <property name="text">
-               <string>LOAD NEWEST
-FILE</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QWidget" name="widget_8" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_16">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_20">
-                 <property name="text">
-                  <string>DOWN</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_4">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_6">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-thc-down</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QWidget" name="widget" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_11">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_13">
-                 <property name="text">
-                  <string>PROBE</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-probe</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="16" column="3">
-             <widget class="SubCallButton" name="user9"/>
-            </item>
-            <item row="17" column="0">
-             <widget class="SubCallButton" name="user5"/>
-            </item>
-            <item row="12" column="3">
              <widget class="HalButton" name="plasma_torch_pulse">
               <property name="text">
                <string>PULSE
@@ -1459,98 +1824,8 @@ TORCH</string>
               </property>
              </widget>
             </item>
-            <item row="9" column="0" colspan="4">
-             <widget class="QWidget" name="widget_26" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_9">
-               <item>
-                <widget class="ActionButton" name="btnManualState">
-                 <property name="text">
-                  <string>MANUAL</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="checked">
-                  <bool>false</bool>
-                 </property>
-                 <property name="autoExclusive">
-                  <bool>true</bool>
-                 </property>
-                 <property name="actionName" stdset="0">
-                  <string>machine.mode.manual</string>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">machine_state</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item>
-                <widget class="ActionButton" name="btnMdiState">
-                 <property name="text">
-                  <string>MDI</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive">
-                  <bool>true</bool>
-                 </property>
-                 <property name="actionName" stdset="0">
-                  <string>machine.mode.mdi</string>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">machine_state</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item>
-                <widget class="ActionButton" name="btnAutoState">
-                 <property name="text">
-                  <string>AUTO</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive">
-                  <bool>true</bool>
-                 </property>
-                 <property name="actionName" stdset="0">
-                  <string>machine.mode.auto</string>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">machine_state</string>
-                 </attribute>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="11" column="3">
-             <widget class="HalButton" name="btn_laser">
-              <property name="text">
-               <string>LASER</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="pinBaseName" stdset="0">
-               <string>laser</string>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="3">
-             <widget class="HalButton" name="btn_void_sense">
-              <property name="text">
-               <string>VOID
-ANTI DIVE</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="pinBaseName" stdset="0">
-               <string>void-sense</string>
-              </property>
-             </widget>
+            <item row="16" column="3">
+             <widget class="SubCallButton" name="user6"/>
             </item>
             <item row="5" column="0">
              <widget class="QWidget" name="widget_29" native="true">
@@ -1604,22 +1879,9 @@ ANTI DIVE</string>
               </layout>
              </widget>
             </item>
-            <item row="6" column="3">
-             <widget class="HalButton" name="btn_thc_enable">
-              <property name="text">
-               <string>THC ENABLE</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="pinBaseName" stdset="0">
-               <string>thc-enable</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="3">
-             <widget class="QWidget" name="widget_20" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout">
+            <item row="7" column="0">
+             <widget class="QWidget" name="widget_33" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_27">
                <property name="leftMargin">
                 <number>0</number>
                </property>
@@ -1627,66 +1889,14 @@ ANTI DIVE</string>
                 <number>0</number>
                </property>
                <item>
-                <widget class="QLabel" name="label_6">
+                <widget class="QLabel" name="label_107">
                  <property name="text">
-                  <string>CRNR LOCK</string>
+                  <string>OHMIC</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <spacer name="horizontalSpacer_9">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>9</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_7">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-corner-lock</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QWidget" name="widget_2" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_12">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_14">
-                 <property name="text">
-                  <string>ARC-OK</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_5">
+                <spacer name="horizontalSpacer_16">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
@@ -1699,7 +1909,7 @@ ANTI DIVE</string>
                 </spacer>
                </item>
                <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_2">
+                <widget class="MkLedIndicator" name="mkled_ohmic_sense">
                  <property name="diameter">
                   <number>20</number>
                  </property>
@@ -1712,78 +1922,6 @@ ANTI DIVE</string>
                  </property>
                  <property name="state">
                   <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-arc-ok</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="14" column="3">
-             <widget class="SubCallButton" name="user7"/>
-            </item>
-            <item row="6" column="0">
-             <widget class="HalButton" name="torch_enable">
-              <property name="text">
-               <string>TORCH
-ENABLE</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="15" column="0">
-             <widget class="SubCallButton" name="user3"/>
-            </item>
-            <item row="5" column="3">
-             <widget class="QWidget" name="widget_30" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_21">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_97">
-                 <property name="text">
-                  <string>CHG CON</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_12">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>15</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_10">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-change-consumable</string>
                  </property>
                 </widget>
                </item>
@@ -4484,7 +4622,8 @@ QListView::item:selected {
                     <string notr="true">font: bold 12pt;</string>
                    </property>
                    <property name="text">
-                    <string>THC ANTI-DIVE</string>
+                    <string>THC (VELOCITY)
+ANTI-DIVE</string>
                    </property>
                    <property name="pinBaseName" stdset="0">
                     <string>plasma-vad</string>
@@ -4527,7 +4666,7 @@ QListView::item:selected {
                   </widget>
                  </item>
                  <item>
-                  <widget class="PlasmaHalCheckBox" name="plasmahalcheckbox">
+                  <widget class="PlasmaHalCheckBox" name="chkb_ohmic_sense">
                    <property name="styleSheet">
                     <string notr="true">font: bold 12pt;</string>
                    </property>
@@ -4957,7 +5096,7 @@ QListView::item:selected {
         <item>
          <widget class="MkTabWidget" name="tabwidget_3">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab_18">
            <attribute name="title">
@@ -6577,6 +6716,11 @@ QListView::item:selected {
    <header>qtpyvcp.widgets.display_widgets.status_label</header>
   </customwidget>
   <customwidget>
+   <class>StatusLED</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.display_widgets.status_led</header>
+  </customwidget>
+  <customwidget>
    <class>VTKBackPlot</class>
    <extends>QWidget</extends>
    <header>qtpyvcp.widgets.display_widgets.vtk_backplot.vtk_backplot</header>
@@ -6701,6 +6845,11 @@ QListView::item:selected {
    <header>monokrom.common.widgets.mk_led_hal</header>
   </customwidget>
   <customwidget>
+   <class>MkLedIndicator</class>
+   <extends>StatusLED</extends>
+   <header>monokrom.common.widgets.mk_led</header>
+  </customwidget>
+  <customwidget>
    <class>MkPushButton</class>
    <extends>QPushButton</extends>
    <header>monokrom.common.widgets.mk_push_button</header>
@@ -6797,8 +6946,8 @@ QListView::item:selected {
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1761</x>
-     <y>959</y>
+     <x>1850</x>
+     <y>977</y>
     </hint>
     <hint type="destinationlabel">
      <x>1210</x>
@@ -6813,8 +6962,8 @@ QListView::item:selected {
    <slot>moveRowItemUp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1467</x>
-     <y>690</y>
+     <x>1500</x>
+     <y>765</y>
     </hint>
     <hint type="destinationlabel">
      <x>1210</x>
@@ -6829,8 +6978,8 @@ QListView::item:selected {
    <slot>moveRowItemDown()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1467</x>
-     <y>743</y>
+     <x>1500</x>
+     <y>818</y>
     </hint>
     <hint type="destinationlabel">
      <x>1210</x>
@@ -7005,8 +7154,8 @@ QListView::item:selected {
    <slot>EditorReadWrite(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1823</x>
-     <y>215</y>
+     <x>1858</x>
+     <y>187</y>
     </hint>
     <hint type="destinationlabel">
      <x>1377</x>
@@ -7107,6 +7256,150 @@ QListView::item:selected {
     <hint type="destinationlabel">
      <x>1416</x>
      <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_thc_enable</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>thc_enabled</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>870</x>
+     <y>419</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1725</x>
+     <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_vad</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>chkb_vad</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>719</x>
+     <y>469</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1725</x>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_void_sense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>chkb_void_sense</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>870</x>
+     <y>469</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1725</x>
+     <y>318</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>thc_enabled</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_thc_enable</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1725</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>870</x>
+     <y>419</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chkb_vad</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_vad</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1725</x>
+     <y>264</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>719</x>
+     <y>469</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chkb_void_sense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>btn_void_sense</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1725</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>870</x>
+     <y>469</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chkb_auto_volts</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mkled_thc_auto_volts</receiver>
+   <slot>setState(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1725</x>
+     <y>210</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>778</x>
+     <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chkb_mesh_sense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mkled_mesh_sense</receiver>
+   <slot>setState(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1725</x>
+     <y>372</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>925</x>
+     <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chkb_ohmic_sense</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mkled_ohmic_sense</receiver>
+   <slot>setState(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1725</x>
+     <y>426</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>778</x>
+     <y>382</y>
     </hint>
    </hints>
   </connection>
