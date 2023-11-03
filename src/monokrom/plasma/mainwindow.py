@@ -1,4 +1,5 @@
 import os
+import math
 
 import hal as cnchal
 import linuxcnc
@@ -11,6 +12,7 @@ from qtpyvcp.utilities.info import Info
 from qtpyvcp import hal
 from qtpyvcp.actions.program_actions import load as loadProgram
 from qtpyvcp.actions.machine_actions import issue_mdi
+from qtpyvcp.actions.machine_actions import mode as set_mode
 ### mdi GCODE text created by JT from linuxcnc
 import mdi_text as mdiText
 
@@ -127,6 +129,9 @@ class MainWindow(VCPMainWindow):
         self.consumable_offset_y.setMinimum(self.min_y + (10 * self.units_per_mm))
         self.consumable_offset_x.setMaximum(self.max_x - (10 * self.units_per_mm))
         self.consumable_offset_y.setMaximum(self.max_y - (10 * self.units_per_mm))
+        self.sheet_align_p1 = None
+        self.sheet_align_p2 = None
+        self.sheet_align_p3 = None
 
         # find and set all user buttons
         for user_i in range(1,USER_BUTTONS+1):
@@ -194,6 +199,11 @@ class MainWindow(VCPMainWindow):
 
         self.btn_save.clicked.connect(self.save_file)
         self.btn_frame_job.clicked.connect(self.frame_work)
+        
+        # Sheet Alignment
+        self.btn_sheet_align_pt1.clicked.connect(self.sheet_align_set_p1)
+        self.btn_sheet_align_pt2.clicked.connect(self.sheet_align_set_p2)
+        self.btn_sheet_doalign.clicked.connect(self.sheet_align)
         
         # prepare widget filter data
         self.load_plasma_ui_filter_data()
@@ -612,3 +622,80 @@ class MainWindow(VCPMainWindow):
             f"G53 G1 X{x_current + x_laser_offset}"
         )
         issue_mdi(move_cmd)
+        
+    
+    #
+    # Adjust virtual offsets to cope with sheet stock
+    # not being perfectly square to axis of travel.
+    #
+    # Original code, concept and smarts from QTPlasmac author.
+    #
+    def sheet_align(self):
+        if self.sheet_align_p1 == None or \
+           self.sheet_align_p2 == None:
+            LOG.debug("Sheet alignment attempted but not all points set.")
+            return
+        # need p1 and p2 set for edge only alignment.
+        # Assumed that p1 will be X0Y0
+    
+        issue_mdi('G10 L2 P0 R0')
+        set_mode.manual()
+        #xDiff = self.sheet_align_p2[0] - self.sheet_align_p1[0]
+        #yDiff = self.sheet_align_p2[1] - self.sheet_align_p1[1]
+        xDiff = self.sheet_align_p1[0] - self.sheet_align_p2[0]
+        yDiff = self.sheet_align_p1[1] - self.sheet_align_p2[1]
+        if xDiff and yDiff:
+            zAngle = math.degrees(math.atan(yDiff / xDiff))
+            if xDiff > 0:
+                zAngle += 180
+            elif yDiff > 0:
+                zAngle += 360
+            if abs(xDiff) < abs(yDiff):
+                zAngle -= 90
+        elif xDiff:
+            if xDiff > 0:
+                zAngle = 180
+            else:
+                zAngle = 0
+        elif yDiff:
+            if yDiff > 0:
+                zAngle = 180
+            else:
+                zAngle = 0
+        else:
+            zAngle = 0
+
+        laser_x = self.laser_offset_x.value()
+        laser_y = self.laser_offset_y.value()
+        issue_mdi(f'G10 L2 P0 X{self.sheet_align_p1[0]+laser_x} Y{self.sheet_align_p1[1]+laser_y}')
+        issue_mdi(f'G10 L2 P0 R{zAngle}')
+        issue_mdi('G0 X0 Y0')
+        self.sheet_align_p1 = None
+        self.sheet_align_p2 = None
+    
+    def build_status_text(self):
+        widget = self.lbl_align_data
+        ref1 = "REF1:..."
+        ref2 = "REF2:..."
+        if self. sheet_align_p1 != None:
+            ref1 = f"REF1:\n{self.sheet_align_p1[0]:.4f},\n{self.sheet_align_p1[1]:.4f}"
+        
+        if self. sheet_align_p2 != None:
+            ref2 = f"REF2:\n{self.sheet_align_p2[0]:.4f},\n{self.sheet_align_p2[1]:.4f}"
+        widget.setText(f'{ref1}\n{ref2}')
+    
+    def sheet_align_set_p1(self):
+        issue_mdi('G10 L2 P0 R0')
+        x_current_pos = float(POS.Absolute(0))
+        y_current_pos = float(POS.Absolute(1))
+        self.sheet_align_p1 = [x_current_pos, y_current_pos]
+        self.build_status_text()
+
+    
+    def sheet_align_set_p2(self):
+        issue_mdi('G10 L2 P0 R0')
+        x_current_pos = float(POS.Absolute(0))
+        y_current_pos = float(POS.Absolute(1))
+        self.sheet_align_p2 = [x_current_pos, y_current_pos]
+        self.build_status_text()
+    
