@@ -87,3 +87,7 @@ class MkHalLedIndicator_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MkHalLedIndicator
     
+from .mk_led import MkLedIndicator
+class MkLedIndicator_Plugin(_DesignerPlugin):
+    def pluginClass(self):
+        return MkLedIndicator
