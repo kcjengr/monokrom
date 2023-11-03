@@ -111,6 +111,10 @@ class MainWindow(VCPMainWindow):
         self._pressure_setting = INFO.ini.find('PLASMAC', 'PRESSURE')
         self._machine = INFO.ini.find('PLASMAC', 'MACHINE')
         
+        # Hide some in flight UI that is unfinished
+        self.mainTabWidget.setTabVisible(2, False)
+        self.tabs_ctl_run_right.setTabVisible(2, False)
+        self.tab_holes_and_slots.setTabVisible(1, False)
         # setup some default UI settings
         self.vtkbackplot.setViewZ()
         self.vtkbackplot.enable_panning(True)

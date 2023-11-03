@@ -975,6 +975,485 @@ CHANGE</string>
             <property name="rightMargin">
              <number>6</number>
             </property>
+            <item row="17" column="3">
+             <widget class="SubCallButton" name="user10"/>
+            </item>
+            <item row="16" column="0">
+             <widget class="SubCallButton" name="user4"/>
+            </item>
+            <item row="13" column="0">
+             <widget class="SubCallButton" name="user1"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QWidget" name="widget_3" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_13">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_15">
+                 <property name="text">
+                  <string>FLOAT</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_3">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-float</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QWidget" name="widget_7" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_15">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_19">
+                 <property name="text">
+                  <string>UP</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_5">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-thc-up</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="13" column="3">
+             <widget class="SubCallButton" name="user6"/>
+            </item>
+            <item row="12" column="0">
+             <widget class="HalButton" name="btn_pierce_only">
+              <property name="text">
+               <string>PIERCE
+ONLY</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="pinBaseName" stdset="0">
+               <string>plasma-pierce-only-enable</string>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="0" colspan="4">
+             <widget class="QWidget" name="widget_9" native="true">
+              <layout class="QVBoxLayout" name="verticalLayout_18">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QWidget" name="widget_5" native="true">
+                 <layout class="QGridLayout" name="gridLayout_30">
+                  <item row="1" column="1">
+                   <widget class="HalDoubleSpinBox" name="spin_voltage_override">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="frame">
+                     <bool>false</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="buttonSymbols">
+                     <enum>QAbstractSpinBox::PlusMinus</enum>
+                    </property>
+                    <property name="suffix">
+                     <string> V</string>
+                    </property>
+                    <property name="decimals">
+                     <number>0</number>
+                    </property>
+                    <property name="minimum">
+                     <double>-200.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                     <double>200.000000000000000</double>
+                    </property>
+                    <property name="pinBaseName" stdset="0">
+                     <string>voltage-override</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="label_18">
+                    <property name="text">
+                     <string>OVERRIDE</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_17">
+                    <property name="text">
+                     <string>ARC Voltage</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="HalLabel" name="hallabel">
+                    <property name="styleSheet">
+                     <string notr="true">font: bold 14pt;</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="pinBaseName" stdset="0">
+                     <string>mk-arc-voltage</string>
+                    </property>
+                    <property name="textFormat" stdset="0">
+                     <string>.0f</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QWidget" name="widget_6" native="true">
+                 <layout class="QGridLayout" name="gridLayout_26"/>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="7" column="0">
+             <widget class="HalButton" name="btn_vad">
+              <property name="text">
+               <string>VELOCITY
+ANTI DIVE</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="pinBaseName" stdset="0">
+               <string>vad</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QWidget" name="widget_28" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_18">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_12">
+                 <property name="text">
+                  <string>KERF CROSS</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_10">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>3</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_8">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-kerf-cross</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="14" column="0">
+             <widget class="SubCallButton" name="user2"/>
+            </item>
+            <item row="15" column="3">
+             <widget class="SubCallButton" name="user8"/>
+            </item>
+            <item row="3" column="3">
+             <widget class="QWidget" name="widget_4" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_14">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_16">
+                 <property name="text">
+                  <string>TORCH</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_6">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_4">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-torch-on</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="11" column="0" colspan="2">
+             <widget class="QPushButton" name="btn_load_newest">
+              <property name="text">
+               <string>LOAD NEWEST
+FILE</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QWidget" name="widget_8" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_16">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_20">
+                 <property name="text">
+                  <string>DOWN</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_6">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-thc-down</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QWidget" name="widget" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_11">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_13">
+                 <property name="text">
+                  <string>PROBE</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-probe</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="16" column="3">
+             <widget class="SubCallButton" name="user9"/>
+            </item>
+            <item row="17" column="0">
+             <widget class="SubCallButton" name="user5"/>
+            </item>
+            <item row="12" column="3">
+             <widget class="HalButton" name="plasma_torch_pulse">
+              <property name="text">
+               <string>PULSE
+TORCH</string>
+              </property>
+             </widget>
+            </item>
             <item row="9" column="0" colspan="4">
              <widget class="QWidget" name="widget_26" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -1041,551 +1520,30 @@ CHANGE</string>
               </layout>
              </widget>
             </item>
-            <item row="7" column="3">
-             <widget class="QPushButton" name="btn_void_sense">
+            <item row="11" column="3">
+             <widget class="HalButton" name="btn_laser">
               <property name="text">
-               <string>VOID
-SENSE</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QWidget" name="widget_2" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_12">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_14">
-                 <property name="text">
-                  <string>ARC-OK</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_5">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_2">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-arc-ok</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="7" column="0">
-             <widget class="QPushButton" name="btn_vad">
-              <property name="text">
-               <string>CORNER
-LOCK</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="12" column="0">
-             <widget class="HalButton" name="btn_pierce_only">
-              <property name="text">
-               <string>PIERCE
-ONLY</string>
+               <string>LASER</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
               </property>
               <property name="pinBaseName" stdset="0">
-               <string>plasma-pierce-only-enable</string>
+               <string>laser</string>
               </property>
              </widget>
             </item>
-            <item row="6" column="0">
-             <widget class="HalButton" name="torch_enable">
+            <item row="7" column="3">
+             <widget class="HalButton" name="btn_void_sense">
               <property name="text">
-               <string>TORCH
-ENABLE</string>
+               <string>VOID
+ANTI DIVE</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
               </property>
-             </widget>
-            </item>
-            <item row="3" column="3">
-             <widget class="QWidget" name="widget_4" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_14">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_16">
-                 <property name="text">
-                  <string>TORCH</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_6">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_4">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-torch-on</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QWidget" name="widget_8" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_16">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_20">
-                 <property name="text">
-                  <string>DOWN</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_4">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_6">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-thc-down</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QWidget" name="widget_3" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_13">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_15">
-                 <property name="text">
-                  <string>FLOAT</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_3">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_3">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-float</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="13" column="0">
-             <widget class="SubCallButton" name="user1"/>
-            </item>
-            <item row="0" column="0">
-             <widget class="QWidget" name="widget" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_11">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_13">
-                 <property name="text">
-                  <string>PROBE</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-probe</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="8" column="0" colspan="4">
-             <widget class="QWidget" name="widget_9" native="true">
-              <layout class="QVBoxLayout" name="verticalLayout_18">
-               <property name="spacing">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QWidget" name="widget_5" native="true">
-                 <layout class="QGridLayout" name="gridLayout_30">
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="label_17">
-                    <property name="text">
-                     <string>ARC Voltage</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="HalLabel" name="hallabel">
-                    <property name="styleSheet">
-                     <string notr="true">font: bold 14pt;</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="pinBaseName" stdset="0">
-                     <string>mk-arc-voltage</string>
-                    </property>
-                    <property name="textFormat" stdset="0">
-                     <string>.0f</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QWidget" name="widget_6" native="true">
-                 <layout class="QGridLayout" name="gridLayout_26">
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="label_18">
-                    <property name="text">
-                     <string>OVERRIDE</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="HalDoubleSpinBox" name="spin_voltage_override">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true"/>
-                    </property>
-                    <property name="frame">
-                     <bool>false</bool>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::PlusMinus</enum>
-                    </property>
-                    <property name="suffix">
-                     <string> V</string>
-                    </property>
-                    <property name="decimals">
-                     <number>1</number>
-                    </property>
-                    <property name="minimum">
-                     <double>-200.000000000000000</double>
-                    </property>
-                    <property name="maximum">
-                     <double>200.000000000000000</double>
-                    </property>
-                    <property name="pinBaseName" stdset="0">
-                     <string>voltage-override</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="6" column="3">
-             <widget class="QPushButton" name="btn_thc_enable">
-              <property name="text">
-               <string>THC
-ENABLE</string>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="checked">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="17" column="0">
-             <widget class="SubCallButton" name="user5"/>
-            </item>
-            <item row="16" column="0">
-             <widget class="SubCallButton" name="user4"/>
-            </item>
-            <item row="15" column="0">
-             <widget class="SubCallButton" name="user3"/>
-            </item>
-            <item row="14" column="0">
-             <widget class="SubCallButton" name="user2"/>
-            </item>
-            <item row="0" column="3">
-             <widget class="QWidget" name="widget_7" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_15">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_19">
-                 <property name="text">
-                  <string>UP</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_2">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_5">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-thc-up</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QWidget" name="widget_28" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_18">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_12">
-                 <property name="text">
-                  <string>KERF CROSS</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_10">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>3</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_8">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-kerf-cross</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="12" column="3">
-             <widget class="HalButton" name="plasma_torch_pulse">
-              <property name="text">
-               <string>PULSE
-TORCH</string>
+              <property name="pinBaseName" stdset="0">
+               <string>void-sense</string>
               </property>
              </widget>
             </item>
@@ -1641,71 +1599,17 @@ TORCH</string>
               </layout>
              </widget>
             </item>
-            <item row="17" column="3">
-             <widget class="SubCallButton" name="user10"/>
-            </item>
-            <item row="16" column="3">
-             <widget class="SubCallButton" name="user9"/>
-            </item>
-            <item row="15" column="3">
-             <widget class="SubCallButton" name="user8"/>
-            </item>
-            <item row="14" column="3">
-             <widget class="SubCallButton" name="user7"/>
-            </item>
-            <item row="13" column="3">
-             <widget class="SubCallButton" name="user6"/>
-            </item>
-            <item row="5" column="3">
-             <widget class="QWidget" name="widget_30" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_21">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_97">
-                 <property name="text">
-                  <string>CHG CON</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_12">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>15</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_10">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-change-consumable</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+            <item row="6" column="3">
+             <widget class="HalButton" name="btn_thc_enable">
+              <property name="text">
+               <string>THC ENABLE</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="pinBaseName" stdset="0">
+               <string>thc-enable</string>
+              </property>
              </widget>
             </item>
             <item row="4" column="3">
@@ -1760,25 +1664,125 @@ TORCH</string>
               </layout>
              </widget>
             </item>
-            <item row="11" column="0" colspan="2">
-             <widget class="QPushButton" name="btn_load_newest">
-              <property name="text">
-               <string>LOAD NEWEST
-FILE</string>
-              </property>
+            <item row="3" column="0">
+             <widget class="QWidget" name="widget_2" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_12">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_14">
+                 <property name="text">
+                  <string>ARC-OK</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_5">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_2">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-arc-ok</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
-            <item row="11" column="3">
-             <widget class="HalButton" name="btn_laser">
+            <item row="14" column="3">
+             <widget class="SubCallButton" name="user7"/>
+            </item>
+            <item row="6" column="0">
+             <widget class="HalButton" name="torch_enable">
               <property name="text">
-               <string>LASER</string>
+               <string>TORCH
+ENABLE</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
               </property>
-              <property name="pinBaseName" stdset="0">
-               <string>laser</string>
-              </property>
+             </widget>
+            </item>
+            <item row="15" column="0">
+             <widget class="SubCallButton" name="user3"/>
+            </item>
+            <item row="5" column="3">
+             <widget class="QWidget" name="widget_30" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_21">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_97">
+                 <property name="text">
+                  <string>CHG CON</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_12">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>15</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_10">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-change-consumable</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
            </layout>
@@ -1791,11 +1795,11 @@ FILE</string>
             <item>
              <widget class="VCPWidget" name="widget_25">
               <layout class="QGridLayout" name="gridLayout_25">
-               <item row="0" column="1">
-                <widget class="ActionButton" name="actionbutton">
+               <item row="2" column="1">
+                <widget class="ActionButton" name="actionbutton_4">
                  <property name="icon">
                   <iconset>
-                   <normaloff>../common/icons/y-up.png</normaloff>../common/icons/y-up.png</iconset>
+                   <normaloff>../common/icons/y-down.png</normaloff>../common/icons/y-down.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -1807,55 +1811,8 @@ FILE</string>
                   <bool>true</bool>
                  </property>
                  <property name="actionName" stdset="0">
-                  <string>machine.jog.axis:y,pos</string>
+                  <string>machine.jog.axis:y,neg</string>
                  </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="QWidget" name="widget_14" native="true">
-                 <layout class="QHBoxLayout" name="horizontalLayout_19">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                  <property name="leftMargin">
-                   <number>40</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="ActionButton" name="actionbutton_24">
-                    <property name="minimumSize">
-                     <size>
-                      <width>34</width>
-                      <height>44</height>
-                     </size>
-                    </property>
-                    <property name="icon">
-                     <iconset>
-                      <normaloff>../common/icons/z-up.png</normaloff>../common/icons/z-up.png</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>46</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="flat">
-                     <bool>true</bool>
-                    </property>
-                    <property name="actionName" stdset="0">
-                     <string>machine.jog.axis:z,pos</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
                 </widget>
                </item>
                <item row="1" column="0">
@@ -1878,11 +1835,11 @@ FILE</string>
                  </property>
                 </widget>
                </item>
-               <item row="1" column="2">
-                <widget class="ActionButton" name="actionbutton_22">
+               <item row="0" column="1">
+                <widget class="ActionButton" name="actionbutton">
                  <property name="icon">
                   <iconset>
-                   <normaloff>../common/icons/x-right.png</normaloff>../common/icons/x-right.png</iconset>
+                   <normaloff>../common/icons/y-up.png</normaloff>../common/icons/y-up.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -1894,27 +1851,7 @@ FILE</string>
                   <bool>true</bool>
                  </property>
                  <property name="actionName" stdset="0">
-                  <string>machine.jog.axis:x,pos</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="ActionButton" name="actionbutton_4">
-                 <property name="icon">
-                  <iconset>
-                   <normaloff>../common/icons/y-down.png</normaloff>../common/icons/y-down.png</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>46</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                 <property name="flat">
-                  <bool>true</bool>
-                 </property>
-                 <property name="actionName" stdset="0">
-                  <string>machine.jog.axis:y,neg</string>
+                  <string>machine.jog.axis:y,pos</string>
                  </property>
                 </widget>
                </item>
@@ -1936,27 +1873,107 @@ FILE</string>
                   <property name="bottomMargin">
                    <number>0</number>
                   </property>
-                  <item>
-                   <widget class="ActionButton" name="actionbutton_25">
-                    <property name="icon">
-                     <iconset>
-                      <normaloff>../common/icons/z-down.png</normaloff>../common/icons/z-down.png</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>46</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="flat">
-                     <bool>true</bool>
-                    </property>
-                    <property name="actionName" stdset="0">
-                     <string>machine.jog.axis:z,neg</string>
-                    </property>
-                   </widget>
-                  </item>
                  </layout>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="ActionButton" name="actionbutton_22">
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../common/icons/x-right.png</normaloff>../common/icons/x-right.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>46</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog.axis:x,pos</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QWidget" name="widget_14" native="true">
+                 <layout class="QHBoxLayout" name="horizontalLayout_19">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>40</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                 </layout>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <spacer name="horizontalSpacer_13">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="2" column="3">
+                <widget class="ActionButton" name="actionbutton_25">
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../common/icons/z-down.png</normaloff>../common/icons/z-down.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>46</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog.axis:z,neg</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="ActionButton" name="actionbutton_24">
+                 <property name="minimumSize">
+                  <size>
+                   <width>34</width>
+                   <height>44</height>
+                  </size>
+                 </property>
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../common/icons/z-up.png</normaloff>../common/icons/z-up.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>46</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.jog.axis:z,pos</string>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -2261,7 +2278,7 @@ CUT</string>
            <number>14</number>
           </property>
           <item>
-           <widget class="MkTabWidget" name="tabWidget_3">
+           <widget class="MkTabWidget" name="tabs_ctl_run_right">
             <property name="currentIndex">
              <number>0</number>
             </property>
@@ -2975,6 +2992,9 @@ DOWN</string>
              </layout>
             </widget>
             <widget class="QWidget" name="tab_13">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
              <attribute name="title">
               <string>JOB CARD LIST</string>
              </attribute>
@@ -4435,7 +4455,7 @@ QListView::item:selected {
                     <string notr="true">font: bold 12pt;</string>
                    </property>
                    <property name="text">
-                    <string>VOID SENSE</string>
+                    <string>VOID ANTI DIVE</string>
                    </property>
                    <property name="pinBaseName" stdset="0">
                     <string>plasma-void-sense</string>
@@ -4643,12 +4663,18 @@ QListView::item:selected {
        </layout>
       </widget>
       <widget class="QWidget" name="tab_conversational">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <attribute name="title">
         <string>CONVERSATIONAL</string>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_22">
         <item>
          <widget class="MkTabWidget" name="tabwidget">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
           <property name="tabPosition">
            <enum>QTabWidget::North</enum>
           </property>
@@ -5722,9 +5748,9 @@ QListView::item:selected {
             <property name="geometry">
              <rect>
               <x>380</x>
-              <y>210</y>
+              <y>240</y>
               <width>481</width>
-              <height>491</height>
+              <height>461</height>
              </rect>
             </property>
             <property name="title">
@@ -5960,69 +5986,13 @@ QListView::item:selected {
               <x>380</x>
               <y>10</y>
               <width>481</width>
-              <height>195</height>
+              <height>221</height>
              </rect>
             </property>
             <property name="title">
              <string>LASER, CAMERA &amp;&amp; SCRIBE OFFSETS</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_31">
-             <item row="0" column="1">
-              <widget class="QLabel" name="label_86">
-               <property name="text">
-                <string>X</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QLabel" name="label_87">
-               <property name="text">
-                <string>Y</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_78">
-               <property name="text">
-                <string>LASER</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="VCPSettingsDoubleSpinBox" name="laser_offset_y">
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="decimals">
-                <number>5</number>
-               </property>
-               <property name="minimum">
-                <double>-200.000000000000000</double>
-               </property>
-               <property name="maximum">
-                <double>200.000000000000000</double>
-               </property>
-               <property name="settingName" stdset="0">
-                <string>laser_offset_y</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_89">
-               <property name="text">
-                <string>CAMERA</string>
-               </property>
-              </widget>
-             </item>
              <item row="2" column="1">
               <widget class="VCPSettingsDoubleSpinBox" name="camera_offset_x">
                <property name="alignment">
@@ -6045,32 +6015,13 @@ QListView::item:selected {
                </property>
               </widget>
              </item>
-             <item row="2" column="2">
-              <widget class="VCPSettingsDoubleSpinBox" name="camera_offset_y">
+             <item row="0" column="2">
+              <widget class="QLabel" name="label_87">
+               <property name="text">
+                <string>Y</string>
+               </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
-               </property>
-               <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::PlusMinus</enum>
-               </property>
-               <property name="decimals">
-                <number>5</number>
-               </property>
-               <property name="minimum">
-                <double>-200.000000000000000</double>
-               </property>
-               <property name="maximum">
-                <double>200.000000000000000</double>
-               </property>
-               <property name="settingName" stdset="0">
-                <string>camera_offset_y</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_88">
-               <property name="text">
-                <string>SCRIBE</string>
                </property>
               </widget>
              </item>
@@ -6096,8 +6047,8 @@ QListView::item:selected {
                </property>
               </widget>
              </item>
-             <item row="3" column="2">
-              <widget class="PlasmaHalDoubleSpinBox" name="scribe_offset_y">
+             <item row="1" column="2">
+              <widget class="VCPSettingsDoubleSpinBox" name="laser_offset_y">
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
                </property>
@@ -6114,7 +6065,14 @@ QListView::item:selected {
                 <double>200.000000000000000</double>
                </property>
                <property name="settingName" stdset="0">
-                <string>scribe_offset_y</string>
+                <string>laser_offset_y</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_88">
+               <property name="text">
+                <string>SCRIBE</string>
                </property>
               </widget>
              </item>
@@ -6137,6 +6095,128 @@ QListView::item:selected {
                </property>
                <property name="settingName" stdset="0">
                 <string>laser_offset_x</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_89">
+               <property name="text">
+                <string>CAMERA</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_78">
+               <property name="text">
+                <string>LASER</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="scribe_offset_y">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="decimals">
+                <number>5</number>
+               </property>
+               <property name="minimum">
+                <double>-200.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>200.000000000000000</double>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>scribe_offset_y</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="VCPSettingsDoubleSpinBox" name="camera_offset_y">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="decimals">
+                <number>5</number>
+               </property>
+               <property name="minimum">
+                <double>-200.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>200.000000000000000</double>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>camera_offset_y</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="label_86">
+               <property name="text">
+                <string>X</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_104">
+               <property name="text">
+                <string>OHMIC</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="PlasmaHalDoubleSpinBox" name="plasmahaldoublespinbox">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
+               <property name="decimals">
+                <number>5</number>
+               </property>
+               <property name="minimum">
+                <double>-200.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>200.000000000000000</double>
+               </property>
+               <property name="pinBaseName" stdset="0">
+                <string>ohmic-offset-x</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>ohmic_offset_x</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="2">
+              <widget class="PlasmaHalDoubleSpinBox" name="plasmahaldoublespinbox_2">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="decimals">
+                <number>5</number>
+               </property>
+               <property name="minimum">
+                <double>-200.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>200.000000000000000</double>
+               </property>
+               <property name="pinBaseName" stdset="0">
+                <string>ohmic-offset-y</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>ohmic_offset_y</string>
                </property>
               </widget>
              </item>
@@ -6630,12 +6710,11 @@ QListView::item:selected {
   <tabstop>jog_slider</tabstop>
   <tabstop>tabwidget_2</tabstop>
   <tabstop>user1</tabstop>
-  <tabstop>spin_voltage_override</tabstop>
   <tabstop>user2</tabstop>
   <tabstop>user3</tabstop>
   <tabstop>user4</tabstop>
   <tabstop>user5</tabstop>
-  <tabstop>tabWidget_3</tabstop>
+  <tabstop>tabs_ctl_run_right</tabstop>
   <tabstop>gcode_recentfile</tabstop>
   <tabstop>gcode_editor</tabstop>
   <tabstop>btn_edit</tabstop>
@@ -6666,102 +6745,6 @@ QListView::item:selected {
  </tabstops>
  <resources/>
  <connections>
-  <connection>
-   <sender>btn_vad</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>chkb_vad</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>924</x>
-     <y>337</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1812</x>
-     <y>269</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>chkb_vad</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>btn_vad</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1812</x>
-     <y>269</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>924</x>
-     <y>337</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>thc_enabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>btn_thc_enable</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1812</x>
-     <y>157</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>929</x>
-     <y>293</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_thc_enable</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>thc_enabled</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>929</x>
-     <y>293</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1812</x>
-     <y>157</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_void_sense</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>chkb_void_sense</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>773</x>
-     <y>337</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1812</x>
-     <y>323</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>chkb_void_sense</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>btn_void_sense</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1812</x>
-     <y>323</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>773</x>
-     <y>337</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>btnMdiSend</sender>
    <signal>clicked()</signal>
