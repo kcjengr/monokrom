@@ -158,6 +158,7 @@ class MainWindow(VCPMainWindow):
         self.btn_run_reload.clicked.connect(self.param_update_from_filters)
         self.filter_sub_list.itemClicked.connect(self.filter_sub_list_select)
         self.btn_seed_db.clicked.connect(self.seed_database)
+        self.btn_zero_xy.clicked.connect(self.zero_wcs_xy)
 
         # cut recovery direction
         self.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
@@ -227,6 +228,13 @@ class MainWindow(VCPMainWindow):
         default_cut_chart = INFO.ini.find('PLASMAC', 'DEFAULT_CUTCHART')
         if default_cut_chart is not None:
             self.cutchart_pin_update(default_cut_chart)
+
+    def zero_wcs_xy(self):
+        #_current_pos = float(POS.Absolute(0))
+        #_current_pos = float(POS.Absolute(1))
+        laser_x = self.laser_offset_x.value()
+        laser_y = self.laser_offset_y.value()
+        issue_mdi(f"G10L20P0X{laser_x}Y{laser_y};G0X0Y0")
 
     def cut_recovery_direction(self, direction):
         speed = self.cut_recovery_speed.value() * 0.01 * direction

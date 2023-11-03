@@ -215,23 +215,28 @@
               </item>
               <item row="1" column="5">
                <widget class="QWidget" name="widget_19" native="true">
-                <widget class="MDIButton" name="mdibutton">
-                 <property name="geometry">
-                  <rect>
-                   <x>10</x>
-                   <y>50</y>
-                   <width>71</width>
-                   <height>111</height>
-                  </rect>
+                <layout class="QVBoxLayout" name="verticalLayout_24">
+                 <property name="topMargin">
+                  <number>0</number>
                  </property>
-                 <property name="text">
-                  <string>ZERO XY
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="btn_zero_xy">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>ZERO XY
 in G5x</string>
-                 </property>
-                 <property name="MDICommand" stdset="0">
-                  <string>G10L20P0X0Y0</string>
-                 </property>
-                </widget>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>
