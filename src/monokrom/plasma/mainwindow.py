@@ -118,6 +118,7 @@ class MainWindow(VCPMainWindow):
         self.tabs_ctl_run_right.setTabVisible(2, False)
         self.tab_holes_and_slots.setTabVisible(1, False)
         # setup some default UI settings
+        self.vtkbackplot.update_active_wcs(0)
         self.vtkbackplot.setViewZ()
         self.vtkbackplot.enable_panning(True)
         self.vtkbackplot.setProgramViewWhenLoadingProgram(True, 'z')
