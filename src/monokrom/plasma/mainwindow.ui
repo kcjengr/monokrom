@@ -986,8 +986,14 @@ CHANGE</string>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_14">
@@ -1038,8 +1044,14 @@ CHANGE</string>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_6">
@@ -1098,6 +1110,12 @@ FILE</string>
             <item row="12" column="0" colspan="4">
              <widget class="QWidget" name="widget_26" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <property name="topMargin">
+                <number>4</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
+               </property>
                <item>
                 <widget class="ActionButton" name="btnManualState">
                  <property name="text">
@@ -1164,11 +1182,20 @@ FILE</string>
             <item row="0" column="0">
              <widget class="QWidget" name="widget" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_11">
+               <property name="spacing">
+                <number>6</number>
+               </property>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_13">
@@ -1229,8 +1256,14 @@ FILE</string>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_12">
@@ -1281,8 +1314,14 @@ FILE</string>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_97">
@@ -1333,8 +1372,14 @@ FILE</string>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_20">
@@ -1404,8 +1449,14 @@ FILE</string>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_16">
@@ -1456,8 +1507,14 @@ FILE</string>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_105">
@@ -1559,8 +1616,14 @@ ONLY</string>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_106">
@@ -1608,8 +1671,14 @@ ONLY</string>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_15">
@@ -1669,6 +1738,12 @@ ONLY</string>
                <item>
                 <widget class="QWidget" name="widget_5" native="true">
                  <layout class="QGridLayout" name="gridLayout_30">
+                  <property name="topMargin">
+                   <number>4</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>4</number>
+                  </property>
                   <item row="1" column="1">
                    <widget class="HalDoubleSpinBox" name="spin_voltage_override">
                     <property name="sizePolicy">
@@ -1745,22 +1820,26 @@ ONLY</string>
                  </layout>
                 </widget>
                </item>
-               <item>
-                <widget class="QWidget" name="widget_6" native="true">
-                 <layout class="QGridLayout" name="gridLayout_26"/>
-                </widget>
-               </item>
               </layout>
              </widget>
             </item>
             <item row="0" column="3">
              <widget class="QWidget" name="widget_7" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_15">
+               <property name="spacing">
+                <number>6</number>
+               </property>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_19">
@@ -1833,8 +1912,14 @@ TORCH</string>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_96">
@@ -1885,8 +1970,14 @@ TORCH</string>
                <property name="leftMargin">
                 <number>0</number>
                </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
                <property name="rightMargin">
                 <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
                </property>
                <item>
                 <widget class="QLabel" name="label_107">
@@ -3052,7 +3143,7 @@ DOWN</string>
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>106</width>
+                       <width>124</width>
                        <height>32</height>
                       </size>
                      </property>
@@ -7405,7 +7496,7 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="machine_state"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>
