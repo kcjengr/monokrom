@@ -301,7 +301,7 @@ class MainWindow(VCPMainWindow):
         try:
             # Get the cutchart record based on the pin value.
             cut = self._plasma_plugin.tool_id(value)[0]
-        except NoneType:
+        except:
             LOG.warn('No Tool / Cutchart found')
         else:
             # Cycle through all the filters and set them to the correct value
