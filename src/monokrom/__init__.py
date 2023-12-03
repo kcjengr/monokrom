@@ -97,7 +97,7 @@ def main(machine_type='plasma', opts=None):
                           vcp_version=__version__)
 
         if opts.install_sim:
-            src = os.path.join(VCP_DIR, '../linuxcnc')
+            src = os.path.join(VCP_DIR, '../../linuxcnc')
             if not os.path.isdir(src):
                 src = os.path.expanduser('~/.local/share/monokrom/linuxcnc')
 
