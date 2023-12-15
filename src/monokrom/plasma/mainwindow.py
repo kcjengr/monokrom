@@ -1,5 +1,6 @@
 import os
 import math
+import time
 
 import hal as cnchal
 import linuxcnc
@@ -26,6 +27,8 @@ INFO = Info()
 STATUS = getPlugin('status')
 STAT = STATUS.stat
 POS = getPlugin('position')
+CMD = linuxcnc.command()
+
 #GCODEPROPS = getPlugin('gcode_properties')
 
 INI = linuxcnc.ini(os.environ['INI_FILE_NAME'])
@@ -720,7 +723,11 @@ class MainWindow(VCPMainWindow):
         # Assumed that p1 will be X0Y0
     
         issue_mdi('G10 L2 P0 R0')
+        CMD.wait_complete()
+        issue_mdi('G10 L2 P0 X0 Y0')
+        CMD.wait_complete()
         set_mode.manual()
+        CMD.wait_complete()
         #xDiff = self.sheet_align_p2[0] - self.sheet_align_p1[0]
         #yDiff = self.sheet_align_p2[1] - self.sheet_align_p1[1]
         xDiff = self.sheet_align_p1[0] - self.sheet_align_p2[0]
@@ -748,9 +755,15 @@ class MainWindow(VCPMainWindow):
 
         laser_x = self.laser_offset_x.value()
         laser_y = self.laser_offset_y.value()
+        print(f'G10 L2 P0 X{self.sheet_align_p1[0]+laser_x} Y{self.sheet_align_p1[1]+laser_y}')
+        print(f'G10 L2 P0 R{zAngle}')
         issue_mdi(f'G10 L2 P0 X{self.sheet_align_p1[0]+laser_x} Y{self.sheet_align_p1[1]+laser_y}')
+        CMD.wait_complete()
         issue_mdi(f'G10 L2 P0 R{zAngle}')
+        CMD.wait_complete()
         issue_mdi('G0 X0 Y0')
+        CMD.wait_complete()
+        print('Alignment done.')
         self.sheet_align_p1 = None
         self.sheet_align_p2 = None
         self.build_status_text()

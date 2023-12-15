@@ -108,6 +108,7 @@ net plasmac:cut-time                plasmac.cut-time                    => qtpyv
 net plasmac:program-is-paused                                           => qtpyvcp.cycle-start.program-is-paused
 net plasmac:program-is-running                                          => qtpyvcp.cycle-start.program-is-running
 net plasmac:program-is-idle                                             => qtpyvcp.cycle-start.program-is-idle
+net plasmac:machine-is-homed                                            => qtpyvcp.cycle-start.enable
 
 # Feed and Current Velocity display links
 net plasmac:feed-upm                                                    => qtpyvcp.mk-feedrate.in

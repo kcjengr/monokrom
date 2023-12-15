@@ -261,7 +261,11 @@ settings:
     plasma_small_hole_detect:
         default_value: false
         persistent: true
-       
+    
+    plasma_force_straight_leadin:
+        default_value: false
+        persistent: true
+    
     plasma_small_hole_threshold:
         default_value: 3.5
         persistent: true

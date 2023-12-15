@@ -1020,7 +1020,7 @@ CHANGE</string>
            </size>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_6">
            <attribute name="title">
@@ -4170,6 +4170,39 @@ QListView::item:selected {
                    <item>
                     <widget class="QWidget" name="widget_22" native="true">
                      <layout class="QGridLayout" name="gridLayout_28">
+                      <item row="3" column="1">
+                       <widget class="QLabel" name="label_79">
+                        <property name="text">
+                         <string>Leadin Arc Radius
+0 = Auto calculate leadin.</string>
+                        </property>
+                        <property name="wordWrap">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="0">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_max_hole_size">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="decimals">
+                         <number>4</number>
+                        </property>
+                        <property name="maximum">
+                         <double>200.000000000000000</double>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-max-hole-size</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_max_hole_size</string>
+                        </property>
+                       </widget>
+                      </item>
                       <item row="1" column="0">
                        <widget class="PlasmaHalSpinBox" name="spn_hole_thickness_ratio">
                         <property name="alignment">
@@ -4183,69 +4216,6 @@ QListView::item:selected {
                         </property>
                         <property name="settingName" stdset="0">
                          <string>plasma_hole_thickness_ratio</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="4" column="0">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_small_hole_threshold">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="decimals">
-                         <number>3</number>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-small-hole-threshold</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_small_hole_threshold</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="4" column="1">
-                       <widget class="QLabel" name="label_73">
-                        <property name="text">
-                         <string>Small hole threshold</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="3" column="0">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_leadin_radius">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-leadin-radius</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_leadin_radius</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1">
-                       <widget class="QLabel" name="label_11">
-                        <property name="text">
-                         <string>Hole Size ratio relative to Material Thickness (x:1) *</string>
-                        </property>
-                        <property name="wordWrap">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="3" column="1">
-                       <widget class="QLabel" name="label_79">
-                        <property name="text">
-                         <string>Leadin Arc Radius
-0 = Auto calculate leadin.</string>
-                        </property>
-                        <property name="wordWrap">
-                         <bool>true</bool>
                         </property>
                        </widget>
                       </item>
@@ -4286,19 +4256,72 @@ QListView::item:selected {
                         </property>
                        </widget>
                       </item>
+                      <item row="3" column="0">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_leadin_radius">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-leadin-radius</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_leadin_radius</string>
+                        </property>
+                       </widget>
+                      </item>
                       <item row="0" column="1">
                        <widget class="PlasmaHalCheckBox" name="chkb_small_hole_detect">
                         <property name="styleSheet">
                          <string notr="true">font: bold 12pt;</string>
                         </property>
                         <property name="text">
-                         <string>SMALL HOLE MARKING</string>
+                         <string>SMALL HOLE
+MARKING</string>
                         </property>
                         <property name="pinBaseName" stdset="0">
                          <string>plasma-small-hole-detect</string>
                         </property>
                         <property name="settingName" stdset="0">
                          <string>plasma_small_hole_detect</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="4" column="0">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_small_hole_threshold">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="decimals">
+                         <number>3</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-small-hole-threshold</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_small_hole_threshold</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="4" column="1">
+                       <widget class="QLabel" name="label_73">
+                        <property name="text">
+                         <string>Small hole threshold</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="1">
+                       <widget class="QLabel" name="label_11">
+                        <property name="text">
+                         <string>Hole Size ratio relative to Material Thickness (x:1) *</string>
+                        </property>
+                        <property name="wordWrap">
+                         <bool>true</bool>
                         </property>
                        </widget>
                       </item>
@@ -4309,25 +4332,20 @@ QListView::item:selected {
                         </property>
                        </widget>
                       </item>
-                      <item row="2" column="0">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_max_hole_size">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
+                      <item row="0" column="2">
+                       <widget class="PlasmaHalCheckBox" name="chkb_force_straight_leadin">
+                        <property name="styleSheet">
+                         <string notr="true">font: bold 12pt;</string>
                         </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="decimals">
-                         <number>4</number>
-                        </property>
-                        <property name="maximum">
-                         <double>200.000000000000000</double>
+                        <property name="text">
+                         <string>STRAIGHT
+LEADINS</string>
                         </property>
                         <property name="pinBaseName" stdset="0">
-                         <string>plasma-max-hole-size</string>
+                         <string>plasma-force-straight-leadin</string>
                         </property>
                         <property name="settingName" stdset="0">
-                         <string>plasma_max_hole_size</string>
+                         <string>plasma_force_straight_leadin</string>
                         </property>
                        </widget>
                       </item>
@@ -5267,7 +5285,7 @@ ANTI-DIVE</string>
         <item>
          <widget class="MkTabWidget" name="tabwidget_3">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_18">
            <attribute name="title">
@@ -7571,7 +7589,7 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="machine_state"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="machine_state"/>
  </buttongroups>
 </ui>
