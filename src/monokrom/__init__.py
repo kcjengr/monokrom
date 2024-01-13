@@ -92,8 +92,8 @@ def main(machine_type='plasma', opts=None):
     if opts is None:
         from qtpyvcp.utilities.opt_parser import parse_opts
         opts = parse_opts(doc=cmd_doc,
-                          vcp_cmd='monokrome-{}'.format(machine_type),
-                          vcp_name='Monokrome {}'.format(machine_type.capitalize()),
+                          vcp_cmd='monokrom_{}'.format(machine_type),
+                          vcp_name='Monokrom {}'.format(machine_type.capitalize()),
                           vcp_version=__version__)
 
         if opts.install_sim:
