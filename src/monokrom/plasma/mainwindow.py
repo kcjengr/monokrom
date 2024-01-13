@@ -424,7 +424,7 @@ class MainWindow(VCPMainWindow):
                 
     
     def setMode(self):
-        print("main window initalise")
+        LOG.debug("main window initalise")
     
     def add_new_cut_process(self, name=None):
         if name == None:
@@ -532,7 +532,7 @@ class MainWindow(VCPMainWindow):
     def btnParams_clicked(self):
         # get mdi entry
         text = self.mdiEntry.text() or 'null'
-        print(text)
+        LOG.debug(f"MDI button clicked text: {text}")
         if text != 'null':
             # we have something to check so get the gcode words
             words = mdiText.gcode_words()
@@ -541,7 +541,7 @@ class MainWindow(VCPMainWindow):
                 self.mdiClear()
                 for index, value in enumerate(words[text], start=1):
                     # search and populate the params available for that gcode word
-                    print(value)
+                    LOG.debug(f"MDI Param search: {value}")
                     getattr(self, 'btnGcodeP' + str(index)).setText(value)
             else:
                 self.mdiClear()
@@ -554,7 +554,7 @@ class MainWindow(VCPMainWindow):
             # self.lblGcodeHelp.setText(mdiText.gcode_descriptions(text))
         else:
             self.mdiClear()
-            print('No Match')
+            LOG.debug('MDI - No Param Match')
 
 
     def mdiClear(self):
@@ -657,7 +657,7 @@ class MainWindow(VCPMainWindow):
         obj_name = sender.objectName()
         match obj_name:
             case 'btn_laser':
-                print(f'laser {checked}')
+                LOG.debug(f'laser {checked}')
                 if checked:
                     self.btn_sheet_align_pt1.setEnabled(checked)
                     set_mode.manual()
@@ -672,7 +672,7 @@ class MainWindow(VCPMainWindow):
                     self.build_status_text()
 
             case 'btn_sheet_align_pt1':
-                print('point 1')
+                LOG.debug('point 1')
                 if checked:
                     self.btn_sheet_align_pt2.setEnabled(True)
                     self.sheet_align_set_p1()
@@ -685,7 +685,7 @@ class MainWindow(VCPMainWindow):
                     self.build_status_text()
             
             case 'btn_sheet_align_pt2':
-                print('point 2')
+                LOG.debug('point 2')
                 if checked:
                     self.btn_sheet_doalign.setEnabled(True)
                     self.sheet_align_set_p2()
@@ -697,7 +697,7 @@ class MainWindow(VCPMainWindow):
 
             case 'btn_sheet_doalign':
                 # do sheet alignment
-                print('Do alignment')
+                LOG.debug('Do alignment')
                 self.sheet_align()
                 # reset UI state
                 self.btn_sheet_align_pt1.setChecked(False)
@@ -755,15 +755,15 @@ class MainWindow(VCPMainWindow):
 
         laser_x = self.laser_offset_x.value()
         laser_y = self.laser_offset_y.value()
-        print(f'G10 L2 P0 X{self.sheet_align_p1[0]+laser_x} Y{self.sheet_align_p1[1]+laser_y}')
-        print(f'G10 L2 P0 R{zAngle}')
+        LOG.debug(f'G10 L2 P0 X{self.sheet_align_p1[0]+laser_x} Y{self.sheet_align_p1[1]+laser_y}')
+        LOG.debug(f'G10 L2 P0 R{zAngle}')
         issue_mdi(f'G10 L2 P0 X{self.sheet_align_p1[0]+laser_x} Y{self.sheet_align_p1[1]+laser_y}')
         CMD.wait_complete()
         issue_mdi(f'G10 L2 P0 R{zAngle}')
         CMD.wait_complete()
         issue_mdi('G0 X0 Y0')
         CMD.wait_complete()
-        print('Alignment done.')
+        LOG.debug('Alignment done.')
         self.sheet_align_p1 = None
         self.sheet_align_p2 = None
         self.build_status_text()
