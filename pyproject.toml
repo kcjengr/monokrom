@@ -25,20 +25,20 @@ python = "^3.7"
 
 [tool.poetry.scripts]
 # monokrom = "monokrom:main"
-monokrom_plasma = "plasma:main"
-monokrom_mill = "mill:main"
+monokrom_plasma = "monokrom.plasma:main"
+monokrom_mill = "monokrom.mill:main"
 
 [tool.poetry.plugins]
 
 [tool.poetry.plugins."qtpyvcp.vcp"]
 # monokrom = "monokrom"
-monokrom_plasma = "plasma"
-monokrom_mill = "mill"
+monokrom_plasma = "monokrom.plasma"
+monokrom_mill = "monokrom.mill"
 
 [tool.poetry.plugins."qtpyvcp.widgets"]
-monokrom_common_widgets = "common.widgets"
-monokrom_plasma_widgets = "plasma.widgets"
-monokrom_mill_widgets = "mill.widgets"
+monokrom_common_widgets = "monokrom.common.widgets"
+monokrom_plasma_widgets = "monokrom.plasma.widgets"
+monokrom_mill_widgets = "monokrom.mill.widgets"
 
 
 # [tool.versioneer]
