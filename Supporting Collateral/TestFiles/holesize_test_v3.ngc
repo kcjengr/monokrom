@@ -11,7 +11,7 @@
   (Preset Volts: 49) ( Suggested Tip Size: 45 )
   ( Min Cut Length for DTHC ON : 1 units ) 
   (Preset Volts set to 49 Volts)
-  (o=0,kw=1.5, ph=3.5, pd=0, ch=1.5, fr=1700, th=0, cv=99, pe=0, jh=0, jd=0)
+  (o=0,kw=1.5, ph=3.5, pd=0, ch=1.5, fr=1700, th=0, cv=99, pe=0, jh=0, jd=0, mt=6, ca=60)
    T99999 M6
   S60 $0 (Set Spindle Speed for Torch at Amps)
   G10 L20 P0 Z0

@@ -32,6 +32,7 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
     def __init__(self, parent=None):
         super(PlasmaHalDoubleSpinBox, self).__init__(parent)
         self._setting = None
+        self._original_value = None
         self._setting_name = None
 
     @Property(str)
@@ -55,10 +56,15 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
         # fire the focusReceived signal
         self.focusReceived.emit(self)
         super(PlasmaHalDoubleSpinBox, self).focusInEvent(event)
+    
+    def resetToOriginal(self):
+        self._setting = self._original_value
+        self.setDisplayValue(self._setting)
 
     def initialize(self):
         LOG.debug("Initalizing PlasmaHalDoubleSpinBox: '{}'".format(self._setting_name))
         self._setting = SETTINGS.get(self._setting_name)
+        self._original_value = self._setting
         if self._setting is not None:
             if self._setting.max_value is not None:
                 self.setMaximum(self._setting.max_value)

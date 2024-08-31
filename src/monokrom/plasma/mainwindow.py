@@ -104,7 +104,9 @@ class MainWindow(VCPMainWindow):
         # get max x and y travel
         self.max_x = float(INI.find('AXIS_X', 'MAX_LIMIT'))
         self.max_y = float(INI.find('AXIS_Y', 'MAX_LIMIT'))
-        
+        # get min z travel
+        self.min_z = INFO.getAxisMinMax('Z')[0]
+        self.slat_top = float(INI.find('PLASMAC', 'SLAT_TOP'))
         
         if INFO.getIsMachineMetric():
             self._linear_setting = 'mm'
@@ -115,6 +117,8 @@ class MainWindow(VCPMainWindow):
         
         self._pressure_setting = INFO.ini.find('PLASMAC', 'PRESSURE')
         self._machine = INFO.ini.find('PLASMAC', 'MACHINE')
+        self._tool_number = 0
+        self._material_thickness = 0
         
         # Hide some in flight UI that is unfinished
         self.mainTabWidget.setTabVisible(2, False)
@@ -306,6 +310,11 @@ class MainWindow(VCPMainWindow):
             cnchal.set_p('plasmac.consumable-change','0')
             self.btn_cycle_start.setEnabled(True)
             
+    def adjust_probe_height(self):
+        below_slat = self.slat_top - self.min_z
+        buffer = 3
+        new_probe_height = (below_slat + self._material_thickness + buffer) * self.units_per_mm
+        self.probe_height.SetValue(new_probe_height)
 
     def cutchart_pin_update(self, value):
         LOG.debug(f"Cutchart_ID Pin = {value}")
@@ -392,8 +401,12 @@ class MainWindow(VCPMainWindow):
                 ui_fld = getattr(self, MainWindow.param_fld_map[k])
                 if isinstance(ui_fld, QLabel):
                     ui_fld.setText(str(fld_data))
+                    if k == 'tool_number':
+                        self._tool_number = int(fld_data)
                 else:
                     ui_fld.setValue(fld_data) 
+            LOG.debug(f"Thickness = {data.thickness.thickness}")
+            self._material_thickness = data.thickness.thickness
         else:
             self.grp_filter_sub_list.hide()
             # set cut params to 0
@@ -401,11 +414,14 @@ class MainWindow(VCPMainWindow):
             ui_fld.setText('NONE')
             ui_fld = getattr(self, 'param_process_id')
             ui_fld.setText('NONE')
+            self._tool_number = 0
+            self._material_thickness = 0
             for v in MainWindow.param_fld_map.values():
                 if v not in ('param_name', 'param_process_id'):
                     ui_fld = getattr(self, v)
                     ui_fld.setValue(0)
         # All fields have been set, update any slave displays
+        LOG.debug(f"Tool Number = {self._tool_number}")
         ui_fld = getattr(self, 'param_name')
         self.lbl_process_name.setText(ui_fld.text())
     
@@ -419,9 +435,13 @@ class MainWindow(VCPMainWindow):
                     ui_fld = getattr(self, MainWindow.param_fld_map[k])
                     if isinstance(ui_fld, QLabel):
                         ui_fld.setText(str(fld_data))
+                        if k == 'tool_number':
+                            self._tool_number = int(fld_data)
+                            LOG.debug(f"Tool Number = {self._tool_number}")
                     else:
                         ui_fld.setValue(fld_data) 
-                
+                LOG.debug(f"Thickness = {d.thickness.thickness}")
+                self._material_thickness = d.thickness.thickness
     
     def setMode(self):
         LOG.debug("main window initalise")
