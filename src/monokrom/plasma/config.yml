@@ -115,7 +115,7 @@ settings:
        persistent: true
     
     thc_vad_threshold:
-       default_value: 90
+       default_value: 60.0
        persistent: true
     
     thc_void_override:
@@ -123,19 +123,19 @@ settings:
        persistent: true
     
     thc_safe_height:
-       default_value: 5.0
+       default_value: 25.0
        persistent: true
     
     probe_float_travel:
-       default_value: 1.5
+       default_value: 3.2
        persistent: true
     
     probe_speed:
-       default_value: 300
+       default_value: 200
        persistent: true
     
     probe_height:
-       default_value: 25.0
+       default_value: 15.0
        persistent: true
     
     probe_offset:
@@ -151,7 +151,7 @@ settings:
        persistent: true
     
     probe_setup_speed:
-       default_value: 2000
+       default_value: 3000
        persistent: true
     
     arc_fail_timeout:
@@ -167,11 +167,11 @@ settings:
        persistent: true
     
     arc_voltage_scale:
-       default_value: 1.000000
+       default_value: 0.006744
        persistent: true
     
     arc_voltage_offset:
-       default_value: 0.000
+       default_value: 3687.5
        persistent: true
     
     arc_height_per_volt:
@@ -179,11 +179,11 @@ settings:
        persistent: true
     
     arc_ok_high_volts:
-       default_value: 99999.0
+       default_value: 250.0
        persistent: true
     
     arc_ok_low_volts:
-       default_value: 60
+       default_value: 60.0
        persistent: true
     
     scribe_arm_delay:
@@ -195,11 +195,11 @@ settings:
        persistent: true
     
     spot_threshold:
-       default_value: 10
+       default_value: 0.1
        persistent: true
     
     spot_delay:
-       default_value: 0.0
+       default_value: 600.0
        persistent: true
     
     run_save_confirm:
