@@ -349,3 +349,7 @@ settings:
     consumable_offset_y:
         default_value: 0.0
         persistent: true
+
+    probe_test_time:
+        default_value: 10
+        persistent: true

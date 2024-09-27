@@ -5,7 +5,7 @@ import time
 import hal as cnchal
 import linuxcnc
 ### Supports the @Slot decorator to solve property type issues.
-from qtpy.QtCore import Qt, QItemSelectionModel, Slot
+from qtpy.QtCore import Qt, QItemSelectionModel, Slot, QTimer
 from qtpy.QtWidgets import QLabel, QListWidgetItem, QAbstractButton
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.plugins import getPlugin
@@ -120,6 +120,11 @@ class MainWindow(VCPMainWindow):
         self._tool_number = 0
         self._material_thickness = 0
         
+        # probe timer and state
+        self.probe_timer = QTimer()
+        #self.probe_timer.setSingleShot(True)
+        self.probe_timer.timeout.connect(self.probe_timeout)
+        
         # Hide some in flight UI that is unfinished
         self.mainTabWidget.setTabVisible(2, False)
         self.tabs_ctl_run_right.setTabVisible(2, False)
@@ -167,6 +172,7 @@ class MainWindow(VCPMainWindow):
         self.filter_sub_list.itemClicked.connect(self.filter_sub_list_select)
         self.btn_seed_db.clicked.connect(self.seed_database)
         self.btn_zero_xy.clicked.connect(self.zero_wcs_xy)
+        self.btn_probe_test.toggled.connect(self.probe_test)
 
         # cut recovery direction
         self.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
@@ -235,6 +241,10 @@ class MainWindow(VCPMainWindow):
         comp = hal.getComponent()
         self.hal_cutchart_id = comp.addPin('cutchart-id', 'u32', 'in')
         comp.addListener('cutchart-id', self.cutchart_pin_update)
+        
+        # create probe test error pin to watch
+        self.hal_probe_test_error = comp.addPin('probe-test-error', 'bit', 'in')
+        comp.addListener('probe-test-error', self.probe_test_error)
         
         # setup default cut chart load.
         default_cut_chart = INFO.ini.find('PLASMAC', 'DEFAULT_CUTCHART')
@@ -315,6 +325,22 @@ class MainWindow(VCPMainWindow):
         buffer = 3
         new_probe_height = (below_slat + self._material_thickness + buffer) * self.units_per_mm
         self.probe_height.SetValue(new_probe_height)
+
+    def probe_test_error(self, value):
+        #self.probe_timer.stop()
+        cnchal.set_p('plasmac.probe-test','0')
+    
+    def probe_timeout(self):
+        print(f'probe time out')
+
+    def probe_test(self, state):
+        print(f'probe test state: {state}')
+        if state:
+            #self.probe_timer.start(1000)
+            cnchal.set_p('plasmac.probe-test','1')
+        else:
+            #self.probe_timer.stop()
+            cnchal.set_p('plasmac.probe-test','0')
 
     def cutchart_pin_update(self, value):
         LOG.debug(f"Cutchart_ID Pin = {value}")

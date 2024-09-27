@@ -5894,7 +5894,7 @@ ANTI-DIVE</string>
                <item row="3" column="3">
                 <widget class="QLabel" name="label_93">
                  <property name="text">
-                  <string>THC FEED RATE</string>
+                  <string>MAX THC FEED RATE</string>
                  </property>
                 </widget>
                </item>
@@ -6089,64 +6089,10 @@ ANTI-DIVE</string>
                <property name="verticalSpacing">
                 <number>12</number>
                </property>
-               <item row="6" column="3">
-                <widget class="QLabel" name="label_44">
-                 <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;SETUP SPEED (units per min)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="8" column="0">
-                <widget class="QLabel" name="label_41">
-                 <property name="text">
-                  <string>PROBE OFFSET</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="3">
-                <widget class="QLabel" name="label_42">
-                 <property name="text">
-                  <string>OHMIC RETRIES</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="0">
-                <widget class="QLabel" name="label_39">
-                 <property name="text">
-                  <string>PROBE SPEED</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="2">
-                <widget class="PlasmaHalSpinBox" name="probe_speed">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="maximum">
-                  <number>10000</number>
-                 </property>
-                 <property name="value">
-                  <number>0</number>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_speed</string>
-                 </property>
-                </widget>
-               </item>
                <item row="4" column="0">
                 <widget class="QLabel" name="label_38">
                  <property name="text">
                   <string>FLOAT TRAVEL</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="0">
-                <widget class="QLabel" name="label_40">
-                 <property name="text">
-                  <string>PROBE HEIGHT</string>
                  </property>
                 </widget>
                </item>
@@ -6163,28 +6109,6 @@ ANTI-DIVE</string>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>probe_height</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="8" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="probe_offset">
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="decimals">
-                  <number>3</number>
-                 </property>
-                 <property name="minimum">
-                  <double>-400.000000000000000</double>
-                 </property>
-                 <property name="maximum">
-                  <double>400.000000000000000</double>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>probe_offset</string>
                  </property>
                 </widget>
                </item>
@@ -6211,6 +6135,20 @@ ANTI-DIVE</string>
                  </property>
                 </widget>
                </item>
+               <item row="6" column="3">
+                <widget class="QLabel" name="label_44">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;SETUP SPEED (units per min)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="label_40">
+                 <property name="text">
+                  <string>PROBE HEIGHT</string>
+                 </property>
+                </widget>
+               </item>
                <item row="4" column="4">
                 <widget class="PlasmaHalSpinBox" name="probe_ohmic_retries">
                  <property name="alignment">
@@ -6221,6 +6159,20 @@ ANTI-DIVE</string>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>probe_ohmic_retries</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="0">
+                <widget class="QLabel" name="label_41">
+                 <property name="text">
+                  <string>OHMIC PROBE OFFSET</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="3">
+                <widget class="QLabel" name="label_42">
+                 <property name="text">
+                  <string>OHMIC RETRIES</string>
                  </property>
                 </widget>
                </item>
@@ -6243,6 +6195,54 @@ ANTI-DIVE</string>
                  </property>
                 </widget>
                </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_39">
+                 <property name="text">
+                  <string>PROBE SPEED</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="2">
+                <widget class="PlasmaHalDoubleSpinBox" name="probe_offset">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
+                 <property name="minimum">
+                  <double>-400.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>400.000000000000000</double>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_offset</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="2">
+                <widget class="PlasmaHalSpinBox" name="probe_speed">
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                 </property>
+                 <property name="maximum">
+                  <number>10000</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>probe_speed</string>
+                 </property>
+                </widget>
+               </item>
                <item row="6" column="4">
                 <widget class="PlasmaHalDoubleSpinBox" name="probe_setup_speed">
                  <property name="alignment">
@@ -6259,6 +6259,16 @@ ANTI-DIVE</string>
                  </property>
                  <property name="settingName" stdset="0">
                   <string>probe_setup_speed</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="4">
+                <widget class="MkPushButton" name="btn_probe_test">
+                 <property name="text">
+                  <string>PROBE TEST</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
@@ -7264,22 +7274,22 @@ ANTI-DIVE</string>
   <customwidget>
    <class>CycleStartActionButton</class>
    <extends>QPushButton</extends>
-   <header>monokrom.plasma.widgets.cyclestart_action_button</header>
+   <header>widgets.cyclestart_action_button</header>
   </customwidget>
   <customwidget>
    <class>PlasmaHalCheckBox</class>
    <extends>HalCheckBox</extends>
-   <header>monokrom.plasma.widgets.plasma_hal_checkbox</header>
+   <header>widgets.plasma_hal_checkbox</header>
   </customwidget>
   <customwidget>
    <class>PlasmaHalDoubleSpinBox</class>
    <extends>HalDoubleSpinBox</extends>
-   <header>monokrom.plasma.widgets.plasma_hal_double_spinbox</header>
+   <header>widgets.plasma_hal_double_spinbox</header>
   </customwidget>
   <customwidget>
    <class>PlasmaHalSpinBox</class>
    <extends>HalQSpinBox</extends>
-   <header>monokrom.plasma.widgets.plasma_hal_spinbox</header>
+   <header>widgets.plasma_hal_spinbox</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -7801,7 +7811,7 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="machine_state"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>
