@@ -337,9 +337,12 @@ class MainWindow(VCPMainWindow):
         print(f'probe test state: {state}')
         if state:
             #self.probe_timer.start(1000)
+            # stop user from starting a program
+            self.btn_cycle_start.setEnabled(False)
             cnchal.set_p('plasmac.probe-test','1')
         else:
             #self.probe_timer.stop()
+            self.btn_cycle_start.setEnabled(True)
             cnchal.set_p('plasmac.probe-test','0')
 
     def cutchart_pin_update(self, value):
