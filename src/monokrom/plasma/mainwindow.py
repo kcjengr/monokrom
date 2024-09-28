@@ -689,7 +689,8 @@ class MainWindow(VCPMainWindow):
             f"G53 G1 Y{y_current + y_laser_offset + y_length};"
             f"G53 G1 X{x_current + x_laser_offset + x_length};"
             f"G53 G1 Y{y_current + y_laser_offset};"
-            f"G53 G1 X{x_current + x_laser_offset}"
+            f"G53 G1 X{x_current + x_laser_offset};"
+            f"G53 G1 X{x_current}Y{y_current}"
         )
         issue_mdi(move_cmd)
         
