@@ -47,6 +47,7 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
     def setDisplayValue(self, value):
         self.blockSignals(True)
         self.setValue(value)
+        self._value_pin.value = value
         self.blockSignals(False)
 
     def editingEnded(self):
