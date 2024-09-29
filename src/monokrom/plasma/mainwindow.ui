@@ -2100,9 +2100,6 @@ TORCH</string>
                        <height>40</height>
                       </size>
                      </property>
-                     <property name="shortcut">
-                      <string>Down</string>
-                     </property>
                      <property name="flat">
                       <bool>true</bool>
                      </property>
@@ -2123,9 +2120,6 @@ TORCH</string>
                        <height>40</height>
                       </size>
                      </property>
-                     <property name="shortcut">
-                      <string>Left</string>
-                     </property>
                      <property name="flat">
                       <bool>true</bool>
                      </property>
@@ -2145,9 +2139,6 @@ TORCH</string>
                        <width>46</width>
                        <height>40</height>
                       </size>
-                     </property>
-                     <property name="shortcut">
-                      <string>Up</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -2189,9 +2180,6 @@ TORCH</string>
                        <width>46</width>
                        <height>40</height>
                       </size>
-                     </property>
-                     <property name="shortcut">
-                      <string>Right</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -2247,9 +2235,6 @@ TORCH</string>
                        <height>40</height>
                       </size>
                      </property>
-                     <property name="shortcut">
-                      <string>PgDown</string>
-                     </property>
                      <property name="flat">
                       <bool>true</bool>
                      </property>
@@ -2275,9 +2260,6 @@ TORCH</string>
                        <width>46</width>
                        <height>40</height>
                       </size>
-                     </property>
-                     <property name="shortcut">
-                      <string>PgUp</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -7848,9 +7830,9 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="machine_state"/>
   <buttongroup name="jog_type"/>
   <buttongroup name="jog_inc_values"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>
