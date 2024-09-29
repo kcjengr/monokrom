@@ -2100,6 +2100,9 @@ TORCH</string>
                        <height>40</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Down</string>
+                     </property>
                      <property name="flat">
                       <bool>true</bool>
                      </property>
@@ -2120,6 +2123,9 @@ TORCH</string>
                        <height>40</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Left</string>
+                     </property>
                      <property name="flat">
                       <bool>true</bool>
                      </property>
@@ -2139,6 +2145,9 @@ TORCH</string>
                        <width>46</width>
                        <height>40</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Up</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -2180,6 +2189,9 @@ TORCH</string>
                        <width>46</width>
                        <height>40</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Right</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -2235,6 +2247,9 @@ TORCH</string>
                        <height>40</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>PgDown</string>
+                     </property>
                      <property name="flat">
                       <bool>true</bool>
                      </property>
@@ -2260,6 +2275,9 @@ TORCH</string>
                        <width>46</width>
                        <height>40</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>PgUp</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -2610,38 +2628,11 @@ TORCH</string>
                <string>SHEET ALIGNMENT</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_24">
-               <item row="0" column="0">
-                <widget class="HalButton" name="btn_laser">
-                 <property name="text">
-                  <string>LASER</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>laser</string>
-                 </property>
-                </widget>
-               </item>
                <item row="0" column="1">
                 <widget class="QLabel" name="lbl_align_data">
                  <property name="text">
                   <string>REF1:...
 REF2:..</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QPushButton" name="btn_sheet_align_pt1">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                 <property name="text">
-                  <string>REF POINT 1
-EDGE 1</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
@@ -2666,6 +2657,33 @@ EDGE 1</string>
                  </property>
                  <property name="text">
                   <string>SHEET ALIGNMENT</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="HalButton" name="btn_laser">
+                 <property name="text">
+                  <string>LASER</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>laser</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QPushButton" name="btn_sheet_align_pt1">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>REF POINT 1
+EDGE 1</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
