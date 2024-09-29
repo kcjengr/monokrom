@@ -34,6 +34,7 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
         self._setting = None
         self._original_value = None
         self._setting_name = None
+        self._value_pin = None
 
     @Property(str)
     def settingName(self):
@@ -47,8 +48,11 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
     def setDisplayValue(self, value):
         self.blockSignals(True)
         self.setValue(value)
-        self._value_pin.value = value
         self.blockSignals(False)
+
+    def forceUpdatePinValue(self):
+        if self._value_pin is not None:
+            self._value_pin.value = self.value()
 
     def editingEnded(self):
         self._setting.setValue(self.value())

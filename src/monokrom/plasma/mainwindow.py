@@ -17,7 +17,7 @@ from qtpyvcp.actions.machine_actions import mode as set_mode
 ### mdi GCODE text created by JT from linuxcnc
 import mdi_text as mdiText
 
-# import pydevd;pydevd.settrace()
+#import pydevd;pydevd.settrace()
 
 
 # Setup logging
@@ -425,6 +425,9 @@ class MainWindow(VCPMainWindow):
                 self.grp_filter_sub_list.hide()
 
             data = data[select_row]
+            # Update the actual param fields.
+            # Is called through gcode parsing change to cut ID or via
+            # human interaction with the UI
             for k in MainWindow.param_fld_map:
                 fld_data = getattr(data, k)
                 ui_fld = getattr(self, MainWindow.param_fld_map[k])
@@ -433,7 +436,10 @@ class MainWindow(VCPMainWindow):
                     if k == 'tool_number':
                         self._tool_number = int(fld_data)
                 else:
-                    ui_fld.setValue(fld_data) 
+                    ui_fld.setValue(fld_data)
+                    # due to events not seeming to trigger we need to force an update
+                    if hasattr(ui_fld, "forceUpdatePinValue"):
+                        ui_fld.forceUpdatePinValue()
             LOG.debug(f"Thickness = {data.thickness.thickness}")
             self._material_thickness = data.thickness.thickness
         else:

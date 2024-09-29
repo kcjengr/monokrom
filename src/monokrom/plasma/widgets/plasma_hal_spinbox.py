@@ -31,6 +31,7 @@ class PlasmaHalSpinBox(HalQSpinBox):
         super(PlasmaHalSpinBox, self).__init__(parent)
         self._setting = None
         self._setting_name = None
+        self._value_pin = None
 
     @Property(str)
     def settingName(self):
@@ -43,8 +44,11 @@ class PlasmaHalSpinBox(HalQSpinBox):
     def setDisplayValue(self, value):
         self.blockSignals(True)
         self.setValue(value)
-        self._value_pin.value = value
         self.blockSignals(False)
+
+    def forceUpdatePinValue(self):
+        if self._value_pin is not None:
+            self._value_pin.value = self.value()
 
     def initialize(self):
         LOG.debug("Initalizing PlasmaHalSpinBox: '{}'".format(self._setting_name))
