@@ -334,7 +334,7 @@ class MainWindow(VCPMainWindow):
         print(f'probe time out')
 
     def probe_test(self, state):
-        print(f'probe test state: {state}')
+        LOG.debug(f'probe test state: {state}')
         if state:
             #self.probe_timer.start(1000)
             # stop user from starting a program
@@ -786,8 +786,8 @@ class MainWindow(VCPMainWindow):
         CMD.wait_complete()
         #xDiff = self.sheet_align_p2[0] - self.sheet_align_p1[0]
         #yDiff = self.sheet_align_p2[1] - self.sheet_align_p1[1]
-        xDiff = self.sheet_align_p1[0] - self.sheet_align_p2[0]
-        yDiff = self.sheet_align_p1[1] - self.sheet_align_p2[1]
+        xDiff = self.sheet_align_p2[0] - self.sheet_align_p1[0]
+        yDiff = self.sheet_align_p2[1]- self.sheet_align_p1[1]
         if xDiff and yDiff:
             zAngle = math.degrees(math.atan(yDiff / xDiff))
             if xDiff > 0:
@@ -811,9 +811,9 @@ class MainWindow(VCPMainWindow):
 
         laser_x = self.laser_offset_x.value()
         laser_y = self.laser_offset_y.value()
-        LOG.debug(f'G10 L2 P0 X{self.sheet_align_p1[0]+laser_x} Y{self.sheet_align_p1[1]+laser_y}')
+        LOG.debug(f'G10 L2 P0 X{self.sheet_align_p1[0]-laser_x} Y{self.sheet_align_p1[1]-laser_y}')
         LOG.debug(f'G10 L2 P0 R{zAngle}')
-        issue_mdi(f'G10 L2 P0 X{self.sheet_align_p1[0]+laser_x} Y{self.sheet_align_p1[1]+laser_y}')
+        issue_mdi(f'G10 L2 P0 X{self.sheet_align_p1[0]-laser_x} Y{self.sheet_align_p1[1]-laser_y}')
         CMD.wait_complete()
         issue_mdi(f'G10 L2 P0 R{zAngle}')
         CMD.wait_complete()
