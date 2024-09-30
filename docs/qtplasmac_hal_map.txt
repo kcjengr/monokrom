@@ -1,0 +1,2174 @@
+Loaded HAL Components:
+ID      Type  Name                                            PID   State
+   251  User  halcmd33848                                     33848 ready
+   241  User  qtplasmac_sim                                   33757 ready
+   237  User  sim-torch                                       33756 ready
+    65  User  qtplasmac                                       33579 ready
+    63  User  inihal                                          33576 ready
+    54  RT    not                                                   ready
+    51  RT    or2                                                   ready
+    48  RT    dbounce                                               ready
+    45  RT    sim_home_switch                                       ready
+    42  RT    ddt                                                   ready
+    39  RT    mux2                                                  ready
+    36  RT    pid                                                   ready
+    33  RT    plasmac                                               ready
+    30  RT    __servo-thread                                        ready
+    29  RT    motmod                                                ready
+    26  RT    trivkins                                              ready
+    21  RT    homemod                                               ready
+    16  RT    tpmod                                                 ready
+    10  User  halui                                           33547 ready
+     4  User  iocontrol                                       33539 ready
+
+Component Pins:
+Owner   Type  Dir         Value  Name
+    29  float OUT             0  axis.a.eoffset
+    29  bit   IN          FALSE  axis.a.eoffset-clear
+    29  s32   IN              0  axis.a.eoffset-counts
+    29  bit   IN          FALSE  axis.a.eoffset-enable
+    29  float OUT             0  axis.a.eoffset-request
+    29  float IN              0  axis.a.eoffset-scale
+    29  float IN              1  axis.a.jog-accel-fraction
+    29  s32   IN              0  axis.a.jog-counts
+    29  bit   IN          FALSE  axis.a.jog-enable
+    29  float IN              0  axis.a.jog-scale
+    29  bit   IN          FALSE  axis.a.jog-vel-mode
+    29  bit   OUT         FALSE  axis.a.kb-jog-active
+    29  float OUT             0  axis.a.pos-cmd
+    29  float OUT             0  axis.a.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.a.teleop-tp-enable
+    29  float OUT             0  axis.a.teleop-vel-cmd
+    29  float OUT             0  axis.a.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.a.wheel-jog-active
+    29  float OUT             0  axis.b.eoffset
+    29  bit   IN          FALSE  axis.b.eoffset-clear
+    29  s32   IN              0  axis.b.eoffset-counts
+    29  bit   IN          FALSE  axis.b.eoffset-enable
+    29  float OUT             0  axis.b.eoffset-request
+    29  float IN              0  axis.b.eoffset-scale
+    29  float IN              1  axis.b.jog-accel-fraction
+    29  s32   IN              0  axis.b.jog-counts
+    29  bit   IN          FALSE  axis.b.jog-enable
+    29  float IN              0  axis.b.jog-scale
+    29  bit   IN          FALSE  axis.b.jog-vel-mode
+    29  bit   OUT         FALSE  axis.b.kb-jog-active
+    29  float OUT             0  axis.b.pos-cmd
+    29  float OUT             0  axis.b.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.b.teleop-tp-enable
+    29  float OUT             0  axis.b.teleop-vel-cmd
+    29  float OUT             0  axis.b.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.b.wheel-jog-active
+    29  float OUT             0  axis.c.eoffset
+    29  bit   IN          FALSE  axis.c.eoffset-clear
+    29  s32   IN              0  axis.c.eoffset-counts
+    29  bit   IN          FALSE  axis.c.eoffset-enable
+    29  float OUT             0  axis.c.eoffset-request
+    29  float IN              0  axis.c.eoffset-scale
+    29  float IN              1  axis.c.jog-accel-fraction
+    29  s32   IN              0  axis.c.jog-counts
+    29  bit   IN          FALSE  axis.c.jog-enable
+    29  float IN              0  axis.c.jog-scale
+    29  bit   IN          FALSE  axis.c.jog-vel-mode
+    29  bit   OUT         FALSE  axis.c.kb-jog-active
+    29  float OUT             0  axis.c.pos-cmd
+    29  float OUT             0  axis.c.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.c.teleop-tp-enable
+    29  float OUT             0  axis.c.teleop-vel-cmd
+    29  float OUT             0  axis.c.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.c.wheel-jog-active
+    29  float OUT             0  axis.u.eoffset
+    29  bit   IN          FALSE  axis.u.eoffset-clear
+    29  s32   IN              0  axis.u.eoffset-counts
+    29  bit   IN          FALSE  axis.u.eoffset-enable
+    29  float OUT             0  axis.u.eoffset-request
+    29  float IN              0  axis.u.eoffset-scale
+    29  float IN              1  axis.u.jog-accel-fraction
+    29  s32   IN              0  axis.u.jog-counts
+    29  bit   IN          FALSE  axis.u.jog-enable
+    29  float IN              0  axis.u.jog-scale
+    29  bit   IN          FALSE  axis.u.jog-vel-mode
+    29  bit   OUT         FALSE  axis.u.kb-jog-active
+    29  float OUT             0  axis.u.pos-cmd
+    29  float OUT             0  axis.u.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.u.teleop-tp-enable
+    29  float OUT             0  axis.u.teleop-vel-cmd
+    29  float OUT             0  axis.u.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.u.wheel-jog-active
+    29  float OUT             0  axis.v.eoffset
+    29  bit   IN          FALSE  axis.v.eoffset-clear
+    29  s32   IN              0  axis.v.eoffset-counts
+    29  bit   IN          FALSE  axis.v.eoffset-enable
+    29  float OUT             0  axis.v.eoffset-request
+    29  float IN              0  axis.v.eoffset-scale
+    29  float IN              1  axis.v.jog-accel-fraction
+    29  s32   IN              0  axis.v.jog-counts
+    29  bit   IN          FALSE  axis.v.jog-enable
+    29  float IN              0  axis.v.jog-scale
+    29  bit   IN          FALSE  axis.v.jog-vel-mode
+    29  bit   OUT         FALSE  axis.v.kb-jog-active
+    29  float OUT             0  axis.v.pos-cmd
+    29  float OUT             0  axis.v.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.v.teleop-tp-enable
+    29  float OUT             0  axis.v.teleop-vel-cmd
+    29  float OUT             0  axis.v.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.v.wheel-jog-active
+    29  float OUT             0  axis.w.eoffset
+    29  bit   IN          FALSE  axis.w.eoffset-clear
+    29  s32   IN              0  axis.w.eoffset-counts
+    29  bit   IN          FALSE  axis.w.eoffset-enable
+    29  float OUT             0  axis.w.eoffset-request
+    29  float IN              0  axis.w.eoffset-scale
+    29  float IN              1  axis.w.jog-accel-fraction
+    29  s32   IN              0  axis.w.jog-counts
+    29  bit   IN          FALSE  axis.w.jog-enable
+    29  float IN              0  axis.w.jog-scale
+    29  bit   IN          FALSE  axis.w.jog-vel-mode
+    29  bit   OUT         FALSE  axis.w.kb-jog-active
+    29  float OUT             0  axis.w.pos-cmd
+    29  float OUT             0  axis.w.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.w.teleop-tp-enable
+    29  float OUT             0  axis.w.teleop-vel-cmd
+    29  float OUT             0  axis.w.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.w.wheel-jog-active
+    29  float OUT             0  axis.x.eoffset ==> plasmac:x-offset-current
+    29  bit   IN          FALSE  axis.x.eoffset-clear
+    29  s32   IN              0  axis.x.eoffset-counts <== plasmac:x-offset-counts
+    29  bit   IN          FALSE  axis.x.eoffset-enable <== plasmac:xy-offset-enable
+    29  float OUT             0  axis.x.eoffset-request
+    29  float IN          1e-05  axis.x.eoffset-scale <== plasmac:offset-scale
+    29  float IN              1  axis.x.jog-accel-fraction
+    29  s32   IN              0  axis.x.jog-counts
+    29  bit   IN          FALSE  axis.x.jog-enable
+    29  float IN              0  axis.x.jog-scale
+    29  bit   IN          FALSE  axis.x.jog-vel-mode
+    29  bit   OUT         FALSE  axis.x.kb-jog-active
+    29  float OUT             0  axis.x.pos-cmd ==> plasmac:axis-x-position
+    29  float OUT             0  axis.x.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.x.teleop-tp-enable
+    29  float OUT             0  axis.x.teleop-vel-cmd
+    29  float OUT             0  axis.x.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.x.wheel-jog-active
+    29  float OUT             0  axis.y.eoffset ==> plasmac:y-offset-current
+    29  bit   IN          FALSE  axis.y.eoffset-clear
+    29  s32   IN              0  axis.y.eoffset-counts <== plasmac:y-offset-counts
+    29  bit   IN          FALSE  axis.y.eoffset-enable <== plasmac:xy-offset-enable
+    29  float OUT             0  axis.y.eoffset-request
+    29  float IN          1e-05  axis.y.eoffset-scale <== plasmac:offset-scale
+    29  float IN              1  axis.y.jog-accel-fraction
+    29  s32   IN              0  axis.y.jog-counts
+    29  bit   IN          FALSE  axis.y.jog-enable
+    29  float IN              0  axis.y.jog-scale
+    29  bit   IN          FALSE  axis.y.jog-vel-mode
+    29  bit   OUT         FALSE  axis.y.kb-jog-active
+    29  float OUT             0  axis.y.pos-cmd ==> plasmac:axis-y-position
+    29  float OUT             0  axis.y.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.y.teleop-tp-enable
+    29  float OUT             0  axis.y.teleop-vel-cmd
+    29  float OUT             0  axis.y.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.y.wheel-jog-active
+    29  float OUT             0  axis.z.eoffset ==> plasmac:z-offset-current
+    29  bit   IN          FALSE  axis.z.eoffset-clear
+    29  s32   IN              0  axis.z.eoffset-counts <== plasmac:z-offset-counts
+    29  bit   IN          FALSE  axis.z.eoffset-enable <== plasmac:z-offset-enable
+    29  float OUT             0  axis.z.eoffset-request
+    29  float IN          1e-05  axis.z.eoffset-scale <== plasmac:offset-scale
+    29  float IN              1  axis.z.jog-accel-fraction
+    29  s32   IN              0  axis.z.jog-counts
+    29  bit   IN          FALSE  axis.z.jog-enable
+    29  float IN              0  axis.z.jog-scale
+    29  bit   IN          FALSE  axis.z.jog-vel-mode
+    29  bit   OUT         FALSE  axis.z.kb-jog-active
+    29  float OUT            95  axis.z.pos-cmd
+    29  float OUT            95  axis.z.teleop-pos-cmd
+    29  bit   OUT         FALSE  axis.z.teleop-tp-enable
+    29  float OUT             0  axis.z.teleop-vel-cmd
+    29  float OUT             0  axis.z.teleop-vel-lim
+    29  bit   OUT         FALSE  axis.z.wheel-jog-active
+    48  u32   IN     0x00000005  db_arc-ok.delay
+    48  bit   IN          FALSE  db_arc-ok.in <== sim:arc-ok
+    48  bit   OUT         FALSE  db_arc-ok.out ==> plasmac:arc-ok
+    48  s32   OUT            30  db_arc-ok.time
+    48  u32   IN     0x00000005  db_breakaway.delay
+    48  bit   IN          FALSE  db_breakaway.in <== sim:breakaway
+    48  bit   OUT         FALSE  db_breakaway.out ==> plasmac:breakaway-switch-out
+    48  s32   OUT           270  db_breakaway.time
+    48  u32   IN     0x00000005  db_float.delay
+    48  bit   IN          FALSE  db_float.in <== sim:float
+    48  bit   OUT         FALSE  db_float.out ==> plasmac:float-switch-out
+    48  s32   OUT           780  db_float.time
+    48  u32   IN     0x00000005  db_ohmic.delay
+    48  bit   IN          FALSE  db_ohmic.in <== sim:ohmic
+    48  bit   OUT         FALSE  db_ohmic.out ==> plasmac:ohmic-probe-out
+    48  s32   OUT            60  db_ohmic.time
+    54  bit   IN          FALSE  estop_not.in <== sim:estop-raw
+    54  bit   OUT          TRUE  estop_not.out ==> sim:estop-out
+    54  s32   OUT           210  estop_not.time
+    54  bit   IN          FALSE  estop_not_1.in
+    54  bit   OUT          TRUE  estop_not_1.out
+    54  s32   OUT           270  estop_not_1.time
+    51  bit   IN          FALSE  estop_or.in0
+    51  bit   IN          FALSE  estop_or.in1
+    51  bit   OUT         FALSE  estop_or.out ==> sim:estop-raw
+    51  s32   OUT           480  estop_or.time
+    10  bit   IN          FALSE  halui.abort
+    10  float IN              0  halui.axis.a.analog
+    10  float IN              0  halui.axis.a.increment
+    10  bit   IN          FALSE  halui.axis.a.increment-minus
+    10  bit   IN          FALSE  halui.axis.a.increment-plus
+    10  bit   IN          FALSE  halui.axis.a.minus
+    10  bit   IN          FALSE  halui.axis.a.plus
+    10  bit   IN          FALSE  halui.axis.a.select
+    10  float IN              0  halui.axis.b.analog
+    10  float IN              0  halui.axis.b.increment
+    10  bit   IN          FALSE  halui.axis.b.increment-minus
+    10  bit   IN          FALSE  halui.axis.b.increment-plus
+    10  bit   IN          FALSE  halui.axis.b.minus
+    10  bit   IN          FALSE  halui.axis.b.plus
+    10  bit   IN          FALSE  halui.axis.b.select
+    10  float IN              0  halui.axis.c.analog
+    10  float IN              0  halui.axis.c.increment
+    10  bit   IN          FALSE  halui.axis.c.increment-minus
+    10  bit   IN          FALSE  halui.axis.c.increment-plus
+    10  bit   IN          FALSE  halui.axis.c.minus
+    10  bit   IN          FALSE  halui.axis.c.plus
+    10  bit   IN          FALSE  halui.axis.c.select
+    10  float IN            0.2  halui.axis.jog-deadband
+    10  float IN              0  halui.axis.jog-speed
+    10  u32   OUT    0x00000000  halui.axis.selected
+    10  float IN              0  halui.axis.selected.increment
+    10  bit   IN          FALSE  halui.axis.selected.increment-minus
+    10  bit   IN          FALSE  halui.axis.selected.increment-plus
+    10  bit   IN          FALSE  halui.axis.selected.minus
+    10  bit   IN          FALSE  halui.axis.selected.plus
+    10  float IN              0  halui.axis.u.analog
+    10  float IN              0  halui.axis.u.increment
+    10  bit   IN          FALSE  halui.axis.u.increment-minus
+    10  bit   IN          FALSE  halui.axis.u.increment-plus
+    10  bit   IN          FALSE  halui.axis.u.minus
+    10  bit   IN          FALSE  halui.axis.u.plus
+    10  bit   IN          FALSE  halui.axis.u.select
+    10  float IN              0  halui.axis.v.analog
+    10  float IN              0  halui.axis.v.increment
+    10  bit   IN          FALSE  halui.axis.v.increment-minus
+    10  bit   IN          FALSE  halui.axis.v.increment-plus
+    10  bit   IN          FALSE  halui.axis.v.minus
+    10  bit   IN          FALSE  halui.axis.v.plus
+    10  bit   IN          FALSE  halui.axis.v.select
+    10  float IN              0  halui.axis.w.analog
+    10  float IN              0  halui.axis.w.increment
+    10  bit   IN          FALSE  halui.axis.w.increment-minus
+    10  bit   IN          FALSE  halui.axis.w.increment-plus
+    10  bit   IN          FALSE  halui.axis.w.minus
+    10  bit   IN          FALSE  halui.axis.w.plus
+    10  bit   IN          FALSE  halui.axis.w.select
+    10  float IN              0  halui.axis.x.analog
+    10  float IN              0  halui.axis.x.increment
+    10  bit   IN          FALSE  halui.axis.x.increment-minus
+    10  bit   IN          FALSE  halui.axis.x.increment-plus
+    10  bit   OUT          TRUE  halui.axis.x.is-selected
+    10  bit   IN          FALSE  halui.axis.x.minus
+    10  bit   IN          FALSE  halui.axis.x.plus
+    10  float OUT             0  halui.axis.x.pos-commanded
+    10  float OUT             0  halui.axis.x.pos-feedback
+    10  float OUT             0  halui.axis.x.pos-relative
+    10  bit   IN          FALSE  halui.axis.x.select
+    10  float IN              0  halui.axis.y.analog
+    10  float IN              0  halui.axis.y.increment
+    10  bit   IN          FALSE  halui.axis.y.increment-minus
+    10  bit   IN          FALSE  halui.axis.y.increment-plus
+    10  bit   OUT         FALSE  halui.axis.y.is-selected
+    10  bit   IN          FALSE  halui.axis.y.minus
+    10  bit   IN          FALSE  halui.axis.y.plus
+    10  float OUT             0  halui.axis.y.pos-commanded
+    10  float OUT             0  halui.axis.y.pos-feedback
+    10  float OUT             0  halui.axis.y.pos-relative
+    10  bit   IN          FALSE  halui.axis.y.select
+    10  float IN              0  halui.axis.z.analog
+    10  float IN              0  halui.axis.z.increment
+    10  bit   IN          FALSE  halui.axis.z.increment-minus
+    10  bit   IN          FALSE  halui.axis.z.increment-plus
+    10  bit   OUT         FALSE  halui.axis.z.is-selected
+    10  bit   IN          FALSE  halui.axis.z.minus
+    10  bit   IN          FALSE  halui.axis.z.plus
+    10  float OUT            95  halui.axis.z.pos-commanded
+    10  float OUT            95  halui.axis.z.pos-feedback
+    10  float OUT            95  halui.axis.z.pos-relative
+    10  bit   IN          FALSE  halui.axis.z.select
+    10  bit   IN          FALSE  halui.estop.activate
+    10  bit   OUT         FALSE  halui.estop.is-activated
+    10  bit   IN          FALSE  halui.estop.reset
+    10  bit   IN           TRUE  halui.feed-override.count-enable
+    10  s32   IN              0  halui.feed-override.counts
+    10  bit   IN          FALSE  halui.feed-override.decrease
+    10  bit   IN          FALSE  halui.feed-override.direct-value
+    10  bit   IN          FALSE  halui.feed-override.increase
+    10  bit   IN          FALSE  halui.feed-override.reset
+    10  float IN            0.1  halui.feed-override.scale
+    10  float OUT             1  halui.feed-override.value ==> plasmac:feed-override
+    10  bit   OUT         FALSE  halui.flood.is-on
+    10  bit   IN          FALSE  halui.flood.off
+    10  bit   IN          FALSE  halui.flood.on
+    10  bit   IN          FALSE  halui.home-all
+    10  float IN              0  halui.joint.0.analog
+    10  bit   OUT         FALSE  halui.joint.0.has-fault
+    10  bit   IN          FALSE  halui.joint.0.home
+    10  float IN              0  halui.joint.0.increment
+    10  bit   IN          FALSE  halui.joint.0.increment-minus
+    10  bit   IN          FALSE  halui.joint.0.increment-plus
+    10  bit   OUT          TRUE  halui.joint.0.is-homed
+    10  bit   OUT          TRUE  halui.joint.0.is-selected
+    10  bit   IN          FALSE  halui.joint.0.minus
+    10  bit   OUT         FALSE  halui.joint.0.on-hard-max-limit
+    10  bit   OUT         FALSE  halui.joint.0.on-hard-min-limit
+    10  bit   OUT         FALSE  halui.joint.0.on-soft-max-limit
+    10  bit   OUT         FALSE  halui.joint.0.on-soft-min-limit
+    10  bit   OUT         FALSE  halui.joint.0.override-limits
+    10  bit   IN          FALSE  halui.joint.0.plus
+    10  bit   IN          FALSE  halui.joint.0.select
+    10  bit   IN          FALSE  halui.joint.0.unhome
+    10  float IN              0  halui.joint.1.analog
+    10  bit   OUT         FALSE  halui.joint.1.has-fault
+    10  bit   IN          FALSE  halui.joint.1.home
+    10  float IN              0  halui.joint.1.increment
+    10  bit   IN          FALSE  halui.joint.1.increment-minus
+    10  bit   IN          FALSE  halui.joint.1.increment-plus
+    10  bit   OUT          TRUE  halui.joint.1.is-homed
+    10  bit   OUT         FALSE  halui.joint.1.is-selected
+    10  bit   IN          FALSE  halui.joint.1.minus
+    10  bit   OUT         FALSE  halui.joint.1.on-hard-max-limit
+    10  bit   OUT         FALSE  halui.joint.1.on-hard-min-limit
+    10  bit   OUT         FALSE  halui.joint.1.on-soft-max-limit
+    10  bit   OUT         FALSE  halui.joint.1.on-soft-min-limit
+    10  bit   OUT         FALSE  halui.joint.1.override-limits
+    10  bit   IN          FALSE  halui.joint.1.plus
+    10  bit   IN          FALSE  halui.joint.1.select
+    10  bit   IN          FALSE  halui.joint.1.unhome
+    10  float IN              0  halui.joint.2.analog
+    10  bit   OUT         FALSE  halui.joint.2.has-fault
+    10  bit   IN          FALSE  halui.joint.2.home
+    10  float IN              0  halui.joint.2.increment
+    10  bit   IN          FALSE  halui.joint.2.increment-minus
+    10  bit   IN          FALSE  halui.joint.2.increment-plus
+    10  bit   OUT          TRUE  halui.joint.2.is-homed
+    10  bit   OUT         FALSE  halui.joint.2.is-selected
+    10  bit   IN          FALSE  halui.joint.2.minus
+    10  bit   OUT         FALSE  halui.joint.2.on-hard-max-limit
+    10  bit   OUT         FALSE  halui.joint.2.on-hard-min-limit
+    10  bit   OUT         FALSE  halui.joint.2.on-soft-max-limit
+    10  bit   OUT         FALSE  halui.joint.2.on-soft-min-limit
+    10  bit   OUT         FALSE  halui.joint.2.override-limits
+    10  bit   IN          FALSE  halui.joint.2.plus
+    10  bit   IN          FALSE  halui.joint.2.select
+    10  bit   IN          FALSE  halui.joint.2.unhome
+    10  float IN              0  halui.joint.3.analog
+    10  bit   OUT         FALSE  halui.joint.3.has-fault
+    10  bit   IN          FALSE  halui.joint.3.home
+    10  float IN              0  halui.joint.3.increment
+    10  bit   IN          FALSE  halui.joint.3.increment-minus
+    10  bit   IN          FALSE  halui.joint.3.increment-plus
+    10  bit   OUT          TRUE  halui.joint.3.is-homed
+    10  bit   OUT         FALSE  halui.joint.3.is-selected
+    10  bit   IN          FALSE  halui.joint.3.minus
+    10  bit   OUT         FALSE  halui.joint.3.on-hard-max-limit
+    10  bit   OUT         FALSE  halui.joint.3.on-hard-min-limit
+    10  bit   OUT         FALSE  halui.joint.3.on-soft-max-limit
+    10  bit   OUT         FALSE  halui.joint.3.on-soft-min-limit
+    10  bit   OUT         FALSE  halui.joint.3.override-limits
+    10  bit   IN          FALSE  halui.joint.3.plus
+    10  bit   IN          FALSE  halui.joint.3.select
+    10  bit   IN          FALSE  halui.joint.3.unhome
+    10  float IN            0.2  halui.joint.jog-deadband
+    10  float IN              0  halui.joint.jog-speed
+    10  u32   OUT    0x00000000  halui.joint.selected
+    10  bit   OUT         FALSE  halui.joint.selected.has-fault
+    10  bit   IN          FALSE  halui.joint.selected.home
+    10  float IN              0  halui.joint.selected.increment
+    10  bit   IN          FALSE  halui.joint.selected.increment-minus
+    10  bit   IN          FALSE  halui.joint.selected.increment-plus
+    10  bit   OUT          TRUE  halui.joint.selected.is-homed
+    10  bit   IN          FALSE  halui.joint.selected.minus
+    10  bit   OUT         FALSE  halui.joint.selected.on-hard-max-limit
+    10  bit   OUT         FALSE  halui.joint.selected.on-hard-min-limit
+    10  bit   OUT         FALSE  halui.joint.selected.on-soft-max-limit
+    10  bit   OUT         FALSE  halui.joint.selected.on-soft-min-limit
+    10  bit   OUT         FALSE  halui.joint.selected.override-limits
+    10  bit   IN          FALSE  halui.joint.selected.plus
+    10  bit   IN          FALSE  halui.joint.selected.unhome
+    10  bit   OUT          TRUE  halui.lube.is-on
+    10  bit   IN          FALSE  halui.lube.off
+    10  bit   IN          FALSE  halui.lube.on
+    10  bit   OUT          TRUE  halui.machine.is-on ==> machine-is-on
+    10  bit   IN          FALSE  halui.machine.off
+    10  bit   IN          FALSE  halui.machine.on
+    10  float OUT             1  halui.machine.units-per-mm ==> plasmac:units-per-mm
+    10  bit   IN           TRUE  halui.max-velocity.count-enable
+    10  s32   IN              0  halui.max-velocity.counts
+    10  bit   IN          FALSE  halui.max-velocity.decrease
+    10  bit   IN          FALSE  halui.max-velocity.direct-value
+    10  bit   IN          FALSE  halui.max-velocity.increase
+    10  float IN              0  halui.max-velocity.scale
+    10  float OUT           350  halui.max-velocity.value
+    10  bit   OUT         FALSE  halui.mist.is-on
+    10  bit   IN          FALSE  halui.mist.off
+    10  bit   IN          FALSE  halui.mist.on
+    10  bit   IN          FALSE  halui.mode.auto
+    10  bit   OUT         FALSE  halui.mode.is-auto
+    10  bit   OUT         FALSE  halui.mode.is-joint
+    10  bit   OUT          TRUE  halui.mode.is-manual
+    10  bit   OUT         FALSE  halui.mode.is-mdi
+    10  bit   OUT          TRUE  halui.mode.is-teleop
+    10  bit   IN          FALSE  halui.mode.joint
+    10  bit   IN          FALSE  halui.mode.manual
+    10  bit   IN          FALSE  halui.mode.mdi
+    10  bit   IN          FALSE  halui.mode.teleop
+    10  bit   OUT          TRUE  halui.program.block-delete.is-on
+    10  bit   IN          FALSE  halui.program.block-delete.off
+    10  bit   IN          FALSE  halui.program.block-delete.on
+    10  bit   OUT          TRUE  halui.program.is-idle ==> plasmac:program-is-idle
+    10  bit   OUT         FALSE  halui.program.is-paused ==> plasmac:program-is-paused
+    10  bit   OUT         FALSE  halui.program.is-running ==> plasmac:program-is-running
+    10  bit   OUT          TRUE  halui.program.optional-stop.is-on
+    10  bit   IN          FALSE  halui.program.optional-stop.off
+    10  bit   IN          FALSE  halui.program.optional-stop.on
+    10  bit   IN          FALSE  halui.program.pause <== plasmac:program-pause
+    10  bit   IN          FALSE  halui.program.resume <== plasmac:program-resume
+    10  bit   IN          FALSE  halui.program.run <== plasmac:program-run
+    10  bit   IN          FALSE  halui.program.step
+    10  bit   IN          FALSE  halui.program.stop <== plasmac:program-stop
+    10  bit   IN           TRUE  halui.rapid-override.count-enable
+    10  s32   IN              0  halui.rapid-override.counts
+    10  bit   IN          FALSE  halui.rapid-override.decrease
+    10  bit   IN          FALSE  halui.rapid-override.direct-value
+    10  bit   IN          FALSE  halui.rapid-override.increase
+    10  bit   IN          FALSE  halui.rapid-override.reset
+    10  float IN            0.1  halui.rapid-override.scale
+    10  float OUT             1  halui.rapid-override.value
+    10  bit   OUT          TRUE  halui.spindle.0.brake-is-on
+    10  bit   IN          FALSE  halui.spindle.0.brake-off
+    10  bit   IN          FALSE  halui.spindle.0.brake-on
+    10  bit   IN          FALSE  halui.spindle.0.decrease
+    10  bit   IN          FALSE  halui.spindle.0.forward
+    10  bit   IN          FALSE  halui.spindle.0.increase
+    10  bit   OUT         FALSE  halui.spindle.0.is-on
+    10  bit   IN           TRUE  halui.spindle.0.override.count-enable
+    10  s32   IN              0  halui.spindle.0.override.counts
+    10  bit   IN          FALSE  halui.spindle.0.override.decrease
+    10  bit   IN          FALSE  halui.spindle.0.override.direct-value
+    10  bit   IN          FALSE  halui.spindle.0.override.increase
+    10  bit   IN          FALSE  halui.spindle.0.override.reset
+    10  float IN            0.1  halui.spindle.0.override.scale
+    10  float OUT             1  halui.spindle.0.override.value
+    10  bit   IN          FALSE  halui.spindle.0.reverse
+    10  bit   OUT         FALSE  halui.spindle.0.runs-backward
+    10  bit   OUT         FALSE  halui.spindle.0.runs-forward
+    10  bit   IN          FALSE  halui.spindle.0.start
+    10  bit   IN          FALSE  halui.spindle.0.stop <== plasmac:cutting-stop
+    10  bit   OUT          TRUE  halui.spindle.1.brake-is-on
+    10  bit   IN          FALSE  halui.spindle.1.brake-off
+    10  bit   IN          FALSE  halui.spindle.1.brake-on
+    10  bit   IN          FALSE  halui.spindle.1.decrease
+    10  bit   IN          FALSE  halui.spindle.1.forward
+    10  bit   IN          FALSE  halui.spindle.1.increase
+    10  bit   OUT         FALSE  halui.spindle.1.is-on
+    10  bit   IN           TRUE  halui.spindle.1.override.count-enable
+    10  s32   IN              0  halui.spindle.1.override.counts
+    10  bit   IN          FALSE  halui.spindle.1.override.decrease
+    10  bit   IN          FALSE  halui.spindle.1.override.direct-value
+    10  bit   IN          FALSE  halui.spindle.1.override.increase
+    10  bit   IN          FALSE  halui.spindle.1.override.reset
+    10  float IN            0.1  halui.spindle.1.override.scale
+    10  float OUT             1  halui.spindle.1.override.value
+    10  bit   IN          FALSE  halui.spindle.1.reverse
+    10  bit   OUT         FALSE  halui.spindle.1.runs-backward
+    10  bit   OUT         FALSE  halui.spindle.1.runs-forward
+    10  bit   IN          FALSE  halui.spindle.1.start
+    10  bit   IN          FALSE  halui.spindle.1.stop
+    10  bit   OUT          TRUE  halui.spindle.2.brake-is-on
+    10  bit   IN          FALSE  halui.spindle.2.brake-off
+    10  bit   IN          FALSE  halui.spindle.2.brake-on
+    10  bit   IN          FALSE  halui.spindle.2.decrease
+    10  bit   IN          FALSE  halui.spindle.2.forward
+    10  bit   IN          FALSE  halui.spindle.2.increase
+    10  bit   OUT         FALSE  halui.spindle.2.is-on
+    10  bit   IN           TRUE  halui.spindle.2.override.count-enable
+    10  s32   IN              0  halui.spindle.2.override.counts
+    10  bit   IN          FALSE  halui.spindle.2.override.decrease
+    10  bit   IN          FALSE  halui.spindle.2.override.direct-value
+    10  bit   IN          FALSE  halui.spindle.2.override.increase
+    10  bit   IN          FALSE  halui.spindle.2.override.reset
+    10  float IN            0.1  halui.spindle.2.override.scale
+    10  float OUT             1  halui.spindle.2.override.value
+    10  bit   IN          FALSE  halui.spindle.2.reverse
+    10  bit   OUT         FALSE  halui.spindle.2.runs-backward
+    10  bit   OUT         FALSE  halui.spindle.2.runs-forward
+    10  bit   IN          FALSE  halui.spindle.2.start
+    10  bit   IN          FALSE  halui.spindle.2.stop
+    10  float OUT             0  halui.tool.diameter
+    10  float OUT             0  halui.tool.length_offset.a
+    10  float OUT             0  halui.tool.length_offset.b
+    10  float OUT             0  halui.tool.length_offset.c
+    10  float OUT             0  halui.tool.length_offset.u
+    10  float OUT             0  halui.tool.length_offset.v
+    10  float OUT             0  halui.tool.length_offset.w
+    10  float OUT             0  halui.tool.length_offset.x
+    10  float OUT             0  halui.tool.length_offset.y
+    10  float OUT             0  halui.tool.length_offset.z
+    10  u32   OUT    0x00000000  halui.tool.number
+    63  float IN              0  ini.0.backlash
+    63  float IN             10  ini.0.ferror
+    63  float IN              0  ini.0.home
+    63  float IN              0  ini.0.home_offset
+    63  s32   IN              1  ini.0.home_sequence
+    63  float IN           2500  ini.0.max_acceleration
+    63  float IN       1200.001  ini.0.max_limit
+    63  float IN            250  ini.0.max_velocity
+    63  float IN              5  ini.0.min_ferror
+    63  float IN         -0.001  ini.0.min_limit
+    63  float IN              0  ini.1.backlash
+    63  float IN             10  ini.1.ferror
+    63  float IN              0  ini.1.home
+    63  float IN              0  ini.1.home_offset
+    63  s32   IN             -2  ini.1.home_sequence
+    63  float IN           2500  ini.1.max_acceleration
+    63  float IN       1200.001  ini.1.max_limit
+    63  float IN            250  ini.1.max_velocity
+    63  float IN              5  ini.1.min_ferror
+    63  float IN         -0.001  ini.1.min_limit
+    63  float IN              0  ini.2.backlash
+    63  float IN             10  ini.2.ferror
+    63  float IN              0  ini.2.home
+    63  float IN              0  ini.2.home_offset
+    63  s32   IN             -2  ini.2.home_sequence
+    63  float IN           2500  ini.2.max_acceleration
+    63  float IN       1200.001  ini.2.max_limit
+    63  float IN            250  ini.2.max_velocity
+    63  float IN              5  ini.2.min_ferror
+    63  float IN         -0.001  ini.2.min_limit
+    63  float IN              0  ini.3.backlash
+    63  float IN             10  ini.3.ferror
+    63  float IN             95  ini.3.home
+    63  float IN            100  ini.3.home_offset
+    63  s32   IN              0  ini.3.home_sequence
+    63  float IN            600  ini.3.max_acceleration
+    63  float IN        100.001  ini.3.max_limit
+    63  float IN             60  ini.3.max_velocity
+    63  float IN              5  ini.3.min_ferror
+    63  float IN         -0.001  ini.3.min_limit
+    63  float IN              0  ini.a.max_acceleration
+    63  float IN              0  ini.a.max_limit
+    63  float IN              0  ini.a.max_velocity
+    63  float IN              0  ini.a.min_limit
+    63  float IN              0  ini.b.max_acceleration
+    63  float IN              0  ini.b.max_limit
+    63  float IN              0  ini.b.max_velocity
+    63  float IN              0  ini.b.min_limit
+    63  float IN              0  ini.c.max_acceleration
+    63  float IN              0  ini.c.max_limit
+    63  float IN              0  ini.c.max_velocity
+    63  float IN              0  ini.c.min_limit
+    63  bit   IN           TRUE  ini.traj_arc_blend_enable
+    63  bit   IN          FALSE  ini.traj_arc_blend_fallback_enable
+    63  float IN              4  ini.traj_arc_blend_gap_cycles
+    63  s32   IN             50  ini.traj_arc_blend_optimization_depth
+    63  float IN            100  ini.traj_arc_blend_ramp_freq
+    63  float IN            0.1  ini.traj_arc_blend_tangent_kink_ratio
+    63  float IN          1e+99  ini.traj_default_acceleration
+    63  float IN            100  ini.traj_default_velocity
+    63  float IN          1e+99  ini.traj_max_acceleration
+    63  float IN            350  ini.traj_max_velocity
+    63  float IN              0  ini.u.max_acceleration
+    63  float IN              0  ini.u.max_limit
+    63  float IN              0  ini.u.max_velocity
+    63  float IN              0  ini.u.min_limit
+    63  float IN              0  ini.v.max_acceleration
+    63  float IN              0  ini.v.max_limit
+    63  float IN              0  ini.v.max_velocity
+    63  float IN              0  ini.v.min_limit
+    63  float IN              0  ini.w.max_acceleration
+    63  float IN              0  ini.w.max_limit
+    63  float IN              0  ini.w.max_velocity
+    63  float IN              0  ini.w.min_limit
+    63  float IN           5000  ini.x.max_acceleration
+    63  float IN       1200.001  ini.x.max_limit <== plasmac:axis-x-max-limit
+    63  float IN            500  ini.x.max_velocity
+    63  float IN         -0.001  ini.x.min_limit <== plasmac:axis-x-min-limit
+    63  float IN           5000  ini.y.max_acceleration
+    63  float IN       1200.001  ini.y.max_limit <== plasmac:axis-y-max-limit
+    63  float IN            500  ini.y.max_velocity
+    63  float IN         -0.001  ini.y.min_limit <== plasmac:axis-y-min-limit
+    63  float IN           1200  ini.z.max_acceleration
+    63  float IN        100.001  ini.z.max_limit <== plasmac:axis-z-max-limit
+    63  float IN            120  ini.z.max_velocity
+    63  float IN         -0.001  ini.z.min_limit <== plasmac:axis-z-min-limit
+     4  bit   OUT         FALSE  iocontrol.0.coolant-flood
+     4  bit   OUT         FALSE  iocontrol.0.coolant-mist
+     4  bit   IN           TRUE  iocontrol.0.emc-enable-in <== sim:estop-out
+     4  bit   OUT          TRUE  iocontrol.0.lube
+     4  bit   IN          FALSE  iocontrol.0.lube_level
+     4  bit   OUT         FALSE  iocontrol.0.tool-change ==> sim:tool-change-loopback
+     4  bit   IN          FALSE  iocontrol.0.tool-changed <== sim:tool-change-loopback
+     4  s32   OUT             0  iocontrol.0.tool-from-pocket
+     4  s32   OUT             0  iocontrol.0.tool-number
+     4  s32   OUT             0  iocontrol.0.tool-prep-index
+     4  s32   OUT             0  iocontrol.0.tool-prep-number ==> sim:tool-number
+     4  s32   OUT             0  iocontrol.0.tool-prep-pocket
+     4  bit   OUT         FALSE  iocontrol.0.tool-prepare ==> sim:tool-prepare-loopback
+     4  bit   IN          FALSE  iocontrol.0.tool-prepared <== sim:tool-prepare-loopback
+     4  bit   OUT          TRUE  iocontrol.0.user-enable-out
+     4  bit   OUT         FALSE  iocontrol.0.user-request-enable
+    29  float OUT             0  joint.0.acc-cmd
+    29  bit   OUT          TRUE  joint.0.active
+    29  bit   OUT          TRUE  joint.0.amp-enable-out ==> sim:joint0.enable
+    29  bit   IN          FALSE  joint.0.amp-fault-in
+    29  float OUT             0  joint.0.backlash-corr
+    29  float OUT             0  joint.0.backlash-filt
+    29  float OUT             0  joint.0.backlash-vel
+    29  float OUT             0  joint.0.coarse-pos-cmd
+    29  bit   OUT         FALSE  joint.0.error
+    29  float OUT             0  joint.0.f-error
+    29  float OUT             5  joint.0.f-error-lim
+    29  bit   OUT         FALSE  joint.0.f-errored
+    29  bit   OUT         FALSE  joint.0.faulted
+    29  float OUT             0  joint.0.free-pos-cmd
+    29  bit   OUT         FALSE  joint.0.free-tp-enable
+    29  float OUT           250  joint.0.free-vel-lim
+    29  s32   OUT             0  joint.0.home-state
+    29  bit   IN          FALSE  joint.0.home-sw-in <== sim:joint0.homesw
+    29  bit   OUT          TRUE  joint.0.homed
+    29  bit   OUT         FALSE  joint.0.homing
+    29  bit   OUT          TRUE  joint.0.in-position
+    29  bit   I/O         FALSE  joint.0.index-enable
+    29  float IN              1  joint.0.jog-accel-fraction
+    29  s32   IN              0  joint.0.jog-counts
+    29  bit   IN          FALSE  joint.0.jog-enable
+    29  float IN              0  joint.0.jog-scale
+    29  bit   IN          FALSE  joint.0.jog-vel-mode
+    29  bit   OUT         FALSE  joint.0.kb-jog-active
+    29  float OUT             0  joint.0.motor-offset
+    29  float OUT             0  joint.0.motor-pos-cmd ==> sim:joint0.pos-cmd
+    29  float IN              0  joint.0.motor-pos-fb <== sim:joint0.pos-fb
+    29  bit   OUT         FALSE  joint.0.neg-hard-limit
+    29  bit   IN          FALSE  joint.0.neg-lim-sw-in
+    29  float OUT             0  joint.0.pos-cmd
+    29  float OUT             0  joint.0.pos-fb
+    29  bit   OUT         FALSE  joint.0.pos-hard-limit
+    29  bit   IN          FALSE  joint.0.pos-lim-sw-in
+    29  float OUT             0  joint.0.vel-cmd
+    29  bit   OUT         FALSE  joint.0.wheel-jog-active
+    29  float OUT             0  joint.1.acc-cmd
+    29  bit   OUT          TRUE  joint.1.active
+    29  bit   OUT          TRUE  joint.1.amp-enable-out ==> sim:joint1.enable
+    29  bit   IN          FALSE  joint.1.amp-fault-in
+    29  float OUT             0  joint.1.backlash-corr
+    29  float OUT             0  joint.1.backlash-filt
+    29  float OUT             0  joint.1.backlash-vel
+    29  float OUT             0  joint.1.coarse-pos-cmd
+    29  bit   OUT         FALSE  joint.1.error
+    29  float OUT             0  joint.1.f-error
+    29  float OUT             5  joint.1.f-error-lim
+    29  bit   OUT         FALSE  joint.1.f-errored
+    29  bit   OUT         FALSE  joint.1.faulted
+    29  float OUT             0  joint.1.free-pos-cmd
+    29  bit   OUT         FALSE  joint.1.free-tp-enable
+    29  float OUT           250  joint.1.free-vel-lim
+    29  s32   OUT             0  joint.1.home-state
+    29  bit   IN          FALSE  joint.1.home-sw-in <== sim:joint1.homesw
+    29  bit   OUT          TRUE  joint.1.homed
+    29  bit   OUT         FALSE  joint.1.homing
+    29  bit   OUT          TRUE  joint.1.in-position
+    29  bit   I/O         FALSE  joint.1.index-enable
+    29  float IN              1  joint.1.jog-accel-fraction
+    29  s32   IN              0  joint.1.jog-counts
+    29  bit   IN          FALSE  joint.1.jog-enable
+    29  float IN              0  joint.1.jog-scale
+    29  bit   IN          FALSE  joint.1.jog-vel-mode
+    29  bit   OUT         FALSE  joint.1.kb-jog-active
+    29  float OUT             0  joint.1.motor-offset
+    29  float OUT             0  joint.1.motor-pos-cmd ==> sim:joint1.pos-cmd
+    29  float IN              0  joint.1.motor-pos-fb <== sim:joint1.pos-fb
+    29  bit   OUT         FALSE  joint.1.neg-hard-limit
+    29  bit   IN          FALSE  joint.1.neg-lim-sw-in
+    29  float OUT             0  joint.1.pos-cmd
+    29  float OUT             0  joint.1.pos-fb
+    29  bit   OUT         FALSE  joint.1.pos-hard-limit
+    29  bit   IN          FALSE  joint.1.pos-lim-sw-in
+    29  float OUT             0  joint.1.vel-cmd
+    29  bit   OUT         FALSE  joint.1.wheel-jog-active
+    29  float OUT             0  joint.2.acc-cmd
+    29  bit   OUT          TRUE  joint.2.active
+    29  bit   OUT          TRUE  joint.2.amp-enable-out ==> sim:joint2.enable
+    29  bit   IN          FALSE  joint.2.amp-fault-in
+    29  float OUT             0  joint.2.backlash-corr
+    29  float OUT             0  joint.2.backlash-filt
+    29  float OUT             0  joint.2.backlash-vel
+    29  float OUT             0  joint.2.coarse-pos-cmd
+    29  bit   OUT         FALSE  joint.2.error
+    29  float OUT             0  joint.2.f-error
+    29  float OUT             5  joint.2.f-error-lim
+    29  bit   OUT         FALSE  joint.2.f-errored
+    29  bit   OUT         FALSE  joint.2.faulted
+    29  float OUT             0  joint.2.free-pos-cmd
+    29  bit   OUT         FALSE  joint.2.free-tp-enable
+    29  float OUT           250  joint.2.free-vel-lim
+    29  s32   OUT             0  joint.2.home-state
+    29  bit   IN          FALSE  joint.2.home-sw-in <== sim:joint2.homesw
+    29  bit   OUT          TRUE  joint.2.homed
+    29  bit   OUT         FALSE  joint.2.homing
+    29  bit   OUT          TRUE  joint.2.in-position
+    29  bit   I/O         FALSE  joint.2.index-enable
+    29  float IN              1  joint.2.jog-accel-fraction
+    29  s32   IN              0  joint.2.jog-counts
+    29  bit   IN          FALSE  joint.2.jog-enable
+    29  float IN              0  joint.2.jog-scale
+    29  bit   IN          FALSE  joint.2.jog-vel-mode
+    29  bit   OUT         FALSE  joint.2.kb-jog-active
+    29  float OUT             0  joint.2.motor-offset
+    29  float OUT             0  joint.2.motor-pos-cmd ==> sim:joint2.pos-cmd
+    29  float IN              0  joint.2.motor-pos-fb <== sim:joint2.pos-fb
+    29  bit   OUT         FALSE  joint.2.neg-hard-limit
+    29  bit   IN          FALSE  joint.2.neg-lim-sw-in
+    29  float OUT             0  joint.2.pos-cmd
+    29  float OUT             0  joint.2.pos-fb
+    29  bit   OUT         FALSE  joint.2.pos-hard-limit
+    29  bit   IN          FALSE  joint.2.pos-lim-sw-in
+    29  float OUT             0  joint.2.vel-cmd
+    29  bit   OUT         FALSE  joint.2.wheel-jog-active
+    29  float OUT             0  joint.3.acc-cmd
+    29  bit   OUT          TRUE  joint.3.active
+    29  bit   OUT          TRUE  joint.3.amp-enable-out ==> sim:joint3.enable
+    29  bit   IN          FALSE  joint.3.amp-fault-in
+    29  float OUT            -0  joint.3.backlash-corr
+    29  float OUT             0  joint.3.backlash-filt
+    29  float OUT             0  joint.3.backlash-vel
+    29  float OUT            95  joint.3.coarse-pos-cmd
+    29  bit   OUT         FALSE  joint.3.error
+    29  float OUT             0  joint.3.f-error
+    29  float OUT             5  joint.3.f-error-lim
+    29  bit   OUT         FALSE  joint.3.f-errored
+    29  bit   OUT         FALSE  joint.3.faulted
+    29  float OUT            95  joint.3.free-pos-cmd
+    29  bit   OUT         FALSE  joint.3.free-tp-enable
+    29  float OUT            60  joint.3.free-vel-lim
+    29  s32   OUT             0  joint.3.home-state
+    29  bit   IN          FALSE  joint.3.home-sw-in <== sim:joint3.homesw
+    29  bit   OUT          TRUE  joint.3.homed
+    29  bit   OUT         FALSE  joint.3.homing
+    29  bit   OUT          TRUE  joint.3.in-position
+    29  bit   I/O         FALSE  joint.3.index-enable
+    29  float IN              1  joint.3.jog-accel-fraction
+    29  s32   IN              0  joint.3.jog-counts
+    29  bit   IN          FALSE  joint.3.jog-enable
+    29  float IN              0  joint.3.jog-scale
+    29  bit   IN          FALSE  joint.3.jog-vel-mode
+    29  bit   OUT         FALSE  joint.3.kb-jog-active
+    29  float OUT          -100  joint.3.motor-offset
+    29  float OUT            -5  joint.3.motor-pos-cmd ==> sim:joint3.pos-cmd
+    29  float IN             -5  joint.3.motor-pos-fb <== sim:joint3.pos-fb
+    29  bit   OUT         FALSE  joint.3.neg-hard-limit
+    29  bit   IN          FALSE  joint.3.neg-lim-sw-in
+    29  float OUT            95  joint.3.pos-cmd
+    29  float OUT            95  joint.3.pos-fb ==> plasmac:axis-position
+    29  bit   OUT         FALSE  joint.3.pos-hard-limit
+    29  bit   IN          FALSE  joint.3.pos-lim-sw-in
+    29  float OUT             0  joint.3.vel-cmd
+    29  bit   OUT         FALSE  joint.3.wheel-jog-active
+    29  s32   OUT          1440  motion-command-handler.time
+    29  s32   OUT         16740  motion-controller.time
+    29  float IN              1  motion.adaptive-feed <== plasmac:adaptive-feed
+    29  float IN              0  motion.analog-in-00
+    29  float IN              0  motion.analog-in-01
+    29  float IN              0  motion.analog-in-02
+    29  float IN              0  motion.analog-in-03
+    29  float OUT             0  motion.analog-out-00
+    29  float OUT             0  motion.analog-out-01
+    29  float OUT             0  motion.analog-out-02
+    29  float OUT             0  motion.analog-out-03 ==> plasmac:feed-reduction
+    29  bit   OUT         FALSE  motion.coord-error
+    29  bit   OUT         FALSE  motion.coord-mode
+    29  float OUT             0  motion.current-vel ==> plasmac:current-velocity
+    29  bit   IN          FALSE  motion.digital-in-00
+    29  bit   IN          FALSE  motion.digital-in-01
+    29  bit   IN          FALSE  motion.digital-in-02
+    29  bit   IN          FALSE  motion.digital-in-03
+    29  bit   OUT         FALSE  motion.digital-out-00
+    29  bit   OUT         FALSE  motion.digital-out-01 ==> plasmac:ignore-arc-ok-0
+    29  bit   OUT         FALSE  motion.digital-out-02 ==> plasmac:thc-disable
+    29  bit   OUT         FALSE  motion.digital-out-03 ==> plasmac:torch-off
+    29  float OUT             0  motion.distance-to-go
+    29  bit   IN           TRUE  motion.enable
+    29  bit   OUT         FALSE  motion.eoffset-active ==> plasmac:offsets-active
+    29  bit   OUT         FALSE  motion.eoffset-limited
+    29  bit   IN          FALSE  motion.feed-hold <== plasmac:feed-hold
+    29  float OUT             0  motion.feed-inches-per-minute
+    29  float OUT             0  motion.feed-inches-per-second
+    29  bit   IN          FALSE  motion.feed-inhibit
+    29  float OUT             0  motion.feed-mm-per-minute
+    29  float OUT             0  motion.feed-mm-per-second
+    29  float OUT             0  motion.feed-upm ==> plasmac:feed-upm
+    29  bit   IN          FALSE  motion.homing-inhibit
+    29  bit   OUT          TRUE  motion.in-position
+    29  bit   OUT          TRUE  motion.is-all-homed ==> plasmac:homed
+    29  bit   IN          FALSE  motion.jog-inhibit <== plasmac:jog-inhibit
+    29  bit   OUT         FALSE  motion.jog-is-active
+    29  bit   IN          FALSE  motion.jog-stop <== plasmac:jog-inhibit
+    29  bit   IN          FALSE  motion.jog-stop-immediate
+    29  bit   OUT          TRUE  motion.motion-enabled ==> sim:enabled
+    29  s32   OUT             0  motion.motion-type ==> plasmac:motion-type
+    29  bit   OUT         FALSE  motion.on-soft-limit
+    29  bit   IN          FALSE  motion.probe-input
+    29  s32   OUT             0  motion.program-line
+    29  float OUT             0  motion.requested-vel
+    29  u32   OUT    0x002A9E38  motion.servo.last-period
+    29  bit   OUT          TRUE  motion.teleop-mode
+    29  float OUT             0  motion.tooloffset.a
+    29  float OUT             0  motion.tooloffset.b
+    29  float OUT             0  motion.tooloffset.c
+    29  float OUT             0  motion.tooloffset.u
+    29  float OUT             0  motion.tooloffset.v
+    29  float OUT             0  motion.tooloffset.w
+    29  float OUT             0  motion.tooloffset.x
+    29  float OUT             0  motion.tooloffset.y
+    29  float OUT             0  motion.tooloffset.z
+    29  bit   OUT         FALSE  motion.tp-reverse
+    33  float OUT             1  plasmac.adaptive-feed ==> plasmac:adaptive-feed
+    33  float IN              3  plasmac.arc-fail-delay <== plasmac:arc-fail-delay
+    33  float IN              0  plasmac.arc-lost-delay
+    33  s32   IN              3  plasmac.arc-max-starts <== plasmac:arc-max-starts
+    33  float IN            250  plasmac.arc-ok-high <== plasmac:arc-ok-high
+    33  bit   IN          FALSE  plasmac.arc-ok-in <== plasmac:arc-ok
+    33  float IN             60  plasmac.arc-ok-low <== plasmac:arc-ok-low
+    33  bit   OUT         FALSE  plasmac.arc-ok-out ==> plasmac:arc_ok_out
+    33  float IN              0  plasmac.arc-voltage-in <== sim:arc-voltage-in
+    33  float IN              0  plasmac.arc-voltage-offset <== plasmac:arc-voltage-offset
+    33  float OUT             0  plasmac.arc-voltage-out ==> plasmac:arc_voltage_out
+    33  float IN              1  plasmac.arc-voltage-scale <== plasmac:arc-voltage-scale
+    33  float IN       1200.001  plasmac.axis-x-max-limit <== plasmac:axis-x-max-limit
+    33  float IN         -0.001  plasmac.axis-x-min-limit <== plasmac:axis-x-min-limit
+    33  float IN              0  plasmac.axis-x-position <== plasmac:axis-x-position
+    33  float IN       1200.001  plasmac.axis-y-max-limit <== plasmac:axis-y-max-limit
+    33  float IN         -0.001  plasmac.axis-y-min-limit <== plasmac:axis-y-min-limit
+    33  float IN              0  plasmac.axis-y-position <== plasmac:axis-y-position
+    33  float IN        100.001  plasmac.axis-z-max-limit <== plasmac:axis-z-max-limit
+    33  float IN         -0.001  plasmac.axis-z-min-limit <== plasmac:axis-z-min-limit
+    33  float IN             95  plasmac.axis-z-position <== plasmac:axis-position
+    33  bit   IN          FALSE  plasmac.breakaway <== plasmac:breakaway-switch-out
+    33  bit   IN          FALSE  plasmac.consumable-change
+    33  bit   OUT         FALSE  plasmac.consumable-changing ==> plasmac:consumable-changing
+    33  bit   IN           TRUE  plasmac.cornerlock-enable <== plasmac:cornerlock-enable
+    33  bit   OUT         FALSE  plasmac.cornerlock-is-locked ==> plasmac:cornerlock-is-locked
+    33  float IN             90  plasmac.cornerlock-threshold <== plasmac:cornerlock-threshold
+    33  float OUT             0  plasmac.current-feed-rate
+    33  float IN              0  plasmac.current-velocity <== plasmac:current-velocity
+    33  float IN           1000  plasmac.cut-feed-rate <== plasmac:cut-feed-rate
+    33  float IN              1  plasmac.cut-height <== plasmac:cut-height
+    33  float OUT             0  plasmac.cut-length
+    33  bit   OUT         FALSE  plasmac.cut-recovering
+    33  bit   IN          FALSE  plasmac.cut-recovery
+    33  float OUT             0  plasmac.cut-time
+    33  float IN            100  plasmac.cut-volts <== plasmac:cut-volts
+    33  bit   IN          FALSE  plasmac.cutting-start <== plasmac:cutting-start
+    33  bit   OUT         FALSE  plasmac.cutting-stop ==> plasmac:cutting-stop
+    33  bit   IN          FALSE  plasmac.debug-print
+    33  bit   IN          FALSE  plasmac.external-estop
+    33  bit   OUT         FALSE  plasmac.feed-hold ==> plasmac:feed-hold
+    33  float IN              1  plasmac.feed-override <== plasmac:feed-override
+    33  float IN              0  plasmac.feed-reduction <== plasmac:feed-reduction
+    33  float IN              0  plasmac.feed-upm <== plasmac:feed-upm
+    33  bit   IN          FALSE  plasmac.float-switch <== plasmac:float-switch-out
+    33  float IN            1.5  plasmac.float-switch-travel <== plasmac:float-switch-travel
+    33  float IN              1  plasmac.gcode-scale <== plasmac:gcode-scale
+    33  float IN              0  plasmac.height-override <== plasmac:height-override
+    33  float IN            0.1  plasmac.height-per-volt <== plasmac:height-per-volt
+    33  bit   IN           TRUE  plasmac.homed <== plasmac:homed
+    33  bit   IN          FALSE  plasmac.ignore-arc-ok-0 <== plasmac:ignore-arc-ok-0
+    33  bit   IN          FALSE  plasmac.ignore-arc-ok-1 <== plasmac:ignore-arc-ok-1
+    33  bit   OUT         FALSE  plasmac.jog-inhibit ==> plasmac:jog-inhibit
+    33  float IN              1  plasmac.kerf-width <== plasmac:kerf-width
+    33  s32   IN              0  plasmac.laser-recovery-start
+    33  s32   OUT             0  plasmac.laser-recovery-state ==> plasmac:laser-recovery-state
+    33  s32   IN              0  plasmac.laser-x-offset
+    33  s32   IN              0  plasmac.laser-y-offset
+    33  bit   OUT         FALSE  plasmac.led-down ==> plasmac:led-down
+    33  bit   OUT         FALSE  plasmac.led-up ==> plasmac:led-up
+    33  s32   IN              0  plasmac.low-cut-volts
+    33  float IN              0  plasmac.lowpass-frequency
+    33  bit   IN           TRUE  plasmac.machine-is-on <== machine-is-on
+    33  s32   IN              5  plasmac.max-offset
+    33  bit   IN          FALSE  plasmac.mesh-arc-ok
+    33  bit   IN          FALSE  plasmac.mesh-enable <== plasmac:mesh-enable
+    33  s32   IN              0  plasmac.mode
+    33  s32   IN              0  plasmac.motion-type <== plasmac:motion-type
+    33  bit   IN          FALSE  plasmac.move-down <== sim:move-down
+    33  bit   IN          FALSE  plasmac.move-up <== sim:move-up
+    33  bit   IN           TRUE  plasmac.multi-tool
+    33  float IN              0  plasmac.offset-probe-delay
+    33  float IN              0  plasmac.offset-probe-x
+    33  float IN              0  plasmac.offset-probe-y
+    33  float OUT         1e-05  plasmac.offset-scale ==> plasmac:offset-scale
+    33  bit   IN          FALSE  plasmac.offset-set-probe <== plasmac:offset-set-probe
+    33  bit   IN          FALSE  plasmac.offset-set-scribe <== plasmac:offset-set-scribe
+    33  bit   IN          FALSE  plasmac.offsets-active <== plasmac:offsets-active
+    33  bit   OUT         FALSE  plasmac.ohmic-enable
+    33  s32   IN              0  plasmac.ohmic-max-attempts <== plasmac:ohmic-max-attempts
+    33  bit   IN          FALSE  plasmac.ohmic-probe <== plasmac:ohmic-probe-out
+    33  bit   IN           TRUE  plasmac.ohmic-probe-enable <== plasmac:ohmic-probe-enable
+    33  float IN              0  plasmac.ohmic-probe-offset <== plasmac:ohmic-probe-offset
+    33  bit   IN          FALSE  plasmac.ohmic-sense-in
+    33  s32   IN              3  plasmac.ohmic-sense-off-delay
+    33  s32   IN              3  plasmac.ohmic-sense-on-delay
+    33  bit   OUT         FALSE  plasmac.ohmic-sense-out
+    33  bit   IN          FALSE  plasmac.ohmic-test
+    33  s32   IN             10  plasmac.ok-sample-counts
+    33  float IN             10  plasmac.ok-sample-threshold
+    33  bit   IN          FALSE  plasmac.override-jog
+    33  float IN              0  plasmac.pause-at-end <== plasmac:pause-at-end
+    33  bit   OUT         FALSE  plasmac.paused-motion
+    33  float IN              0  plasmac.paused-motion-speed
+    33  float OUT             0  plasmac.paused-time
+    33  float IN              0  plasmac.pid-d-gain <== plasmac:pid-d-gain
+    33  float IN              0  plasmac.pid-i-gain <== plasmac:pid-i-gain
+    33  float IN             10  plasmac.pid-p-gain <== plasmac:pid-p-gain
+    33  s32   OUT             0  plasmac.pierce-count
+    33  float IN            0.1  plasmac.pierce-delay <== plasmac:pierce-delay
+    33  float IN              3  plasmac.pierce-height <== plasmac:pierce-height
+    33  float IN            300  plasmac.probe-feed-rate <== plasmac:probe-feed-rate
+    33  s32   IN              1  plasmac.probe-final-speed
+    33  float IN             25  plasmac.probe-start-height <== plasmac:probe-start-height
+    33  bit   IN          FALSE  plasmac.probe-test
+    33  bit   OUT         FALSE  plasmac.probe-test-error ==> plasmac:probe-test-error
+    33  float OUT             0  plasmac.probe-time
+    33  bit   IN           TRUE  plasmac.program-is-idle <== plasmac:program-is-idle
+    33  bit   IN          FALSE  plasmac.program-is-paused <== plasmac:program-is-paused
+    33  bit   IN          FALSE  plasmac.program-is-running <== plasmac:program-is-running
+    33  bit   OUT         FALSE  plasmac.program-pause ==> plasmac:program-pause
+    33  bit   OUT         FALSE  plasmac.program-resume ==> plasmac:program-resume
+    33  bit   OUT         FALSE  plasmac.program-run ==> plasmac:program-run
+    33  bit   OUT         FALSE  plasmac.program-stop ==> plasmac:program-stop
+    33  float IN              0  plasmac.puddle-jump-delay <== plasmac:puddle-jump-delay
+    33  float IN              0  plasmac.puddle-jump-height <== plasmac:puddle-jump-height
+    33  float OUT             0  plasmac.rapid-time
+    33  float OUT             0  plasmac.requested-feed-rate
+    33  float IN              0  plasmac.requested-velocity
+    33  s32   IN            100  plasmac.resolution
+    33  float IN              1  plasmac.restart-delay <== plasmac:restart-delay
+    33  float OUT         0.486  plasmac.run-time
+    33  float IN             25  plasmac.safe-height <== plasmac:safe-height
+    33  bit   OUT         FALSE  plasmac.safe-height-is-limited
+    33  bit   OUT         FALSE  plasmac.scribe-arm
+    33  float IN              0  plasmac.scribe-arm-delay <== plasmac:scribe-arm-delay
+    33  bit   OUT         FALSE  plasmac.scribe-on
+    33  float IN              0  plasmac.scribe-on-delay <== plasmac:scribe-on-delay
+    33  bit   IN          FALSE  plasmac.scribe-start <== plasmac:scribe-start
+    33  bit   OUT         FALSE  plasmac.sensor-active ==> plasmac:sensor_active
+    33  float IN           2880  plasmac.setup-feed-rate <== plasmac:setup-feed-rate
+    33  float IN              0  plasmac.skip-ihs-distance <== plasmac:skip-ihs-distance
+    33  bit   IN          FALSE  plasmac.spotting-start <== plasmac:spotting-start
+    33  float IN              1  plasmac.spotting-threshold <== plasmac:spotting-threshold
+    33  float IN              0  plasmac.spotting-time <== plasmac:spotting-time
+    33  s32   OUT             0  plasmac.state-out ==> plasmac:state
+    33  s32   OUT             0  plasmac.stop-type-out
+    33  s32   IN              6  plasmac.target-samples
+    33  float OUT             0  plasmac.target-volts
+    33  bit   OUT         FALSE  plasmac.thc-active ==> plasmac:thc-active
+    33  bit   IN          FALSE  plasmac.thc-auto <== plasmac:thc-auto
+    33  float IN            0.5  plasmac.thc-delay <== plasmac:thc-delay
+    33  bit   IN          FALSE  plasmac.thc-disable <== plasmac:thc-disable
+    33  bit   IN           TRUE  plasmac.thc-enable <== plasmac:thc-enable
+    33  bit   OUT          TRUE  plasmac.thc-enabled ==> plasmac:thc-enabled
+    33  float IN           3600  plasmac.thc-feed-rate <== plasmac:thc-feed-rate
+    33  s32   IN             50  plasmac.thc-sample-counts <== plasmac:thc-sample-counts
+    33  float IN              1  plasmac.thc-sample-threshold <== plasmac:thc-sample-threshold
+    33  float IN              1  plasmac.thc-threshold <== plasmac:thc-threshold
+    33  s32   OUT          3420  plasmac.time
+    33  bit   IN          FALSE  plasmac.torch-enable <== plasmac:torch-enable
+    33  bit   IN          FALSE  plasmac.torch-off <== plasmac:torch-off
+    33  bit   OUT         FALSE  plasmac.torch-on ==> plasmac:torch-on
+    33  bit   IN          FALSE  plasmac.torch-pulse-start
+    33  float IN              0  plasmac.torch-pulse-time
+    33  float OUT             0  plasmac.torch-time
+    33  float IN              1  plasmac.units-per-mm <== plasmac:units-per-mm
+    33  bit   IN           TRUE  plasmac.use-auto-volts <== plasmac:use-auto-volts
+    33  bit   IN          FALSE  plasmac.voidlock-enable <== plasmac:voidlock-enable
+    33  bit   OUT         FALSE  plasmac.voidlock-is-locked ==> plasmac:voidlock-is-locked
+    33  s32   IN             10  plasmac.voidlock-off-cycles
+    33  s32   IN              2  plasmac.voidlock-on-cycles
+    33  s32   IN            500  plasmac.voidlock-slope <== plasmac:voidlock-slope
+    33  s32   IN              0  plasmac.x-offset
+    33  s32   OUT             0  plasmac.x-offset-counts ==> plasmac:x-offset-counts
+    33  float IN              0  plasmac.x-offset-current <== plasmac:x-offset-current
+    33  float IN              0  plasmac.xy-feed-rate
+    33  bit   OUT         FALSE  plasmac.xy-offset-enable ==> plasmac:xy-offset-enable
+    33  s32   IN              0  plasmac.y-offset
+    33  s32   OUT             0  plasmac.y-offset-counts ==> plasmac:y-offset-counts
+    33  float IN              0  plasmac.y-offset-current <== plasmac:y-offset-current
+    33  float OUT        95.001  plasmac.z-height ==> plasmac:z-height
+    33  s32   OUT             0  plasmac.z-offset-counts ==> plasmac:z-offset-counts
+    33  float IN              0  plasmac.z-offset-current <== plasmac:z-offset-current
+    33  bit   OUT         FALSE  plasmac.z-offset-enable ==> plasmac:z-offset-enable
+    33  float OUT             0  plasmac.z-relative
+    33  float IN            0.1  plasmac.zero-window
+    65  float OUT             3  qtplasmac.arc_fail_delay-f ==> plasmac:arc-fail-delay
+    65  s32   OUT             3  qtplasmac.arc_fail_delay-s
+    65  float OUT             3  qtplasmac.arc_max_starts-f
+    65  s32   OUT             3  qtplasmac.arc_max_starts-s ==> plasmac:arc-max-starts
+    65  float OUT           250  qtplasmac.arc_ok_high-f ==> plasmac:arc-ok-high
+    65  s32   OUT           250  qtplasmac.arc_ok_high-s
+    65  float OUT            60  qtplasmac.arc_ok_low-f ==> plasmac:arc-ok-low
+    65  s32   OUT            60  qtplasmac.arc_ok_low-s
+    65  float OUT             1  qtplasmac.arc_restart_delay-f ==> plasmac:restart-delay
+    65  s32   OUT             1  qtplasmac.arc_restart_delay-s
+    65  float IN              0  qtplasmac.arc_voltage <== plasmac:arc_voltage_out
+    65  float OUT             0  qtplasmac.arc_voltage_offset-f ==> plasmac:arc-voltage-offset
+    65  s32   OUT             0  qtplasmac.arc_voltage_offset-s
+    65  float OUT             1  qtplasmac.arc_voltage_scale-f ==> plasmac:arc-voltage-scale
+    65  s32   OUT             1  qtplasmac.arc_voltage_scale-s
+    65  float OUT             0  qtplasmac.cam-rotation
+    65  bit   OUT         FALSE  qtplasmac.cam_dia_minus
+    65  bit   OUT         FALSE  qtplasmac.cam_dia_plus
+    65  bit   OUT         FALSE  qtplasmac.cam_goto
+    65  bit   OUT         FALSE  qtplasmac.cam_mark
+    65  bit   OUT         FALSE  qtplasmac.cam_zoom_minus
+    65  bit   OUT         FALSE  qtplasmac.cam_zoom_plus
+    65  bit   OUT         FALSE  qtplasmac.camera
+    65  bit   OUT         FALSE  qtplasmac.color_backgalt
+    65  bit   OUT         FALSE  qtplasmac.color_backgrnd
+    65  s32   OUT       1447438  qtplasmac.color_bg
+    65  s32   OUT       3552814  qtplasmac.color_bgalt
+    65  bit   OUT         FALSE  qtplasmac.color_disabled
+    65  bit   OUT         FALSE  qtplasmac.color_estop
+    65  s32   OUT      16772614  qtplasmac.color_fg
+    65  bit   OUT         FALSE  qtplasmac.color_foregalt
+    65  bit   OUT         FALSE  qtplasmac.color_foregrnd
+    65  bit   OUT         FALSE  qtplasmac.color_frams
+    65  bit   OUT         FALSE  qtplasmac.color_led
+    65  bit   OUT         FALSE  qtplasmac.color_preview
+    65  float OUT           0.5  qtplasmac.cone_size-f
+    65  s32   OUT             0  qtplasmac.cone_size-s
+    65  bit   IN          FALSE  qtplasmac.consumable_changing <== plasmac:consumable-changing
+    65  bit   IN          FALSE  qtplasmac.conv_block_loaded
+    65  bit   OUT         FALSE  qtplasmac.conv_bolt
+    65  bit   OUT         FALSE  qtplasmac.conv_circle
+    65  bit   IN          FALSE  qtplasmac.conv_disable
+    65  bit   OUT         FALSE  qtplasmac.conv_gusset
+    65  bit   OUT         FALSE  qtplasmac.conv_line
+    65  bit   OUT         FALSE  qtplasmac.conv_new
+    65  bit   OUT         FALSE  qtplasmac.conv_polygon
+    65  bit   OUT         FALSE  qtplasmac.conv_rectangle
+    65  bit   OUT         FALSE  qtplasmac.conv_save
+    65  bit   OUT         FALSE  qtplasmac.conv_sector
+    65  bit   OUT         FALSE  qtplasmac.conv_send
+    65  bit   OUT         FALSE  qtplasmac.conv_settings
+    65  bit   OUT         FALSE  qtplasmac.conv_slot
+    65  bit   OUT         FALSE  qtplasmac.conv_star
+    65  bit   OUT         FALSE  qtplasmac.conv_triangle
+    65  bit   OUT          TRUE  qtplasmac.cornerlock_enable ==> plasmac:cornerlock-enable
+    65  bit   OUT         FALSE  qtplasmac.cornerlock_enable-not
+    65  float OUT            90  qtplasmac.cornerlock_threshold-f ==> plasmac:cornerlock-threshold
+    65  s32   OUT            90  qtplasmac.cornerlock_threshold-s
+    65  float OUT            45  qtplasmac.cut_amps-f
+    65  s32   OUT            45  qtplasmac.cut_amps-s
+    65  float OUT          1000  qtplasmac.cut_feed_rate-f ==> plasmac:cut-feed-rate
+    65  s32   OUT          1000  qtplasmac.cut_feed_rate-s
+    65  float OUT             1  qtplasmac.cut_height-f ==> plasmac:cut-height
+    65  s32   OUT             1  qtplasmac.cut_height-s
+    65  float OUT             1  qtplasmac.cut_mode-f
+    65  s32   OUT             1  qtplasmac.cut_mode-s
+    65  s32   IN              0  qtplasmac.cut_type
+    65  float OUT           100  qtplasmac.cut_volts-f ==> plasmac:cut-volts
+    65  s32   OUT           100  qtplasmac.cut_volts-s
+    65  bit   OUT         FALSE  qtplasmac.delete_material
+    65  bit   IN          FALSE  qtplasmac.development
+    65  bit   IN          FALSE  qtplasmac.ext_abort
+    65  bit   IN          FALSE  qtplasmac.ext_auto_volts_enable
+    65  bit   IN          FALSE  qtplasmac.ext_consumables
+    65  bit   IN          FALSE  qtplasmac.ext_cornerlock_enable
+    65  bit   IN          FALSE  qtplasmac.ext_cutrec_cancel
+    65  bit   IN          FALSE  qtplasmac.ext_cutrec_e
+    65  bit   IN          FALSE  qtplasmac.ext_cutrec_fwd
+    65  bit   IN          FALSE  qtplasmac.ext_cutrec_n
+    65  bit   IN          FALSE  qtplasmac.ext_cutrec_ne
+    65  bit   IN          FALSE  qtplasmac.ext_cutrec_nw
+    65  bit   IN          FALSE  qtplasmac.ext_cutrec_rev
+    65  bit   IN          FALSE  qtplasmac.ext_cutrec_s
+    65  bit   IN          FALSE  qtplasmac.ext_cutrec_se
+    65  bit   IN          FALSE  qtplasmac.ext_cutrec_sw
+    65  bit   IN          FALSE  qtplasmac.ext_cutrec_w
+    65  bit   IN          FALSE  qtplasmac.ext_frame_job
+    65  bit   IN          FALSE  qtplasmac.ext_height_ovr_count_enable
+    65  s32   IN              0  qtplasmac.ext_height_ovr_counts
+    65  bit   IN          FALSE  qtplasmac.ext_height_ovr_minus
+    65  bit   IN          FALSE  qtplasmac.ext_height_ovr_plus
+    65  bit   IN          FALSE  qtplasmac.ext_height_ovr_reset
+    65  float IN              0  qtplasmac.ext_height_ovr_scale
+    65  bit   IN          FALSE  qtplasmac.ext_ignore_arc_ok
+    65  bit   IN          FALSE  qtplasmac.ext_jog_slow
+    65  bit   IN          FALSE  qtplasmac.ext_laser_toggle
+    65  bit   IN          FALSE  qtplasmac.ext_laser_touchoff
+    65  bit   IN          FALSE  qtplasmac.ext_mesh_mode
+    65  bit   IN          FALSE  qtplasmac.ext_ohmic
+    65  bit   IN          FALSE  qtplasmac.ext_ohmic_probe_enable
+    65  bit   OUT         FALSE  qtplasmac.ext_out_0
+    65  bit   OUT         FALSE  qtplasmac.ext_out_1
+    65  bit   OUT         FALSE  qtplasmac.ext_out_2
+    65  bit   IN          FALSE  qtplasmac.ext_pause
+    65  bit   IN          FALSE  qtplasmac.ext_power
+    65  bit   IN          FALSE  qtplasmac.ext_probe
+    65  bit   IN          FALSE  qtplasmac.ext_pulse
+    65  bit   IN          FALSE  qtplasmac.ext_run
+    65  bit   IN          FALSE  qtplasmac.ext_run_pause
+    65  bit   IN          FALSE  qtplasmac.ext_thc_enable
+    65  bit   IN          FALSE  qtplasmac.ext_torch_enable
+    65  bit   IN          FALSE  qtplasmac.ext_touchoff
+    65  bit   IN          FALSE  qtplasmac.ext_voidlock_enable
+    65  float OUT           100  qtplasmac.feed_slider
+    65  bit   OUT         FALSE  qtplasmac.file_clear
+    65  bit   OUT         FALSE  qtplasmac.file_edit
+    65  bit   OUT         FALSE  qtplasmac.file_reload
+    65  float OUT           1.5  qtplasmac.float_switch_travel-f ==> plasmac:float-switch-travel
+    65  s32   OUT             1  qtplasmac.float_switch_travel-s
+    65  float OUT             0  qtplasmac.gas_pressure-f
+    65  s32   OUT             0  qtplasmac.gas_pressure-s
+    65  float OUT             1  qtplasmac.gcode_scale ==> plasmac:gcode-scale
+    65  float OUT             0  qtplasmac.grid_size-f
+    65  s32   OUT             0  qtplasmac.grid_size-s
+    65  float OUT             0  qtplasmac.height_override ==> plasmac:height-override
+    65  float OUT           0.1  qtplasmac.height_per_volt-f ==> plasmac:height-per-volt
+    65  s32   OUT             0  qtplasmac.height_per_volt-s
+    65  bit   OUT         FALSE  qtplasmac.ignore_arc_ok ==> plasmac:ignore-arc-ok-1
+    65  bit   OUT         FALSE  qtplasmac.ignore_arc_ok-not
+    65  bit   IN          FALSE  qtplasmac.jog_inhibited <== plasmac:jog-inhibit
+    65  float OUT          6000  qtplasmac.jog_slider
+    65  bit   OUT         FALSE  qtplasmac.jog_slow
+    65  float OUT             1  qtplasmac.kerf_width-f ==> plasmac:kerf-width
+    65  s32   OUT             1  qtplasmac.kerf_width-s
+    65  bit   OUT         FALSE  qtplasmac.laser
+    65  bit   OUT         FALSE  qtplasmac.laser_on ==> plasmac:laser-on
+    65  s32   IN              0  qtplasmac.laser_recovery_state <== plasmac:laser-recovery-state
+    65  bit   IN          FALSE  qtplasmac.led_arc_ok <== plasmac:arc_ok_out
+    65  bit   IN          FALSE  qtplasmac.led_breakaway_switch <== plasmac:breakaway-switch-out
+    65  bit   IN          FALSE  qtplasmac.led_corner_lock <== plasmac:cornerlock-is-locked
+    65  bit   IN          FALSE  qtplasmac.led_float_switch <== plasmac:float-switch-out
+    65  bit   IN          FALSE  qtplasmac.led_ohmic_probe
+    65  bit   IN          FALSE  qtplasmac.led_thc_active <== plasmac:thc-active
+    65  bit   IN          FALSE  qtplasmac.led_thc_down <== plasmac:led-down
+    65  bit   IN           TRUE  qtplasmac.led_thc_enabled <== plasmac:thc-enabled
+    65  bit   IN          FALSE  qtplasmac.led_thc_up <== plasmac:led-up
+    65  bit   IN          FALSE  qtplasmac.led_torch_on <== plasmac:torch-on
+    65  bit   IN          FALSE  qtplasmac.led_void_lock <== plasmac:voidlock-is-locked
+    65  s32   IN              0  qtplasmac.material_change
+    65  s32   IN              0  qtplasmac.material_change_number
+    65  bit   IN          FALSE  qtplasmac.material_change_timeout
+    65  bit   IN          FALSE  qtplasmac.material_reload
+    65  s32   IN              0  qtplasmac.material_temp
+    65  bit   OUT         FALSE  qtplasmac.mdi_show
+    65  bit   OUT         FALSE  qtplasmac.mesh_enable ==> plasmac:mesh-enable
+    65  bit   OUT         FALSE  qtplasmac.mesh_enable-not
+    65  bit   OUT         FALSE  qtplasmac.new_material
+    65  bit   OUT         FALSE  qtplasmac.offset_set_probe ==> plasmac:offset-set-probe
+    65  bit   OUT         FALSE  qtplasmac.offset_set_scribe ==> plasmac:offset-set-scribe
+    65  bit   IN          FALSE  qtplasmac.offsets_active <== plasmac:offsets-active
+    65  bit   IN          FALSE  qtplasmac.ohmic_led_in <== plasmac:ohmic-probe-out
+    65  float OUT             0  qtplasmac.ohmic_max_attempts-f
+    65  s32   OUT             0  qtplasmac.ohmic_max_attempts-s ==> plasmac:ohmic-max-attempts
+    65  bit   OUT          TRUE  qtplasmac.ohmic_probe_enable ==> plasmac:ohmic-probe-enable
+    65  bit   OUT         FALSE  qtplasmac.ohmic_probe_enable-not
+    65  float OUT             0  qtplasmac.ohmic_probe_offset-f ==> plasmac:ohmic-probe-offset
+    65  s32   OUT             0  qtplasmac.ohmic_probe_offset-s
+    65  bit   IN          FALSE  qtplasmac.param_disable
+    65  float OUT             0  qtplasmac.pause_at_end-f ==> plasmac:pause-at-end
+    65  s32   OUT             0  qtplasmac.pause_at_end-s
+    65  float OUT             0  qtplasmac.pid_d_gain-f ==> plasmac:pid-d-gain
+    65  s32   OUT             0  qtplasmac.pid_d_gain-s
+    65  float OUT             0  qtplasmac.pid_i_gain-f ==> plasmac:pid-i-gain
+    65  s32   OUT             0  qtplasmac.pid_i_gain-s
+    65  float OUT            10  qtplasmac.pid_p_gain-f ==> plasmac:pid-p-gain
+    65  s32   OUT            10  qtplasmac.pid_p_gain-s
+    65  float OUT           0.1  qtplasmac.pierce_delay-f ==> plasmac:pierce-delay
+    65  s32   OUT             0  qtplasmac.pierce_delay-s
+    65  float OUT             3  qtplasmac.pierce_height-f ==> plasmac:pierce-height
+    65  s32   OUT             3  qtplasmac.pierce_height-s
+    65  s32   IN              0  qtplasmac.plasmac_state <== plasmac:state
+    65  float IN              0  qtplasmac.pmx485_arc_time
+    65  float IN              0  qtplasmac.pmx485_current
+    65  float IN              0  qtplasmac.pmx485_current_max
+    65  float IN              0  qtplasmac.pmx485_current_min
+    65  bit   OUT         FALSE  qtplasmac.pmx485_enable
+    65  bit   OUT         FALSE  qtplasmac.pmx485_enable-not
+    65  float IN              0  qtplasmac.pmx485_fault
+    65  float IN              0  qtplasmac.pmx485_mode
+    65  float IN              0  qtplasmac.pmx485_pressure
+    65  float IN              0  qtplasmac.pmx485_pressure_max
+    65  float IN              0  qtplasmac.pmx485_pressure_min
+    65  bit   IN          FALSE  qtplasmac.pmx485_status
+    65  float OUT           300  qtplasmac.probe_feed_rate-f ==> plasmac:probe-feed-rate
+    65  s32   OUT           300  qtplasmac.probe_feed_rate-s
+    65  float OUT            25  qtplasmac.probe_start_height-f ==> plasmac:probe-start-height
+    65  s32   OUT            25  qtplasmac.probe_start_height-s
+    65  bit   IN          FALSE  qtplasmac.probe_test_error <== plasmac:probe-test-error
+    65  float OUT             0  qtplasmac.puddle_jump_delay-f ==> plasmac:puddle-jump-delay
+    65  s32   OUT             0  qtplasmac.puddle_jump_delay-s
+    65  float OUT             0  qtplasmac.puddle_jump_height-f ==> plasmac:puddle-jump-height
+    65  s32   OUT             0  qtplasmac.puddle_jump_height-s
+    65  float OUT           100  qtplasmac.rapid_slider
+    65  bit   OUT         FALSE  qtplasmac.reload_material
+    65  bit   OUT         FALSE  qtplasmac.reload_plasma
+    65  float OUT            25  qtplasmac.safe_height-f ==> plasmac:safe-height
+    65  s32   OUT            25  qtplasmac.safe_height-s
+    65  bit   OUT         FALSE  qtplasmac.save_material
+    65  bit   OUT         FALSE  qtplasmac.save_plasma
+    65  float OUT             0  qtplasmac.scribe_arm_delay-f ==> plasmac:scribe-arm-delay
+    65  s32   OUT             0  qtplasmac.scribe_arm_delay-s
+    65  float OUT             0  qtplasmac.scribe_on_delay-f ==> plasmac:scribe-on-delay
+    65  s32   OUT             0  qtplasmac.scribe_on_delay-s
+    65  bit   IN          FALSE  qtplasmac.sensor_active <== plasmac:sensor_active
+    65  bit   IN          FALSE  qtplasmac.settings_disable
+    65  float OUT          2880  qtplasmac.setup_feed_rate-f ==> plasmac:setup-feed-rate
+    65  s32   OUT          2880  qtplasmac.setup_feed_rate-s
+    65  float OUT             0  qtplasmac.skip_ihs_distance-f ==> plasmac:skip-ihs-distance
+    65  s32   OUT             0  qtplasmac.skip_ihs_distance-s
+    65  float OUT             1  qtplasmac.spotting_threshold-f ==> plasmac:spotting-threshold
+    65  s32   OUT             1  qtplasmac.spotting_threshold-s
+    65  float OUT             0  qtplasmac.spotting_time-f ==> plasmac:spotting-time
+    65  s32   OUT             0  qtplasmac.spotting_time-s
+    65  float OUT             1  qtplasmac.table_zoom_scale-f
+    65  s32   OUT             1  qtplasmac.table_zoom_scale-s
+    65  bit   IN          FALSE  qtplasmac.tabs_always_enabled
+    65  bit   OUT         FALSE  qtplasmac.thc_auto ==> plasmac:thc-auto
+    65  bit   OUT         FALSE  qtplasmac.thc_auto-not
+    65  float OUT           0.5  qtplasmac.thc_delay-f ==> plasmac:thc-delay
+    65  s32   OUT             0  qtplasmac.thc_delay-s
+    65  bit   OUT          TRUE  qtplasmac.thc_enable ==> plasmac:thc-enable
+    65  bit   OUT         FALSE  qtplasmac.thc_enable-not
+    65  float OUT          3600  qtplasmac.thc_feed_rate ==> plasmac:thc-feed-rate
+    65  float OUT            50  qtplasmac.thc_sample_counts-f
+    65  s32   OUT            50  qtplasmac.thc_sample_counts-s ==> plasmac:thc-sample-counts
+    65  float OUT             1  qtplasmac.thc_sample_threshold-f ==> plasmac:thc-sample-threshold
+    65  s32   OUT             1  qtplasmac.thc_sample_threshold-s
+    65  float OUT             1  qtplasmac.thc_threshold-f ==> plasmac:thc-threshold
+    65  s32   OUT             1  qtplasmac.thc_threshold-s
+    65  bit   OUT         FALSE  qtplasmac.torch_enable ==> plasmac:torch-enable
+    65  bit   OUT         FALSE  qtplasmac.torch_enable-not
+    65  bit   OUT         FALSE  qtplasmac.touch_xy
+    65  bit   OUT          TRUE  qtplasmac.use_auto_volts ==> plasmac:use-auto-volts
+    65  bit   OUT         FALSE  qtplasmac.use_auto_volts-not
+    65  bit   OUT         FALSE  qtplasmac.voidlock_enable ==> plasmac:voidlock-enable
+    65  bit   OUT         FALSE  qtplasmac.voidlock_enable-not
+    65  float OUT           500  qtplasmac.voidlock_slope-f
+    65  s32   OUT           500  qtplasmac.voidlock_slope-s ==> plasmac:voidlock-slope
+    65  float IN              0  qtplasmac.x_offset <== plasmac:x-offset-current
+    65  float IN              0  qtplasmac.y_offset <== plasmac:y-offset-current
+    65  float IN         95.001  qtplasmac.z_height <== plasmac:z-height
+    65  s32   IN              0  qtplasmac.z_offset_counts <== plasmac:z-offset-counts
+   241  bit   OUT         FALSE  qtplasmac_sim.arc_ok ==> sim:arc-ok
+   241  float OUT             0  qtplasmac_sim.arc_voltage_offset-f ==> sim:arc_voltage_offset
+   241  float IN              5  qtplasmac_sim.material_height
+   241  bit   OUT         FALSE  qtplasmac_sim.move_down ==> sim:move-down
+   241  bit   OUT         FALSE  qtplasmac_sim.move_up ==> sim:move-up
+   241  bit   OUT         FALSE  qtplasmac_sim.sensor_breakaway ==> sim:breakaway
+   241  bit   OUT         FALSE  qtplasmac_sim.sensor_float ==> sim:float
+   241  bit   OUT         FALSE  qtplasmac_sim.sensor_ohmic ==> sim:ohmic
+   241  s32   IN              0  qtplasmac_sim.state <== plasmac:state
+   241  bit   IN          FALSE  qtplasmac_sim.torch_on <== plasmac:torch-on
+   241  float IN             95  qtplasmac_sim.z_position <== plasmac:axis-position
+    30  s32   OUT         29520  servo-thread.time
+    45  float IN              0  sim-joint.0.home-switch.cur-pos <== sim:joint0.pos-fb
+    45  float IN              1  sim-joint.0.home-switch.home-pos
+    45  bit   OUT         FALSE  sim-joint.0.home-switch.home-sw ==> sim:joint0.homesw
+    45  float IN            0.1  sim-joint.0.home-switch.hysteresis
+    45  float IN             10  sim-joint.0.home-switch.index-delay-ms
+    45  bit   I/O         FALSE  sim-joint.0.home-switch.index-enable
+    45  s32   OUT           630  sim-joint.0.home-switch.time
+    39  float IN              0  sim-joint.0.mux.in0 <== sim:joint0.pos-fb
+    39  float IN              0  sim-joint.0.mux.in1 <== sim:joint0.on-pos
+    39  float OUT             0  sim-joint.0.mux.out ==> sim:joint0.pos-fb
+    39  bit   IN           TRUE  sim-joint.0.mux.sel <== sim:enabled
+    39  s32   OUT           300  sim-joint.0.mux.time
+    36  float IN              0  sim-joint.0.pid.Dgain
+    36  float IN              1  sim-joint.0.pid.FF0
+    36  float IN              0  sim-joint.0.pid.FF1
+    36  float IN              0  sim-joint.0.pid.FF2
+    36  float IN              0  sim-joint.0.pid.FF3
+    36  float IN              0  sim-joint.0.pid.Igain
+    36  float IN              0  sim-joint.0.pid.Pgain
+    36  float IN              0  sim-joint.0.pid.bias
+    36  float IN              0  sim-joint.0.pid.command <== sim:joint0.pos-cmd
+    36  float IN              0  sim-joint.0.pid.command-deriv
+    36  float IN              0  sim-joint.0.pid.deadband
+    36  s32   OUT          1170  sim-joint.0.pid.do-pid-calcs.time
+    36  bit   IN           TRUE  sim-joint.0.pid.enable <== sim:joint0.enable
+    36  float OUT             0  sim-joint.0.pid.error
+    36  bit   IN           TRUE  sim-joint.0.pid.error-previous-target
+    36  float IN              0  sim-joint.0.pid.feedback
+    36  float IN              0  sim-joint.0.pid.feedback-deriv
+    36  bit   IN          FALSE  sim-joint.0.pid.index-enable
+    36  float IN              0  sim-joint.0.pid.maxcmdD
+    36  float IN              0  sim-joint.0.pid.maxcmdDD
+    36  float IN              0  sim-joint.0.pid.maxcmdDDD
+    36  float IN              0  sim-joint.0.pid.maxerror
+    36  float IN              0  sim-joint.0.pid.maxerrorD
+    36  float IN              0  sim-joint.0.pid.maxerrorI
+    36  float IN              0  sim-joint.0.pid.maxoutput
+    36  float OUT             0  sim-joint.0.pid.output ==> sim:joint0.on-pos
+    36  bit   OUT         FALSE  sim-joint.0.pid.saturated
+    36  s32   OUT             0  sim-joint.0.pid.saturated-count
+    36  float OUT             0  sim-joint.0.pid.saturated-s
+    36  u32   I/O    0x00000032  sim-joint.0.pid.tune-cycles
+    36  float I/O           0.5  sim-joint.0.pid.tune-effort
+    36  bit   IN          FALSE  sim-joint.0.pid.tune-mode
+    36  bit   I/O         FALSE  sim-joint.0.pid.tune-start
+    36  u32   I/O    0x00000000  sim-joint.0.pid.tune-type
+    42  float IN              0  sim-joint.0.vel.in <== sim:joint0.pos-fb
+    42  float OUT             0  sim-joint.0.vel.out
+    42  s32   OUT           690  sim-joint.0.vel.time
+    45  float IN              0  sim-joint.1.home-switch.cur-pos <== sim:joint1.pos-fb
+    45  float IN              1  sim-joint.1.home-switch.home-pos
+    45  bit   OUT         FALSE  sim-joint.1.home-switch.home-sw ==> sim:joint1.homesw
+    45  float IN            0.1  sim-joint.1.home-switch.hysteresis
+    45  float IN             10  sim-joint.1.home-switch.index-delay-ms
+    45  bit   I/O         FALSE  sim-joint.1.home-switch.index-enable
+    45  s32   OUT           270  sim-joint.1.home-switch.time
+    39  float IN              0  sim-joint.1.mux.in0 <== sim:joint1.pos-fb
+    39  float IN              0  sim-joint.1.mux.in1 <== sim:joint1.on-pos
+    39  float OUT             0  sim-joint.1.mux.out ==> sim:joint1.pos-fb
+    39  bit   IN           TRUE  sim-joint.1.mux.sel <== sim:enabled
+    39  s32   OUT           240  sim-joint.1.mux.time
+    36  float IN              0  sim-joint.1.pid.Dgain
+    36  float IN              1  sim-joint.1.pid.FF0
+    36  float IN              0  sim-joint.1.pid.FF1
+    36  float IN              0  sim-joint.1.pid.FF2
+    36  float IN              0  sim-joint.1.pid.FF3
+    36  float IN              0  sim-joint.1.pid.Igain
+    36  float IN              0  sim-joint.1.pid.Pgain
+    36  float IN              0  sim-joint.1.pid.bias
+    36  float IN              0  sim-joint.1.pid.command <== sim:joint1.pos-cmd
+    36  float IN              0  sim-joint.1.pid.command-deriv
+    36  float IN              0  sim-joint.1.pid.deadband
+    36  s32   OUT           360  sim-joint.1.pid.do-pid-calcs.time
+    36  bit   IN           TRUE  sim-joint.1.pid.enable <== sim:joint1.enable
+    36  float OUT             0  sim-joint.1.pid.error
+    36  bit   IN           TRUE  sim-joint.1.pid.error-previous-target
+    36  float IN              0  sim-joint.1.pid.feedback
+    36  float IN              0  sim-joint.1.pid.feedback-deriv
+    36  bit   IN          FALSE  sim-joint.1.pid.index-enable
+    36  float IN              0  sim-joint.1.pid.maxcmdD
+    36  float IN              0  sim-joint.1.pid.maxcmdDD
+    36  float IN              0  sim-joint.1.pid.maxcmdDDD
+    36  float IN              0  sim-joint.1.pid.maxerror
+    36  float IN              0  sim-joint.1.pid.maxerrorD
+    36  float IN              0  sim-joint.1.pid.maxerrorI
+    36  float IN              0  sim-joint.1.pid.maxoutput
+    36  float OUT             0  sim-joint.1.pid.output ==> sim:joint1.on-pos
+    36  bit   OUT         FALSE  sim-joint.1.pid.saturated
+    36  s32   OUT             0  sim-joint.1.pid.saturated-count
+    36  float OUT             0  sim-joint.1.pid.saturated-s
+    36  u32   I/O    0x00000032  sim-joint.1.pid.tune-cycles
+    36  float I/O           0.5  sim-joint.1.pid.tune-effort
+    36  bit   IN          FALSE  sim-joint.1.pid.tune-mode
+    36  bit   I/O         FALSE  sim-joint.1.pid.tune-start
+    36  u32   I/O    0x00000000  sim-joint.1.pid.tune-type
+    42  float IN              0  sim-joint.1.vel.in <== sim:joint1.pos-fb
+    42  float OUT             0  sim-joint.1.vel.out
+    42  s32   OUT           120  sim-joint.1.vel.time
+    45  float IN              0  sim-joint.2.home-switch.cur-pos <== sim:joint2.pos-fb
+    45  float IN              1  sim-joint.2.home-switch.home-pos
+    45  bit   OUT         FALSE  sim-joint.2.home-switch.home-sw ==> sim:joint2.homesw
+    45  float IN            0.1  sim-joint.2.home-switch.hysteresis
+    45  float IN             10  sim-joint.2.home-switch.index-delay-ms
+    45  bit   I/O         FALSE  sim-joint.2.home-switch.index-enable
+    45  s32   OUT            30  sim-joint.2.home-switch.time
+    39  float IN              0  sim-joint.2.mux.in0 <== sim:joint2.pos-fb
+    39  float IN              0  sim-joint.2.mux.in1 <== sim:joint2.on-pos
+    39  float OUT             0  sim-joint.2.mux.out ==> sim:joint2.pos-fb
+    39  bit   IN           TRUE  sim-joint.2.mux.sel <== sim:enabled
+    39  s32   OUT           300  sim-joint.2.mux.time
+    36  float IN              0  sim-joint.2.pid.Dgain
+    36  float IN              1  sim-joint.2.pid.FF0
+    36  float IN              0  sim-joint.2.pid.FF1
+    36  float IN              0  sim-joint.2.pid.FF2
+    36  float IN              0  sim-joint.2.pid.FF3
+    36  float IN              0  sim-joint.2.pid.Igain
+    36  float IN              0  sim-joint.2.pid.Pgain
+    36  float IN              0  sim-joint.2.pid.bias
+    36  float IN              0  sim-joint.2.pid.command <== sim:joint2.pos-cmd
+    36  float IN              0  sim-joint.2.pid.command-deriv
+    36  float IN              0  sim-joint.2.pid.deadband
+    36  s32   OUT           420  sim-joint.2.pid.do-pid-calcs.time
+    36  bit   IN           TRUE  sim-joint.2.pid.enable <== sim:joint2.enable
+    36  float OUT             0  sim-joint.2.pid.error
+    36  bit   IN           TRUE  sim-joint.2.pid.error-previous-target
+    36  float IN              0  sim-joint.2.pid.feedback
+    36  float IN              0  sim-joint.2.pid.feedback-deriv
+    36  bit   IN          FALSE  sim-joint.2.pid.index-enable
+    36  float IN              0  sim-joint.2.pid.maxcmdD
+    36  float IN              0  sim-joint.2.pid.maxcmdDD
+    36  float IN              0  sim-joint.2.pid.maxcmdDDD
+    36  float IN              0  sim-joint.2.pid.maxerror
+    36  float IN              0  sim-joint.2.pid.maxerrorD
+    36  float IN              0  sim-joint.2.pid.maxerrorI
+    36  float IN              0  sim-joint.2.pid.maxoutput
+    36  float OUT             0  sim-joint.2.pid.output ==> sim:joint2.on-pos
+    36  bit   OUT         FALSE  sim-joint.2.pid.saturated
+    36  s32   OUT             0  sim-joint.2.pid.saturated-count
+    36  float OUT             0  sim-joint.2.pid.saturated-s
+    36  u32   I/O    0x00000032  sim-joint.2.pid.tune-cycles
+    36  float I/O           0.5  sim-joint.2.pid.tune-effort
+    36  bit   IN          FALSE  sim-joint.2.pid.tune-mode
+    36  bit   I/O         FALSE  sim-joint.2.pid.tune-start
+    36  u32   I/O    0x00000000  sim-joint.2.pid.tune-type
+    42  float IN              0  sim-joint.2.vel.in <== sim:joint2.pos-fb
+    42  float OUT             0  sim-joint.2.vel.out
+    42  s32   OUT            30  sim-joint.2.vel.time
+    45  float IN             -5  sim-joint.3.home-switch.cur-pos <== sim:joint3.pos-fb
+    45  float IN              1  sim-joint.3.home-switch.home-pos
+    45  bit   OUT         FALSE  sim-joint.3.home-switch.home-sw ==> sim:joint3.homesw
+    45  float IN            0.1  sim-joint.3.home-switch.hysteresis
+    45  float IN             10  sim-joint.3.home-switch.index-delay-ms
+    45  bit   I/O         FALSE  sim-joint.3.home-switch.index-enable
+    45  s32   OUT           270  sim-joint.3.home-switch.time
+    39  float IN             -5  sim-joint.3.mux.in0 <== sim:joint3.pos-fb
+    39  float IN             -5  sim-joint.3.mux.in1 <== sim:joint3.on-pos
+    39  float OUT            -5  sim-joint.3.mux.out ==> sim:joint3.pos-fb
+    39  bit   IN           TRUE  sim-joint.3.mux.sel <== sim:enabled
+    39  s32   OUT           270  sim-joint.3.mux.time
+    36  float IN              0  sim-joint.3.pid.Dgain
+    36  float IN              1  sim-joint.3.pid.FF0
+    36  float IN              0  sim-joint.3.pid.FF1
+    36  float IN              0  sim-joint.3.pid.FF2
+    36  float IN              0  sim-joint.3.pid.FF3
+    36  float IN              0  sim-joint.3.pid.Igain
+    36  float IN              0  sim-joint.3.pid.Pgain
+    36  float IN              0  sim-joint.3.pid.bias
+    36  float IN             -5  sim-joint.3.pid.command <== sim:joint3.pos-cmd
+    36  float IN              0  sim-joint.3.pid.command-deriv
+    36  float IN              0  sim-joint.3.pid.deadband
+    36  s32   OUT           660  sim-joint.3.pid.do-pid-calcs.time
+    36  bit   IN           TRUE  sim-joint.3.pid.enable <== sim:joint3.enable
+    36  float OUT            -5  sim-joint.3.pid.error
+    36  bit   IN           TRUE  sim-joint.3.pid.error-previous-target
+    36  float IN              0  sim-joint.3.pid.feedback
+    36  float IN              0  sim-joint.3.pid.feedback-deriv
+    36  bit   IN          FALSE  sim-joint.3.pid.index-enable
+    36  float IN              0  sim-joint.3.pid.maxcmdD
+    36  float IN              0  sim-joint.3.pid.maxcmdDD
+    36  float IN              0  sim-joint.3.pid.maxcmdDDD
+    36  float IN              0  sim-joint.3.pid.maxerror
+    36  float IN              0  sim-joint.3.pid.maxerrorD
+    36  float IN              0  sim-joint.3.pid.maxerrorI
+    36  float IN              0  sim-joint.3.pid.maxoutput
+    36  float OUT            -5  sim-joint.3.pid.output ==> sim:joint3.on-pos
+    36  bit   OUT         FALSE  sim-joint.3.pid.saturated
+    36  s32   OUT             0  sim-joint.3.pid.saturated-count
+    36  float OUT             0  sim-joint.3.pid.saturated-s
+    36  u32   I/O    0x00000032  sim-joint.3.pid.tune-cycles
+    36  float I/O           0.5  sim-joint.3.pid.tune-effort
+    36  bit   IN          FALSE  sim-joint.3.pid.tune-mode
+    36  bit   I/O         FALSE  sim-joint.3.pid.tune-start
+    36  u32   I/O    0x00000000  sim-joint.3.pid.tune-type
+    42  float IN             -5  sim-joint.3.vel.in <== sim:joint3.pos-fb
+    42  float OUT             0  sim-joint.3.vel.out
+    42  s32   OUT            60  sim-joint.3.vel.time
+   237  bit   IN          FALSE  sim-torch.close
+   237  float IN           0.75  sim-torch.cut-noise-in
+   237  s32   IN            200  sim-torch.cycles-in
+   237  float IN              0  sim-torch.offset-in <== sim:arc_voltage_offset
+   237  s32   IN             10  sim-torch.on-delay-in
+   237  s32   IN             50  sim-torch.overshoot-in
+   237  float IN              5  sim-torch.ramp-noise-in
+   237  s32   IN             80  sim-torch.ramp-up-in
+   237  bit   IN          FALSE  sim-torch.start <== plasmac:torch-on
+   237  bit   IN          FALSE  sim-torch.void
+   237  s32   IN              0  sim-torch.void_ramp
+   237  float IN            100  sim-torch.voltage-in <== plasmac:cut-volts
+   237  float OUT             0  sim-torch.voltage-out ==> sim:arc-voltage-in
+    29  bit   IN          FALSE  spindle.0.amp-fault-in
+    29  bit   IN           TRUE  spindle.0.at-speed
+    29  bit   OUT          TRUE  spindle.0.brake
+    29  bit   OUT         FALSE  spindle.0.forward
+    29  bit   I/O         FALSE  spindle.0.index-enable
+    29  bit   IN          FALSE  spindle.0.inhibit
+    29  bit   IN          FALSE  spindle.0.is-oriented
+    29  bit   OUT         FALSE  spindle.0.locked
+    29  bit   OUT         FALSE  spindle.0.on ==> plasmac:cutting-start
+    29  bit   OUT         FALSE  spindle.0.orient
+    29  float OUT             0  spindle.0.orient-angle
+    29  s32   IN              0  spindle.0.orient-fault
+    29  s32   OUT             0  spindle.0.orient-mode
+    29  bit   OUT         FALSE  spindle.0.reverse
+    29  float IN              0  spindle.0.revs
+    29  float OUT             0  spindle.0.speed-cmd-rps
+    29  float IN              0  spindle.0.speed-in
+    29  float OUT             0  spindle.0.speed-out
+    29  float OUT             0  spindle.0.speed-out-abs
+    29  float OUT             0  spindle.0.speed-out-rps
+    29  float OUT             0  spindle.0.speed-out-rps-abs
+    29  bit   IN          FALSE  spindle.1.amp-fault-in
+    29  bit   IN           TRUE  spindle.1.at-speed
+    29  bit   OUT          TRUE  spindle.1.brake
+    29  bit   OUT         FALSE  spindle.1.forward
+    29  bit   I/O         FALSE  spindle.1.index-enable
+    29  bit   IN          FALSE  spindle.1.inhibit
+    29  bit   IN          FALSE  spindle.1.is-oriented
+    29  bit   OUT         FALSE  spindle.1.locked
+    29  bit   OUT         FALSE  spindle.1.on ==> plasmac:scribe-start
+    29  bit   OUT         FALSE  spindle.1.orient
+    29  float OUT             0  spindle.1.orient-angle
+    29  s32   IN              0  spindle.1.orient-fault
+    29  s32   OUT             0  spindle.1.orient-mode
+    29  bit   OUT         FALSE  spindle.1.reverse
+    29  float IN              0  spindle.1.revs
+    29  float OUT             0  spindle.1.speed-cmd-rps
+    29  float IN              0  spindle.1.speed-in
+    29  float OUT             0  spindle.1.speed-out
+    29  float OUT             0  spindle.1.speed-out-abs
+    29  float OUT             0  spindle.1.speed-out-rps
+    29  float OUT             0  spindle.1.speed-out-rps-abs
+    29  bit   IN          FALSE  spindle.2.amp-fault-in
+    29  bit   IN           TRUE  spindle.2.at-speed
+    29  bit   OUT          TRUE  spindle.2.brake
+    29  bit   OUT         FALSE  spindle.2.forward
+    29  bit   I/O         FALSE  spindle.2.index-enable
+    29  bit   IN          FALSE  spindle.2.inhibit
+    29  bit   IN          FALSE  spindle.2.is-oriented
+    29  bit   OUT         FALSE  spindle.2.locked
+    29  bit   OUT         FALSE  spindle.2.on ==> plasmac:spotting-start
+    29  bit   OUT         FALSE  spindle.2.orient
+    29  float OUT             0  spindle.2.orient-angle
+    29  s32   IN              0  spindle.2.orient-fault
+    29  s32   OUT             0  spindle.2.orient-mode
+    29  bit   OUT         FALSE  spindle.2.reverse
+    29  float IN              0  spindle.2.revs
+    29  float OUT             0  spindle.2.speed-cmd-rps
+    29  float IN              0  spindle.2.speed-in
+    29  float OUT             0  spindle.2.speed-out
+    29  float OUT             0  spindle.2.speed-out-abs
+    29  float OUT             0  spindle.2.speed-out-rps
+    29  float OUT             0  spindle.2.speed-out-rps-abs
+
+Pin Aliases:
+ Alias                                            Original Name
+
+Signals:
+Type          Value  Name     (linked to)
+bit            TRUE  machine-is-on
+                         <== halui.machine.is-on
+                         ==> plasmac.machine-is-on
+float             1  plasmac:adaptive-feed
+                         ==> motion.adaptive-feed
+                         <== plasmac.adaptive-feed
+float             3  plasmac:arc-fail-delay
+                         ==> plasmac.arc-fail-delay
+                         <== qtplasmac.arc_fail_delay-f
+s32               3  plasmac:arc-max-starts
+                         ==> plasmac.arc-max-starts
+                         <== qtplasmac.arc_max_starts-s
+bit           FALSE  plasmac:arc-ok
+                         <== db_arc-ok.out
+                         ==> plasmac.arc-ok-in
+float           250  plasmac:arc-ok-high
+                         ==> plasmac.arc-ok-high
+                         <== qtplasmac.arc_ok_high-f
+float            60  plasmac:arc-ok-low
+                         ==> plasmac.arc-ok-low
+                         <== qtplasmac.arc_ok_low-f
+float             0  plasmac:arc-voltage-offset
+                         ==> plasmac.arc-voltage-offset
+                         <== qtplasmac.arc_voltage_offset-f
+float             1  plasmac:arc-voltage-scale
+                         ==> plasmac.arc-voltage-scale
+                         <== qtplasmac.arc_voltage_scale-f
+bit           FALSE  plasmac:arc_ok_out
+                         <== plasmac.arc-ok-out
+                         ==> qtplasmac.led_arc_ok
+float             0  plasmac:arc_voltage_out
+                         <== plasmac.arc-voltage-out
+                         ==> qtplasmac.arc_voltage
+float            95  plasmac:axis-position
+                         <== joint.3.pos-fb
+                         ==> plasmac.axis-z-position
+                         ==> qtplasmac_sim.z_position
+float      1200.001  plasmac:axis-x-max-limit
+                         ==> ini.x.max_limit
+                         ==> plasmac.axis-x-max-limit
+float        -0.001  plasmac:axis-x-min-limit
+                         ==> ini.x.min_limit
+                         ==> plasmac.axis-x-min-limit
+float             0  plasmac:axis-x-position
+                         <== axis.x.pos-cmd
+                         ==> plasmac.axis-x-position
+float      1200.001  plasmac:axis-y-max-limit
+                         ==> ini.y.max_limit
+                         ==> plasmac.axis-y-max-limit
+float        -0.001  plasmac:axis-y-min-limit
+                         ==> ini.y.min_limit
+                         ==> plasmac.axis-y-min-limit
+float             0  plasmac:axis-y-position
+                         <== axis.y.pos-cmd
+                         ==> plasmac.axis-y-position
+float       100.001  plasmac:axis-z-max-limit
+                         ==> ini.z.max_limit
+                         ==> plasmac.axis-z-max-limit
+float        -0.001  plasmac:axis-z-min-limit
+                         ==> ini.z.min_limit
+                         ==> plasmac.axis-z-min-limit
+bit           FALSE  plasmac:breakaway-switch-out
+                         <== db_breakaway.out
+                         ==> plasmac.breakaway
+                         ==> qtplasmac.led_breakaway_switch
+bit           FALSE  plasmac:consumable-changing
+                         <== plasmac.consumable-changing
+                         ==> qtplasmac.consumable_changing
+bit            TRUE  plasmac:cornerlock-enable
+                         ==> plasmac.cornerlock-enable
+                         <== qtplasmac.cornerlock_enable
+bit           FALSE  plasmac:cornerlock-is-locked
+                         <== plasmac.cornerlock-is-locked
+                         ==> qtplasmac.led_corner_lock
+float            90  plasmac:cornerlock-threshold
+                         ==> plasmac.cornerlock-threshold
+                         <== qtplasmac.cornerlock_threshold-f
+float             0  plasmac:current-velocity
+                         <== motion.current-vel
+                         ==> plasmac.current-velocity
+float          1000  plasmac:cut-feed-rate
+                         ==> plasmac.cut-feed-rate
+                         <== qtplasmac.cut_feed_rate-f
+float             1  plasmac:cut-height
+                         ==> plasmac.cut-height
+                         <== qtplasmac.cut_height-f
+float           100  plasmac:cut-volts
+                         ==> plasmac.cut-volts
+                         <== qtplasmac.cut_volts-f
+                         ==> sim-torch.voltage-in
+bit           FALSE  plasmac:cutting-start
+                         ==> plasmac.cutting-start
+                         <== spindle.0.on
+bit           FALSE  plasmac:cutting-stop
+                         ==> halui.spindle.0.stop
+                         <== plasmac.cutting-stop
+bit           FALSE  plasmac:feed-hold
+                         ==> motion.feed-hold
+                         <== plasmac.feed-hold
+float             1  plasmac:feed-override
+                         <== halui.feed-override.value
+                         ==> plasmac.feed-override
+float             0  plasmac:feed-reduction
+                         <== motion.analog-out-03
+                         ==> plasmac.feed-reduction
+float             0  plasmac:feed-upm
+                         <== motion.feed-upm
+                         ==> plasmac.feed-upm
+bit           FALSE  plasmac:float-switch-out
+                         <== db_float.out
+                         ==> plasmac.float-switch
+                         ==> qtplasmac.led_float_switch
+float           1.5  plasmac:float-switch-travel
+                         ==> plasmac.float-switch-travel
+                         <== qtplasmac.float_switch_travel-f
+float             1  plasmac:gcode-scale
+                         ==> plasmac.gcode-scale
+                         <== qtplasmac.gcode_scale
+float             0  plasmac:height-override
+                         ==> plasmac.height-override
+                         <== qtplasmac.height_override
+float           0.1  plasmac:height-per-volt
+                         ==> plasmac.height-per-volt
+                         <== qtplasmac.height_per_volt-f
+bit            TRUE  plasmac:homed
+                         <== motion.is-all-homed
+                         ==> plasmac.homed
+bit           FALSE  plasmac:ignore-arc-ok-0
+                         <== motion.digital-out-01
+                         ==> plasmac.ignore-arc-ok-0
+bit           FALSE  plasmac:ignore-arc-ok-1
+                         ==> plasmac.ignore-arc-ok-1
+                         <== qtplasmac.ignore_arc_ok
+bit           FALSE  plasmac:jog-inhibit
+                         ==> motion.jog-inhibit
+                         ==> motion.jog-stop
+                         <== plasmac.jog-inhibit
+                         ==> qtplasmac.jog_inhibited
+float             1  plasmac:kerf-width
+                         ==> plasmac.kerf-width
+                         <== qtplasmac.kerf_width-f
+bit           FALSE  plasmac:laser-on
+                         <== qtplasmac.laser_on
+s32               0  plasmac:laser-recovery-state
+                         <== plasmac.laser-recovery-state
+                         ==> qtplasmac.laser_recovery_state
+bit           FALSE  plasmac:led-down
+                         <== plasmac.led-down
+                         ==> qtplasmac.led_thc_down
+bit           FALSE  plasmac:led-up
+                         <== plasmac.led-up
+                         ==> qtplasmac.led_thc_up
+bit           FALSE  plasmac:mesh-enable
+                         ==> plasmac.mesh-enable
+                         <== qtplasmac.mesh_enable
+s32               0  plasmac:motion-type
+                         <== motion.motion-type
+                         ==> plasmac.motion-type
+float         1e-05  plasmac:offset-scale
+                         ==> axis.x.eoffset-scale
+                         ==> axis.y.eoffset-scale
+                         ==> axis.z.eoffset-scale
+                         <== plasmac.offset-scale
+bit           FALSE  plasmac:offset-set-probe
+                         ==> plasmac.offset-set-probe
+                         <== qtplasmac.offset_set_probe
+bit           FALSE  plasmac:offset-set-scribe
+                         ==> plasmac.offset-set-scribe
+                         <== qtplasmac.offset_set_scribe
+bit           FALSE  plasmac:offsets-active
+                         <== motion.eoffset-active
+                         ==> plasmac.offsets-active
+                         ==> qtplasmac.offsets_active
+s32               0  plasmac:ohmic-max-attempts
+                         ==> plasmac.ohmic-max-attempts
+                         <== qtplasmac.ohmic_max_attempts-s
+bit            TRUE  plasmac:ohmic-probe-enable
+                         ==> plasmac.ohmic-probe-enable
+                         <== qtplasmac.ohmic_probe_enable
+float             0  plasmac:ohmic-probe-offset
+                         ==> plasmac.ohmic-probe-offset
+                         <== qtplasmac.ohmic_probe_offset-f
+bit           FALSE  plasmac:ohmic-probe-out
+                         <== db_ohmic.out
+                         ==> plasmac.ohmic-probe
+                         ==> qtplasmac.ohmic_led_in
+float             0  plasmac:pause-at-end
+                         ==> plasmac.pause-at-end
+                         <== qtplasmac.pause_at_end-f
+float             0  plasmac:pid-d-gain
+                         ==> plasmac.pid-d-gain
+                         <== qtplasmac.pid_d_gain-f
+float             0  plasmac:pid-i-gain
+                         ==> plasmac.pid-i-gain
+                         <== qtplasmac.pid_i_gain-f
+float            10  plasmac:pid-p-gain
+                         ==> plasmac.pid-p-gain
+                         <== qtplasmac.pid_p_gain-f
+float           0.1  plasmac:pierce-delay
+                         ==> plasmac.pierce-delay
+                         <== qtplasmac.pierce_delay-f
+float             3  plasmac:pierce-height
+                         ==> plasmac.pierce-height
+                         <== qtplasmac.pierce_height-f
+float           300  plasmac:probe-feed-rate
+                         ==> plasmac.probe-feed-rate
+                         <== qtplasmac.probe_feed_rate-f
+float            25  plasmac:probe-start-height
+                         ==> plasmac.probe-start-height
+                         <== qtplasmac.probe_start_height-f
+bit           FALSE  plasmac:probe-test-error
+                         <== plasmac.probe-test-error
+                         ==> qtplasmac.probe_test_error
+bit            TRUE  plasmac:program-is-idle
+                         <== halui.program.is-idle
+                         ==> plasmac.program-is-idle
+bit           FALSE  plasmac:program-is-paused
+                         <== halui.program.is-paused
+                         ==> plasmac.program-is-paused
+bit           FALSE  plasmac:program-is-running
+                         <== halui.program.is-running
+                         ==> plasmac.program-is-running
+bit           FALSE  plasmac:program-pause
+                         ==> halui.program.pause
+                         <== plasmac.program-pause
+bit           FALSE  plasmac:program-resume
+                         ==> halui.program.resume
+                         <== plasmac.program-resume
+bit           FALSE  plasmac:program-run
+                         ==> halui.program.run
+                         <== plasmac.program-run
+bit           FALSE  plasmac:program-stop
+                         ==> halui.program.stop
+                         <== plasmac.program-stop
+float             0  plasmac:puddle-jump-delay
+                         ==> plasmac.puddle-jump-delay
+                         <== qtplasmac.puddle_jump_delay-f
+float             0  plasmac:puddle-jump-height
+                         ==> plasmac.puddle-jump-height
+                         <== qtplasmac.puddle_jump_height-f
+float             1  plasmac:restart-delay
+                         ==> plasmac.restart-delay
+                         <== qtplasmac.arc_restart_delay-f
+float            25  plasmac:safe-height
+                         ==> plasmac.safe-height
+                         <== qtplasmac.safe_height-f
+float             0  plasmac:scribe-arm-delay
+                         ==> plasmac.scribe-arm-delay
+                         <== qtplasmac.scribe_arm_delay-f
+float             0  plasmac:scribe-on-delay
+                         ==> plasmac.scribe-on-delay
+                         <== qtplasmac.scribe_on_delay-f
+bit           FALSE  plasmac:scribe-start
+                         ==> plasmac.scribe-start
+                         <== spindle.1.on
+bit           FALSE  plasmac:sensor_active
+                         <== plasmac.sensor-active
+                         ==> qtplasmac.sensor_active
+float          2880  plasmac:setup-feed-rate
+                         ==> plasmac.setup-feed-rate
+                         <== qtplasmac.setup_feed_rate-f
+float             0  plasmac:skip-ihs-distance
+                         ==> plasmac.skip-ihs-distance
+                         <== qtplasmac.skip_ihs_distance-f
+bit           FALSE  plasmac:spotting-start
+                         ==> plasmac.spotting-start
+                         <== spindle.2.on
+float             1  plasmac:spotting-threshold
+                         ==> plasmac.spotting-threshold
+                         <== qtplasmac.spotting_threshold-f
+float             0  plasmac:spotting-time
+                         ==> plasmac.spotting-time
+                         <== qtplasmac.spotting_time-f
+s32               0  plasmac:state
+                         <== plasmac.state-out
+                         ==> qtplasmac.plasmac_state
+                         ==> qtplasmac_sim.state
+bit           FALSE  plasmac:thc-active
+                         <== plasmac.thc-active
+                         ==> qtplasmac.led_thc_active
+bit           FALSE  plasmac:thc-auto
+                         ==> plasmac.thc-auto
+                         <== qtplasmac.thc_auto
+float           0.5  plasmac:thc-delay
+                         ==> plasmac.thc-delay
+                         <== qtplasmac.thc_delay-f
+bit           FALSE  plasmac:thc-disable
+                         <== motion.digital-out-02
+                         ==> plasmac.thc-disable
+bit            TRUE  plasmac:thc-enable
+                         ==> plasmac.thc-enable
+                         <== qtplasmac.thc_enable
+bit            TRUE  plasmac:thc-enabled
+                         <== plasmac.thc-enabled
+                         ==> qtplasmac.led_thc_enabled
+float          3600  plasmac:thc-feed-rate
+                         ==> plasmac.thc-feed-rate
+                         <== qtplasmac.thc_feed_rate
+s32              50  plasmac:thc-sample-counts
+                         ==> plasmac.thc-sample-counts
+                         <== qtplasmac.thc_sample_counts-s
+float             1  plasmac:thc-sample-threshold
+                         ==> plasmac.thc-sample-threshold
+                         <== qtplasmac.thc_sample_threshold-f
+float             1  plasmac:thc-threshold
+                         ==> plasmac.thc-threshold
+                         <== qtplasmac.thc_threshold-f
+bit           FALSE  plasmac:torch-enable
+                         ==> plasmac.torch-enable
+                         <== qtplasmac.torch_enable
+bit           FALSE  plasmac:torch-off
+                         <== motion.digital-out-03
+                         ==> plasmac.torch-off
+bit           FALSE  plasmac:torch-on
+                         <== plasmac.torch-on
+                         ==> qtplasmac.led_torch_on
+                         ==> qtplasmac_sim.torch_on
+                         ==> sim-torch.start
+float             1  plasmac:units-per-mm
+                         <== halui.machine.units-per-mm
+                         ==> plasmac.units-per-mm
+bit            TRUE  plasmac:use-auto-volts
+                         ==> plasmac.use-auto-volts
+                         <== qtplasmac.use_auto_volts
+bit           FALSE  plasmac:voidlock-enable
+                         ==> plasmac.voidlock-enable
+                         <== qtplasmac.voidlock_enable
+bit           FALSE  plasmac:voidlock-is-locked
+                         <== plasmac.voidlock-is-locked
+                         ==> qtplasmac.led_void_lock
+s32             500  plasmac:voidlock-slope
+                         ==> plasmac.voidlock-slope
+                         <== qtplasmac.voidlock_slope-s
+s32               0  plasmac:x-offset-counts
+                         ==> axis.x.eoffset-counts
+                         <== plasmac.x-offset-counts
+float             0  plasmac:x-offset-current
+                         <== axis.x.eoffset
+                         ==> plasmac.x-offset-current
+                         ==> qtplasmac.x_offset
+bit           FALSE  plasmac:xy-offset-enable
+                         ==> axis.x.eoffset-enable
+                         ==> axis.y.eoffset-enable
+                         <== plasmac.xy-offset-enable
+s32               0  plasmac:y-offset-counts
+                         ==> axis.y.eoffset-counts
+                         <== plasmac.y-offset-counts
+float             0  plasmac:y-offset-current
+                         <== axis.y.eoffset
+                         ==> plasmac.y-offset-current
+                         ==> qtplasmac.y_offset
+float        95.001  plasmac:z-height
+                         <== plasmac.z-height
+                         ==> qtplasmac.z_height
+s32               0  plasmac:z-offset-counts
+                         ==> axis.z.eoffset-counts
+                         <== plasmac.z-offset-counts
+                         ==> qtplasmac.z_offset_counts
+float             0  plasmac:z-offset-current
+                         <== axis.z.eoffset
+                         ==> plasmac.z-offset-current
+bit           FALSE  plasmac:z-offset-enable
+                         ==> axis.z.eoffset-enable
+                         <== plasmac.z-offset-enable
+bit           FALSE  sim:arc-ok
+                         ==> db_arc-ok.in
+                         <== qtplasmac_sim.arc_ok
+float             0  sim:arc-voltage-in
+                         ==> plasmac.arc-voltage-in
+                         <== sim-torch.voltage-out
+float             0  sim:arc_voltage_offset
+                         <== qtplasmac_sim.arc_voltage_offset-f
+                         ==> sim-torch.offset-in
+bit           FALSE  sim:breakaway
+                         ==> db_breakaway.in
+                         <== qtplasmac_sim.sensor_breakaway
+bit            TRUE  sim:enabled
+                         <== motion.motion-enabled
+                         ==> sim-joint.0.mux.sel
+                         ==> sim-joint.1.mux.sel
+                         ==> sim-joint.2.mux.sel
+                         ==> sim-joint.3.mux.sel
+bit            TRUE  sim:estop-out
+                         <== estop_not.out
+                         ==> iocontrol.0.emc-enable-in
+bit           FALSE  sim:estop-raw
+                         ==> estop_not.in
+                         <== estop_or.out
+bit           FALSE  sim:float
+                         ==> db_float.in
+                         <== qtplasmac_sim.sensor_float
+bit            TRUE  sim:joint0.enable
+                         <== joint.0.amp-enable-out
+                         ==> sim-joint.0.pid.enable
+bit           FALSE  sim:joint0.homesw
+                         ==> joint.0.home-sw-in
+                         <== sim-joint.0.home-switch.home-sw
+float             0  sim:joint0.on-pos
+                         ==> sim-joint.0.mux.in1
+                         <== sim-joint.0.pid.output
+float             0  sim:joint0.pos-cmd
+                         <== joint.0.motor-pos-cmd
+                         ==> sim-joint.0.pid.command
+float             0  sim:joint0.pos-fb
+                         ==> joint.0.motor-pos-fb
+                         ==> sim-joint.0.home-switch.cur-pos
+                         ==> sim-joint.0.mux.in0
+                         <== sim-joint.0.mux.out
+                         ==> sim-joint.0.vel.in
+bit            TRUE  sim:joint1.enable
+                         <== joint.1.amp-enable-out
+                         ==> sim-joint.1.pid.enable
+bit           FALSE  sim:joint1.homesw
+                         ==> joint.1.home-sw-in
+                         <== sim-joint.1.home-switch.home-sw
+float             0  sim:joint1.on-pos
+                         ==> sim-joint.1.mux.in1
+                         <== sim-joint.1.pid.output
+float             0  sim:joint1.pos-cmd
+                         <== joint.1.motor-pos-cmd
+                         ==> sim-joint.1.pid.command
+float             0  sim:joint1.pos-fb
+                         ==> joint.1.motor-pos-fb
+                         ==> sim-joint.1.home-switch.cur-pos
+                         ==> sim-joint.1.mux.in0
+                         <== sim-joint.1.mux.out
+                         ==> sim-joint.1.vel.in
+bit            TRUE  sim:joint2.enable
+                         <== joint.2.amp-enable-out
+                         ==> sim-joint.2.pid.enable
+bit           FALSE  sim:joint2.homesw
+                         ==> joint.2.home-sw-in
+                         <== sim-joint.2.home-switch.home-sw
+float             0  sim:joint2.on-pos
+                         ==> sim-joint.2.mux.in1
+                         <== sim-joint.2.pid.output
+float             0  sim:joint2.pos-cmd
+                         <== joint.2.motor-pos-cmd
+                         ==> sim-joint.2.pid.command
+float             0  sim:joint2.pos-fb
+                         ==> joint.2.motor-pos-fb
+                         ==> sim-joint.2.home-switch.cur-pos
+                         ==> sim-joint.2.mux.in0
+                         <== sim-joint.2.mux.out
+                         ==> sim-joint.2.vel.in
+bit            TRUE  sim:joint3.enable
+                         <== joint.3.amp-enable-out
+                         ==> sim-joint.3.pid.enable
+bit           FALSE  sim:joint3.homesw
+                         ==> joint.3.home-sw-in
+                         <== sim-joint.3.home-switch.home-sw
+float            -5  sim:joint3.on-pos
+                         ==> sim-joint.3.mux.in1
+                         <== sim-joint.3.pid.output
+float            -5  sim:joint3.pos-cmd
+                         <== joint.3.motor-pos-cmd
+                         ==> sim-joint.3.pid.command
+float            -5  sim:joint3.pos-fb
+                         ==> joint.3.motor-pos-fb
+                         ==> sim-joint.3.home-switch.cur-pos
+                         ==> sim-joint.3.mux.in0
+                         <== sim-joint.3.mux.out
+                         ==> sim-joint.3.vel.in
+bit           FALSE  sim:move-down
+                         ==> plasmac.move-down
+                         <== qtplasmac_sim.move_down
+bit           FALSE  sim:move-up
+                         ==> plasmac.move-up
+                         <== qtplasmac_sim.move_up
+bit           FALSE  sim:ohmic
+                         ==> db_ohmic.in
+                         <== qtplasmac_sim.sensor_ohmic
+bit           FALSE  sim:tool-change-loopback
+                         <== iocontrol.0.tool-change
+                         ==> iocontrol.0.tool-changed
+s32               0  sim:tool-number
+                         <== iocontrol.0.tool-prep-number
+bit           FALSE  sim:tool-prepare-loopback
+                         <== iocontrol.0.tool-prepare
+                         ==> iocontrol.0.tool-prepared
+
+Parameters:
+Owner   Type  Dir         Value  Name
+    48  s32   RW          99270  db_arc-ok.tmax
+    48  bit   RO          FALSE  db_arc-ok.tmax-increased
+    48  s32   RW         233820  db_breakaway.tmax
+    48  bit   RO          FALSE  db_breakaway.tmax-increased
+    48  s32   RW         212220  db_float.tmax
+    48  bit   RO          FALSE  db_float.tmax-increased
+    48  s32   RW         151200  db_ohmic.tmax
+    48  bit   RO          FALSE  db_ohmic.tmax-increased
+    54  s32   RW         197340  estop_not.tmax
+    54  bit   RO          FALSE  estop_not.tmax-increased
+    54  s32   RW         149700  estop_not_1.tmax
+    54  bit   RO          FALSE  estop_not_1.tmax-increased
+    51  s32   RW         131250  estop_or.tmax
+    51  bit   RO          FALSE  estop_or.tmax-increased
+    29  s32   RW         375150  motion-command-handler.tmax
+    29  bit   RO          FALSE  motion-command-handler.tmax-increased
+    29  s32   RW        5207970  motion-controller.tmax
+    29  bit   RO          FALSE  motion-controller.tmax-increased
+    29  bit   RO          FALSE  motion.debug-bit-0
+    29  bit   RO           TRUE  motion.debug-bit-1
+    29  float RO              0  motion.debug-float-0
+    29  float RO              0  motion.debug-float-1
+    29  float RO              0  motion.debug-float-2
+    29  float RO              1  motion.debug-float-3
+    29  s32   RO              0  motion.debug-s32-0
+    29  s32   RO              0  motion.debug-s32-1
+    33  s32   RW        3248430  plasmac.tmax
+    33  bit   RO          FALSE  plasmac.tmax-increased
+    30  s32   RW        5239830  servo-thread.tmax
+    45  s32   RW        3590820  sim-joint.0.home-switch.tmax
+    45  bit   RO          FALSE  sim-joint.0.home-switch.tmax-increased
+    39  s32   RW         260370  sim-joint.0.mux.tmax
+    39  bit   RO          FALSE  sim-joint.0.mux.tmax-increased
+    36  s32   RW         291720  sim-joint.0.pid.do-pid-calcs.tmax
+    36  bit   RO          FALSE  sim-joint.0.pid.do-pid-calcs.tmax-increased
+    42  s32   RW         773820  sim-joint.0.vel.tmax
+    42  bit   RO          FALSE  sim-joint.0.vel.tmax-increased
+    45  s32   RW         493440  sim-joint.1.home-switch.tmax
+    45  bit   RO          FALSE  sim-joint.1.home-switch.tmax-increased
+    39  s32   RW         755580  sim-joint.1.mux.tmax
+    39  bit   RO          FALSE  sim-joint.1.mux.tmax-increased
+    36  s32   RW         549060  sim-joint.1.pid.do-pid-calcs.tmax
+    36  bit   RO          FALSE  sim-joint.1.pid.do-pid-calcs.tmax-increased
+    42  s32   RW         248550  sim-joint.1.vel.tmax
+    42  bit   RO          FALSE  sim-joint.1.vel.tmax-increased
+    45  s32   RW         200250  sim-joint.2.home-switch.tmax
+    45  bit   RO          FALSE  sim-joint.2.home-switch.tmax-increased
+    39  s32   RW         181080  sim-joint.2.mux.tmax
+    39  bit   RO          FALSE  sim-joint.2.mux.tmax-increased
+    36  s32   RW         157800  sim-joint.2.pid.do-pid-calcs.tmax
+    36  bit   RO          FALSE  sim-joint.2.pid.do-pid-calcs.tmax-increased
+    42  s32   RW         107190  sim-joint.2.vel.tmax
+    42  bit   RO          FALSE  sim-joint.2.vel.tmax-increased
+    45  s32   RW         144480  sim-joint.3.home-switch.tmax
+    45  bit   RO          FALSE  sim-joint.3.home-switch.tmax-increased
+    39  s32   RW         481140  sim-joint.3.mux.tmax
+    39  bit   RO          FALSE  sim-joint.3.mux.tmax-increased
+    36  s32   RW        3846510  sim-joint.3.pid.do-pid-calcs.tmax
+    36  bit   RO          FALSE  sim-joint.3.pid.do-pid-calcs.tmax-increased
+    42  s32   RW         515940  sim-joint.3.vel.tmax
+    42  bit   RO          FALSE  sim-joint.3.vel.tmax-increased
+    29  float RO              0  tc.0.acc
+    29  float RO              0  tc.0.pos
+    29  float RO              0  tc.0.vel
+    29  float RO              0  tc.1.acc
+    29  float RO              0  tc.1.pos
+    29  float RO              0  tc.1.vel
+    29  float RO              0  tc.2.acc
+    29  float RO              0  tc.2.pos
+    29  float RO              0  tc.2.vel
+    29  float RO              0  tc.3.acc
+    29  float RO              0  tc.3.pos
+    29  float RO              0  tc.3.vel
+    29  u32   RO     0x00000000  traj.active_tc
+    29  float RO              0  traj.pos_out
+    29  float RO              0  traj.vel_out
+
+Parameter Aliases:
+ Alias                                            Original Name
+
+Exported Functions:
+Owner   CodeAddr  Arg       FP   Users  Name
+ 00048  7f5792323199  7f5792444740  NO       1   db_arc-ok
+ 00048  7f5792323199  7f57924446b0  NO       1   db_breakaway
+ 00048  7f5792323199  7f57924446e0  NO       1   db_float
+ 00048  7f5792323199  7f5792444710  NO       1   db_ohmic
+ 00054  7f5792319189  7f57924447d0  NO       1   estop_not
+ 00054  7f5792319189  7f57924447f0  NO       1   estop_not_1
+ 00051  7f579231e189  7f57924447a0  NO       1   estop_or
+ 00029  7f57932433ad  00000000  YES      1   motion-command-handler
+ 00029  7f57932439a0  00000000  YES      1   motion-controller
+ 00033  7f579232e32d  7f5792443450  YES      1   plasmac
+ 00045  7f579321b199  7f5792444500  YES      1   sim-joint.0.home-switch
+ 00039  7f5793225199  7f5792444320  YES      1   sim-joint.0.mux
+ 00036  7f579322a240  7f5792443b70  YES      1   sim-joint.0.pid.do-pid-calcs
+ 00042  7f5793220189  7f5792444430  YES      1   sim-joint.0.vel
+ 00045  7f579321b199  7f5792444550  YES      1   sim-joint.1.home-switch
+ 00039  7f5793225199  7f5792444350  YES      1   sim-joint.1.mux
+ 00036  7f579322a240  7f5792443d10  YES      1   sim-joint.1.pid.do-pid-calcs
+ 00042  7f5793220189  7f5792444450  YES      1   sim-joint.1.vel
+ 00045  7f579321b199  7f57924445a0  YES      1   sim-joint.2.home-switch
+ 00039  7f5793225199  7f5792444380  YES      1   sim-joint.2.mux
+ 00036  7f579322a240  7f5792443eb0  YES      1   sim-joint.2.pid.do-pid-calcs
+ 00042  7f5793220189  7f5792444470  YES      1   sim-joint.2.vel
+ 00045  7f579321b199  7f57924445f0  YES      1   sim-joint.3.home-switch
+ 00039  7f5793225199  7f57924443b0  YES      1   sim-joint.3.mux
+ 00036  7f579322a240  7f5792444050  YES      1   sim-joint.3.pid.do-pid-calcs
+ 00042  7f5793220189  7f5792444490  YES      1   sim-joint.3.vel
+
+Realtime Threads:
+     Period  FP     Name               (     Time, Max-Time )
+    1000000  YES          servo-thread (    29520,  5239830 )
+                  1 motion-command-handler
+                  2 motion-controller
+                  3 plasmac
+                  4 sim-joint.0.pid.do-pid-calcs
+                  5 sim-joint.0.mux
+                  6 sim-joint.0.vel
+                  7 sim-joint.1.pid.do-pid-calcs
+                  8 sim-joint.1.mux
+                  9 sim-joint.1.vel
+                 10 sim-joint.2.pid.do-pid-calcs
+                 11 sim-joint.2.mux
+                 12 sim-joint.2.vel
+                 13 sim-joint.3.pid.do-pid-calcs
+                 14 sim-joint.3.mux
+                 15 sim-joint.3.vel
+                 16 sim-joint.0.home-switch
+                 17 sim-joint.1.home-switch
+                 18 sim-joint.2.home-switch
+                 19 sim-joint.3.home-switch
+                 20 db_float
+                 21 db_ohmic
+                 22 db_breakaway
+                 23 db_arc-ok
+                 24 estop_or
+                 25 estop_not
+                 26 estop_not_1
+
