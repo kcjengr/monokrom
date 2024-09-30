@@ -758,22 +758,6 @@ CHANGE</string>
              </item>
              <item>
               <layout class="QGridLayout" name="layout_overrides">
-               <item row="1" column="1">
-                <widget class="ActionSlider" name="feed_slider">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="actionName" stdset="0">
-                  <string>machine.feed-override.set</string>
-                 </property>
-                </widget>
-               </item>
                <item row="1" column="0">
                 <widget class="ActionSlider" name="rapid_slider">
                  <property name="sizePolicy">
@@ -787,12 +771,71 @@ CHANGE</string>
                  </property>
                 </widget>
                </item>
-               <item row="0" column="1">
-                <widget class="QPushButton" name="btn_reset_feed">
+               <item row="0" column="0">
+                <widget class="QPushButton" name="btn_reset_rapid">
                  <property name="text">
                   <string>RESET</string>
                  </property>
                 </widget>
+               </item>
+               <item row="2" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="StatusLabel" name="statuslabel_4">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>DSEG7 Classic</family>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <italic>true</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font: bold italic 10pt &quot;DSEG7 Classic&quot;;</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="rules" stdset="0">
+                    <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:rapidrate&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0%}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_8">
+                   <property name="font">
+                    <font>
+                     <family>Sans</family>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>RAPID</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </item>
                <item row="0" column="2">
                 <widget class="QPushButton" name="btn_reset_jog">
@@ -801,16 +844,26 @@ CHANGE</string>
                  </property>
                 </widget>
                </item>
-               <item row="1" column="2">
-                <widget class="VCPSettingsSlider" name="jog_slider">
+               <item row="0" column="1">
+                <widget class="QPushButton" name="btn_reset_feed">
+                 <property name="text">
+                  <string>RESET</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="ActionSlider" name="feed_slider">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
-                 <property name="settingName" stdset="0">
-                  <string>machine.jog.linear-speed-percentage</string>
+                 <property name="actionName" stdset="0">
+                  <string>machine.feed-override.set</string>
                  </property>
                 </widget>
                </item>
@@ -873,72 +926,6 @@ CHANGE</string>
                  </item>
                 </layout>
                </item>
-               <item row="2" column="0">
-                <layout class="QVBoxLayout" name="verticalLayout">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="StatusLabel" name="statuslabel_4">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>50</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>DSEG7 Classic</family>
-                     <pointsize>10</pointsize>
-                     <weight>75</weight>
-                     <italic>true</italic>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">font: bold italic 10pt &quot;DSEG7 Classic&quot;;</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="rules" stdset="0">
-                    <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:rapidrate&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0%}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_8">
-                   <property name="font">
-                    <font>
-                     <family>Sans</family>
-                     <weight>75</weight>
-                     <italic>false</italic>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>RAPID</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="0" column="0">
-                <widget class="QPushButton" name="btn_reset_rapid">
-                 <property name="text">
-                  <string>RESET</string>
-                 </property>
-                </widget>
-               </item>
                <item row="2" column="2">
                 <layout class="QVBoxLayout" name="verticalLayout_9">
                  <property name="spacing">
@@ -997,6 +984,25 @@ CHANGE</string>
                   </widget>
                  </item>
                 </layout>
+               </item>
+               <item row="1" column="2">
+                <widget class="VCPSettingsSlider" name="jog_slider">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                 <property name="sliderPosition">
+                  <number>30</number>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>machine.jog.linear-speed-percentage</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>
@@ -7331,7 +7337,6 @@ ANTI-DIVE</string>
   <tabstop>filter_quality</tabstop>
   <tabstop>feed_slider</tabstop>
   <tabstop>rapid_slider</tabstop>
-  <tabstop>jog_slider</tabstop>
   <tabstop>tabwidget_2</tabstop>
   <tabstop>user1</tabstop>
   <tabstop>user2</tabstop>
@@ -7830,9 +7835,9 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="machine_state"/>
-  <buttongroup name="jog_type"/>
   <buttongroup name="jog_inc_values"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="jog_type"/>
+  <buttongroup name="machine_state"/>
  </buttongroups>
 </ui>
