@@ -1596,64 +1596,6 @@ ANTI DIVE</string>
             <item row="20" column="3">
              <widget class="SubCallButton" name="user10"/>
             </item>
-            <item row="2" column="3">
-             <widget class="QWidget" name="widget_8" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_16">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>4</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>4</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_20">
-                 <property name="text">
-                  <string>DOWN</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_4">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkHalLedIndicator" name="mkhalledindicator_6">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>led-thc-down</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
             <item row="16" column="0">
              <widget class="SubCallButton" name="user1"/>
             </item>
@@ -1676,61 +1618,6 @@ ANTI DIVE</string>
               <property name="checkable">
                <bool>true</bool>
               </property>
-             </widget>
-            </item>
-            <item row="7" column="0">
-             <widget class="QWidget" name="widget_33" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_27">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>4</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>4</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_107">
-                 <property name="text">
-                  <string>OHMIC</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_16">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="MkLedIndicator" name="mkled_ohmic_sense">
-                 <property name="diameter">
-                  <number>20</number>
-                 </property>
-                 <property name="color">
-                  <color>
-                   <red>255</red>
-                   <green>238</green>
-                   <blue>6</blue>
-                  </color>
-                 </property>
-                 <property name="state">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
              </widget>
             </item>
             <item row="0" column="0">
@@ -2037,7 +1924,7 @@ TORCH</string>
                <item>
                 <widget class="QLabel" name="label_19">
                  <property name="text">
-                  <string>UP</string>
+                  <string>UP/DOWN</string>
                  </property>
                 </widget>
                </item>
@@ -2074,6 +1961,26 @@ TORCH</string>
                  </property>
                 </widget>
                </item>
+               <item>
+                <widget class="MkHalLedIndicator" name="mkhalledindicator_6">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                 <property name="pinBaseName" stdset="0">
+                  <string>led-thc-down</string>
+                 </property>
+                </widget>
+               </item>
               </layout>
              </widget>
             </item>
@@ -2088,9 +1995,67 @@ TORCH</string>
               <property name="checkable">
                <bool>true</bool>
               </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
               <attribute name="buttonGroup">
                <string notr="true">dry_run_torch_enable</string>
               </attribute>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QWidget" name="widget_33" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_27">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_107">
+                 <property name="text">
+                  <string>OHMIC</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_16">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="MkLedIndicator" name="mkled_ohmic_sense">
+                 <property name="diameter">
+                  <number>20</number>
+                 </property>
+                 <property name="color">
+                  <color>
+                   <red>255</red>
+                   <green>238</green>
+                   <blue>6</blue>
+                  </color>
+                 </property>
+                 <property name="state">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
            </layout>
@@ -2523,6 +2488,9 @@ TORCH</string>
                  <property name="checkable">
                   <bool>true</bool>
                  </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
                  <property name="autoExclusive">
                   <bool>true</bool>
                  </property>
@@ -2664,8 +2632,7 @@ REF2:..</string>
                   <bool>false</bool>
                  </property>
                  <property name="text">
-                  <string>REF POINT 2
-EDGE 1</string>
+                  <string>WCS 0,0 POINT</string>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
@@ -2701,8 +2668,7 @@ EDGE 1</string>
                   <bool>false</bool>
                  </property>
                  <property name="text">
-                  <string>REF POINT 1
-EDGE 1</string>
+                  <string>REF ON EDGE</string>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
@@ -7851,8 +7817,8 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="jog_type"/>
   <buttongroup name="machine_state"/>
+  <buttongroup name="jog_type"/>
   <buttongroup name="btngrpMdi"/>
   <buttongroup name="jog_inc_values"/>
   <buttongroup name="dry_run_torch_enable"/>

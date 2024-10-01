@@ -14,6 +14,7 @@ from qtpyvcp import hal
 from qtpyvcp.actions.program_actions import load as loadProgram
 from qtpyvcp.actions.machine_actions import issue_mdi
 from qtpyvcp.actions.machine_actions import mode as set_mode
+from qtpyvcp.actions.machine_actions import jog
 ### mdi GCODE text created by JT from linuxcnc
 import mdi_text as mdiText
 
@@ -145,6 +146,9 @@ class MainWindow(VCPMainWindow):
         self.sheet_align_p1 = None
         self.sheet_align_p2 = None
         self.sheet_align_p3 = None
+        # set the jog buttons to the active settings on start
+        jog.set_jog_continuous(True)
+        jog.set_increment(1)
 
         # find and set all user buttons
         for user_i in range(1,USER_BUTTONS+1):
@@ -699,7 +703,9 @@ class MainWindow(VCPMainWindow):
             f"G53 G1 X{x_current}Y{y_current}"
         )
         issue_mdi(move_cmd)
-        
+        CMD.wait_complete()
+        LOG.debug("Frame complete")
+
     
     #
     # Adjust virtual offsets to cope with sheet stock
