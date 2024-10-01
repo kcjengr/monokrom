@@ -2464,13 +2464,16 @@ TORCH</string>
                <item row="3" column="1">
                 <widget class="ActionButton" name="inc_0_01">
                  <property name="text">
-                  <string>.01</string>
+                  <string>0.0004</string>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
                  </property>
                  <property name="autoExclusive">
                   <bool>true</bool>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;.01\&quot; if ch[0] == 1else \&quot;0.0004\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.jog.set-increment:0.01</string>
@@ -2483,7 +2486,7 @@ TORCH</string>
                <item row="1" column="1">
                 <widget class="ActionButton" name="inc_1">
                  <property name="text">
-                  <string>1</string>
+                  <string>0.039</string>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
@@ -2493,6 +2496,9 @@ TORCH</string>
                  </property>
                  <property name="autoExclusive">
                   <bool>true</bool>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;measure&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] == 1else \&quot;0.039\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.jog.set-increment:1</string>
@@ -2505,13 +2511,16 @@ TORCH</string>
                <item row="1" column="0">
                 <widget class="ActionButton" name="inc_5">
                  <property name="text">
-                  <string>5</string>
+                  <string>0.1968</string>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
                  </property>
                  <property name="autoExclusive">
                   <bool>true</bool>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;5\&quot; if ch[0] == 1else \&quot;0.1968\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.jog.set-increment:5</string>
@@ -2524,13 +2533,16 @@ TORCH</string>
                <item row="3" column="0">
                 <widget class="ActionButton" name="inc_0_1">
                  <property name="text">
-                  <string>.1</string>
+                  <string>0.0039</string>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
                  </property>
                  <property name="autoExclusive">
                   <bool>true</bool>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;0.1\&quot; if ch[0] == 1else \&quot;0.0039\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.jog.set-increment:0.1</string>
@@ -7817,10 +7829,10 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="machine_state"/>
-  <buttongroup name="jog_type"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="jog_inc_values"/>
+  <buttongroup name="jog_type"/>
   <buttongroup name="dry_run_torch_enable"/>
+  <buttongroup name="machine_state"/>
+  <buttongroup name="jog_inc_values"/>
  </buttongroups>
 </ui>

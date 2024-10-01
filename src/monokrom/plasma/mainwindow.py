@@ -148,7 +148,7 @@ class MainWindow(VCPMainWindow):
         self.sheet_align_p3 = None
         # set the jog buttons to the active settings on start
         jog.set_jog_continuous(True)
-        jog.set_increment(1)
+        jog.set_increment(1 * self.units_per_mm)
 
         # find and set all user buttons
         for user_i in range(1,USER_BUTTONS+1):
