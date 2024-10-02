@@ -147,8 +147,8 @@ class MainWindow(VCPMainWindow):
         self.sheet_align_p2 = None
         self.sheet_align_p3 = None
         # set the jog buttons to the active settings on start
-        jog.set_jog_continuous(True)
         jog.set_increment(1 * self.units_per_mm)
+        jog.set_jog_continuous(True)
 
         # find and set all user buttons
         for user_i in range(1,USER_BUTTONS+1):
@@ -177,6 +177,7 @@ class MainWindow(VCPMainWindow):
         self.btn_seed_db.clicked.connect(self.seed_database)
         self.btn_zero_xy.clicked.connect(self.zero_wcs_xy)
         self.btn_probe_test.toggled.connect(self.probe_test)
+        self.vtk_no_lines.toggled.connect(self.breadcrumbs_tracked)
 
         # cut recovery direction
         self.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
@@ -348,6 +349,12 @@ class MainWindow(VCPMainWindow):
             #self.probe_timer.stop()
             self.btn_cycle_start.setEnabled(True)
             cnchal.set_p('plasmac.probe-test','0')
+
+    def breadcrumbs_tracked(self,state):
+        LOG.debug(f'breadcrumb tracked {state}')
+        vtk = self.vtkbackplot
+        vtk.enableBreadcrumbs(state)
+        vtk.clearLivePlot()
 
     def cutchart_pin_update(self, value):
         LOG.debug(f"Cutchart_ID Pin = {value}")
@@ -703,7 +710,6 @@ class MainWindow(VCPMainWindow):
             f"G53 G1 X{x_current}Y{y_current}"
         )
         issue_mdi(move_cmd)
-        CMD.wait_complete()
         LOG.debug("Frame complete")
 
     
