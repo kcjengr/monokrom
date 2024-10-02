@@ -33,6 +33,9 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="tabPosition">
        <enum>QTabWidget::South</enum>
       </property>
@@ -71,6 +74,9 @@
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="tabShape">
              <enum>QTabWidget::Rounded</enum>
@@ -279,6 +285,9 @@
                      <width>106</width>
                      <height>16777215</height>
                     </size>
+                   </property>
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">max-width: 102px;</string>
@@ -741,6 +750,9 @@ JOB</string>
                 </item>
                 <item row="3" column="1">
                  <widget class="HalButton" name="btn_consumable_change">
+                  <property name="focusPolicy">
+                   <enum>Qt::NoFocus</enum>
+                  </property>
                   <property name="text">
                    <string>CONSUMABLE
 CHANGE</string>
@@ -766,6 +778,9 @@ CHANGE</string>
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
                  <property name="actionName" stdset="0">
                   <string>machine.rapid-override.set</string>
                  </property>
@@ -773,6 +788,9 @@ CHANGE</string>
                </item>
                <item row="0" column="0">
                 <widget class="QPushButton" name="btn_reset_rapid">
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
                  <property name="text">
                   <string>RESET</string>
                  </property>
@@ -839,6 +857,9 @@ CHANGE</string>
                </item>
                <item row="0" column="2">
                 <widget class="QPushButton" name="btn_reset_jog">
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
                  <property name="text">
                   <string>RESET</string>
                  </property>
@@ -846,6 +867,9 @@ CHANGE</string>
                </item>
                <item row="0" column="1">
                 <widget class="QPushButton" name="btn_reset_feed">
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
                  <property name="text">
                   <string>RESET</string>
                  </property>
@@ -861,6 +885,9 @@ CHANGE</string>
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.feed-override.set</string>
@@ -1025,6 +1052,9 @@ CHANGE</string>
             <height>0</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="currentIndex">
            <number>0</number>
           </property>
@@ -1044,6 +1074,9 @@ CHANGE</string>
             </item>
             <item row="14" column="0" colspan="2">
              <widget class="QPushButton" name="btn_load_newest">
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="text">
                <string>LOAD NEWEST
 FILE</string>
@@ -1171,6 +1204,9 @@ FILE</string>
             </item>
             <item row="8" column="0">
              <widget class="HalButton" name="torch_enable">
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="text">
                <string>TORCH
 ENABLE</string>
@@ -1450,6 +1486,9 @@ ENABLE</string>
                       <verstretch>0</verstretch>
                      </sizepolicy>
                     </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::NoFocus</enum>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true"/>
                     </property>
@@ -1523,6 +1562,9 @@ ENABLE</string>
             </item>
             <item row="10" column="3">
              <widget class="QPushButton" name="btn_void_sense">
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="text">
                <string>VOID
 ANTI DIVE</string>
@@ -1601,6 +1643,9 @@ ANTI DIVE</string>
             </item>
             <item row="10" column="0">
              <widget class="QPushButton" name="btn_vad">
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="text">
                <string>VELOCITY
 ANTI DIVE</string>
@@ -1612,6 +1657,9 @@ ANTI DIVE</string>
             </item>
             <item row="8" column="3">
              <widget class="QPushButton" name="btn_thc_enable">
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="text">
                <string>THC ENABLE</string>
               </property>
@@ -1819,6 +1867,9 @@ ANTI DIVE</string>
             </item>
             <item row="15" column="0">
              <widget class="HalButton" name="btn_pierce_only">
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="text">
                <string>PIERCE
 ONLY</string>
@@ -1891,6 +1942,9 @@ ONLY</string>
             </item>
             <item row="14" column="3">
              <widget class="HalButton" name="plasma_torch_pulse">
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="text">
                <string>PULSE
 TORCH</string>
@@ -1989,6 +2043,9 @@ TORCH</string>
             </item>
             <item row="15" column="3">
              <widget class="HalButton" name="dry_run">
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="text">
                <string>DRY RUN</string>
               </property>
@@ -2857,6 +2914,9 @@ CUT</string>
           </property>
           <item>
            <widget class="MkTabWidget" name="tabs_ctl_run_right">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="currentIndex">
              <number>0</number>
             </property>
@@ -2870,6 +2930,9 @@ CUT</string>
                 <layout class="QGridLayout" name="gridLayout_18">
                  <item row="0" column="2">
                   <widget class="QPushButton" name="vtk_center">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>CENTER
 PLOT</string>
@@ -2878,6 +2941,9 @@ PLOT</string>
                  </item>
                  <item row="0" column="4">
                   <widget class="QPushButton" name="vtk_prog_extent">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>PROG
 EXTENT</string>
@@ -2889,6 +2955,9 @@ EXTENT</string>
                  </item>
                  <item row="0" column="0">
                   <widget class="QPushButton" name="vtk_plus">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>+</string>
                    </property>
@@ -2896,6 +2965,9 @@ EXTENT</string>
                  </item>
                  <item row="0" column="5">
                   <widget class="QPushButton" name="vtk_prog_ticks">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>PROG
 TICKS</string>
@@ -2907,6 +2979,9 @@ TICKS</string>
                  </item>
                  <item row="0" column="3">
                   <widget class="QPushButton" name="vtk_clear">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>CLEAR</string>
                    </property>
@@ -2914,6 +2989,9 @@ TICKS</string>
                  </item>
                  <item row="0" column="6">
                   <widget class="QPushButton" name="vtk_mach_extent">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>MACH
 EXTENT</string>
@@ -2925,6 +3003,9 @@ EXTENT</string>
                  </item>
                  <item row="0" column="1">
                   <widget class="QPushButton" name="vtk_minus">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>-</string>
                    </property>
@@ -2932,6 +3013,9 @@ EXTENT</string>
                  </item>
                  <item row="0" column="7">
                   <widget class="QPushButton" name="vtk_no_lines">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>SHOW
 TRAILS</string>
@@ -2948,7 +3032,11 @@ TRAILS</string>
                </widget>
               </item>
               <item>
-               <widget class="VTKBackPlot" name="vtkbackplot"/>
+               <widget class="VTKBackPlot" name="vtkbackplot">
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+               </widget>
               </item>
               <item>
                <widget class="VCPFrame" name="mdiFrame">
@@ -2976,6 +3064,9 @@ TRAILS</string>
                  </property>
                  <item row="8" column="9">
                   <widget class="QPushButton" name="pushButton_28">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>2</string>
                    </property>
@@ -2986,6 +3077,9 @@ TRAILS</string>
                  </item>
                  <item row="7" column="8">
                   <widget class="QPushButton" name="pushButton_30">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>4</string>
                    </property>
@@ -2996,6 +3090,9 @@ TRAILS</string>
                  </item>
                  <item row="10" column="3">
                   <widget class="QPushButton" name="btnMdiRunSelection">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>RUN
 SINGLE</string>
@@ -3004,6 +3101,9 @@ SINGLE</string>
                  </item>
                  <item row="8" column="7">
                   <widget class="QPushButton" name="pushButton_8">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>M</string>
                    </property>
@@ -3014,6 +3114,9 @@ SINGLE</string>
                  </item>
                  <item row="8" column="10">
                   <widget class="QPushButton" name="pushButton_29">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>3</string>
                    </property>
@@ -3024,6 +3127,9 @@ SINGLE</string>
                  </item>
                  <item row="9" column="9">
                   <widget class="QPushButton" name="pushButton_25">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>.</string>
                    </property>
@@ -3034,6 +3140,9 @@ SINGLE</string>
                  </item>
                  <item row="10" column="0">
                   <widget class="QPushButton" name="btnMdiDelAll">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>DEL
 ALL</string>
@@ -3042,6 +3151,9 @@ ALL</string>
                  </item>
                  <item row="7" column="9">
                   <widget class="QPushButton" name="pushButton_31">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>5</string>
                    </property>
@@ -3052,6 +3164,9 @@ ALL</string>
                  </item>
                  <item row="6" column="9">
                   <widget class="QPushButton" name="pushButton_34">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>8</string>
                    </property>
@@ -3062,6 +3177,9 @@ ALL</string>
                  </item>
                  <item row="10" column="8">
                   <widget class="QPushButton" name="btnMdiParams">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>PARAMS</string>
                    </property>
@@ -3069,6 +3187,9 @@ ALL</string>
                  </item>
                  <item row="7" column="10">
                   <widget class="QPushButton" name="pushButton_32">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>6</string>
                    </property>
@@ -3079,6 +3200,9 @@ ALL</string>
                  </item>
                  <item row="10" column="7">
                   <widget class="QPushButton" name="btnMdiSpace">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>SPACE</string>
                    </property>
@@ -3086,6 +3210,9 @@ ALL</string>
                  </item>
                  <item row="10" column="1">
                   <widget class="QPushButton" name="btnMdiDelRow">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>DEL
 ROW</string>
@@ -3094,6 +3221,9 @@ ROW</string>
                  </item>
                  <item row="7" column="7">
                   <widget class="QPushButton" name="pushButton_9">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>T</string>
                    </property>
@@ -3104,6 +3234,9 @@ ROW</string>
                  </item>
                  <item row="6" column="7">
                   <widget class="QPushButton" name="pushButton_10">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>F</string>
                    </property>
@@ -3114,6 +3247,9 @@ ROW</string>
                  </item>
                  <item row="10" column="2">
                   <widget class="QPushButton" name="btnMdiRunFrom">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>RUN
 FROM</string>
@@ -3122,6 +3258,9 @@ FROM</string>
                  </item>
                  <item row="10" column="9">
                   <widget class="QPushButton" name="btnMdiBksp">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>BKSP</string>
                    </property>
@@ -3129,6 +3268,9 @@ FROM</string>
                  </item>
                  <item row="8" column="8">
                   <widget class="QPushButton" name="pushButton_27">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>1</string>
                    </property>
@@ -3139,6 +3281,9 @@ FROM</string>
                  </item>
                  <item row="9" column="10">
                   <widget class="QPushButton" name="pushButton_26">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>-</string>
                    </property>
@@ -3156,6 +3301,9 @@ FROM</string>
                  </item>
                  <item row="10" column="4">
                   <widget class="QPushButton" name="btnToEditor">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>TO
 EDITOR</string>
@@ -3164,6 +3312,9 @@ EDITOR</string>
                  </item>
                  <item row="9" column="8">
                   <widget class="QPushButton" name="pushButton_24">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>0</string>
                    </property>
@@ -3174,6 +3325,9 @@ EDITOR</string>
                  </item>
                  <item row="6" column="10">
                   <widget class="QPushButton" name="pushButton_35">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>9</string>
                    </property>
@@ -3184,6 +3338,9 @@ EDITOR</string>
                  </item>
                  <item row="9" column="7">
                   <widget class="QPushButton" name="pushButton_7">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>G</string>
                    </property>
@@ -3194,6 +3351,9 @@ EDITOR</string>
                  </item>
                  <item row="6" column="8">
                   <widget class="QPushButton" name="pushButton_33">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>7</string>
                    </property>
@@ -3204,6 +3364,9 @@ EDITOR</string>
                  </item>
                  <item row="5" column="7">
                   <widget class="QPushButton" name="btnGcodeP9">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -3214,6 +3377,9 @@ EDITOR</string>
                  </item>
                  <item row="5" column="8">
                   <widget class="QPushButton" name="btnGcodeP10">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -3224,6 +3390,9 @@ EDITOR</string>
                  </item>
                  <item row="4" column="7">
                   <widget class="QPushButton" name="btnGcodeP5">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -3234,6 +3403,9 @@ EDITOR</string>
                  </item>
                  <item row="4" column="8">
                   <widget class="QPushButton" name="btnGcodeP6">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -3244,6 +3416,9 @@ EDITOR</string>
                  </item>
                  <item row="4" column="9">
                   <widget class="QPushButton" name="btnGcodeP7">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -3254,6 +3429,9 @@ EDITOR</string>
                  </item>
                  <item row="4" column="10">
                   <widget class="QPushButton" name="btnGcodeP8">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -3264,6 +3442,9 @@ EDITOR</string>
                  </item>
                  <item row="3" column="7">
                   <widget class="QPushButton" name="btnGcodeP1">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -3274,6 +3455,9 @@ EDITOR</string>
                  </item>
                  <item row="3" column="8">
                   <widget class="QPushButton" name="btnGcodeP2">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -3284,6 +3468,9 @@ EDITOR</string>
                  </item>
                  <item row="3" column="9">
                   <widget class="QPushButton" name="btnGcodeP3">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -3294,6 +3481,9 @@ EDITOR</string>
                  </item>
                  <item row="3" column="10">
                   <widget class="QPushButton" name="btnGcodeP4">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string/>
                    </property>
@@ -3345,6 +3535,9 @@ EDITOR</string>
                  </item>
                  <item row="3" column="6">
                   <widget class="QPushButton" name="btnMdiPauseQ">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>PAUSE
 QUEUE</string>
@@ -3356,6 +3549,9 @@ QUEUE</string>
                  </item>
                  <item row="4" column="6">
                   <widget class="QPushButton" name="btnMdiClearQ">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>CLEAR
 QUEUE</string>
@@ -3364,6 +3560,9 @@ QUEUE</string>
                  </item>
                  <item row="6" column="6">
                   <widget class="QPushButton" name="btnMdiRowUp">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>ROW
 UP</string>
@@ -3372,6 +3571,9 @@ UP</string>
                  </item>
                  <item row="7" column="6">
                   <widget class="QPushButton" name="btnMdiRowDown">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="text">
                     <string>ROW
 DOWN</string>
@@ -3465,12 +3667,18 @@ DOWN</string>
                        <height>32</height>
                       </size>
                      </property>
+                     <property name="focusPolicy">
+                      <enum>Qt::NoFocus</enum>
+                     </property>
                     </widget>
                    </item>
                   </layout>
                  </item>
                  <item>
                   <widget class="GcodeTextEdit" name="gcode_editor">
+                   <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                   </property>
                    <property name="syntaxHighlighting" stdset="0">
                     <bool>true</bool>
                    </property>
@@ -3741,6 +3949,9 @@ DOWN</string>
         </property>
         <item>
          <widget class="MkTabWidget" name="tabWidget">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="currentIndex">
            <number>0</number>
           </property>
@@ -3920,6 +4131,9 @@ DOWN</string>
                      <horstretch>1</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
+                   </property>
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
                    </property>
                    <property name="text">
                     <string>RELOAD</string>
@@ -4321,6 +4535,9 @@ DOWN</string>
                      <height>0</height>
                     </size>
                    </property>
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">QListView::item {
 min-height: 42px; 
@@ -4397,6 +4614,9 @@ QListView::item:selected {
               <layout class="QVBoxLayout" name="verticalLayout_10">
                <item>
                 <widget class="MkTabWidget" name="tab_holes_and_slots">
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
                  <property name="currentIndex">
                   <number>0</number>
                  </property>
@@ -4991,6 +5211,9 @@ LEADINS</string>
                       </item>
                       <item row="0" column="0">
                        <widget class="QCheckBox" name="chkb_slot_detect_enable">
+                        <property name="focusPolicy">
+                         <enum>Qt::NoFocus</enum>
+                        </property>
                         <property name="text">
                          <string>Enable</string>
                         </property>
@@ -5258,6 +5481,9 @@ ANTI-DIVE</string>
                  <width>34</width>
                  <height>44</height>
                 </size>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
                </property>
                <property name="text">
                 <string>RESET</string>
@@ -7343,37 +7569,95 @@ ANTI-DIVE</string>
   <tabstop>filter_operation</tabstop>
   <tabstop>filter_gas</tabstop>
   <tabstop>filter_quality</tabstop>
-  <tabstop>feed_slider</tabstop>
-  <tabstop>rapid_slider</tabstop>
-  <tabstop>tabwidget_2</tabstop>
-  <tabstop>user1</tabstop>
-  <tabstop>user2</tabstop>
-  <tabstop>user3</tabstop>
-  <tabstop>user4</tabstop>
-  <tabstop>user5</tabstop>
-  <tabstop>tabs_ctl_run_right</tabstop>
+  <tabstop>param_kirfwidth</tabstop>
+  <tabstop>param_pierceheight</tabstop>
+  <tabstop>param_piercedelay</tabstop>
+  <tabstop>param_cutheight</tabstop>
+  <tabstop>param_cutfeedrate</tabstop>
+  <tabstop>param_plungefeedrate</tabstop>
+  <tabstop>param_cutamps</tabstop>
+  <tabstop>param_cutvolts</tabstop>
+  <tabstop>param_puddlejumpheight</tabstop>
+  <tabstop>param_puddlejumpdelay</tabstop>
+  <tabstop>param_pauseatend</tabstop>
+  <tabstop>param_gaspressure</tabstop>
+  <tabstop>spn_hole_thickness_ratio</tabstop>
+  <tabstop>spn_max_hole_size</tabstop>
+  <tabstop>spn_leadin_radius</tabstop>
+  <tabstop>spn_small_hole_threshold</tabstop>
+  <tabstop>spn_leadin_percent_2</tabstop>
+  <tabstop>spn_arc1_percent_2</tabstop>
+  <tabstop>spn_arc2_percent_2</tabstop>
+  <tabstop>spn_arc2_distance_2</tabstop>
+  <tabstop>spn_torch_off_distance</tabstop>
+  <tabstop>spn_arc3_percent_2</tabstop>
+  <tabstop>spn_arc3_distance_2</tabstop>
+  <tabstop>tabwidget</tabstop>
+  <tabstop>listWidget</tabstop>
+  <tabstop>jobs_to_process</tabstop>
+  <tabstop>job_instructions</tabstop>
+  <tabstop>btn_sheet_align_pt1</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>tab_holes_and_slots</tabstop>
+  <tabstop>single_cut_y</tabstop>
+  <tabstop>btn_sheet_doalign</tabstop>
+  <tabstop>jobs_done</tabstop>
+  <tabstop>chkb_slot_detect_enable</tabstop>
   <tabstop>gcode_recentfile</tabstop>
   <tabstop>gcode_editor</tabstop>
-  <tabstop>btn_edit</tabstop>
-  <tabstop>btn_open_dialog</tabstop>
-  <tabstop>dialogbutton_2</tabstop>
-  <tabstop>jobs_to_process</tabstop>
-  <tabstop>jobs_done</tabstop>
-  <tabstop>job_instructions</tabstop>
-  <tabstop>pushButton_12</tabstop>
+  <tabstop>single_cut_x</tabstop>
+  <tabstop>btn_cut_recover_rev</tabstop>
+  <tabstop>btn_cut_recover_fwd</tabstop>
+  <tabstop>cut_recovery_speed</tabstop>
+  <tabstop>btn_laser</tabstop>
   <tabstop>pushButton_14</tabstop>
-  <tabstop>tabWidget</tabstop>
-  <tabstop>mainTabWidget</tabstop>
-  <tabstop>tabWidget_2</tabstop>
-  <tabstop>actionbutton_36</tabstop>
-  <tabstop>btn_machine_power_toggle</tabstop>
-  <tabstop>btn_save_run_process</tabstop>
-  <tabstop>btn_del_run_process</tabstop>
-  <tabstop>btn_new_run_process</tabstop>
-  <tabstop>btn_run_reload</tabstop>
-  <tabstop>chkb_slot_detect_enable</tabstop>
-  <tabstop>pushButton_11</tabstop>
-  <tabstop>tabwidget</tabstop>
+  <tabstop>mdihistory</tabstop>
+  <tabstop>pushButton_12</tabstop>
+  <tabstop>mdiEntry</tabstop>
+  <tabstop>btn_sheet_align_pt2</tabstop>
+  <tabstop>tabwidget_3</tabstop>
+  <tabstop>arc_voltage_scale</tabstop>
+  <tabstop>arc_retry_delay</tabstop>
+  <tabstop>arc_voltage_offset</tabstop>
+  <tabstop>arc_max_starts</tabstop>
+  <tabstop>arc_fail_timeout</tabstop>
+  <tabstop>arc_height_per_volt</tabstop>
+  <tabstop>arc_ok_high_volts</tabstop>
+  <tabstop>arc_ok_low_volts</tabstop>
+  <tabstop>thc_pid_d_gain</tabstop>
+  <tabstop>thc_threshold</tabstop>
+  <tabstop>thc_delay</tabstop>
+  <tabstop>thc_pid_p_gain</tabstop>
+  <tabstop>thc_pid_i_gain</tabstop>
+  <tabstop>thc_vad_threshold</tabstop>
+  <tabstop>thc_feed_rate</tabstop>
+  <tabstop>thc_safe_height</tabstop>
+  <tabstop>thc_void_override</tabstop>
+  <tabstop>scribe_arm_delay</tabstop>
+  <tabstop>scribe_on_delay</tabstop>
+  <tabstop>spot_threshold</tabstop>
+  <tabstop>spot_delay</tabstop>
+  <tabstop>probe_height</tabstop>
+  <tabstop>probe_float_travel</tabstop>
+  <tabstop>probe_ohmic_retries</tabstop>
+  <tabstop>probe_skip_ihs</tabstop>
+  <tabstop>probe_offset</tabstop>
+  <tabstop>probe_setup_speed</tabstop>
+  <tabstop>probe_speed</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>filter_distance_system</tabstop>
+  <tabstop>plasma_torch_pulse_sec</tabstop>
+  <tabstop>filter_pressure_system</tabstop>
+  <tabstop>filter_machine</tabstop>
+  <tabstop>consumable_xy_feed_rate</tabstop>
+  <tabstop>consumable_offset_x</tabstop>
+  <tabstop>consumable_offset_y</tabstop>
+  <tabstop>scribe_offset_x</tabstop>
+  <tabstop>scribe_offset_y</tabstop>
+  <tabstop>plasmahaldoublespinbox</tabstop>
+  <tabstop>plasmahaldoublespinbox_2</tabstop>
+  <tabstop>lne_seed_source</tabstop>
  </tabstops>
  <resources/>
  <connections>
