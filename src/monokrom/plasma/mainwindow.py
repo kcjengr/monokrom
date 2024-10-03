@@ -256,6 +256,16 @@ class MainWindow(VCPMainWindow):
         if default_cut_chart is not None:
             self.cutchart_pin_update(default_cut_chart)
 
+        # find the largest tool ID and store it
+        tools = self._plasma_plugin.tool_list_for_lcnc()
+        self.last_tool_num_assigned = -1
+        for tool in tools:
+            LOG.debug(f"tool = id: {tool.id}, num: {tool.tool_number}")
+            if (tool.tool_number > self.last_tool_num_assigned and
+                tool.tool_number != 99999
+            ):
+                self.last_tool_num_assigned = tool.tool_number
+
     def zero_wcs_xy(self):
         #_current_pos = float(POS.Absolute(0))
         #_current_pos = float(POS.Absolute(1))
@@ -512,6 +522,9 @@ class MainWindow(VCPMainWindow):
                 arglist[k] = uifld.text()
         # correctly set the name
         arglist['name'] = name
+        # correctly set the tool_number
+        self.last_tool_num_assigned += 1
+        arglist['tool_number'] = self.last_tool_num_assigned
         self._plasma_plugin.addCut(**arglist)
         # update the UI with the newly loaded item
         self.param_update_from_filters()
