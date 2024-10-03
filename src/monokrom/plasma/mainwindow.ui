@@ -2700,6 +2700,9 @@ REF2:..</string>
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
                  <property name="text">
                   <string>WCS 0,0 POINT</string>
                  </property>
@@ -2713,6 +2716,9 @@ REF2:..</string>
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
                  <property name="text">
                   <string>SHEET ALIGNMENT</string>
                  </property>
@@ -2720,6 +2726,9 @@ REF2:..</string>
                </item>
                <item row="0" column="0">
                 <widget class="HalButton" name="btn_laser">
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
                  <property name="text">
                   <string>LASER</string>
                  </property>
@@ -2735,6 +2744,9 @@ REF2:..</string>
                 <widget class="QPushButton" name="btn_sheet_align_pt1">
                  <property name="enabled">
                   <bool>false</bool>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
                  </property>
                  <property name="text">
                   <string>REF ON EDGE</string>
@@ -2764,6 +2776,9 @@ REF2:..</string>
                </property>
                <item row="0" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="single_cut_x">
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
                  </property>
@@ -2777,6 +2792,9 @@ REF2:..</string>
                </item>
                <item row="2" column="2">
                 <widget class="PlasmaHalDoubleSpinBox" name="single_cut_y">
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
                  </property>
@@ -2854,6 +2872,9 @@ CUT</string>
                     <property name="enabled">
                      <bool>true</bool>
                     </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::NoFocus</enum>
+                    </property>
                     <property name="text">
                      <string>REVERSE</string>
                     </property>
@@ -2864,6 +2885,9 @@ CUT</string>
                     <property name="enabled">
                      <bool>true</bool>
                     </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::NoFocus</enum>
+                    </property>
                     <property name="text">
                      <string>FORWARD</string>
                     </property>
@@ -2873,6 +2897,9 @@ CUT</string>
                    <widget class="QSlider" name="cut_recovery_speed">
                     <property name="enabled">
                      <bool>true</bool>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::NoFocus</enum>
                     </property>
                     <property name="maximum">
                      <number>100</number>
@@ -3527,6 +3554,9 @@ EDITOR</string>
                      <height>42</height>
                     </size>
                    </property>
+                   <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                   </property>
                    <property name="placeholderText">
                     <string>MDI:</string>
                    </property>
@@ -3540,6 +3570,9 @@ EDITOR</string>
                  </item>
                  <item row="2" column="0" rowspan="8" colspan="5">
                   <widget class="MDIHistory" name="mdihistory">
+                   <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                   </property>
                    <property name="alternatingRowColors">
                     <bool>true</bool>
                    </property>
@@ -8150,8 +8183,8 @@ ANTI-DIVE</string>
  <buttongroups>
   <buttongroup name="machine_state"/>
   <buttongroup name="jog_inc_values"/>
-  <buttongroup name="jog_type"/>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="dry_run_torch_enable"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="jog_type"/>
  </buttongroups>
 </ui>
