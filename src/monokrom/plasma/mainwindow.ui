@@ -24,7 +24,7 @@
     <normaloff>../common/icons/icon.png</normaloff>../common/icons/icon.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_5">
+   <layout class="QVBoxLayout" name="verticalLayout_26">
     <item>
      <widget class="MkTabWidget" name="mainTabWidget">
       <property name="sizePolicy">
@@ -2126,12 +2126,24 @@ TORCH</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_15">
             <item>
-             <widget class="VCPStackedWidget" name="stackedWidget">
+             <widget class="VCPStackedWidget" name="jog_stack">
               <property name="currentIndex">
                <number>0</number>
               </property>
               <widget class="QWidget" name="page_1">
                <layout class="QVBoxLayout" name="verticalLayout_24">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>9</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
                 <item>
                  <widget class="VCPWidget" name="widget_25">
                   <layout class="QGridLayout" name="gridLayout_25">
@@ -2319,618 +2331,680 @@ TORCH</string>
                   </layout>
                  </widget>
                 </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_25">
+                  <property name="spacing">
+                   <number>6</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>9</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>9</number>
+                  </property>
+                  <item>
+                   <widget class="VCPWidget" name="widget_10">
+                    <layout class="QGridLayout" name="gridLayout_8">
+                     <item row="3" column="1">
+                      <widget class="ActionButton" name="inc_0_01">
+                       <property name="text">
+                        <string>0.0004</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoExclusive">
+                        <bool>true</bool>
+                       </property>
+                       <property name="rules" stdset="0">
+                        <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;.01\&quot; if ch[0] == 1else \&quot;0.0004\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
+                       </property>
+                       <property name="actionName" stdset="0">
+                        <string>machine.jog.set-increment:0.01</string>
+                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">jog_inc_values</string>
+                       </attribute>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="ActionButton" name="inc_1">
+                       <property name="text">
+                        <string>0.039</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                       <property name="checked">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoExclusive">
+                        <bool>true</bool>
+                       </property>
+                       <property name="rules" stdset="0">
+                        <string>[{&quot;name&quot;: &quot;measure&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] == 1else \&quot;0.039\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
+                       </property>
+                       <property name="actionName" stdset="0">
+                        <string>machine.jog.set-increment:1</string>
+                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">jog_inc_values</string>
+                       </attribute>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="ActionButton" name="inc_5">
+                       <property name="text">
+                        <string>0.1968</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoExclusive">
+                        <bool>true</bool>
+                       </property>
+                       <property name="rules" stdset="0">
+                        <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;5\&quot; if ch[0] == 1else \&quot;0.1968\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
+                       </property>
+                       <property name="actionName" stdset="0">
+                        <string>machine.jog.set-increment:5</string>
+                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">jog_inc_values</string>
+                       </attribute>
+                      </widget>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="ActionButton" name="inc_0_1">
+                       <property name="text">
+                        <string>0.0039</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoExclusive">
+                        <bool>true</bool>
+                       </property>
+                       <property name="rules" stdset="0">
+                        <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;0.1\&quot; if ch[0] == 1else \&quot;0.0039\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
+                       </property>
+                       <property name="actionName" stdset="0">
+                        <string>machine.jog.set-increment:0.1</string>
+                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">jog_inc_values</string>
+                       </attribute>
+                      </widget>
+                     </item>
+                     <item row="1" column="2">
+                      <widget class="ActionButton" name="btn_inc_jog">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="text">
+                        <string>INC</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoExclusive">
+                        <bool>false</bool>
+                       </property>
+                       <property name="actionName" stdset="0">
+                        <string>machine.jog-mode.incremental</string>
+                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">jog_type</string>
+                       </attribute>
+                      </widget>
+                     </item>
+                     <item row="3" column="2">
+                      <widget class="ActionButton" name="btn_cont_jog">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>34</width>
+                         <height>44</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>CONT</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                       <property name="checked">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoExclusive">
+                        <bool>false</bool>
+                       </property>
+                       <property name="actionName" stdset="0">
+                        <string>machine.jog-mode.continuous</string>
+                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">jog_type</string>
+                       </attribute>
+                      </widget>
+                     </item>
+                     <item row="0" column="0" colspan="3">
+                      <widget class="QLabel" name="label_21">
+                       <property name="text">
+                        <string>STEP SIZE</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="MkGroupBox" name="groupbox_13">
+                    <property name="title">
+                     <string>SHEET ALIGNMENT</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_24">
+                     <item row="0" column="1">
+                      <widget class="QLabel" name="lbl_align_data">
+                       <property name="text">
+                        <string>REF1:...
+REF2:..</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QPushButton" name="btn_sheet_align_pt2">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="text">
+                        <string>WCS 0,0 POINT</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="0" colspan="2">
+                      <widget class="QPushButton" name="btn_sheet_doalign">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="text">
+                        <string>SHEET ALIGNMENT</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="HalButton" name="btn_laser">
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="text">
+                        <string>LASER</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                       <property name="pinBaseName" stdset="0">
+                        <string>laser</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QPushButton" name="btn_sheet_align_pt1">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="text">
+                        <string>REF ON EDGE</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="MkGroupBox" name="groupbox_12">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="title">
+                     <string>SINGLE CUT</string>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_33">
+                     <property name="verticalSpacing">
+                      <number>9</number>
+                     </property>
+                     <item row="0" column="2">
+                      <widget class="PlasmaHalDoubleSpinBox" name="single_cut_x">
+                       <property name="focusPolicy">
+                        <enum>Qt::ClickFocus</enum>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                       <property name="buttonSymbols">
+                        <enum>QAbstractSpinBox::PlusMinus</enum>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="2">
+                      <widget class="PlasmaHalDoubleSpinBox" name="single_cut_y">
+                       <property name="focusPolicy">
+                        <enum>Qt::ClickFocus</enum>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                       <property name="buttonSymbols">
+                        <enum>QAbstractSpinBox::PlusMinus</enum>
+                       </property>
+                       <property name="decimals">
+                        <number>3</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_94">
+                       <property name="text">
+                        <string>X-LENGTH</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="0" colspan="3">
+                      <widget class="SubCallButton" name="btn_single_cut">
+                       <property name="minimumSize">
+                        <size>
+                         <width>34</width>
+                         <height>44</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>44</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>SINGLE
+CUT</string>
+                       </property>
+                       <property name="filename" stdset="0">
+                        <string>single_cut.ngc</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="label_95">
+                       <property name="text">
+                        <string>Y-LENGTH</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="verticalSpacer_10">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
                </layout>
               </widget>
               <widget class="QWidget" name="page_2">
-               <widget class="VCPWidget" name="widget_34">
-                <property name="geometry">
-                 <rect>
-                  <x>10</x>
-                  <y>30</y>
-                  <width>260</width>
-                  <height>222</height>
-                 </rect>
+               <layout class="QVBoxLayout" name="verticalLayout_27">
+                <property name="leftMargin">
+                 <number>0</number>
                 </property>
-                <layout class="QGridLayout" name="gridLayout_26">
-                 <item row="2" column="1">
-                  <widget class="ActionButton" name="actionbutton_8">
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../common/icons/y-down.png</normaloff>../common/icons/y-down.png</iconset>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="MkGroupBox" name="groupbox_26">
+                  <property name="title">
+                   <string>CUT RECOVERY</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_11">
+                   <property name="leftMargin">
+                    <number>6</number>
                    </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>46</width>
-                     <height>40</height>
-                    </size>
+                   <property name="rightMargin">
+                    <number>6</number>
                    </property>
-                   <property name="flat">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.jog.axis:y,neg</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="ActionButton" name="actionbutton_30">
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../common/icons/x-left.png</normaloff>../common/icons/x-left.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>46</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="flat">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.jog.axis:x,neg</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="ActionButton" name="actionbutton_9">
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../common/icons/y-up.png</normaloff>../common/icons/y-up.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>46</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="flat">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.jog.axis:y,pos</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="2">
-                  <widget class="QWidget" name="widget_35" native="true">
-                   <layout class="QHBoxLayout" name="horizontalLayout_30">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>40</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="1" column="2">
-                  <widget class="ActionButton" name="actionbutton_31">
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../common/icons/x-right.png</normaloff>../common/icons/x-right.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>46</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="flat">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.jog.axis:x,pos</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="2">
-                  <widget class="QWidget" name="widget_36" native="true">
-                   <layout class="QHBoxLayout" name="horizontalLayout_31">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>40</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="1" column="3">
-                  <spacer name="horizontalSpacer_17">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item row="2" column="3">
-                  <widget class="ActionButton" name="actionbutton_32">
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../common/icons/z-down.png</normaloff>../common/icons/z-down.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>46</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="flat">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.jog.axis:z,neg</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="3">
-                  <widget class="ActionButton" name="actionbutton_33">
-                   <property name="minimumSize">
-                    <size>
-                     <width>34</width>
-                     <height>44</height>
-                    </size>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../common/icons/z-up.png</normaloff>../common/icons/z-up.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>46</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="flat">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.jog.axis:z,pos</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
+                   <item>
+                    <widget class="VCPWidget" name="widget_recovery">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="rules" stdset="0">
+                      <string>[]</string>
+                     </property>
+                     <layout class="QGridLayout" name="gridLayout_34">
+                      <item row="0" column="3">
+                       <widget class="QPushButton" name="btn_cut_recover_fwd">
+                        <property name="enabled">
+                         <bool>true</bool>
+                        </property>
+                        <property name="focusPolicy">
+                         <enum>Qt::NoFocus</enum>
+                        </property>
+                        <property name="text">
+                         <string>FORWARD</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="0">
+                       <widget class="QPushButton" name="btn_cut_recover_rev">
+                        <property name="enabled">
+                         <bool>true</bool>
+                        </property>
+                        <property name="focusPolicy">
+                         <enum>Qt::NoFocus</enum>
+                        </property>
+                        <property name="text">
+                         <string>REVERSE</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="0">
+                       <spacer name="verticalSpacer_12">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item row="0" column="1" rowspan="2">
+                       <widget class="QSlider" name="cut_recovery_speed">
+                        <property name="enabled">
+                         <bool>true</bool>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>30</width>
+                          <height>300</height>
+                         </size>
+                        </property>
+                        <property name="focusPolicy">
+                         <enum>Qt::NoFocus</enum>
+                        </property>
+                        <property name="maximum">
+                         <number>100</number>
+                        </property>
+                        <property name="value">
+                         <number>50</number>
+                        </property>
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="invertedAppearance">
+                         <bool>false</bool>
+                        </property>
+                        <property name="invertedControls">
+                         <bool>false</bool>
+                        </property>
+                        <property name="tickPosition">
+                         <enum>QSlider::TicksBothSides</enum>
+                        </property>
+                        <property name="tickInterval">
+                         <number>10</number>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="VCPWidget" name="widget_34">
+                     <layout class="QGridLayout" name="gridLayout_26">
+                      <item row="2" column="1">
+                       <widget class="PlasmaPushButton" name="btn_recovery_s">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>icons/S.png</normaloff>icons/S.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>46</width>
+                          <height>46</height>
+                         </size>
+                        </property>
+                        <property name="flat">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="0">
+                       <widget class="PlasmaPushButton" name="btn_recovery_sw">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>icons/SW.png</normaloff>icons/SW.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>40</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="flat">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="2">
+                       <widget class="PlasmaPushButton" name="btn_recovery_se">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>icons/SE.png</normaloff>icons/SE.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>40</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="flat">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="2">
+                       <widget class="PlasmaPushButton" name="btn_recovery_e">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>icons/E.png</normaloff>icons/E.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>46</width>
+                          <height>46</height>
+                         </size>
+                        </property>
+                        <property name="flat">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="2">
+                       <widget class="PlasmaPushButton" name="btn_recovery_ne">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>icons/NE.png</normaloff>icons/NE.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>40</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="flat">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="0">
+                       <widget class="PlasmaPushButton" name="btn_recovery_w">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>icons/W.png</normaloff>icons/W.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>46</width>
+                          <height>46</height>
+                         </size>
+                        </property>
+                        <property name="flat">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="1">
+                       <widget class="PlasmaPushButton" name="btn_recovery_n">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>icons/N.png</normaloff>icons/N.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>46</width>
+                          <height>46</height>
+                         </size>
+                        </property>
+                        <property name="flat">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="0">
+                       <widget class="PlasmaPushButton" name="btn_recovery_nw">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>icons/NW.png</normaloff>icons/NW.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>40</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="flat">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="1">
+                       <widget class="QLabel" name="label_20">
+                        <property name="text">
+                         <string>kerf</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="PlasmaPushButton" name="btn_cut_recover_cancel">
+                     <property name="text">
+                      <string>Cancel Movement</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_11">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
               </widget>
-             </widget>
-            </item>
-            <item>
-             <widget class="VCPWidget" name="widget_10">
-              <layout class="QGridLayout" name="gridLayout_8">
-               <item row="3" column="1">
-                <widget class="ActionButton" name="inc_0_01">
-                 <property name="text">
-                  <string>0.0004</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive">
-                  <bool>true</bool>
-                 </property>
-                 <property name="rules" stdset="0">
-                  <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;.01\&quot; if ch[0] == 1else \&quot;0.0004\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
-                 </property>
-                 <property name="actionName" stdset="0">
-                  <string>machine.jog.set-increment:0.01</string>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">jog_inc_values</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="ActionButton" name="inc_1">
-                 <property name="text">
-                  <string>0.039</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive">
-                  <bool>true</bool>
-                 </property>
-                 <property name="rules" stdset="0">
-                  <string>[{&quot;name&quot;: &quot;measure&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] == 1else \&quot;0.039\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
-                 </property>
-                 <property name="actionName" stdset="0">
-                  <string>machine.jog.set-increment:1</string>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">jog_inc_values</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="ActionButton" name="inc_5">
-                 <property name="text">
-                  <string>0.1968</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive">
-                  <bool>true</bool>
-                 </property>
-                 <property name="rules" stdset="0">
-                  <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;5\&quot; if ch[0] == 1else \&quot;0.1968\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
-                 </property>
-                 <property name="actionName" stdset="0">
-                  <string>machine.jog.set-increment:5</string>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">jog_inc_values</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="ActionButton" name="inc_0_1">
-                 <property name="text">
-                  <string>0.0039</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive">
-                  <bool>true</bool>
-                 </property>
-                 <property name="rules" stdset="0">
-                  <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;0.1\&quot; if ch[0] == 1else \&quot;0.0039\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
-                 </property>
-                 <property name="actionName" stdset="0">
-                  <string>machine.jog.set-increment:0.1</string>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">jog_inc_values</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="ActionButton" name="btn_inc_jog">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text">
-                  <string>INC</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive">
-                  <bool>false</bool>
-                 </property>
-                 <property name="actionName" stdset="0">
-                  <string>machine.jog-mode.incremental</string>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">jog_type</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item row="3" column="2">
-                <widget class="ActionButton" name="btn_cont_jog">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>34</width>
-                   <height>44</height>
-                  </size>
-                 </property>
-                 <property name="text">
-                  <string>CONT</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                 <property name="autoExclusive">
-                  <bool>false</bool>
-                 </property>
-                 <property name="actionName" stdset="0">
-                  <string>machine.jog-mode.continuous</string>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">jog_type</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item row="0" column="0" colspan="3">
-                <widget class="QLabel" name="label_21">
-                 <property name="text">
-                  <string>STEP SIZE</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="MkGroupBox" name="groupbox_13">
-              <property name="title">
-               <string>SHEET ALIGNMENT</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_24">
-               <item row="0" column="1">
-                <widget class="QLabel" name="lbl_align_data">
-                 <property name="text">
-                  <string>REF1:...
-REF2:..</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QPushButton" name="btn_sheet_align_pt2">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                 <property name="focusPolicy">
-                  <enum>Qt::NoFocus</enum>
-                 </property>
-                 <property name="text">
-                  <string>WCS 0,0 POINT</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0" colspan="2">
-                <widget class="QPushButton" name="btn_sheet_doalign">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                 <property name="focusPolicy">
-                  <enum>Qt::NoFocus</enum>
-                 </property>
-                 <property name="text">
-                  <string>SHEET ALIGNMENT</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="HalButton" name="btn_laser">
-                 <property name="focusPolicy">
-                  <enum>Qt::NoFocus</enum>
-                 </property>
-                 <property name="text">
-                  <string>LASER</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="pinBaseName" stdset="0">
-                  <string>laser</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QPushButton" name="btn_sheet_align_pt1">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                 <property name="focusPolicy">
-                  <enum>Qt::NoFocus</enum>
-                 </property>
-                 <property name="text">
-                  <string>REF ON EDGE</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="MkGroupBox" name="groupbox_12">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="title">
-               <string>SINGLE CUT</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_33">
-               <property name="verticalSpacing">
-                <number>9</number>
-               </property>
-               <item row="0" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="single_cut_x">
-                 <property name="focusPolicy">
-                  <enum>Qt::ClickFocus</enum>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="decimals">
-                  <number>3</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="2">
-                <widget class="PlasmaHalDoubleSpinBox" name="single_cut_y">
-                 <property name="focusPolicy">
-                  <enum>Qt::ClickFocus</enum>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
-                 </property>
-                 <property name="decimals">
-                  <number>3</number>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QLabel" name="label_94">
-                 <property name="text">
-                  <string>X-LENGTH</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0" colspan="3">
-                <widget class="SubCallButton" name="btn_single_cut">
-                 <property name="minimumSize">
-                  <size>
-                   <width>34</width>
-                   <height>44</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>44</height>
-                  </size>
-                 </property>
-                 <property name="text">
-                  <string>SINGLE
-CUT</string>
-                 </property>
-                 <property name="filename" stdset="0">
-                  <string>single_cut.ngc</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_95">
-                 <property name="text">
-                  <string>Y-LENGTH</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="MkGroupBox" name="groupbox_26">
-              <property name="title">
-               <string>CUT RECOVERY</string>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_11">
-               <item>
-                <widget class="VCPWidget" name="widget_recovery">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="rules" stdset="0">
-                  <string>[]</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_34">
-                  <item row="0" column="0">
-                   <widget class="QPushButton" name="btn_cut_recover_rev">
-                    <property name="enabled">
-                     <bool>true</bool>
-                    </property>
-                    <property name="focusPolicy">
-                     <enum>Qt::NoFocus</enum>
-                    </property>
-                    <property name="text">
-                     <string>REVERSE</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="2">
-                   <widget class="QPushButton" name="btn_cut_recover_fwd">
-                    <property name="enabled">
-                     <bool>true</bool>
-                    </property>
-                    <property name="focusPolicy">
-                     <enum>Qt::NoFocus</enum>
-                    </property>
-                    <property name="text">
-                     <string>FORWARD</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0" colspan="3">
-                   <widget class="QSlider" name="cut_recovery_speed">
-                    <property name="enabled">
-                     <bool>true</bool>
-                    </property>
-                    <property name="focusPolicy">
-                     <enum>Qt::NoFocus</enum>
-                    </property>
-                    <property name="maximum">
-                     <number>100</number>
-                    </property>
-                    <property name="value">
-                     <number>50</number>
-                    </property>
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="invertedAppearance">
-                     <bool>false</bool>
-                    </property>
-                    <property name="invertedControls">
-                     <bool>false</bool>
-                    </property>
-                    <property name="tickPosition">
-                     <enum>QSlider::TicksBothSides</enum>
-                    </property>
-                    <property name="tickInterval">
-                     <number>10</number>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
              </widget>
             </item>
            </layout>
@@ -7618,6 +7692,11 @@ ANTI-DIVE</string>
    <extends>HalQSpinBox</extends>
    <header>widgets.plasma_hal_spinbox</header>
   </customwidget>
+  <customwidget>
+   <class>PlasmaPushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets.plasma_push_button</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>filter_material</tabstop>
@@ -7665,7 +7744,6 @@ ANTI-DIVE</string>
   <tabstop>single_cut_x</tabstop>
   <tabstop>btn_cut_recover_rev</tabstop>
   <tabstop>btn_cut_recover_fwd</tabstop>
-  <tabstop>cut_recovery_speed</tabstop>
   <tabstop>btn_laser</tabstop>
   <tabstop>pushButton_14</tabstop>
   <tabstop>mdihistory</tabstop>
@@ -8184,10 +8262,10 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="jog_inc_values"/>
   <buttongroup name="dry_run_torch_enable"/>
   <buttongroup name="jog_type"/>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="machine_state"/>
+  <buttongroup name="jog_inc_values"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>

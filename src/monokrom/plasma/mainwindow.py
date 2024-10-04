@@ -184,6 +184,15 @@ class MainWindow(VCPMainWindow):
         self.btn_cut_recover_fwd.pressed.connect(lambda:self.cut_recovery_direction(1))
         self.btn_cut_recover_rev.released.connect(lambda:self.cut_recovery_direction(0))
         self.btn_cut_recover_fwd.released.connect(lambda:self.cut_recovery_direction(0))
+        self.btn_cut_recover_cancel.pressed.connect(lambda:self.cutrec_cancel_pressed(1))
+        self.btn_recovery_n.pressed.connect(lambda:self.cutrec_move(1, 0, 1))
+        self.btn_recovery_ne.pressed.connect(lambda:self.cutrec_move(1, 1, 1))
+        self.btn_recovery_e.pressed.connect(lambda:self.cutrec_move(1, 1, 0))
+        self.btn_recovery_se.pressed.connect(lambda:self.cutrec_move(1, 1, -1))
+        self.btn_recovery_s.pressed.connect(lambda:self.cutrec_move(1, 0, -1))
+        self.btn_recovery_sw.pressed.connect(lambda:self.cutrec_move(1, -1, -1))
+        self.btn_recovery_w.pressed.connect(lambda:self.cutrec_move(1, -1, 0))
+        self.btn_recovery_nw.pressed.connect(lambda:self.cutrec_move(1, -1, 1))
 
         # slider resets
         self.btn_reset_rapid.clicked.connect(lambda:self.rapid_slider.setValue(100))
@@ -288,17 +297,58 @@ class MainWindow(VCPMainWindow):
         if obj_name == 'btn_stop_abort':
                 self.widget_recovery.setEnabled(False)
                 self.cut_recovery_status = False
+                self.jog_stack.setCurrentIndex(0)
+                cnchal.set_p('plasmac.x-offset', '0')
+                cnchal.set_p('plasmac.y-offset', '0')
                 return
 
         if obj_name == 'btn_cycle_start':
                 self.widget_recovery.setEnabled(False)
                 self.cut_recovery_status = False
+                self.jog_stack.setCurrentIndex(0)
+                cnchal.set_p('plasmac.x-offset', '0')
+                cnchal.set_p('plasmac.y-offset', '0')
                 return
 
         if obj_name == 'btn_feed_hold':
                 self.widget_recovery.setEnabled(True)
                 self.cut_recovery_status = True
-        
+                self.jog_stack.setCurrentIndex(1)
+                self.xOrig = cnchal.get_value('axis.x.eoffset-counts')
+                self.yOrig = cnchal.get_value('axis.y.eoffset-counts')
+                self.zOrig = cnchal.get_value('axis.z.eoffset-counts')
+                self.oScale = cnchal.get_value('plasmac.offset-scale')
+                cnchal.set_p('plasmac.x-offset', '0')
+                cnchal.set_p('plasmac.y-offset', '0')
+
+    def cutrec_move(self, state, x, y):
+        if state:
+            maxMove = 10
+            if self._linear_setting == 'inch':
+                maxMove = 0.4
+            laser = cnchal.get_value('qtpyvcp.laser.out') > 0
+            distX = cnchal.get_value('qtpyvcp.param-kirfwidth.out') * x
+            distY = cnchal.get_value('qtpyvcp.param-kirfwidth.out') * y
+            xNew = cnchal.get_value('plasmac.axis-x-position') + cnchal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
+            yNew = cnchal.get_value('plasmac.axis-y-position') + cnchal.get_value('axis.y.eoffset') - (self.laser_offset_y.value() * laser) + distY
+            #if xNew > self.xMax or xNew < self.xMin or yNew > self.yMax or yNew < self.yMin:
+            #    return
+            xTotal = cnchal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
+            yTotal = cnchal.get_value('axis.y.eoffset') - (self.laser_offset_y.value() * laser) + distY
+            if xTotal > maxMove or xTotal < -maxMove or yTotal > maxMove or yTotal < -maxMove:
+                return
+            moveX = int(distX / self.oScale)
+            moveY = int(distY / self.oScale)
+            cnchal.set_p('plasmac.x-offset', f'{str(cnchal.get_value("plasmac.x-offset") + moveX)}')
+            cnchal.set_p('plasmac.y-offset', f'{str(cnchal.get_value("plasmac.y-offset") + moveY)}')
+            cnchal.set_p('plasmac.cut-recovery', '1')
+
+    def cutrec_cancel_pressed(self, state):
+        if (state):
+            if cnchal.get_value('plasmac.cut-recovery'):
+                cnchal.set_p('plasmac.cut-recovery', '0')
+
+
     def consumable_change(self):
         sender = self.sender()
         obj_name = sender.objectName()
