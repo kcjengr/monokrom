@@ -287,6 +287,10 @@ class MainWindow(VCPMainWindow):
         issue_mdi(f"G10L20P0X{laser_x}Y{laser_y};G0X0Y0")
         self.btn_laser.setChecked(False)
 
+    #
+    # Cut recovery is heavily based on the work done within QTPlasmac.
+    # Credit to Phillip A Carter and Gregory D Carl.
+    #
     def cut_recovery_direction(self, direction):
         speed = self.cut_recovery_speed.value() * 0.01 * direction
         cnchal.set_p('plasmac.paused-motion-speed',str(speed))
@@ -298,16 +302,16 @@ class MainWindow(VCPMainWindow):
                 self.widget_recovery.setEnabled(False)
                 self.cut_recovery_status = False
                 self.jog_stack.setCurrentIndex(0)
-                cnchal.set_p('plasmac.x-offset', '0')
-                cnchal.set_p('plasmac.y-offset', '0')
+                cnchal.set_p('plasmac.x-offset', f'{0:.0f}')
+                cnchal.set_p('plasmac.y-offset', f'{0:.0f}')
                 return
 
         if obj_name == 'btn_cycle_start':
                 self.widget_recovery.setEnabled(False)
                 self.cut_recovery_status = False
                 self.jog_stack.setCurrentIndex(0)
-                cnchal.set_p('plasmac.x-offset', '0')
-                cnchal.set_p('plasmac.y-offset', '0')
+                cnchal.set_p('plasmac.x-offset', f'{0:.0f}')
+                cnchal.set_p('plasmac.y-offset', f'{0:.0f}')
                 return
 
         if obj_name == 'btn_feed_hold':
@@ -318,8 +322,8 @@ class MainWindow(VCPMainWindow):
                 self.yOrig = cnchal.get_value('axis.y.eoffset-counts')
                 self.zOrig = cnchal.get_value('axis.z.eoffset-counts')
                 self.oScale = cnchal.get_value('plasmac.offset-scale')
-                cnchal.set_p('plasmac.x-offset', '0')
-                cnchal.set_p('plasmac.y-offset', '0')
+                cnchal.set_p('plasmac.x-offset', f'{0:.0f}')
+                cnchal.set_p('plasmac.y-offset', f'{0:.0f}')
 
     def cutrec_move(self, state, x, y):
         if state:
