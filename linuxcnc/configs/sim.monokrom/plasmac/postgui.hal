@@ -14,8 +14,8 @@
 # Then connect the plasmac:thc-enable signal to your switch:
 # net plasmac:thc-enable your.switch-pin
 
-net plasmac:axis-max-limit       ini.z.max_limit             =>  plasmac.axis-z-max-limit
-net plasmac:axis-min-limit       ini.z.min_limit             =>  plasmac.axis-z-min-limit
+net plasmac:axis-z-max-limit       ini.z.max_limit             =>  plasmac.axis-z-max-limit
+net plasmac:axis-z-min-limit       ini.z.min_limit             =>  plasmac.axis-z-min-limit
 net plasmac:axis-x-max-limit     ini.x.max_limit             =>  plasmac.axis-x-max-limit
 net plasmac:axis-x-min-limit     ini.x.min_limit             =>  plasmac.axis-x-min-limit
 net plasmac:axis-y-max-limit     ini.y.max_limit             =>  plasmac.axis-y-max-limit
@@ -40,8 +40,9 @@ net plasmac:height-per-volt             qtpyvcp.arc-height-per-volt.out => plasm
 ##net plasmac:kerfcross-override            qtpyvcp.thc-void-override.out => plasmac.kerfcross-override
 net plasmac:mesh-enable               qtpyvcp.plasma-mesh-sense.checked => plasmac.mesh-enable
 
-net plasmac:probe-feed-rate            qtpyvcp.param-plungefeedrate.out => plasmac.probe-feed-rate
-net plasmac:probe-final-speed                   qtpyvcp.probe-speed.out => plasmac.probe-final-speed
+net plasmac:probe-feed-rate                     qtpyvcp.probe-speed.out => plasmac.probe-feed-rate
+# Think probe final speed needs to 1 (ie the default)
+#net plasmac:probe-final-speed                   qtpyvcp.probe-speed.out => plasmac.probe-final-speed
 net plasmac:probe-start-height                 qtpyvcp.probe-height.out => plasmac.probe-start-height
 net plasmac:ohmic-max-attempts          qtpyvcp.probe-ohmic-retries.out => plasmac.ohmic-max-attempts
 net plasmac:ohmic-probe-enable    qtpyvcp.ohmic-sensing-enabled.checked => plasmac.ohmic-probe-enable
@@ -87,6 +88,10 @@ net plasmac:arc-ok-high                   qtpyvcp.arc-ok-high-volts.out => plasm
 net plasmac:arc-ok-low                     qtpyvcp.arc-ok-low-volts.out => plasmac.arc-ok-low
 
 net plasmac:xy-feed-rate            qtpyvcp.consumable-xy-feed-rate.out => plasmac.xy-feed-rate
+
+net plasmac:laser-on                <= qtpyvcp.laser.checked
+
+#net plasmac:dry-run                                 qtpyvcp.dry-run.out => plasmac.dry-run
 
 # Outputs
 net plasmac:consumable-changing     plasmac.consumable-changing         => qtpyvcp.led-change-consumable.on
