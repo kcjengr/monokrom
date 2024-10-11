@@ -3794,7 +3794,7 @@ DOWN</string>
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>106</width>
+                       <width>124</width>
                        <height>32</height>
                       </size>
                      </property>
@@ -7647,64 +7647,64 @@ ANTI-DIVE</string>
   <customwidget>
    <class>MonokromDroGroup</class>
    <extends>QWidget</extends>
-   <header>common.widgets.mk_dro.mk_dro</header>
+   <header>monokrom.common.widgets.mk_dro.mk_dro</header>
   </customwidget>
   <customwidget>
    <class>MonokromDroWidget</class>
    <extends>QWidget</extends>
-   <header>common.widgets.mk_dro.mk_dro</header>
+   <header>monokrom.common.widgets.mk_dro.mk_dro</header>
   </customwidget>
   <customwidget>
    <class>MkGroupBox</class>
    <extends>QGroupBox</extends>
-   <header>common.widgets.group_box</header>
+   <header>monokrom.common.widgets.group_box</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>MkHalLedIndicator</class>
    <extends>HalLedIndicator</extends>
-   <header>common.widgets.mk_led_hal</header>
+   <header>monokrom.common.widgets.mk_led_hal</header>
   </customwidget>
   <customwidget>
    <class>MkLedIndicator</class>
    <extends>StatusLED</extends>
-   <header>common.widgets.mk_led</header>
+   <header>monokrom.common.widgets.mk_led</header>
   </customwidget>
   <customwidget>
    <class>MkPushButton</class>
    <extends>QPushButton</extends>
-   <header>common.widgets.mk_push_button</header>
+   <header>monokrom.common.widgets.mk_push_button</header>
   </customwidget>
   <customwidget>
    <class>MkTabWidget</class>
    <extends>QTabWidget</extends>
-   <header>common.widgets.tab_widget</header>
+   <header>monokrom.common.widgets.tab_widget</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>CycleStartActionButton</class>
    <extends>QPushButton</extends>
-   <header>plasma.widgets.cyclestart_action_button</header>
+   <header>widgets.cyclestart_action_button</header>
   </customwidget>
   <customwidget>
    <class>PlasmaHalCheckBox</class>
    <extends>HalCheckBox</extends>
-   <header>plasma.widgets.plasma_hal_checkbox</header>
+   <header>widgets.plasma_hal_checkbox</header>
   </customwidget>
   <customwidget>
    <class>PlasmaHalDoubleSpinBox</class>
    <extends>HalDoubleSpinBox</extends>
-   <header>plasma.widgets.plasma_hal_double_spinbox</header>
+   <header>widgets.plasma_hal_double_spinbox</header>
   </customwidget>
   <customwidget>
    <class>PlasmaHalSpinBox</class>
    <extends>HalQSpinBox</extends>
-   <header>plasma.widgets.plasma_hal_spinbox</header>
+   <header>widgets.plasma_hal_spinbox</header>
   </customwidget>
   <customwidget>
    <class>PlasmaPushButton</class>
    <extends>QPushButton</extends>
-   <header>plasma.widgets.plasma_push_button</header>
+   <header>widgets.plasma_push_button</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -8272,9 +8272,9 @@ ANTI-DIVE</string>
  </connections>
  <buttongroups>
   <buttongroup name="machine_state"/>
-  <buttongroup name="jog_inc_values"/>
   <buttongroup name="dry_run_torch_enable"/>
   <buttongroup name="btngrpMdi"/>
   <buttongroup name="jog_type"/>
+  <buttongroup name="jog_inc_values"/>
  </buttongroups>
 </ui>
