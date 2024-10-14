@@ -69,7 +69,7 @@ net plasmac:spotting-time                        qtpyvcp.spot-delay.out => plasm
 
 net plasmac:thc-enable                      qtpyvcp.thc-enabled.checked => plasmac.thc-enable
 net plasmac:thc-delay                             qtpyvcp.thc-delay.out => plasmac.thc-delay
-net plasmac:thc-feed-rate                     qtpyvcp.thc-feed-rate.out => plasmac.thc-feed-rate
+net plasmac:thc-feed-rate                                                  plasmac.thc-feed-rate
 net plasmac:thc-threshold                     qtpyvcp.thc-threshold.out => plasmac.thc-threshold
 net plasmac:pid-d-gain                       qtpyvcp.thc-pid-d-gain.out => plasmac.pid-d-gain
 net plasmac:pid-i-gain                       qtpyvcp.thc-pid-i-gain.out => plasmac.pid-i-gain

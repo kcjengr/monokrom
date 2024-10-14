@@ -108,6 +108,9 @@ class MainWindow(VCPMainWindow):
         # get min z travel
         self.min_z = INFO.getAxisMinMax('Z')[0]
         self.slat_top = float(INI.find('PLASMAC', 'SLAT_TOP'))
+        # get max Z speed
+        self.thc_feed_rate.setText(f"{float(INI.find('AXIS_Z', 'MAX_VELOCITY')) * 60 / 2}")
+        cnchal.set_p('plasmac.thc-feed-rate',f"{float(INI.find('AXIS_Z', 'MAX_VELOCITY')) * 60 / 2}")
         
         if INFO.getIsMachineMetric():
             self._linear_setting = 'mm'
