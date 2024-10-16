@@ -3950,6 +3950,9 @@ DOWN</string>
                  <height>351</height>
                 </rect>
                </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
               </widget>
              </widget>
              <widget class="MkGroupBox" name="groupbox_21">
@@ -3973,6 +3976,9 @@ DOWN</string>
                  <height>351</height>
                 </rect>
                </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
               </widget>
              </widget>
              <widget class="MkGroupBox" name="groupbox_22">
@@ -3989,7 +3995,11 @@ DOWN</string>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_17">
                <item>
-                <widget class="QTextBrowser" name="job_instructions"/>
+                <widget class="QTextBrowser" name="job_instructions">
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -4005,6 +4015,9 @@ DOWN</string>
               <layout class="QGridLayout" name="gridLayout_22">
                <item row="0" column="2">
                 <widget class="QPushButton" name="pushButton_14">
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
                  <property name="text">
                   <string>RESTART JOB SEQUENCE</string>
                  </property>
@@ -4012,6 +4025,9 @@ DOWN</string>
                </item>
                <item row="0" column="0">
                 <widget class="QPushButton" name="pushButton_12">
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
                  <property name="text">
                   <string>LOAD NEXT</string>
                  </property>
@@ -4019,6 +4035,9 @@ DOWN</string>
                </item>
                <item row="0" column="1">
                 <widget class="QPushButton" name="pushButton_3">
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
                  <property name="text">
                   <string>REPEAT SAME</string>
                  </property>
@@ -4040,7 +4059,11 @@ DOWN</string>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_21">
                <item>
-                <widget class="QListWidget" name="listWidget"/>
+                <widget class="QListWidget" name="listWidget">
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -5664,6 +5687,9 @@ ANTI-DIVE</string>
           <property name="enabled">
            <bool>true</bool>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="tabPosition">
            <enum>QTabWidget::North</enum>
           </property>
@@ -5900,6 +5926,9 @@ ANTI-DIVE</string>
        <layout class="QHBoxLayout" name="horizontalLayout_10">
         <item>
          <widget class="MkTabWidget" name="tabwidget_3">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="currentIndex">
            <number>0</number>
           </property>
@@ -6728,6 +6757,9 @@ ANTI-DIVE</string>
                <height>44</height>
               </rect>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
              <property name="text">
               <string>ADD</string>
              </property>
@@ -6740,6 +6772,9 @@ ANTI-DIVE</string>
                <width>88</width>
                <height>44</height>
               </rect>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
              </property>
              <property name="text">
               <string>NEW</string>
@@ -6787,6 +6822,9 @@ ANTI-DIVE</string>
               <widget class="QComboBox" name="filter_distance_system">
                <property name="enabled">
                 <bool>false</bool>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
                </property>
                <item>
                 <property name="text">
@@ -6837,6 +6875,9 @@ ANTI-DIVE</string>
                <property name="enabled">
                 <bool>false</bool>
                </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
                <item>
                 <property name="text">
                  <string>psi</string>
@@ -6886,6 +6927,9 @@ ANTI-DIVE</string>
                <property name="enabled">
                 <bool>false</bool>
                </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
                <item>
                 <property name="text">
                  <string>Cutskill 60</string>
@@ -6921,6 +6965,9 @@ ANTI-DIVE</string>
              </item>
              <item row="7" column="1">
               <widget class="VCPSettingsDoubleSpinBox" name="framing_feed_rate">
+               <property name="focusPolicy">
+                <enum>Qt::WheelFocus</enum>
+               </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
                </property>
@@ -7256,6 +7303,9 @@ ANTI-DIVE</string>
                  <width>600</width>
                  <height>16777215</height>
                 </size>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::ClickFocus</enum>
                </property>
                <property name="text">
                 <string>~/linuxcnc/configs/sim.monokrom/plasmac/master-seed-source.csv</string>
@@ -7740,62 +7790,34 @@ ANTI-DIVE</string>
   <tabstop>spn_torch_off_distance</tabstop>
   <tabstop>spn_arc3_percent_2</tabstop>
   <tabstop>spn_arc3_distance_2</tabstop>
-  <tabstop>tabwidget</tabstop>
-  <tabstop>listWidget</tabstop>
-  <tabstop>jobs_to_process</tabstop>
-  <tabstop>job_instructions</tabstop>
-  <tabstop>btn_sheet_align_pt1</tabstop>
-  <tabstop>pushButton_3</tabstop>
-  <tabstop>tab_holes_and_slots</tabstop>
-  <tabstop>single_cut_y</tabstop>
-  <tabstop>btn_sheet_doalign</tabstop>
-  <tabstop>jobs_done</tabstop>
-  <tabstop>chkb_slot_detect_enable</tabstop>
-  <tabstop>gcode_recentfile</tabstop>
-  <tabstop>gcode_editor</tabstop>
-  <tabstop>single_cut_x</tabstop>
-  <tabstop>btn_cut_recover_rev</tabstop>
-  <tabstop>btn_cut_recover_fwd</tabstop>
-  <tabstop>btn_laser</tabstop>
-  <tabstop>pushButton_14</tabstop>
-  <tabstop>mdihistory</tabstop>
-  <tabstop>pushButton_12</tabstop>
-  <tabstop>mdiEntry</tabstop>
-  <tabstop>btn_sheet_align_pt2</tabstop>
-  <tabstop>tabwidget_3</tabstop>
-  <tabstop>arc_voltage_scale</tabstop>
-  <tabstop>arc_retry_delay</tabstop>
-  <tabstop>arc_voltage_offset</tabstop>
-  <tabstop>arc_max_starts</tabstop>
+  <tabstop>thc_delay</tabstop>
+  <tabstop>thc_threshold</tabstop>
+  <tabstop>thc_pid_p_gain</tabstop>
+  <tabstop>thc_pid_i_gain</tabstop>
+  <tabstop>thc_pid_d_gain</tabstop>
+  <tabstop>thc_vad_threshold</tabstop>
+  <tabstop>thc_void_override</tabstop>
+  <tabstop>thc_safe_height</tabstop>
+  <tabstop>probe_float_travel</tabstop>
+  <tabstop>probe_speed</tabstop>
+  <tabstop>probe_height</tabstop>
+  <tabstop>probe_offset</tabstop>
+  <tabstop>probe_ohmic_retries</tabstop>
+  <tabstop>probe_skip_ihs</tabstop>
+  <tabstop>probe_setup_speed</tabstop>
   <tabstop>arc_fail_timeout</tabstop>
+  <tabstop>arc_max_starts</tabstop>
+  <tabstop>arc_retry_delay</tabstop>
+  <tabstop>arc_voltage_scale</tabstop>
+  <tabstop>arc_voltage_offset</tabstop>
   <tabstop>arc_height_per_volt</tabstop>
   <tabstop>arc_ok_high_volts</tabstop>
   <tabstop>arc_ok_low_volts</tabstop>
-  <tabstop>thc_pid_d_gain</tabstop>
-  <tabstop>thc_threshold</tabstop>
-  <tabstop>thc_delay</tabstop>
-  <tabstop>thc_pid_p_gain</tabstop>
-  <tabstop>thc_pid_i_gain</tabstop>
-  <tabstop>thc_vad_threshold</tabstop>
-  <tabstop>thc_safe_height</tabstop>
-  <tabstop>thc_void_override</tabstop>
   <tabstop>scribe_arm_delay</tabstop>
   <tabstop>scribe_on_delay</tabstop>
   <tabstop>spot_threshold</tabstop>
   <tabstop>spot_delay</tabstop>
-  <tabstop>probe_height</tabstop>
-  <tabstop>probe_float_travel</tabstop>
-  <tabstop>probe_ohmic_retries</tabstop>
-  <tabstop>probe_skip_ihs</tabstop>
-  <tabstop>probe_offset</tabstop>
-  <tabstop>probe_setup_speed</tabstop>
-  <tabstop>probe_speed</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_2</tabstop>
-  <tabstop>filter_distance_system</tabstop>
   <tabstop>plasma_torch_pulse_sec</tabstop>
-  <tabstop>filter_pressure_system</tabstop>
-  <tabstop>filter_machine</tabstop>
   <tabstop>consumable_xy_feed_rate</tabstop>
   <tabstop>consumable_offset_x</tabstop>
   <tabstop>consumable_offset_y</tabstop>
@@ -7803,7 +7825,16 @@ ANTI-DIVE</string>
   <tabstop>scribe_offset_y</tabstop>
   <tabstop>plasmahaldoublespinbox</tabstop>
   <tabstop>plasmahaldoublespinbox_2</tabstop>
-  <tabstop>lne_seed_source</tabstop>
+  <tabstop>btn_recovery_s</tabstop>
+  <tabstop>btn_recovery_sw</tabstop>
+  <tabstop>btn_recovery_se</tabstop>
+  <tabstop>btn_recovery_e</tabstop>
+  <tabstop>btn_recovery_ne</tabstop>
+  <tabstop>btn_recovery_w</tabstop>
+  <tabstop>btn_recovery_n</tabstop>
+  <tabstop>btn_recovery_nw</tabstop>
+  <tabstop>btn_cut_recover_cancel</tabstop>
+  <tabstop>framing_feed_rate</tabstop>
  </tabstops>
  <resources/>
  <connections>
