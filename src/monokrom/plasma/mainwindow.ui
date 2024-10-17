@@ -3895,6 +3895,13 @@ DOWN</string>
                   </widget>
                  </item>
                  <item>
+                  <widget class="ActionButton" name="btn_reload">
+                   <property name="text">
+                    <string>RELOAD</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
                   <widget class="DialogButton" name="dialogbutton_2">
                    <property name="text">
                     <string>RECENT</string>
@@ -7252,6 +7259,9 @@ ANTI-DIVE</string>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
                </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::PlusMinus</enum>
+               </property>
                <property name="decimals">
                 <number>5</number>
                </property>
@@ -7540,6 +7550,101 @@ ANTI-DIVE</string>
            </property>
            <property name="rules" stdset="0">
             <string>[{&quot;name&quot;: &quot;mcodes&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:mcodes?string&quot;, &quot;trigger&quot;: true}]}]</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="MkGroupBox" name="groupbox_28">
+        <property name="geometry">
+         <rect>
+          <x>1580</x>
+          <y>0</y>
+          <width>291</width>
+          <height>831</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>TOOLS</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_28">
+         <item>
+          <widget class="ActionButton" name="hal_meter">
+           <property name="text">
+            <string>HAL Meter</string>
+           </property>
+           <property name="actionName" stdset="0">
+            <string>tool.halmeter</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="ActionButton" name="hal_scope">
+           <property name="text">
+            <string>HAL Scope</string>
+           </property>
+           <property name="actionName" stdset="0">
+            <string>tool.halscope</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="ActionButton" name="hal_show">
+           <property name="text">
+            <string>HAL Show</string>
+           </property>
+           <property name="actionName" stdset="0">
+            <string>tool.halshow</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="ActionButton" name="lcnc_status">
+           <property name="text">
+            <string>LinuxCNC Status</string>
+           </property>
+           <property name="actionName" stdset="0">
+            <string>tool.status</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="ActionButton" name="calibration">
+           <property name="text">
+            <string>Calibration</string>
+           </property>
+           <property name="actionName" stdset="0">
+            <string>tool.calibration</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="ActionButton" name="classic_ladder_plc">
+           <property name="text">
+            <string>Classic Ladder PLC</string>
+           </property>
+           <property name="actionName" stdset="0">
+            <string>tool.classicladder</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_13">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="exitAppBtn">
+           <property name="text">
+            <string>EXIT MONOKROM</string>
            </property>
           </widget>
          </item>
@@ -8304,10 +8409,10 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
+  <buttongroup name="machine_state"/>
   <buttongroup name="jog_type"/>
-  <buttongroup name="dry_run_torch_enable"/>
   <buttongroup name="btngrpMdi"/>
   <buttongroup name="jog_inc_values"/>
-  <buttongroup name="machine_state"/>
+  <buttongroup name="dry_run_torch_enable"/>
  </buttongroups>
 </ui>

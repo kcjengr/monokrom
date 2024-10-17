@@ -204,6 +204,9 @@ class MainWindow(VCPMainWindow):
 
         # load newest
         self.btn_load_newest.clicked.connect(self.openLatest)
+        
+        # reload
+        self.btn_reload.clicked.connect(self.reload_file)
 
         # single cut limits
         self.single_cut_x.focusReceived.connect(self.single_cut_limits)
@@ -277,6 +280,9 @@ class MainWindow(VCPMainWindow):
                 tool.tool_number != 99999
             ):
                 self.last_tool_num_assigned = tool.tool_number
+
+    def on_exitAppBtn_clicked(self):
+      self.app.quit()
 
     def zero_wcs_xy(self):
         #_current_pos = float(POS.Absolute(0))
@@ -728,6 +734,12 @@ class MainWindow(VCPMainWindow):
         self.gcode_editor.saveFile(real_file)
         loadProgram(real_file)
     
+    # Reload the current file.  That means the most recently loaded file
+    def reload_file(self):    
+        real_file = self.gcode_recentfile.currentData()
+        if real_file == None:
+            return
+        loadProgram(real_file)
 
     #
     # Frame prog on work piece
