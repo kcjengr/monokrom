@@ -13,7 +13,7 @@ o120 if [#<_absolute> EQ 1]
 o120 endif
 
 F#<_hal[qtpyvcp.param-cutfeedrate.out]>
-M3 $0
+M3 $0 S1
 G1 X[#<single_cut_x>/#<_hal[halui.machine.units-per-mm]>] Y[#<single_cut_y>/#<_hal[halui.machine.units-per-mm]>]
 M5 $-1
 
