@@ -261,6 +261,9 @@ class MainWindow(VCPMainWindow):
         comp = hal.getComponent()
         self.hal_cutchart_id = comp.addPin('cutchart-id', 'u32', 'in')
         comp.addListener('cutchart-id', self.cutchart_pin_update)
+        # create a force-reload-cutchart for use by filter prog
+        self.hal_cutchart_reload = comp.addPin('cutchart-reload', 'bit', 'in')
+        comp.addListener('cutchart-reload', self.force_cutchart_reload)
         
         # create probe test error pin to watch
         self.hal_probe_test_error = comp.addPin('probe-test-error', 'bit', 'in')
@@ -361,6 +364,21 @@ class MainWindow(VCPMainWindow):
             if cnchal.get_value('plasmac.cut-recovery'):
                 cnchal.set_p('plasmac.cut-recovery', '0')
 
+    def editor_buttons(self):
+        sender = self.sender()
+        obj_name = sender.objectName()
+        if obj_name == 'btn_edit':
+            return
+        
+        if obj_name == 'btn_save':
+            return
+        
+        if obj_name == 'btn_edit':
+            return
+        
+        if obj_name == 'btn_edit':
+            return
+        
 
     def consumable_change(self):
         sender = self.sender()
@@ -428,6 +446,17 @@ class MainWindow(VCPMainWindow):
         vtk = self.vtkbackplot
         vtk.enableBreadcrumbs(state)
         vtk.clearLivePlot()
+
+    def force_cutchart_reload(self, value):
+        LOG.debug(f"Cutchart_Reload = {value}")
+        if not int(value):
+            # if False then nothing to do so exit
+            return
+        # get current cut chart pin value
+        current = self.filter_cutchart_id
+        # rest the reload pin back to False
+        cnchal.set_p('qtpyvcp.cutchart-reload', '0')
+        self.cutchart_pin_update(current)
 
     def cutchart_pin_update(self, value):
         LOG.debug(f"Cutchart_ID Pin = {value}")
