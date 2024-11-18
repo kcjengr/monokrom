@@ -3059,52 +3059,13 @@ CUT</string>
               <item>
                <widget class="QWidget" name="widget_13" native="true">
                 <layout class="QGridLayout" name="gridLayout_18">
-                 <item row="0" column="2">
-                  <widget class="QPushButton" name="vtk_center">
+                 <item row="0" column="1">
+                  <widget class="QPushButton" name="vtk_minus">
                    <property name="focusPolicy">
                     <enum>Qt::NoFocus</enum>
                    </property>
                    <property name="text">
-                    <string>CENTER
-PLOT</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="4">
-                  <widget class="QPushButton" name="vtk_prog_extent">
-                   <property name="focusPolicy">
-                    <enum>Qt::NoFocus</enum>
-                   </property>
-                   <property name="text">
-                    <string>PROG
-EXTENT</string>
-                   </property>
-                   <property name="checkable">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="0">
-                  <widget class="QPushButton" name="vtk_plus">
-                   <property name="focusPolicy">
-                    <enum>Qt::NoFocus</enum>
-                   </property>
-                   <property name="text">
-                    <string>+</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="5">
-                  <widget class="QPushButton" name="vtk_prog_ticks">
-                   <property name="focusPolicy">
-                    <enum>Qt::NoFocus</enum>
-                   </property>
-                   <property name="text">
-                    <string>PROG
-TICKS</string>
-                   </property>
-                   <property name="checkable">
-                    <bool>true</bool>
+                    <string>-</string>
                    </property>
                   </widget>
                  </item>
@@ -3132,17 +3093,7 @@ EXTENT</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="1">
-                  <widget class="QPushButton" name="vtk_minus">
-                   <property name="focusPolicy">
-                    <enum>Qt::NoFocus</enum>
-                   </property>
-                   <property name="text">
-                    <string>-</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="7">
+                 <item row="0" column="8">
                   <widget class="QPushButton" name="vtk_no_lines">
                    <property name="focusPolicy">
                     <enum>Qt::NoFocus</enum>
@@ -3156,6 +3107,55 @@ TRAILS</string>
                    </property>
                    <property name="checked">
                     <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QPushButton" name="vtk_center">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
+                   <property name="text">
+                    <string>CENTER
+PLOT</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QPushButton" name="vtk_plus">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
+                   <property name="text">
+                    <string>+</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="4">
+                  <widget class="QPushButton" name="vtk_prog_extent">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
+                   <property name="text">
+                    <string>PROG
+EXTENT</string>
+                   </property>
+                   <property name="checkable">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="7">
+                  <widget class="QPushButton" name="btn_rot_90">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
+                   <property name="text">
+                    <string>ROTATE
+90</string>
+                   </property>
+                   <property name="checkable">
+                    <bool>false</bool>
                    </property>
                   </widget>
                  </item>
@@ -5753,7 +5753,7 @@ ANTI-DIVE</string>
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -5957,8 +5957,8 @@ ANTI-DIVE</string>
           <widget class="QWidget" name="tab_35">
            <attribute name="icon">
             <iconset>
-             <normaloff>../common/icons/conversational/tab-circle.png</normaloff>
-             <normalon>../common/icons/conversational/tab-rotate-selected.png</normalon>../common/icons/conversational/tab-circle.png</iconset>
+             <normaloff>../common/icons/conversational/tab-rotate.png</normaloff>
+             <normalon>../common/icons/conversational/tab-rotate-selected.png</normalon>../common/icons/conversational/tab-rotate.png</iconset>
            </attribute>
            <attribute name="title">
             <string/>
@@ -8295,22 +8295,6 @@ ANTI-DIVE</string>
    </hints>
   </connection>
   <connection>
-   <sender>vtk_prog_ticks</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>vtkbackplot</receiver>
-   <slot>toggleMachineTicks()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1665</x>
-     <y>124</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1416</x>
-     <y>326</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>vtk_mach_extent</sender>
    <signal>toggled(bool)</signal>
    <receiver>vtkbackplot</receiver>
@@ -8472,10 +8456,10 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="dry_run_torch_enable"/>
+  <buttongroup name="jog_inc_values"/>
   <buttongroup name="machine_state"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="jog_inc_values"/>
+  <buttongroup name="dry_run_torch_enable"/>
   <buttongroup name="jog_type"/>
  </buttongroups>
 </ui>

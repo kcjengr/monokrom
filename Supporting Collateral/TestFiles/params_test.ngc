@@ -1,0 +1,51 @@
+;     file name: params_test.ngc
+; date and time: Sat Nov 16 2024    1:55:41 PM
+; postprocessor: LinuxCNC Monokrom.scpost rev: 0.1
+;
+;begin pre-amble
+ G21 (units: metric)
+ G40 (cutter compensation: off)
+ G90 (distance mode: absolute)
+ M52 P1 (adaptive feed: on)
+ M65 P2 (enable THC)
+ M65 P3 (enable torch)
+ M68 E3 Q0 (velocity 100%)
+ G64 P0.254 Q0.025 (tracking tolerances: 0.254mm)
+;end pre-amble
+;
+;begin material setup
+ (o=0,kw=1.2, ph=2.5, pd=0, ch=1.5, fr=6000, mt=1.6, th=1, cv=101, pe=0, jh=0, jd=0)
+ F#<_hal[plasmac.cut-feed-rate]>
+;end material setup
+ G0 X15.476 Y-0.222
+ M3 $0 S1 (plasma start)
+ M67 E3 Q100
+ G3 X15.476 Y2.493 I-1.358 J1.358
+ G1 X2.776 Y15.193
+ G2 X2.6 Y15.618 I0.424 J0.424
+ G1 X2.6 Y104.518
+ G2 X3.2 Y105.118 I0.6 J0
+ G1 X15.9 Y105.118
+ G2 X16.324 Y104.942 I0 J-0.6
+ G1 X105.224 Y16.042
+ G2 X105.4 Y15.618 I-0.424 J-0.424
+ G1 X105.4 Y2.918
+ G2 X104.8 Y2.318 I-0.6 J0
+ G1 X15.9 Y2.318
+ M5 $0 (plasma end)
+ ;
+ ;begin post-amble
+ G40 (cutter compensation: off)
+ G90 (distance mode: absolute)
+ M65 P2 (enable THC)
+ M65 P3 (enable torch)
+ M68 E3 Q0 (velocity 100%)
+ M5 $-1 (backup stop)
+ ;end post-amble
+ ;
+ ;begin statistics
+ ;Pierces = 1
+ ;   Cuts = 1,    Length = 353.201
+ ;end statistics
+ ;
+ M30 (end program)

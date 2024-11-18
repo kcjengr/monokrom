@@ -181,6 +181,7 @@ class MainWindow(VCPMainWindow):
         self.btn_zero_xy.clicked.connect(self.zero_wcs_xy)
         self.btn_probe_test.toggled.connect(self.probe_test)
         self.vtk_no_lines.toggled.connect(self.breadcrumbs_tracked)
+        self.btn_rot_90.clicked.connect(self.rotate_90)
 
         # cut recovery direction
         self.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
@@ -745,7 +746,19 @@ class MainWindow(VCPMainWindow):
         if text != 'null':
             text += ' '
             parent.mdiEntry.setText(text)
-            
+
+    #
+    # VTK Display and Gcode
+    #
+    def rotate_90(self):
+        LOG.debug("Rotate loaded file 90 degrees")
+
+    def flip_x(self):
+        LOG.debug("Flip files X axis")
+    
+    def flip_y(self):
+        LOG.debug("Flip files Y axis")
+
     #
     # GCode Editor
     #
