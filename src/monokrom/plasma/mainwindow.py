@@ -141,6 +141,7 @@ class MainWindow(VCPMainWindow):
         self.widget_recovery.setEnabled(False)
         self.btn_consumable_change.setEnabled(False)
         self.mdiFrame.hide()
+        self.transformFrame.hide()
         self.cut_recovery_status = False
         self.consumable_offset_x.setMinimum(self.min_x + (10 * self.units_per_mm))
         self.consumable_offset_y.setMinimum(self.min_y + (10 * self.units_per_mm))
@@ -181,7 +182,7 @@ class MainWindow(VCPMainWindow):
         self.btn_zero_xy.clicked.connect(self.zero_wcs_xy)
         self.btn_probe_test.toggled.connect(self.probe_test)
         self.vtk_no_lines.toggled.connect(self.breadcrumbs_tracked)
-        self.btn_rot_90.clicked.connect(self.rotate_90)
+        #self.btn_transform.toggled.connect(self.tranformUI)
 
         # cut recovery direction
         self.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
@@ -750,14 +751,8 @@ class MainWindow(VCPMainWindow):
     #
     # VTK Display and Gcode
     #
-    def rotate_90(self):
-        LOG.debug("Rotate loaded file 90 degrees")
-
-    def flip_x(self):
-        LOG.debug("Flip files X axis")
-    
-    def flip_y(self):
-        LOG.debug("Flip files Y axis")
+    def tranformUI_reset(self):
+        LOG.debug("Reset to default values")
 
     #
     # GCode Editor
