@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1892</width>
+    <width>1920</width>
     <height>1100</height>
    </rect>
   </property>
@@ -3174,51 +3174,10 @@ EXTENT</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="2">
-                  <widget class="HalDoubleSpinBox" name="column_separation">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="decimals">
-                    <number>4</number>
-                   </property>
-                   <property name="maximum">
-                    <double>1000.000000000000000</double>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="HalQSpinBox" name="tile_columns">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="minimum">
-                    <number>1</number>
-                   </property>
-                   <property name="maximum">
-                    <number>1000</number>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="2">
-                  <widget class="HalDoubleSpinBox" name="row_separation">
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
-                   </property>
-                   <property name="decimals">
-                    <number>4</number>
-                   </property>
-                   <property name="maximum">
-                    <double>1000.000000000000000</double>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_108">
+                   <property name="text">
+                    <string>COLUMNS</string>
                    </property>
                   </widget>
                  </item>
@@ -3237,6 +3196,9 @@ EXTENT</string>
                     <number>1000</number>
                    </property>
                   </widget>
+                 </item>
+                 <item row="2" column="6">
+                  <widget class="HalCheckBox" name="gcode_mirror"/>
                  </item>
                  <item row="1" column="4">
                   <widget class="HalDoubleSpinBox" name="gcode_scale">
@@ -3260,17 +3222,51 @@ EXTENT</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="label_108">
-                   <property name="text">
-                    <string>COLUMNS</string>
+                 <item row="1" column="6">
+                  <widget class="HalDoubleSpinBox" name="gcode_rotation">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="decimals">
+                    <number>4</number>
+                   </property>
+                   <property name="maximum">
+                    <double>360.000000000000000</double>
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="label_109">
-                   <property name="text">
-                    <string>ROWS</string>
+                 <item row="2" column="2">
+                  <widget class="HalDoubleSpinBox" name="row_separation">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="decimals">
+                    <number>4</number>
+                   </property>
+                   <property name="maximum">
+                    <double>1000.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="2">
+                  <widget class="HalDoubleSpinBox" name="column_separation">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="decimals">
+                    <number>4</number>
+                   </property>
+                   <property name="maximum">
+                    <double>1000.000000000000000</double>
                    </property>
                   </widget>
                  </item>
@@ -3278,16 +3274,6 @@ EXTENT</string>
                   <widget class="QLabel" name="label_110">
                    <property name="text">
                     <string>SCALE</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="3">
-                  <widget class="QLabel" name="label_112">
-                   <property name="text">
-                    <string>FLIP</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -3304,6 +3290,36 @@ EXTENT</string>
                    </property>
                   </widget>
                  </item>
+                 <item row="1" column="5">
+                  <widget class="QLabel" name="label_114">
+                   <property name="text">
+                    <string>ROTATION</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="label_109">
+                   <property name="text">
+                    <string>ROWS</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="HalQSpinBox" name="tile_columns">
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="minimum">
+                    <number>1</number>
+                   </property>
+                   <property name="maximum">
+                    <number>1000</number>
+                   </property>
+                  </widget>
+                 </item>
                  <item row="2" column="5">
                   <widget class="QLabel" name="label_113">
                    <property name="text">
@@ -3314,29 +3330,41 @@ EXTENT</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="6">
-                  <widget class="HalCheckBox" name="gcode_mirror"/>
-                 </item>
-                 <item row="1" column="5">
-                  <widget class="QLabel" name="label_114">
+                 <item row="2" column="3">
+                  <widget class="QLabel" name="label_112">
                    <property name="text">
-                    <string>ROTATION</string>
+                    <string>FLIP</string>
                    </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="6">
-                  <widget class="HalDoubleSpinBox" name="gcode_rotation">
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
                    </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                  </widget>
+                 </item>
+                 <item row="1" column="7" rowspan="2">
+                  <widget class="QPushButton" name="btn_transform_apply">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
                    </property>
-                   <property name="decimals">
-                    <number>4</number>
+                   <property name="minimumSize">
+                    <size>
+                     <width>60</width>
+                     <height>0</height>
+                    </size>
                    </property>
-                   <property name="maximum">
-                    <double>360.000000000000000</double>
+                   <property name="baseSize">
+                    <size>
+                     <width>0</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>APPLY</string>
+                   </property>
+                   <property name="flat">
+                    <bool>false</bool>
                    </property>
                   </widget>
                  </item>
@@ -4029,7 +4057,7 @@ DOWN</string>
                     <enum>Qt::ClickFocus</enum>
                    </property>
                    <property name="syntaxHighlighting" stdset="0">
-                    <bool>true</bool>
+                    <bool>false</bool>
                    </property>
                    <property name="readOnly" stdset="0">
                     <bool>true</bool>
@@ -8653,10 +8681,10 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="machine_state"/>
-  <buttongroup name="dry_run_torch_enable"/>
-  <buttongroup name="jog_type"/>
-  <buttongroup name="jog_inc_values"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="jog_type"/>
+  <buttongroup name="dry_run_torch_enable"/>
+  <buttongroup name="machine_state"/>
+  <buttongroup name="jog_inc_values"/>
  </buttongroups>
 </ui>

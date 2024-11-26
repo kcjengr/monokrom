@@ -1,0 +1,105 @@
+(--------------------------------------------------)
+(            Plasma G-Code Preprocessor            )
+(                 00.30                            )
+(--------------------------------------------------)
+;inputs
+#<ucs_x_offset> = #5221
+#<ucs_y_offset> = #5222
+#<ucs_r_offset> = #5230
+#<array_x_offset> = 120.0
+#<array_y_offset> = 0.0
+#<array_columns> = 2
+#<array_rows> = 1
+#<origin_x_offset> = 0.0
+#<origin_y_offset> = 0.0
+#<array_angle> = 0.0
+#<blk_scale> = 1.0
+#<shape_angle> = 0.0
+o<mirror> if [0]
+    #<shape_mirror> = -1
+o<mirror> else
+    #<shape_mirror> = 1
+o<mirror> endif
+o<flip> if [0]
+    #<shape_flip> = -1
+o<flip> else
+    #<shape_flip> = 1
+o<flip> endif
+;calculations
+#<this_col> = 0
+#<this_row> = 0
+#<array_rot> = [#<array_angle> + #<ucs_r_offset>]
+#<blk_x_offset> = [#<origin_x_offset> + [#<ucs_x_offset> * 1]]
+#<blk_y_offset> = [#<origin_y_offset> + [#<ucs_y_offset> * 1]]
+#<x_sin> = [[#<array_x_offset> * #<blk_scale>] * SIN[#<array_rot>]]
+#<x_cos> = [[#<array_x_offset> * #<blk_scale>] * COS[#<array_rot>]]
+#<y_sin> = [[#<array_y_offset> * #<blk_scale>] * SIN[#<array_rot>]]
+#<y_cos> = [[#<array_y_offset> * #<blk_scale>] * COS[#<array_rot>]]
+
+;main loop
+o<loop> while [#<this_row> LT #<array_rows>]
+#<shape_x_start> = [[#<this_col> * #<x_cos>] - [#<this_row> * #<y_sin>] + #<blk_x_offset>]
+#<shape_y_start> = [[#<this_row> * #<y_cos>] + [#<this_col> * #<x_sin>] + #<blk_y_offset>]
+#<blk_angle> = [#<shape_angle> + #<array_rot>]
+G10 L2 P0 X#<shape_x_start> Y#<shape_y_start> R#<blk_angle>
+;     file name: params_test.ngc
+; date and time: Sat Nov 16 2024    1:55:41 PM
+; postprocessor: LinuxCNC Monokrom.scpost rev: 0.1
+;
+;begin pre-amble
+G21 (units: metric)
+G40 (cutter compensation: off)
+G90 (distance mode: absolute)
+M52 P1 (adaptive feed: on)
+M65 P2 (enable THC)
+M65 P3 (enable torch)
+M68 E3 Q0 (velocity 100%)
+G64 P0.254 Q0.025 (tracking tolerances: 0.254mm)
+;end pre-amble
+;
+;begin material setup
+(o=0,kw=1.2, ph=2.5, pd=0, ch=1.5, fr=6000, mt=1.6, th=1, cv=101, pe=0, jh=0, jd=0)
+F3000
+;end material setup
+G0 X[15.476*#<blk_scale>*#<shape_mirror>] Y[-0.222000*#<blk_scale>*#<shape_flip>]
+M3 $0 S1 (plasma start)
+M67 E3 Q100
+G3 X[15.476*#<blk_scale>*#<shape_mirror>] Y[2.493*#<blk_scale>*#<shape_flip>] I[-1.358000*#<blk_scale>*#<shape_mirror>] J[1.358*#<blk_scale>*#<shape_flip>]
+G1 X[2.776*#<blk_scale>*#<shape_mirror>] Y[15.193*#<blk_scale>*#<shape_flip>]
+G2 X[2.600*#<blk_scale>*#<shape_mirror>] Y[15.618*#<blk_scale>*#<shape_flip>] I[0.424*#<blk_scale>*#<shape_mirror>] J[0.424*#<blk_scale>*#<shape_flip>]
+G1 X[2.600*#<blk_scale>*#<shape_mirror>] Y[104.518*#<blk_scale>*#<shape_flip>]
+G2 X[3.200*#<blk_scale>*#<shape_mirror>] Y[105.118*#<blk_scale>*#<shape_flip>] I[0.600*#<blk_scale>*#<shape_mirror>] J[0.000000*#<blk_scale>*#<shape_flip>]
+G1 X[15.900*#<blk_scale>*#<shape_mirror>] Y[105.118*#<blk_scale>*#<shape_flip>]
+G2 X[16.324*#<blk_scale>*#<shape_mirror>] Y[104.942*#<blk_scale>*#<shape_flip>] I[0.000000*#<blk_scale>*#<shape_mirror>] J[-0.600000*#<blk_scale>*#<shape_flip>]
+G1 X[105.224*#<blk_scale>*#<shape_mirror>] Y[16.042*#<blk_scale>*#<shape_flip>]
+G2 X[105.400*#<blk_scale>*#<shape_mirror>] Y[15.618*#<blk_scale>*#<shape_flip>] I[-0.424000*#<blk_scale>*#<shape_mirror>] J[-0.424000*#<blk_scale>*#<shape_flip>]
+G1 X[105.400*#<blk_scale>*#<shape_mirror>] Y[2.918*#<blk_scale>*#<shape_flip>]
+G2 X[104.800*#<blk_scale>*#<shape_mirror>] Y[2.318*#<blk_scale>*#<shape_flip>] I[-0.600000*#<blk_scale>*#<shape_mirror>] J[0.000000*#<blk_scale>*#<shape_flip>]
+G1 X[15.900*#<blk_scale>*#<shape_mirror>] Y[2.318*#<blk_scale>*#<shape_flip>]
+M5 $0 (plasma end)
+;
+;begin post-amble
+G40 (cutter compensation: off)
+G90 (distance mode: absolute)
+M65 P2 (enable THC)
+M65 P3 (enable torch)
+M68 E3 Q0 (velocity 100%)
+M5 $-1 (backup stop)
+;end post-amble
+                    
+#<this_col> = [#<this_col> + 1]
+o<count> if [#<this_col> EQ #<array_columns>]
+    #<this_col> = 0
+    #<this_row> = [#<this_row> + 1]
+o<count> endif
+o<loop> endwhile
+
+G10 L2 P0 X[#<ucs_x_offset> * 1] Y[#<ucs_y_offset> * 1] R#<ucs_r_offset>
+                    
+;
+;begin statistics
+;Pierces = 1
+;   Cuts = 1,    Length = 353.201
+;end statistics
+;
+M30 (end program)

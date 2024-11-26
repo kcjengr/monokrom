@@ -209,6 +209,7 @@ class MainWindow(VCPMainWindow):
         
         # reload
         self.btn_reload.clicked.connect(self.reload_file)
+        self.btn_transform_apply.connect(self.reload_file)
 
         # single cut limits
         self.single_cut_x.focusReceived.connect(self.single_cut_limits)

@@ -1,0 +1,70 @@
+;conversational block
+
+;inputs
+#<ucs_x_offset> = #5221
+#<ucs_y_offset> = #5222
+#<ucs_r_offset> = #5230
+#<array_x_offset> = 120.0
+#<array_y_offset> = 0.0
+#<array_columns> = 2
+#<array_rows> = 1
+#<origin_x_offset> = 0.0
+#<origin_y_offset> = 0.0
+#<array_angle> = 0.0
+#<blk_scale> = 1.0
+#<shape_angle> = 0.0
+#<shape_mirror> = 1
+#<shape_flip> = 1
+
+;calculations
+#<this_col> = 0
+#<this_row> = 0
+#<array_rot> = [#<array_angle> + #<ucs_r_offset>]
+#<blk_x_offset> = [#<origin_x_offset> + [#<ucs_x_offset> * 1]]
+#<blk_y_offset> = [#<origin_y_offset> + [#<ucs_y_offset> * 1]]
+#<x_sin> = [[#<array_x_offset> * #<blk_scale>] * SIN[#<array_rot>]]
+#<x_cos> = [[#<array_x_offset> * #<blk_scale>] * COS[#<array_rot>]]
+#<y_sin> = [[#<array_y_offset> * #<blk_scale>] * SIN[#<array_rot>]]
+#<y_cos> = [[#<array_y_offset> * #<blk_scale>] * COS[#<array_rot>]]
+
+;main loop
+o<loop> while [#<this_row> LT #<array_rows>]
+    #<shape_x_start> = [[#<this_col> * #<x_cos>] - [#<this_row> * #<y_sin>] + #<blk_x_offset>]
+    #<shape_y_start> = [[#<this_row> * #<y_cos>] + [#<this_col> * #<x_sin>] + #<blk_y_offset>]
+    #<blk_angle> = [#<shape_angle> + #<array_rot>]
+    G10 L2 P0 X#<shape_x_start> Y#<shape_y_start> R#<blk_angle>
+
+
+    g21 g64p0.25 g40 g49 g80 g90 g92.1 g94 g97 (preamble)
+
+    (conversational gusset)
+    ;using material #0: basic default material
+    m190 p0
+    m66 p3 l3 q1
+    f3000
+    g53 g0 z[[#<_ini[axis_z]max_limit> - 5.0] * 1.000] (z just below max height)
+    g0x[40.857696*#<blk_scale>*#<shape_mirror>]y[46.855095*#<blk_scale>*#<shape_flip>]
+    m3 $0 s1
+    g3x[40.857307*#<blk_scale>*#<shape_mirror>]y[40.855095*#<blk_scale>*#<shape_flip>]i[2.999806*#<blk_scale>*#<shape_mirror>]j[-3.000194*#<blk_scale>*#<shape_flip>]
+    g1x[81.707107*#<blk_scale>*#<shape_mirror>]y[0.000000*#<blk_scale>*#<shape_flip>]
+    g1x[20.000000*#<blk_scale>*#<shape_mirror>]y[0.000000*#<blk_scale>*#<shape_flip>]
+    g3x[0.000000*#<blk_scale>*#<shape_mirror>]y[20.000000*#<blk_scale>*#<shape_flip>]i[-20.000000*#<blk_scale>*#<shape_mirror>]j[0.000000*#<blk_scale>*#<shape_flip>]
+    g1x[0.007507*#<blk_scale>*#<shape_mirror>]y[81.710189*#<blk_scale>*#<shape_flip>]
+    g1x[40.857307*#<blk_scale>*#<shape_mirror>]y[40.855095*#<blk_scale>*#<shape_flip>]
+    g1x[40.857307*#<blk_scale>*#<shape_mirror>]y[40.855095*#<blk_scale>*#<shape_flip>]
+    g3x[46.857307*#<blk_scale>*#<shape_mirror>]y[40.854706*#<blk_scale>*#<shape_flip>]i[3.000194*#<blk_scale>*#<shape_mirror>]j[2.999806*#<blk_scale>*#<shape_flip>]
+    m5 $0
+
+    g21 g64p0.25 g40 g49 g80 g90 g92.1 g94 g97 (postamble)
+
+    #<this_col> = [#<this_col> + 1]
+    o<count> if [#<this_col> EQ #<array_columns>]
+        #<this_col> = 0
+        #<this_row> = [#<this_row> + 1]
+    o<count> endif
+o<loop> endwhile
+    ;qtplasmac filtered g-code file
+
+G10 L2 P0 X[#<ucs_x_offset> * 1] Y[#<ucs_y_offset> * 1] R#<ucs_r_offset>
+
+M2
