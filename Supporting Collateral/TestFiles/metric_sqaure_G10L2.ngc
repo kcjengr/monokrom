@@ -17,20 +17,21 @@
 G21
 G64 P0.005
 M52 P1 ;to enable reverse-run
-F3000 ; feed rate from cut parameters
+F2000 ; feed rate from cut parameters
 
 o100 repeat [#2]
-  G10 L2 P0 X[[#1 * #4]+#6] Y[#7]R0
+  G10 L2 P0 X[[#1 * #4]+#6] Y[#7] R0
   G0 X0 Y0
   M3 $0 S1 (select plasma torch)
   G0 z0
-  G1 Y100
-  G1 X100
-  G1 Y0
-  G1 X0
+  G1 X0 Y[#1]
+  G1 X[#1] Y[#1]
+  G1 X[#1] Y0
+  G1 X0 Y0
   M5 $0
   #4 = [#4+1.05]
 o100 endrepeat
 
+G10 L2 P0 X[#6] Y[#7] R0
 G0 X0 Y0
 M2
