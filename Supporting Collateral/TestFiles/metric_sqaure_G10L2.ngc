@@ -1,0 +1,36 @@
+;squares
+
+#1 = 100  (Side)
+#2 = 2   (Iterations)
+#3 = 762 (Feed Rate)
+#4 = 0
+; x wcs offset
+#6 = #5221
+;#6 = 0
+; y wcs offset
+#7 = #5222
+;#7 = 0
+; wcs rotation
+#8 = #5230
+
+
+G21
+G64 P0.005
+M52 P1 ;to enable reverse-run
+F3000 ; feed rate from cut parameters
+
+o100 repeat [#2]
+  G10 L2 P0 X[[#1 * #4]+#6] Y[#7]R0
+  G0 X0 Y0
+  M3 $0 S1 (select plasma torch)
+  G0 z0
+  G1 Y100
+  G1 X100
+  G1 Y0
+  G1 X0
+  M5 $0
+  #4 = [#4+1.05]
+o100 endrepeat
+
+G0 X0 Y0
+M2
