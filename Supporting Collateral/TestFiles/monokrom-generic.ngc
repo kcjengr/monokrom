@@ -50,6 +50,13 @@ G10 L2 P0 X#<shape_x_start> Y#<shape_y_start> R#<blk_angle>
 G21 (units: metric)
 G40 (cutter compensation: off)
 G90 (distance mode: absolute)
+
+G49
+G80
+G92.1
+G94
+G97
+
 M52 P1 (adaptive feed: on)
 M65 P2 (enable THC)
 M65 P3 (enable torch)

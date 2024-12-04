@@ -1,0 +1,30 @@
+;squares
+
+G21
+G64 P0.005
+M52 P1 ;to enable reverse-run
+F3000 ; feed rate from cut parameters
+
+G54
+  G0 X0 Y0
+  M3 $0 S1 (select plasma torch)
+  G0 z0
+  G1 Y100
+  G1 X100
+  G1 Y0
+  G1 X0
+  M5 $0
+
+G55
+  G0 X0 Y0
+  M3 $0 S1 (select plasma torch)
+  G0 z0
+  G1 Y100
+  G1 X100
+  G1 Y0
+  G1 X0
+  M5 $0
+
+G0 X0 Y0
+M2
+
