@@ -19,6 +19,8 @@ G64 P0.005
 M52 P1 ;to enable reverse-run
 F2000 ; feed rate from cut parameters
 
+G4 P2
+
 o100 repeat [#2]
   G10 L2 P0 X[[#1 * #4]+#6] Y[#7] R0
   G0 X0 Y0
