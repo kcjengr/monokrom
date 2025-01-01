@@ -3,6 +3,7 @@ import math
 import time
 
 import hal as cnchal
+from qtpyvcp import hal as qthal
 import linuxcnc
 ### Supports the @Slot decorator to solve property type issues.
 from qtpy.QtCore import Qt, QItemSelectionModel, Slot, QTimer
@@ -286,6 +287,32 @@ class MainWindow(VCPMainWindow):
                 tool.tool_number != 99999
             ):
                 self.last_tool_num_assigned = tool.tool_number
+        
+        comp = qthal.getComponent()
+        # feed hold
+        objName = str(self.btn_feed_hold.objectName()).replace('_', '-')
+        self.btn_feed_hold_external_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
+        self.btn_feed_hold_external_trigger_pin.valueChanged.connect(lambda x :self.btn_feed_hold.click() if x else None)
+        # stop/abort
+        objName = str(self.btn_stop_abort.objectName()).replace('_', '-')
+        self.btn_stop_abort_external_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
+        self.btn_stop_abort_external_trigger_pin.valueChanged.connect(lambda x :self.btn_stop_abort.click() if x else None)
+        # laser
+        objName = str(self.btn_laser.objectName()).replace('_', '-')
+        self.btn_laser_external_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
+        self.btn_laser_external_trigger_pin.valueChanged.connect(lambda x :self.btn_laser.click() if x else None)
+        # alignment btns
+        objName = str(self.btn_sheet_align_pt1.objectName()).replace('_', '-')
+        self.btn_sheet_align_pt1_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
+        self.btn_sheet_align_pt1_trigger_pin.valueChanged.connect(lambda x :self.btn_sheet_align_pt1.click() if x else None)
+        objName = str(self.btn_sheet_align_pt2.objectName()).replace('_', '-')
+        self.btn_sheet_align_pt2_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
+        self.btn_sheet_align_pt2_trigger_pin.valueChanged.connect(lambda x :self.btn_sheet_align_pt2.click() if x else None)
+        objName = str(self.btn_sheet_doalign.objectName()).replace('_', '-')
+        self.btn_sheet_doalign_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
+        self.btn_sheet_doalign_trigger_pin.valueChanged.connect(lambda x :self.btn_sheet_doalign.click() if x else None)
+        
+
 
     def on_exitAppBtn_clicked(self):
       self.app.quit()
@@ -302,11 +329,11 @@ class MainWindow(VCPMainWindow):
         issue_mdi(f"G10L20P0X{laser_x}Y{laser_y};G0X0Y0")
         self.btn_laser.setChecked(False)
 
-    #
-    # Cut recovery is heavily based on the work done within QTPlasmac.
-    # Credit to Phillip A Carter and Gregory D Carl.
-    #
     def cut_recovery_direction(self, direction):
+        #
+        # Cut recovery is heavily based on the work done within QTPlasmac.
+        # Credit to Phillip A Carter and Gregory D Carl.
+        #
         speed = self.cut_recovery_speed.value() * 0.01 * direction
         cnchal.set_p('plasmac.paused-motion-speed',str(speed))
 

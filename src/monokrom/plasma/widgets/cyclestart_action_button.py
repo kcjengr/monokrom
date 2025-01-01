@@ -25,6 +25,7 @@ class CycleStartActionButton(VCPButton, HALWidget):
         qtpyvcp.button.program-is-running     bit   in
         qtpyvcp.button.program-is-paused      bit   in
         qtpyvcp.button.program-is-idle        bit   in
+        qtpyvcp.button.external-trigger       bit   in
         qtpyvcp.button.out                    bit   out
         qtpyvcp.button.checked                bit   out
         =========================             ===== =========
@@ -44,6 +45,7 @@ class CycleStartActionButton(VCPButton, HALWidget):
         self._program_is_running_pin = None
         self._program_is_paused_pin = None
         self._program_is_idle_pin = None
+        self._external_trigger_pin = None
         self._pressed_pin = None
         self._checked_pin = None
 
@@ -108,6 +110,11 @@ class CycleStartActionButton(VCPButton, HALWidget):
             self.setText('CYCLE START')
             self.setStyleClass('cycle_stopped')
 
+    def externalTrigger(self, triggered):
+        LOG.debug(f'External Trigger stat = {triggered}')
+        if triggered:
+            self.click()
+
     def flashButton(self):
         if self.pulse_state > 0:
             self.setStyleClass('cycle_running')
@@ -135,6 +142,8 @@ class CycleStartActionButton(VCPButton, HALWidget):
         self._program_is_idle_pin = comp.addPin(obj_name + ".program-is-idle", "bit", "in")
         self._program_is_idle_pin.valueChanged.connect(self.setIsIdle)
 
+        self._external_trigger_pin = comp.addPin(obj_name + ".external-trigger", "bit", "in")
+        self._external_trigger_pin.valueChanged.connect(self.externalTrigger)
 
         # add button.out HAL pin
         self._pressed_pin = comp.addPin(obj_name + ".out", "bit", "out")

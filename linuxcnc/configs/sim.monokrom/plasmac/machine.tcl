@@ -86,5 +86,6 @@ net estop-loop iocontrol.0.user-enable-out iocontrol.0.emc-enable-in
 
 # QTPLASMAC SIM ESTOP HANDLING - these are here to keep
 # qtplasmac-sim happy
-loadrt or2 names=estop_or
+loadrt or2 names=estop_or,pdnt_feedhold_resume
 addf estop_or servo-thread
+addf pdnt_feedhold_resume servo-thread

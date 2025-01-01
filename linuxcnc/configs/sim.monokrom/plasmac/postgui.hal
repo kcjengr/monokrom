@@ -8,14 +8,18 @@
 # You want to connect the thc-enable pin of the plasmac component to a switch
 # on your machine rather than let it be controlled from the GUI Run tab.
 
+# Pendant OR for Feed Hold and Resume pins to a single out
+#loadrt or2 names=pdnt_feedhold_resume
+#addf pdnt_feedhold_resume      servo-thread
+
 # First disconnect the GUI Run tab from the plasmac:thc-enable signal:
 # unlinkp plasmac_run.thc.enable-out
 
 # Then connect the plasmac:thc-enable signal to your switch:
 # net plasmac:thc-enable your.switch-pin
 
-net plasmac:axis-z-max-limit       ini.z.max_limit             =>  plasmac.axis-z-max-limit
-net plasmac:axis-z-min-limit       ini.z.min_limit             =>  plasmac.axis-z-min-limit
+net plasmac:axis-z-max-limit     ini.z.max_limit             =>  plasmac.axis-z-max-limit
+net plasmac:axis-z-min-limit     ini.z.min_limit             =>  plasmac.axis-z-min-limit
 net plasmac:axis-x-max-limit     ini.x.max_limit             =>  plasmac.axis-x-max-limit
 net plasmac:axis-x-min-limit     ini.x.min_limit             =>  plasmac.axis-x-min-limit
 net plasmac:axis-y-max-limit     ini.y.max_limit             =>  plasmac.axis-y-max-limit
@@ -130,3 +134,22 @@ net mk:current-velocity              mk:_secs_to_mins.out               => qtpyv
 
 # Connections to uncomment when not using a SIM
 # net plasmac:arc-voltage-out plasmac.arc-voltage-out => qtpyvcp.mk-arc-voltage.in
+
+
+# xhc-whb04b-6 Pendant UI links
+net pdnt.machine.on             whb.halui.machine.on                    => halui.machine.on
+#net pdnt.machine.off            whb.halui.machine.off                 halui.machine.off
+net pdnt.estop-on               whb.button.stop                        => halui.estop.activate
+net pdnt.estop-off              whb.button.reset                       => halui.estop.reset
+
+
+net pdnt.cycle-start            whb.halui.program.run                   => pdnt_feedhold_resume.in0
+net pdnt.feed-resume            whb.halui.program.resume                => pdnt_feedhold_resume.in1
+net pdnt.start-resume            pdnt_feedhold_resume.out               => qtpyvcp.cycle-start.external-trigger
+net pdnt.feed-hold              whb.halui.program.pause                 => qtpyvcp.btn-feed-hold.external-trigger
+net pdnt.prog-stop              whb.halui.program.stop                  => qtpyvcp.btn-stop-abort.external-trigger
+
+net pdnt.laser-toggle           whb.halui.feed-override.increase        => qtpyvcp.btn-laser.external-trigger
+net pdnt.sheet-align1           whb.halui.feed-override.decrease        => qtpyvcp.btn-sheet-align-pt1.external-trigger
+net pdnt.sheet-align2           whb.button.spindle-plus                 => qtpyvcp.btn-sheet-align-pt2.external-trigger
+net pdnt.sheet-doalign          whb.button.spindle-minus                => qtpyvcp.btn-sheet-doalign.external-trigger
