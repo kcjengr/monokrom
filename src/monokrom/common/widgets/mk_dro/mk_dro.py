@@ -7,6 +7,7 @@ from qtpy.QtWidgets import QWidget, QVBoxLayout, QFrame
 
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
+from qtpyvcp.actions import machine_actions as machine
 
 INFO = Info()
 BASE_PATH = os.path.join(os.path.dirname(__file__))
@@ -32,6 +33,8 @@ class MonokromDroWidget(QWidget):
             self.axisNumber = axis_number
 
         STATUS.homed.notify(self.updateHomedStatus)
+        
+        self.axis_actions_button.clicked.connect(self.zeroWCS)
 
     @Property(int)
     def axisNumber(self):
@@ -99,6 +102,10 @@ class MonokromDroWidget(QWidget):
 
     def getPixmap(self, name):
         return QPixmap(os.path.join(ICON_PATH, name))
+
+    def zeroWCS(self):
+        gcode = f"G10L20P0{self._aletter}0"
+        machine.issue_mdi(gcode)
 
 
 class MonokromDroGroup(QWidget):
