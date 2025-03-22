@@ -6,8 +6,8 @@ import hal as cnchal
 from qtpyvcp import hal as qthal
 import linuxcnc
 ### Supports the @Slot decorator to solve property type issues.
-from qtpy.QtCore import Qt, QItemSelectionModel, Slot, QTimer
-from qtpy.QtWidgets import QLabel, QListWidgetItem, QAbstractButton
+from PySide6.QtCore import Qt, QItemSelectionModel, Slot, QTimer
+from PySide6.QtWidgets import QLabel, QListWidgetItem, QAbstractButton
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
@@ -110,7 +110,7 @@ class MainWindow(VCPMainWindow):
         self.min_z = INFO.getAxisMinMax('Z')[0]
         self.slat_top = float(INI.find('PLASMAC', 'SLAT_TOP'))
         # get max Z speed
-        self.thc_feed_rate.setText(f"{float(INI.find('AXIS_Z', 'MAX_VELOCITY')) * 60 / 2}")
+        self.ui.thc_feed_rate.setText(f"{float(INI.find('AXIS_Z', 'MAX_VELOCITY')) * 60 / 2}")
         cnchal.set_p('plasmac.thc-feed-rate',f"{float(INI.find('AXIS_Z', 'MAX_VELOCITY')) * 60 / 2}")
         
         if INFO.getIsMachineMetric():
@@ -131,26 +131,26 @@ class MainWindow(VCPMainWindow):
         self.probe_timer.timeout.connect(self.probe_timeout)
         
         # Hide some in flight UI that is unfinished
-        self.mainTabWidget.setTabVisible(2, False)
-        self.tabs_ctl_run_right.setTabVisible(2, False)
-        self.tab_holes_and_slots.setTabVisible(1, False)
+        self.ui.mainTabWidget.setTabVisible(2, False)
+        self.ui.tabs_ctl_run_right.setTabVisible(2, False)
+        self.ui.tab_holes_and_slots.setTabVisible(1, False)
         # setup some default UI settings
-        self.vtkbackplot.update_active_wcs(0)
-        self.vtkbackplot.setViewZ()
-        self.vtkbackplot.enable_panning(True)
-        self.vtkbackplot.setProgramViewWhenLoadingProgram(True, 'z')
-        self.widget_recovery.setEnabled(False)
-        self.btn_consumable_change.setEnabled(False)
-        self.mdiFrame.hide()
-        self.transformFrame.hide()
-        self.cut_recovery_status = False
-        self.consumable_offset_x.setMinimum(self.min_x + (10 * self.units_per_mm))
-        self.consumable_offset_y.setMinimum(self.min_y + (10 * self.units_per_mm))
-        self.consumable_offset_x.setMaximum(self.max_x - (10 * self.units_per_mm))
-        self.consumable_offset_y.setMaximum(self.max_y - (10 * self.units_per_mm))
-        self.sheet_align_p1 = None
-        self.sheet_align_p2 = None
-        self.sheet_align_p3 = None
+        self.ui.vtkbackplot.update_active_wcs(0)
+        self.ui.vtkbackplot.setViewZ()
+        self.ui.vtkbackplot.enable_panning(True)
+        self.ui.vtkbackplot.setProgramViewWhenLoadingProgram(True, 'z')
+        self.ui.widget_recovery.setEnabled(False)
+        self.ui.btn_consumable_change.setEnabled(False)
+        self.ui.mdiFrame.hide()
+        self.ui.transformFrame.hide()
+        self.ui.cut_recovery_status = False
+        self.ui.consumable_offset_x.setMinimum(self.min_x + (10 * self.units_per_mm))
+        self.ui.consumable_offset_y.setMinimum(self.min_y + (10 * self.units_per_mm))
+        self.ui.consumable_offset_x.setMaximum(self.max_x - (10 * self.units_per_mm))
+        self.ui.consumable_offset_y.setMaximum(self.max_y - (10 * self.units_per_mm))
+        self.ui.sheet_align_p1 = None
+        self.ui.sheet_align_p2 = None
+        self.ui.sheet_align_p3 = None
         # set the jog buttons to the active settings on start
         jog.set_increment(1 * self.units_per_mm)
         jog.set_jog_continuous(True)
@@ -162,7 +162,7 @@ class MainWindow(VCPMainWindow):
             user_action_key = f"USER{user_i}_ACTION"
             user_name = INFO.ini.find('DISPLAY', user_name_key)
             user_action = INFO.ini.find('DISPLAY', user_action_key)
-            user_btn = getattr(self, user_btn_txt)
+            user_btn = getattr(self.ui, user_btn_txt)
             if user_btn is not None:
                 if user_name:
                     user_btn.setText(user_name)
@@ -173,77 +173,77 @@ class MainWindow(VCPMainWindow):
             if s.name == self._linear_setting:
                 self._linear_setting_id = s.id 
         
-        self.grp_filter_sub_list.hide()
+        self.ui.grp_filter_sub_list.hide()
 
         # link in UI signals for buttons back to Mainwindow methods
-        self.btn_save_run_process.clicked.connect(self.update_cut)
-        self.btn_run_reload.clicked.connect(self.param_update_from_filters)
-        self.filter_sub_list.itemClicked.connect(self.filter_sub_list_select)
-        self.btn_seed_db.clicked.connect(self.seed_database)
-        self.btn_zero_xy.clicked.connect(self.zero_wcs_xy)
-        self.btn_probe_test.toggled.connect(self.probe_test)
-        self.vtk_no_lines.toggled.connect(self.breadcrumbs_tracked)
+        self.ui.btn_save_run_process.clicked.connect(self.update_cut)
+        self.ui.btn_run_reload.clicked.connect(self.param_update_from_filters)
+        self.ui.filter_sub_list.itemClicked.connect(self.filter_sub_list_select)
+        self.ui.btn_seed_db.clicked.connect(self.seed_database)
+        self.ui.btn_zero_xy.clicked.connect(self.zero_wcs_xy)
+        self.ui.btn_probe_test.toggled.connect(self.probe_test)
+        self.ui.vtk_no_lines.toggled.connect(self.breadcrumbs_tracked)
         #self.btn_transform.toggled.connect(self.tranformUI)
 
         # cut recovery direction
-        self.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
-        self.btn_cut_recover_fwd.pressed.connect(lambda:self.cut_recovery_direction(1))
-        self.btn_cut_recover_rev.released.connect(lambda:self.cut_recovery_direction(0))
-        self.btn_cut_recover_fwd.released.connect(lambda:self.cut_recovery_direction(0))
-        self.btn_cut_recover_cancel.pressed.connect(lambda:self.cutrec_cancel_pressed(1))
-        self.btn_recovery_n.pressed.connect(lambda:self.cutrec_move(1, 0, 1))
-        self.btn_recovery_ne.pressed.connect(lambda:self.cutrec_move(1, 1, 1))
-        self.btn_recovery_e.pressed.connect(lambda:self.cutrec_move(1, 1, 0))
-        self.btn_recovery_se.pressed.connect(lambda:self.cutrec_move(1, 1, -1))
-        self.btn_recovery_s.pressed.connect(lambda:self.cutrec_move(1, 0, -1))
-        self.btn_recovery_sw.pressed.connect(lambda:self.cutrec_move(1, -1, -1))
-        self.btn_recovery_w.pressed.connect(lambda:self.cutrec_move(1, -1, 0))
-        self.btn_recovery_nw.pressed.connect(lambda:self.cutrec_move(1, -1, 1))
+        self.ui.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
+        self.ui.btn_cut_recover_fwd.pressed.connect(lambda:self.cut_recovery_direction(1))
+        self.ui.btn_cut_recover_rev.released.connect(lambda:self.cut_recovery_direction(0))
+        self.ui.btn_cut_recover_fwd.released.connect(lambda:self.cut_recovery_direction(0))
+        self.ui.btn_cut_recover_cancel.pressed.connect(lambda:self.cutrec_cancel_pressed(1))
+        self.ui.btn_recovery_n.pressed.connect(lambda:self.cutrec_move(1, 0, 1))
+        self.ui.btn_recovery_ne.pressed.connect(lambda:self.cutrec_move(1, 1, 1))
+        self.ui.btn_recovery_e.pressed.connect(lambda:self.cutrec_move(1, 1, 0))
+        self.ui.btn_recovery_se.pressed.connect(lambda:self.cutrec_move(1, 1, -1))
+        self.ui.btn_recovery_s.pressed.connect(lambda:self.cutrec_move(1, 0, -1))
+        self.ui.btn_recovery_sw.pressed.connect(lambda:self.cutrec_move(1, -1, -1))
+        self.ui.btn_recovery_w.pressed.connect(lambda:self.cutrec_move(1, -1, 0))
+        self.ui.btn_recovery_nw.pressed.connect(lambda:self.cutrec_move(1, -1, 1))
 
         # slider resets
-        self.btn_reset_rapid.clicked.connect(lambda:self.rapid_slider.setValue(100))
-        self.btn_reset_feed.clicked.connect(lambda:self.feed_slider.setValue(100))
-        self.btn_reset_jog.clicked.connect(lambda:self.jog_slider.setValue(100))
+        self.ui.btn_reset_rapid.clicked.connect(lambda:self.ui.rapid_slider.setValue(100))
+        self.ui.btn_reset_feed.clicked.connect(lambda:self.ui.feed_slider.setValue(100))
+        self.ui.btn_reset_jog.clicked.connect(lambda:self.ui.jog_slider.setValue(100))
 
         # load newest
-        self.btn_load_newest.clicked.connect(self.openLatest)
+        self.ui.btn_load_newest.clicked.connect(self.openLatest)
         
         # reload
-        self.btn_reload.clicked.connect(self.reload_file)
-        self.btn_transform_apply.clicked.connect(self.reload_file)
+        self.ui.btn_reload.clicked.connect(self.reload_file)
+        self.ui.btn_transform_apply.clicked.connect(self.reload_file)
 
         # single cut limits
-        self.single_cut_x.focusReceived.connect(self.single_cut_limits)
-        self.single_cut_y.focusReceived.connect(self.single_cut_limits)
+        self.ui.single_cut_x.focusReceived.connect(self.single_cut_limits)
+        self.ui.single_cut_y.focusReceived.connect(self.single_cut_limits)
 
         # cut recovery block
-        self.btn_feed_hold.clicked.connect(self.cut_recovery)
-        self.btn_cycle_start.clicked.connect(self.cut_recovery)
-        self.btn_stop_abort.clicked.connect(self.cut_recovery)
+        self.ui.btn_feed_hold.clicked.connect(self.cut_recovery)
+        self.ui.btn_cycle_start.clicked.connect(self.cut_recovery)
+        self.ui.btn_stop_abort.clicked.connect(self.cut_recovery)
 
         # consumable change block
-        self.btn_feed_hold.clicked.connect(self.consumable_change)
-        self.btn_cycle_start.clicked.connect(self.consumable_change)
-        self.btn_stop_abort.clicked.connect(self.consumable_change)
+        self.ui.btn_feed_hold.clicked.connect(self.consumable_change)
+        self.ui.btn_cycle_start.clicked.connect(self.consumable_change)
+        self.ui.btn_stop_abort.clicked.connect(self.consumable_change)
         
-        self.btn_consumable_change.toggled.connect(self.consumable_toggle)
+        self.ui.btn_consumable_change.toggled.connect(self.consumable_toggle)
 
         # VTK block
-        self.vtk_center.clicked.connect(lambda:self.vtkbackplot.setViewProgram('Z'))
+        self.ui.vtk_center.clicked.connect(lambda:self.ui.vtkbackplot.setViewProgram('Z'))
 
         # MDI        
-        self.btnMdiParams.clicked.connect(self.btnParams_clicked)
-        self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
-        self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
+        self.ui.btnMdiParams.clicked.connect(self.btnParams_clicked)
+        self.ui.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
+        self.ui.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
 
-        self.btn_save.clicked.connect(self.save_file)
-        self.btn_frame_job.clicked.connect(self.frame_work)
+        self.ui.btn_save.clicked.connect(self.save_file)
+        self.ui.btn_frame_job.clicked.connect(self.frame_work)
         
         # Sheet Alignment
-        self.btn_laser.toggled.connect(self.sheet_align_toggle)
-        self.btn_sheet_align_pt1.toggled.connect(self.sheet_align_toggle)
-        self.btn_sheet_align_pt2.toggled.connect(self.sheet_align_toggle)
-        self.btn_sheet_doalign.clicked.connect(self.sheet_align_toggle)
+        self.ui.btn_laser.toggled.connect(self.sheet_align_toggle)
+        self.ui.btn_sheet_align_pt1.toggled.connect(self.sheet_align_toggle)
+        self.ui.btn_sheet_align_pt2.toggled.connect(self.sheet_align_toggle)
+        self.ui.btn_sheet_doalign.clicked.connect(self.sheet_align_toggle)
         #self.btn_sheet_align_pt1.clicked.connect(self.sheet_align_set_p1)
         #self.btn_sheet_align_pt2.clicked.connect(self.sheet_align_set_p2)
         #self.btn_sheet_doalign.clicked.connect(self.sheet_align)
@@ -252,13 +252,13 @@ class MainWindow(VCPMainWindow):
         self.load_plasma_ui_filter_data()
         
         # set the locked filters on settings page
-        self.filter_machine.setCurrentText(self._machine)
-        self.filter_distance_system.setCurrentText(self._linear_setting)
-        self.filter_pressure_system.setCurrentText(self._pressure_setting)
+        self.ui.filter_machine.setCurrentText(self._machine)
+        self.ui.filter_distance_system.setCurrentText(self._linear_setting)
+        self.ui.filter_pressure_system.setCurrentText(self._pressure_setting)
         
         # create filter signals
         for val in MainWindow.filter_fld_map.values():
-            filter_widget = getattr(self, val)
+            filter_widget = getattr(self.ui, val)
             filter_widget.currentIndexChanged.connect(self.param_update_from_filters)
 
         # create the cutchart hal pin for feedback loop from filter prog
@@ -290,27 +290,27 @@ class MainWindow(VCPMainWindow):
         
         comp = qthal.getComponent()
         # feed hold
-        objName = str(self.btn_feed_hold.objectName()).replace('_', '-')
-        self.btn_feed_hold_external_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
-        self.btn_feed_hold_external_trigger_pin.valueChanged.connect(lambda x :self.btn_feed_hold.click() if x else None)
+        objName = str(self.ui.btn_feed_hold.objectName()).replace('_', '-')
+        self.ui.btn_feed_hold_external_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
+        self.ui.btn_feed_hold_external_trigger_pin.valueChanged.connect(lambda x :self.btn_feed_hold.click() if x else None)
         # stop/abort
-        objName = str(self.btn_stop_abort.objectName()).replace('_', '-')
-        self.btn_stop_abort_external_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
-        self.btn_stop_abort_external_trigger_pin.valueChanged.connect(lambda x :self.btn_stop_abort.click() if x else None)
+        objName = str(self.ui.btn_stop_abort.objectName()).replace('_', '-')
+        self.ui.btn_stop_abort_external_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
+        self.ui.btn_stop_abort_external_trigger_pin.valueChanged.connect(lambda x :self.btn_stop_abort.click() if x else None)
         # laser
-        objName = str(self.btn_laser.objectName()).replace('_', '-')
-        self.btn_laser_external_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
-        self.btn_laser_external_trigger_pin.valueChanged.connect(lambda x :self.btn_laser.click() if x else None)
+        objName = str(self.ui.btn_laser.objectName()).replace('_', '-')
+        self.ui.btn_laser_external_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
+        self.ui.btn_laser_external_trigger_pin.valueChanged.connect(lambda x :self.btn_laser.click() if x else None)
         # alignment btns
-        objName = str(self.btn_sheet_align_pt1.objectName()).replace('_', '-')
-        self.btn_sheet_align_pt1_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
-        self.btn_sheet_align_pt1_trigger_pin.valueChanged.connect(lambda x :self.btn_sheet_align_pt1.click() if x else None)
-        objName = str(self.btn_sheet_align_pt2.objectName()).replace('_', '-')
-        self.btn_sheet_align_pt2_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
-        self.btn_sheet_align_pt2_trigger_pin.valueChanged.connect(lambda x :self.btn_sheet_align_pt2.click() if x else None)
-        objName = str(self.btn_sheet_doalign.objectName()).replace('_', '-')
-        self.btn_sheet_doalign_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
-        self.btn_sheet_doalign_trigger_pin.valueChanged.connect(lambda x :self.btn_sheet_doalign.click() if x else None)
+        objName = str(self.ui.btn_sheet_align_pt1.objectName()).replace('_', '-')
+        self.ui.btn_sheet_align_pt1_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
+        self.ui.btn_sheet_align_pt1_trigger_pin.valueChanged.connect(lambda x :self.btn_sheet_align_pt1.click() if x else None)
+        objName = str(self.ui.btn_sheet_align_pt2.objectName()).replace('_', '-')
+        self.ui.btn_sheet_align_pt2_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
+        self.ui.btn_sheet_align_pt2_trigger_pin.valueChanged.connect(lambda x :self.btn_sheet_align_pt2.click() if x else None)
+        objName = str(self.ui.btn_sheet_doalign.objectName()).replace('_', '-')
+        self.ui.btn_sheet_doalign_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
+        self.ui.btn_sheet_doalign_trigger_pin.valueChanged.connect(lambda x :self.btn_sheet_doalign.click() if x else None)
         
 
 
@@ -320,46 +320,46 @@ class MainWindow(VCPMainWindow):
     def zero_wcs_xy(self):
         #_current_pos = float(POS.Absolute(0))
         #_current_pos = float(POS.Absolute(1))
-        if self.btn_laser.isChecked():
+        if self.ui.btn_laser.isChecked():
             laser_x = self.laser_offset_x.value()
             laser_y = self.laser_offset_y.value()
         else:
             laser_x = 0
             laser_y = 0            
         issue_mdi(f"G10L20P0X{laser_x}Y{laser_y};G0X0Y0")
-        self.btn_laser.setChecked(False)
+        self.ui.btn_laser.setChecked(False)
 
     def cut_recovery_direction(self, direction):
         #
         # Cut recovery is heavily based on the work done within QTPlasmac.
         # Credit to Phillip A Carter and Gregory D Carl.
         #
-        speed = self.cut_recovery_speed.value() * 0.01 * direction
+        speed = self.ui.cut_recovery_speed.value() * 0.01 * direction
         cnchal.set_p('plasmac.paused-motion-speed',str(speed))
 
     def cut_recovery(self):
         sender = self.sender()
         obj_name = sender.objectName()
         if obj_name == 'btn_stop_abort':
-                self.widget_recovery.setEnabled(False)
+                self.ui.widget_recovery.setEnabled(False)
                 self.cut_recovery_status = False
-                self.jog_stack.setCurrentIndex(0)
+                self.ui.jog_stack.setCurrentIndex(0)
                 cnchal.set_p('plasmac.x-offset', f'{0:.0f}')
                 cnchal.set_p('plasmac.y-offset', f'{0:.0f}')
                 return
 
         if obj_name == 'btn_cycle_start':
-                self.widget_recovery.setEnabled(False)
+                self.ui.widget_recovery.setEnabled(False)
                 self.cut_recovery_status = False
-                self.jog_stack.setCurrentIndex(0)
+                self.ui.jog_stack.setCurrentIndex(0)
                 cnchal.set_p('plasmac.x-offset', f'{0:.0f}')
                 cnchal.set_p('plasmac.y-offset', f'{0:.0f}')
                 return
 
         if obj_name == 'btn_feed_hold':
-                self.widget_recovery.setEnabled(True)
+                self.ui.widget_recovery.setEnabled(True)
                 self.cut_recovery_status = True
-                self.jog_stack.setCurrentIndex(1)
+                self.ui.jog_stack.setCurrentIndex(1)
                 self.xOrig = cnchal.get_value('axis.x.eoffset-counts')
                 self.yOrig = cnchal.get_value('axis.y.eoffset-counts')
                 self.zOrig = cnchal.get_value('axis.z.eoffset-counts')
@@ -414,28 +414,28 @@ class MainWindow(VCPMainWindow):
         sender = self.sender()
         obj_name = sender.objectName()
         if obj_name == 'btn_stop_abort':
-                self.btn_consumable_change.setEnabled(False)
-                self.btn_consumable_change.setChecked(False)
+                self.ui.btn_consumable_change.setEnabled(False)
+                self.ui.btn_consumable_change.setChecked(False)
                 return
 
         if obj_name == 'btn_cycle_start':
-                self.btn_consumable_change.setEnabled(False)
-                self.btn_consumable_change.setChecked(False)
+                self.ui.btn_consumable_change.setEnabled(False)
+                self.ui.btn_consumable_change.setChecked(False)
                 return
 
         if obj_name == 'btn_feed_hold':
-                self.btn_consumable_change.setEnabled(True)
+                self.ui.btn_consumable_change.setEnabled(True)
                 return
 
     def consumable_toggle(self, state):
         if state:
             # ensure machine can not be restarted while consumable is active
-            self.btn_cycle_start.setEnabled(False)
+            self.ui.btn_cycle_start.setEnabled(False)
             
             x_current_pos = float(POS.Absolute(0))
             y_current_pos = float(POS.Absolute(1))
-            x_offset = self.consumable_offset_x.value()
-            y_offset = self.consumable_offset_y.value()
+            x_offset = self.ui.consumable_offset_x.value()
+            y_offset = self.ui.consumable_offset_y.value()
             scale = cnchal.get_value('plasmac.offset-scale')
             cnchal.set_p('plasmac.x-offset', f'{(x_offset - x_current_pos)/scale:.0f}')
             cnchal.set_p('plasmac.y-offset', f'{(y_offset - y_current_pos)/scale:.0f}')
@@ -444,13 +444,13 @@ class MainWindow(VCPMainWindow):
             cnchal.set_p('plasmac.x-offset', f'{0:.0f}')
             cnchal.set_p('plasmac.y-offset', f'{0:.0f}')
             cnchal.set_p('plasmac.consumable-change','0')
-            self.btn_cycle_start.setEnabled(True)
+            self.ui.btn_cycle_start.setEnabled(True)
             
     def adjust_probe_height(self):
         below_slat = self.slat_top - self.min_z
         buffer = 3
         new_probe_height = (below_slat + self._material_thickness + buffer) * self.units_per_mm
-        self.probe_height.SetValue(new_probe_height)
+        self.ui.probe_height.SetValue(new_probe_height)
 
     def probe_test_error(self, value):
         #self.probe_timer.stop()
@@ -464,16 +464,16 @@ class MainWindow(VCPMainWindow):
         if state:
             #self.probe_timer.start(1000)
             # stop user from starting a program
-            self.btn_cycle_start.setEnabled(False)
+            self.ui.btn_cycle_start.setEnabled(False)
             cnchal.set_p('plasmac.probe-test','1')
         else:
             #self.probe_timer.stop()
-            self.btn_cycle_start.setEnabled(True)
+            self.ui.btn_cycle_start.setEnabled(True)
             cnchal.set_p('plasmac.probe-test','0')
 
     def breadcrumbs_tracked(self,state):
         LOG.debug(f'breadcrumb tracked {state}')
-        vtk = self.vtkbackplot
+        vtk = self.ui.vtkbackplot
         vtk.enableBreadcrumbs(state)
         vtk.clearLivePlot()
 
@@ -500,14 +500,14 @@ class MainWindow(VCPMainWindow):
             # Cycle through all the filters and set them to the correct value
             for k in MainWindow.relationship_fld_map:
                 # get handle to UI field
-                ui_fld = getattr(self, MainWindow.filter_fld_map[k])
+                ui_fld = getattr(self.ui, MainWindow.filter_fld_map[k])
                 new_index = ui_fld.findData(getattr(cut, MainWindow.relationship_fld_map[k]).id)
                 ui_fld.setCurrentIndex(new_index)
             # check to see if there is a sub select required, if so select it
 
             # All fields have been set, update any slave displays
-            ui_fld = getattr(self, 'param_name')
-            self.lbl_process_name.setText(ui_fld.text())
+            ui_fld = getattr(self.ui, 'param_name')
+            self.ui.lbl_process_name.setText(ui_fld.text())
         
 
     def load_plasma_ui_filter_data(self):
@@ -520,7 +520,7 @@ class MainWindow(VCPMainWindow):
             else:
                 setattr(self, '_'+k, getattr(self._plasma_plugin, k)())
             # with this key populate the data into UI field
-            ui_fld = getattr(self, MainWindow.filter_fld_map[k])
+            ui_fld = getattr(self.ui, MainWindow.filter_fld_map[k])
             # clear down this combo list before adding starting data
             ui_fld.clear()
             for data in getattr(self, '_'+k):
@@ -530,7 +530,7 @@ class MainWindow(VCPMainWindow):
     def get_filter_query(self):
         arglist = []
         for v in MainWindow.filter_fld_map.values():
-            uifld = getattr(self, v)
+            uifld = getattr(self.ui, v)
             arglist.append(uifld.currentData())
         cutlist = self._plasma_plugin.cut(arglist)
         if len(cutlist) > 0:
@@ -547,25 +547,25 @@ class MainWindow(VCPMainWindow):
             LOG.debug('Update params.')
         arglist = []
         for v in MainWindow.filter_fld_map.values():
-            uifld = getattr(self, v)
+            uifld = getattr(self.ui, v)
             arglist.append(uifld.currentData())
         cutlist = self._plasma_plugin.cut(arglist)
         data = self.get_filter_query()
         if data != None:
             select_row = 0
             if len(data) > 1:
-                self.grp_filter_sub_list.show()
+                self.ui.grp_filter_sub_list.show()
                 # if there is more than one item in the list then do special processing
-                self.filter_sub_list.clear()
+                self.ui.filter_sub_list.clear()
                 for nm in data:
                     item = QListWidgetItem(nm.name)
                     item.setData(Qt.UserRole, nm.id)
-                    self.filter_sub_list.addItem(item)
+                    self.ui.filter_sub_list.addItem(item)
                     if nm.id == self.filter_cutchart_id:
-                        select_row = self.filter_sub_list.row(item)
-                    self.filter_sub_list.setCurrentRow(select_row, QItemSelectionModel.ClearAndSelect)
+                        select_row = self.ui.filter_sub_list.row(item)
+                    self.ui.filter_sub_list.setCurrentRow(select_row, QItemSelectionModel.ClearAndSelect)
             else:
-                self.grp_filter_sub_list.hide()
+                self.ui.grp_filter_sub_list.hide()
 
             data = data[select_row]
             # Update the actual param fields.
@@ -573,7 +573,7 @@ class MainWindow(VCPMainWindow):
             # human interaction with the UI
             for k in MainWindow.param_fld_map:
                 fld_data = getattr(data, k)
-                ui_fld = getattr(self, MainWindow.param_fld_map[k])
+                ui_fld = getattr(self.ui, MainWindow.param_fld_map[k])
                 if isinstance(ui_fld, QLabel):
                     ui_fld.setText(str(fld_data))
                     if k == 'tool_number':
@@ -586,22 +586,22 @@ class MainWindow(VCPMainWindow):
             LOG.debug(f"Thickness = {data.thickness.thickness}")
             self._material_thickness = data.thickness.thickness
         else:
-            self.grp_filter_sub_list.hide()
+            self.ui.grp_filter_sub_list.hide()
             # set cut params to 0
-            ui_fld = getattr(self, 'param_name')
+            ui_fld = getattr(self.ui, 'param_name')
             ui_fld.setText('NONE')
-            ui_fld = getattr(self, 'param_process_id')
+            ui_fld = getattr(self.ui, 'param_process_id')
             ui_fld.setText('NONE')
             self._tool_number = 0
             self._material_thickness = 0
             for v in MainWindow.param_fld_map.values():
                 if v not in ('param_name', 'param_process_id'):
-                    ui_fld = getattr(self, v)
+                    ui_fld = getattr(self.ui, v)
                     ui_fld.setValue(0)
         # All fields have been set, update any slave displays
         LOG.debug(f"Tool Number = {self._tool_number}")
-        ui_fld = getattr(self, 'param_name')
-        self.lbl_process_name.setText(ui_fld.text())
+        ui_fld = getattr(self.ui, 'param_name')
+        self.ui.lbl_process_name.setText(ui_fld.text())
     
     def filter_sub_list_select(self, item):
         data = self.get_filter_query()
@@ -610,7 +610,7 @@ class MainWindow(VCPMainWindow):
             if d.id == item_id:
                 for k in MainWindow.param_fld_map:
                     fld_data = getattr(d, k)
-                    ui_fld = getattr(self, MainWindow.param_fld_map[k])
+                    ui_fld = getattr(self.ui, MainWindow.param_fld_map[k])
                     if isinstance(ui_fld, QLabel):
                         ui_fld.setText(str(fld_data))
                         if k == 'tool_number':
@@ -632,11 +632,11 @@ class MainWindow(VCPMainWindow):
         # gather filter and cut params
         arglist = {}
         for k in MainWindow.filter_fld_map:
-            uifld = getattr(self, MainWindow.filter_fld_map[k])
+            uifld = getattr(self.ui, MainWindow.filter_fld_map[k])
             arglist[k] = uifld.currentData()
         # get cut params
         for k in MainWindow.param_fld_map:
-            uifld = getattr(self, MainWindow.param_fld_map[k])
+            uifld = getattr(self.ui, MainWindow.param_fld_map[k])
             if hasattr(uifld, 'value'):
                 arglist[k] = uifld.value()
             else:
@@ -658,7 +658,7 @@ class MainWindow(VCPMainWindow):
         
         arglst = {}
         for k in MainWindow.param_fld_map:
-            ui_fld = getattr(self, MainWindow.param_fld_map[k])
+            ui_fld = getattr(self.ui, MainWindow.param_fld_map[k])
             if isinstance(ui_fld, QLabel):
                 arglst[k] = ui_fld.text()
             else:
@@ -732,7 +732,7 @@ class MainWindow(VCPMainWindow):
 
     def btnParams_clicked(self):
         # get mdi entry
-        text = self.mdiEntry.text() or 'null'
+        text = self.ui.mdiEntry.text() or 'null'
         LOG.debug(f"MDI button clicked text: {text}")
         if text != 'null':
             # we have something to check so get the gcode words
@@ -760,21 +760,21 @@ class MainWindow(VCPMainWindow):
 
     def mdiClear(self):
         for index in range(1,11):
-            getattr(self, 'btnGcodeP' + str(index)).setText('')
+            getattr(self.ui, 'btnGcodeP' + str(index)).setText('')
         # All help related so not used yet
         # self.lblGcodeHelp.setText('')
 
     def mdiBackSpace_clicked(parent):
-        if len(parent.mdiEntry.text()) > 0:
-            text = parent.mdiEntry.text()[:-1]
-            parent.mdiEntry.setText(text)
+        if len(parent.ui.mdiEntry.text()) > 0:
+            text = parent.ui.mdiEntry.text()[:-1]
+            parent.ui.mdiEntry.setText(text)
 
     def mdiSpace_clicked(parent):
-        text = parent.mdiEntry.text() or 'null'
+        text = parent.ui.mdiEntry.text() or 'null'
         # if no text then do not add a space
         if text != 'null':
             text += ' '
-            parent.mdiEntry.setText(text)
+            parent.ui.mdiEntry.setText(text)
 
     #
     # VTK Display and Gcode

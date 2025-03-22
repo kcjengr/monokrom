@@ -1,5 +1,5 @@
 
-from qtpy.QtWidgets import QTabWidget
+from PySide6.QtWidgets import QTabWidget
 
 
 class MkTabWidget(QTabWidget):

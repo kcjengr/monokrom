@@ -1,9 +1,9 @@
 
 import os
 
-from qtpy.QtCore import Qt, Slot, Property, Signal, QFile
-from qtpy.QtGui import QIcon
-from qtpy.QtWidgets import QListWidget, QFileIconProvider, QListWidgetItem
+from PySide6.QtCore import Qt, Slot, Property, Signal, QFile
+from PySide6.QtGui import QIcon
+from PySide6.QtWidgets import QListWidget, QFileIconProvider, QListWidgetItem
 
 from qtpyvcp.utilities.info import Info
 from qtpyvcp.plugins import getPlugin

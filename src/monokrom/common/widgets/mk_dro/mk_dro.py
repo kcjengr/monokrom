@@ -1,13 +1,13 @@
 
 import os
-from qtpy import uic
-from qtpy.QtCore import Slot, Property
-from qtpy.QtGui import QIcon, QPixmap
-from qtpy.QtWidgets import QWidget, QVBoxLayout, QFrame
+from PySide6.QtCore import Slot, Property
+from PySide6.QtGui import QIcon, QPixmap
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QFrame
 
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
 from qtpyvcp.actions import machine_actions as machine
+from qtpyvcp.utilities.pyside_ui_loader import PySide6Ui
 
 INFO = Info()
 BASE_PATH = os.path.join(os.path.dirname(__file__))
@@ -27,14 +27,16 @@ class MonokromDroWidget(QWidget):
         self._style = ''
         self._homed = False
 
-        uic.loadUi(UI_FILE, self)
+        form_class, base_class = PySide6Ui(UI_FILE).load()
+        self.ui = form_class()
+        self.ui.setupUi(self)
 
         if axis_number is not None:
             self.axisNumber = axis_number
 
         STATUS.homed.notify(self.updateHomedStatus)
         
-        self.axis_actions_button.clicked.connect(self.zeroWCS)
+        self.ui.axis_actions_button.clicked.connect(self.zeroWCS)
 
     @Property(int)
     def axisNumber(self):
@@ -49,12 +51,12 @@ class MonokromDroWidget(QWidget):
 
     @Property(int)
     def useWorkCoordinates(self):
-        return self.dro_entry.referenceType
+        return self.ui.dro_entry.referenceType
     
     @useWorkCoordinates.setter
     def useWorkCoordinates(self, refType):
         # 0 = Machine, 1 = Work
-        self.dro_entry.referenceType = refType
+        self.ui.dro_entry.referenceType = refType
 
     @Property(str)
     def styleClass(self):
@@ -77,8 +79,8 @@ class MonokromDroWidget(QWidget):
             child.style().polish(child)
 
     def updateAxis(self):
-        self.dro_entry.axisNumber = self._anum
-        self.axis_actions_button.setText(self._aletter.upper())
+        self.ui.dro_entry.axisNumber = self._anum
+        self.ui.axis_actions_button.setText(self._aletter.upper())
 
     def updateHomedStatus(self, homed):
         axis_ltr = INFO.AXIS_LETTER_LIST[self._anum]
@@ -87,10 +89,10 @@ class MonokromDroWidget(QWidget):
             if axis_ltr == ax[0]:
                 axis_homed.append(homed[INFO.ALETTER_JNUM_DICT[ax]])
         if 0 in axis_homed:
-            self.homed_indicator.setPixmap(self.getPixmap('homed.png'))
+            self.ui.homed_indicator.setPixmap(self.getPixmap('homed.png'))
             self.axisHomed = False
         else:
-            self.homed_indicator.setPixmap(self.getPixmap('unhomed.png'))
+            self.ui.homed_indicator.setPixmap(self.getPixmap('unhomed.png'))
             self.axisHomed = True
 
         # self.homed_indicator.style().unpolish(self.homed_indicator)

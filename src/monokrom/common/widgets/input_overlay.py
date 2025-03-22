@@ -1,8 +1,8 @@
-from qtpy import uic
 
-from qtpy.QtCore import QEvent
-from qtpy.QtGui import QPainter, QColor, QResizeEvent
-from qtpy.QtWidgets import QWidget, QPushButton, QHBoxLayout, QApplication
+from PySide6.QtCore import QEvent
+from PySide6.QtGui import QPainter, QColor, QResizeEvent
+from PySide6.QtWidgets import QWidget, QPushButton, QHBoxLayout, QApplication
+from qtpyvcp.utilities.pyside_ui_loader import PySide6Ui
 
 
 class MkInputOverlay(QWidget):
@@ -21,10 +21,12 @@ class MkInputOverlay(QWidget):
             self.loadUiFile(ui_file)
 
     def loadUiFile(self, ui_file):
-        form = uic.loadUi(ui_file)
-        layout = QHBoxLayout(self)
-        layout.addWidget(form)
-        self.setLayout(layout)
+        form_class, base_class = PySide6Ui(ui_file).load()
+        self.ui = form_class()
+        self.ui.setupUi(self)
+        # layout = QHBoxLayout(self)
+        # layout.addWidget(form_class())
+        # self.setLayout(layout)
 
     # track parent window resize events
     def eventFilter(self, obj, event):

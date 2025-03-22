@@ -1,5 +1,5 @@
 
-from qtpy.QtWidgets import QGroupBox
+from PySide6.QtWidgets import QGroupBox
 
 
 class MkGroupBox(QGroupBox):

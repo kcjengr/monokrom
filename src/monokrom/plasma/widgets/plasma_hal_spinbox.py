@@ -1,4 +1,4 @@
-from qtpy.QtCore import Property
+from PySide6.QtCore import Property
 
 from qtpyvcp import hal
 from qtpyvcp.widgets.hal_widgets.hal_spinbox import HalQSpinBox

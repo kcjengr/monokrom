@@ -1,5 +1,5 @@
 
-from qtpy.QtWidgets import QWidget, QHBoxLayout, QLabel, QSizePolicy
+from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QSizePolicy
 from qtpyvcp.widgets.base_widgets.base_widget import VCPBaseWidget
 from qtpyvcp.widgets.input_widgets.mdientry_widget import MDIEntry
 

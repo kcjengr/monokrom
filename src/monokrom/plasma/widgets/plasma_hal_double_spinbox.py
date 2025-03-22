@@ -1,4 +1,4 @@
-from qtpy.QtCore import Property, Signal
+from PySide6.QtCore import Property, Signal
 
 from qtpyvcp import hal
 from qtpyvcp.widgets.hal_widgets.hal_double_spinbox import HalDoubleSpinBox

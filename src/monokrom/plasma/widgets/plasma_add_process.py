@@ -1,7 +1,7 @@
 
-from qtpy.QtCore import Slot, Property, Signal
+from PySide6.QtCore import Slot, Property, Signal
 
-from qtpy.QtWidgets import QLineEdit, QApplication
+from PySide6.QtWidgets import QLineEdit, QApplication
 from qtpyvcp.utilities.logger import getLogger
 from qtpyvcp.widgets.dialogs import hideActiveDialog
 

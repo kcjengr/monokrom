@@ -1,10 +1,10 @@
 
 import os
 
-from qtpy.QtCore import Qt
-from qtpy.QtCore import Slot, Property, Signal, QFile, QFileInfo, QDir, QIODevice, QModelIndex, QStringListModel
-from qtpy.QtGui import QIcon
-from qtpy.QtWidgets import QTableView, QFileSystemModel, QFileIconProvider
+from PySide6.QtCore import Qt
+from PySide6.QtCore import Slot, Property, Signal, QFile, QFileInfo, QDir, QIODevice, QModelIndex, QStringListModel
+from PySide6.QtGui import QIcon
+from PySide6.QtWidgets import QTableView, QFileSystemModel, QFileIconProvider
 
 from qtpyvcp.utilities.info import Info
 from qtpyvcp.utilities.logger import getLogger
@@ -165,7 +165,7 @@ class MkFileTableView(QTableView):
     @Slot()
     def openSelectedItem(self, index=None):
         """If ngc file, opens in LinuxCNC, if dir displays dir."""
-        if index is None:
+        if index is None or index is False:
             selection = self.getSelection()
             if selection is None:
                 return

@@ -1,4 +1,4 @@
-from qtpy.QtCore import Property, QTimer
+from PySide6.QtCore import Property, QTimer
 from qtpyvcp.widgets import VCPButton
 from qtpyvcp.actions import bindWidget, InvalidAction
 from qtpyvcp import hal

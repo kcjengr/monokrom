@@ -1,5 +1,5 @@
-from qtpy.QtCore import Qt, QTimer
-from qtpy.QtGui import QColor, QPainter, QBrush
+from PySide6.QtCore import Qt, QTimer
+from PySide6.QtGui import QColor, QPainter, QBrush
 from qtpyvcp.widgets.hal_widgets.hal_led import HalLedIndicator
 
 class MkHalLedIndicator(HalLedIndicator):
