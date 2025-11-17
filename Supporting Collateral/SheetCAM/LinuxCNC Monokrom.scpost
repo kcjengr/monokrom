@@ -31,15 +31,13 @@ holeOvercut  = 4     -- Set the whole overcut distance (in mm)
 
 -- *** DO NOT CHANGE ANYTHING BELOW THIS LINE **********************************
 
-revNum  = '0.5'
+revNum  = '0.1'
 
 if cParms then
    post.DefineCustomToolParam('PlasmaTool', 'Puddle jump height', 'pjHeight', sc.unit1DECPLACE, 0, 0, 200)
    post.DefineCustomToolParam('PlasmaTool', 'Puddle jump delay', 'pjDelay', sc.unit2DECPLACE, 0, 0, 9)
    post.DefineCustomToolParam('PlasmaTool', 'THC enable', 'thcEnable', sc.unitBOOLEAN, 1, 0, 1)
    post.DefineCustomToolParam('PlasmaTool', 'Cut voltage', 'cutVolts', sc.unit0DECPLACE, 99, 0, 200)
-   --post.DefineCustomToolParam('PlasmaTool', 'Plasmac M259 Params', 'm259Params', sc.unitTEXT, "D2 E20 I3 J5 K325 P10 Q80 R10", 0, 0)
-   post.DefineCustomToolParam('PlasmaTool', 'Plasmac M259 Params', 'm259Params', sc.unitTEXT, "", 0, 0)
 
    post.DefineCustomToolParam('PlasmaTool', 'Machine Name', 'machineName', sc.unitTEXT, 'Generic', '', '')
    post.DefineCustomToolParam('PlasmaTool', 'Material Name', 'materialName', sc.unitTEXT, 'Mild Steel', '', '')
@@ -59,7 +57,7 @@ end
 
 function OnAbout(event)
    ctrl = event:GetTextCtrl()
-   ctrl:AppendText('For a PlasmaC configuration on LinuxCNC\n\n')
+   ctrl:AppendText('For a Monokrom Plasma configuration on LinuxCNC\n\n')
    ctrl:AppendText('Revision: ' .. revNum)
 end
 
@@ -85,15 +83,15 @@ function OnInit()
    post.Text (' G40 (cutter compensation: off)\n')
    post.Text (' G90 (distance mode: absolute)\n')
    post.Text (' M52 P1 (adaptive feed: on)\n') 
-   post.Text (' M65 P2 (disable THC)\n')
-   post.Text (' M65 P3 (disable torch)\n')
+   post.Text (' M65 P2 (enable THC)\n')
+   post.Text (' M65 P3 (enable torch)\n')
    post.Text (' M68 E3 Q0 (velocity 100%)\n')
    if scale == metric then
-     post.Text (' G64 P0.254 Q0.025 (tracking tolerances: 0.254mm)\n') 
+     post.Text (' G64 P0.254 Q0.025 (tracking tolerances: 0.025mm)\n') 
    else
-     post.Text (' G64 P0.01 Q0.001 (tracking tolerances: 0.01")\n')
-     
+     post.Text (' G64 P0.01 Q0.001 (tracking tolerances: 0.001")\n')
    end
+   -- In theory hole process can be removed as is done within UI import system
    if  holeMode > 0 then
 	 post.NonModalNumber("#<holes>      = ", holeMode, "0")
 	 post.Text('\n')
@@ -188,12 +186,6 @@ function OnPenDown()
       scribeLength = scribeLength + entityLength
       scribes = scribes + 1
    else
-      -- Set up Plasmac M259 if the params are not blank.
-      if m259Params ~= nil and string.len(m259Params) > 0 then
-         post.Text (' M259 ')
-         post.Text (m259Params)
-         post.Text ('\n')
-      end
       post.Text (' M3 $0 S1 (plasma start)\n')
       cutLength = cutLength + entityLength
 	  pierces = pierces + 1
@@ -253,7 +245,7 @@ function GetFeedRate()
    local pt = pts:op_index(partIndex):GetParentPart()
    if pt then
       local op = pt.operations:op_index(operationIndex)
-      if op then
+      if op and op:IsKindOf(wx.wxClassInfo("OperationWithRoundTool")) then  --operation has feed rate
          op = op:DynamicCast("OperationWithRoundTool")
          if op then --operation has feed rate
             return op.feedRate:op_get() --Get the operation's feed rate
@@ -311,7 +303,7 @@ function OnFinish()
    post.Text (' M65 P3 (enable torch)\n')
    post.Text (' M68 E3 Q0 (velocity 100%)\n')
    post.Text (' M5 $-1 (backup stop)\n')
-   post.Text (' M259 D0 (Reset pierce mode to normal)\n')
+   post.Text (' M159 P601 Q0 (Reset pierce mode to normal)\n')
    post.Text (' ;end post-amble\n')
    post.Text (' ;\n')
    post.Text (' ;begin statistics\n')
