@@ -107,6 +107,7 @@ class MkFileTableView(QTableView):
         self.model = MkFileSystemModel()
         # self.model.setReadOnly(True)
         self.model.setFilter(QDir.AllDirs | QDir.AllEntries | QDir.NoDot)
+        self.model.setNameFilters(["*.ngc","*.nc","*.tap"])
         self.setModel(self.model)
 
         # selection model
