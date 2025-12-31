@@ -99,6 +99,7 @@ class MainWindow(VCPMainWindow):
         super(MainWindow, self).__init__(*args, **kwargs)
         self._plasma_plugin = getPlugin('plasmaprocesses')
         self.filter_cutchart_id = None
+        self.detail_index_num = 0
         
         # get min x and y travel
         self.min_x = float(INI.find('AXIS_X', 'MIN_LIMIT'))
@@ -131,7 +132,7 @@ class MainWindow(VCPMainWindow):
         self.probe_timer.timeout.connect(self.probe_timeout)
         
         # Hide some in flight UI that is unfinished
-        self.mainTabWidget.setTabVisible(2, False)
+        #self.mainTabWidget.setTabVisible(2, False)
         self.tabs_ctl_run_right.setTabVisible(2, False)
         self.tab_holes_and_slots.setTabVisible(1, False)
         # setup some default UI settings
@@ -184,6 +185,7 @@ class MainWindow(VCPMainWindow):
         self.btn_probe_test.toggled.connect(self.probe_test)
         self.vtk_no_lines.toggled.connect(self.breadcrumbs_tracked)
         #self.btn_transform.toggled.connect(self.tranformUI)
+        self.grp_shape_btns.buttonClicked.connect(self.clicked_shape_btn)
 
         # cut recovery direction
         self.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
@@ -312,10 +314,16 @@ class MainWindow(VCPMainWindow):
         self.btn_sheet_doalign_trigger_pin = comp.addPin(objName + ".external-trigger", "bit", "in")
         self.btn_sheet_doalign_trigger_pin.valueChanged.connect(lambda x :self.btn_sheet_doalign.click() if x else None)
         
-
+        # test svg
 
     def on_exitAppBtn_clicked(self):
       self.app.quit()
+
+    def clicked_shape_btn(self, btn):
+        btn_name = btn.objectName()
+        LOG.debug(f"shape button pushed: {btn_name} with index {int(btn_name[4:])}")
+        self.detail_index_num = int(btn_name[4:])
+        self.details_pages.setCurrentIndex(self.detail_index_num)
 
     def zero_wcs_xy(self):
         #_current_pos = float(POS.Absolute(0))
@@ -846,14 +854,26 @@ class MainWindow(VCPMainWindow):
             return
         
         feed_rate = self.framing_feed_rate.value()
+        # move_cmd = (
+        #     f"F{feed_rate};"
+        #     f"G53 G0 Z{min_max_z[1]};"
+        #     f"G53 G0 X{x_current + x_laser_offset} Y{y_current + y_laser_offset};"
+        #     f"G53 G1 Y{y_current + y_laser_offset + y_length};"
+        #     f"G53 G1 X{x_current + x_laser_offset + x_length};"
+        #     f"G53 G1 Y{y_current + y_laser_offset};"
+        #     f"G53 G1 X{x_current + x_laser_offset};"
+        #     f"G53 G1 X{x_current}Y{y_current}"
+        # )
         move_cmd = (
             f"F{feed_rate};"
             f"G53 G0 Z{min_max_z[1]};"
-            f"G53 G0 X{x_current + x_laser_offset} Y{y_current + y_laser_offset};"
-            f"G53 G1 Y{y_current + y_laser_offset + y_length};"
-            f"G53 G1 X{x_current + x_laser_offset + x_length};"
-            f"G53 G1 Y{y_current + y_laser_offset};"
-            f"G53 G1 X{x_current + x_laser_offset};"
+            f"G0 X{x_laser_offset} Y{y_laser_offset};"
+            f"G91;"
+            f"G1 Y{y_length};"
+            f"G1 X{x_length};"
+            f"G1 Y-{y_length};"
+            f"G1 X-{x_length};"
+            f"G90;"
             f"G53 G1 X{x_current}Y{y_current}"
         )
         issue_mdi(move_cmd)

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="128"
+   height="128"
+   viewBox="0 0 128 128"
+   sodipodi:docname="anglegusset.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="9.1796875"
+     inkscape:cx="64.108936"
+     inkscape:cy="64.054468"
+     inkscape:window-width="2274"
+     inkscape:window-height="1267"
+     inkscape:window-x="276"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g1"
+     showgrid="false" />
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g1">
+    <path
+       id="path1"
+       style="fill:#ffee06;stroke:#ffee06;stroke-width:6;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
+       d="M 29.224685,98.725036 13.97357,83.450072 14.236785,48.720774 14.064255,13.991476 64.49625,63.995738 114.4925,114 H 79.48415 44.4758 Z M 64.49625,63.995738 14.064255,13.991476 14.236785,48.720774 13.97357,83.450072 29.224685,98.725036 44.4758,114 h 35.00835 35.00835 z" />
+  </g>
+</svg>

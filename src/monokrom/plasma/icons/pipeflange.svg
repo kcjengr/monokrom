@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="128"
+   height="128"
+   viewBox="0 0 128 128"
+   sodipodi:docname="pipeflange.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="9.1796875"
+     inkscape:cx="64.108936"
+     inkscape:cy="63.945532"
+     inkscape:window-width="2560"
+     inkscape:window-height="1549"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1" />
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g1">
+    <circle
+       style="fill:none;stroke:#ffee06;stroke-width:6;stroke-linejoin:round;stroke-miterlimit:6;stroke-opacity:1"
+       id="path1"
+       cx="64.76255"
+       cy="64"
+       r="48" />
+    <circle
+       style="fill:none;stroke:#ffee06;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:6;stroke-dasharray:none;stroke-opacity:1"
+       id="path2"
+       cx="64.76255"
+       cy="26.852766"
+       r="4" />
+    <circle
+       style="fill:none;stroke:#ffee06;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:6;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-52"
+       cx="101.35149"
+       cy="64"
+       r="4" />
+    <circle
+       style="fill:none;stroke:#ffee06;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:6;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-2"
+       cx="27.420425"
+       cy="64"
+       r="4" />
+    <circle
+       style="fill:none;stroke:#ffee06;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:6;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-5"
+       cx="64.76255"
+       cy="100.84766"
+       r="4" />
+    <ellipse
+       style="fill:none;stroke:#ffee06;stroke-width:6;stroke-linejoin:round;stroke-miterlimit:6;stroke-dasharray:none;stroke-opacity:1"
+       id="path3"
+       cx="64.385956"
+       cy="63.850212"
+       rx="23"
+       ry="24" />
+  </g>
+</svg>
