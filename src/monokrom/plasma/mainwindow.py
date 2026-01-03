@@ -1,13 +1,15 @@
 import os
 import math
 import time
+from tempfile import NamedTemporaryFile
 
 import hal as cnchal
 from qtpyvcp import hal as qthal
 import linuxcnc
 ### Supports the @Slot decorator to solve property type issues.
 from PySide6.QtCore import Qt, QItemSelectionModel, Slot, QTimer
-from PySide6.QtWidgets import QLabel, QListWidgetItem, QAbstractButton
+from PySide6.QtWidgets import QLabel, QListWidgetItem, QAbstractButton, QTableView, QListWidget
+import qtpyvcp
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
@@ -18,6 +20,7 @@ from qtpyvcp.actions.machine_actions import mode as set_mode
 from qtpyvcp.actions.machine_actions import jog
 ### mdi GCODE text created by JT from linuxcnc
 import mdi_text as mdiText
+import quickshapes as qs
 
 #import pydevd;pydevd.settrace()
 
