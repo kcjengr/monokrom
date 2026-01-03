@@ -6,6 +6,8 @@ from qtpy.QtCore import Slot, Property, Signal, QFile, QFileInfo, QDir, QIODevic
 from qtpy.QtGui import QIcon
 from qtpy.QtWidgets import QTableView, QFileSystemModel, QFileIconProvider
 
+from qtpy.QtWidgets import QApplication
+
 from qtpyvcp.utilities.info import Info
 from qtpyvcp.utilities.logger import getLogger
 from qtpyvcp.widgets.dialogs import hideActiveDialog
@@ -92,6 +94,7 @@ class MkFileSystemModel(QFileSystemModel):
 class MkFileTableView(QTableView):
 
     rootChanged = Signal(str)
+    fileLoadFromDialog = Signal(str)
 
     def __init__(self, parent=None):
         super(MkFileTableView, self).__init__(parent)
@@ -102,6 +105,7 @@ class MkFileTableView(QTableView):
         self.nc_file_exts = self.info.getProgramExtentions()
 
         LOG.debug(f'nc_file_dir = {self.nc_file_dir}')
+        LOG.debug(f'nc_file_exts = {self.nc_file_exts}')
 
         # file system model
         self.model = MkFileSystemModel()
@@ -188,6 +192,7 @@ class MkFileTableView(QTableView):
                          file_info.completeSuffix())
             hideActiveDialog()
             loadProgram(absolute_path)
+            self.fileLoadFromDialog.emit(absolute_path)
 
     @Slot()
     def getSelection(self):

@@ -33,6 +33,7 @@ class MkFileIconProvider(QFileIconProvider):
 class MkRecentFileListView(QListWidget):
 
     rootChanged = Signal(str)
+    fileLoadFromDialog = Signal(str)
 
     def __init__(self, parent=None):
         super(MkRecentFileListView, self).__init__(parent)
@@ -50,6 +51,7 @@ class MkRecentFileListView(QListWidget):
             item = self.selectedItems()[0]
             fpath = item.data(Qt.UserRole)
             loadProgram(fpath)
+            self.fileLoadFromDialog.emit(fpath)
             hideActiveDialog()
         except (IndexError, AttributeError):
             pass
