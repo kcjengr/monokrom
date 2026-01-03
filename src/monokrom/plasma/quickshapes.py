@@ -263,5 +263,23 @@ def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, separation=0, cutting_pair=False, 
     stop_cut(lines)
     return lines
 
-    
+def u_lug(w1, w2, h, kerf, leadin=4, conv=1, lines=[]):
+    outer_radius = w1/2
+    inner_radius = w2/2
+    leg_size = (w1-w2)/2
+    kh = kerf/2
+    lines.append(f"\n")
+    # build the legs
+    lines.append(f"G0 X{0-kh} Y{0-leadin}\n")
+    start_cut(lines)
+    lines.append(f"G1 Y{h-outer_radius}\n")
+    lines.append(f"G2 X{w1+kh} I{outer_radius+kh}\n")
+    lines.append(f"G1 Y{0-kh}\n")
+    lines.append(f"G1 X{w1-leg_size-kh}\n")
+    lines.append(f"G1 Y{h-outer_radius}\n")
+    lines.append(f"G3 X{leg_size+kh} I{-inner_radius+kh}\n")
+    lines.append(f"G1 Y{0-kh}\n")
+    lines.append(f"G1 X{0-kh}\n")
+    stop_cut(lines)
+    return lines
     

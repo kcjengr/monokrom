@@ -392,6 +392,11 @@ class MainWindow(VCPMainWindow):
                 pair = self.id4_chk_pair.isChecked()
                 separation = self.id4_dbl_separation.value()
                 qs.lifting_lug(w1, d1, h1, h2, d2, rb, kerf=kerf, separation=separation, cutting_pair=pair, parent=self, leadin=leadin, conv=1, lines=lines)
+            case 5:
+                w1 = self.id5_dbl_w1.value()
+                w2 = self.id5_dbl_w2.value()
+                h = self.id5_dbl_h.value()
+                qs.u_lug(w1, w2, h, kerf=kerf, leadin=leadin, conv=1, lines=lines)
 
         qs.postamble(lines)
         with NamedTemporaryFile(mode='w+' ,suffix=".ngc", delete=False) as temp_file:
