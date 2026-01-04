@@ -397,7 +397,15 @@ class MainWindow(VCPMainWindow):
                 w2 = self.id5_dbl_w2.value()
                 h = self.id5_dbl_h.value()
                 qs.u_lug(w1, w2, h, kerf=kerf, leadin=leadin, conv=1, lines=lines)
-
+            case 6:
+                od = self.id6_dbl_od.value()
+                pcd = self.id6_dbl_pcd.value()
+                holes = self.id6_int_holes.value()
+                hd = self.id6_dbl_hd.value()
+                hole_type = self.id6_combo_hole.currentText()
+                id = self.id6_dbl_id.value()
+                qs.pipe_flange(od, pcd, holes, hd, hole_type, id, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+                
         qs.postamble(lines)
         with NamedTemporaryFile(mode='w+' ,suffix=".ngc", delete=False) as temp_file:
             temp_name = temp_file.name

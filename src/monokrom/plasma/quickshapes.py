@@ -283,3 +283,58 @@ def u_lug(w1, w2, h, kerf, leadin=4, conv=1, lines=[]):
     stop_cut(lines)
     return lines
     
+def pipe_flange(od, pcd, holes, hd, hole_type, id, kerf, leadin=4, conv=1, lines=[]):
+    kh = kerf/2
+    lines.append(f"\n")
+    
+    # make central hole
+    # note: Shape is built around 0,0 as center
+    match hole_type:
+        case "Round":
+            lines.append(f"G0 X0 Y{(id/2)-kh}\n")
+            start_cut(lines)
+            lines.append(f"G3 J-{(id/2)-kh}\n")
+        case "Square":
+            sq_start_x = -id/2
+            sq_start_y = id/2
+            lines.append(f"G0 X{sq_start_x+leadin} Y0\n")
+            start_cut(lines)
+            lines.append(f"G1 X{sq_start_x+kh}\n")
+            lines.append(f"G1 Y{sq_start_y-kh}\n")
+            lines.append(f"G1 X{sq_start_x+id-kerf}\n")
+            lines.append(f"G1 Y{sq_start_y-id-kerf}\n")
+            lines.append(f"G1 X{sq_start_x+kh}\n")
+            lines.append(f"G1 Y0\n")
+    stop_cut(lines)
+    # calc pcd for holes
+    # x1 = x + (d * cos(angle))
+    # y1 = y + (d * sin(angle))
+    angle_gap = 360/holes
+    i = 0
+    current_angle = 90
+    d = pcd/2
+    while i < holes:
+        x1 = d * cos(radians(current_angle))
+        y1 = d * sin(radians(current_angle))
+        lines.append(f"\n")
+        lines.append(f"G0 X{x1-(hd/2)+kh} Y{y1}\n")
+        start_cut(lines)
+        lines.append(f"G3 I{(hd/2)-kh}\n")
+        stop_cut(lines)
+        current_angle += angle_gap
+        if current_angle > 360:
+            current_angle -= 360
+        i += 1 
+    
+    # calc where leadin starts
+    x = (leadin + od/2) * cos(radians(45))
+    y = (leadin + od/2) * sin(radians(45))
+    lines.append(f"G0 X{x} Y{y}\n")
+    start_cut(lines)
+    x = (kh + od/2) * cos(radians(45))
+    y = (kh + od/2) * sin(radians(45))
+    lines.append(f"G1 X{x} Y{y}\n")
+    lines.append(f"G2 I-{x} J-{y}\n")
+    stop_cut(lines)
+
+    
