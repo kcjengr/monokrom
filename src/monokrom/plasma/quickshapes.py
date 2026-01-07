@@ -2,6 +2,8 @@ from math import cos, sin, tan, atan, atan2, asin, degrees, radians, sqrt, hypot
 from qtpyvcp.utilities import logger
 LOG = logger.getLogger('qtpyvcp.' + __name__)
 
+def fix(v):
+    return round(v, 5)
 
 def start_cut(lines):
     lines.append("M3 $0 S1 (plasma start)\n")
@@ -337,4 +339,322 @@ def pipe_flange(od, pcd, holes, hd, hole_type, id, kerf, leadin=4, conv=1, lines
     lines.append(f"G2 I-{x} J-{y}\n")
     stop_cut(lines)
 
+def pipe_saddle(w, h, pd, o, kerf, leadin=4, conv=1, lines=[]):
+    kh = kerf/2
+    lines.append(f"\n")
+    # calc the needed values
+    # circle center and radius
+    cx = w/2    # circle center x
+    cy = h + o  # circle center y
+    cr = pd/2   # circle radius
+    angle = asin(o/cr) if o > 0 else 0
+    x1 = cx + (cr * cos(angle))
+    y1 = cy + (cr * sin(angle))
+    LOG.debug(f"Pipe Saddle: angle={degrees(angle)}, x1={x1}, y1={y1}")
+    # add basic shape
+    LOG.debug(f"points list for polyline:  {[((2*cx)-x1,y1), (0,h), (0,0), (w,0), (w,h), (x1,y1)]}")
+    # remember to cut cw
+    lines.append(f"G0 X{fix(x1-leadin)} Y{fix(h+kh)}\n") # lead in
+    start_cut(lines)
+    lines.append(f"G1 X{fix(w+kh)}\n")       # start center to top right corner
+    lines.append(f"G1 Y{fix(0-kh)}\n")       # down to y0
+    lines.append(f"G1 X{fix(0-kh)}\n")       # left to x0
+    lines.append(f"G1 y{fix(h+kh)}\n")       # up to top left corner
+    lines.append(f"G1 X{fix((2*cx)-x1+kh)}\n")
+    lines.append(f"G3 X{fix(x1-kh)} I{fix(cx-((2*cx)-x1+kh))} J{fix(cy-(h+kh))}\n")
+    stop_cut(lines)
+
+def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
+    def build_corner(rr1, rr2, xx2, yy2, corners, lines):
+        """
+        Build the mounting hole corners and slopped sides.
+        
+        Args:
+            rr1 (float): Radius of the inner hole plus wall thickness
+            rr2 (float): Diameter of the bolt hole
+            xx2, yy2 (float): Position of the corners hole
+            corners (int): Number of corners.  2 or 3
+            lines : ref to the lines list 
+        
+        Approach:
+            Calculate the two lines start/end positions,
+            the small corner arc and the large arc.
+            THEN build them in the correct order to allow
+            clockwise cut path.
+            Assumes that the torch is already active and
+            that the rapid/leadin to the start position is
+            already done.
+        """
+        LOG.debug("=========  build_corner =========")
+        kh = kerf/2
+        #d= sqrt(xx2**2 + yy2**2)
+        d = hypot(xx2, yy2)
+        theta = cos((rr1 - rr2) / d)
+        # LOG.debug(f"Initial theta={degrees(theta)}")
+        theta2 = (pi / corners) - theta
+        
+        if theta < 0:
+            theta = pi / corners
+            theta2 = 0
+        
+        a = a_start = atan2(xx2, yy2) - theta
+        s = s_start = sin(a)
+        c = c_start = cos(a)
+        # LOG.debug(f"corner data: rr1={rr1}, rr2={rr2}, xx2={xx2}, yy2={yy2}, corners={corners}")
+        # LOG.debug(f"corner data: d={d}, theta={(theta)}, theta2={(theta2)}, a={a}")
+        # LOG.debug(f"corner data: s={s}, c={c}")
+        line1_start_x = fix(s*rr1)
+        line1_start_y = fix(c*rr1)
+        line1_end_x = fix((s*rr2)+xx2)
+        line1_end_y = fix((c*rr2)+yy2)
+        
+        # we have the arc centre:  xx2, yy2
+        # we have start point of arc which is part of a right triangle: (s*rr2)+xx2, (c*rr2)+yy2
+        # with center and end point we have a vector which has distance (r) and angle (ang)
+        arc_center_x = xx2
+        arc_center_y = yy2
+        arc_start_x = (s*rr2)+xx2
+        arc_start_y = (c*rr2)+yy2
+        arc_center_offset_x = s*rr2 
+        arc_center_offset_y = c*rr2 
+        bigarc1_end_x = s*rr1
+        bigarc1_end_y = c*rr1
+        ang1 = atan2(arc_start_y - arc_center_y, arc_start_x - arc_center_x)
+        r = hypot(arc_start_x - arc_center_x, arc_start_y - arc_center_y)
+
+        # need to calc small arc start before new s & c recalc'd
+        smallarc_start_x = fix((s*rr2)+xx2)
+        smallarc_start_y = fix((c*rr2)+yy2)
+
+        
+        a += (theta * 2)
+        s = sin(a)
+        c = cos(a)
+        arc_end_x = (s*rr2)+xx2
+        arc_end_y = (c*rr2)+yy2
+        # bigarc2_start_x = s*rr1
+        # bigarc2_start_y = c*rr1
+        ang2 = atan2(arc_end_y - arc_center_y, arc_end_x - arc_center_x)
+
+        # LOG.debug(f"angle 0,0 to arc start={degrees(ang1)}, start x/y={(arc_start_x, arc_start_y)}")
+        # LOG.debug(f"angle 0,0 to arc end={degrees(ang2)}, end x/y={(arc_end_x, arc_end_y)}")
+        # LOG.debug(f"using center = {(fix(arc_center_x), fix(arc_center_y))}, r={r}")
+        # small arc
+        smallarc_end_x = fix((s*rr2)+xx2)
+        smallarc_end_y = fix((c*rr2)+yy2)
+        smallarc_I = -fix(arc_center_offset_x)
+        smallarc_J = -fix(arc_center_offset_y)
+        # line on bottom
+        line2_start_x = fix((s*rr2)+xx2)
+        line2_start_y = fix((c*rr2)+yy2)
+        line2_end_x = fix(s*rr1)
+        line2_end_y = fix(c*rr1)
+
+        #
+        # Start building the shape up for cw cutting
+        #
+
+        # Big arc processing        
+        if theta2 > 0:
+            #big arc 1
+            ang1 = atan2(bigarc1_end_y ,bigarc1_end_x)
+            bigarc1_start_x = rr1 * cos(ang1 + (theta2 *2))
+            bigarc1_start_y = rr1 * sin(ang1 + (theta2 *2))
+            # add arc cares about the direction of the arc.
+            # i.e. drawing from smaller angle to larger angle in ccw direction
+            # Also theta is a modifier.  Add it to the start angle to get end angle.
+            #writer.add_arc((0,0), rr1, degrees(ang1), degrees(ang1)+degrees(theta2 *2))
+            LOG.debug(">>> Big Arc <<<")
+            LOG.debug(f"big arc1 data: start x1/y1={(fix(bigarc1_start_x) ,fix(bigarc1_start_y))}, radius={fix(rr1)}")
+            LOG.debug(f"big arc1 data: end x1/y1={(fix(bigarc1_end_x) ,fix(bigarc1_end_y))}, I/J offsets={(-fix(bigarc1_start_x), -fix(bigarc1_start_y))}")
+            LOG.debug(f"big arc1 data: effective center x/y = {(fix(bigarc1_start_x)+-fix(bigarc1_start_x), fix(bigarc1_start_y)+-fix(bigarc1_start_y))}")
+            LOG.debug(f"big arc1 data: angle1 = {degrees(ang1)}, angle2 = {degrees(ang1 + (theta2 *2))}")
+            LOG.debug(f"big arc1 data: data to build angles:")
+            LOG.debug(f"big arc1 data: a = atan2{(xx2,yy2)} - {theta} = {a_start} : sin(a)={s_start} : cos(a)={c_start}")
+            LOG.debug(f"big arc1 data: angle1 = atan2{(bigarc1_end_y, bigarc1_end_x)} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
+            LOG.debug(f"big arc1 data: angle2 used to calc big arc start x/y. r1 = {rr1}")
+            # lines.append(f"G2 X{fix(bigarc1_end_x)} Y{fix(bigarc1_end_y)} I{-fix(bigarc1_start_x)} J{-fix(bigarc1_start_y)}\n")
+            line1_start_x = fix(bigarc1_end_x)
+            line1_start_y = fix(bigarc1_end_y)
+        
+        LOG.debug(">>> Line 1 <<<")
+        LOG.debug(f"line1 data: Start={(line1_start_x,line1_start_y)}, End={(line1_end_x, line1_end_y)}")
+        # first line to corner arc
+        lines.append(f"G1 X{line1_end_x} Y{line1_end_y}\n")
+        LOG.debug(">>> Small Arc <<<")
+        # small corner
+        LOG.debug(f"Small arc: Start={(smallarc_start_x, smallarc_start_y)}, End={(smallarc_end_x, smallarc_end_y)}")
+        LOG.debug(f"Small arc: I/J={(smallarc_I, smallarc_J)}, radius={fix(r)}")
+        LOG.debug(f"Small arc: effective center x/y = {(smallarc_start_x+smallarc_I, smallarc_start_y+smallarc_J)}")
+        lines.append(f"G2 X{smallarc_end_x} Y{smallarc_end_y} I{smallarc_I} J{smallarc_J}\n")
+        # line 2
+        LOG.debug(">>> Line 2 <<<")
+        LOG.debug(f"line2 data: Start={(line2_start_x, line2_start_y)}, End={(line2_end_x, line2_end_y)}")
+        lines.append(f"G1 X{line2_end_x} Y{line2_end_y}\n")
+        LOG.debug("+---------------------------------------------------+")
     
+    def build_slot(x, y, sw, bd, lines):
+        LOG.debug("============= build_slot ===========")
+        kh = kerf/2
+        if sw - bd == 0:
+            #writer.add_circle((x, y), bd/2)
+            lines.append(f"G0 X{x} Y{y}\n")
+            start_cut(lines)
+            lines.append(f"G1 X{x+(bd/2)-kh}\n")
+            lines.append(f"G3 I{-(bd/2)-kh}")
+            stop_cut(lines)
+            return
+        
+        a = atan2(y,x)
+        r1 = bd/2
+        r2 = (sw - bd) / 2
+        s = sin(a) * r2
+        c = cos(a) * r2
+        # gives the two ends of the middle line. 
+        x1 = x + c
+        y1 = y + s
+        x2 = x - c
+        y2 = y - s
+        LOG.debug(f"build slot: x/y={(x,y)}, sw={sw}, bd={bd}, a={degrees(a)}, r1={r1}, r2={r2}")
+        LOG.debug(f"build slot: s={s}, c={c}")
+        
+        # we need to calculate the lines either side of the middle line.
+        # Find the points that are are 90 degree to each end point.
+        # so get that unit value for x and y offsets and scale it by r1.
+        # Given r1 is essentially the hypotenuse then:
+        # cosine gives the Adjacent == x axis
+        # sine gives the Opposite == y axis
+        s = sin(a + (pi / 2)) * r1
+        c = cos(a + (pi / 2)) * r1
+        LOG.debug(f"build slot: recalced s={s}, c={c}")
+        LOG.debug(f"build slot: mirror line x1/y1={(x1,y1)}, x2/y2={(x2,y2)}")
+        # writer.add_polyline_2d([(x1+c,y1+s), (x2+c, y2+s)])
+        # writer.add_polyline_2d([(x1-c,y1-s), (x2-c, y2-s)])
+        # work out the start/end angles for arc1
+        a_start = atan2(s, c)
+        a_end = atan2(-s, -c)
+        LOG.debug(f"a_start={degrees(a_start)}, a_end={degrees(a_end)}")
+        # writer.add_arc((x1,y1),r1, degrees(a_end), degrees(a_start))
+        # writer.add_arc((x2,y2),r1, degrees(a_start), degrees(a_end))
+        lines.append(f"(Got to start of slot line 1)\n")
+        lines.append(f"G0 X{fix(x1+c)} Y{fix(y1+s)}\n")
+        start_cut(lines)
+        lines.append(f"G1 X{fix(x2+c)} Y{fix(y2+s)}\n")
+        lines.append(f"G3 X{fix(x2-c)} Y{fix(y2-s)} I{fix(-c)} J{fix(-s)}\n")
+        lines.append(f"G1 X{x1-c} Y{y1-s}\n")
+        lines.append(f"G3 X{fix(x1+c)} Y{fix(y1+s)} I{fix(c)} J{fix(s)}\n")
+        stop_cut(lines)
+        LOG.debug("+---------------------------------------------------+")
+        
+    
+    # r1 is the outside major radius.  i.e. hole + wall thickness.
+    
+    kh = kerf/2
+    r1 = (id / 2) + wt
+    # r2 is the bolt diameter
+    r2 = bd
+    offset = 0
+    # if slot width (sw) is larger then than bolt diam then calc an offset
+    if sw > bd:
+        offset = (sw - bd) / 2
+    # pcr = pitch circle radius
+    pcr = pcd /2
+    # part is built around a 0,0 centre
+    lines.append(f"G0 X{(id/2)-leadin} Y{0}\n")
+    start_cut(lines)
+    lines.append(f"G1 X{(id/2)-kh} Y{0}\n")
+    lines.append(f"G3 I-{(id/2)-kh}\n")
+    stop_cut(lines)
+    
+    if nb == 2:
+        build_slot(pcr, 0, sw, bd, lines)
+        build_slot(-pcr, 0, sw, bd, lines)
+        # work out the starting position for the first corner
+        # and rapid to it. Note: a bunch of repeat code to what is in
+        # the build_corner function
+
+
+        #     r1 (float): Radius of the inner hole plus wall thickness
+        #     r2 (float): Diameter of the bolt hole
+        #     xx2, yy2 (float): Position of the corners hole
+        #     nb (int): Number of corners.  2 or 3
+        #     lines : ref to the lines list 
+        xx2 = pcr + offset
+        yy2 = 0
+        d = hypot(xx2, yy2)
+        theta = cos((r1 - r2) / d)
+        theta2 = (pi / nb) - theta
+        #
+        if theta < 0:
+            theta = pi / nb
+            theta2 = 0
+        #
+        a = atan2(xx2, yy2) - theta
+        s = sin(a)
+        c = cos(a)
+        bigarc1_end_x = s*r1
+        bigarc1_end_y = c*r1
+        if theta2 > 0:
+            #big arc 1
+            ang1 = atan2(bigarc1_end_y ,bigarc1_end_x)
+            bigarc1_start_x = fix(r1 * cos(ang1 + (theta2 *2)))
+            bigarc1_start_y = fix(r1 * sin(ang1 + (theta2 *2)))
+            LOG.debug(f"Move to external start: X/y = {(bigarc1_start_x, bigarc1_start_y)} for end = {(fix(bigarc1_end_x), fix(bigarc1_end_y))}")
+            LOG.debug(f"Move to external start: data to build angles:")
+            LOG.debug(f"Move to external start: a = atan2{(xx2,yy2)} - {theta} = {a} : sin(a)={s} : cos(a)={c}")
+            LOG.debug(f"Move to external start: angle1 = atan2{(fix(bigarc1_end_y), fix(bigarc1_end_x))} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
+            LOG.debug(f"Move to external start: angle2 used to calc big arc start x/y. r1 = {r1}")
+            lines.append(f"G0 X{bigarc1_start_x} Y{bigarc1_start_y}\n")
+        else:
+            #writer.add_polyline_2d([(s*rr1,c*rr1), ((s*rr2)+xx2, (c*rr2)+yy2)])
+            lines.append(f"G0 X{fix(s*r1)} Y{fix(c*r1)}\n")
+        
+        start_cut(lines)
+        build_corner(r1, r2, xx2, yy2, 2, lines)
+        build_corner(r1, r2, -(xx2), yy2, 2, lines)
+        stop_cut(lines)
+    else:
+        x = cos(pi/1.5) * pcr
+        y = sin(pi/1.5) * pcr
+        build_slot(pcr, 0, sw, bd, lines)
+        build_slot(x, y, sw, bd, lines)
+        build_slot(x, -y, sw, bd, lines)
+        x = cos(pi/1.5) * (pcr + offset)
+        y = sin(pi/1.5) * (pcr + offset)
+
+        d = hypot(x, y)
+        theta = cos((r1 - r2) / d)
+        theta2 = (pi / nb) - theta
+        #
+        if theta < 0:
+            theta = pi / nb
+            theta2 = 0
+        #
+        a = atan2(x, y) - theta
+        s = sin(a)
+        c = cos(a)
+        bigarc1_end_x = s*r1
+        bigarc1_end_y = c*r1
+
+        if theta2 > 0:
+            #big arc 1
+            ang1 = atan2(bigarc1_end_y ,bigarc1_end_x)
+            bigarc1_start_x = fix(r1 * cos(ang1 + (theta2 *2)))
+            bigarc1_start_y = fix(r1 * sin(ang1 + (theta2 *2)))
+            LOG.debug(f"Move to external start: X/y = {(bigarc1_start_x, bigarc1_start_y)} for end = {(fix(bigarc1_end_x), fix(bigarc1_end_y))}")
+            LOG.debug(f"Move to external start: data to build angles:")
+            LOG.debug(f"Move to external start: a = atan2{(x,y)} - {theta} = {a} : sin(a)={s} : cos(a)={c}")
+            LOG.debug(f"Move to external start: angle1 = atan2{(fix(bigarc1_end_y), fix(bigarc1_end_x))} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
+            LOG.debug(f"Move to external start: angle2 used to calc big arc start x/y. r1 = {r1}")
+            lines.append(f"G0 X{fix(s*r1)} Y{fix(c*r1)}\n")
+            # lines.append(f"G0 X{bigarc1_start_x} Y{bigarc1_start_y}\n")
+        else:
+            #writer.add_polyline_2d([(s*rr1,c*rr1), ((s*rr2)+xx2, (c*rr2)+yy2)])
+            lines.append(f"G0 X{fix(s*r1)} Y{fix(c*r1)}\n")
+
+        start_cut(lines)
+        build_corner(r1, r2, pcr + offset, 0, 3, lines)
+        # build_corner(r1, r2, x, y, 3, lines)
+        # build_corner(r1, r2, x, -y, 3, lines)
+        stop_cut(lines)
+
