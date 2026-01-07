@@ -22,7 +22,7 @@ from qtpyvcp.actions.machine_actions import jog
 import mdi_text as mdiText
 import quickshapes as qs
 
-#import pydevd;pydevd.settrace()
+# import pydevd;pydevd.settrace()
 
 
 # Setup logging
@@ -386,12 +386,26 @@ class MainWindow(VCPMainWindow):
                 hole_type = self.id6_combo_hole.currentText()
                 id = self.id6_dbl_id.value()
                 qs.pipe_flange(od, pcd, holes, hd, hole_type, id, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+            case 7:
+                w = self.id7_dbl_w.value()
+                h = self.id7_dbl_h.value()
+                pd = self.id7_dbl_pd.value()
+                o = self.id7_dbl_o.value()
+                qs.pipe_saddle(w, h, pd, o, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+            case 8:
+                id = self.id8_dbl_id.value()
+                wt = self.id8_dbl_wt.value()
+                pcd = self.id8_dbl_pcd.value()
+                bd = self.id8_dbl_bd.value()
+                sw = self.id8_dbl_sw.value()
+                nb = self.id8_int_nb.value()
+                qs.exhaust_flange(id, wt, pcd, bd, sw, nb, kerf=kerf, leadin=leadin, conv=1, lines=lines)
                 
         qs.postamble(lines)
         with NamedTemporaryFile(mode='w+' ,suffix=".ngc", delete=False) as temp_file:
             temp_name = temp_file.name
             temp_file.writelines(lines)
-        # make sure hole processing it off as lead ins seem to cause it issus:
+        # make sure hole processing it off as lead ins seem to cause it issues:
         self.chkb_hole_detect_enable.setCheckState(False)
         self.set_openfile(temp_name)
         loadProgram(temp_name, add_to_recents=False)
