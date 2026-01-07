@@ -386,7 +386,11 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
             already done.
         """
         LOG.debug("=========  build_corner =========")
+        
         kh = kerf/2
+        # adjust radius for kerf offset
+        rr1 += kh
+        rr2 += kh
         #d= sqrt(xx2**2 + yy2**2)
         d = hypot(xx2, yy2)
         theta = cos((rr1 - rr2) / d)
@@ -473,7 +477,7 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
             LOG.debug(f"big arc1 data: a = atan2{(xx2,yy2)} - {theta} = {a_start} : sin(a)={s_start} : cos(a)={c_start}")
             LOG.debug(f"big arc1 data: angle1 = atan2{(bigarc1_end_y, bigarc1_end_x)} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
             LOG.debug(f"big arc1 data: angle2 used to calc big arc start x/y. r1 = {rr1}")
-            # lines.append(f"G2 X{fix(bigarc1_end_x)} Y{fix(bigarc1_end_y)} I{-fix(bigarc1_start_x)} J{-fix(bigarc1_start_y)}\n")
+            lines.append(f"G2 X{fix(bigarc1_end_x)} Y{fix(bigarc1_end_y)} I{-fix(bigarc1_start_x)} J{-fix(bigarc1_start_y)}\n")
             line1_start_x = fix(bigarc1_end_x)
             line1_start_y = fix(bigarc1_end_y)
         
@@ -524,8 +528,8 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
         # Given r1 is essentially the hypotenuse then:
         # cosine gives the Adjacent == x axis
         # sine gives the Opposite == y axis
-        s = sin(a + (pi / 2)) * r1
-        c = cos(a + (pi / 2)) * r1
+        s = sin(a + (pi / 2)) * (r1-kh)
+        c = cos(a + (pi / 2)) * (r1-kh)
         LOG.debug(f"build slot: recalced s={s}, c={c}")
         LOG.debug(f"build slot: mirror line x1/y1={(x1,y1)}, x2/y2={(x2,y2)}")
         # writer.add_polyline_2d([(x1+c,y1+s), (x2+c, y2+s)])
@@ -537,8 +541,9 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
         # writer.add_arc((x1,y1),r1, degrees(a_end), degrees(a_start))
         # writer.add_arc((x2,y2),r1, degrees(a_start), degrees(a_end))
         lines.append(f"(Got to start of slot line 1)\n")
-        lines.append(f"G0 X{fix(x1+c)} Y{fix(y1+s)}\n")
+        lines.append(f"G0 X{fix(x1)} Y{fix(y1)}\n")
         start_cut(lines)
+        lines.append(f"G1 X{fix(x1+c)} Y{fix(y1+s)}\n")
         lines.append(f"G1 X{fix(x2+c)} Y{fix(y2+s)}\n")
         lines.append(f"G3 X{fix(x2-c)} Y{fix(y2-s)} I{fix(-c)} J{fix(-s)}\n")
         lines.append(f"G1 X{x1-c} Y{y1-s}\n")
@@ -592,37 +597,46 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
         a = atan2(xx2, yy2) - theta
         s = sin(a)
         c = cos(a)
-        bigarc1_end_x = s*r1
-        bigarc1_end_y = c*r1
+        bigarc1_end_x = s*(r1+kh)
+        bigarc1_end_y = c*(r1+kh)
         if theta2 > 0:
             #big arc 1
             ang1 = atan2(bigarc1_end_y ,bigarc1_end_x)
-            bigarc1_start_x = fix(r1 * cos(ang1 + (theta2 *2)))
-            bigarc1_start_y = fix(r1 * sin(ang1 + (theta2 *2)))
+            bigarc1_start_x = fix((r1+kh) * cos(ang1 + (theta2 *2)))
+            bigarc1_start_y = fix((r1+kh) * sin(ang1 + (theta2 *2)))
+            bigarc1_leadin_x = fix((r1+kh+leadin) * cos(ang1 + (theta2 *2)))
+            bigarc1_leadin_y = fix((r1+kh+leadin) * sin(ang1 + (theta2 *2)))
             LOG.debug(f"Move to external start: X/y = {(bigarc1_start_x, bigarc1_start_y)} for end = {(fix(bigarc1_end_x), fix(bigarc1_end_y))}")
             LOG.debug(f"Move to external start: data to build angles:")
             LOG.debug(f"Move to external start: a = atan2{(xx2,yy2)} - {theta} = {a} : sin(a)={s} : cos(a)={c}")
             LOG.debug(f"Move to external start: angle1 = atan2{(fix(bigarc1_end_y), fix(bigarc1_end_x))} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
             LOG.debug(f"Move to external start: angle2 used to calc big arc start x/y. r1 = {r1}")
-            lines.append(f"G0 X{bigarc1_start_x} Y{bigarc1_start_y}\n")
+            if leadin > 0:
+                lines.append(f"G0 X{bigarc1_leadin_x} Y{bigarc1_leadin_y}\n")
+                start_cut(lines)
+                lines.append(f"G1 X{bigarc1_start_x} Y{bigarc1_start_y}\n")
+            else:
+                lines.append(f"G0 X{bigarc1_start_x} Y{bigarc1_start_y}\n")
+                start_cut(lines)
         else:
             #writer.add_polyline_2d([(s*rr1,c*rr1), ((s*rr2)+xx2, (c*rr2)+yy2)])
-            lines.append(f"G0 X{fix(s*r1)} Y{fix(c*r1)}\n")
+            lines.append(f"G0 X{fix(s*(r1+kh))} Y{fix(c*(r1+kh))}\n")
+            start_cut(lines)
         
-        start_cut(lines)
         build_corner(r1, r2, xx2, yy2, 2, lines)
         build_corner(r1, r2, -(xx2), yy2, 2, lines)
         stop_cut(lines)
     else:
-        x = cos(pi/1.5) * pcr
-        y = sin(pi/1.5) * pcr
+        x_leftside = cos(pi/1.5) * pcr
+        y_leftside = sin(pi/1.5) * pcr
         build_slot(pcr, 0, sw, bd, lines)
-        build_slot(x, y, sw, bd, lines)
-        build_slot(x, -y, sw, bd, lines)
-        x = cos(pi/1.5) * (pcr + offset)
-        y = sin(pi/1.5) * (pcr + offset)
+        build_slot(x_leftside, y_leftside, sw, bd, lines)
+        build_slot(x_leftside, -y_leftside, sw, bd, lines)
+        x_leftside = cos(pi/1.5) * (pcr + offset)
+        y_leftside = sin(pi/1.5) * (pcr + offset)
 
-        d = hypot(x, y)
+        # calc big arc start point based on the right hand side hole on x axis at (pcr + offset, 0)
+        d = hypot(x_leftside, y_leftside)
         theta = cos((r1 - r2) / d)
         theta2 = (pi / nb) - theta
         #
@@ -630,31 +644,40 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
             theta = pi / nb
             theta2 = 0
         #
-        a = atan2(x, y) - theta
+        a = atan2(pcr + offset, 0) - theta
         s = sin(a)
         c = cos(a)
-        bigarc1_end_x = s*r1
-        bigarc1_end_y = c*r1
+        bigarc1_end_x = s*(r1+kh)
+        bigarc1_end_y = c*(r1+kh)
 
         if theta2 > 0:
             #big arc 1
             ang1 = atan2(bigarc1_end_y ,bigarc1_end_x)
-            bigarc1_start_x = fix(r1 * cos(ang1 + (theta2 *2)))
-            bigarc1_start_y = fix(r1 * sin(ang1 + (theta2 *2)))
+            bigarc1_start_x = fix((r1+kh) * cos(ang1 + (theta2 *2)))
+            bigarc1_start_y = fix((r1+kh) * sin(ang1 + (theta2 *2)))
+            bigarc1_leadin_x = fix((r1+kh+leadin) * cos(ang1 + (theta2 *2)))
+            bigarc1_leadin_y = fix((r1+kh+leadin) * sin(ang1 + (theta2 *2)))
             LOG.debug(f"Move to external start: X/y = {(bigarc1_start_x, bigarc1_start_y)} for end = {(fix(bigarc1_end_x), fix(bigarc1_end_y))}")
             LOG.debug(f"Move to external start: data to build angles:")
-            LOG.debug(f"Move to external start: a = atan2{(x,y)} - {theta} = {a} : sin(a)={s} : cos(a)={c}")
+            LOG.debug(f"Move to external start: a = atan2{(pcr + offset,0)} - {theta} = {a} : sin(a)={s} : cos(a)={c}")
             LOG.debug(f"Move to external start: angle1 = atan2{(fix(bigarc1_end_y), fix(bigarc1_end_x))} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
             LOG.debug(f"Move to external start: angle2 used to calc big arc start x/y. r1 = {r1}")
-            lines.append(f"G0 X{fix(s*r1)} Y{fix(c*r1)}\n")
-            # lines.append(f"G0 X{bigarc1_start_x} Y{bigarc1_start_y}\n")
+            # lines.append(f"G0 X{fix(s*r1)} Y{fix(c*r1)}\n")
+            if leadin > 0:
+                lines.append(f"G0 X{bigarc1_leadin_x} Y{bigarc1_leadin_y}\n")
+                start_cut(lines)
+                lines.append(f"G1 X{bigarc1_start_x} Y{bigarc1_start_y}\n")
+            else:
+                lines.append(f"G0 X{bigarc1_start_x} Y{bigarc1_start_y}\n")
+                start_cut(lines)
+
         else:
             #writer.add_polyline_2d([(s*rr1,c*rr1), ((s*rr2)+xx2, (c*rr2)+yy2)])
-            lines.append(f"G0 X{fix(s*r1)} Y{fix(c*r1)}\n")
+            lines.append(f"G0 X{fix(s*(r1+kh))} Y{fix(c*(r1+kh))}\n")
+            start_cut(lines)
 
-        start_cut(lines)
         build_corner(r1, r2, pcr + offset, 0, 3, lines)
-        # build_corner(r1, r2, x, y, 3, lines)
-        # build_corner(r1, r2, x, -y, 3, lines)
+        build_corner(r1, r2, x_leftside, -y_leftside, 3, lines)
+        build_corner(r1, r2, x_leftside, y_leftside, 3, lines)
         stop_cut(lines)
 
