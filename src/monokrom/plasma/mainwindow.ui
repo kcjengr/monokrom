@@ -4464,7 +4464,7 @@ DOWN</string>
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="tab_8">
            <attribute name="title">
@@ -7762,6 +7762,9 @@ ANTI-DIVE</string>
             </item>
             <item row="0" column="3">
              <widget class="QComboBox" name="id9_combo_ch">
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
               <item>
                <property name="text">
                 <string>None</string>
@@ -10585,24 +10588,24 @@ ANTI-DIVE</string>
   <tabstop>spn_torch_off_distance</tabstop>
   <tabstop>spn_arc3_percent_2</tabstop>
   <tabstop>spn_arc3_distance_2</tabstop>
-  <tabstop>thc_delay</tabstop>
-  <tabstop>thc_threshold</tabstop>
-  <tabstop>thc_pid_p_gain</tabstop>
-  <tabstop>thc_pid_i_gain</tabstop>
-  <tabstop>thc_pid_d_gain</tabstop>
-  <tabstop>thc_vad_threshold</tabstop>
-  <tabstop>thc_void_override</tabstop>
-  <tabstop>thc_safe_height</tabstop>
-  <tabstop>probe_float_travel</tabstop>
-  <tabstop>probe_speed</tabstop>
-  <tabstop>probe_height</tabstop>
-  <tabstop>probe_offset</tabstop>
-  <tabstop>probe_ohmic_retries</tabstop>
-  <tabstop>probe_skip_ihs</tabstop>
-  <tabstop>probe_setup_speed</tabstop>
-  <tabstop>arc_fail_timeout</tabstop>
-  <tabstop>arc_max_starts</tabstop>
+  <tabstop>btn_0</tabstop>
+  <tabstop>btn_1</tabstop>
+  <tabstop>btn_2</tabstop>
+  <tabstop>btn_3</tabstop>
+  <tabstop>btn_4</tabstop>
+  <tabstop>btn_5</tabstop>
+  <tabstop>btn_6</tabstop>
+  <tabstop>btn_7</tabstop>
+  <tabstop>btn_8</tabstop>
+  <tabstop>btn_9</tabstop>
+  <tabstop>btn_10</tabstop>
+  <tabstop>btn_11</tabstop>
+  <tabstop>btn_12</tabstop>
+  <tabstop>btn_13</tabstop>
+  <tabstop>id0_dbl_diam</tabstop>
+  <tabstop>btn_qs_refresh</tabstop>
   <tabstop>arc_retry_delay</tabstop>
+  <tabstop>vtk_qs</tabstop>
   <tabstop>arc_voltage_scale</tabstop>
   <tabstop>arc_voltage_offset</tabstop>
   <tabstop>arc_height_per_volt</tabstop>
@@ -10625,6 +10628,88 @@ ANTI-DIVE</string>
   <tabstop>consumable_offset_x</tabstop>
   <tabstop>consumable_offset_y</tabstop>
   <tabstop>framing_feed_rate</tabstop>
+  <tabstop>thc_safe_height</tabstop>
+  <tabstop>probe_skip_ihs</tabstop>
+  <tabstop>probe_ohmic_retries</tabstop>
+  <tabstop>thc_pid_p_gain</tabstop>
+  <tabstop>thc_void_override</tabstop>
+  <tabstop>probe_speed</tabstop>
+  <tabstop>thc_pid_d_gain</tabstop>
+  <tabstop>thc_vad_threshold</tabstop>
+  <tabstop>thc_pid_i_gain</tabstop>
+  <tabstop>probe_offset</tabstop>
+  <tabstop>probe_float_travel</tabstop>
+  <tabstop>thc_threshold</tabstop>
+  <tabstop>thc_delay</tabstop>
+  <tabstop>probe_height</tabstop>
+  <tabstop>probe_setup_speed</tabstop>
+  <tabstop>id1_dbl_width</tabstop>
+  <tabstop>id1_dbl_height</tabstop>
+  <tabstop>id2_dbl_outer_diam</tabstop>
+  <tabstop>id2_dbl_inner_diam</tabstop>
+  <tabstop>id3_dbl_width</tabstop>
+  <tabstop>id3_dbl_height</tabstop>
+  <tabstop>id4_dbl_h1</tabstop>
+  <tabstop>id4_dbl_d2</tabstop>
+  <tabstop>id4_dbl_rb</tabstop>
+  <tabstop>id4_dbl_separation</tabstop>
+  <tabstop>id4_dbl_w1</tabstop>
+  <tabstop>id4_chk_pair</tabstop>
+  <tabstop>id4_dbl_h2</tabstop>
+  <tabstop>id4_dbl_d1</tabstop>
+  <tabstop>id5_dbl_w1</tabstop>
+  <tabstop>id5_dbl_w2</tabstop>
+  <tabstop>id5_dbl_h</tabstop>
+  <tabstop>id6_dbl_pcd</tabstop>
+  <tabstop>id6_combo_hole</tabstop>
+  <tabstop>id6_dbl_od</tabstop>
+  <tabstop>id6_int_holes</tabstop>
+  <tabstop>id6_dbl_hd</tabstop>
+  <tabstop>id6_dbl_id</tabstop>
+  <tabstop>id7_dbl_w</tabstop>
+  <tabstop>id7_dbl_h</tabstop>
+  <tabstop>id7_dbl_pd</tabstop>
+  <tabstop>id7_dbl_o</tabstop>
+  <tabstop>id8_dbl_bd</tabstop>
+  <tabstop>id8_dbl_wt</tabstop>
+  <tabstop>id8_dbl_id</tabstop>
+  <tabstop>id8_dbl_pcd</tabstop>
+  <tabstop>id8_dbl_sw</tabstop>
+  <tabstop>id8_int_nb</tabstop>
+  <tabstop>id9_dbl_vs</tabstop>
+  <tabstop>id9_int_hhn</tabstop>
+  <tabstop>id9_dbl_w</tabstop>
+  <tabstop>id9_int_vhn</tabstop>
+  <tabstop>id9_dbl_hs</tabstop>
+  <tabstop>id9_dbl_hd</tabstop>
+  <tabstop>id9_dbl_fr</tabstop>
+  <tabstop>id9_dbl_h</tabstop>
+  <tabstop>id9_combo_ch</tabstop>
+  <tabstop>id9_dbl_chs</tabstop>
+  <tabstop>id9_dbl_chw</tabstop>
+  <tabstop>id9_dbl_chh</tabstop>
+  <tabstop>id9_dbl_chfr</tabstop>
+  <tabstop>id9_dbl_cha</tabstop>
+  <tabstop>id9_dbl_chxo</tabstop>
+  <tabstop>id9_dbl_chyo</tabstop>
+  <tabstop>id10_dbl_w</tabstop>
+  <tabstop>id10_dbl_h</tabstop>
+  <tabstop>id10_dbl_w1</tabstop>
+  <tabstop>id10_dbl_h1</tabstop>
+  <tabstop>id11_dbl_w</tabstop>
+  <tabstop>id11_dbl_h</tabstop>
+  <tabstop>id11_dbl_c2</tabstop>
+  <tabstop>id11_dbl_a</tabstop>
+  <tabstop>id11_dbl_c1</tabstop>
+  <tabstop>id12_dbl_h</tabstop>
+  <tabstop>id12_dbl_w</tabstop>
+  <tabstop>id12_dbl_h1</tabstop>
+  <tabstop>id12_dbl_w1</tabstop>
+  <tabstop>id13_dbl_w</tabstop>
+  <tabstop>id13_dbl_c</tabstop>
+  <tabstop>id13_dbl_h</tabstop>
+  <tabstop>arc_max_starts</tabstop>
+  <tabstop>arc_fail_timeout</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -10843,8 +10928,8 @@ ANTI-DIVE</string>
    <slot>EditorReadWrite(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1858</x>
-     <y>187</y>
+     <x>1159</x>
+     <y>138</y>
     </hint>
     <hint type="destinationlabel">
      <x>1377</x>
@@ -10923,8 +11008,8 @@ ANTI-DIVE</string>
    <slot>toggleMachineBounds()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1790</x>
-     <y>124</y>
+     <x>1656</x>
+     <y>147</y>
     </hint>
     <hint type="destinationlabel">
      <x>1416</x>
@@ -10939,8 +11024,8 @@ ANTI-DIVE</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>870</x>
-     <y>419</y>
+     <x>949</x>
+     <y>478</y>
     </hint>
     <hint type="destinationlabel">
      <x>1725</x>
@@ -10955,8 +11040,8 @@ ANTI-DIVE</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>719</x>
-     <y>469</y>
+     <x>793</x>
+     <y>528</y>
     </hint>
     <hint type="destinationlabel">
      <x>1725</x>
@@ -10971,8 +11056,8 @@ ANTI-DIVE</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>870</x>
-     <y>469</y>
+     <x>949</x>
+     <y>528</y>
     </hint>
     <hint type="destinationlabel">
      <x>1725</x>
@@ -10991,8 +11076,8 @@ ANTI-DIVE</string>
      <y>156</y>
     </hint>
     <hint type="destinationlabel">
-     <x>870</x>
-     <y>419</y>
+     <x>949</x>
+     <y>478</y>
     </hint>
    </hints>
   </connection>
@@ -11007,8 +11092,8 @@ ANTI-DIVE</string>
      <y>264</y>
     </hint>
     <hint type="destinationlabel">
-     <x>719</x>
-     <y>469</y>
+     <x>793</x>
+     <y>528</y>
     </hint>
    </hints>
   </connection>
@@ -11023,8 +11108,8 @@ ANTI-DIVE</string>
      <y>318</y>
     </hint>
     <hint type="destinationlabel">
-     <x>870</x>
-     <y>469</y>
+     <x>949</x>
+     <y>528</y>
     </hint>
    </hints>
   </connection>
@@ -11039,8 +11124,8 @@ ANTI-DIVE</string>
      <y>210</y>
     </hint>
     <hint type="destinationlabel">
-     <x>778</x>
-     <y>337</y>
+     <x>793</x>
+     <y>424</y>
     </hint>
    </hints>
   </connection>
@@ -11055,8 +11140,8 @@ ANTI-DIVE</string>
      <y>372</y>
     </hint>
     <hint type="destinationlabel">
-     <x>925</x>
-     <y>337</y>
+     <x>949</x>
+     <y>424</y>
     </hint>
    </hints>
   </connection>
@@ -11071,8 +11156,8 @@ ANTI-DIVE</string>
      <y>426</y>
     </hint>
     <hint type="destinationlabel">
-     <x>778</x>
-     <y>382</y>
+     <x>949</x>
+     <y>197</y>
     </hint>
    </hints>
   </connection>
@@ -11110,11 +11195,11 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="jog_inc_values"/>
-  <buttongroup name="jog_type"/>
-  <buttongroup name="dry_run_torch_enable"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="machine_state"/>
+  <buttongroup name="jog_type"/>
+  <buttongroup name="jog_inc_values"/>
   <buttongroup name="grp_shape_btns"/>
+  <buttongroup name="dry_run_torch_enable"/>
+  <buttongroup name="machine_state"/>
  </buttongroups>
 </ui>

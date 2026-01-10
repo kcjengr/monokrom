@@ -24,6 +24,8 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
+__updated__ = "2026-01-10 23:22"
+
 
 # Setup logging
 from qtpyvcp.utilities import logger
@@ -400,7 +402,52 @@ class MainWindow(VCPMainWindow):
                 sw = self.id8_dbl_sw.value()
                 nb = self.id8_int_nb.value()
                 qs.exhaust_flange(id, wt, pcd, bd, sw, nb, kerf=kerf, leadin=leadin, conv=1, lines=lines)
-                
+            case 9:
+                w = self.id9_dbl_w.value()
+                h = self.id9_dbl_w.value()
+                hhn=self.id9_int_hhn.value()
+                hhs=self.id9_dbl_hs.value()
+                vhn=self.id9_int_vhn.value()
+                vhs=self.id9_dbl_vs.value()
+                hd=self.id9_dbl_hd.value()
+                fr = self.id9_dbl_fr.value()
+                ch_type = self.id9_combo_ch.currentText()
+                ch_dim_dict = None
+                if ch_type != "None":
+                    ch_dim_dict = {}
+                    ch_dim_dict["chs"] = self.id9_dbl_chs.value()
+                    ch_dim_dict["chw"] = self.id9_dbl_chw.value()
+                    ch_dim_dict["chh"] = self.id9_dbl_chh.value()
+                    ch_dim_dict["chfr"] = self.id9_dbl_chfr.value()
+                    ch_dim_dict["cha"] = self.id9_dbl_cha.value()
+                    ch_dim_dict["chxo"] = self.id9_dbl_chxo.value()
+                    ch_dim_dict["chyo"] = self.id9_dbl_chyo.value()
+                qs.n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf=kerf, ch_dim_dict=ch_dim_dict, leadin=leadin, conv=1, lines=lines)
+            case 10:
+                w = self.id10_dbl_w.value()
+                h = self.id10_dbl_h.value()
+                w1 = self.id10_dbl_w1.value()
+                h1 = self.id10_dbl_h1.value()
+                qs.L_gusset(w, h, w1, h1, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+            case 11:
+                w = self.id11_dbl_w.value()
+                h = self.id11_dbl_h.value()
+                c1 = self.id11_dbl_c1.value()
+                c2 = self.id11_dbl_c2.value()
+                a = self.id11_dbl_a.value()
+                qs.angle_gusset(w, h, c1, c2, a, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+            case 12:
+                w = self.id12_dbl_w.value()
+                h = self.id12_dbl_h.value()
+                w1 = self.id12_dbl_w1.value()
+                h1 = self.id12_dbl_h1.value()
+                qs.truss_support(self, w, h, w1, h1, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+            case 13:
+                w = self.id13_dbl_w.value()
+                h = self.id13_dbl_h.value()
+                c = self.id13_dbl_c.value()
+                qs.web_stiffener(w, h, c, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+             
         qs.postamble(lines)
         with NamedTemporaryFile(mode='w+' ,suffix=".ngc", delete=False) as temp_file:
             temp_name = temp_file.name
