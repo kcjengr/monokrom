@@ -2,6 +2,8 @@ from math import cos, sin, tan, atan, atan2, asin, degrees, radians, sqrt, hypot
 from qtpyvcp.utilities import logger
 LOG = logger.getLogger('qtpyvcp.' + __name__)
 
+__updated__ = "2026-01-10 23:20"
+
 def fix(v):
     return round(v, 5)
 
@@ -185,7 +187,9 @@ def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, separation=0, cutting_pair=False, 
     lines.append(f"G0 X{wh} Y{leadin+h1-r}\n")
     start_cut(lines)
     lines.append(f"G1 X{wh-r2}\n")
+    lines.append(f"M67 E3 Q60\n")
     lines.append(f"G3 I{r2}\n")
+    lines.append(f"M67 E3 Q100\n")
     LOG.debug(f"g3 for liftring lug: startX={wh-r2} I={r2}")
     stop_cut(lines)
     lines.append(f"(Leadin for outer shape)\n")
@@ -498,6 +502,7 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
         LOG.debug("+---------------------------------------------------+")
     
     def build_slot(x, y, sw, bd, lines):
+        # Kerf factored in using kh
         LOG.debug("============= build_slot ===========")
         kh = kerf/2
         if sw - bd == 0:
@@ -505,7 +510,9 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
             lines.append(f"G0 X{x} Y{y}\n")
             start_cut(lines)
             lines.append(f"G1 X{x+(bd/2)-kh}\n")
+            lines.append(f"M67 E3 Q60\n")
             lines.append(f"G3 I{-(bd/2)-kh}")
+            lines.append(f"M67 E3 Q100\n")
             stop_cut(lines)
             return
         
@@ -543,11 +550,13 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
         lines.append(f"(Got to start of slot line 1)\n")
         lines.append(f"G0 X{fix(x1)} Y{fix(y1)}\n")
         start_cut(lines)
-        lines.append(f"G1 X{fix(x1+c)} Y{fix(y1+s)}\n")
+        lines.append(f"G1 X{fix(x1+c)} Y{fix(y1+s)}\n")     # cut lead in
+        lines.append(f"M67 E3 Q60\n")
         lines.append(f"G1 X{fix(x2+c)} Y{fix(y2+s)}\n")
         lines.append(f"G3 X{fix(x2-c)} Y{fix(y2-s)} I{fix(-c)} J{fix(-s)}\n")
         lines.append(f"G1 X{x1-c} Y{y1-s}\n")
         lines.append(f"G3 X{fix(x1+c)} Y{fix(y1+s)} I{fix(c)} J{fix(s)}\n")
+        lines.append(f"M67 E3 Q100\n")
         stop_cut(lines)
         LOG.debug("+---------------------------------------------------+")
         
@@ -568,7 +577,9 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
     lines.append(f"G0 X{(id/2)-leadin} Y{0}\n")
     start_cut(lines)
     lines.append(f"G1 X{(id/2)-kh} Y{0}\n")
+    lines.append(f"M67 E3 Q60\n")
     lines.append(f"G3 I-{(id/2)-kh}\n")
+    lines.append(f"M67 E3 Q100\n")
     stop_cut(lines)
     
     if nb == 2:
@@ -680,4 +691,340 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
         build_corner(r1, r2, x_leftside, -y_leftside, 3, lines)
         build_corner(r1, r2, x_leftside, y_leftside, 3, lines)
         stop_cut(lines)
+
+def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, ch_dim_dict=None, leadin=4, conv=1, lines=[]):
+    """
+    w: overall width
+    h: overall height
+    hhn: horizontal number of holes
+    hhs: horizontal hole spacing
+    vhn: vertical number of holes
+    vhs: vertical hole spacing
+    hd: hole diameter
+    fr: corner fillet radius
+    ch_type: central hole type (None, Round, Rectangle)
+    kerf: kerf width
+    ch_dim_dict: dictonary of params relating to central hole dimensions
+    """
+    # TODO: Add in kerf adjustment using kh
+    def rotxo(x,y):
+        #rotxo = lambda x: ((x-xo)*cos(ar) -(y-yo)*sin(ar)) + xo
+        xv1 =  (x-xo)*cos(ar)
+        xv2 = (y-yo)*sin(ar)
+        xv = xv1 - xv2 + xo
+        return xv
+
+    def rotyo(x,y):
+        # rotyo = lambda y: ((x-xo)*sin(ar) + (y-yo)*cos(ar)) + yo
+        yv1 =  (x-xo)*sin(ar)
+        yv2 = (y-yo)*cos(ar)
+        yv = yv1 + yv2 + yo
+        return yv
+        
+        
+    kh = kerf/2
+    wh = w/2
+    hh = h/2
+    top_r_left_corner = (0- (w/2) + fr, (h/2) - fr)
+    bottom_r_left_corner = (0 - (w/2) + fr, 0 - (h/2) + fr)
+    top_r_right_corner = ((w/2)-fr, (h/2) - fr)
+    bottom_r_right_corner = ((w/2) - fr, 0 - (h/2) + fr)
+
+    # position the hole circles around 0,0 and the outer edges
+    halfw = (hhs * (hhn-1))/2
+    halfh = (vhs * (vhn-1))/2
+    # horizontal top row
+    x = -halfw 
+    y = halfh
+    LOG.debug("---- Horiztonal top row ----")
+    lines.append("(Horiztonal top row)")
+    for c in range(hhn):
+        # dxf.add_circle((x,y), hd/2)
+        LOG.debug(f"---- x/y={(x,y)}, kh={kh}, hd/2={hd/2}")
+        lines.append(f"G0 X{x}Y{y}\n")
+        start_cut(lines)
+        LOG.debug(f"---- G1 X{x - (fix(hd/2) - kh)}")
+        lines.append(f"G1 X{x - (fix(hd/2) - kh)}\n")
+        lines.append(f"M67 E3 Q60\n")
+        LOG.debug(f"---- G3 I{fix(hd/2) - kh}")
+        LOG.debug(f"---- effective center = {( (x - (fix(hd/2) - kh))+(fix(hd/2) - kh), y )}")
+        lines.append(f"G3 I{fix(hd/2) - kh}\n")
+        lines.append(f"M67 E3 Q100\n")
+        stop_cut(lines)
+        x += hhs
+        LOG.debug("-------------------------")
+    # horizontal bottom row
+    x = -halfw 
+    y = -halfh
+    LOG.debug("---- Horiztonal bottom row ----")
+    lines.append("(Horiztonal bottom row)")
+    for c in range(hhn):
+        # dxf.add_circle((x,y), hd/2)
+        LOG.debug(f"---- x/y={(x,y)}, kh={kh}, hd/2={hd/2}")
+        lines.append(f"G0 X{x}Y{y}\n")
+        start_cut(lines)
+        lines.append(f"G1 X{x - (fix(hd/2) - kh)}\n")
+        lines.append(f"M67 E3 Q60\n")
+        lines.append(f"G3 I{fix(hd/2) - kh}\n")
+        lines.append(f"M67 E3 Q100\n")
+        stop_cut(lines)
+        x += hhs
+        LOG.debug("-------------------------")
+    # virtical holes (left and right)
+    y = halfh - vhs
+    LOG.debug("---- Vertical holes between top/bottom rows - left and right ----")
+    lines.append("(Vertical holes between top/bottom rows - left and right)")
+    for c in range(1,vhn):
+        # dxf.add_circle((-halfw, y), hd/2)
+        LOG.debug(f"---- x/y={(-halfw,y)}, kh={kh}, hd/2={hd/2}")
+        lines.append(f"G0 X{-halfw}Y{y}\n")
+        start_cut(lines)
+        lines.append(f"G1 X{-halfw - (fix(hd/2) - kh)}\n")
+        lines.append(f"M67 E3 Q60\n")
+        lines.append(f"G3 I{fix(hd/2) - kh}\n")
+        lines.append(f"M67 E3 Q100\n")
+        stop_cut(lines)
+
+        # dxf.add_circle((halfw, y), hd/2)
+        LOG.debug(f"---- x/y={(halfw,y)}, kh={kh}, hd/2={hd/2}")
+        lines.append(f"G0 X{halfw}Y{y}\n")
+        start_cut(lines)
+        lines.append(f"G1 X{halfw - (fix(hd/2) - kh)}\n")
+        lines.append(f"M67 E3 Q60\n")
+        lines.append(f"G3 I{fix(hd/2) - kh}\n")
+        lines.append(f"M67 E3 Q100\n")
+        stop_cut(lines)
+        y = y - vhs
+        LOG.debug("-------------------------")
+
+    # center hole processing
+    LOG.debug(f"n_square: center hole tye = {ch_type}")
+    match ch_type:
+        case "Round":
+            # dxf.add_circle((ch_dim_dict["chxo"], ch_dim_dict["chyo"]), ch_dim_dict["chs"]/2)
+            cx = ch_dim_dict["chxo"]
+            cy = ch_dim_dict["chyo"]
+            cr = ch_dim_dict["chs"]/2
+            lines.append("(Internal Circle Hole)")
+            lines.append(f"G0 X{cx} Y{cy}\n")
+            start_cut(lines)
+            lines.append(f"G1 X{fix(cx - (cr - kh))}\n")
+            lines.append(f"M67 E3 Q60\n")
+            lines.append(f"G3 I{fix(cr) - kh}\n")
+            lines.append(f"M67 E3 Q100\n")
+            stop_cut(lines)
+        case "Rectangle":
+            chw = ch_dim_dict["chw"]/2      # center half width
+            chh = ch_dim_dict["chh"]/2      # center half height
+            cfr = ch_dim_dict["chfr"]       # center fillet radius
+            ar= radians(ch_dim_dict["cha"]) # angle of rotation in radians
+            a= ch_dim_dict["cha"]           # angle in degrees
+            xo = ch_dim_dict["chxo"]        # center x offset
+            yo = ch_dim_dict["chyo"]        # center y offset
+            # build side walls around 0,0 with offset.
+            # rotation around origin:
+            # rotation around origin:
+            # x = x*cos(a) - y*sin(a)
+            # y = x*sin(a) + y*cos(a)
+            lines.append("(Internal  Rectangle Hole)")
+            # as internal cut remmebe to cut CCW
+            if cfr == 0:
+                lines.append(f"G0 X{xo-(chw-leadin)} Y{yo}\n")
+                start_cut(lines)
+                lines.append(f"G1 X{rotxo(-chw)} Y{rotyo(yo)}\n")
+                stop_cut(lines)
+            else:
+                lines.append(f"G0 X{rotxo(xo-(chw-leadin),yo)} Y{rotyo(xo-(chw-leadin),yo)}\n")      # rapid to leadin start
+                # lines.append(f"G0 X{rotxo(xo,yo)} Y{rotyo(xo,yo)}\n")      # rapid to leadin start
+                start_cut(lines)
+                # cut to left side middle
+                lines.append(f"G1 X{rotxo(xo-(chw-kh),yo)} Y{rotyo(xo-(chw-kh),yo)}\n")
+                # cut to bottom/left fillet start
+                lines.append(f"G1 X{rotxo(xo-(chw-kh),yo-(chh-cfr))} Y{rotyo(xo-(chw-kh),yo-(chh-cfr))}\n")
+                # cut across bottom/left fillet
+                # lines.append(f"G1 X{rotxo(xo-(chw-cfr),yo-chh)} Y{rotyo(xo-(chw-cfr),yo-chh)}\n")
+                arc_start = ( rotxo(xo-(chw-kh),yo-(chh-cfr)), rotyo(xo-(chw-kh),yo-(chh-cfr)) )
+                arc_center = (rotxo(xo-(chw-cfr), yo-(chh-cfr)), rotyo(xo-(chw-cfr), yo-(chh-cfr)))
+                I_x = arc_center[0] - arc_start[0]
+                J_y = arc_center[1] - arc_start[1]
+                lines.append(f"G3 X{rotxo(xo-(chw-cfr),yo-(chh-kh))} Y{rotyo(xo-(chw-cfr),yo-(chh-kh))} I{I_x} J{J_y}\n")
+                # cut to bottom/right fillet start
+                lines.append(f"G1 X{rotxo(xo+(chw-cfr), yo-(chh-kh))} Y{rotyo(xo+(chw-cfr), yo-(chh-kh))}\n")
+                # cut across bottom/right fillet
+                # lines.append(f"G1 X{rotxo(xo+chw, yo-(chh-cfr))} Y{rotyo(xo+chw, yo-(chh-cfr))}\n")
+                arc_start = ( rotxo(xo+(chw-cfr), yo-(chh-kh)), rotyo(xo+(chw-cfr), yo-(chh-kh)) )
+                arc_center = (rotxo(xo+(chw-cfr), yo-(chh-cfr)), rotyo(xo+(chw-cfr), yo-(chh-cfr)))
+                I_x = arc_center[0] - arc_start[0]
+                J_y = arc_center[1] - arc_start[1]
+                lines.append(f"G3 X{rotxo(xo+(chw-kh), yo-(chh-cfr))} Y{rotyo(xo+(chw-kh), yo-(chh-cfr))} I{I_x} J{J_y}\n")
+                # cut to top/right fillet start
+                lines.append(f"G1 X{rotxo(xo+(chw-kh), yo+(chh-cfr))} Y{rotyo(xo+(chw-kh), yo+(chh-cfr))}\n")
+                # cut across top/right fillet
+                # lines.append(f"G1 X{rotxo(xo+(chw-cfr), yo+chh)} Y{rotyo(xo+(chw-cfr), yo+chh)}\n")
+                arc_start = ( rotxo(xo+(chw-kh), yo+(chh-cfr)), rotyo(xo+(chw-kh), yo+(chh-cfr)) )
+                arc_center = (rotxo(xo+(chw-cfr), yo+(chh-cfr)), rotyo(xo+(chw-cfr), yo+(chh-cfr)))
+                I_x = arc_center[0] - arc_start[0]
+                J_y = arc_center[1] - arc_start[1]
+                lines.append(f"G3 X{rotxo(xo+(chw-cfr), yo+(chh-kh))} Y{rotyo(xo+(chw-cfr), yo+(chh-kh))} I{I_x} J{J_y}\n")
+                # cut to top/left fillet start
+                lines.append(f"G1 X{rotxo(xo-(chw-cfr), yo+(chh-kh))} Y{rotyo(xo-(chw-cfr), yo+(chh-kh))}\n")
+                # cut across top/left fillet
+                # lines.append(f"G1 X{rotxo(xo-chw, yo+(chh-cfr))} Y{rotyo(xo-chw, yo+(chh-cfr))}\n")
+                arc_start = ( rotxo(xo-(chw-cfr), yo+(chh-kh)), rotyo(xo-(chw-cfr), yo+(chh-kh)) )
+                arc_center = (rotxo(xo-(chw-cfr), yo+(chh-cfr)), rotyo(xo-(chw-cfr), yo+(chh-cfr)))
+                I_x = arc_center[0] - arc_start[0]
+                J_y = arc_center[1] - arc_start[1]
+                lines.append(f"G3 X{rotxo(xo-(chw-kh), yo+(chh-cfr))} Y{rotyo(xo-(chw-kh), yo+(chh-cfr))} I{I_x} J{J_y}\n")
+                # cut to left mid point
+                lines.append(f"G1 X{rotxo(xo-(chw-kh),yo)} Y{rotyo(xo-(chw-kh),yo)}\n")
+                stop_cut(lines)
+
+    # outside lines
+    # shape is built with 0,0 in the centre.
+    lines.append("(External profile)")
+    lines.append(f"G0 X{-(leadin+wh)} Y{hh + kh}\n")
+    start_cut(lines)
+    if fr == 0:
+        lines.append(f"G1 X{wh + kh}\n")
+        lines.append(f"G1 Y{-(hh + kh)}\n")
+        lines.append(f"G1 X{-(wh + kh)}\n")
+        lines.append(f"G1 Y{hh + kh}\n")
+    else:
+        lines.append(f"G1 X{wh - fr}\n")
+        lines.append(f"G2 X{wh + kh} Y{hh - fr} J{-(fr+kh)}\n")
+        lines.append(f"G1 Y{-(hh - fr)}\n")
+        lines.append(f"G2 X{wh - fr} Y{-(hh + kh)} I{-(fr+kh)}\n")
+        lines.append(f"G1 X{-(wh - fr)}\n")
+        lines.append(f"G2 X{-(wh + kh)} Y{-(hh - fr)} J{fr+kh}\n")
+        lines.append(f"G1 Y{hh - fr}\n")
+        lines.append(f"G2 X{-(wh - fr)} Y{hh + kh} I{fr+kh}\n")
+    stop_cut(lines)
+
+def L_gusset(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
+    # dxf.add_polyline_2d([(0, h), (0,0,), (w,0), (w, h-h1), (w-w1,h-h1), (w-w1, h)], closed=True)
+    kh=kerf/2
+    lines.append("(L Gusset)")
+    lines.append(f"G0 X{-kh} Y{-leadin}\n")
+    start_cut(lines)
+    lines.append(f"G1 Y{h+kh}\n")
+    lines.append(f"G1 X{(w-w1)+kh}\n")
+    lines.append(f"G1 Y{(h-h1)+kh}\n")
+    lines.append(f"G1 X{w+kh}\n")
+    lines.append(f"G1 Y{-kh}\n")
+    lines.append(f"G1 X{-kh}\n")
+    stop_cut(lines)
+    
+def angle_gusset(w, h, c1, c2, a, kerf, leadin=4, conv=1, lines=[]):
+    # calc all the verts and add to list
+    # relevant verts in clock wise order for a 90 degree angle are"
+    # origin - for reference: 0,0
+    # G0: 0, (c1-leadin)
+    # v1: 0, c1
+    # v2: c1, h
+    # v3: c2, h
+    # v4: w, c1
+    # v5: w, 0
+    # v6: c1, w
+    # V7: 0, c1
+    kh=kerf/2
+    verts = []
+
+    x1 = (c1-kh) * fix(cos(radians(a)))
+    y1 = (c1-kh) * sin(radians(a))
+    
+    x2 = (h-kh) * fix(cos(radians(a)))
+    y2 = (h+kh) * sin(radians(a))
+   
+    verts.append((x1,y1))    # v1
+    verts.append((x2,y2))     # v2
+    
+    # calc v3. First the angle theta at 0,0 for triangle. origin, v5, v4
+    theta_h = hypot(h+kh,c2+kh)   # hypotenuse of the triangle
+    theta = degrees(atan(c2/h))
+    # angle to rotate from zero to get to v4 is a - theta
+    v4_angle = a - theta
+    x4 = theta_h * cos(radians(v4_angle))
+    y4 = theta_h * sin(radians(v4_angle))
+    
+    verts.append((x4,y4))   # v3
+    verts.append((w+kh,c2+kh))     # v4
+    verts.append((w+kh,-kh))     # v5
+    verts.append((c1-kh,-kh))     # v6
+
+    # run through the list and remove any verts that are duplicates
+    # to the one beside them
+    cleaned_verts = []
+    pv = None
+    for v in verts:
+        if v != pv:
+            cleaned_verts.append(v)
+            pv = v
+    
+    # dxf.add_polyline_2d(cleaned_verts,closed=True)
+    # cylce through the points and generate gcode movement lines
+    lines.append(f"G0 X{x1} Y{y1 - leadin}\n")
+    start_cut(lines)
+    for v in cleaned_verts:
+        lines.append(f"G1 X{v[0]} Y{v[1]}\n")
+    lines.append(f"G1 X{x1} Y{y1}\n")
+    stop_cut(lines)
+
+
+def truss_support(self, w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
+    kh=kerf/2
+    hw = w/2
+    hw1 = w1/2
+    verts = []
+    verts.append((hw1+kh,h+kh))
+    verts.append((hw+kh,h1))
+    verts.append((hw,h1))
+    verts.append((hw+kh,-kh))
+    verts.append((-hw-kh,-kh))
+    verts.append((-hw-kh,h1))
+    verts.append((-hw1-kh,h+kh))
+
+    # run through the list and remove any verts that are duplicates
+    # to the one beside them
+    cleaned_verts = []
+    pv = None
+    for v in verts:
+        if v != pv:
+            cleaned_verts.append(v)
+            pv = v
+
+    # dxf.add_polyline_2d(cleaned_verts,closed=True)
+    # cylce through the points and generate gcode movement lines
+    lines.append(f"G0 X{-hw1 - leadin} Y{h+kh}\n")
+    start_cut(lines)
+    for v in cleaned_verts:
+        lines.append(f"G1 X{v[0]} Y{v[1]}\n")
+    stop_cut(lines)
+
+def web_stiffener(w, h, c, kerf, leadin=4, conv=1, lines=[]):
+    kh=kerf/2
+    verts = []
+    verts.append((w+kh,h+kh))
+    verts.append((w+kh,-kh))
+    verts.append((c,-kh))
+    verts.append((-kh,c))
+    verts.append((-kh,h-c))
+    verts.append((c,h+kh))
+
+    # run through the list and remove any verts that are duplicates
+    # to the one beside them
+    cleaned_verts = []
+    pv = None
+    for v in verts:
+        if v != pv:
+            cleaned_verts.append(v)
+            pv = v
+
+    # dxf.add_polyline_2d(cleaned_verts,closed=True)
+    # cylce through the points and generate gcode movement lines
+    lines.append(f"G0 X{c - leadin} Y{h+kh}\n")
+    start_cut(lines)
+    for v in cleaned_verts:
+        lines.append(f"G1 X{v[0]} Y{v[1]}\n")
+    stop_cut(lines)
+
 
