@@ -2,7 +2,7 @@ from math import cos, sin, tan, atan, atan2, asin, degrees, radians, sqrt, hypot
 from qtpyvcp.utilities import logger
 LOG = logger.getLogger('qtpyvcp.' + __name__)
 
-__updated__ = "2026-01-10 23:20"
+__updated__ = "2026-01-11 19:56"
 
 def fix(v):
     return round(v, 5)
@@ -47,6 +47,51 @@ def magic_material(kw, ph, pd, ch, fr, mt, th=0, ca=0, cv=0, pe=0, gp=0, cm=0, j
     lines.append(';end material setup\n')
     return lines
 
+# mirror a point
+def refl(x1, y1, x2, y2, xp, yp):
+    """
+    Reflection line P1(x1,y1) to P2(x2,y2)
+    mirror xp, yp acrpss P1P2
+    """
+    x12 = x2 - x1
+    y12 = y2 - y1
+    xxp = xp - x1
+    yyp = yp - y1
+    dotp = x12 * xxp + y12 * yyp
+    dot12 = x12 * x12 + y12 * y12
+    coeff = dotp / dot12
+    lx = x1 + x12 * coeff
+    ly = y1 + y12 * coeff
+    return 2*lx-xp, 2*ly-yp
+
+def midpoint(p1, p2):
+    """
+    Calculates the midpoint between two points p1 and p2.
+    Points should be tuples or lists in the form (x, y).
+    """
+    x1, y1 = p1
+    x2, y2 = p2
+    mid_x = (x1 + x2) / 2
+    mid_y = (y1 + y2) / 2
+    return (mid_x, mid_y)
+
+def calculate_slope(x1, y1, x2, y2):
+    """
+    Calculates the slope of a line given two points (x1, y1) and (x2, y2).
+    Handles the case of a vertical line (division by zero error).
+    """
+    # Calculate the change in y and change in x
+    delta_y = y2 - y1
+    delta_x = x2 - x1
+    
+    # Check if the line is vertical (delta_x is zero)
+    if delta_x == 0:
+        LOG.warn("Slope is vertical so undefined")
+        return None
+    else:
+        return delta_y / delta_x
+
+
 def circle(diameter, kerf, leadin=4, conv=1, lines=[]):
     """
     Build the gcode for a circle
@@ -80,20 +125,21 @@ def rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
     """
     # build the rectangle with 0,0 as lower left corner
     # use a straight lead in
+    kh=kerf/2
     x=0
     y=0
-    lines.append(f"G0 X0 Y0\n")
+    lines.append(f"G0 X{-kh} Y{-leadin}\n")
     # start cut at leadin
     start_cut(lines)
-    lines.append(f"G1 Y{leadin+height+kerf}\n")
-    lines.append(f"G1 X{width+kerf}\n")
-    lines.append(f"G1 Y{leadin}\n")
-    lines.append(f"G1 X0\n")
+    lines.append(f"G1 Y{height+kh}\n")
+    lines.append(f"G1 X{width+kh}\n")
+    lines.append(f"G1 Y{-kh}\n")
+    lines.append(f"G1 X{-kh}\n")
     stop_cut(lines)
     return lines
 
 def donut(od, id, kerf, leadin=4, conv=1, lines=[]):
-    x = (id+kerf)/2
+    x = (id-kerf)/2
     y = 0
     preamble(lines)
     lines.append(f"G0 X{x - leadin} Y0\n")
@@ -112,15 +158,16 @@ def donut(od, id, kerf, leadin=4, conv=1, lines=[]):
 def convex_rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
     # build the rectangle with 0,0 as lower left corner
     # use a straight lead in
+    kh=kerf/2
     x=0
     y=0
-    lines.append(f"G0 X0 Y0\n")
+    lines.append(f"G0 X{-kh} Y{-leadin}\n")
     # start cut at leadin
     start_cut(lines)
-    lines.append(f"G1 Y{leadin+height+kerf}\n")
-    lines.append(f"G2 X{width+kerf} Y{leadin+height+kerf} I{(width+kerf)/2}\n")
-    lines.append(f"G1 Y{leadin}\n")
-    lines.append(f"G1 X0\n")
+    lines.append(f"G1 Y{height+kh}\n")
+    lines.append(f"G2 X{width+kh} Y{height+kh} I{(width+kerf)/2}\n")
+    lines.append(f"G1 Y{-kh}\n")
+    lines.append(f"G1 X{-kh}\n")
     stop_cut(lines)
     return lines
 
@@ -914,7 +961,7 @@ def L_gusset(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
     lines.append(f"G1 X{-kh}\n")
     stop_cut(lines)
     
-def angle_gusset(w, h, c1, c2, a, kerf, leadin=4, conv=1, lines=[]):
+def angle_gusset(w, h, c1, c2, a, kerf, cutting_pair=False, xoffset=0, yoffset=0, leadin=4, conv=1, lines=[]):
     # calc all the verts and add to list
     # relevant verts in clock wise order for a 90 degree angle are"
     # origin - for reference: 0,0
@@ -968,6 +1015,35 @@ def angle_gusset(w, h, c1, c2, a, kerf, leadin=4, conv=1, lines=[]):
         lines.append(f"G1 X{v[0]} Y{v[1]}\n")
     lines.append(f"G1 X{x1} Y{y1}\n")
     stop_cut(lines)
+    
+    if cutting_pair:
+        # define reflection line P1P2 as P1(x1,y1) P2(x2y2)
+        # define second reflection line perendiculae to P1P2 as Q1Q2
+        # to get the required reflection we do a double step.
+        px1, py1 = cleaned_verts[2]
+        px2, py2 = cleaned_verts[3]
+        # factor in offsets
+        px1 += xoffset
+        py1 += yoffset
+        px2 += xoffset
+        py2 += yoffset
+        qx1, qy1 = midpoint((px1,py1), (px2,py2))
+        inv_slop = -1 / calculate_slope(px1, py1, px2, py2)
+        qx2 = qx1 + 1
+        qy2 = qy1 + inv_slop 
+        p = refl(px1, py1, px2, py2, x1, y1 - leadin)
+        p = refl(qx1, qy1, qx2, qy2, p[0], p[1])
+        lines.append(f"G0 X{p[0]} Y{p[1]}\n")
+        start_cut(lines)
+        for v in cleaned_verts:
+            p = refl(px1, py1, px2, py2, v[0], v[1])
+            p = refl(qx1, qy1, qx2, qy2, p[0], p[1])
+            lines.append(f"G1 X{p[0]} Y{p[1]}\n")
+        p = refl(px1, py1, px2, py2, x1, y1)
+        p = refl(qx1, qy1, qx2, qy2, p[0], p[1])
+        lines.append(f"G1 X{p[0]} Y{p[1]}\n")
+        stop_cut(lines)
+        
 
 
 def truss_support(self, w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
