@@ -24,7 +24,7 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-01-10 23:22"
+__updated__ = "2026-01-11 19:52"
 
 
 # Setup logging
@@ -435,7 +435,10 @@ class MainWindow(VCPMainWindow):
                 c1 = self.id11_dbl_c1.value()
                 c2 = self.id11_dbl_c2.value()
                 a = self.id11_dbl_a.value()
-                qs.angle_gusset(w, h, c1, c2, a, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+                pair = self.id11_chk_pair.isChecked()
+                xoffset = self.id11_dbl_xoffset.value()
+                yoffset = self.id11_dbl_yoffset.value()
+                qs.angle_gusset(w, h, c1, c2, a, kerf=kerf, cutting_pair=pair, xoffset=xoffset, yoffset=yoffset, leadin=leadin, conv=1, lines=lines)
             case 12:
                 w = self.id12_dbl_w.value()
                 h = self.id12_dbl_h.value()
