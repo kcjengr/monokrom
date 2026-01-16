@@ -25,7 +25,7 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-01-11 19:52"
+__updated__ = "2026-01-15 21:35"
 
 
 # Setup logging
@@ -954,12 +954,21 @@ class MainWindow(VCPMainWindow):
         # generated as part of the filter program mechanic.
         # Once save trigger a linuxcnc level program reload to force
         # filter program reprocessing.
-        real_file = self.gcode_recentfile.currentData()
+        #real_file = self.gcode_recentfile.currentData()
+        real_file = self.latest_real_file
         if real_file == None:
             return
         
-        self.gcode_editor.saveFile(real_file)
-        loadProgram(real_file)
+        # test and slice the name to save as a parsed version of it
+        name_parts = real_file.rsplit(".", 1)
+        if name_parts[0].endswith("_parsed"):
+            ppart = "."
+        else:
+            ppart = "_parsed."
+        new_name = name_parts[0] + ppart + name_parts[1]
+        
+        self.gcode_editor.saveFile(new_name)
+        loadProgram(new_name)
     
     # Reload the current file.  That means the most recently loaded file
     def reload_file(self):    
