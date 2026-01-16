@@ -1,0 +1,168 @@
+(--------------------------------------------------)
+(            Plasma G-Code Preprocessor            )
+(                 00.30                            )
+(--------------------------------------------------)
+;inputs
+#<ucs_x_offset> = [#5221 + [[#5220-1] * 20]]
+#<ucs_y_offset> = [#5222 + [[#5220-1] * 20]]
+#<ucs_r_offset> = [#5230 + [[#5220-1] * 20]]
+#<array_x_offset> = 0.0
+#<array_y_offset> = 0.0
+#<array_columns> = 1
+#<array_rows> = 1
+#<origin_x_offset> = 0.0
+#<origin_y_offset> = 0.0
+#<array_angle> = 0.0
+#<blk_scale> = 1.0
+#<shape_angle> = 0.0
+#<shape_mirror> = 1
+#<shape_flip> = 1
+;calculations
+#<this_col> = 0
+#<this_row> = 0
+#<array_rot> = [#<array_angle> + #<ucs_r_offset>]
+#<blk_x_offset> = [#<origin_x_offset> + [#<ucs_x_offset> * 1]]
+#<blk_y_offset> = [#<origin_y_offset> + [#<ucs_y_offset> * 1]]
+#<x_sin> = [[#<array_x_offset> * #<blk_scale>] * SIN[#<array_rot>]]
+#<x_cos> = [[#<array_x_offset> * #<blk_scale>] * COS[#<array_rot>]]
+#<y_sin> = [[#<array_y_offset> * #<blk_scale>] * SIN[#<array_rot>]]
+#<y_cos> = [[#<array_y_offset> * #<blk_scale>] * COS[#<array_rot>]]
+
+;main loop
+o<loop> while [#<this_row> LT #<array_rows>]
+#<shape_x_start> = [[#<this_col> * #<x_cos>] - [#<this_row> * #<y_sin>] + #<blk_x_offset>]
+#<shape_y_start> = [[#<this_row> * #<y_cos>] + [#<this_col> * #<x_sin>] + #<blk_y_offset>]
+#<blk_angle> = [#<shape_angle> + #<array_rot>]
+G10 L2 P0 X#<shape_x_start> Y#<shape_y_start> R#<blk_angle>
+(Filename: holesize test.ngc)
+(Post processor: SpaceShipPlasma-rev6-plasmac.scpost)
+(Date: 6/10/2021)
+G21 (Units: Metric)
+G90 G40
+F69.0
+M52 P1 (Enable Adaptive Feed for arcs)
+G64 P0.025 Q0.025 (tracking tolerances set to 0.254)
+(Part: holesize test)
+(Operation: Outside Offset, 0, T11: A120 Mild Steel 60 amp, 2mm [129V,5.9 bar])
+(Preset Volts: 49) ( Suggested Tip Size: 45 )
+( Min Cut Length for DTHC ON : 1 units )
+(Preset Volts set to 49 Volts)
+(o=0,kw=1.5, ph=3.5, pd=0, ch=1.5, fr=1700, th=0, cv=99, pe=0, jh=0, jd=0, mt=6, ca=60)
+T99999 M6
+S60 $0 (Set Spindle Speed for Torch at Amps)
+G10 L20 P0 Z0
+( Settings Check)
+( ###########################)
+( Paused:  Check the Plasmac Plasma Controller Settings )
+( Hit RUN to continue)
+( ###########################)
+G0
+X[105.208*#<blk_scale>*#<shape_mirror>] Y[38.044*#<blk_scale>*#<shape_flip>]
+F1700.0
+M3 $0 S1
+G10 L20 P0 Z0
+G1
+G3 I[2.758*#<blk_scale>*#<shape_mirror>] J[2.758*#<blk_scale>*#<shape_flip>]
+G1 X[105.209*#<blk_scale>*#<shape_mirror>] Y[38.045*#<blk_scale>*#<shape_flip>] (Add tiny extension)
+M5 $-1
+G0 X[105.208*#<blk_scale>*#<shape_mirror>] Y[38.044*#<blk_scale>*#<shape_flip>]
+X[100.523*#<blk_scale>*#<shape_mirror>] Y[12.421*#<blk_scale>*#<shape_flip>]
+F1700.0
+M3 $0 S1
+G1
+G3 I[-9.829000*#<blk_scale>*#<shape_mirror>] J[9.829*#<blk_scale>*#<shape_flip>]
+G1 X[100.524*#<blk_scale>*#<shape_mirror>] Y[12.422*#<blk_scale>*#<shape_flip>] (Add tiny extension)
+M5 $-1
+G0 X[100.523*#<blk_scale>*#<shape_mirror>] Y[12.421*#<blk_scale>*#<shape_flip>]
+X[127.920*#<blk_scale>*#<shape_mirror>] Y[21.287*#<blk_scale>*#<shape_flip>]
+F1700.0
+M3 $0 S1
+G1
+G3 I[-3.465000*#<blk_scale>*#<shape_mirror>] J[3.465*#<blk_scale>*#<shape_flip>]
+G1 X[127.921*#<blk_scale>*#<shape_mirror>] Y[21.288*#<blk_scale>*#<shape_flip>] (Add tiny extension)
+M5 $-1
+G0 X[127.920*#<blk_scale>*#<shape_mirror>] Y[21.287*#<blk_scale>*#<shape_flip>]
+X[169.595*#<blk_scale>*#<shape_mirror>] Y[12.291*#<blk_scale>*#<shape_flip>]
+F1700.0
+M3 $0 S1
+G1
+G3 I[-13.364000*#<blk_scale>*#<shape_mirror>] J[13.364*#<blk_scale>*#<shape_flip>]
+G1 X[169.596*#<blk_scale>*#<shape_mirror>] Y[12.292*#<blk_scale>*#<shape_flip>] (Add tiny extension)
+M5 $-1
+G0 X[169.595*#<blk_scale>*#<shape_mirror>] Y[12.291*#<blk_scale>*#<shape_flip>]
+X[220.615*#<blk_scale>*#<shape_mirror>] Y[17.602*#<blk_scale>*#<shape_flip>]
+F1700.0
+M3 $0 S1
+G1
+G3 I[-16.900000*#<blk_scale>*#<shape_mirror>] J[16.900*#<blk_scale>*#<shape_flip>]
+G1 X[220.616*#<blk_scale>*#<shape_mirror>] Y[17.603*#<blk_scale>*#<shape_flip>] (Add tiny extension)
+M5 $-1
+G0 X[220.615*#<blk_scale>*#<shape_mirror>] Y[17.602*#<blk_scale>*#<shape_flip>]
+X[185.145*#<blk_scale>*#<shape_mirror>] Y[66.830*#<blk_scale>*#<shape_flip>]
+F1700.0
+M3 $0 S1
+G1
+G3 I[-0.636000*#<blk_scale>*#<shape_mirror>] J[-0.636000*#<blk_scale>*#<shape_flip>]
+G1 X[185.146*#<blk_scale>*#<shape_mirror>] Y[66.831*#<blk_scale>*#<shape_flip>] (Add tiny extension)
+M5 $-1
+G0 X[185.145*#<blk_scale>*#<shape_mirror>] Y[66.830*#<blk_scale>*#<shape_flip>]
+X[163.871*#<blk_scale>*#<shape_mirror>] Y[56.789*#<blk_scale>*#<shape_flip>]
+F1700.0
+M3 $0 S1
+G1
+G3 I[1.344*#<blk_scale>*#<shape_mirror>] J[-1.344000*#<blk_scale>*#<shape_flip>]
+G1 X[163.872*#<blk_scale>*#<shape_mirror>] Y[56.790*#<blk_scale>*#<shape_flip>] (Add tiny extension)
+M5 $-1
+G0 X[163.871*#<blk_scale>*#<shape_mirror>] Y[56.789*#<blk_scale>*#<shape_flip>]
+X[148.290*#<blk_scale>*#<shape_mirror>] Y[58.758*#<blk_scale>*#<shape_flip>]
+F1700.0
+M3 $0 S1
+G1
+G3 I[2.051*#<blk_scale>*#<shape_mirror>] J[2.051*#<blk_scale>*#<shape_flip>]
+G1 X[148.291*#<blk_scale>*#<shape_mirror>] Y[58.759*#<blk_scale>*#<shape_flip>] (Add tiny extension)
+M5 $-1
+G0 X[148.290*#<blk_scale>*#<shape_mirror>] Y[58.758*#<blk_scale>*#<shape_flip>]
+X[113.138*#<blk_scale>*#<shape_mirror>] Y[56.717*#<blk_scale>*#<shape_flip>]
+F1700.0
+M3 $0 S1
+G1
+G3 I[4.879*#<blk_scale>*#<shape_mirror>] J[4.879*#<blk_scale>*#<shape_flip>]
+G1 X[113.139*#<blk_scale>*#<shape_mirror>] Y[56.718*#<blk_scale>*#<shape_flip>] (Add tiny extension)
+M5 $-1
+G0 X[113.138*#<blk_scale>*#<shape_mirror>] Y[56.717*#<blk_scale>*#<shape_flip>]
+X[84.298*#<blk_scale>*#<shape_mirror>] Y[58.555*#<blk_scale>*#<shape_flip>]
+F1700.0
+M3 $0 S1
+G1
+G3 I[6.293*#<blk_scale>*#<shape_mirror>] J[-6.293000*#<blk_scale>*#<shape_flip>]
+G1 X[84.299*#<blk_scale>*#<shape_mirror>] Y[58.556*#<blk_scale>*#<shape_flip>] (Add tiny extension)
+M5 $-1
+G0 X[84.298*#<blk_scale>*#<shape_mirror>] Y[58.555*#<blk_scale>*#<shape_flip>]
+X[16.928*#<blk_scale>*#<shape_mirror>] Y[58.989*#<blk_scale>*#<shape_flip>]
+F1700.0
+M3 $0 S1
+G1
+G3 I[20.435*#<blk_scale>*#<shape_mirror>] J[-20.435000*#<blk_scale>*#<shape_flip>]
+G1 X[16.929*#<blk_scale>*#<shape_mirror>] Y[58.990*#<blk_scale>*#<shape_flip>] (Add tiny extension)
+M5 $-1
+G0 X[16.928*#<blk_scale>*#<shape_mirror>] Y[58.989*#<blk_scale>*#<shape_flip>]
+X[-1.100000*#<blk_scale>*#<shape_mirror>] Y[77.060*#<blk_scale>*#<shape_flip>]
+F1700.0
+M3 $1 S1
+G1
+G2 X[0.000000*#<blk_scale>*#<shape_mirror>] Y[78.160*#<blk_scale>*#<shape_flip>] I[1.100*#<blk_scale>*#<shape_mirror>] J[0.000000*#<blk_scale>*#<shape_flip>]
+G1 X[235.000*#<blk_scale>*#<shape_mirror>]
+G2 X[236.100*#<blk_scale>*#<shape_mirror>] Y[77.060*#<blk_scale>*#<shape_flip>] I[0.000000*#<blk_scale>*#<shape_mirror>] J[-1.100000*#<blk_scale>*#<shape_flip>]
+G1 Y[0.000000*#<blk_scale>*#<shape_flip>]
+G2 X[235.000*#<blk_scale>*#<shape_mirror>] Y[-1.100000*#<blk_scale>*#<shape_flip>] I[-1.100000*#<blk_scale>*#<shape_mirror>] J[0.000000*#<blk_scale>*#<shape_flip>]
+G1 X[0.000000*#<blk_scale>*#<shape_mirror>]
+G2 X[-1.100000*#<blk_scale>*#<shape_mirror>] Y[0.000000*#<blk_scale>*#<shape_flip>] I[0.000000*#<blk_scale>*#<shape_mirror>] J[1.100*#<blk_scale>*#<shape_flip>]
+G1 Y[77.060*#<blk_scale>*#<shape_flip>]
+X[-1.099000*#<blk_scale>*#<shape_mirror>] Y[77.061*#<blk_scale>*#<shape_flip>]
+M5 $-1
+G0 X[-1.100000*#<blk_scale>*#<shape_mirror>] Y[77.060*#<blk_scale>*#<shape_flip>]
+(No Parking values detected.  Moving back to zero, zero)
+X[0.000000*#<blk_scale>*#<shape_mirror>] Y[0.000000*#<blk_scale>*#<shape_flip>]
+M5 $-1
+M30
+%
