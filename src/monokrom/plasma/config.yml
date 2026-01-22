@@ -270,6 +270,10 @@ settings:
         default_value: 3.5
         persistent: true
     
+    plasma_hole_kerf:
+        default_value: 0.0
+        persistent: true
+    
     laser_offset_x:
         default_value: 0.0
         persistent: true 
