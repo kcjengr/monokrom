@@ -328,6 +328,68 @@ class MainWindow(VCPMainWindow):
         self.detail_index_num = int(btn_name[4:])
         self.details_pages.setCurrentIndex(self.detail_index_num)
 
+    def clicked_qs_refresh(self):
+        LOG.debug("clicked_qs_refresh")
+        tst = self.detail_index_num
+        lines = []
+        kerf = self.param_kirfwidth.value()
+        leadin = 4
+        qs.preamble(lines, metric=INFO.getIsMachineMetric())
+        qs.magic_material(kw=kerf,
+                       ph=self.param_pierceheight.value(),
+                       pd=self.param_piercedelay.value(),
+                       ch=self.param_cutheight.value(),
+                       fr=self.param_cutfeedrate.value(),
+                       mt=1,
+                       th=0,
+                       ca=self.param_cutamps.value(),
+                       cv=self.param_cutvolts.value(),
+                       pe=self.param_pauseatend.value(),
+                       gp=0, cm=0, jh=0, jd=0,
+                       lines=lines)
+        match tst:
+            case 0:
+                diameter = self.id0_dbl_diam.value()
+                qs.circle(diameter=diameter, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+            case 1:
+                width = self.id1_dbl_width.value()
+                height = self.id1_dbl_height.value()
+                qs.rectangle(width, height, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+            case 2: 
+                id = self.id2_dbl_inner_diam.value()
+                od = self.id2_dbl_outer_diam.value()
+                qs.donut(od=od, id=id, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+            case 3:
+                width = self.id3_dbl_width.value()
+                height = self.id3_dbl_height.value()
+                qs.convex_rectangle(width, height, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+            case 4:
+                w1 = self.id4_dbl_w1.value()
+                d1 = self.id4_dbl_d1.value()
+                h1 = self.id4_dbl_h1.value()
+                h2 = self.id4_dbl_h2.value()
+                d2 = self.id4_dbl_d2.value()
+                rb = self.id4_dbl_rb.value()
+                pair = self.id4_chk_pair.isChecked()
+                separation = self.id4_dbl_separation.value()
+                qs.lifting_lug(w1, d1, h1, h2, d2, rb, kerf=kerf, separation=separation, cutting_pair=pair, parent=self, leadin=leadin, conv=1, lines=lines)
+            case 5:
+                w1 = self.id5_dbl_w1.value()
+                w2 = self.id5_dbl_w2.value()
+                h = self.id5_dbl_h.value()
+                qs.u_lug(w1, w2, h, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+
+        qs.postamble(lines)
+        with NamedTemporaryFile(mode='w+' ,suffix=".ngc", delete=False) as temp_file:
+            temp_name = temp_file.name
+            temp_file.writelines(lines)
+        # make sure hole processing it off as lead ins seem to cause it issus:
+        self.chkb_hole_detect_enable.setCheckState(False)
+        self.set_openfile(temp_name)
+        loadProgram(temp_name, add_to_recents=False)
+        self.vtkbackplot.setViewProgram('Z')
+        self.vtk_qs.setViewProgram('Z')
+
     def zero_wcs_xy(self):
         #_current_pos = float(POS.Absolute(0))
         #_current_pos = float(POS.Absolute(1))
