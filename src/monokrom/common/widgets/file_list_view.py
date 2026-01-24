@@ -6,7 +6,7 @@ from PySide6.QtCore import Slot, Property, Signal, QFile, QFileInfo, QDir, QIODe
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QTableView, QFileSystemModel, QFileIconProvider
 
-from qtpy.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication
 
 from qtpyvcp.utilities.info import Info
 from qtpyvcp.utilities.logger import getLogger
