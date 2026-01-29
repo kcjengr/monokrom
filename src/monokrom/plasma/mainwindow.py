@@ -25,7 +25,7 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-01-22 15:51"
+__updated__ = "2026-01-29 20:51"
 
 
 # Setup logging
@@ -339,8 +339,15 @@ class MainWindow(VCPMainWindow):
     def on_exitAppBtn_clicked(self):
       self.app.quit()
 
+    def reset_vtk_btns(self):
+        self.vtk_prog_extent.setChecked(False)
+        self.vtk_mach_extent.setChecked(False)
+        self.vtkbackplot.showProgramBounds(False)
+        self.vtkbackplot.showMachineBounds(False)
+
     def set_openfile(self, file_str):
         self.latest_real_file = file_str
+        self.reset_vtk_btns()
         LOG.debug(f"set_openfile:  file_str = {file_str}")
         
     def clicked_shape_btn(self, btn):
@@ -480,6 +487,7 @@ class MainWindow(VCPMainWindow):
         loadProgram(temp_name, add_to_recents=False)
         self.vtkbackplot.setViewProgram('Z')
         self.vtk_qs.setViewProgram('Z')
+        self.reset_vtk_btns()
 
     def zero_wcs_xy(self):
         #_current_pos = float(POS.Absolute(0))
@@ -618,7 +626,7 @@ class MainWindow(VCPMainWindow):
         cnchal.set_p('plasmac.probe-test','0')
     
     def probe_timeout(self):
-        print(f'probe time out')
+        LOG.debug(f'probe time out')
 
     def probe_test(self, state):
         LOG.debug(f'probe test state: {state}')
@@ -842,6 +850,7 @@ class MainWindow(VCPMainWindow):
         # should have a latest file from standard directory
         if newist is not None:
             self.latest_real_file=newist[0]
+            self.reset_vtk_btns()
             loadProgram(newist[0])
 
     def single_cut_limits(self):
@@ -969,6 +978,7 @@ class MainWindow(VCPMainWindow):
         
         self.gcode_editor.saveFile(new_name)
         loadProgram(new_name)
+        self.reset_vtk_btns()
     
     # Reload the current file.  That means the most recently loaded file
     def reload_file(self):    
@@ -977,6 +987,7 @@ class MainWindow(VCPMainWindow):
         if real_file == None or real_file == "":
             return
         loadProgram(real_file)
+        self.reset_vtk_btns()
 
     #
     # Frame prog on work piece
