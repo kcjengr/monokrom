@@ -2,7 +2,7 @@ from math import cos, sin, tan, atan, atan2, asin, degrees, radians, sqrt, hypot
 from qtpyvcp.utilities import logger
 LOG = logger.getLogger('qtpyvcp.' + __name__)
 
-__updated__ = "2026-01-11 19:56"
+__updated__ = "2026-01-31 15:7"
 
 def fix(v):
     return round(v, 5)
@@ -138,8 +138,12 @@ def rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
     stop_cut(lines)
     return lines
 
-def donut(od, id, kerf, leadin=4, conv=1, lines=[]):
-    x = (id-kerf)/2
+def donut(od, id, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=[]):
+    if internal_kerf == 0: internal_kerf = kerf
+    if smarthole:
+        x = id/2
+    else:
+        x = (id-internal_kerf)/2
     y = 0
     preamble(lines)
     lines.append(f"G0 X{x - leadin} Y0\n")
@@ -171,7 +175,7 @@ def convex_rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
     stop_cut(lines)
     return lines
 
-def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, separation=0, cutting_pair=False, parent=None, leadin=4, conv=1, lines=[]):
+def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, internal_kerf, smarthole, separation=0, cutting_pair=False, parent=None, leadin=4, conv=1, lines=[]):
     # calculate the key points
     # given two triangles to solve for
     # Triangle 1:
@@ -209,9 +213,12 @@ def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, separation=0, cutting_pair=False, 
     # x and y are the start point of the vector (side of the lug) and d is
     # the distance or magnitude of the vector with the angle (direction)
     # referenced from the flat base plan.
+    if internal_kerf == 0: internal_kerf = kerf
+    if smarthole: internal_kerf = 0
     kh = kerf/2                 # half kerf width
+    ikh = internal_kerf/2       # half internal kerf width
     r = (d1+kerf)/2             # radius of d1
-    r2 = (d2+kerf)/2            # radius of d2
+    r2 = (d2+internal_kerf)/2   # radius of d2
     wh = (w1+kerf)/2            # middle of w1
     xv = (h1-h2)-r-kh           # vertical line from centre d1 (and d2) down to base of triangle 1
     h = sqrt(xv**2 + wh**2)     # hypotenuse of triangle 1
@@ -336,27 +343,30 @@ def u_lug(w1, w2, h, kerf, leadin=4, conv=1, lines=[]):
     stop_cut(lines)
     return lines
     
-def pipe_flange(od, pcd, holes, hd, hole_type, id, kerf, leadin=4, conv=1, lines=[]):
+def pipe_flange(od, pcd, holes, hd, hole_type, id, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=[]):
+    if internal_kerf == 0: internal_kerf = kerf
     kh = kerf/2
+    ikh = internal_kerf/2
     lines.append(f"\n")
     
     # make central hole
     # note: Shape is built around 0,0 as center
     match hole_type:
         case "Round":
-            lines.append(f"G0 X0 Y{(id/2)-kh}\n")
+            lines.append(f"G0 X0 Y{(id/2)-leadin}\n")
             start_cut(lines)
-            lines.append(f"G3 J-{(id/2)-kh}\n")
+            lines.append(f"G1 X0 Y{(id/2)-ikh}\n")
+            lines.append(f"G3 J-{(id/2)-ikh}\n")
         case "Square":
             sq_start_x = -id/2
             sq_start_y = id/2
             lines.append(f"G0 X{sq_start_x+leadin} Y0\n")
             start_cut(lines)
-            lines.append(f"G1 X{sq_start_x+kh}\n")
-            lines.append(f"G1 Y{sq_start_y-kh}\n")
-            lines.append(f"G1 X{sq_start_x+id-kerf}\n")
-            lines.append(f"G1 Y{sq_start_y-id-kerf}\n")
-            lines.append(f"G1 X{sq_start_x+kh}\n")
+            lines.append(f"G1 X{sq_start_x+ikh}\n")
+            lines.append(f"G1 Y{sq_start_y-ikh}\n")
+            lines.append(f"G1 X{sq_start_x+id-internal_kerf}\n")
+            lines.append(f"G1 Y{sq_start_y-id-internal_kerf}\n")
+            lines.append(f"G1 X{sq_start_x+ikh}\n")
             lines.append(f"G1 Y0\n")
     stop_cut(lines)
     # calc pcd for holes
@@ -370,9 +380,10 @@ def pipe_flange(od, pcd, holes, hd, hole_type, id, kerf, leadin=4, conv=1, lines
         x1 = d * cos(radians(current_angle))
         y1 = d * sin(radians(current_angle))
         lines.append(f"\n")
-        lines.append(f"G0 X{x1-(hd/2)+kh} Y{y1}\n")
+        lines.append(f"G0 X{x1-(hd/2)+leadin} Y{y1}\n")
         start_cut(lines)
-        lines.append(f"G3 I{(hd/2)-kh}\n")
+        lines.append(f"G1 X{x1-(hd/2)+ikh} Y{y1}\n")
+        lines.append(f"G3 I{(hd/2)-ikh}\n")
         stop_cut(lines)
         current_angle += angle_gap
         if current_angle > 360:
@@ -415,7 +426,7 @@ def pipe_saddle(w, h, pd, o, kerf, leadin=4, conv=1, lines=[]):
     lines.append(f"G3 X{fix(x1-kh)} I{fix(cx-((2*cx)-x1+kh))} J{fix(cy-(h+kh))}\n")
     stop_cut(lines)
 
-def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
+def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=[]):
     def build_corner(rr1, rr2, xx2, yy2, corners, lines):
         """
         Build the mounting hole corners and slopped sides.
@@ -437,8 +448,8 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
             already done.
         """
         LOG.debug("=========  build_corner =========")
-        
         kh = kerf/2
+        ikh = internal_kerf/2
         # adjust radius for kerf offset
         rr1 += kh
         rr2 += kh
@@ -549,16 +560,17 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
         LOG.debug("+---------------------------------------------------+")
     
     def build_slot(x, y, sw, bd, lines):
-        # Kerf factored in using kh
+        # Kerf factored in using ikh
         LOG.debug("============= build_slot ===========")
         kh = kerf/2
+        ikh = internal_kerf/2
         if sw - bd == 0:
             #writer.add_circle((x, y), bd/2)
             lines.append(f"G0 X{x} Y{y}\n")
             start_cut(lines)
-            lines.append(f"G1 X{x+(bd/2)-kh}\n")
+            lines.append(f"G1 X{x+(bd/2)-ikh}\n")
             lines.append(f"M67 E3 Q60\n")
-            lines.append(f"G3 I{-(bd/2)-kh}")
+            lines.append(f"G3 I{-(bd/2)-ikh}")
             lines.append(f"M67 E3 Q100\n")
             stop_cut(lines)
             return
@@ -582,8 +594,8 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
         # Given r1 is essentially the hypotenuse then:
         # cosine gives the Adjacent == x axis
         # sine gives the Opposite == y axis
-        s = sin(a + (pi / 2)) * (r1-kh)
-        c = cos(a + (pi / 2)) * (r1-kh)
+        s = sin(a + (pi / 2)) * (r1-ikh)
+        c = cos(a + (pi / 2)) * (r1-ikh)
         LOG.debug(f"build slot: recalced s={s}, c={c}")
         LOG.debug(f"build slot: mirror line x1/y1={(x1,y1)}, x2/y2={(x2,y2)}")
         # writer.add_polyline_2d([(x1+c,y1+s), (x2+c, y2+s)])
@@ -609,8 +621,11 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
         
     
     # r1 is the outside major radius.  i.e. hole + wall thickness.
+    if internal_kerf == 0: internal_kerf = kerf
+    if smarthole: internal_kerf = 0
     
     kh = kerf/2
+    ikh = internal_kerf/2
     r1 = (id / 2) + wt
     # r2 is the bolt diameter
     r2 = bd
@@ -623,9 +638,9 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
     # part is built around a 0,0 centre
     lines.append(f"G0 X{(id/2)-leadin} Y{0}\n")
     start_cut(lines)
-    lines.append(f"G1 X{(id/2)-kh} Y{0}\n")
+    lines.append(f"G1 X{(id/2)-ikh} Y{0}\n")
     lines.append(f"M67 E3 Q60\n")
-    lines.append(f"G3 I-{(id/2)-kh}\n")
+    lines.append(f"G3 I-{(id/2)-ikh}\n")
     lines.append(f"M67 E3 Q100\n")
     stop_cut(lines)
     
@@ -739,7 +754,7 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, leadin=4, conv=1, lines=[]):
         build_corner(r1, r2, x_leftside, y_leftside, 3, lines)
         stop_cut(lines)
 
-def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, ch_dim_dict=None, leadin=4, conv=1, lines=[]):
+def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, smarthole, ch_dim_dict=None, leadin=4, conv=1, lines=[]):
     """
     w: overall width
     h: overall height
@@ -768,8 +783,11 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, ch_dim_dict=None, 
         yv = yv1 + yv2 + yo
         return yv
         
+    if internal_kerf == 0: internal_kerf = kerf
+    if smarthole: internal_kerf = 0
         
     kh = kerf/2
+    ikh = internal_kerf/2
     wh = w/2
     hh = h/2
     top_r_left_corner = (0- (w/2) + fr, (h/2) - fr)
@@ -790,12 +808,12 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, ch_dim_dict=None, 
         LOG.debug(f"---- x/y={(x,y)}, kh={kh}, hd/2={hd/2}")
         lines.append(f"G0 X{x}Y{y}\n")
         start_cut(lines)
-        LOG.debug(f"---- G1 X{x - (fix(hd/2) - kh)}")
-        lines.append(f"G1 X{x - (fix(hd/2) - kh)}\n")
+        LOG.debug(f"---- G1 X{x - (fix(hd/2) - ikh)}")
+        lines.append(f"G1 X{x - (fix(hd/2) - ikh)}\n")
         lines.append(f"M67 E3 Q60\n")
-        LOG.debug(f"---- G3 I{fix(hd/2) - kh}")
-        LOG.debug(f"---- effective center = {( (x - (fix(hd/2) - kh))+(fix(hd/2) - kh), y )}")
-        lines.append(f"G3 I{fix(hd/2) - kh}\n")
+        LOG.debug(f"---- G3 I{fix(hd/2) - ikh}")
+        LOG.debug(f"---- effective center = {( (x - (fix(hd/2) - ikh))+(fix(hd/2) - ikh), y )}")
+        lines.append(f"G3 I{fix(hd/2) - ikh}\n")
         lines.append(f"M67 E3 Q100\n")
         stop_cut(lines)
         x += hhs
@@ -807,12 +825,12 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, ch_dim_dict=None, 
     lines.append("(Horiztonal bottom row)")
     for c in range(hhn):
         # dxf.add_circle((x,y), hd/2)
-        LOG.debug(f"---- x/y={(x,y)}, kh={kh}, hd/2={hd/2}")
+        LOG.debug(f"---- x/y={(x,y)}, ikh={ikh}, hd/2={hd/2}")
         lines.append(f"G0 X{x}Y{y}\n")
         start_cut(lines)
-        lines.append(f"G1 X{x - (fix(hd/2) - kh)}\n")
+        lines.append(f"G1 X{x - (fix(hd/2) - ikh)}\n")
         lines.append(f"M67 E3 Q60\n")
-        lines.append(f"G3 I{fix(hd/2) - kh}\n")
+        lines.append(f"G3 I{fix(hd/2) - ikh}\n")
         lines.append(f"M67 E3 Q100\n")
         stop_cut(lines)
         x += hhs
@@ -823,22 +841,22 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, ch_dim_dict=None, 
     lines.append("(Vertical holes between top/bottom rows - left and right)")
     for c in range(1,vhn):
         # dxf.add_circle((-halfw, y), hd/2)
-        LOG.debug(f"---- x/y={(-halfw,y)}, kh={kh}, hd/2={hd/2}")
+        LOG.debug(f"---- x/y={(-halfw,y)}, ikh={ikh}, hd/2={hd/2}")
         lines.append(f"G0 X{-halfw}Y{y}\n")
         start_cut(lines)
-        lines.append(f"G1 X{-halfw - (fix(hd/2) - kh)}\n")
+        lines.append(f"G1 X{-halfw - (fix(hd/2) - ikh)}\n")
         lines.append(f"M67 E3 Q60\n")
-        lines.append(f"G3 I{fix(hd/2) - kh}\n")
+        lines.append(f"G3 I{fix(hd/2) - ikh}\n")
         lines.append(f"M67 E3 Q100\n")
         stop_cut(lines)
 
         # dxf.add_circle((halfw, y), hd/2)
-        LOG.debug(f"---- x/y={(halfw,y)}, kh={kh}, hd/2={hd/2}")
+        LOG.debug(f"---- x/y={(halfw,y)}, ikh={ikh}, hd/2={hd/2}")
         lines.append(f"G0 X{halfw}Y{y}\n")
         start_cut(lines)
-        lines.append(f"G1 X{halfw - (fix(hd/2) - kh)}\n")
+        lines.append(f"G1 X{halfw - (fix(hd/2) - ikh)}\n")
         lines.append(f"M67 E3 Q60\n")
-        lines.append(f"G3 I{fix(hd/2) - kh}\n")
+        lines.append(f"G3 I{fix(hd/2) - ikh}\n")
         lines.append(f"M67 E3 Q100\n")
         stop_cut(lines)
         y = y - vhs
@@ -855,9 +873,9 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, ch_dim_dict=None, 
             lines.append("(Internal Circle Hole)")
             lines.append(f"G0 X{cx} Y{cy}\n")
             start_cut(lines)
-            lines.append(f"G1 X{fix(cx - (cr - kh))}\n")
+            lines.append(f"G1 X{fix(cx - (cr - ikh))}\n")
             lines.append(f"M67 E3 Q60\n")
-            lines.append(f"G3 I{fix(cr) - kh}\n")
+            lines.append(f"G3 I{fix(cr) - ikh}\n")
             lines.append(f"M67 E3 Q100\n")
             stop_cut(lines)
         case "Rectangle":

@@ -25,7 +25,7 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-01-29 20:51"
+__updated__ = "2026-01-31 14:7"
 
 
 # Setup logging
@@ -174,6 +174,7 @@ class MainWindow(VCPMainWindow):
         # set the jog buttons to the active settings on start
         jog.set_increment(1 * self.units_per_mm)
         jog.set_jog_continuous(True)
+        self.smart_hole_indicator.setState(self.chkb_hole_detect_enable.isChecked())
 
         # find and set all user buttons
         for user_i in range(1,USER_BUTTONS+1):
@@ -361,6 +362,8 @@ class MainWindow(VCPMainWindow):
         tst = self.detail_index_num
         lines = []
         kerf = self.param_kirfwidth.value()
+        internal_kerf = self.quickshape_internal_kerf.value()
+        smart_hole = self.chkb_hole_detect_enable.isChecked()
         leadin = 4
         qs.preamble(lines, metric=INFO.getIsMachineMetric())
         qs.magic_material(kw=kerf,
@@ -386,7 +389,7 @@ class MainWindow(VCPMainWindow):
             case 2: 
                 id = self.id2_dbl_inner_diam.value()
                 od = self.id2_dbl_outer_diam.value()
-                qs.donut(od=od, id=id, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+                qs.donut(od=od, id=id, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, leadin=leadin, conv=1, lines=lines)
             case 3:
                 width = self.id3_dbl_width.value()
                 height = self.id3_dbl_height.value()
@@ -400,7 +403,7 @@ class MainWindow(VCPMainWindow):
                 rb = self.id4_dbl_rb.value()
                 pair = self.id4_chk_pair.isChecked()
                 separation = self.id4_dbl_separation.value()
-                qs.lifting_lug(w1, d1, h1, h2, d2, rb, kerf=kerf, separation=separation, cutting_pair=pair, parent=self, leadin=leadin, conv=1, lines=lines)
+                qs.lifting_lug(w1, d1, h1, h2, d2, rb, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, separation=separation, cutting_pair=pair, parent=self, leadin=leadin, conv=1, lines=lines)
             case 5:
                 w1 = self.id5_dbl_w1.value()
                 w2 = self.id5_dbl_w2.value()
@@ -413,7 +416,7 @@ class MainWindow(VCPMainWindow):
                 hd = self.id6_dbl_hd.value()
                 hole_type = self.id6_combo_hole.currentText()
                 id = self.id6_dbl_id.value()
-                qs.pipe_flange(od, pcd, holes, hd, hole_type, id, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+                qs.pipe_flange(od, pcd, holes, hd, hole_type, id, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, leadin=leadin, conv=1, lines=lines)
             case 7:
                 w = self.id7_dbl_w.value()
                 h = self.id7_dbl_h.value()
@@ -427,7 +430,7 @@ class MainWindow(VCPMainWindow):
                 bd = self.id8_dbl_bd.value()
                 sw = self.id8_dbl_sw.value()
                 nb = self.id8_int_nb.value()
-                qs.exhaust_flange(id, wt, pcd, bd, sw, nb, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+                qs.exhaust_flange(id, wt, pcd, bd, sw, nb, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, leadin=leadin, conv=1, lines=lines)
             case 9:
                 w = self.id9_dbl_w.value()
                 h = self.id9_dbl_w.value()
@@ -448,7 +451,7 @@ class MainWindow(VCPMainWindow):
                     ch_dim_dict["cha"] = self.id9_dbl_cha.value()
                     ch_dim_dict["chxo"] = self.id9_dbl_chxo.value()
                     ch_dim_dict["chyo"] = self.id9_dbl_chyo.value()
-                qs.n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf=kerf, ch_dim_dict=ch_dim_dict, leadin=leadin, conv=1, lines=lines)
+                qs.n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, ch_dim_dict=ch_dim_dict, leadin=leadin, conv=1, lines=lines)
             case 10:
                 w = self.id10_dbl_w.value()
                 h = self.id10_dbl_h.value()
@@ -482,7 +485,7 @@ class MainWindow(VCPMainWindow):
             temp_name = temp_file.name
             temp_file.writelines(lines)
         # make sure hole processing it off as lead ins seem to cause it issues:
-        self.chkb_hole_detect_enable.setCheckState(False)
+        # self.chkb_hole_detect_enable.setCheckState(False)
         self.set_openfile(temp_name)
         loadProgram(temp_name, add_to_recents=False)
         self.vtkbackplot.setViewProgram('Z')
