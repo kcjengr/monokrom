@@ -2,7 +2,7 @@ from math import cos, sin, tan, atan, atan2, asin, degrees, radians, sqrt, hypot
 from qtpyvcp.utilities import logger
 LOG = logger.getLogger('qtpyvcp.' + __name__)
 
-__updated__ = "2026-01-31 15:7"
+__updated__ = "2026-01-31 20:58"
 
 def fix(v):
     return round(v, 5)
@@ -104,13 +104,20 @@ def circle(diameter, kerf, leadin=4, conv=1, lines=[]):
     """
     # build the circle around 0,0
     # use a straight lead in
-    x = (diameter+kerf)/2
-    y = 0
-    lines.append(f"G0 X{x + leadin} Y0\n")
+    # calc where leadin starts
+    kh = kerf/2
+    sa = -135    # start angle
+    x = (leadin + diameter/2) * cos(radians(sa))
+    y = (leadin + diameter/2) * sin(radians(sa))
+    lines.append(f"G0 X{x} Y{y}\n")
+    x = (kh + diameter/2) * cos(radians(sa))
+    y = (kh + diameter/2) * sin(radians(sa))
     start_cut(lines)
-    lines.append(f"G1 X{x} Y0\n")
-    lines.append(f"G2 I-{x}\n")
+    lines.append(f"G1 X{x} Y{y}\n")
+    lines.append(f"G2 I{-x} J{-y}\n")
     stop_cut(lines)
+
+    
     return lines
 
 def rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
@@ -152,10 +159,17 @@ def donut(od, id, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=[]):
     lines.append(f"G3 I-{x}\n")
     stop_cut(lines)
     x = (od+kerf)/2
-    lines.append(f"G0 X{x + leadin} Y0\n")
+
+    kh = kerf/2
+    sa = -135    # start angle
+    x = (leadin + od/2) * cos(radians(sa))
+    y = (leadin + od/2) * sin(radians(sa))
+    lines.append(f"G0 X{x} Y{y}\n")
+    x = (kh + od/2) * cos(radians(sa))
+    y = (kh + od/2) * sin(radians(sa))
     start_cut(lines)
-    lines.append(f"G1 X{x} Y0\n")
-    lines.append(f"G2 I-{x}\n")
+    lines.append(f"G1 X{x} Y{y}\n")
+    lines.append(f"G2 I{-x} J{-y}\n")
     stop_cut(lines)
     return lines
 
@@ -391,14 +405,15 @@ def pipe_flange(od, pcd, holes, hd, hole_type, id, kerf, internal_kerf, smarthol
         i += 1 
     
     # calc where leadin starts
-    x = (leadin + od/2) * cos(radians(45))
-    y = (leadin + od/2) * sin(radians(45))
+    sa = -135
+    x = (leadin + od/2) * cos(radians(sa))
+    y = (leadin + od/2) * sin(radians(sa))
     lines.append(f"G0 X{x} Y{y}\n")
     start_cut(lines)
-    x = (kh + od/2) * cos(radians(45))
-    y = (kh + od/2) * sin(radians(45))
+    x = (kh + od/2) * cos(radians(sa))
+    y = (kh + od/2) * sin(radians(sa))
     lines.append(f"G1 X{x} Y{y}\n")
-    lines.append(f"G2 I-{x} J-{y}\n")
+    lines.append(f"G2 I{-x} J{-y}\n")
     stop_cut(lines)
 
 def pipe_saddle(w, h, pd, o, kerf, leadin=4, conv=1, lines=[]):
@@ -802,7 +817,7 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
     x = -halfw 
     y = halfh
     LOG.debug("---- Horiztonal top row ----")
-    lines.append("(Horiztonal top row)")
+    lines.append("(Horiztonal top row)\n")
     for c in range(hhn):
         # dxf.add_circle((x,y), hd/2)
         LOG.debug(f"---- x/y={(x,y)}, kh={kh}, hd/2={hd/2}")
@@ -822,7 +837,7 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
     x = -halfw 
     y = -halfh
     LOG.debug("---- Horiztonal bottom row ----")
-    lines.append("(Horiztonal bottom row)")
+    lines.append("(Horiztonal bottom row)\n")
     for c in range(hhn):
         # dxf.add_circle((x,y), hd/2)
         LOG.debug(f"---- x/y={(x,y)}, ikh={ikh}, hd/2={hd/2}")
@@ -838,7 +853,7 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
     # virtical holes (left and right)
     y = halfh - vhs
     LOG.debug("---- Vertical holes between top/bottom rows - left and right ----")
-    lines.append("(Vertical holes between top/bottom rows - left and right)")
+    lines.append("(Vertical holes between top/bottom rows - left and right)\n")
     for c in range(1,vhn):
         # dxf.add_circle((-halfw, y), hd/2)
         LOG.debug(f"---- x/y={(-halfw,y)}, ikh={ikh}, hd/2={hd/2}")
@@ -870,7 +885,7 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
             cx = ch_dim_dict["chxo"]
             cy = ch_dim_dict["chyo"]
             cr = ch_dim_dict["chs"]/2
-            lines.append("(Internal Circle Hole)")
+            lines.append("(Internal Circle Hole)\n")
             lines.append(f"G0 X{cx} Y{cy}\n")
             start_cut(lines)
             lines.append(f"G1 X{fix(cx - (cr - ikh))}\n")
@@ -891,7 +906,7 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
             # rotation around origin:
             # x = x*cos(a) - y*sin(a)
             # y = x*sin(a) + y*cos(a)
-            lines.append("(Internal  Rectangle Hole)")
+            lines.append("(Internal  Rectangle Hole)\n")
             # as internal cut remmebe to cut CCW
             if cfr == 0:
                 lines.append(f"G0 X{xo-(chw-leadin)} Y{yo}\n")
@@ -946,7 +961,7 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
 
     # outside lines
     # shape is built with 0,0 in the centre.
-    lines.append("(External profile)")
+    lines.append("(External profile)\n")
     lines.append(f"G0 X{-(leadin+wh)} Y{hh + kh}\n")
     start_cut(lines)
     if fr == 0:
@@ -968,7 +983,7 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
 def L_gusset(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
     # dxf.add_polyline_2d([(0, h), (0,0,), (w,0), (w, h-h1), (w-w1,h-h1), (w-w1, h)], closed=True)
     kh=kerf/2
-    lines.append("(L Gusset)")
+    lines.append("(L Gusset)\n")
     lines.append(f"G0 X{-kh} Y{-leadin}\n")
     start_cut(lines)
     lines.append(f"G1 Y{h+kh}\n")
