@@ -25,7 +25,7 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-01-31 14:7"
+__updated__ = "2026-02-01 13:2"
 
 
 # Setup logging
@@ -233,6 +233,7 @@ class MainWindow(VCPMainWindow):
         
         # reload
         self.btn_reload.clicked.connect(self.reload_file)
+        self.btn_reload_2.clicked.connect(self.reload_file)
         self.btn_transform_apply.clicked.connect(self.reload_file)
 
         # single cut limits
@@ -709,6 +710,19 @@ class MainWindow(VCPMainWindow):
             return cutlist
         else:
             return None
+    
+    def get_current_cut(self):
+        tool_id = self.param_process_id.text().upper()
+        if tool_id == 'NONE':
+            return None
+        else:
+            tool_id = int(tool_id)
+        cutlist = self._plasma_plugin.tool_id(tool_id)
+        if len(cutlist) > 0:
+            return cutlist
+        else:
+            return None
+        
 
     # Filter content has changed
     def param_update_from_filters(self, index=0):
@@ -718,9 +732,12 @@ class MainWindow(VCPMainWindow):
         else:
             LOG.debug('Update params.')
         arglist = []
+        LOG.debug("Cutlist search args:")
         for v in MainWindow.filter_fld_map.values():
             uifld = getattr(self, v)
             arglist.append(uifld.currentData())
+            LOG.debug(f"---> {v} = {uifld.currentData()}")
+        LOG.debug(f"Cutlist search args: {arglist}")
         cutlist = self._plasma_plugin.cut(arglist)
         data = self.get_filter_query()
         if data != None:
@@ -824,8 +841,12 @@ class MainWindow(VCPMainWindow):
         self.param_update_from_filters()
 
     def update_cut(self):
-        q = self.get_filter_query()
+        # Cut update should be based off param_process_id as the unique id
+        # within overall filters for machine, linear system and pressure system
+        q = self.get_current_cut()
+        
         if q == None:
+            LOG.warn("No current cut content found. No action taken.")
             return
         
         arglst = {}

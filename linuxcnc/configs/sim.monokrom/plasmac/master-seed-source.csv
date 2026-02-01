@@ -163,3 +163,4 @@ Generic	Aluminium	20	mm	20mm	60 amp 20mm Aluminium	Unshielded	30	2	3800	0	0.5	3.
 Cutskill 60	Generic	0	mm	0mm	Auto Material	Unshielded	99999	0	0	0	0	0	0	0	0	0	MPa	0	0	0
 Cutskill 60	Mild Steel	2	mm	2mm	40 amp 2mm Mild Steel	Unshielded	1	1.5	3600	0	0	3.5	1.5	1700	40	0.62	MPa	0	0	0
 Cutskill 60	Mild Steel	6	mm	6mm	45 amp 6mm Mild Steel	Unshielded	2	1.65	3600	0.5	0.2	3.5	1.5	1200	45	0.65	MPa	0	0	0
+Cutskill 60	Mild Steel	6	mm	6mm	60 amp 6mm Mild Steel 1.1mm tip	Unshielded	3	1.6	3600	0.3	0	3.5	1.5	1600	60	0.65	MPa	0	0	0
