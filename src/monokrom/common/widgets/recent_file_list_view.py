@@ -1,11 +1,10 @@
 
 import os
 
-from qtpy.QtCore import Qt, Slot, Property, Signal, QFile
+from qtpy.QtCore import Qt, Slot, Signal
 from qtpy.QtGui import QIcon
 from qtpy.QtWidgets import QListWidget, QFileIconProvider, QListWidgetItem
 
-from qtpyvcp.utilities.info import Info
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.widgets.dialogs import hideActiveDialog
 from qtpyvcp.actions.program_actions import load as loadProgram

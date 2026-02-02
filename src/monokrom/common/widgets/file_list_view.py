@@ -2,11 +2,11 @@
 import os
 
 from qtpy.QtCore import Qt
-from qtpy.QtCore import Slot, Property, Signal, QFile, QFileInfo, QDir, QIODevice, QModelIndex, QStringListModel
+from qtpy.QtCore import Slot, Signal, QFile, QFileInfo, QDir, QModelIndex
 from qtpy.QtGui import QIcon
 from qtpy.QtWidgets import QTableView, QFileSystemModel, QFileIconProvider
 
-from qtpy.QtWidgets import QApplication
+# from qtpy.QtWidgets import QApplication
 
 from qtpyvcp.utilities.info import Info
 from qtpyvcp.utilities.logger import getLogger

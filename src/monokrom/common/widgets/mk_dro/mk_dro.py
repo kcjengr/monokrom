@@ -1,9 +1,9 @@
 
 import os
 from qtpy import uic
-from qtpy.QtCore import Slot, Property
+from qtpy.QtCore import Property
 from qtpy.QtGui import QIcon, QPixmap
-from qtpy.QtWidgets import QWidget, QVBoxLayout, QFrame
+from qtpy.QtWidgets import QWidget, QVBoxLayout
 
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info

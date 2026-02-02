@@ -1,6 +1,6 @@
 import os
 import math
-import time
+# import time
 from tempfile import NamedTemporaryFile
 
 import hal as cnchal
@@ -25,7 +25,7 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-02-01 13:2"
+__updated__ = "2026-02-02 11:34"
 
 
 # Setup logging
@@ -41,7 +41,7 @@ CMD = linuxcnc.command()
 
 INI = linuxcnc.ini(os.environ['INI_FILE_NAME'])
 NGC_LOC = INI.find('DISPLAY', 'PROGRAM_PREFIX')
-if NGC_LOC == None:
+if NGC_LOC is None:
     NGC_LOC = '~/linuxcnc/nc_files'
 
 USER_BUTTONS = 10
@@ -551,8 +551,8 @@ class MainWindow(VCPMainWindow):
             laser = cnchal.get_value('qtpyvcp.laser.out') > 0
             distX = cnchal.get_value('qtpyvcp.param-kirfwidth.out') * x
             distY = cnchal.get_value('qtpyvcp.param-kirfwidth.out') * y
-            xNew = cnchal.get_value('plasmac.axis-x-position') + cnchal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
-            yNew = cnchal.get_value('plasmac.axis-y-position') + cnchal.get_value('axis.y.eoffset') - (self.laser_offset_y.value() * laser) + distY
+            # xNew = cnchal.get_value('plasmac.axis-x-position') + cnchal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
+            # yNew = cnchal.get_value('plasmac.axis-y-position') + cnchal.get_value('axis.y.eoffset') - (self.laser_offset_y.value() * laser) + distY
             #if xNew > self.xMax or xNew < self.xMin or yNew > self.yMax or yNew < self.yMin:
             #    return
             xTotal = cnchal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
@@ -630,7 +630,7 @@ class MainWindow(VCPMainWindow):
         cnchal.set_p('plasmac.probe-test','0')
     
     def probe_timeout(self):
-        LOG.debug(f'probe time out')
+        LOG.debug('probe time out')
 
     def probe_test(self, state):
         LOG.debug(f'probe test state: {state}')
@@ -738,9 +738,9 @@ class MainWindow(VCPMainWindow):
             arglist.append(uifld.currentData())
             LOG.debug(f"---> {v} = {uifld.currentData()}")
         LOG.debug(f"Cutlist search args: {arglist}")
-        cutlist = self._plasma_plugin.cut(arglist)
+        # cutlist = self._plasma_plugin.cut(arglist)
         data = self.get_filter_query()
-        if data != None:
+        if data is not None:
             select_row = 0
             if len(data) > 1:
                 self.grp_filter_sub_list.show()
@@ -814,7 +814,7 @@ class MainWindow(VCPMainWindow):
         LOG.debug("main window initalise")
     
     def add_new_cut_process(self, name=None):
-        if name == None:
+        if name is None:
             LOG.debug('No name set for cut process Add. Do nothing.')
             return
         
@@ -845,7 +845,7 @@ class MainWindow(VCPMainWindow):
         # within overall filters for machine, linear system and pressure system
         q = self.get_current_cut()
         
-        if q == None:
+        if q is None:
             LOG.warn("No current cut content found. No action taken.")
             return
         
@@ -989,7 +989,7 @@ class MainWindow(VCPMainWindow):
         # filter program reprocessing.
         #real_file = self.gcode_recentfile.currentData()
         real_file = self.latest_real_file
-        if real_file == None:
+        if real_file is None:
             return
         
         # test and slice the name to save as a parsed version of it
@@ -1008,7 +1008,7 @@ class MainWindow(VCPMainWindow):
     def reload_file(self):    
         #real_file = self.gcode_recentfile.currentData()
         real_file = self.latest_real_file
-        if real_file == None or real_file == "":
+        if real_file is None or real_file == "":
             return
         loadProgram(real_file)
         self.reset_vtk_btns()
@@ -1040,16 +1040,16 @@ class MainWindow(VCPMainWindow):
             y_laser_offset = 0
         
         if (y_current + y_length + y_laser_offset) > min_max_y[1]:
-            LOG.error(f'FRAMING ERROR: Y will exceed Y-Max')
+            LOG.error('FRAMING ERROR: Y will exceed Y-Max')
             return
         if (x_current + x_length + x_laser_offset) > min_max_x[1]:
-            LOG.error(f'FRAMING ERROR: X will exceed X-Max')
+            LOG.error('FRAMING ERROR: X will exceed X-Max')
             return
         if (y_current + y_length + y_laser_offset) < min_max_y[0]:
-            LOG.error(f'FRAMING ERROR: Y will exceed Y-Min')
+            LOG.error('FRAMING ERROR: Y will exceed Y-Min')
             return
         if (x_current + x_length + x_laser_offset) < min_max_x[0]:
-            LOG.error(f'FRAMING ERROR: X will exceed X-Min')
+            LOG.error('FRAMING ERROR: X will exceed X-Min')
             return
         
         feed_rate = self.framing_feed_rate.value()
@@ -1142,8 +1142,8 @@ class MainWindow(VCPMainWindow):
                 self.btn_sheet_doalign.setEnabled(False)
     
     def sheet_align(self):
-        if self.sheet_align_p1 == None or \
-           self.sheet_align_p2 == None:
+        if self.sheet_align_p1 is None or \
+           self.sheet_align_p2 is None:
             LOG.debug("Sheet alignment attempted but not all points set.")
             # reset UI state
             self.btn_sheet_align_pt1.setChecked(False)
@@ -1207,10 +1207,10 @@ class MainWindow(VCPMainWindow):
         widget = self.lbl_align_data
         ref1 = "REF1:..."
         ref2 = "REF2:..."
-        if self. sheet_align_p1 != None:
+        if self. sheet_align_p1 is not None:
             ref1 = f"REF1:\n{self.sheet_align_p1[0]:.4f},\n{self.sheet_align_p1[1]:.4f}"
         
-        if self. sheet_align_p2 != None:
+        if self. sheet_align_p2 is not None:
             ref2 = f"REF2:\n{self.sheet_align_p2[0]:.4f},\n{self.sheet_align_p2[1]:.4f}"
         widget.setText(f'{ref1}\n{ref2}')
     

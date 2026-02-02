@@ -1,16 +1,25 @@
 from qtpyvcp.widgets.qtdesigner import _DesignerPlugin
-
 from .mk_line_edit import MyLineEdit
+from .mk_push_button import MkPushButton
+from .mk_dro import MonokromDroWidget, MonokromDroGroup
+from .mdi_entry import MkMdiEntry
+from .file_list_view import MkFileTableView
+from .recent_file_list_view import MkRecentFileListView
+from .file_list_view import MkRemovableDeviceComboBox
+from .transparent_widget import MkTransparentWidget
+from .group_box import MkGroupBox
+from .tab_widget import MkTabWidget
+from .mk_led_hal import MkHalLedIndicator
+from .mk_led import MkLedIndicator
+
 class MyLineEdit_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MyLineEdit
 
-from .mk_push_button import MkPushButton
 class MkPushButton_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MkPushButton
 
-from .mk_dro import MonokromDroWidget, MonokromDroGroup
 class MkDroWidget_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MonokromDroWidget
@@ -19,34 +28,28 @@ class MkDroGroup_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MonokromDroGroup
 
-from .mdi_entry import MkMdiEntry
 class MkMdiEntry_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MkMdiEntry
 
-from .file_list_view import MkFileTableView
 class MkFileTableView_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MkFileTableView
 
-from .recent_file_list_view import MkRecentFileListView
 class MkRecentFileListView_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MkRecentFileListView
 
-from .file_list_view import MkRemovableDeviceComboBox
 class MkRemovableDeviceComboBox_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MkRemovableDeviceComboBox
 
-from .transparent_widget import MkTransparentWidget
 class MkTransparentWidget_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MkTransparentWidget
     def isContainer(self):
         return True
 
-from .group_box import MkGroupBox
 class MkGroupBox_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MkGroupBox
@@ -59,7 +62,6 @@ class MkGroupBox_Plugin(_DesignerPlugin):
                   </property>
                   </widget>"""
 
-from .tab_widget import MkTabWidget
 class MkTabWidget_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MkTabWidget
@@ -82,12 +84,10 @@ class MkTabWidget_Plugin(_DesignerPlugin):
                     </widget>
                   </widget>"""
 
-from .mk_led_hal import MkHalLedIndicator
 class MkHalLedIndicator_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MkHalLedIndicator
     
-from .mk_led import MkLedIndicator
 class MkLedIndicator_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return MkLedIndicator

@@ -1,4 +1,4 @@
-from qtpy.QtCore import Qt, QTimer
+from qtpy.QtCore import Qt
 from qtpy.QtGui import QColor, QPainter, QBrush
 from qtpyvcp.widgets.display_widgets.status_led import StatusLED
 

@@ -1,5 +1,4 @@
 
-from qtpy.QtWidgets import QPushButton
 from qtpyvcp.widgets import VCPButton
 
 class MkPushButton(VCPButton):

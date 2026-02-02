@@ -1,4 +1,4 @@
-from qtpy.QtCore import Qt, QTimer
+from qtpy.QtCore import Qt
 from qtpy.QtGui import QColor, QPainter, QBrush
 from qtpyvcp.widgets.hal_widgets.hal_led import HalLedIndicator
 

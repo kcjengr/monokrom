@@ -1,5 +1,5 @@
 
-from qtpy.QtCore import Slot, Property, Signal
+from qtpy.QtCore import Slot
 
 from qtpy.QtWidgets import QLineEdit, QApplication
 from qtpyvcp.utilities.logger import getLogger
