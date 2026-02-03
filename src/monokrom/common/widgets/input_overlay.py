@@ -1,7 +1,7 @@
 
 from PySide6.QtCore import QEvent
 from PySide6.QtGui import QPainter, QColor, QResizeEvent
-from PySide6.QtWidgets import QWidget, QPushButton, QHBoxLayout, QApplication
+from PySide6.QtWidgets import QWidget, QPushButton, QApplication
 from qtpyvcp.utilities.pyside_ui_loader import PySide6Ui
 
 

@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+import os
+import qtpyvcp
+from distutils.dir_util import copy_tree
+#import pydevd;pydevd.settrace()
 
 """Main entry point for MyVCP.
 
@@ -76,13 +80,6 @@ Note:
 """
 
 __version__ = '0.0.1'
-
-#import sys;sys.path.append(r'/home/james/liclipse/plugins/org.python.pydev.core_9.1.0.202110030926/pysrc')
-#import pydevd;pydevd.settrace()
-
-import os
-import qtpyvcp
-from distutils.dir_util import copy_tree
 
 VCP_DIR = os.path.realpath(os.path.dirname(__file__))
 

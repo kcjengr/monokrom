@@ -1,6 +1,6 @@
 import os
 import math
-import time
+# import time
 from tempfile import NamedTemporaryFile
 
 import hal as cnchal
@@ -24,7 +24,7 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-01-22 15:51"
+__updated__ = "2026-02-02 11:34"
 
 
 # Setup logging
@@ -40,7 +40,7 @@ CMD = linuxcnc.command()
 
 INI = linuxcnc.ini(os.environ['INI_FILE_NAME'])
 NGC_LOC = INI.find('DISPLAY', 'PROGRAM_PREFIX')
-if NGC_LOC == None:
+if NGC_LOC is None:
     NGC_LOC = '~/linuxcnc/nc_files'
 
 USER_BUTTONS = 10
@@ -105,6 +105,7 @@ class MainWindow(VCPMainWindow):
         self._plasma_plugin = getPlugin('plasmaprocesses')
         self.filter_cutchart_id = None
         self.detail_index_num = 0
+        self.latest_real_file=""
         
         # get min x and y travel
         self.min_x = float(INI.find('AXIS_X', 'MIN_LIMIT'))
@@ -131,20 +132,32 @@ class MainWindow(VCPMainWindow):
         self._tool_number = 0
         self._material_thickness = 0
         
+        # find handles to openfile and recentfiles dialogs
+        for h in qtpyvcp.DIALOGS:
+            LOG.debug(f"monokrom-Mainwindow:  dialog key = {h}, dialog handle ={qtpyvcp.DIALOGS[h]}")
+        self.open_file_dialog_widget = qtpyvcp.DIALOGS['open_file'].findChild(QTableView)
+        self.recent_files_dialog_widget = qtpyvcp.DIALOGS['recent_files'].findChild(QListWidget)
+        self.open_file_dialog_widget.fileLoadFromDialog.connect(self.set_openfile)
+        self.recent_files_dialog_widget.fileLoadFromDialog.connect(self.set_openfile)
+        
         # probe timer and state
         self.probe_timer = QTimer()
         #self.probe_timer.setSingleShot(True)
         self.probe_timer.timeout.connect(self.probe_timeout)
         
         # Hide some in flight UI that is unfinished
-        self.ui.tab_holes_and_slots.setTabVisible(1, False)
+        #self.ui.mainTabWidget.setTabVisible(2, False)
         self.ui.tabs_ctl_run_right.setTabVisible(2, False)
-        self.ui.mainTabWidget.setTabVisible(2, False)
+        self.ui.tab_holes_and_slots.setTabVisible(1, False)
         # setup some default UI settings
         self.ui.vtkbackplot.update_active_wcs(0)
         self.ui.vtkbackplot.setViewZ()
         self.ui.vtkbackplot.enable_panning(True)
         self.ui.vtkbackplot.setProgramViewWhenLoadingProgram(True, 'z')
+        self.ui.vtk_qs.update_active_wcs(0)
+        self.ui.vtk_qs.setViewZ()
+        self.ui.vtk_qs.enable_panning(True)
+        self.ui.vtk_qs.setProgramViewWhenLoadingProgram(True, 'z')
         self.ui.widget_recovery.setEnabled(False)
         self.ui.btn_consumable_change.setEnabled(False)
         self.ui.mdiFrame.hide()
@@ -160,6 +173,7 @@ class MainWindow(VCPMainWindow):
         # set the jog buttons to the active settings on start
         jog.set_increment(1 * self.units_per_mm)
         jog.set_jog_continuous(True)
+        self.ui.smart_hole_indicator.setState(self.chkb_hole_detect_enable.isChecked())
 
         # find and set all user buttons
         for user_i in range(1,USER_BUTTONS+1):
@@ -191,6 +205,7 @@ class MainWindow(VCPMainWindow):
         self.ui.vtk_no_lines.toggled.connect(self.breadcrumbs_tracked)
         #self.btn_transform.toggled.connect(self.tranformUI)
         self.grp_shape_btns.buttonClicked.connect(self.clicked_shape_btn)
+        self.ui.btn_qs_refresh.clicked.connect(self.clicked_qs_refresh)
 
         # cut recovery direction
         self.ui.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
@@ -217,6 +232,7 @@ class MainWindow(VCPMainWindow):
         
         # reload
         self.ui.btn_reload.clicked.connect(self.reload_file)
+        self.ui.btn_reload_2.clicked.connect(self.reload_file)
         self.ui.btn_transform_apply.clicked.connect(self.reload_file)
 
         # single cut limits
@@ -324,6 +340,17 @@ class MainWindow(VCPMainWindow):
     def on_exitAppBtn_clicked(self):
       self.app.quit()
 
+    def reset_vtk_btns(self):
+        self.ui.vtk_prog_extent.setChecked(False)
+        self.ui.vtk_mach_extent.setChecked(False)
+        self.ui.vtkbackplot.showProgramBounds(False)
+        self.ui.vtkbackplot.showMachineBounds(False)
+
+    def set_openfile(self, file_str):
+        self.latest_real_file = file_str
+        self.reset_vtk_btns()
+        LOG.debug(f"set_openfile:  file_str = {file_str}")
+        
     def clicked_shape_btn(self, btn):
         btn_name = btn.objectName()
         LOG.debug(f"shape button pushed: {btn_name} with index {int(btn_name[4:])}")
@@ -335,6 +362,8 @@ class MainWindow(VCPMainWindow):
         tst = self.detail_index_num
         lines = []
         kerf = self.param_kirfwidth.value()
+        internal_kerf = self.ui.quickshape_internal_kerf.value()
+        smart_hole = self.ui.chkb_hole_detect_enable.isChecked()
         leadin = 4
         qs.preamble(lines, metric=INFO.getIsMachineMetric())
         qs.magic_material(kw=kerf,
@@ -360,7 +389,7 @@ class MainWindow(VCPMainWindow):
             case 2: 
                 id = self.id2_dbl_inner_diam.value()
                 od = self.id2_dbl_outer_diam.value()
-                qs.donut(od=od, id=id, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+                qs.donut(od=od, id=id, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, leadin=leadin, conv=1, lines=lines)
             case 3:
                 width = self.id3_dbl_width.value()
                 height = self.id3_dbl_height.value()
@@ -374,7 +403,7 @@ class MainWindow(VCPMainWindow):
                 rb = self.id4_dbl_rb.value()
                 pair = self.id4_chk_pair.isChecked()
                 separation = self.id4_dbl_separation.value()
-                qs.lifting_lug(w1, d1, h1, h2, d2, rb, kerf=kerf, separation=separation, cutting_pair=pair, parent=self, leadin=leadin, conv=1, lines=lines)
+                qs.lifting_lug(w1, d1, h1, h2, d2, rb, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, separation=separation, cutting_pair=pair, parent=self, leadin=leadin, conv=1, lines=lines)
             case 5:
                 w1 = self.id5_dbl_w1.value()
                 w2 = self.id5_dbl_w2.value()
@@ -387,7 +416,7 @@ class MainWindow(VCPMainWindow):
                 hd = self.id6_dbl_hd.value()
                 hole_type = self.id6_combo_hole.currentText()
                 id = self.id6_dbl_id.value()
-                qs.pipe_flange(od, pcd, holes, hd, hole_type, id, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+                qs.pipe_flange(od, pcd, holes, hd, hole_type, id, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, leadin=leadin, conv=1, lines=lines)
             case 7:
                 w = self.id7_dbl_w.value()
                 h = self.id7_dbl_h.value()
@@ -401,7 +430,7 @@ class MainWindow(VCPMainWindow):
                 bd = self.id8_dbl_bd.value()
                 sw = self.id8_dbl_sw.value()
                 nb = self.id8_int_nb.value()
-                qs.exhaust_flange(id, wt, pcd, bd, sw, nb, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+                qs.exhaust_flange(id, wt, pcd, bd, sw, nb, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, leadin=leadin, conv=1, lines=lines)
             case 9:
                 w = self.id9_dbl_w.value()
                 h = self.id9_dbl_w.value()
@@ -422,7 +451,7 @@ class MainWindow(VCPMainWindow):
                     ch_dim_dict["cha"] = self.id9_dbl_cha.value()
                     ch_dim_dict["chxo"] = self.id9_dbl_chxo.value()
                     ch_dim_dict["chyo"] = self.id9_dbl_chyo.value()
-                qs.n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf=kerf, ch_dim_dict=ch_dim_dict, leadin=leadin, conv=1, lines=lines)
+                qs.n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, ch_dim_dict=ch_dim_dict, leadin=leadin, conv=1, lines=lines)
             case 10:
                 w = self.id10_dbl_w.value()
                 h = self.id10_dbl_h.value()
@@ -456,11 +485,12 @@ class MainWindow(VCPMainWindow):
             temp_name = temp_file.name
             temp_file.writelines(lines)
         # make sure hole processing it off as lead ins seem to cause it issues:
-        self.chkb_hole_detect_enable.setCheckState(False)
+        # self.chkb_hole_detect_enable.setCheckState(False)
         self.set_openfile(temp_name)
         loadProgram(temp_name, add_to_recents=False)
         self.vtkbackplot.setViewProgram('Z')
         self.vtk_qs.setViewProgram('Z')
+        self.reset_vtk_btns()
 
     def zero_wcs_xy(self):
         #_current_pos = float(POS.Absolute(0))
@@ -520,8 +550,8 @@ class MainWindow(VCPMainWindow):
             laser = cnchal.get_value('qtpyvcp.laser.out') > 0
             distX = cnchal.get_value('qtpyvcp.param-kirfwidth.out') * x
             distY = cnchal.get_value('qtpyvcp.param-kirfwidth.out') * y
-            xNew = cnchal.get_value('plasmac.axis-x-position') + cnchal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
-            yNew = cnchal.get_value('plasmac.axis-y-position') + cnchal.get_value('axis.y.eoffset') - (self.laser_offset_y.value() * laser) + distY
+            # xNew = cnchal.get_value('plasmac.axis-x-position') + cnchal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
+            # yNew = cnchal.get_value('plasmac.axis-y-position') + cnchal.get_value('axis.y.eoffset') - (self.laser_offset_y.value() * laser) + distY
             #if xNew > self.xMax or xNew < self.xMin or yNew > self.yMax or yNew < self.yMin:
             #    return
             xTotal = cnchal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
@@ -550,10 +580,7 @@ class MainWindow(VCPMainWindow):
         
         if obj_name == 'btn_edit':
             return
-        
-        if obj_name == 'btn_edit':
-            return
-        
+                
 
     def consumable_change(self):
         sender = self.sender()
@@ -602,7 +629,7 @@ class MainWindow(VCPMainWindow):
         cnchal.set_p('plasmac.probe-test','0')
     
     def probe_timeout(self):
-        print(f'probe time out')
+        LOG.debug('probe time out')
 
     def probe_test(self, state):
         LOG.debug(f'probe test state: {state}')
@@ -639,8 +666,8 @@ class MainWindow(VCPMainWindow):
         try:
             # Get the cutchart record based on the pin value.
             cut = self._plasma_plugin.tool_id(value)[0]
-        except:
-            LOG.warn('No Tool / Cutchart found')
+        except Exception as e:
+            LOG.warn(f'No Tool / Cutchart found. Issue: {e}')
         else:
             # Cycle through all the filters and set them to the correct value
             for k in MainWindow.relationship_fld_map:
@@ -682,6 +709,19 @@ class MainWindow(VCPMainWindow):
             return cutlist
         else:
             return None
+    
+    def get_current_cut(self):
+        tool_id = self.ui.param_process_id.text().upper()
+        if tool_id == 'NONE':
+            return None
+        else:
+            tool_id = int(tool_id)
+        cutlist = self._plasma_plugin.tool_id(tool_id)
+        if len(cutlist) > 0:
+            return cutlist
+        else:
+            return None
+        
 
     # Filter content has changed
     def param_update_from_filters(self, index=0):
@@ -691,12 +731,15 @@ class MainWindow(VCPMainWindow):
         else:
             LOG.debug('Update params.')
         arglist = []
+        LOG.debug("Cutlist search args:")
         for v in MainWindow.filter_fld_map.values():
             uifld = getattr(self.ui, v)
             arglist.append(uifld.currentData())
-        cutlist = self._plasma_plugin.cut(arglist)
+            LOG.debug(f"---> {v} = {uifld.currentData()}")
+        LOG.debug(f"Cutlist search args: {arglist}")
+        # cutlist = self._plasma_plugin.cut(arglist)
         data = self.get_filter_query()
-        if data != None:
+        if data is not None:
             select_row = 0
             if len(data) > 1:
                 self.ui.grp_filter_sub_list.show()
@@ -770,7 +813,7 @@ class MainWindow(VCPMainWindow):
         LOG.debug("main window initalise")
     
     def add_new_cut_process(self, name=None):
-        if name == None:
+        if name is None:
             LOG.debug('No name set for cut process Add. Do nothing.')
             return
         
@@ -797,8 +840,12 @@ class MainWindow(VCPMainWindow):
         self.param_update_from_filters()
 
     def update_cut(self):
-        q = self.get_filter_query()
-        if q == None:
+        # Cut update should be based off param_process_id as the unique id
+        # within overall filters for machine, linear system and pressure system
+        q = self.get_current_cut()
+        
+        if q is None:
+            LOG.warn("No current cut content found. No action taken.")
             return
         
         arglst = {}
@@ -825,6 +872,8 @@ class MainWindow(VCPMainWindow):
                         newist = (entry.path, file_stat.st_mtime)
         # should have a latest file from standard directory
         if newist is not None:
+            self.latest_real_file=newist[0]
+            self.reset_vtk_btns()
             loadProgram(newist[0])
 
     def single_cut_limits(self):
@@ -939,7 +988,7 @@ class MainWindow(VCPMainWindow):
         # filter program reprocessing.
         #real_file = self.gcode_recentfile.currentData()
         real_file = self.latest_real_file
-        if real_file == None:
+        if real_file is None:
             return
         
         # test and slice the name to save as a parsed version of it
@@ -952,19 +1001,22 @@ class MainWindow(VCPMainWindow):
         
         self.gcode_editor.saveFile(new_name)
         loadProgram(new_name)
+        self.reset_vtk_btns()
     
     # Reload the current file.  That means the most recently loaded file
     def reload_file(self):    
-        real_file = self.gcode_recentfile.currentData()
-        if real_file == None:
+        #real_file = self.gcode_recentfile.currentData()
+        real_file = self.latest_real_file
+        if real_file is None or real_file == "":
             return
         loadProgram(real_file)
+        self.reset_vtk_btns()
 
     #
     # Frame prog on work piece
     #
     def frame_work(self):
-        # hack into VTK to get at some internals ot get prog bounds
+        # hack into VTK to get at some internals to get prog bounds
         vtk = self.vtkbackplot
         program_bounds = vtk.program_bounds_actors[vtk.active_wcs_index].GetBounds()
         LOG.debug(f'prog bounds = {program_bounds}')
@@ -987,16 +1039,16 @@ class MainWindow(VCPMainWindow):
             y_laser_offset = 0
         
         if (y_current + y_length + y_laser_offset) > min_max_y[1]:
-            LOG.error(f'FRAMING ERROR: Y will exceed Y-Max')
+            LOG.error('FRAMING ERROR: Y will exceed Y-Max')
             return
         if (x_current + x_length + x_laser_offset) > min_max_x[1]:
-            LOG.error(f'FRAMING ERROR: X will exceed X-Max')
+            LOG.error('FRAMING ERROR: X will exceed X-Max')
             return
         if (y_current + y_length + y_laser_offset) < min_max_y[0]:
-            LOG.error(f'FRAMING ERROR: Y will exceed Y-Min')
+            LOG.error('FRAMING ERROR: Y will exceed Y-Min')
             return
         if (x_current + x_length + x_laser_offset) < min_max_x[0]:
-            LOG.error(f'FRAMING ERROR: X will exceed X-Min')
+            LOG.error('FRAMING ERROR: X will exceed X-Min')
             return
         
         feed_rate = self.framing_feed_rate.value()
@@ -1089,8 +1141,8 @@ class MainWindow(VCPMainWindow):
                 self.btn_sheet_doalign.setEnabled(False)
     
     def sheet_align(self):
-        if self.sheet_align_p1 == None or \
-           self.sheet_align_p2 == None:
+        if self.sheet_align_p1 is None or \
+           self.sheet_align_p2 is None:
             LOG.debug("Sheet alignment attempted but not all points set.")
             # reset UI state
             self.btn_sheet_align_pt1.setChecked(False)
@@ -1154,10 +1206,10 @@ class MainWindow(VCPMainWindow):
         widget = self.lbl_align_data
         ref1 = "REF1:..."
         ref2 = "REF2:..."
-        if self. sheet_align_p1 != None:
+        if self. sheet_align_p1 is not None:
             ref1 = f"REF1:\n{self.sheet_align_p1[0]:.4f},\n{self.sheet_align_p1[1]:.4f}"
         
-        if self. sheet_align_p2 != None:
+        if self. sheet_align_p2 is not None:
             ref2 = f"REF2:\n{self.sheet_align_p2[0]:.4f},\n{self.sheet_align_p2[1]:.4f}"
         widget.setText(f'{ref1}\n{ref2}')
     

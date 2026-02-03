@@ -1,5 +1,5 @@
 
-from PySide6.QtCore import Slot, Property, Signal
+from PySide6.QtCore import Slot
 
 from PySide6.QtWidgets import QLineEdit, QApplication
 from qtpyvcp.utilities.logger import getLogger

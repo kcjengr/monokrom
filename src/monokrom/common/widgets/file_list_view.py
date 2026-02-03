@@ -2,11 +2,11 @@
 import os
 
 from PySide6.QtCore import Qt
-from PySide6.QtCore import Slot, Property, Signal, QFile, QFileInfo, QDir, QIODevice, QModelIndex, QStringListModel
+from PySide6.QtCore import Slot, Signal, QFile, QFileInfo, QDir, QModelIndex
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QTableView, QFileSystemModel, QFileIconProvider
 
-from PySide6.QtWidgets import QApplication
+#from PySide6.QtWidgets import QApplication
 
 from qtpyvcp.utilities.info import Info
 from qtpyvcp.utilities.logger import getLogger

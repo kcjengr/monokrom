@@ -1,11 +1,11 @@
 
 import os
 
-from PySide6.QtCore import Qt, Slot, Property, Signal, QFile
+from PySide6.QtCore import Qt, Slot, Signal
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QListWidget, QFileIconProvider, QListWidgetItem
 
-from qtpyvcp.utilities.info import Info
+#from qtpyvcp.utilities.info import Info
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.widgets.dialogs import hideActiveDialog
 from qtpyvcp.actions.program_actions import load as loadProgram

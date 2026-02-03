@@ -1,8 +1,8 @@
 
 import os
-from PySide6.QtCore import Slot, Property
+from PySide6.QtCore import Property
 from PySide6.QtGui import QIcon, QPixmap
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QFrame
+from PySide6.QtWidgets import QWidget, QVBoxLayout
 
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
