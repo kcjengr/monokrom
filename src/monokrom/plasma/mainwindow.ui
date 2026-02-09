@@ -5148,6 +5148,15 @@ QListView::item:selected {
                    <string>HOLES</string>
                   </attribute>
                   <layout class="QVBoxLayout" name="verticalLayout_19">
+                   <property name="spacing">
+                    <number>5</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>5</number>
+                   </property>
                    <item>
                     <widget class="QWidget" name="widget_22" native="true">
                      <layout class="QGridLayout" name="gridLayout_28">
@@ -5164,6 +5173,36 @@ QListView::item:selected {
                         </property>
                         <property name="settingName" stdset="0">
                          <string>plasma_hole_thickness_ratio</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="4" column="0">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_small_hole_threshold">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="decimals">
+                         <number>4</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-small-hole-threshold</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_small_hole_threshold</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="1" colspan="2">
+                       <widget class="QLabel" name="label_79">
+                        <property name="text">
+                         <string>Leadin Arc Radius
+0 = Auto calculate leadin.</string>
+                        </property>
+                        <property name="wordWrap">
+                         <bool>true</bool>
                         </property>
                        </widget>
                       </item>
@@ -5226,25 +5265,6 @@ QListView::item:selected {
                         </property>
                        </widget>
                       </item>
-                      <item row="4" column="0">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_small_hole_threshold">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="decimals">
-                         <number>4</number>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-small-hole-threshold</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_small_hole_threshold</string>
-                        </property>
-                       </widget>
-                      </item>
                       <item row="4" column="3">
                        <widget class="PlasmaHalDoubleSpinBox" name="spn_hole_kerf">
                         <property name="buttonSymbols">
@@ -5270,6 +5290,40 @@ QListView::item:selected {
                         </property>
                        </widget>
                       </item>
+                      <item row="0" column="1">
+                       <widget class="PlasmaHalCheckBox" name="chkb_small_hole_detect">
+                        <property name="styleSheet">
+                         <string notr="true">font: bold 12pt;</string>
+                        </property>
+                        <property name="text">
+                         <string>SMALL HOLE
+MARKING</string>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-small-hole-detect</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_small_hole_detect</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="1" colspan="2">
+                       <widget class="QLabel" name="label_11">
+                        <property name="text">
+                         <string>Hole Size ratio relative to Material Thickness (x:1) *</string>
+                        </property>
+                        <property name="wordWrap">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="4" column="1">
+                       <widget class="QLabel" name="label_73">
+                        <property name="text">
+                         <string>Small hole threshold</string>
+                        </property>
+                       </widget>
+                      </item>
                       <item row="3" column="0">
                        <widget class="PlasmaHalDoubleSpinBox" name="spn_leadin_radius">
                         <property name="alignment">
@@ -5289,31 +5343,22 @@ QListView::item:selected {
                         </property>
                        </widget>
                       </item>
-                      <item row="0" column="1">
-                       <widget class="PlasmaHalCheckBox" name="chkb_small_hole_detect">
-                        <property name="styleSheet">
-                         <string notr="true">font: bold 12pt;</string>
-                        </property>
+                      <item row="4" column="2">
+                       <widget class="QLabel" name="label_194">
                         <property name="text">
-                         <string>SMALL HOLE
-MARKING</string>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-small-hole-detect</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_small_hole_detect</string>
+                         <string>Hole Kerf Width
+0 = Use process kerf</string>
                         </property>
                        </widget>
                       </item>
-                      <item row="4" column="1">
-                       <widget class="QLabel" name="label_73">
+                      <item row="2" column="1" colspan="2">
+                       <widget class="QLabel" name="label_70">
                         <property name="text">
-                         <string>Small hole threshold</string>
+                         <string>Maximum hole size to process *</string>
                         </property>
                        </widget>
                       </item>
-                      <item row="0" column="3">
+                      <item row="0" column="2">
                        <widget class="PlasmaHalCheckBox" name="chkb_force_straight_leadin">
                         <property name="styleSheet">
                          <string notr="true">font: bold 12pt;</string>
@@ -5330,39 +5375,26 @@ LEADINS</string>
                         </property>
                        </widget>
                       </item>
-                      <item row="4" column="2">
-                       <widget class="QLabel" name="label_194">
+                      <item row="0" column="3">
+                       <widget class="PlasmaHalCheckBox" name="chkb_is_kerf_compensated">
+                        <property name="font">
+                         <font>
+                          <family>Sans</family>
+                          <pointsize>12</pointsize>
+                          <weight>75</weight>
+                          <italic>false</italic>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">font: bold 12pt;</string>
+                        </property>
                         <property name="text">
-                         <string>Hole Kerf Width
-0 = Use process kerf</string>
+                         <string>KERF
+ADJUSTED</string>
                         </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1" colspan="2">
-                       <widget class="QLabel" name="label_11">
-                        <property name="text">
-                         <string>Hole Size ratio relative to Material Thickness (x:1) *</string>
-                        </property>
-                        <property name="wordWrap">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="2" column="1" colspan="2">
-                       <widget class="QLabel" name="label_70">
-                        <property name="text">
-                         <string>Maximum hole size to process *</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="3" column="1" colspan="2">
-                       <widget class="QLabel" name="label_79">
-                        <property name="text">
-                         <string>Leadin Arc Radius
-0 = Auto calculate leadin.</string>
-                        </property>
-                        <property name="wordWrap">
-                         <bool>true</bool>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-is-kerf-compensated</string>
                         </property>
                        </widget>
                       </item>
@@ -5396,49 +5428,41 @@ LEADINS</string>
                       <property name="bottomMargin">
                        <number>0</number>
                       </property>
-                      <property name="spacing">
+                      <property name="horizontalSpacing">
                        <number>18</number>
                       </property>
-                      <item row="5" column="0">
-                       <widget class="QLabel" name="label_81">
-                        <property name="text">
-                         <string>OVERBURN</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="2" column="0">
-                       <widget class="QLabel" name="label_80">
-                        <property name="text">
-                         <string>ARC 1</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_leadin_percent_2">
+                      <property name="verticalSpacing">
+                       <number>9</number>
+                      </property>
+                      <item row="6" column="2">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_overburn_distance_2">
                         <property name="alignment">
                          <set>Qt::AlignCenter</set>
                         </property>
                         <property name="buttonSymbols">
                          <enum>QAbstractSpinBox::PlusMinus</enum>
                         </property>
-                        <property name="suffix">
-                         <string> %</string>
-                        </property>
                         <property name="decimals">
-                         <number>1</number>
+                         <number>4</number>
+                        </property>
+                        <property name="maximum">
+                         <double>50.000000000000000</double>
                         </property>
                         <property name="pinBaseName" stdset="0">
-                         <string>plasma-leadin-percent</string>
+                         <string>plasma-overburn-distance</string>
                         </property>
                         <property name="settingName" stdset="0">
-                         <string>plasma_leadin_percent</string>
+                         <string>plasma_overburn_distance</string>
                         </property>
                        </widget>
                       </item>
-                      <item row="3" column="0">
-                       <widget class="QLabel" name="label_84">
+                      <item row="0" column="1">
+                       <widget class="QLabel" name="label_83">
                         <property name="text">
-                         <string>ARC 2</string>
+                         <string>% OF FEED</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
                         </property>
                        </widget>
                       </item>
@@ -5452,81 +5476,8 @@ LEADINS</string>
                         </property>
                        </widget>
                       </item>
-                      <item row="3" column="2">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc2_distance_2">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="suffix">
-                         <string/>
-                        </property>
-                        <property name="decimals">
-                         <number>4</number>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-arc2-distance</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_arc2_distance</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="5" column="1">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc3_percent_2">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="suffix">
-                         <string> %</string>
-                        </property>
-                        <property name="decimals">
-                         <number>1</number>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-arc3-percent</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_arc3_percent</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="3" column="1">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc2_percent_2">
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                        <property name="buttonSymbols">
-                         <enum>QAbstractSpinBox::PlusMinus</enum>
-                        </property>
-                        <property name="suffix">
-                         <string> %</string>
-                        </property>
-                        <property name="decimals">
-                         <number>1</number>
-                        </property>
-                        <property name="pinBaseName" stdset="0">
-                         <string>plasma-arc2-percent</string>
-                        </property>
-                        <property name="settingName" stdset="0">
-                         <string>plasma_arc2_percent</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="0">
-                       <widget class="QLabel" name="label_82">
-                        <property name="text">
-                         <string>LEAD-IN</string>
-                        </property>
-                       </widget>
-                      </item>
                       <item row="5" column="2">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc3_distance_2">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_overburn_start_distance">
                         <property name="alignment">
                          <set>Qt::AlignCenter</set>
                         </property>
@@ -5535,15 +5486,40 @@ LEADINS</string>
                         </property>
                         <property name="decimals">
                          <number>4</number>
+                        </property>
+                        <property name="minimum">
+                         <double>-50.000000000000000</double>
                         </property>
                         <property name="maximum">
-                         <double>10.000000000000000</double>
+                         <double>50.000000000000000</double>
                         </property>
                         <property name="pinBaseName" stdset="0">
-                         <string>plasma-arc3-distance</string>
+                         <string>plasma-overburn-start-distance</string>
                         </property>
                         <property name="settingName" stdset="0">
-                         <string>plasma_arc3_distance</string>
+                         <string>plasma_overburn_start_distance</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="6" column="1">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_overburn_percent_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string> %</string>
+                        </property>
+                        <property name="decimals">
+                         <number>1</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-overburn-percent</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_overburn_percent</string>
                         </property>
                        </widget>
                       </item>
@@ -5569,25 +5545,109 @@ LEADINS</string>
                         </property>
                        </widget>
                       </item>
-                      <item row="0" column="1">
-                       <widget class="QLabel" name="label_83">
-                        <property name="text">
-                         <string>% OF FEED</string>
-                        </property>
+                      <item row="1" column="1">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_leadin_percent_2">
                         <property name="alignment">
                          <set>Qt::AlignCenter</set>
                         </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string> %</string>
+                        </property>
+                        <property name="decimals">
+                         <number>1</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-leadin-percent</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_leadin_percent</string>
+                        </property>
                        </widget>
                       </item>
-                      <item row="4" column="0">
+                      <item row="1" column="0">
+                       <widget class="QLabel" name="label_82">
+                        <property name="text">
+                         <string>LEAD-IN</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="1">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc2_percent_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string> %</string>
+                        </property>
+                        <property name="decimals">
+                         <number>1</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc2-percent</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc2_percent</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="5" column="0">
                        <widget class="QLabel" name="label_72">
                         <property name="text">
-                         <string>TORCH-OFF DIST FROM 0</string>
+                         <string>OVERBURN START DIST FROM 0</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="6" column="0">
+                       <widget class="QLabel" name="label_81">
+                        <property name="text">
+                         <string>OVERBURN</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="0">
+                       <widget class="QLabel" name="label_80">
+                        <property name="text">
+                         <string>ARC 1</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="0">
+                       <widget class="QLabel" name="label_84">
+                        <property name="text">
+                         <string>ARC 2</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="3" column="2">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc2_distance_2">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string/>
+                        </property>
+                        <property name="decimals">
+                         <number>4</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc2-distance</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc2_distance</string>
                         </property>
                        </widget>
                       </item>
                       <item row="4" column="2">
-                       <widget class="PlasmaHalDoubleSpinBox" name="spn_torch_off_distance">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc3_distance_2">
                         <property name="alignment">
                          <set>Qt::AlignCenter</set>
                         </property>
@@ -5597,17 +5657,40 @@ LEADINS</string>
                         <property name="decimals">
                          <number>4</number>
                         </property>
-                        <property name="minimum">
-                         <double>-10.000000000000000</double>
-                        </property>
-                        <property name="maximum">
-                         <double>10.000000000000000</double>
-                        </property>
                         <property name="pinBaseName" stdset="0">
-                         <string>plasma-torch-off-distance</string>
+                         <string>plasma-arc3-distance</string>
                         </property>
                         <property name="settingName" stdset="0">
-                         <string>plasma_torch_off_distance</string>
+                         <string>plasma_arc3_distance</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="4" column="1">
+                       <widget class="PlasmaHalDoubleSpinBox" name="spn_arc3_percent_3">
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="buttonSymbols">
+                         <enum>QAbstractSpinBox::PlusMinus</enum>
+                        </property>
+                        <property name="suffix">
+                         <string>%</string>
+                        </property>
+                        <property name="decimals">
+                         <number>1</number>
+                        </property>
+                        <property name="pinBaseName" stdset="0">
+                         <string>plasma-arc3-percent</string>
+                        </property>
+                        <property name="settingName" stdset="0">
+                         <string>plasma_arc3_percent</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="4" column="0">
+                       <widget class="QLabel" name="label_200">
+                        <property name="text">
+                         <string>ARC 3</string>
                         </property>
                        </widget>
                       </item>
@@ -5656,20 +5739,20 @@ LEADINS</string>
                         <property name="minimumSize">
                          <size>
                           <width>250</width>
-                          <height>250</height>
+                          <height>289</height>
                          </size>
                         </property>
                         <property name="maximumSize">
                          <size>
                           <width>250</width>
-                          <height>250</height>
+                          <height>289</height>
                          </size>
                         </property>
                         <property name="text">
                          <string/>
                         </property>
                         <property name="pixmap">
-                         <pixmap>../common/icons/holes/hole-ui-graphic.png</pixmap>
+                         <pixmap>../common/icons/holes/hole-ui-graphic_v2.png</pixmap>
                         </property>
                         <property name="scaledContents">
                          <bool>true</bool>
@@ -10844,13 +10927,16 @@ ANTI-DIVE</string>
   <tabstop>spn_max_hole_size</tabstop>
   <tabstop>spn_leadin_radius</tabstop>
   <tabstop>spn_small_hole_threshold</tabstop>
+  <tabstop>spn_hole_kerf</tabstop>
   <tabstop>spn_leadin_percent_2</tabstop>
   <tabstop>spn_arc1_percent_2</tabstop>
   <tabstop>spn_arc2_percent_2</tabstop>
   <tabstop>spn_arc2_distance_2</tabstop>
-  <tabstop>spn_torch_off_distance</tabstop>
-  <tabstop>spn_arc3_percent_2</tabstop>
+  <tabstop>spn_arc3_percent_3</tabstop>
   <tabstop>spn_arc3_distance_2</tabstop>
+  <tabstop>spn_overburn_start_distance</tabstop>
+  <tabstop>spn_overburn_percent_2</tabstop>
+  <tabstop>spn_overburn_distance_2</tabstop>
   <tabstop>btn_0</tabstop>
   <tabstop>btn_1</tabstop>
   <tabstop>btn_2</tabstop>
@@ -10866,46 +10952,6 @@ ANTI-DIVE</string>
   <tabstop>btn_12</tabstop>
   <tabstop>btn_13</tabstop>
   <tabstop>id0_dbl_diam</tabstop>
-  <tabstop>btn_qs_refresh</tabstop>
-  <tabstop>arc_retry_delay</tabstop>
-  <tabstop>vtk_qs</tabstop>
-  <tabstop>arc_voltage_scale</tabstop>
-  <tabstop>arc_voltage_offset</tabstop>
-  <tabstop>arc_height_per_volt</tabstop>
-  <tabstop>arc_ok_high_volts</tabstop>
-  <tabstop>arc_ok_low_volts</tabstop>
-  <tabstop>scribe_arm_delay</tabstop>
-  <tabstop>scribe_on_delay</tabstop>
-  <tabstop>spot_threshold</tabstop>
-  <tabstop>spot_delay</tabstop>
-  <tabstop>laser_offset_x</tabstop>
-  <tabstop>laser_offset_y</tabstop>
-  <tabstop>camera_offset_x</tabstop>
-  <tabstop>camera_offset_y</tabstop>
-  <tabstop>scribe_offset_x</tabstop>
-  <tabstop>scribe_offset_y</tabstop>
-  <tabstop>plasmahaldoublespinbox</tabstop>
-  <tabstop>plasmahaldoublespinbox_2</tabstop>
-  <tabstop>plasma_torch_pulse_sec</tabstop>
-  <tabstop>consumable_xy_feed_rate</tabstop>
-  <tabstop>consumable_offset_x</tabstop>
-  <tabstop>consumable_offset_y</tabstop>
-  <tabstop>framing_feed_rate</tabstop>
-  <tabstop>thc_safe_height</tabstop>
-  <tabstop>probe_skip_ihs</tabstop>
-  <tabstop>probe_ohmic_retries</tabstop>
-  <tabstop>thc_pid_p_gain</tabstop>
-  <tabstop>thc_void_override</tabstop>
-  <tabstop>probe_speed</tabstop>
-  <tabstop>thc_pid_d_gain</tabstop>
-  <tabstop>thc_vad_threshold</tabstop>
-  <tabstop>thc_pid_i_gain</tabstop>
-  <tabstop>probe_offset</tabstop>
-  <tabstop>probe_float_travel</tabstop>
-  <tabstop>thc_threshold</tabstop>
-  <tabstop>thc_delay</tabstop>
-  <tabstop>probe_height</tabstop>
-  <tabstop>probe_setup_speed</tabstop>
   <tabstop>id1_dbl_width</tabstop>
   <tabstop>id1_dbl_height</tabstop>
   <tabstop>id2_dbl_outer_diam</tabstop>
@@ -10971,8 +11017,51 @@ ANTI-DIVE</string>
   <tabstop>id13_dbl_w</tabstop>
   <tabstop>id13_dbl_c</tabstop>
   <tabstop>id13_dbl_h</tabstop>
-  <tabstop>arc_max_starts</tabstop>
+  <tabstop>btn_qs_refresh</tabstop>
+  <tabstop>thc_delay</tabstop>
+  <tabstop>thc_threshold</tabstop>
+  <tabstop>thc_pid_p_gain</tabstop>
+  <tabstop>thc_pid_i_gain</tabstop>
+  <tabstop>thc_pid_d_gain</tabstop>
+  <tabstop>thc_vad_threshold</tabstop>
+  <tabstop>thc_void_override</tabstop>
+  <tabstop>thc_safe_height</tabstop>
+  <tabstop>probe_float_travel</tabstop>
+  <tabstop>probe_speed</tabstop>
+  <tabstop>probe_height</tabstop>
+  <tabstop>probe_offset</tabstop>
+  <tabstop>probe_ohmic_retries</tabstop>
+  <tabstop>probe_skip_ihs</tabstop>
+  <tabstop>probe_setup_speed</tabstop>
   <tabstop>arc_fail_timeout</tabstop>
+  <tabstop>arc_max_starts</tabstop>
+  <tabstop>arc_retry_delay</tabstop>
+  <tabstop>arc_voltage_scale</tabstop>
+  <tabstop>arc_voltage_offset</tabstop>
+  <tabstop>arc_height_per_volt</tabstop>
+  <tabstop>arc_ok_high_volts</tabstop>
+  <tabstop>arc_ok_low_volts</tabstop>
+  <tabstop>scribe_arm_delay</tabstop>
+  <tabstop>scribe_on_delay</tabstop>
+  <tabstop>spot_threshold</tabstop>
+  <tabstop>spot_delay</tabstop>
+  <tabstop>laser_offset_x</tabstop>
+  <tabstop>laser_offset_y</tabstop>
+  <tabstop>camera_offset_x</tabstop>
+  <tabstop>camera_offset_y</tabstop>
+  <tabstop>scribe_offset_x</tabstop>
+  <tabstop>scribe_offset_y</tabstop>
+  <tabstop>plasmahaldoublespinbox</tabstop>
+  <tabstop>plasmahaldoublespinbox_2</tabstop>
+  <tabstop>plasma_torch_pulse_sec</tabstop>
+  <tabstop>consumable_xy_feed_rate</tabstop>
+  <tabstop>consumable_offset_x</tabstop>
+  <tabstop>consumable_offset_y</tabstop>
+  <tabstop>framing_feed_rate</tabstop>
+  <tabstop>vtk_qs</tabstop>
+  <tabstop>id11_chk_pair</tabstop>
+  <tabstop>id11_dbl_xoffset</tabstop>
+  <tabstop>id11_dbl_yoffset</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -11291,8 +11380,8 @@ ANTI-DIVE</string>
      <y>478</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1725</x>
-     <y>156</y>
+     <x>187</x>
+     <y>76</y>
     </hint>
    </hints>
   </connection>
@@ -11307,8 +11396,8 @@ ANTI-DIVE</string>
      <y>528</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1725</x>
-     <y>264</y>
+     <x>187</x>
+     <y>76</y>
     </hint>
    </hints>
   </connection>
@@ -11323,8 +11412,8 @@ ANTI-DIVE</string>
      <y>528</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1725</x>
-     <y>318</y>
+     <x>187</x>
+     <y>76</y>
     </hint>
    </hints>
   </connection>
@@ -11335,8 +11424,8 @@ ANTI-DIVE</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1725</x>
-     <y>156</y>
+     <x>187</x>
+     <y>76</y>
     </hint>
     <hint type="destinationlabel">
      <x>949</x>
@@ -11351,8 +11440,8 @@ ANTI-DIVE</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1725</x>
-     <y>264</y>
+     <x>187</x>
+     <y>76</y>
     </hint>
     <hint type="destinationlabel">
      <x>793</x>
@@ -11367,8 +11456,8 @@ ANTI-DIVE</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1725</x>
-     <y>318</y>
+     <x>187</x>
+     <y>76</y>
     </hint>
     <hint type="destinationlabel">
      <x>949</x>
@@ -11383,8 +11472,8 @@ ANTI-DIVE</string>
    <slot>setState(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1725</x>
-     <y>210</y>
+     <x>187</x>
+     <y>76</y>
     </hint>
     <hint type="destinationlabel">
      <x>793</x>
@@ -11399,8 +11488,8 @@ ANTI-DIVE</string>
    <slot>setState(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1725</x>
-     <y>372</y>
+     <x>187</x>
+     <y>76</y>
     </hint>
     <hint type="destinationlabel">
      <x>949</x>
@@ -11415,8 +11504,8 @@ ANTI-DIVE</string>
    <slot>setState(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1725</x>
-     <y>426</y>
+     <x>187</x>
+     <y>76</y>
     </hint>
     <hint type="destinationlabel">
      <x>949</x>
@@ -11447,12 +11536,12 @@ ANTI-DIVE</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>484</x>
-     <y>244</y>
+     <x>428</x>
+     <y>74</y>
     </hint>
     <hint type="destinationlabel">
-     <x>543</x>
-     <y>274</y>
+     <x>472</x>
+     <y>74</y>
     </hint>
    </hints>
   </connection>
@@ -11495,12 +11584,12 @@ ANTI-DIVE</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1853</x>
-     <y>166</y>
+     <x>1159</x>
+     <y>138</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1853</x>
-     <y>216</y>
+     <x>1159</x>
+     <y>138</y>
     </hint>
    </hints>
   </connection>
@@ -11522,11 +11611,11 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="machine_state"/>
+  <buttongroup name="jog_type"/>
   <buttongroup name="btngrpMdi"/>
   <buttongroup name="jog_inc_values"/>
-  <buttongroup name="jog_type"/>
-  <buttongroup name="grp_shape_btns"/>
   <buttongroup name="dry_run_torch_enable"/>
+  <buttongroup name="grp_shape_btns"/>
+  <buttongroup name="machine_state"/>
  </buttongroups>
 </ui>

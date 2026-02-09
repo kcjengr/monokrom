@@ -223,17 +223,21 @@ settings:
          persistent: true
      
     plasma_arc1_percent:
-         default_value: 60.0
-         persistent: true
-         
-    plasma_arc2_percent:
          default_value: 40.0
          persistent: true
          
-    plasma_arc3_percent:
-         default_value: 100.0
+    plasma_arc2_percent:
+         default_value: 60.0
          persistent: true
-     
+         
+    plasma_arc3_percent:
+         default_value: 80.0
+         persistent: true
+         
+    plasma_overburn_percent:
+        default_value: 100.0
+        persistent: true
+    
     plasma_leadin_percent:
          default_value: 60.0
          persistent: true
@@ -254,7 +258,7 @@ settings:
          default_value: 3.0
          persistent: true
     
-    plasma_torch_off_distance:
+    plasma_overburn_start_distance:
          default_value: 0.0
          persistent: true
          

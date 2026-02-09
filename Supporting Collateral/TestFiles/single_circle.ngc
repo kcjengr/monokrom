@@ -1,0 +1,44 @@
+;     file name: single_circle.ngc
+; date and time: Mon Feb 09 2026    2:18:16 PM
+; postprocessor: LinuxCNC Monokrom.scpost rev: 0.1
+;
+;begin pre-amble
+ G21 (units: metric)
+ G40 (cutter compensation: off)
+ G90 (distance mode: absolute)
+ M52 P1 (adaptive feed: on)
+ M65 P2 (enable THC)
+ M65 P3 (enable torch)
+ M68 E3 Q0 (velocity 100%)
+ G64 P0.0254 Q0.025 (tracking tolerances: 0.0254mm)
+;end pre-amble
+;
+;begin material setup
+ (o=0,kw=1.6, ph=3.5, pd=0.3, ch=1.5, fr=1600, mt=6, th=1, cv=107, pe=0, jh=0, jd=0)
+ F#<_hal[plasmac.cut-feed-rate]>
+;end material setup
+ G0 X-8.5 Y0
+ M3 $0 S1 (plasma start)
+ M67 E3 Q100
+ G1 X-12.5 Y0
+ (On small circles Feed = 50.00%)
+ M67 E3 Q50
+ G3 X-12.5 Y0 I12.5 J-0
+ (On small circles Feed = 100.00%)
+ M5 $0 (plasma end)
+ ;
+ ;begin post-amble
+ G40 (cutter compensation: off)
+ G90 (distance mode: absolute)
+ M65 P2 (enable THC)
+ M65 P3 (enable torch)
+ M68 E3 Q0 (velocity 100%)
+ M5 $-1 (backup stop)
+ ;end post-amble
+ ;
+ ;begin statistics
+ ;Pierces = 1
+ ;   Cuts = 1,    Length = 82.541
+ ;end statistics
+ ;
+ M30 (end program)
