@@ -258,7 +258,7 @@ settings:
          default_value: 3.0
          persistent: true
     
-    plasma_overburn_start_distance:
+    plasma_overburn_adjustment:
          default_value: 0.0
          persistent: true
          
