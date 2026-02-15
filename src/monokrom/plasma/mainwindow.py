@@ -25,7 +25,7 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-02-02 11:34"
+__updated__ = "2026-02-13 14:23"
 
 
 # Setup logging
@@ -667,8 +667,8 @@ class MainWindow(VCPMainWindow):
         try:
             # Get the cutchart record based on the pin value.
             cut = self._plasma_plugin.tool_id(value)[0]
-        except:
-            LOG.warn('No Tool / Cutchart found')
+        except Exception as e:
+            LOG.warn(f'No Tool / Cutchart found. Error: {e}')
         else:
             # Cycle through all the filters and set them to the correct value
             for k in MainWindow.relationship_fld_map:
