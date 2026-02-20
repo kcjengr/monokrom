@@ -14,7 +14,7 @@
 ;end pre-amble
 ;
 ;begin material setup
- (o=0,kw=1.6, ph=3.5, pd=0.3, ch=1.5, fr=1600, mt=6, th=1, cv=107, pe=0, jh=0, jd=0)
+ (o=0,kw=1.6, ph=3.5, pd=0.3, ch=1.5, fr=1600, mt=6, th=1, cv=107, pe=0, jh=0, jd=0, mc=ms)
  F#<_hal[plasmac.cut-feed-rate]>
 ;end material setup
  G0 X-8.5 Y0
