@@ -25,7 +25,7 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-02-13 14:23"
+__updated__ = "2026-02-16 20:28"
 
 
 # Setup logging
@@ -286,7 +286,7 @@ class MainWindow(VCPMainWindow):
             filter_widget.currentIndexChanged.connect(self.param_update_from_filters)
 
         # create the cutchart hal pin for feedback loop from filter prog
-        comp = hal.getComponent()
+        comp = qthal.getComponent()
         self.hal_cutchart_id = comp.addPin('cutchart-id', 'u32', 'in')
         comp.addListener('cutchart-id', self.cutchart_pin_update)
         # create a force-reload-cutchart for use by filter prog
@@ -296,6 +296,9 @@ class MainWindow(VCPMainWindow):
         # create probe test error pin to watch
         self.hal_probe_test_error = comp.addPin('probe-test-error', 'bit', 'in')
         comp.addListener('probe-test-error', self.probe_test_error)
+
+        # expose the current material id for use by the gcode preprocessor
+        self.hal_material_id = comp.addPin('material-id', 'u32', 'io')
         
         # setup default cut chart load.
         default_cut_chart = INFO.ini.find('PLASMAC', 'DEFAULT_CUTCHART')
@@ -705,6 +708,8 @@ class MainWindow(VCPMainWindow):
         for v in MainWindow.filter_fld_map.values():
             uifld = getattr(self, v)
             arglist.append(uifld.currentData())
+            LOG.debug(f"---> {v} = {uifld.currentData()}")
+        LOG.debug(f"Cutlist search args: {arglist}")
         cutlist = self._plasma_plugin.cut(arglist)
         if len(cutlist) > 0:
             return cutlist
@@ -728,16 +733,9 @@ class MainWindow(VCPMainWindow):
     def param_update_from_filters(self, index=0):
         sender = self.sender()
         if hasattr(sender, 'currentText'):
-            LOG.debug("Update params '{}' '{}'".format(index, sender.currentText()))
+            LOG.debug(f"Update params '{index}' '{sender.currentText()}'")
         else:
             LOG.debug('Update params.')
-        arglist = []
-        LOG.debug("Cutlist search args:")
-        for v in MainWindow.filter_fld_map.values():
-            uifld = getattr(self, v)
-            arglist.append(uifld.currentData())
-            LOG.debug(f"---> {v} = {uifld.currentData()}")
-        LOG.debug(f"Cutlist search args: {arglist}")
         # cutlist = self._plasma_plugin.cut(arglist)
         data = self.get_filter_query()
         if data is not None:
@@ -772,7 +770,10 @@ class MainWindow(VCPMainWindow):
                     # due to events not seeming to trigger we need to force an update
                     if hasattr(ui_fld, "forceUpdatePinValue"):
                         ui_fld.forceUpdatePinValue()
-            LOG.debug(f"Thickness = {data.thickness.thickness}")
+            LOG.debug(f"param_update_from_filters: Thickness = {data.thickness.thickness}")
+            LOG.debug(f"param_update_from_filters: MaterialID = {data.materialid}")
+            cnchal.set_p("qtpyvcp.material-id", f"{data.materialid}")
+            
             self._material_thickness = data.thickness.thickness
         else:
             self.grp_filter_sub_list.hide()
@@ -788,7 +789,7 @@ class MainWindow(VCPMainWindow):
                     ui_fld = getattr(self, v)
                     ui_fld.setValue(0)
         # All fields have been set, update any slave displays
-        LOG.debug(f"Tool Number = {self._tool_number}")
+        LOG.debug(f"param_update_from_filters: Tool Number = {self._tool_number}")
         ui_fld = getattr(self, 'param_name')
         self.lbl_process_name.setText(ui_fld.text())
     
@@ -807,7 +808,7 @@ class MainWindow(VCPMainWindow):
                             LOG.debug(f"Tool Number = {self._tool_number}")
                     else:
                         ui_fld.setValue(fld_data) 
-                LOG.debug(f"Thickness = {d.thickness.thickness}")
+                LOG.debug(f"filter_sub_list_select: Thickness = {d.thickness.thickness}")
                 self._material_thickness = d.thickness.thickness
     
     def setMode(self):
