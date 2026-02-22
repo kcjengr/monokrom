@@ -278,6 +278,10 @@ settings:
         default_value: 0.0
         persistent: true
     
+    plasma_use_hidef:
+        default_value: false
+        persistent: true
+    
     laser_offset_x:
         default_value: 0.0
         persistent: true 
