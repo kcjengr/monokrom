@@ -1,0 +1,41 @@
+<RCC>
+  <qresource prefix="image">
+    <file>icons/anglegusset.svg</file>
+    <file>icons/anglegusset_dimensions.png</file>
+    <file>icons/circle.svg</file>
+    <file>icons/circle_dimensions.png</file>
+    <file>icons/convexrect.svg</file>
+    <file>icons/convexrect_dimensions.png</file>
+    <file>icons/donut.svg</file>
+    <file>icons/donut_dimensions.png</file>
+    <file>icons/E.png</file>
+    <file>icons/exhaust._dimensions.png</file>
+    <file>icons/exhaust.svg</file>
+    <file>icons/Lgusset.svg</file>
+    <file>icons/Lgusset_dimensions.png</file>
+    <file>icons/liftlug.svg</file>
+    <file>icons/liftlug_dimensions.png</file>
+    <file>icons/N.png</file>
+    <file>icons/NE.png</file>
+    <file>icons/n_holerectangle.svg</file>
+    <file>icons/n_holerectangle_dimensions.png</file>
+    <file>icons/NW.png</file>
+    <file>icons/pipeflange.svg</file>
+    <file>icons/pipeflange_dimensions.png</file>
+    <file>icons/pipesaddle.svg</file>
+    <file>icons/pipesaddle_dimensions.png</file>
+    <file>icons/rectangle.svg</file>
+    <file>icons/rectangle_dimensions.png</file>
+    <file>icons/S.png</file>
+    <file>icons/SE.png</file>
+    <file>icons/straightlug.svg</file>
+    <file>icons/SW.png</file>
+    <file>icons/truss_support.svg</file>
+    <file>icons/truss_support_dimensions.png</file>
+    <file>icons/ulug.svg</file>
+    <file>icons/ulug_dimensions.png</file>
+    <file>icons/W.png</file>
+    <file>icons/webstiffener.svg</file>
+    <file>icons/webstiffener_dimensions.png</file>
+  </qresource>
+</RCC>

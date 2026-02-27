@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="128"
+   height="128"
+   viewBox="0 0 128 128"
+   sodipodi:docname="webstiffener_dimensions.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="7.277344"
+     inkscape:cx="25.490069"
+     inkscape:cy="46.445516"
+     inkscape:window-width="2560"
+     inkscape:window-height="1549"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1"
+     showgrid="false" />
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g1">
+    <path
+       style="fill:#ffee06;fill-opacity:1"
+       d="m 45.377237,98.866452 -6.827586,-6.82758 V 55.589636 19.140403 l 6.775096,-6.723181 6.775096,-6.7231801 h 19.024904 c 13.463814,0 19.375671,-0.611122 20.224904,0.238111 1.578589,1.578589 1.598312,95.8542471 0.0274,98.7895171 -0.968094,1.8089 -2.138038,0.97237 -20.035001,0.97237 h -19.13723 z m 40.172414,-43.17241 v -43 l -15.25,0.02318 -15.25,0.02318 -4.75,4.531818 -4.75,4.531818 v 33.660653 33.660653 l 4.712408,4.784348 4.712408,4.78435 h 15.287592 15.287592 z"
+       id="path1"
+       sodipodi:nodetypes="ccccccssssccccccccccccccc" />
+    <path
+       style="fill:#fc0202;fill-opacity:1;stroke:#ff0000;stroke-width:1.2;stroke-linejoin:round;stroke-miterlimit:6;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 38.552131,113.04374 53.110417,-0.0687"
+       id="path1-5"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:13.3333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffee06;fill-opacity:1;stroke:#ffee06;stroke-linejoin:round;stroke-miterlimit:6;stroke-opacity:1;paint-order:stroke fill markers"
+       x="60.765175"
+       y="121.91174"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         x="60.765175"
+         y="121.91174">w</tspan></text>
+    <path
+       style="fill:#000000;stroke:#fb0101;stroke-width:1.2;stroke-linejoin:round;stroke-miterlimit:6;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       d="M 34.547389,5.4807579 34.644189,105.8877"
+       id="path2"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:13.3333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffee06;fill-opacity:1;stroke:#ffee06;stroke-linejoin:round;stroke-miterlimit:6;stroke-opacity:1;paint-order:stroke fill markers"
+       x="25.372034"
+       y="55.939999"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         x="25.372034"
+         y="55.939999">h</tspan></text>
+    <path
+       style="fill:#fc0202;fill-opacity:1;stroke:#00fffc;stroke-width:1.2;stroke-linejoin:round;stroke-miterlimit:6;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 38.552787,108.12175 13.354304,-0.0698"
+       id="path1-5-8"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:13.3333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffee06;fill-opacity:1;stroke:#ffee06;stroke-linejoin:round;stroke-miterlimit:6;stroke-opacity:1;paint-order:stroke fill markers"
+       x="38.186985"
+       y="106.30291"
+       id="text2-2"><tspan
+         sodipodi:role="line"
+         id="tspan2-6"
+         x="38.186985"
+         y="106.30291">c</tspan></text>
+  </g>
+</svg>
