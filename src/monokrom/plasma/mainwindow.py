@@ -20,12 +20,13 @@ from qtpyvcp.actions.machine_actions import issue_mdi
 from qtpyvcp.actions.machine_actions import mode as set_mode
 from qtpyvcp.actions.machine_actions import jog
 ### mdi GCODE text created by JT from linuxcnc
+import monokrom_rc
 import mdi_text as mdiText
 import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-02-16 20:28"
+__updated__ = "2026-02-27 13:11"
 
 
 # Setup logging
