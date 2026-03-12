@@ -64,7 +64,7 @@ windows:
       # Specify the UI file to load the window layout from.
       ui_file: {{ file.dir }}/mainwindow.ui
       # Specify a stylesheet to use only for mainwindow.
-      stylesheet: {{ file.dir }}/plasma.qss
+      stylesheet: {{ file.dir }}/../common/monokrom.qss
       # Set the window title from from the date in the vcp section above.
       title: ( vcp.name ) ( vcp.version)
 

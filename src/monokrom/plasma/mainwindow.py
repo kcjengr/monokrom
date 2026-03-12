@@ -342,6 +342,7 @@ class MainWindow(VCPMainWindow):
         
         # test svg
 
+    @Slot()
     def on_exitAppBtn_clicked(self):
       self.app.quit()
 

@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 import os
+# 2026-02-26 12:00:00 AI: Ensure qtpy uses the PySide6 backend by setting
+# the `QT_API` environment variable early, before any qtpy/qtpyvcp imports.
+# This forces a consistent Qt binding (PySide6) while keeping the `qtpy`
+# abstraction layer unchanged.
+if not os.environ.get('QT_API'):
+  os.environ['QT_API'] = 'pyside6'
 import qtpyvcp
 from distutils.dir_util import copy_tree
 #import pydevd;pydevd.settrace()
