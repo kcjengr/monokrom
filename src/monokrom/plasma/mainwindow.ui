@@ -2357,7 +2357,7 @@ TORCH</string>
                         <bool>true</bool>
                        </property>
                        <property name="rules" stdset="0">
-                        <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;.01\&quot; if ch[0] == 1else \&quot;0.0004\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
+                        <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;.01\&quot; if ch[0] == 1 else \&quot;0.0004\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
                        </property>
                        <property name="actionName" stdset="0">
                         <string>machine.jog.set-increment:0.01</string>
@@ -2382,7 +2382,7 @@ TORCH</string>
                         <bool>true</bool>
                        </property>
                        <property name="rules" stdset="0">
-                        <string>[{&quot;name&quot;: &quot;measure&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] == 1else \&quot;0.039\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
+                        <string>[{&quot;name&quot;: &quot;measure&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] == 1 else \&quot;0.039\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
                        </property>
                        <property name="actionName" stdset="0">
                         <string>machine.jog.set-increment:1</string>
@@ -2404,7 +2404,7 @@ TORCH</string>
                         <bool>true</bool>
                        </property>
                        <property name="rules" stdset="0">
-                        <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;5\&quot; if ch[0] == 1else \&quot;0.1968\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
+                        <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;5\&quot; if ch[0] == 1 else \&quot;0.1968\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
                        </property>
                        <property name="actionName" stdset="0">
                         <string>machine.jog.set-increment:5</string>
@@ -2426,7 +2426,7 @@ TORCH</string>
                         <bool>true</bool>
                        </property>
                        <property name="rules" stdset="0">
-                        <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;0.1\&quot; if ch[0] == 1else \&quot;0.0039\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
+                        <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;0.1\&quot; if ch[0] == 1 else \&quot;0.0039\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:linear_units&quot;, &quot;trigger&quot;: true}]}]</string>
                        </property>
                        <property name="actionName" stdset="0">
                         <string>machine.jog.set-increment:0.1</string>

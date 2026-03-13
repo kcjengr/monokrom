@@ -1,0 +1,16 @@
+# QTPLASMAC SIMULATOR PANEL (sim profile)
+
+# load the simulated torch
+loadusr -Wn sim-torch sim-torch
+
+# connect plasmac connections
+net plasmac:torch-on        =>  sim-torch.start
+net plasmac:cut-volts       =>  sim-torch.voltage-in
+
+# Arc voltage comes from sim-torch; use torch-on as a simple arc-ok simulation.
+net plasmac:torch-on                                     =>  db_arc-ok.in
+net sim:arc-voltage-in      sim-torch.voltage-out       =>  plasmac.arc-voltage-in  qtpyvcp.mk-arc-voltage.in
+
+# Keep float/ohmic off by default in this pure simulation profile.
+setp db_float.in 0
+setp db_ohmic.in 0
