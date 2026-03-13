@@ -3391,32 +3391,7 @@ EXTENT</string>
                </widget>
               </item>
               <item>
-               <widget class="VTKBackPlot" name="vtkbackplot">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::NoFocus</enum>
-                </property>
-                <property name="arcfeedColor" stdset="0">
-                 <color>
-                  <red>213</red>
-                  <green>201</green>
-                  <blue>33</blue>
-                 </color>
-                </property>
-                <property name="feedColor" stdset="0">
-                 <color>
-                  <red>255</red>
-                  <green>238</green>
-                  <blue>6</blue>
-                 </color>
-                </property>
-                <property name="userColor" stdset="0">
-                 <color>
-                  <red>255</red>
-                  <green>238</green>
-                  <blue>6</blue>
-                 </color>
-                </property>
-               </widget>
+               <widget class="VTKBackPlot" name="vtkbackplot"/>
               </item>
               <item>
                <widget class="QWidget" name="widget_8" native="true">
@@ -4118,54 +4093,7 @@ DOWN</string>
                   </layout>
                  </item>
                  <item>
-                  <widget class="GcodeTextEdit" name="gcode_editor">
-                   <property name="font">
-                    <font>
-                     <family>Sans</family>
-                     <pointsize>11</pointsize>
-                     <italic>false</italic>
-                     <bold>false</bold>
-                     <kerning>false</kerning>
-                    </font>
-                   </property>
-                   <property name="focusPolicy">
-                    <enum>Qt::FocusPolicy::ClickFocus</enum>
-                   </property>
-                   <property name="readOnly">
-                    <bool>true</bool>
-                   </property>
-                   <property name="syntaxHighlighting" stdset="0">
-                    <bool>false</bool>
-                   </property>
-                   <property name="currentLineBackground" stdset="0">
-                    <color>
-                     <red>83</red>
-                     <green>44</green>
-                     <blue>112</blue>
-                    </color>
-                   </property>
-                   <property name="marginBackground" stdset="0">
-                    <color>
-                     <red>22</red>
-                     <green>22</green>
-                     <blue>14</blue>
-                    </color>
-                   </property>
-                   <property name="marginCurrentLineBackground" stdset="0">
-                    <color>
-                     <red>83</red>
-                     <green>44</green>
-                     <blue>112</blue>
-                    </color>
-                   </property>
-                   <property name="marginCurrentLineColor" stdset="0">
-                    <color>
-                     <red>178</red>
-                     <green>171</green>
-                     <blue>78</blue>
-                    </color>
-                   </property>
-                  </widget>
+                  <widget class="GCodeEditor" name="gcode_editor"/>
                  </item>
                 </layout>
                </widget>
@@ -8737,57 +8665,7 @@ ANTI-DIVE</string>
           </size>
          </property>
          <layout class="QGridLayout" name="gridLayout_51">
-          <item row="0" column="0" colspan="2">
-           <widget class="VTKBackPlot" name="vtk_qs">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="arcfeedColor" stdset="0">
-             <color>
-              <red>213</red>
-              <green>201</green>
-              <blue>33</blue>
-             </color>
-            </property>
-            <property name="feedColor" stdset="0">
-             <color>
-              <red>255</red>
-              <green>238</green>
-              <blue>6</blue>
-             </color>
-            </property>
-            <property name="userColor" stdset="0">
-             <color>
-              <red>255</red>
-              <green>238</green>
-              <blue>6</blue>
-             </color>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <spacer name="horizontalSpacer_17">
-            <property name="orientation">
-             <enum>Qt::Orientation::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>914</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="2" column="1">
+          <item row="2" column="0">
            <widget class="QWidget" name="widget_50" native="true">
             <layout class="QGridLayout" name="gridLayout_52">
              <item row="0" column="1">
@@ -8855,6 +8733,29 @@ ANTI-DIVE</string>
               </widget>
              </item>
             </layout>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <spacer name="horizontalSpacer_17">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>914</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="0">
+           <widget class="VTKBackPlot" name="vtk_qs">
+            <property name="minimumSize">
+             <size>
+              <width>400</width>
+              <height>800</height>
+             </size>
+            </property>
            </widget>
           </item>
          </layout>
@@ -10711,6 +10612,11 @@ ANTI-DIVE</string>
    <header>qtpyvcp.widgets.input_widgets.action_slider</header>
   </customwidget>
   <customwidget>
+   <class>GCodeEditor</class>
+   <extends>QPlainTextEdit</extends>
+   <header>gcodeeditor.h</header>
+  </customwidget>
+  <customwidget>
    <class>MDIEntry</class>
    <extends>QLineEdit</extends>
    <header>qtpyvcp.widgets.input_widgets.mdientry_widget</header>
@@ -10817,11 +10723,6 @@ ANTI-DIVE</string>
    <extends>QMainWindow</extends>
    <header>qtpyvcp.widgets.form_widgets.main_window</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>GcodeTextEdit</class>
-   <extends>QPlainTextEdit</extends>
-   <header>qtpyvcp.widgets.input_widgets.gcode_text_edit</header>
   </customwidget>
   <customwidget>
    <class>VCPFrame</class>
@@ -10999,7 +10900,6 @@ ANTI-DIVE</string>
   <tabstop>consumable_offset_x</tabstop>
   <tabstop>consumable_offset_y</tabstop>
   <tabstop>framing_feed_rate</tabstop>
-  <tabstop>vtk_qs</tabstop>
   <tabstop>id11_chk_pair</tabstop>
   <tabstop>id11_dbl_xoffset</tabstop>
   <tabstop>id11_dbl_yoffset</tabstop>
@@ -11213,102 +11113,6 @@ ANTI-DIVE</string>
     <hint type="destinationlabel">
      <x>1198</x>
      <y>718</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_edit</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>gcode_editor</receiver>
-   <slot>EditorReadWrite(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1159</x>
-     <y>138</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1377</x>
-     <y>568</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>vtk_clear</sender>
-   <signal>clicked()</signal>
-   <receiver>vtkbackplot</receiver>
-   <slot>clearLivePlot()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1416</x>
-     <y>124</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1416</x>
-     <y>326</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>vtk_plus</sender>
-   <signal>clicked()</signal>
-   <receiver>vtkbackplot</receiver>
-   <slot>zoomIn()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1043</x>
-     <y>124</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1416</x>
-     <y>326</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>vtk_minus</sender>
-   <signal>clicked()</signal>
-   <receiver>vtkbackplot</receiver>
-   <slot>zoomOut()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1167</x>
-     <y>124</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1416</x>
-     <y>326</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>vtk_prog_extent</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>vtkbackplot</receiver>
-   <slot>toggleProgramBounds()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1541</x>
-     <y>124</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1416</x>
-     <y>326</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>vtk_mach_extent</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>vtkbackplot</receiver>
-   <slot>toggleMachineBounds()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1656</x>
-     <y>147</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1416</x>
-     <y>326</y>
     </hint>
    </hints>
   </connection>
@@ -11554,11 +11358,11 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="machine_state"/>
   <buttongroup name="jog_inc_values"/>
   <buttongroup name="jog_type"/>
-  <buttongroup name="grp_shape_btns"/>
   <buttongroup name="dry_run_torch_enable"/>
+  <buttongroup name="grp_shape_btns"/>
+  <buttongroup name="machine_state"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>
