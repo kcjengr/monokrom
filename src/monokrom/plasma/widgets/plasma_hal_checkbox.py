@@ -59,31 +59,36 @@ class PlasmaHalCheckBox(HalCheckBox):
         self._setting_name = name
 
     def initialize(self):
-        LOG.debug("Initalizing PlasmaHalCheckBox: '{}'".format(self._setting_name))
-        self._setting = SETTINGS.get(self._setting_name)
-        if self._setting is not None:
+        LOG.debug(f"Initalizing PlasmaHalCheckBox: '{self.objectName()}'")
+        if self._setting_name is not None:
+            LOG.debug(f"Initalizing PlasmaHalCheckBox - setting: '{self._setting_name}'")
+            self._setting = SETTINGS.get(self._setting_name)
+            if self._setting is not None:
 
-            value = self._setting.getValue()
+                value = self._setting.getValue()
 
-            self.setDisplayChecked(value)
-            self.toggled.emit(value)
+                self.setDisplayChecked(value)
+                self.toggled.emit(value)
 
-            self._setting.notify(self.setDisplayChecked)
-            self.toggled.connect(self._setting.setValue)
+                self._setting.notify(self.setDisplayChecked)
+                self.toggled.connect(self._setting.setValue)
 
         comp = hal.getComponent()
         obj_name = self.getPinBaseName()
+        if obj_name is not None:
+            LOG.debug(f"Initalizing PlasmaHalCheckBox - pin: '{obj_name}'")
 
-        # add checkbox.enable HAL pin
-        self._enable_pin = comp.addPin(obj_name + ".enable", "bit", "in")
-        self._enable_pin.value = self.isEnabled()
-        self._enable_pin.valueChanged.connect(self.setEnabled)
+            # add checkbox.enable HAL pin
+            self._enable_pin = comp.addPin(obj_name + ".enable", "bit", "in")
+            self._enable_pin.value = self.isEnabled()
+            self._enable_pin.valueChanged.connect(self.setEnabled)
 
-        # add checkbox.check HAL pin
-        self._check_pin = comp.addPin(obj_name + ".check", "bit", "in")
-        self._check_pin.value = self.isChecked()
-        self._check_pin.valueChanged.connect(self.setChecked)
+            # add checkbox.check HAL pin
+            self._check_pin = comp.addPin(obj_name + ".check", "bit", "in")
+            self._check_pin.value = self.isChecked()
+            self._check_pin.valueChanged.connect(self.setChecked)
 
-        # add checkbox.checked HAL pin
-        self._checked_pin = comp.addPin(obj_name + ".checked", "bit", "out")
-        self._checked_pin.value = self.isChecked()
+            # add checkbox.checked HAL pin
+            self._checked_pin = comp.addPin(obj_name + ".checked", "bit", "out")
+            self._checked_pin.value = self.isChecked()
+        LOG.debug(f"DONE - Initalizing PlasmaHalCheckBox: '{self.objectName()}'")

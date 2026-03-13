@@ -64,7 +64,7 @@ windows:
       # Specify the UI file to load the window layout from.
       ui_file: {{ file.dir }}/mainwindow.ui
       # Specify a stylesheet to use only for mainwindow.
-      stylesheet: {{ file.dir }}/plasma.qss
+      stylesheet: {{ file.dir }}/../common/monokrom.qss
       # Set the window title from from the date in the vcp section above.
       title: ( vcp.name ) ( vcp.version)
 
@@ -233,7 +233,11 @@ settings:
     plasma_arc3_percent:
          default_value: 100.0
          persistent: true
-     
+         
+    plasma_overburn_percent:
+        default_value: 100.0
+        persistent: true
+    
     plasma_leadin_percent:
          default_value: 60.0
          persistent: true
@@ -254,7 +258,7 @@ settings:
          default_value: 3.0
          persistent: true
     
-    plasma_torch_off_distance:
+    plasma_overburn_adjustment:
          default_value: 0.0
          persistent: true
          
@@ -272,6 +276,10 @@ settings:
     
     plasma_hole_kerf:
         default_value: 0.0
+        persistent: true
+    
+    plasma_use_hidef:
+        default_value: false
         persistent: true
     
     laser_offset_x:

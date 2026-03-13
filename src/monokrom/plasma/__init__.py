@@ -1,4 +1,5 @@
 import os
+from . import monokrom_rc
 import monokrom
 
 VCP_DIR = os.path.realpath(os.path.dirname(__file__))

@@ -26,9 +26,9 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
         qtpyvcp.spinbox.out       float     out
         ========================= ========= =========
     """
-    
+
     focusReceived = Signal(object)
-    
+
     def __init__(self, parent=None):
         super(PlasmaHalDoubleSpinBox, self).__init__(parent)
         self._setting = None
@@ -44,7 +44,7 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
     def settingName(self, name):
         self._setting_name = name
 
-    
+
     def setDisplayValue(self, value):
         self.blockSignals(True)
         self.setValue(value)
@@ -61,39 +61,43 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
         # fire the focusReceived signal
         self.focusReceived.emit(self)
         super(PlasmaHalDoubleSpinBox, self).focusInEvent(event)
-    
+
     def resetToOriginal(self):
         self._setting = self._original_value
         self.setDisplayValue(self._setting)
 
     def initialize(self):
-        LOG.debug("Initalizing PlasmaHalDoubleSpinBox: '{}'".format(self._setting_name))
-        self._setting = SETTINGS.get(self._setting_name)
-        self._original_value = self._setting
-        if self._setting is not None:
-            if self._setting.max_value is not None:
-                self.setMaximum(self._setting.max_value)
-            if self._setting.min_value is not None:
-                self.setMinimum(self._setting.min_value)
-
-            self.setDisplayValue(self._setting.getValue())
-            self._setting.notify(self.setDisplayValue)
-            #self.valueChanged.connect(self._setting.setValue)
-            self.editingFinished.connect(self.editingEnded)
+        LOG.debug(f"Initalizing PlasmaHalDoubleSpinBox: '{self.objectName()}'")
+        if self._setting_name is not None:
+            LOG.debug(f"Initalizing PlasmaHalDoubleSpinBox - setting: '{self._setting_name}'")
+            self._setting = SETTINGS.get(self._setting_name)
+            self._original_value = self._setting
+            if self._setting is not None:
+                if self._setting.max_value is not None:
+                    self.setMaximum(self._setting.max_value)
+                if self._setting.min_value is not None:
+                    self.setMinimum(self._setting.min_value)
+        
+                self.setDisplayValue(self._setting.getValue())
+                self._setting.notify(self.setDisplayValue)
+                #self.valueChanged.connect(self._setting.setValue)
+                self.editingFinished.connect(self.editingEnded)
 
         comp = hal.getComponent()
         obj_name = self.getPinBaseName()
+        if obj_name is not None:
+            LOG.debug(f"Initalizing PlasmaHalDoubleSpinBox - pin: '{obj_name}'")
 
-        # add spinbox.enabled HAL pin
-        self._enabled_pin = comp.addPin(obj_name + ".enable", "bit", "in")
-        self._enabled_pin.value = self.isEnabled()
-        self._enabled_pin.valueChanged.connect(self.setEnabled)
-
-        # add spinbox.checked HAL pin
-        self._value_pin = comp.addPin(obj_name + ".out", "float", "out")
-        self._value_pin.value = self.value()
-
-        # add spinbox.checked HAL pin
-        self._set_value_pin = comp.addPin(obj_name + ".in", "float", "in")
-        self._set_value_pin.valueChanged.connect(self.setValue)
-
+            # add spinbox.enabled HAL pin
+            self._enabled_pin = comp.addPin(obj_name + ".enable", "bit", "in")
+            self._enabled_pin.value = self.isEnabled()
+            self._enabled_pin.valueChanged.connect(self.setEnabled)
+            
+            # add spinbox.checked HAL pin
+            self._value_pin = comp.addPin(obj_name + ".out", "float", "out")
+            self._value_pin.value = self.value()
+            
+            # add spinbox.checked HAL pin
+            self._set_value_pin = comp.addPin(obj_name + ".in", "float", "in")
+            self._set_value_pin.valueChanged.connect(self.setValue)
+        LOG.debug(f"DONE - Initalizing PlasmaHalDoubleSpinBox: '{self.objectName()}'")

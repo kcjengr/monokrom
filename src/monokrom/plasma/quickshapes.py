@@ -116,6 +116,8 @@ def circle(diameter, kerf, leadin=4, conv=1, lines=[]):
     lines.append(f"G1 X{x} Y{y}\n")
     lines.append(f"G2 I{-x} J{-y}\n")
     stop_cut(lines)
+
+    
     return lines
 
 def rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):

@@ -1,7 +1,14 @@
 #!/usr/bin/env python
 import os
+# Force PySide6 before any Qt-touching import (qtpy defaults to PyQt5 if both are installed)
+os.environ.setdefault('QT_API', 'pyside6')
+# Force OpenGL RHI backend for Qt Quick before any Qt context is created.
+# Without this Qt6 defaults to Vulkan/Metal which causes a black screen +
+# white triangle error indicator when those backends are unavailable.
+os.environ.setdefault('QSG_RHI_BACKEND', 'opengl')
 import qtpyvcp
 from distutils.dir_util import copy_tree
+
 #import pydevd;pydevd.settrace()
 
 """Main entry point for MyVCP.
@@ -81,11 +88,21 @@ Note:
 
 __version__ = '0.0.1'
 
+
 VCP_DIR = os.path.realpath(os.path.dirname(__file__))
 
 
 def main(machine_type='plasma', opts=None):
 
+    # Must be called BEFORE QApplication is created.
+    # Qt6 defaults to RHI/Vulkan which causes a black screen + white triangle
+    # on systems that don't have Vulkan; force OpenGL instead.
+    try:
+        from PySide6.QtQuick import QQuickWindow, QSGRendererInterface
+        QQuickWindow.setGraphicsApi(QSGRendererInterface.GraphicsApi.OpenGL)
+    except Exception as _e:
+        import sys
+        print(f"[monokrom] WARNING: could not set OpenGL graphics API: {_e}", file=sys.stderr)
     if opts is None:
         from qtpyvcp.utilities.opt_parser import parse_opts
         opts = parse_opts(doc=cmd_doc,

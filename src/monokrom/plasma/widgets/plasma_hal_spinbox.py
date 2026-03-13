@@ -51,31 +51,36 @@ class PlasmaHalSpinBox(HalQSpinBox):
             self._value_pin.value = self.value()
 
     def initialize(self):
-        LOG.debug("Initalizing PlasmaHalSpinBox: '{}'".format(self._setting_name))
-        self._setting = SETTINGS.get(self._setting_name)
-        if self._setting is not None:
-            if self._setting.max_value is not None:
-                self.setMaximum(self._setting.max_value)
-            if self._setting.min_value is not None:
-                self.setMinimum(self._setting.min_value)
-
-            self.setDisplayValue(self._setting.getValue())
-            self._setting.notify(self.setDisplayValue)
-            self.valueChanged.connect(self._setting.setValue)
+        LOG.debug(f"Initalizing PlasmaHalSpinBox: '{self.objectName()}'")
+        if self._setting_name is not None:
+            LOG.debug(f"Initalizing PlasmaHalSpinBox - setting: '{self._setting_name}'")
+            self._setting = SETTINGS.get(self._setting_name)
+            if self._setting is not None:
+                if self._setting.max_value is not None:
+                    self.setMaximum(self._setting.max_value)
+                if self._setting.min_value is not None:
+                    self.setMinimum(self._setting.min_value)
+    
+                self.setDisplayValue(self._setting.getValue())
+                self._setting.notify(self.setDisplayValue)
+                self.valueChanged.connect(self._setting.setValue)
 
         comp = hal.getComponent()
         obj_name = self.getPinBaseName()
-
-        pin_typ = 's32'
-        # add spinbox.enable HAL pin
-        self._enabled_pin = comp.addPin(obj_name + ".enable", "bit", "in")
-        self._enabled_pin.value = self.isEnabled()
-        self._enabled_pin.valueChanged.connect(self.setEnabled)
-
-        # add spinbox.out HAL pin
-        self._value_pin = comp.addPin(obj_name + ".out", pin_typ, "out")
-        self._value_pin.value = self.value()
-
-        # add spinbox.in HAL pin
-        self._set_value_pin = comp.addPin(obj_name + ".in", pin_typ, "in")
-        self._set_value_pin.valueChanged.connect(self.setValue)
+        if obj_name is not None:
+            LOG.debug(f"Initalizing PlasmaHalSpinBox - pin: '{obj_name}'")
+    
+            pin_typ = 's32'
+            # add spinbox.enable HAL pin
+            self._enabled_pin = comp.addPin(obj_name + ".enable", "bit", "in")
+            self._enabled_pin.value = self.isEnabled()
+            self._enabled_pin.valueChanged.connect(self.setEnabled)
+    
+            # add spinbox.out HAL pin
+            self._value_pin = comp.addPin(obj_name + ".out", pin_typ, "out")
+            self._value_pin.value = self.value()
+    
+            # add spinbox.in HAL pin
+            self._set_value_pin = comp.addPin(obj_name + ".in", pin_typ, "in")
+            self._set_value_pin.valueChanged.connect(self.setValue)
+        LOG.debug(f"DONE - Initalizing PlasmaHalSpinBox: '{self.objectName()}'")

@@ -47,3 +47,5 @@ debian/python3-monokrom.substvars
 
 *.halshow
 poetry.lock
+
+*.prefs
