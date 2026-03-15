@@ -1,6 +1,5 @@
 <RCC>
   <qresource prefix="image">
-    <file>../common/icons/homed.png</file>
     <file>icons/hole-ui-graphic_v3.png</file>
     <file>icons/anglegusset.svg</file>
     <file>icons/anglegusset_dimensions.png</file>

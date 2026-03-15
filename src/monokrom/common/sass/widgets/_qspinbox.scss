@@ -46,13 +46,13 @@ QDoubleSpinBox::up-button:pressed {
 // buttonSymbols="QAbstractSpinBox::UpDownArrows"
 QSpinBox[buttonSymbols="0"]::up-arrow,
 QDoubleSpinBox[buttonSymbols="0"]::up-arrow {
-    image: url(icons/arrow-up.png);
+    image: url(:/image/common/icons/arrow-up.png);
 }
 
 // buttonSymbols="QAbstractSpinBox::PlusMinus"
 QSpinBox[buttonSymbols="1"]::up-arrow,
 QDoubleSpinBox[buttonSymbols="1"]::up-arrow {
-    image: url(icons/plus-round.png);
+    image: url(:/image/common/icons/plus-round.png);
 }
 
 QSpinBox::up-arrow:off,
@@ -67,7 +67,7 @@ QSpinBox[buttonSymbols="1"]::up-arrow:off,
 QSpinBox[buttonSymbols="1"]::up-arrow:disabled,
 QDoubleSpinBox[buttonSymbols="1"]::up-arrow:off,
 QDoubleSpinBox[buttonSymbols="1"]::up-arrow:disabled {
-    image: url(icons/plus-round.disabled.png);
+    image: url(:/image/common/icons/plus-round.disabled.png);
 }
 
 QSpinBox[buttonSymbols="0"]::down-button,
@@ -95,19 +95,19 @@ QDoubleSpinBox::down-button:pressed {
 // buttonSymbols="QAbstractSpinBox::UpDownArrows"
 QSpinBox[buttonSymbols="0"]::down-arrow,
 QDoubleSpinBox[buttonSymbols="0"]::down-arrow {
-    image: url(icons/arrow-down.png);
+    image: url(:/image/common/icons/arrow-down.png);
 }
 
 // buttonSymbols="QAbstractSpinBox::PlusMinus"
 QSpinBox[buttonSymbols="1"]::down-arrow,
 QDoubleSpinBox[buttonSymbols="1"]::down-arrow {
-    image: url(icons/minus-round.png);
+    image: url(:/image/common/icons/minus-round.png);
 }
 
 // buttonSymbols="QAbstractSpinBox::UpDownArrows"
 QSpinBox[buttonSymbols="0"]::down-arrow:disabled,
 QDoubleSpinBox[buttonSymbols="0"]::down-arrow:disabled {
-    image: url(icons/arrow-down.disabled.png);
+    image: url(:/image/common/icons/arrow-down.disabled.png);
 }
 
 // buttonSymbols="QAbstractSpinBox::PlusMinus"
@@ -115,5 +115,5 @@ QSpinBox[buttonSymbols="1"]::down-arrow:off,
 QSpinBox[buttonSymbols="1"]::down-arrow:disabled,
 QDoubleSpinBox[buttonSymbols="1"]::down-arrow:off,
 QDoubleSpinBox[buttonSymbols="1"]::down-arrow:disabled {
-    image: url(icons/minus-round.disabled.png);
+    image: url(:/image/common/icons/minus-round.disabled.png);
 }

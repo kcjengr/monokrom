@@ -40,11 +40,11 @@ QScrollBar::sub-line:horizontal {
 }
 
 // QScrollBar:left-arrow:horizontal{
-//      image: url(icons/arrow-left.png);
+//      image: url(:/image/common/icons/arrow-left.png);
 // }
 //
 // QScrollBar::right-arrow:horizontal {
-//      image: url(icons/arrow-right.png);
+//      image: url(:/image/common/icons/arrow-right.png);
 // }
 
 QScrollBar:vertical {
@@ -80,9 +80,9 @@ QScrollBar::add-line:vertical {
 }
 
 // QScrollBar::up-arrow:vertical {
-//      image: url(icons/arrow-up.png);
+//      image: url(:/image/common/icons/arrow-up.png);
 // }
 //
 // QScrollBar::down-arrow:vertical {
-//      image: url(icons/arrow-down.png);
+//      image: url(:/image/common/icons/arrow-down.png);
 // }

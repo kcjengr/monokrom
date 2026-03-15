@@ -8,6 +8,7 @@ from qtpyvcp import hal as qthal
 import linuxcnc
 
 import monokrom_rc
+import common_rc
 
 ### Supports the @Slot decorator to solve property type issues.
 from PySide6.QtCore import Qt, QItemSelectionModel, Slot, QTimer
@@ -27,7 +28,7 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-03-13"
+__updated__ = "2026-03-15"
 
 
 # Setup logging
@@ -150,8 +151,8 @@ class MainWindow(VCPMainWindow):
         
         # Hide some in flight UI that is unfinished
         #self.mainTabWidget.setTabVisible(2, False)
-        #self.tabs_ctl_run_right.setTabVisible(2, False)
-        #self.tab_holes_and_slots.setTabVisible(1, False)
+        self.tabs_ctl_run_right.setTabVisible(2, False)
+        self.tab_holes_and_slots.setTabVisible(1, False)
         # setup some default UI settings
         self.vtkbackplot.update_active_wcs(0)
         self.vtkbackplot.setViewZ()

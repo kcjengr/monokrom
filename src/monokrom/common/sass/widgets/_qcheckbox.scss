@@ -18,23 +18,23 @@ QCheckBox::indicator {
 }
 
 QCheckBox::indicator:unchecked {
-  image: url(icons/checkbox.unchecked.png);
+  image: url(:/image/common/icons/checkbox.unchecked.png);
 }
 
 QCheckBox::indicator:unchecked:disabled {
-  image: url(icons/checkbox.unchecked.disabled.png);
+  image: url(:/image/common/icons/checkbox.unchecked.disabled.png);
 }
 
 QCheckBox::indicator:unchecked:pressed {
-  //image: url(icons/checkbox.pressed.png);
+  //image: url(:/image/common/icons/checkbox.pressed.png);
 }
 
 QCheckBox::indicator:checked {
-  image: url(icons/checkbox.checked.png);
+  image: url(:/image/common/icons/checkbox.checked.png);
 }
 
 QCheckBox::indicator:checked:disabled {
-  image: url(icons/checkbox.checked.disabled.png);
+  image: url(:/image/common/icons/checkbox.checked.disabled.png);
 
 }
 

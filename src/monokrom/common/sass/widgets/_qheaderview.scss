@@ -36,11 +36,11 @@ QHeaderView::section:checked
 
 /* style the sort indicator */
 QHeaderView::down-arrow {
-  image: url(icons/arrow-down.inverted.png);
+  image: url(:/image/common/icons/arrow-down.inverted.png);
 }
 
 QHeaderView::up-arrow {
-  image: url(icons/arrow-up.inverted.png);
+  image: url(:/image/common/icons/arrow-up.inverted.png);
 }
 
 QTableView {

@@ -1,0 +1,43 @@
+<RCC>
+  <qresource prefix="image">
+    <file>common/icons/arrow-down.inverted.png</file>
+    <file>common/icons/arrow-down.png</file>
+    <file>common/icons/arrow-down-solid.png</file>
+    <file>common/icons/arrow-left.inverted.png</file>
+    <file>common/icons/arrow-left.png</file>
+    <file>common/icons/arrow-right.inverted.png</file>
+    <file>common/icons/arrow-right.png</file>
+    <file>common/icons/arrow-up.inverted.png</file>
+    <file>common/icons/arrow-up.png</file>
+    <file>common/icons/arrow-up-solid.png</file>
+    <file>common/icons/checkbox.checked.disabled.png</file>
+    <file>common/icons/checkbox.checked.png</file>
+    <file>common/icons/checkbox.inverted.checked.png</file>
+    <file>common/icons/checkbox.inverted.unchecked.png</file>
+    <file>common/icons/checkbox.pressed.png</file>
+    <file>common/icons/checkbox.unchecked.disabled.png</file>
+    <file>common/icons/checkbox.unchecked.png</file>
+    <file>common/icons/crosshairs-solid.bg.png</file>
+    <file>common/icons/crosshairs-solid.png</file>
+    <file>common/icons/dir-up.png</file>
+    <file>common/icons/eject.png</file>
+    <file>common/icons/file.png</file>
+    <file>common/icons/folder.png</file>
+    <file>common/icons/homed.png</file>
+    <file>common/icons/icon.png</file>
+    <file>common/icons/minus.png</file>
+    <file>common/icons/minus-round.disabled.png</file>
+    <file>common/icons/minus-round.png</file>
+    <file>common/icons/plus.png</file>
+    <file>common/icons/plus-round.disabled.png</file>
+    <file>common/icons/plus-round.png</file>
+    <file>common/icons/unhomed.png</file>
+    <file>common/icons/usb.png</file>
+    <file>common/icons/x-left.png</file>
+    <file>common/icons/x-right.png</file>
+    <file>common/icons/y-down.png</file>
+    <file>common/icons/y-up.png</file>
+    <file>common/icons/z-down.png</file>
+    <file>common/icons/z-up.png</file>
+  </qresource>
+</RCC>

@@ -29,7 +29,7 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-    image: url(icons/arrow-down.png);
+    image: url(:/image/common/icons/arrow-down.png);
 }
 
 QComboBox::down-arrow:on { /* shift the arrow when popup is open */

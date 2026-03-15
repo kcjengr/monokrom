@@ -117,12 +117,12 @@
 
 .MonokromDroWidget[axisHomed='false'] #homed_indicator {
   background-color: $background;
-  // qproperty-icon: url(icons/unomed.png);
+  // qproperty-icon: url(:/image/common/icons/unomed.png);
 }
 
 .MonokromDroWidget[axisHomed='true'] #homed_indicator {
   background-color: $border-color;
-  // qproperty-icon: url(icons/homed.png);
+  // qproperty-icon: url(:/image/common/icons/homed.png);
 }
 
 .ActionButton {

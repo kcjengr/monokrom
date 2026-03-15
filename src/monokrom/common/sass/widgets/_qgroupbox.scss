@@ -34,11 +34,11 @@ QGroupBox::indicator {
 }
 
 QGroupBox::indicator:checked {
-    image: url(icons/checkbox.inverted.checked.png);
+    image: url(:/image/common/icons/checkbox.inverted.checked.png);
 }
 
 QGroupBox::indicator:unchecked {
-    image: url(icons/checkbox.inverted.unchecked.png);
+    image: url(:/image/common/icons/checkbox.inverted.unchecked.png);
 }
 
 

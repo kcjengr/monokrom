@@ -123,16 +123,16 @@ QCheckBox::indicator {
   height: 42px; }
 
 QCheckBox::indicator:unchecked {
-  image: url(icons/checkbox.unchecked.png); }
+  image: url(:/image/common/icons/checkbox.unchecked.png); }
 
 QCheckBox::indicator:unchecked:disabled {
-  image: url(icons/checkbox.unchecked.disabled.png); }
+  image: url(:/image/common/icons/checkbox.unchecked.disabled.png); }
 
 QCheckBox::indicator:checked {
-  image: url(icons/checkbox.checked.png); }
+  image: url(:/image/common/icons/checkbox.checked.png); }
 
 QCheckBox::indicator:checked:disabled {
-  image: url(icons/checkbox.checked.disabled.png); }
+  image: url(:/image/common/icons/checkbox.checked.disabled.png); }
 
 /*===========================================================================*/
 /*                              QComboBox                                    */
@@ -161,7 +161,7 @@ QComboBox::drop-down {
   border-bottom-right-radius: 3px; }
 
 QComboBox::down-arrow {
-  image: url(icons/arrow-down.png); }
+  image: url(:/image/common/icons/arrow-down.png); }
 
 QComboBox::down-arrow:on {
   /* shift the arrow when popup is open */
@@ -234,11 +234,11 @@ QDoubleSpinBox::up-button:pressed {
 
 QSpinBox[buttonSymbols="0"]::up-arrow,
 QDoubleSpinBox[buttonSymbols="0"]::up-arrow {
-  image: url(icons/arrow-up.png); }
+  image: url(:/image/common/icons/arrow-up.png); }
 
 QSpinBox[buttonSymbols="1"]::up-arrow,
 QDoubleSpinBox[buttonSymbols="1"]::up-arrow {
-  image: url(icons/plus-round.png); }
+  image: url(:/image/common/icons/plus-round.png); }
 
 QSpinBox::up-arrow:off,
 QSpinBox::up-arrow:disabled,
@@ -250,7 +250,7 @@ QSpinBox[buttonSymbols="1"]::up-arrow:off,
 QSpinBox[buttonSymbols="1"]::up-arrow:disabled,
 QDoubleSpinBox[buttonSymbols="1"]::up-arrow:off,
 QDoubleSpinBox[buttonSymbols="1"]::up-arrow:disabled {
-  image: url(icons/plus-round.disabled.png); }
+  image: url(:/image/common/icons/plus-round.disabled.png); }
 
 QSpinBox[buttonSymbols="0"]::down-button,
 QSpinBox[buttonSymbols="1"]::down-button,
@@ -269,21 +269,21 @@ QDoubleSpinBox::down-button:pressed {
 
 QSpinBox[buttonSymbols="0"]::down-arrow,
 QDoubleSpinBox[buttonSymbols="0"]::down-arrow {
-  image: url(icons/arrow-down.png); }
+  image: url(:/image/common/icons/arrow-down.png); }
 
 QSpinBox[buttonSymbols="1"]::down-arrow,
 QDoubleSpinBox[buttonSymbols="1"]::down-arrow {
-  image: url(icons/minus-round.png); }
+  image: url(:/image/common/icons/minus-round.png); }
 
 QSpinBox[buttonSymbols="0"]::down-arrow:disabled,
 QDoubleSpinBox[buttonSymbols="0"]::down-arrow:disabled {
-  image: url(icons/arrow-down.disabled.png); }
+  image: url(:/image/common/icons/arrow-down.disabled.png); }
 
 QSpinBox[buttonSymbols="1"]::down-arrow:off,
 QSpinBox[buttonSymbols="1"]::down-arrow:disabled,
 QDoubleSpinBox[buttonSymbols="1"]::down-arrow:off,
 QDoubleSpinBox[buttonSymbols="1"]::down-arrow:disabled {
-  image: url(icons/minus-round.disabled.png); }
+  image: url(:/image/common/icons/minus-round.disabled.png); }
 
 /*===========================================================================*/
 /*                             QScrollBar                                    */
@@ -431,10 +431,10 @@ QGroupBox::indicator {
   margin-left: 35px; }
 
 QGroupBox::indicator:checked {
-  image: url(icons/checkbox.inverted.checked.png); }
+  image: url(:/image/common/icons/checkbox.inverted.checked.png); }
 
 QGroupBox::indicator:unchecked {
-  image: url(icons/checkbox.inverted.unchecked.png); }
+  image: url(:/image/common/icons/checkbox.inverted.unchecked.png); }
 
 QGroupBox.disabled {
   border-color: red; }
@@ -708,10 +708,10 @@ QHeaderView::section {
 
 /* style the sort indicator */
 QHeaderView::down-arrow {
-  image: url(icons/arrow-down.inverted.png); }
+  image: url(:/image/common/icons/arrow-down.inverted.png); }
 
 QHeaderView::up-arrow {
-  image: url(icons/arrow-up.inverted.png); }
+  image: url(:/image/common/icons/arrow-up.inverted.png); }
 
 QTableView QTableCornerButton::section {
   border: 1px solid #10100a;
@@ -736,7 +736,7 @@ QLabel[frameShape='6'] {
 QSizeGrip {
   background: transparent;
   margin: 2px;
-  background-image: url(icons/corner.png); }
+  background-image: url(:/image/common/icons/corner.png); }
 
 /*===========================================================================*/
 /*                              VCP Layout                                   */
