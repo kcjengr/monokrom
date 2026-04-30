@@ -22,6 +22,10 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.7"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+pytest-qt = "^4.2"
+pytest-mock = "^3.12"
 
 [tool.poetry.scripts]
 # monokrom = "monokrom:main"
