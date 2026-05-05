@@ -47,3 +47,6 @@ debian/python3-monokrom.substvars
 
 *.halshow
 poetry.lock
+/.pytest_cache/
+
+.settings/org.eclipse.core.resources.prefs

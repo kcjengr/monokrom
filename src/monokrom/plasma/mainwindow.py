@@ -26,7 +26,7 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-02-27 13:11"
+__updated__ = "2026-05-05 20:59"
 
 
 # Setup logging
@@ -40,8 +40,8 @@ CMD = linuxcnc.command()
 
 #GCODEPROPS = getPlugin('gcode_properties')
 
-  ini_file = os.environ.get('LINUXCNC_INI_FILE', '')
-    INI = linuxcnc.ini(ini_file) if ini_file else INFO.ini
+ini_file = os.environ.get('LINUXCNC_INI_FILE', '')
+INI = linuxcnc.ini(ini_file) if ini_file else INFO.ini
 NGC_LOC = INI.find('DISPLAY', 'PROGRAM_PREFIX')
 if NGC_LOC is None:
     NGC_LOC = '~/linuxcnc/nc_files'
@@ -576,7 +576,7 @@ class MainWindow(VCPMainWindow):
             if cnchal.get_value('plasmac.cut-recovery'):
                 cnchal.set_p('plasmac.cut-recovery', '0')
 
-   def consumable_change(self):
+    def consumable_change(self):
         sender = self.sender()
         obj_name = sender.objectName()
         if obj_name == 'btn_stop_abort':
