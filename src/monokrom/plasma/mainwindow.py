@@ -40,7 +40,8 @@ CMD = linuxcnc.command()
 
 #GCODEPROPS = getPlugin('gcode_properties')
 
-INI = linuxcnc.ini(os.environ['INI_FILE_NAME'])
+  ini_file = os.environ.get('LINUXCNC_INI_FILE', '')
+    INI = linuxcnc.ini(ini_file) if ini_file else INFO.ini
 NGC_LOC = INI.find('DISPLAY', 'PROGRAM_PREFIX')
 if NGC_LOC is None:
     NGC_LOC = '~/linuxcnc/nc_files'
@@ -343,7 +344,8 @@ class MainWindow(VCPMainWindow):
         # test svg
 
     def on_exitAppBtn_clicked(self):
-      self.app.quit()
+      from qtpy.QtWidgets import QApplication
+      QApplication.instance().quit()
 
     def reset_vtk_btns(self):
         self.vtk_prog_extent.setChecked(False)
@@ -438,7 +440,7 @@ class MainWindow(VCPMainWindow):
                 qs.exhaust_flange(id, wt, pcd, bd, sw, nb, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, leadin=leadin, conv=1, lines=lines)
             case 9:
                 w = self.id9_dbl_w.value()
-                h = self.id9_dbl_w.value()
+                h = self.id9_dbl_h.value()
                 hhn=self.id9_int_hhn.value()
                 hhs=self.id9_dbl_hs.value()
                 vhn=self.id9_int_vhn.value()
@@ -478,7 +480,7 @@ class MainWindow(VCPMainWindow):
                 h = self.id12_dbl_h.value()
                 w1 = self.id12_dbl_w1.value()
                 h1 = self.id12_dbl_h1.value()
-                qs.truss_support(self, w, h, w1, h1, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+                qs.truss_support(w, h, w1, h1, kerf=kerf, leadin=leadin, conv=1, lines=lines)
             case 13:
                 w = self.id13_dbl_w.value()
                 h = self.id13_dbl_h.value()
@@ -574,20 +576,7 @@ class MainWindow(VCPMainWindow):
             if cnchal.get_value('plasmac.cut-recovery'):
                 cnchal.set_p('plasmac.cut-recovery', '0')
 
-    def editor_buttons(self):
-        sender = self.sender()
-        obj_name = sender.objectName()
-        if obj_name == 'btn_edit':
-            return
-        
-        if obj_name == 'btn_save':
-            return
-        
-        if obj_name == 'btn_edit':
-            return
-                
-
-    def consumable_change(self):
+   def consumable_change(self):
         sender = self.sender()
         obj_name = sender.objectName()
         if obj_name == 'btn_stop_abort':

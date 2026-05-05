@@ -445,7 +445,7 @@ def pipe_saddle(w, h, pd, o, kerf, leadin=4, conv=1, lines=[]):
     lines.append(f"G1 X{fix(w+kh)}\n")       # start center to top right corner
     lines.append(f"G1 Y{fix(0-kh)}\n")       # down to y0
     lines.append(f"G1 X{fix(0-kh)}\n")       # left to x0
-    lines.append(f"G1 y{fix(h+kh)}\n")       # up to top left corner
+    lines.append(f"G1 Y{fix(h+kh)}\n")       # up to top left corner
     lines.append(f"G1 X{fix((2*cx)-x1+kh)}\n")
     lines.append(f"G3 X{fix(x1-kh)} I{fix(cx-((2*cx)-x1+kh))} J{fix(cy-(h+kh))}\n")
     stop_cut(lines)
@@ -1092,7 +1092,7 @@ def angle_gusset(w, h, c1, c2, a, kerf, cutting_pair=False, xoffset=0, yoffset=0
         
 
 
-def truss_support(self, w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
+def truss_support(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
     kh=kerf/2
     hw = w/2
     hw1 = w1/2

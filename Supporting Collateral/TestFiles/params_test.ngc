@@ -10,7 +10,7 @@
  M65 P2 (enable THC)
  M65 P3 (enable torch)
  M68 E3 Q0 (velocity 100%)
- G64 P0.254 Q0.025 (tracking tolerances: 0.254mm)
+ G64 P0.0254 (tracking tolerances: 0.0254mm)
 ;end pre-amble
 ;
 ;begin material setup
