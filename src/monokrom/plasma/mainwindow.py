@@ -23,6 +23,7 @@ from qtpyvcp.actions.machine_actions import jog
 import monokrom_rc
 import mdi_text as mdiText
 import quickshapes as qs
+from monokrom.plasma.hal_bridge import HALBridge
 
 # import pydevd;pydevd.settrace()
 
@@ -105,6 +106,7 @@ class MainWindow(VCPMainWindow):
     
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
+        self.hal = HALBridge()
         self._plasma_plugin = getPlugin('plasmaprocesses')
         self.filter_cutchart_id = None
         self.detail_index_num = 0
@@ -121,14 +123,14 @@ class MainWindow(VCPMainWindow):
         self.slat_top = float(INI.find('PLASMAC', 'SLAT_TOP'))
         # get max Z speed
         self.thc_feed_rate.setText(f"{float(INI.find('AXIS_Z', 'MAX_VELOCITY')) * 60 / 2}")
-        cnchal.set_p('plasmac.thc-feed-rate',f"{float(INI.find('AXIS_Z', 'MAX_VELOCITY')) * 60 / 2}")
+        self.hal.set_p('plasmac.thc-feed-rate',f"{float(INI.find('AXIS_Z', 'MAX_VELOCITY')) * 60 / 2}")
         
         if INFO.getIsMachineMetric():
             self._linear_setting = 'mm'
         else:
             self._linear_setting = 'inch'
         
-        self.units_per_mm = cnchal.get_value('halui.machine.units-per-mm')
+        self.units_per_mm = self.hal.get_value('halui.machine.units-per-mm')
         
         self._pressure_setting = INFO.ini.find('PLASMAC', 'PRESSURE')
         self._machine = INFO.ini.find('PLASMAC', 'MACHINE')
@@ -508,7 +510,7 @@ class MainWindow(VCPMainWindow):
         else:
             laser_x = 0
             laser_y = 0            
-        issue_mdi(f"G10L20P0X{laser_x}Y{laser_y};G0X0Y0")
+        self.hal.send_mdi(f"G10L20P0X{laser_x}Y{laser_y};G0X0Y0")
         self.btn_laser.setChecked(False)
 
     def cut_recovery_direction(self, direction):
@@ -517,7 +519,7 @@ class MainWindow(VCPMainWindow):
         # Credit to Phillip A Carter and Gregory D Carl.
         #
         speed = self.cut_recovery_speed.value() * 0.01 * direction
-        cnchal.set_p('plasmac.paused-motion-speed',str(speed))
+        self.hal.set_p('plasmac.paused-motion-speed',str(speed))
 
     def cut_recovery(self):
         sender = self.sender()
@@ -526,55 +528,55 @@ class MainWindow(VCPMainWindow):
                 self.widget_recovery.setEnabled(False)
                 self.cut_recovery_status = False
                 self.jog_stack.setCurrentIndex(0)
-                cnchal.set_p('plasmac.x-offset', f'{0:.0f}')
-                cnchal.set_p('plasmac.y-offset', f'{0:.0f}')
+                self.hal.set_p('plasmac.x-offset', f'{0:.0f}')
+                self.hal.set_p('plasmac.y-offset', f'{0:.0f}')
                 return
 
         if obj_name == 'btn_cycle_start':
                 self.widget_recovery.setEnabled(False)
                 self.cut_recovery_status = False
                 self.jog_stack.setCurrentIndex(0)
-                cnchal.set_p('plasmac.x-offset', f'{0:.0f}')
-                cnchal.set_p('plasmac.y-offset', f'{0:.0f}')
+                self.hal.set_p('plasmac.x-offset', f'{0:.0f}')
+                self.hal.set_p('plasmac.y-offset', f'{0:.0f}')
                 return
 
         if obj_name == 'btn_feed_hold':
                 self.widget_recovery.setEnabled(True)
                 self.cut_recovery_status = True
                 self.jog_stack.setCurrentIndex(1)
-                self.xOrig = cnchal.get_value('axis.x.eoffset-counts')
-                self.yOrig = cnchal.get_value('axis.y.eoffset-counts')
-                self.zOrig = cnchal.get_value('axis.z.eoffset-counts')
-                self.oScale = cnchal.get_value('plasmac.offset-scale')
-                cnchal.set_p('plasmac.x-offset', f'{0:.0f}')
-                cnchal.set_p('plasmac.y-offset', f'{0:.0f}')
+                self.xOrig = self.hal.get_value('axis.x.eoffset-counts')
+                self.yOrig = self.hal.get_value('axis.y.eoffset-counts')
+                self.zOrig = self.hal.get_value('axis.z.eoffset-counts')
+                self.oScale = self.hal.get_value('plasmac.offset-scale')
+                self.hal.set_p('plasmac.x-offset', f'{0:.0f}')
+                self.hal.set_p('plasmac.y-offset', f'{0:.0f}')
 
     def cutrec_move(self, state, x, y):
         if state:
             maxMove = 10
             if self._linear_setting == 'inch':
                 maxMove = 0.4
-            laser = cnchal.get_value('qtpyvcp.laser.out') > 0
-            distX = cnchal.get_value('qtpyvcp.param-kirfwidth.out') * x
-            distY = cnchal.get_value('qtpyvcp.param-kirfwidth.out') * y
-            # xNew = cnchal.get_value('plasmac.axis-x-position') + cnchal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
-            # yNew = cnchal.get_value('plasmac.axis-y-position') + cnchal.get_value('axis.y.eoffset') - (self.laser_offset_y.value() * laser) + distY
+            laser = self.hal.get_value('qtpyvcp.laser.out') > 0
+            distX = self.hal.get_value('qtpyvcp.param-kirfwidth.out') * x
+            distY = self.hal.get_value('qtpyvcp.param-kirfwidth.out') * y
+            # xNew = self.hal.get_value('plasmac.axis-x-position') + self.hal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
+            # yNew = self.hal.get_value('plasmac.axis-y-position') + self.hal.get_value('axis.y.eoffset') - (self.laser_offset_y.value() * laser) + distY
             #if xNew > self.xMax or xNew < self.xMin or yNew > self.yMax or yNew < self.yMin:
             #    return
-            xTotal = cnchal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
-            yTotal = cnchal.get_value('axis.y.eoffset') - (self.laser_offset_y.value() * laser) + distY
+            xTotal = self.hal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
+            yTotal = self.hal.get_value('axis.y.eoffset') - (self.laser_offset_y.value() * laser) + distY
             if xTotal > maxMove or xTotal < -maxMove or yTotal > maxMove or yTotal < -maxMove:
                 return
             moveX = int(distX / self.oScale)
             moveY = int(distY / self.oScale)
-            cnchal.set_p('plasmac.x-offset', f'{str(cnchal.get_value("plasmac.x-offset") + moveX)}')
-            cnchal.set_p('plasmac.y-offset', f'{str(cnchal.get_value("plasmac.y-offset") + moveY)}')
-            cnchal.set_p('plasmac.cut-recovery', '1')
+            self.hal.set_p('plasmac.x-offset', f'{str(self.hal.get_value("plasmac.x-offset") + moveX)}')
+            self.hal.set_p('plasmac.y-offset', f'{str(self.hal.get_value("plasmac.y-offset") + moveY)}')
+            self.hal.set_p('plasmac.cut-recovery', '1')
 
     def cutrec_cancel_pressed(self, state):
         if (state):
-            if cnchal.get_value('plasmac.cut-recovery'):
-                cnchal.set_p('plasmac.cut-recovery', '0')
+            if self.hal.get_value('plasmac.cut-recovery'):
+                self.hal.set_p('plasmac.cut-recovery', '0')
 
     def consumable_change(self):
         sender = self.sender()
@@ -602,14 +604,14 @@ class MainWindow(VCPMainWindow):
             y_current_pos = float(POS.Absolute(1))
             x_offset = self.consumable_offset_x.value()
             y_offset = self.consumable_offset_y.value()
-            scale = cnchal.get_value('plasmac.offset-scale')
-            cnchal.set_p('plasmac.x-offset', f'{(x_offset - x_current_pos)/scale:.0f}')
-            cnchal.set_p('plasmac.y-offset', f'{(y_offset - y_current_pos)/scale:.0f}')
-            cnchal.set_p('plasmac.consumable-change','1')
+            scale = self.hal.get_value('plasmac.offset-scale')
+            self.hal.set_p('plasmac.x-offset', f'{(x_offset - x_current_pos)/scale:.0f}')
+            self.hal.set_p('plasmac.y-offset', f'{(y_offset - y_current_pos)/scale:.0f}')
+            self.hal.set_p('plasmac.consumable-change','1')
         else:
-            cnchal.set_p('plasmac.x-offset', f'{0:.0f}')
-            cnchal.set_p('plasmac.y-offset', f'{0:.0f}')
-            cnchal.set_p('plasmac.consumable-change','0')
+            self.hal.set_p('plasmac.x-offset', f'{0:.0f}')
+            self.hal.set_p('plasmac.y-offset', f'{0:.0f}')
+            self.hal.set_p('plasmac.consumable-change','0')
             self.btn_cycle_start.setEnabled(True)
             
     def adjust_probe_height(self):
@@ -620,7 +622,7 @@ class MainWindow(VCPMainWindow):
 
     def probe_test_error(self, value):
         #self.probe_timer.stop()
-        cnchal.set_p('plasmac.probe-test','0')
+        self.hal.set_p('plasmac.probe-test','0')
     
     def probe_timeout(self):
         LOG.debug('probe time out')
@@ -631,11 +633,11 @@ class MainWindow(VCPMainWindow):
             #self.probe_timer.start(1000)
             # stop user from starting a program
             self.btn_cycle_start.setEnabled(False)
-            cnchal.set_p('plasmac.probe-test','1')
+            self.hal.set_p('plasmac.probe-test','1')
         else:
             #self.probe_timer.stop()
             self.btn_cycle_start.setEnabled(True)
-            cnchal.set_p('plasmac.probe-test','0')
+            self.hal.set_p('plasmac.probe-test','0')
 
     def breadcrumbs_tracked(self,state):
         LOG.debug(f'breadcrumb tracked {state}')
@@ -651,7 +653,7 @@ class MainWindow(VCPMainWindow):
         # get current cut chart pin value
         current = self.filter_cutchart_id
         # rest the reload pin back to False
-        cnchal.set_p('qtpyvcp.cutchart-reload', '0')
+        self.hal.set_p('qtpyvcp.cutchart-reload', '0')
         self.cutchart_pin_update(current)
 
     def cutchart_pin_update(self, value):
@@ -762,7 +764,7 @@ class MainWindow(VCPMainWindow):
                         ui_fld.forceUpdatePinValue()
             LOG.debug(f"param_update_from_filters: Thickness = {data.thickness.thickness}")
             LOG.debug(f"param_update_from_filters: MaterialID = {data.materialid}")
-            cnchal.set_p("qtpyvcp.material-id", f"{data.materialid}")
+            self.hal.set_p("qtpyvcp.material-id", f"{data.materialid}")
             
             self._material_thickness = data.thickness.thickness
         else:
@@ -1066,7 +1068,7 @@ class MainWindow(VCPMainWindow):
             f"G90;"
             f"G53 G1 X{x_current}Y{y_current}"
         )
-        issue_mdi(move_cmd)
+        self.hal.send_mdi(move_cmd)
         LOG.debug("Frame complete")
 
     
@@ -1147,12 +1149,12 @@ class MainWindow(VCPMainWindow):
         # need p1 and p2 set for edge only alignment.
         # Assumed that p1 will be X0Y0
     
-        issue_mdi('G10 L2 P0 R0')
-        CMD.wait_complete()
-        issue_mdi('G10 L2 P0 X0 Y0')
-        CMD.wait_complete()
+        self.hal.send_mdi('G10 L2 P0 R0')
+        self.hal.wait_complete()
+        self.hal.send_mdi('G10 L2 P0 X0 Y0')
+        self.hal.wait_complete()
         set_mode.manual()
-        CMD.wait_complete()
+        self.hal.wait_complete()
         #xDiff = self.sheet_align_p2[0] - self.sheet_align_p1[0]
         #yDiff = self.sheet_align_p2[1] - self.sheet_align_p1[1]
         xDiff = self.sheet_align_p2[0] - self.sheet_align_p1[0]
@@ -1182,13 +1184,13 @@ class MainWindow(VCPMainWindow):
         laser_y = self.laser_offset_y.value()
         LOG.debug(f'G10 L2 P0 X{self.sheet_align_p1[0]-laser_x} Y{self.sheet_align_p1[1]-laser_y}')
         LOG.debug(f'G10 L2 P0 R{zAngle}')
-        #issue_mdi(f'G10 L2 P0 X{self.sheet_align_p1[0]-laser_x} Y{self.sheet_align_p1[1]-laser_y}')
-        issue_mdi(f'G10 L20 P0 X{laser_x} Y{laser_y}')
-        CMD.wait_complete()
-        issue_mdi(f'G10 L2 P0 R{zAngle}')
-        CMD.wait_complete()
-        issue_mdi('G0 X0 Y0')
-        CMD.wait_complete()
+        #self.hal.send_mdi(f'G10 L2 P0 X{self.sheet_align_p1[0]-laser_x} Y{self.sheet_align_p1[1]-laser_y}')
+        self.hal.send_mdi(f'G10 L20 P0 X{laser_x} Y{laser_y}')
+        self.hal.wait_complete()
+        self.hal.send_mdi(f'G10 L2 P0 R{zAngle}')
+        self.hal.wait_complete()
+        self.hal.send_mdi('G0 X0 Y0')
+        self.hal.wait_complete()
         LOG.debug('Alignment done.')
         self.sheet_align_p1 = None
         self.sheet_align_p2 = None
@@ -1206,7 +1208,7 @@ class MainWindow(VCPMainWindow):
         widget.setText(f'{ref1}\n{ref2}')
     
     def sheet_align_set_p1(self):
-        issue_mdi('G10 L2 P0 R0')
+        self.hal.send_mdi('G10 L2 P0 R0')
         x_current_pos = float(POS.Absolute(0))
         y_current_pos = float(POS.Absolute(1))
         self.sheet_align_p1 = [x_current_pos, y_current_pos]
@@ -1214,7 +1216,7 @@ class MainWindow(VCPMainWindow):
 
     
     def sheet_align_set_p2(self):
-        issue_mdi('G10 L2 P0 R0')
+        self.hal.send_mdi('G10 L2 P0 R0')
         x_current_pos = float(POS.Absolute(0))
         y_current_pos = float(POS.Absolute(1))
         self.sheet_align_p2 = [x_current_pos, y_current_pos]

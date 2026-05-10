@@ -55,14 +55,14 @@ class HALBridge:
 # -- Lazy default factories --------------------------------------------------
 
 class _DefaultCnchal:
-    """Lazily imports linuxcnc module on first use."""
+    """Lazily imports linuxcnc hal module on first use."""
     def __init__(self):
         self._module = None
 
     def _ensure(self):
         if self._module is None:
-            import linuxcnc as cnchal
-            self._module = cnchal
+            import hal
+            self._module = hal
         return self._module
 
     def get_value(self, pin_name: str):
