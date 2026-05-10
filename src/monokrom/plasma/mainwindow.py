@@ -24,6 +24,7 @@ import monokrom_rc
 import mdi_text as mdiText
 import quickshapes as qs
 from monokrom.plasma.hal_bridge import HALBridge
+from monokrom.plasma.consumable_change import ConsumableChangeService
 
 # import pydevd;pydevd.settrace()
 
@@ -107,6 +108,7 @@ class MainWindow(VCPMainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.hal = HALBridge()
+        self.consumable_service = ConsumableChangeService(self.hal)
         self._plasma_plugin = getPlugin('plasmaprocesses')
         self.filter_cutchart_id = None
         self.detail_index_num = 0
@@ -250,11 +252,11 @@ class MainWindow(VCPMainWindow):
         self.btn_stop_abort.clicked.connect(self.cut_recovery)
 
         # consumable change block
-        self.btn_feed_hold.clicked.connect(self.consumable_change)
-        self.btn_cycle_start.clicked.connect(self.consumable_change)
-        self.btn_stop_abort.clicked.connect(self.consumable_change)
+        self.btn_feed_hold.clicked.connect(lambda: self.on_consumable_button('feed_hold'))
+        self.btn_cycle_start.clicked.connect(lambda: self.on_consumable_button('cycle_start'))
+        self.btn_stop_abort.clicked.connect(lambda: self.on_consumable_button('stop_abort'))
         
-        self.btn_consumable_change.toggled.connect(self.consumable_toggle)
+        self.btn_consumable_change.toggled.connect(self.on_consumable_toggle)
 
         # VTK block
         self.vtk_center.clicked.connect(lambda:self.vtkbackplot.setViewProgram('Z'))
@@ -578,41 +580,34 @@ class MainWindow(VCPMainWindow):
             if self.hal.get_value('plasmac.cut-recovery'):
                 self.hal.set_p('plasmac.cut-recovery', '0')
 
-    def consumable_change(self):
-        sender = self.sender()
-        obj_name = sender.objectName()
-        if obj_name == 'btn_stop_abort':
-                self.btn_consumable_change.setEnabled(False)
-                self.btn_consumable_change.setChecked(False)
-                return
+    def on_consumable_button(self, action):
+        changes = self.consumable_service.handle_button(
+            action,
+            self.btn_consumable_change.isEnabled(),
+            self.btn_consumable_change.isChecked(),
+            self.btn_cycle_start.isEnabled()
+        )
+        for widget_name, state in changes.items():
+            widget = getattr(self, widget_name)
+            if 'enabled' in state:
+                widget.setEnabled(state['enabled'])
+            if 'checked' in state:
+                widget.setChecked(state['checked'])
 
-        if obj_name == 'btn_cycle_start':
-                self.btn_consumable_change.setEnabled(False)
-                self.btn_consumable_change.setChecked(False)
-                return
-
-        if obj_name == 'btn_feed_hold':
-                self.btn_consumable_change.setEnabled(True)
-                return
-
-    def consumable_toggle(self, state):
-        if state:
-            # ensure machine can not be restarted while consumable is active
-            self.btn_cycle_start.setEnabled(False)
-            
-            x_current_pos = float(POS.Absolute(0))
-            y_current_pos = float(POS.Absolute(1))
-            x_offset = self.consumable_offset_x.value()
-            y_offset = self.consumable_offset_y.value()
-            scale = self.hal.get_value('plasmac.offset-scale')
-            self.hal.set_p('plasmac.x-offset', f'{(x_offset - x_current_pos)/scale:.0f}')
-            self.hal.set_p('plasmac.y-offset', f'{(y_offset - y_current_pos)/scale:.0f}')
-            self.hal.set_p('plasmac.consumable-change','1')
+    def on_consumable_toggle(self, checked):
+        if checked:
+            changes = self.consumable_service.toggle_on(
+                self.consumable_offset_x.value(),
+                self.consumable_offset_y.value(),
+                POS
+            )
         else:
-            self.hal.set_p('plasmac.x-offset', f'{0:.0f}')
-            self.hal.set_p('plasmac.y-offset', f'{0:.0f}')
-            self.hal.set_p('plasmac.consumable-change','0')
-            self.btn_cycle_start.setEnabled(True)
+            changes = self.consumable_service.toggle_off()
+
+        for widget_name, state in changes.items():
+            widget = getattr(self, widget_name)
+            if 'enabled' in state:
+                widget.setEnabled(state['enabled'])
             
     def adjust_probe_height(self):
         below_slat = self.slat_top - self.min_z
