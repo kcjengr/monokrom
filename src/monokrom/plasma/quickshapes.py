@@ -2,7 +2,7 @@ from math import cos, sin, atan, atan2, asin, degrees, radians, sqrt, hypot, pi
 from qtpyvcp.utilities import logger
 LOG = logger.getLogger('qtpyvcp.' + __name__)
 
-__updated__ = "2026-02-02 11:28"
+__updated__ = "2026-05-10 20:46"
 
 def fix(v):
     return round(v, 5)
@@ -86,7 +86,7 @@ def calculate_slope(x1, y1, x2, y2):
     
     # Check if the line is vertical (delta_x is zero)
     if delta_x == 0:
-        LOG.warn("Slope is vertical so undefined")
+        LOG.warning("Slope is vertical so undefined")
         return None
     else:
         return delta_y / delta_x
