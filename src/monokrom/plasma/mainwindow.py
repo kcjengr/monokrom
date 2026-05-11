@@ -27,6 +27,7 @@ from monokrom.plasma.consumable_change import ConsumableChangeService
 from monokrom.plasma.cut_recovery import CutRecoveryService
 from monokrom.plasma.sheet_alignment import SheetAlignmentService
 from monokrom.plasma.mdi_panel import MdiPanelService
+from monokrom.plasma.shape_generator import ShapeGeneratorService
 
 # import pydevd;pydevd.settrace()
 
@@ -113,6 +114,7 @@ class MainWindow(VCPMainWindow):
         self.consumable_service = ConsumableChangeService(self.hal)
         self.sheet_align_service = SheetAlignmentService(self.hal)
         self.cut_recovery_service = CutRecoveryService(self.hal)
+        self.shape_gen_service = ShapeGeneratorService(self)
         self._plasma_plugin = getPlugin('plasmaprocesses')
         self.filter_cutchart_id = None
         self.detail_index_num = 0
@@ -371,129 +373,11 @@ class MainWindow(VCPMainWindow):
 
     def clicked_qs_refresh(self):
         LOG.debug("clicked_qs_refresh")
-        tst = self.detail_index_num
-        lines = []
-        kerf = self.param_kirfwidth.value()
-        internal_kerf = self.quickshape_internal_kerf.value()
-        smart_hole = self.chkb_hole_detect_enable.isChecked()
-        leadin = 4
-        qs.preamble(lines, metric=INFO.getIsMachineMetric())
-        qs.magic_material(kw=kerf,
-                       ph=self.param_pierceheight.value(),
-                       pd=self.param_piercedelay.value(),
-                       ch=self.param_cutheight.value(),
-                       fr=self.param_cutfeedrate.value(),
-                       mt=1,
-                       th=0,
-                       ca=self.param_cutamps.value(),
-                       cv=self.param_cutvolts.value(),
-                       pe=self.param_pauseatend.value(),
-                       gp=0, cm=0, jh=0, jd=0,
-                       lines=lines)
-        match tst:
-            case 0:
-                diameter = self.id0_dbl_diam.value()
-                qs.circle(diameter=diameter, kerf=kerf, leadin=leadin, conv=1, lines=lines)
-            case 1:
-                width = self.id1_dbl_width.value()
-                height = self.id1_dbl_height.value()
-                qs.rectangle(width, height, kerf=kerf, leadin=leadin, conv=1, lines=lines)
-            case 2: 
-                id = self.id2_dbl_inner_diam.value()
-                od = self.id2_dbl_outer_diam.value()
-                qs.donut(od=od, id=id, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, leadin=leadin, conv=1, lines=lines)
-            case 3:
-                width = self.id3_dbl_width.value()
-                height = self.id3_dbl_height.value()
-                qs.convex_rectangle(width, height, kerf=kerf, leadin=leadin, conv=1, lines=lines)
-            case 4:
-                w1 = self.id4_dbl_w1.value()
-                d1 = self.id4_dbl_d1.value()
-                h1 = self.id4_dbl_h1.value()
-                h2 = self.id4_dbl_h2.value()
-                d2 = self.id4_dbl_d2.value()
-                rb = self.id4_dbl_rb.value()
-                pair = self.id4_chk_pair.isChecked()
-                separation = self.id4_dbl_separation.value()
-                qs.lifting_lug(w1, d1, h1, h2, d2, rb, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, separation=separation, cutting_pair=pair, parent=self, leadin=leadin, conv=1, lines=lines)
-            case 5:
-                w1 = self.id5_dbl_w1.value()
-                w2 = self.id5_dbl_w2.value()
-                h = self.id5_dbl_h.value()
-                qs.u_lug(w1, w2, h, kerf=kerf, leadin=leadin, conv=1, lines=lines)
-            case 6:
-                od = self.id6_dbl_od.value()
-                pcd = self.id6_dbl_pcd.value()
-                holes = self.id6_int_holes.value()
-                hd = self.id6_dbl_hd.value()
-                hole_type = self.id6_combo_hole.currentText()
-                id = self.id6_dbl_id.value()
-                qs.pipe_flange(od, pcd, holes, hd, hole_type, id, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, leadin=leadin, conv=1, lines=lines)
-            case 7:
-                w = self.id7_dbl_w.value()
-                h = self.id7_dbl_h.value()
-                pd = self.id7_dbl_pd.value()
-                o = self.id7_dbl_o.value()
-                qs.pipe_saddle(w, h, pd, o, kerf=kerf, leadin=leadin, conv=1, lines=lines)
-            case 8:
-                id = self.id8_dbl_id.value()
-                wt = self.id8_dbl_wt.value()
-                pcd = self.id8_dbl_pcd.value()
-                bd = self.id8_dbl_bd.value()
-                sw = self.id8_dbl_sw.value()
-                nb = self.id8_int_nb.value()
-                qs.exhaust_flange(id, wt, pcd, bd, sw, nb, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, leadin=leadin, conv=1, lines=lines)
-            case 9:
-                w = self.id9_dbl_w.value()
-                h = self.id9_dbl_h.value()
-                hhn=self.id9_int_hhn.value()
-                hhs=self.id9_dbl_hs.value()
-                vhn=self.id9_int_vhn.value()
-                vhs=self.id9_dbl_vs.value()
-                hd=self.id9_dbl_hd.value()
-                fr = self.id9_dbl_fr.value()
-                ch_type = self.id9_combo_ch.currentText()
-                ch_dim_dict = None
-                if ch_type != "None":
-                    ch_dim_dict = {}
-                    ch_dim_dict["chs"] = self.id9_dbl_chs.value()
-                    ch_dim_dict["chw"] = self.id9_dbl_chw.value()
-                    ch_dim_dict["chh"] = self.id9_dbl_chh.value()
-                    ch_dim_dict["chfr"] = self.id9_dbl_chfr.value()
-                    ch_dim_dict["cha"] = self.id9_dbl_cha.value()
-                    ch_dim_dict["chxo"] = self.id9_dbl_chxo.value()
-                    ch_dim_dict["chyo"] = self.id9_dbl_chyo.value()
-                qs.n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf=kerf, internal_kerf=internal_kerf, smarthole=smart_hole, ch_dim_dict=ch_dim_dict, leadin=leadin, conv=1, lines=lines)
-            case 10:
-                w = self.id10_dbl_w.value()
-                h = self.id10_dbl_h.value()
-                w1 = self.id10_dbl_w1.value()
-                h1 = self.id10_dbl_h1.value()
-                qs.L_gusset(w, h, w1, h1, kerf=kerf, leadin=leadin, conv=1, lines=lines)
-            case 11:
-                w = self.id11_dbl_w.value()
-                h = self.id11_dbl_h.value()
-                c1 = self.id11_dbl_c1.value()
-                c2 = self.id11_dbl_c2.value()
-                a = self.id11_dbl_a.value()
-                pair = self.id11_chk_pair.isChecked()
-                xoffset = self.id11_dbl_xoffset.value()
-                yoffset = self.id11_dbl_yoffset.value()
-                qs.angle_gusset(w, h, c1, c2, a, kerf=kerf, cutting_pair=pair, xoffset=xoffset, yoffset=yoffset, leadin=leadin, conv=1, lines=lines)
-            case 12:
-                w = self.id12_dbl_w.value()
-                h = self.id12_dbl_h.value()
-                w1 = self.id12_dbl_w1.value()
-                h1 = self.id12_dbl_h1.value()
-                qs.truss_support(w, h, w1, h1, kerf=kerf, leadin=leadin, conv=1, lines=lines)
-            case 13:
-                w = self.id13_dbl_w.value()
-                h = self.id13_dbl_h.value()
-                c = self.id13_dbl_c.value()
-                qs.web_stiffener(w, h, c, kerf=kerf, leadin=leadin, conv=1, lines=lines)
-             
-        qs.postamble(lines)
-        with NamedTemporaryFile(mode='w+' ,suffix=".ngc", delete=False) as temp_file:
+        lines, error_msg = self.shape_gen_service.generate(self.detail_index_num)
+        if error_msg:
+            LOG.error(f"Shape generation error: {error_msg}")
+            return
+        with NamedTemporaryFile(mode='w+', suffix=".ngc", delete=False) as temp_file:
             temp_name = temp_file.name
             temp_file.writelines(lines)
         # make sure hole processing it off as lead ins seem to cause it issues:

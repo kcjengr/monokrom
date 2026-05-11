@@ -128,8 +128,9 @@ class TestMagicMaterial:
         assert any("F#" in line for line in lines_list)
 
     def test_magic_material_returns_lines(self, lines_list):
-        result = magic_material(kw=0.1, ph=1.0, pd=2.0, ch=0.5, fr=100, mt=1, lines=lines_list)
+        result, error = magic_material(kw=0.1, ph=1.0, pd=2.0, ch=0.5, fr=100, mt=1, lines=lines_list)
         assert result is lines_list
+        assert error is None
 
     def test_magic_material_line_count(self, lines_list):
         magic_material(kw=0.1, ph=1.0, pd=2.0, ch=0.5, fr=100, mt=1, lines=lines_list)

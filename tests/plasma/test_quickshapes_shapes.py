@@ -7,6 +7,7 @@ from monokrom.plasma.quickshapes import (
     rectangle,
     donut,
     convex_rectangle,
+    lifting_lug,
     u_lug,
     pipe_flange,
     pipe_saddle,
@@ -313,3 +314,58 @@ class TestWebStiffener:
         web_stiffener(w=100, h=80, c=30, kerf=2, leadin=4, lines=lines_list)
         g1_lines = [l for l in lines_list if "G1" in l]
         assert len(g1_lines) >= 5
+
+
+class TestLiftingLug:
+    """Tests for lifting_lug() shape generation."""
+
+    def test_lifting_lug_has_start_stop(self, lines_list):
+        lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=50, kerf=2, internal_kerf=2, smarthole=False, leadin=4, lines=lines_list)
+        gcode = "".join(lines_list)
+        assert "M3" in gcode
+        assert "M5" in gcode
+
+    def test_lifting_lug_has_leading_hole(self, lines_list):
+        lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=50, kerf=2, internal_kerf=2, smarthole=False, leadin=4, lines=lines_list)
+        gcode = "".join(lines_list)
+        assert "G3" in gcode  # hole arc
+
+    def test_lifting_lug_has_outer_arc(self, lines_list):
+        lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=50, kerf=2, internal_kerf=2, smarthole=False, leadin=4, lines=lines_list)
+        gcode = "".join(lines_list)
+        assert "G2" in gcode  # outer arc
+
+    def test_lifting_lug_has_cord_arc(self, lines_list):
+        lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=50, kerf=2, internal_kerf=2, smarthole=False, leadin=4, lines=lines_list)
+        gcode = "".join(lines_list)
+        assert "G3" in gcode  # cord arc at base
+
+    def test_lifting_lug_rb_zero(self, lines_list):
+        lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=0, kerf=2, internal_kerf=2, smarthole=False, leadin=4, lines=lines_list)
+        gcode = "".join(lines_list)
+        assert "G1" in gcode  # straight line instead of arc
+
+    def test_lifting_lug_rb_too_small(self, lines_list):
+        lines, error_msg = lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=10, kerf=2, internal_kerf=2, smarthole=False, leadin=4, lines=[])
+        assert error_msg is not None
+        assert "rb is too small" in error_msg
+
+    def test_lifting_lug_cutting_pair(self, lines_list):
+        lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=50, kerf=2, internal_kerf=2, smarthole=False, separation=20, cutting_pair=True, leadin=4, lines=lines_list)
+        gcode = "".join(lines_list)
+        assert "M3" in gcode
+        assert "M5" in gcode
+
+    def test_lifting_lug_smarthole(self, lines_list):
+        lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=50, kerf=2, internal_kerf=2, smarthole=True, leadin=4, lines=lines_list)
+        assert len(lines_list) > 0
+
+    def test_lifting_lug_line_count(self, lines_list):
+        lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=50, kerf=2, internal_kerf=2, smarthole=False, leadin=4, lines=lines_list)
+        assert len(lines_list) >= 10
+
+    def test_lifting_lug_returns_tuple(self, lines_list):
+        result = lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=50, kerf=2, internal_kerf=2, smarthole=False, leadin=4, lines=lines_list)
+        assert isinstance(result, tuple)
+        assert len(result) == 2
+        assert result[1] is None

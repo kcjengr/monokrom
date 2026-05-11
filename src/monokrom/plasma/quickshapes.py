@@ -45,7 +45,8 @@ def magic_material(kw, ph, pd, ch, fr, mt, th=0, ca=0, cv=0, pe=0, gp=0, cm=0, j
     lines.append(f" (o=0, kw={kw}, ph={ph}, pd={pd}, ch={ch}, fr={fr}, mt={mt}, th={th:.0f}, ca={ca:.0f}, cv={cv:.0f}, pe={pe}, gp={gp}, cm={cm:.0f}, jh={jh}, jd={jd})\n")
     lines.append(' F#<_hal[plasmac.cut-feed-rate]>\n')
     lines.append(';end material setup\n')
-    return lines
+    return lines, None
+
 
 # mirror a point
 def refl(x1, y1, x2, y2, xp, yp):
@@ -118,7 +119,7 @@ def circle(diameter, kerf, leadin=4, conv=1, lines=[]):
     stop_cut(lines)
 
     
-    return lines
+    return lines, None
 
 def rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
     """
@@ -143,7 +144,7 @@ def rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
     lines.append(f"G1 Y{-kh}\n")
     lines.append(f"G1 X{-kh}\n")
     stop_cut(lines)
-    return lines
+    return lines, None
 
 def donut(od, id, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=[]):
     if internal_kerf == 0:
@@ -172,7 +173,7 @@ def donut(od, id, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=[]):
     lines.append(f"G1 X{x} Y{y}\n")
     lines.append(f"G2 I{-x} J{-y}\n")
     stop_cut(lines)
-    return lines
+    return lines, None
 
 def convex_rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
     # build the rectangle with 0,0 as lower left corner
@@ -188,9 +189,11 @@ def convex_rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
     lines.append(f"G1 Y{-kh}\n")
     lines.append(f"G1 X{-kh}\n")
     stop_cut(lines)
-    return lines
+    return lines, None
 
-def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, internal_kerf, smarthole, separation=0, cutting_pair=False, parent=None, leadin=4, conv=1, lines=[]):
+def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, internal_kerf, smarthole, separation=0, cutting_pair=False, leadin=4, conv=1, lines=None):
+    if lines is None:
+        lines = []
     # calculate the key points
     # given two triangles to solve for
     # Triangle 1:
@@ -275,8 +278,7 @@ def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, internal_kerf, smarthole, separati
     lines.append(f"G2 X{mirror_x(x1)+kerf} Y{y1} I{(mirror_x(x1)+kerf-x1)/2} J{leadin+h1-r-y1}\n")
     lines.append(f"G1 X{w1+kerf} Y{leadin+h2}\n")
     lines.append(f"G1 Y{leadin}\n")
-    if parent is not None:
-        parent.id4_error_text.setText("")
+    error_msg = None
     if rb == 0:
         lines.append("G1 X0\n")
     else:
@@ -294,8 +296,7 @@ def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, internal_kerf, smarthole, separati
         except ValueError as e:
             # math calc issue so just do plan straight line
             LOG.warn(f"Error {e} found.  Check rb is large enough.")
-            if parent is not None:
-                parent.id4_error_text.setText("rb is to small.\nrb should be >= (w1 / 2).\nOr put another way,\n(rb * 2) >= w1")
+            error_msg = "rb is too small. rb should be >= (w1 / 2). Or put another way, (rb * 2) >= w1"
             lines.append("G1 X0\n")
 
     # if cutting_pair is true generate a second shape that is offset
@@ -338,12 +339,11 @@ def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, internal_kerf, smarthole, separati
             except ValueError as e:
                 # math calc issue so just do plan straight line
                 LOG.warn(f"Error {e} found.  Check rb is large enough.")
-                if parent is not None:
-                    parent.id4_error_text.setText("rb is to small.\nrb should be >= (w1 / 2).\nOr put another way,\n(rb * 2) >= w1")
+                error_msg = "rb is too small. rb should be >= (w1 / 2). Or put another way, (rb * 2) >= w1"
                 lines.append(f"G1 X{offset_x+w1}\n")
-    
+
     stop_cut(lines)
-    return lines
+    return lines, error_msg
 
 def u_lug(w1, w2, h, kerf, leadin=4, conv=1, lines=[]):
     outer_radius = w1/2
@@ -363,7 +363,7 @@ def u_lug(w1, w2, h, kerf, leadin=4, conv=1, lines=[]):
     lines.append(f"G1 Y{0-kh}\n")
     lines.append(f"G1 X{0-kh}\n")
     stop_cut(lines)
-    return lines
+    return lines, None
     
 def pipe_flange(od, pcd, holes, hd, hole_type, id, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=[]):
     if internal_kerf == 0:
@@ -424,6 +424,7 @@ def pipe_flange(od, pcd, holes, hd, hole_type, id, kerf, internal_kerf, smarthol
     lines.append(f"G1 X{x} Y{y}\n")
     lines.append(f"G2 I{-x} J{-y}\n")
     stop_cut(lines)
+    return lines, None
 
 def pipe_saddle(w, h, pd, o, kerf, leadin=4, conv=1, lines=[]):
     kh = kerf/2
@@ -449,6 +450,7 @@ def pipe_saddle(w, h, pd, o, kerf, leadin=4, conv=1, lines=[]):
     lines.append(f"G1 X{fix((2*cx)-x1+kh)}\n")
     lines.append(f"G3 X{fix(x1-kh)} I{fix(cx-((2*cx)-x1+kh))} J{fix(cy-(h+kh))}\n")
     stop_cut(lines)
+    return lines, None
 
 def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=[]):
     def build_corner(rr1, rr2, xx2, yy2, corners, lines):
@@ -779,6 +781,7 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
         build_corner(r1, r2, x_leftside, -y_leftside, 3, lines)
         build_corner(r1, r2, x_leftside, y_leftside, 3, lines)
         stop_cut(lines)
+    return lines, None
 
 def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, smarthole, ch_dim_dict=None, leadin=4, conv=1, lines=[]):
     """
@@ -992,6 +995,7 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
         lines.append(f"G1 Y{hh - fr}\n")
         lines.append(f"G2 X{-(wh - fr)} Y{hh + kh} I{fr+kh}\n")
     stop_cut(lines)
+    return lines, None
 
 def L_gusset(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
     # dxf.add_polyline_2d([(0, h), (0,0,), (w,0), (w, h-h1), (w-w1,h-h1), (w-w1, h)], closed=True)
@@ -1006,6 +1010,7 @@ def L_gusset(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
     lines.append(f"G1 Y{-kh}\n")
     lines.append(f"G1 X{-kh}\n")
     stop_cut(lines)
+    return lines, None
     
 def angle_gusset(w, h, c1, c2, a, kerf, cutting_pair=False, xoffset=0, yoffset=0, leadin=4, conv=1, lines=[]):
     # calc all the verts and add to list
@@ -1089,7 +1094,7 @@ def angle_gusset(w, h, c1, c2, a, kerf, cutting_pair=False, xoffset=0, yoffset=0
         p = refl(qx1, qy1, qx2, qy2, p[0], p[1])
         lines.append(f"G1 X{p[0]} Y{p[1]}\n")
         stop_cut(lines)
-        
+    return lines, None
 
 
 def truss_support(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
@@ -1121,6 +1126,7 @@ def truss_support(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
     for v in cleaned_verts:
         lines.append(f"G1 X{v[0]} Y{v[1]}\n")
     stop_cut(lines)
+    return lines, None
 
 def web_stiffener(w, h, c, kerf, leadin=4, conv=1, lines=[]):
     kh=kerf/2
@@ -1148,5 +1154,6 @@ def web_stiffener(w, h, c, kerf, leadin=4, conv=1, lines=[]):
     for v in cleaned_verts:
         lines.append(f"G1 X{v[0]} Y{v[1]}\n")
     stop_cut(lines)
+    return lines, None
 
 
