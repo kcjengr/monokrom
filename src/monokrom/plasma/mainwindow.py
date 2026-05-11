@@ -21,12 +21,12 @@ from qtpyvcp.actions.machine_actions import mode as set_mode
 from qtpyvcp.actions.machine_actions import jog
 ### mdi GCODE text created by JT from linuxcnc
 import monokrom_rc
-import mdi_text as mdiText
 import quickshapes as qs
 from monokrom.plasma.hal_bridge import HALBridge
 from monokrom.plasma.consumable_change import ConsumableChangeService
 from monokrom.plasma.cut_recovery import CutRecoveryService
 from monokrom.plasma.sheet_alignment import SheetAlignmentService
+from monokrom.plasma.mdi_panel import MdiPanelService
 
 # import pydevd;pydevd.settrace()
 
@@ -262,6 +262,7 @@ class MainWindow(VCPMainWindow):
         self.vtk_center.clicked.connect(lambda:self.vtkbackplot.setViewProgram('Z'))
 
         # MDI        
+        self.mdi_service = MdiPanelService(self)
         self.btnMdiParams.clicked.connect(self.btnParams_clicked)
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
@@ -865,59 +866,18 @@ class MainWindow(VCPMainWindow):
     #
     @Slot(QAbstractButton)
     def on_btngrpMdi_buttonClicked(self, button):
-        char = str(button.text())
-        text = self.mdiEntry.text() or 'null'
-        if text != 'null':
-            text += char
-        else:
-            text = char
-        self.mdiEntry.setText(text)
+        self.mdi_service.append_char(str(button.text()))
 
     def btnParams_clicked(self):
-        # get mdi entry
         text = self.mdiEntry.text() or 'null'
         LOG.debug(f"MDI button clicked text: {text}")
-        if text != 'null':
-            # we have something to check so get the gcode words
-            words = mdiText.gcode_words()
-            if text in words:
-                # clear the mdi line
-                self.mdiClear()
-                for index, value in enumerate(words[text], start=1):
-                    # search and populate the params available for that gcode word
-                    LOG.debug(f"MDI Param search: {value}")
-                    getattr(self, 'btnGcodeP' + str(index)).setText(value)
-            else:
-                self.mdiClear()
-            # All help related so not used yet
-            # titles = mdiText.gcode_titles()
-            # if text in titles:
-            #     self.lblGcodeHelp.setText(titles[text])
-            # else:
-            #     self.mdiClear()
-            # self.lblGcodeHelp.setText(mdiText.gcode_descriptions(text))
-        else:
-            self.mdiClear()
-            LOG.debug('MDI - No Param Match')
+        self.mdi_service.lookup_params(text)
 
+    def mdiBackSpace_clicked(self):
+        self.mdi_service.backspace()
 
-    def mdiClear(self):
-        for index in range(1,11):
-            getattr(self, 'btnGcodeP' + str(index)).setText('')
-        # All help related so not used yet
-        # self.lblGcodeHelp.setText('')
-
-    def mdiBackSpace_clicked(parent):
-        if len(parent.mdiEntry.text()) > 0:
-            text = parent.mdiEntry.text()[:-1]
-            parent.mdiEntry.setText(text)
-
-    def mdiSpace_clicked(parent):
-        text = parent.mdiEntry.text() or 'null'
-        # if no text then do not add a space
-        if text != 'null':
-            text += ' '
-            parent.mdiEntry.setText(text)
+    def mdiSpace_clicked(self):
+        self.mdi_service.add_space()
 
     #
     # VTK Display and Gcode
