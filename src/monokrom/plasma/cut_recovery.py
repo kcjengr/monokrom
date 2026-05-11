@@ -15,18 +15,6 @@ class CutRecoveryService:
     N/S/E/W directional buttons apply incremental offset moves through HAL.
     """
 
-    # Card width for offset calculations (from qtpyvcp.param-kirfwidth)
-    _DIRECTION_MAP = {
-        ('n',): (0, 1),
-        ('ne',): (1, 1),
-        ('e',): (1, 0),
-        ('se',): (1, -1),
-        ('s',): (0, -1),
-        ('sw',): (-1, -1),
-        ('w',): (-1, 0),
-        ('nw',): (-1, 1),
-    }
-
     def __init__(self, hal):
         self.hal = hal
         self.cut_recovery_status = False

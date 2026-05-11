@@ -134,6 +134,40 @@ class TestCutRecoveryHandleButtonStopAbort:
         assert widget._enabled is False
         assert jog_stack._current_index == 0
 
+    def test_stop_abort_clears_cut_recovery_pin(self):
+        hal = MockHal()
+        hal.pins['plasmac.cut-recovery'] = '1'
+        service = CutRecoveryService(hal)
+        service.cut_recovery_status = True
+
+        widget = MockWidget()
+        widget._enabled = True
+        jog_stack = MockWidget()
+        jog_stack._current_index = 1
+
+        service.handle_button(
+            'btn_stop_abort', widget, jog_stack, cut_recovery_speed_value=0
+        )
+
+        assert hal.pins['plasmac.cut-recovery'] == '0'
+
+    def test_cycle_start_clears_cut_recovery_pin(self):
+        hal = MockHal()
+        hal.pins['plasmac.cut-recovery'] = '1'
+        service = CutRecoveryService(hal)
+        service.cut_recovery_status = True
+
+        widget = MockWidget()
+        widget._enabled = True
+        jog_stack = MockWidget()
+        jog_stack._current_index = 1
+
+        service.handle_button(
+            'btn_cycle_start', widget, jog_stack, cut_recovery_speed_value=0
+        )
+
+        assert hal.pins['plasmac.cut-recovery'] == '0'
+
 
 class TestCutRecoverySetDirection:
     def test_direction_forward(self):

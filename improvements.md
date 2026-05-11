@@ -31,6 +31,15 @@ Extracted from mainwindow (~35 lines → 77 line service with tests).
 - MainWindow delegates (`on_consumable_button`, `on_consumable_toggle`) forward to the service.
 - Eliminated the fragile `sender().objectName()` dual-dispatch pattern — buttons now connect to typed delegate methods.
 
+### Cut Recovery Service (`src/monokrom/plasma/cut_recovery.py`)
+Extracted from mainwindow (~65 lines → 167 line service with tests).
+
+- **Public API**: `handle_button()`, `set_direction()`, `move()`, `cancel_pressed()`, `get_cut_recovery_status()` — owns state machine for jog+offset recovery mode.
+- **Constructor injection**: Takes `HALBridge` in constructor.
+- **26 passing tests** in `tests/plasma/test_cut_recovery.py`.
+- MainWindow delegates (`on_cut_recovery_button`, `on_cut_recovery_direction`, `on_cut_recovery_move`, `on_cut_recovery_cancel`) forward to the service.
+- Coordinate math (bounds checking, offset calculations) is now unit-testable as pure logic within the service.
+
 ---
 
 ## Structural problems (unchanged)
@@ -47,7 +56,7 @@ Each service takes a `HALBridge` in its constructor and owns its own state. Main
 
 1. **Sheet alignment** (`:1077-1219`) — ~140 lines, self-contained state machine with `sheet_align_toggle`, `sheet_align_set_p1/p2`, `sheet_align`, `build_status_text`. Depends on `HALBridge.send_mdi()` + `wait_complete()`. Extract to `sheet_alignment.py`.
 
-2. **Cut recovery** (`:518-582`) — ~60 lines of jog+offset logic for post-stop recovery. Depends on `HALBridge.get_value()`, `set_p()`, `set_offsets()`. Extract to `cut_recovery.py`.
+2. ~~**Cut recovery** (`:518-582`)~~ — **DONE.** Extracted to `cut_recovery.py` with 26 tests.
 
 3. ~~**Consumable change** (`:583-610`)~~ — **DONE.** Extracted to `consumable_change.py` with 7 tests. Sender dispatch pattern eliminated.
 
@@ -70,8 +79,8 @@ src/monokrom/plasma/
 ├── mainwindow.py          (~1219 lines, thin coordinator in progress)
 ├── hal_bridge.py          (7 public methods + lazy defaults — DONE)
 ├── consumable_change.py   (77 lines — DONE, 7 tests)
+├── cut_recovery.py        (167 lines — DONE, 26 tests)
 ├── sheet_alignment.py     (~140 lines)
-├── cut_recovery.py        (~65 lines)
 ├── process_filter.py      (~125 lines)
 ├── mdi_panel.py           (~60 lines)
 ├── shape_generator.py     (~150 lines — maps UI → quickshapes calls)
@@ -85,7 +94,7 @@ Each service owns its signals, state, and logic. `MainWindow.__init__` shrinks t
 ## Specific code issues to fix regardless of structure
 
 - ~~**`:581`** — `def consumable_change(self):` has inconsistent indentation (4 spaces instead of 8), will cause `IndentationError`.~~ **DONE.** Extracted to `consumable_change.py` with correct formatting.
-- **`:207-209`** — `btn_feed_hold`, `btn_cycle_start`, `btn_stop_abort` are connected to both `cut_recovery` and the old `consumable_change`. The consumable side is now fixed via typed delegates. Cut recovery still uses direct method connections (no sender dispatch needed there).
+- **`:207-209`** — `btn_feed_hold`, `btn_cycle_start`, `btn_stop_abort` are connected to both `cut_recovery` and the old `consumable_change`. ~~Cut recovery~~ Both now use typed delegates (`on_cut_recovery_button`, `on_consumable_button`).
 - **`:390-490`** — The `match/case` block reads 10+ UI values per shape. Each case becomes its own method in `shape_generator.py`.
 - **`:555-574`** — `cutrec_move` does coordinate math, bounds checking, and HAL writes all in one function. After extracting `CutRecoveryService`, the HAL calls go through `HALBridge` and the math can be unit-tested.
 
@@ -93,24 +102,24 @@ Each service owns its signals, state, and logic. `MainWindow.__init__` shrinks t
 
 ## Before/after comparison
 
-| Area | Before refactoring | After HALBridge wiring | After consumable service | Target after full refactor |
-|------|-------------------|------------------------|--------------------------|--------------------------|
-| Largest single method | `__init__` at ~260 lines | ~280 (import + hal init added) | ~280 (service init added) | ~80 lines |
-| Longest method body | `clicked_qs_refresh` at ~130 lines | Still ~130 | Still ~130 | Each shape generator at ~10 lines |
-| Testable without Qt | 0 methods | HALBridge: 14 tests pass | HALBridge: 14 + Consumable: 7 = 21 | Filter, file ops, recovery math, alignment math |
-| Cohesion | Low — sender dispatch scattered across class | HALBridge is cohesive; mainwindow calls `self.hal` | Consumable service owns its logic with typed delegates | High — each module owns its feature |
-| Hardware coupling | 53 direct calls to `cnchal`/`issue_mdi`/`CMD` | **0 direct calls** — all through `HALBridge` | **0 direct calls** — all through `HALBridge` → services | 0 direct calls — all go through services |
+| Area | Before refactoring | After HALBridge wiring | After consumable service | After cut recovery | Target after full refactor |
+|------|-------------------|------------------------|--------------------------|---------------------|---------------------------|
+| Largest single method | `__init__` at ~260 lines | ~280 (import + hal init added) | ~280 (service init added) | ~275 (cut_recovery_service added) | ~80 lines |
+| Longest method body | `clicked_qs_refresh` at ~130 lines | Still ~130 | Still ~130 | Still ~130 | Each shape generator at ~10 lines |
+| Testable without Qt | 0 methods | HALBridge: 14 tests pass | HALBridge: 14 + Consumable: 7 = 21 | HALBridge: 14 + Consumable: 7 + CutRecovery: 26 = 47 | Filter, file ops, alignment math |
+| Cohesion | Low — sender dispatch scattered across class | HALBridge is cohesive; mainwindow calls `self.hal` | Consumable service owns its logic with typed delegates | Cut recovery owns its state machine with typed delegates | High — each module owns its feature |
+| Hardware coupling | 53 direct calls to `cnchal`/`issue_mdi`/`CMD` | **0 direct calls** — all through `HALBridge` | **0 direct calls** — all through `HALBridge` → services | **0 direct calls** — all through `HALBridge` → services | 0 direct calls — all go through services |
 
 ---
 
 ## Next step
 
-**Extract services one by one.** Wiring and consumable change are complete — all hardware calls flow through `self.hal`. Now extract the next responsibility into its own service class.
+**Extract services one by one.** Wiring, consumable change, and cut recovery are complete — all hardware calls flow through `self.hal`. Now extract the next responsibility into its own service class.
 
 **Recommended order** (easiest to hardest):
 
 1. ~~Consumable change~~ — **DONE.** 77 lines, 3 public methods, 7 tests.
-2. **Cut recovery** — ~65 lines, self-contained state machine with jog+offset logic and coordinate math that can be unit-tested once extracted.
+2. ~~Cut recovery~~ — **DONE.** 167 lines, state machine with jog+offset logic and coordinate math, 26 tests.
 3. **Sheet alignment** — ~140 lines, angle math is testable as pure functions.
 4. **Process filter** — ~125 lines, no HAL dependency, pure data plumbing.
 5. **Shape generator** — ~140 line match/case → lookup table + per-shape methods.
