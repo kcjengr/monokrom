@@ -25,6 +25,7 @@ import mdi_text as mdiText
 import quickshapes as qs
 from monokrom.plasma.hal_bridge import HALBridge
 from monokrom.plasma.consumable_change import ConsumableChangeService
+from monokrom.plasma.cut_recovery import CutRecoveryService
 
 # import pydevd;pydevd.settrace()
 
@@ -109,6 +110,7 @@ class MainWindow(VCPMainWindow):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.hal = HALBridge()
         self.consumable_service = ConsumableChangeService(self.hal)
+        self.cut_recovery_service = CutRecoveryService(self.hal)
         self._plasma_plugin = getPlugin('plasmaprocesses')
         self.filter_cutchart_id = None
         self.detail_index_num = 0
@@ -169,7 +171,6 @@ class MainWindow(VCPMainWindow):
         self.btn_consumable_change.setEnabled(False)
         self.mdiFrame.hide()
         self.transformFrame.hide()
-        self.cut_recovery_status = False
         self.consumable_offset_x.setMinimum(self.min_x + (10 * self.units_per_mm))
         self.consumable_offset_y.setMinimum(self.min_y + (10 * self.units_per_mm))
         self.consumable_offset_x.setMaximum(self.max_x - (10 * self.units_per_mm))
@@ -215,19 +216,19 @@ class MainWindow(VCPMainWindow):
         self.btn_qs_refresh.clicked.connect(self.clicked_qs_refresh)
 
         # cut recovery direction
-        self.btn_cut_recover_rev.pressed.connect(lambda:self.cut_recovery_direction(-1))
-        self.btn_cut_recover_fwd.pressed.connect(lambda:self.cut_recovery_direction(1))
-        self.btn_cut_recover_rev.released.connect(lambda:self.cut_recovery_direction(0))
-        self.btn_cut_recover_fwd.released.connect(lambda:self.cut_recovery_direction(0))
-        self.btn_cut_recover_cancel.pressed.connect(lambda:self.cutrec_cancel_pressed(1))
-        self.btn_recovery_n.pressed.connect(lambda:self.cutrec_move(1, 0, 1))
-        self.btn_recovery_ne.pressed.connect(lambda:self.cutrec_move(1, 1, 1))
-        self.btn_recovery_e.pressed.connect(lambda:self.cutrec_move(1, 1, 0))
-        self.btn_recovery_se.pressed.connect(lambda:self.cutrec_move(1, 1, -1))
-        self.btn_recovery_s.pressed.connect(lambda:self.cutrec_move(1, 0, -1))
-        self.btn_recovery_sw.pressed.connect(lambda:self.cutrec_move(1, -1, -1))
-        self.btn_recovery_w.pressed.connect(lambda:self.cutrec_move(1, -1, 0))
-        self.btn_recovery_nw.pressed.connect(lambda:self.cutrec_move(1, -1, 1))
+        self.btn_cut_recover_rev.pressed.connect(lambda: self.on_cut_recovery_direction(-1))
+        self.btn_cut_recover_fwd.pressed.connect(lambda: self.on_cut_recovery_direction(1))
+        self.btn_cut_recover_rev.released.connect(lambda: self.on_cut_recovery_direction(0))
+        self.btn_cut_recover_fwd.released.connect(lambda: self.on_cut_recovery_direction(0))
+        self.btn_cut_recover_cancel.pressed.connect(self.on_cut_recovery_cancel)
+        self.btn_recovery_n.pressed.connect(lambda: self.on_cut_recovery_move(0, 1))
+        self.btn_recovery_ne.pressed.connect(lambda: self.on_cut_recovery_move(1, 1))
+        self.btn_recovery_e.pressed.connect(lambda: self.on_cut_recovery_move(1, 0))
+        self.btn_recovery_se.pressed.connect(lambda: self.on_cut_recovery_move(1, -1))
+        self.btn_recovery_s.pressed.connect(lambda: self.on_cut_recovery_move(0, -1))
+        self.btn_recovery_sw.pressed.connect(lambda: self.on_cut_recovery_move(-1, -1))
+        self.btn_recovery_w.pressed.connect(lambda: self.on_cut_recovery_move(-1, 0))
+        self.btn_recovery_nw.pressed.connect(lambda: self.on_cut_recovery_move(-1, 1))
 
         # slider resets
         self.btn_reset_rapid.clicked.connect(lambda:self.rapid_slider.setValue(100))
@@ -247,9 +248,9 @@ class MainWindow(VCPMainWindow):
         self.single_cut_y.focusReceived.connect(self.single_cut_limits)
 
         # cut recovery block
-        self.btn_feed_hold.clicked.connect(self.cut_recovery)
-        self.btn_cycle_start.clicked.connect(self.cut_recovery)
-        self.btn_stop_abort.clicked.connect(self.cut_recovery)
+        self.btn_feed_hold.clicked.connect(lambda: self.on_cut_recovery_button('btn_feed_hold'))
+        self.btn_cycle_start.clicked.connect(lambda: self.on_cut_recovery_button('btn_cycle_start'))
+        self.btn_stop_abort.clicked.connect(lambda: self.on_cut_recovery_button('btn_stop_abort'))
 
         # consumable change block
         self.btn_feed_hold.clicked.connect(lambda: self.on_consumable_button('feed_hold'))
@@ -515,70 +516,30 @@ class MainWindow(VCPMainWindow):
         self.hal.send_mdi(f"G10L20P0X{laser_x}Y{laser_y};G0X0Y0")
         self.btn_laser.setChecked(False)
 
-    def cut_recovery_direction(self, direction):
-        #
-        # Cut recovery is heavily based on the work done within QTPlasmac.
-        # Credit to Phillip A Carter and Gregory D Carl.
-        #
+    def on_cut_recovery_direction(self, direction):
         speed = self.cut_recovery_speed.value() * 0.01 * direction
-        self.hal.set_p('plasmac.paused-motion-speed',str(speed))
+        self.cut_recovery_service.set_direction(direction, speed)
 
-    def cut_recovery(self):
-        sender = self.sender()
-        obj_name = sender.objectName()
-        if obj_name == 'btn_stop_abort':
-                self.widget_recovery.setEnabled(False)
-                self.cut_recovery_status = False
-                self.jog_stack.setCurrentIndex(0)
-                self.hal.set_p('plasmac.x-offset', f'{0:.0f}')
-                self.hal.set_p('plasmac.y-offset', f'{0:.0f}')
-                return
+    def on_cut_recovery_button(self, button_name):
+        self.cut_recovery_service.handle_button(
+            button_name,
+            self.widget_recovery,
+            self.jog_stack,
+            self.cut_recovery_speed.value()
+        )
 
-        if obj_name == 'btn_cycle_start':
-                self.widget_recovery.setEnabled(False)
-                self.cut_recovery_status = False
-                self.jog_stack.setCurrentIndex(0)
-                self.hal.set_p('plasmac.x-offset', f'{0:.0f}')
-                self.hal.set_p('plasmac.y-offset', f'{0:.0f}')
-                return
+    def on_cut_recovery_move(self, x_dir, y_dir):
+        self.cut_recovery_service.move(
+            x_dir, y_dir,
+            self.laser_offset_x.value(),
+            self.laser_offset_y.value(),
+            self._linear_setting,
+            self.btn_cut_recover_fwd,
+            self.btn_cut_recover_rev
+        )
 
-        if obj_name == 'btn_feed_hold':
-                self.widget_recovery.setEnabled(True)
-                self.cut_recovery_status = True
-                self.jog_stack.setCurrentIndex(1)
-                self.xOrig = self.hal.get_value('axis.x.eoffset-counts')
-                self.yOrig = self.hal.get_value('axis.y.eoffset-counts')
-                self.zOrig = self.hal.get_value('axis.z.eoffset-counts')
-                self.oScale = self.hal.get_value('plasmac.offset-scale')
-                self.hal.set_p('plasmac.x-offset', f'{0:.0f}')
-                self.hal.set_p('plasmac.y-offset', f'{0:.0f}')
-
-    def cutrec_move(self, state, x, y):
-        if state:
-            maxMove = 10
-            if self._linear_setting == 'inch':
-                maxMove = 0.4
-            laser = self.hal.get_value('qtpyvcp.laser.out') > 0
-            distX = self.hal.get_value('qtpyvcp.param-kirfwidth.out') * x
-            distY = self.hal.get_value('qtpyvcp.param-kirfwidth.out') * y
-            # xNew = self.hal.get_value('plasmac.axis-x-position') + self.hal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
-            # yNew = self.hal.get_value('plasmac.axis-y-position') + self.hal.get_value('axis.y.eoffset') - (self.laser_offset_y.value() * laser) + distY
-            #if xNew > self.xMax or xNew < self.xMin or yNew > self.yMax or yNew < self.yMin:
-            #    return
-            xTotal = self.hal.get_value('axis.x.eoffset') - (self.laser_offset_x.value() * laser) + distX
-            yTotal = self.hal.get_value('axis.y.eoffset') - (self.laser_offset_y.value() * laser) + distY
-            if xTotal > maxMove or xTotal < -maxMove or yTotal > maxMove or yTotal < -maxMove:
-                return
-            moveX = int(distX / self.oScale)
-            moveY = int(distY / self.oScale)
-            self.hal.set_p('plasmac.x-offset', f'{str(self.hal.get_value("plasmac.x-offset") + moveX)}')
-            self.hal.set_p('plasmac.y-offset', f'{str(self.hal.get_value("plasmac.y-offset") + moveY)}')
-            self.hal.set_p('plasmac.cut-recovery', '1')
-
-    def cutrec_cancel_pressed(self, state):
-        if (state):
-            if self.hal.get_value('plasmac.cut-recovery'):
-                self.hal.set_p('plasmac.cut-recovery', '0')
+    def on_cut_recovery_cancel(self):
+        self.cut_recovery_service.cancel_pressed()
 
     def on_consumable_button(self, action):
         changes = self.consumable_service.handle_button(

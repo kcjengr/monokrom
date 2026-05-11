@@ -1,0 +1,329 @@
+Component Pins:
+Owner   Type  Dir         Value  Name
+    72  bit   IN           TRUE  qtpyvcp.arc-fail-timeout.enable
+    72  float IN              0  qtpyvcp.arc-fail-timeout.in
+    72  float OUT             3  qtpyvcp.arc-fail-timeout.out ==> plasmac:arc-fail-delay
+    72  bit   IN           TRUE  qtpyvcp.arc-height-per-volt.enable
+    72  float IN              0  qtpyvcp.arc-height-per-volt.in
+    72  float OUT           0.1  qtpyvcp.arc-height-per-volt.out ==> plasmac:height-per-volt
+    72  bit   IN           TRUE  qtpyvcp.arc-max-starts.enable
+    72  s32   IN              0  qtpyvcp.arc-max-starts.in
+    72  s32   OUT             3  qtpyvcp.arc-max-starts.out ==> plasmac:arc-max-starts
+    72  bit   IN           TRUE  qtpyvcp.arc-ok-high-volts.enable
+    72  float IN              0  qtpyvcp.arc-ok-high-volts.in
+    72  float OUT           250  qtpyvcp.arc-ok-high-volts.out ==> plasmac:arc-ok-high
+    72  bit   IN           TRUE  qtpyvcp.arc-ok-low-volts.enable
+    72  float IN              0  qtpyvcp.arc-ok-low-volts.in
+    72  float OUT            60  qtpyvcp.arc-ok-low-volts.out ==> plasmac:arc-ok-low
+    72  bit   IN           TRUE  qtpyvcp.arc-retry-delay.enable
+    72  float IN              0  qtpyvcp.arc-retry-delay.in
+    72  float OUT            60  qtpyvcp.arc-retry-delay.out ==> plasmac:restart-delay
+    72  bit   IN           TRUE  qtpyvcp.arc-voltage-offset.enable
+    72  float IN              0  qtpyvcp.arc-voltage-offset.in
+    72  float OUT        3687.5  qtpyvcp.arc-voltage-offset.out ==> plasmac:arc-voltage-offset
+    72  bit   IN           TRUE  qtpyvcp.arc-voltage-scale.enable
+    72  float IN              0  qtpyvcp.arc-voltage-scale.in
+    72  float OUT      0.006744  qtpyvcp.arc-voltage-scale.out ==> plasmac:arc-voltage-scale
+    72  bit   IN          FALSE  qtpyvcp.btn-feed-hold.external-trigger <== pdnt.feed-hold
+    72  bit   IN          FALSE  qtpyvcp.btn-laser.external-trigger <== pdnt.laser-toggle
+    72  bit   IN          FALSE  qtpyvcp.btn-sheet-align-pt1.external-trigger <== pdnt.sheet-align1
+    72  bit   IN          FALSE  qtpyvcp.btn-sheet-align-pt2.external-trigger <== pdnt.sheet-align2
+    72  bit   IN          FALSE  qtpyvcp.btn-sheet-doalign.external-trigger <== pdnt.sheet-doalign
+    72  bit   IN          FALSE  qtpyvcp.btn-stop-abort.external-trigger <== pdnt.prog-stop
+    72  bit   IN           TRUE  qtpyvcp.column-separation.enable
+    72  float IN              0  qtpyvcp.column-separation.in
+    72  float OUT             0  qtpyvcp.column-separation.out
+    72  bit   IN           TRUE  qtpyvcp.consumable-offset-x.enable
+    72  float IN              0  qtpyvcp.consumable-offset-x.in
+    72  float OUT           150  qtpyvcp.consumable-offset-x.out
+    72  bit   IN           TRUE  qtpyvcp.consumable-offset-y.enable
+    72  float IN              0  qtpyvcp.consumable-offset-y.in
+    72  float OUT           150  qtpyvcp.consumable-offset-y.out
+    72  bit   IN           TRUE  qtpyvcp.consumable-xy-feed-rate.enable
+    72  float IN              0  qtpyvcp.consumable-xy-feed-rate.in
+    72  float OUT           800  qtpyvcp.consumable-xy-feed-rate.out ==> plasmac:xy-feed-rate
+    72  u32   IN     0x00000000  qtpyvcp.cutchart-id
+    72  bit   IN          FALSE  qtpyvcp.cutchart-reload
+    72  bit   IN          FALSE  qtpyvcp.cycle-start.enable <== plasmac:machine-is-homed
+    72  bit   IN          FALSE  qtpyvcp.cycle-start.external-trigger <== pdnt.start-resume
+    72  bit   OUT         FALSE  qtpyvcp.cycle-start.out
+    72  bit   IN           TRUE  qtpyvcp.cycle-start.program-is-idle <== plasmac:program-is-idle
+    72  bit   IN          FALSE  qtpyvcp.cycle-start.program-is-paused <== plasmac:program-is-paused
+    72  bit   IN          FALSE  qtpyvcp.cycle-start.program-is-running <== plasmac:program-is-running
+    72  bit   OUT          TRUE  qtpyvcp.dry-run.checked
+    72  bit   IN           TRUE  qtpyvcp.dry-run.enable
+    72  bit   I/O         FALSE  qtpyvcp.dry-run.io
+    72  bit   OUT         FALSE  qtpyvcp.dry-run.out
+    72  bit   IN          FALSE  qtpyvcp.feed-override.reset
+    72  bit   IN          FALSE  qtpyvcp.gcode-flip.check
+    72  bit   OUT         FALSE  qtpyvcp.gcode-flip.checked
+    72  bit   IN           TRUE  qtpyvcp.gcode-flip.enable
+    72  bit   IN          FALSE  qtpyvcp.gcode-mirror.check
+    72  bit   OUT         FALSE  qtpyvcp.gcode-mirror.checked
+    72  bit   IN           TRUE  qtpyvcp.gcode-mirror.enable
+    72  bit   IN           TRUE  qtpyvcp.gcode-rotation.enable
+    72  float IN              0  qtpyvcp.gcode-rotation.in
+    72  float OUT             0  qtpyvcp.gcode-rotation.out
+    72  bit   IN           TRUE  qtpyvcp.gcode-scale.enable
+    72  float IN              0  qtpyvcp.gcode-scale.in
+    72  float OUT             1  qtpyvcp.gcode-scale.out
+    72  bit   OUT         FALSE  qtpyvcp.laser.checked ==> plasmac:laser-on
+    72  bit   IN           TRUE  qtpyvcp.laser.enable
+    72  bit   I/O         FALSE  qtpyvcp.laser.io
+    72  bit   OUT         FALSE  qtpyvcp.laser.out
+    72  bit   IN          FALSE  qtpyvcp.led-arc-ok.flash
+    72  u32   IN     0x00000000  qtpyvcp.led-arc-ok.flash-rate
+    72  bit   IN          FALSE  qtpyvcp.led-arc-ok.on <== plasmac:arc-ok-out
+    72  bit   IN          FALSE  qtpyvcp.led-change-consumable.flash
+    72  u32   IN     0x00000000  qtpyvcp.led-change-consumable.flash-rate
+    72  bit   IN          FALSE  qtpyvcp.led-change-consumable.on <== plasmac:consumable-changing
+    72  bit   IN          FALSE  qtpyvcp.led-corner-lock.flash
+    72  u32   IN     0x00000000  qtpyvcp.led-corner-lock.flash-rate
+    72  bit   IN          FALSE  qtpyvcp.led-corner-lock.on <== plasmac:cornerlock-is-locked
+    72  bit   IN          FALSE  qtpyvcp.led-float.flash
+    72  u32   IN     0x00000000  qtpyvcp.led-float.flash-rate
+    72  bit   IN          FALSE  qtpyvcp.led-float.on <== sim:float
+    72  bit   IN          FALSE  qtpyvcp.led-kerf-cross.flash
+    72  u32   IN     0x00000000  qtpyvcp.led-kerf-cross.flash-rate
+    72  bit   IN          FALSE  qtpyvcp.led-kerf-cross.on
+    72  bit   IN          FALSE  qtpyvcp.led-probe.flash
+    72  u32   IN     0x00000000  qtpyvcp.led-probe.flash-rate
+    72  bit   IN          FALSE  qtpyvcp.led-probe.on
+    72  bit   IN          FALSE  qtpyvcp.led-thc-active.flash
+    72  u32   IN     0x00000000  qtpyvcp.led-thc-active.flash-rate
+    72  bit   IN          FALSE  qtpyvcp.led-thc-active.on <== plasmac:thc-active
+    72  bit   IN          FALSE  qtpyvcp.led-thc-down.flash
+    72  u32   IN     0x00000000  qtpyvcp.led-thc-down.flash-rate
+    72  bit   IN          FALSE  qtpyvcp.led-thc-down.on <== plasmac:led-down
+    72  bit   IN          FALSE  qtpyvcp.led-thc-up.flash
+    72  u32   IN     0x00000000  qtpyvcp.led-thc-up.flash-rate
+    72  bit   IN          FALSE  qtpyvcp.led-thc-up.on <== plasmac:led-up
+    72  bit   IN          FALSE  qtpyvcp.led-torch-on.flash
+    72  u32   IN     0x00000000  qtpyvcp.led-torch-on.flash-rate
+    72  bit   IN          FALSE  qtpyvcp.led-torch-on.on <== plasmac:torch-on
+    72  u32   I/O    0x00000002  qtpyvcp.material-id
+    72  bit   IN           TRUE  qtpyvcp.mk-arc-voltage.enable
+    72  float IN              0  qtpyvcp.mk-arc-voltage.in <== sim:arc-voltage-in
+    72  bit   OUT         FALSE  qtpyvcp.mk-consumable-change.checked
+    72  bit   IN          FALSE  qtpyvcp.mk-consumable-change.enable
+    72  bit   I/O         FALSE  qtpyvcp.mk-consumable-change.io
+    72  bit   OUT         FALSE  qtpyvcp.mk-consumable-change.out
+    72  bit   IN           TRUE  qtpyvcp.mk-current-velcoity.enable
+    72  float IN              0  qtpyvcp.mk-current-velcoity.in <== mk:current-velocity
+    72  bit   IN           TRUE  qtpyvcp.mk-feedrate.enable
+    72  float IN              0  qtpyvcp.mk-feedrate.in <== plasmac:feed-upm
+    72  bit   IN           TRUE  qtpyvcp.ohmic-offset-x.enable
+    72  float IN              0  qtpyvcp.ohmic-offset-x.in
+    72  float OUT             0  qtpyvcp.ohmic-offset-x.out
+    72  bit   IN           TRUE  qtpyvcp.ohmic-offset-y.enable
+    72  float IN              0  qtpyvcp.ohmic-offset-y.in
+    72  float OUT             0  qtpyvcp.ohmic-offset-y.out
+    72  bit   IN           TRUE  qtpyvcp.ohmic-sensing-enabled.check
+    72  bit   OUT          TRUE  qtpyvcp.ohmic-sensing-enabled.checked ==> plasmac:ohmic-probe-enable
+    72  bit   IN           TRUE  qtpyvcp.ohmic-sensing-enabled.enable
+    72  bit   IN           TRUE  qtpyvcp.param-cutamps.enable
+    72  float IN              0  qtpyvcp.param-cutamps.in
+    72  float OUT            45  qtpyvcp.param-cutamps.out
+    72  bit   IN           TRUE  qtpyvcp.param-cutfeedrate.enable
+    72  float IN              0  qtpyvcp.param-cutfeedrate.in
+    72  float OUT          1200  qtpyvcp.param-cutfeedrate.out ==> plasmac:cut-feed-rate
+    72  bit   IN           TRUE  qtpyvcp.param-cutheight.enable
+    72  float IN              0  qtpyvcp.param-cutheight.in
+    72  float OUT           1.5  qtpyvcp.param-cutheight.out ==> plasmac:cut-height
+    72  bit   IN           TRUE  qtpyvcp.param-cutvolts.enable
+    72  float IN              0  qtpyvcp.param-cutvolts.in
+    72  float OUT             0  qtpyvcp.param-cutvolts.out ==> plasmac:cut-volts
+    72  bit   IN           TRUE  qtpyvcp.param-gaspressure.enable
+    72  float IN              0  qtpyvcp.param-gaspressure.in
+    72  float OUT          0.65  qtpyvcp.param-gaspressure.out
+    72  bit   IN           TRUE  qtpyvcp.param-kirfwidth.enable
+    72  float IN              0  qtpyvcp.param-kirfwidth.in
+    72  float OUT          1.65  qtpyvcp.param-kirfwidth.out
+    72  bit   IN           TRUE  qtpyvcp.param-pauseatend.enable
+    72  float IN              0  qtpyvcp.param-pauseatend.in
+    72  float OUT           0.2  qtpyvcp.param-pauseatend.out ==> plasmac:pause-at-end
+    72  bit   IN           TRUE  qtpyvcp.param-piercedelay.enable
+    72  float IN              0  qtpyvcp.param-piercedelay.in
+    72  float OUT           0.5  qtpyvcp.param-piercedelay.out ==> plasmac:pierce-delay
+    72  bit   IN           TRUE  qtpyvcp.param-pierceheight.enable
+    72  float IN              0  qtpyvcp.param-pierceheight.in
+    72  float OUT           3.5  qtpyvcp.param-pierceheight.out ==> plasmac:pierce-height
+    72  bit   IN           TRUE  qtpyvcp.param-plungefeedrate.enable
+    72  float IN              0  qtpyvcp.param-plungefeedrate.in
+    72  float OUT          3600  qtpyvcp.param-plungefeedrate.out
+    72  bit   IN           TRUE  qtpyvcp.param-puddlejumpdelay.enable
+    72  float IN              0  qtpyvcp.param-puddlejumpdelay.in
+    72  float OUT             0  qtpyvcp.param-puddlejumpdelay.out ==> plasmac:puddle-jump-delay
+    72  bit   IN           TRUE  qtpyvcp.param-puddlejumpheight.enable
+    72  float IN              0  qtpyvcp.param-puddlejumpheight.in
+    72  float OUT             0  qtpyvcp.param-puddlejumpheight.out ==> plasmac:puddle-jump-height
+    72  bit   IN           TRUE  qtpyvcp.plasma-arc1-percent.enable
+    72  float IN              0  qtpyvcp.plasma-arc1-percent.in
+    72  float OUT            50  qtpyvcp.plasma-arc1-percent.out
+    72  bit   IN           TRUE  qtpyvcp.plasma-arc2-percent.enable
+    72  float IN              0  qtpyvcp.plasma-arc2-percent.in
+    72  float OUT            60  qtpyvcp.plasma-arc2-percent.out
+    72  bit   IN           TRUE  qtpyvcp.plasma-arc3-percent.enable
+    72  float IN              0  qtpyvcp.plasma-arc3-percent.in
+    72  float OUT            80  qtpyvcp.plasma-arc3-percent.out
+    72  bit   IN           TRUE  qtpyvcp.plasma-auto-volts.check
+    72  bit   OUT          TRUE  qtpyvcp.plasma-auto-volts.checked ==> plasmac:use-auto-volts
+    72  bit   IN           TRUE  qtpyvcp.plasma-auto-volts.enable
+    72  bit   IN          FALSE  qtpyvcp.plasma-force-straight-leadin.check
+    72  bit   OUT         FALSE  qtpyvcp.plasma-force-straight-leadin.checked
+    72  bit   IN           TRUE  qtpyvcp.plasma-force-straight-leadin.enable
+    72  bit   IN           TRUE  qtpyvcp.plasma-hole-detect-enable.check
+    72  bit   OUT          TRUE  qtpyvcp.plasma-hole-detect-enable.checked
+    72  bit   IN           TRUE  qtpyvcp.plasma-hole-detect-enable.enable
+    72  bit   IN           TRUE  qtpyvcp.plasma-hole-kerf.enable
+    72  float IN              0  qtpyvcp.plasma-hole-kerf.in
+    72  float OUT             1  qtpyvcp.plasma-hole-kerf.out
+    72  bit   IN           TRUE  qtpyvcp.plasma-hole-thickness-ratio.enable
+    72  s32   IN              0  qtpyvcp.plasma-hole-thickness-ratio.in
+    72  s32   OUT             5  qtpyvcp.plasma-hole-thickness-ratio.out
+    72  bit   IN          FALSE  qtpyvcp.plasma-is-kerf-compensated.check
+    72  bit   OUT         FALSE  qtpyvcp.plasma-is-kerf-compensated.checked
+    72  bit   IN           TRUE  qtpyvcp.plasma-is-kerf-compensated.enable
+    72  bit   IN           TRUE  qtpyvcp.plasma-leadin-percent.enable
+    72  float IN              0  qtpyvcp.plasma-leadin-percent.in
+    72  float OUT            40  qtpyvcp.plasma-leadin-percent.out
+    72  bit   IN           TRUE  qtpyvcp.plasma-leadin-radius.enable
+    72  float IN              0  qtpyvcp.plasma-leadin-radius.in
+    72  float OUT             0  qtpyvcp.plasma-leadin-radius.out
+    72  bit   IN           TRUE  qtpyvcp.plasma-max-hole-size.enable
+    72  float IN              0  qtpyvcp.plasma-max-hole-size.in
+    72  float OUT            50  qtpyvcp.plasma-max-hole-size.out
+    72  bit   IN          FALSE  qtpyvcp.plasma-mesh-sense.check
+    72  bit   OUT         FALSE  qtpyvcp.plasma-mesh-sense.checked ==> plasmac:mesh-enable
+    72  bit   IN           TRUE  qtpyvcp.plasma-mesh-sense.enable
+    72  bit   IN           TRUE  qtpyvcp.plasma-overburn-adjustment.enable
+    72  float IN              0  qtpyvcp.plasma-overburn-adjustment.in
+    72  float OUT             0  qtpyvcp.plasma-overburn-adjustment.out
+    72  bit   IN           TRUE  qtpyvcp.plasma-overburn-percent.enable
+    72  float IN              0  qtpyvcp.plasma-overburn-percent.in
+    72  float OUT           120  qtpyvcp.plasma-overburn-percent.out
+    72  bit   OUT         FALSE  qtpyvcp.plasma-pierce-only-enable.checked
+    72  bit   IN           TRUE  qtpyvcp.plasma-pierce-only-enable.enable
+    72  bit   I/O         FALSE  qtpyvcp.plasma-pierce-only-enable.io
+    72  bit   OUT         FALSE  qtpyvcp.plasma-pierce-only-enable.out
+    72  bit   IN          FALSE  qtpyvcp.plasma-small-hole-detect.check
+    72  bit   OUT         FALSE  qtpyvcp.plasma-small-hole-detect.checked
+    72  bit   IN           TRUE  qtpyvcp.plasma-small-hole-detect.enable
+    72  bit   IN           TRUE  qtpyvcp.plasma-small-hole-threshold.enable
+    72  float IN              0  qtpyvcp.plasma-small-hole-threshold.in
+    72  float OUT             5  qtpyvcp.plasma-small-hole-threshold.out
+    72  bit   IN           TRUE  qtpyvcp.plasma-torch-pulse-sec.enable
+    72  float IN              0  qtpyvcp.plasma-torch-pulse-sec.in
+    72  float OUT           0.3  qtpyvcp.plasma-torch-pulse-sec.out ==> plasmac:torch-pulse-time
+    72  bit   IN           TRUE  qtpyvcp.plasma-torch-pulse.enable
+    72  bit   I/O         FALSE  qtpyvcp.plasma-torch-pulse.io
+    72  bit   OUT         FALSE  qtpyvcp.plasma-torch-pulse.out ==> plasmac:torch-pulse
+    72  bit   IN          FALSE  qtpyvcp.plasma-use-hidef.check
+    72  bit   OUT         FALSE  qtpyvcp.plasma-use-hidef.checked
+    72  bit   IN           TRUE  qtpyvcp.plasma-use-hidef.enable
+    72  bit   IN           TRUE  qtpyvcp.plasma-vad.check
+    72  bit   OUT          TRUE  qtpyvcp.plasma-vad.checked ==> plasmac:cornerlock-enable
+    72  bit   IN           TRUE  qtpyvcp.plasma-vad.enable
+    72  bit   IN           TRUE  qtpyvcp.plasma-void-sense.check
+    72  bit   OUT          TRUE  qtpyvcp.plasma-void-sense.checked
+    72  bit   IN           TRUE  qtpyvcp.plasma-void-sense.enable
+    72  bit   IN           TRUE  qtpyvcp.probe-float-travel.enable
+    72  float IN              0  qtpyvcp.probe-float-travel.in
+    72  float OUT           3.2  qtpyvcp.probe-float-travel.out ==> plasmac:float-switch-travel
+    72  bit   IN           TRUE  qtpyvcp.probe-height.enable
+    72  float IN              0  qtpyvcp.probe-height.in
+    72  float OUT            15  qtpyvcp.probe-height.out ==> plasmac:probe-start-height
+    72  bit   IN           TRUE  qtpyvcp.probe-offset.enable
+    72  float IN              0  qtpyvcp.probe-offset.in
+    72  float OUT             0  qtpyvcp.probe-offset.out ==> plasmac:ohmic-probe-offset
+    72  bit   IN           TRUE  qtpyvcp.probe-ohmic-retries.enable
+    72  s32   IN              0  qtpyvcp.probe-ohmic-retries.in
+    72  s32   OUT             3  qtpyvcp.probe-ohmic-retries.out ==> plasmac:ohmic-max-attempts
+    72  bit   IN           TRUE  qtpyvcp.probe-setup-speed.enable
+    72  float IN              0  qtpyvcp.probe-setup-speed.in
+    72  float OUT          3000  qtpyvcp.probe-setup-speed.out ==> plasmac:setup-feed-rate
+    72  bit   IN           TRUE  qtpyvcp.probe-skip-ihs.enable
+    72  float IN              0  qtpyvcp.probe-skip-ihs.in
+    72  float OUT             0  qtpyvcp.probe-skip-ihs.out ==> plasmac:skip-ihs-distance
+    72  bit   IN           TRUE  qtpyvcp.probe-speed.enable
+    72  float IN              0  qtpyvcp.probe-speed.in
+    72  float OUT           200  qtpyvcp.probe-speed.out ==> plasmac:probe-feed-rate
+    72  bit   IN          FALSE  qtpyvcp.probe-test-error
+    72  bit   IN          FALSE  qtpyvcp.rapid-override.reset
+    72  bit   IN           TRUE  qtpyvcp.row-separation.enable
+    72  float IN              0  qtpyvcp.row-separation.in
+    72  float OUT             0  qtpyvcp.row-separation.out
+    72  bit   IN           TRUE  qtpyvcp.scribe-arm-delay.enable
+    72  float IN              0  qtpyvcp.scribe-arm-delay.in
+    72  float OUT             0  qtpyvcp.scribe-arm-delay.out ==> plasmac:scribe-arm-delay
+    72  bit   IN           TRUE  qtpyvcp.scribe-offset-x.enable
+    72  float IN              0  qtpyvcp.scribe-offset-x.in
+    72  float OUT             0  qtpyvcp.scribe-offset-x.out
+    72  bit   IN           TRUE  qtpyvcp.scribe-offset-y.enable
+    72  float IN              0  qtpyvcp.scribe-offset-y.in
+    72  float OUT             0  qtpyvcp.scribe-offset-y.out
+    72  bit   IN           TRUE  qtpyvcp.scribe-on-delay.enable
+    72  float IN              0  qtpyvcp.scribe-on-delay.in
+    72  float OUT           0.3  qtpyvcp.scribe-on-delay.out ==> plasmac:scribe-on-delay
+    72  bit   IN           TRUE  qtpyvcp.single-cut-x.enable
+    72  float IN              0  qtpyvcp.single-cut-x.in
+    72  float OUT             0  qtpyvcp.single-cut-x.out
+    72  bit   IN           TRUE  qtpyvcp.single-cut-y.enable
+    72  float IN              0  qtpyvcp.single-cut-y.in
+    72  float OUT             0  qtpyvcp.single-cut-y.out
+    72  bit   IN          FALSE  qtpyvcp.spindle-override.reset
+    72  bit   IN           TRUE  qtpyvcp.spot-delay.enable
+    72  float IN              0  qtpyvcp.spot-delay.in
+    72  float OUT           600  qtpyvcp.spot-delay.out ==> plasmac:spotting-time
+    72  bit   IN           TRUE  qtpyvcp.spot-threshold.enable
+    72  float IN              0  qtpyvcp.spot-threshold.in
+    72  float OUT             0  qtpyvcp.spot-threshold.out ==> plasmac:spotting-threshold
+    72  bit   IN           TRUE  qtpyvcp.stats-cut-length.enable
+    72  float IN              0  qtpyvcp.stats-cut-length.in <== plasmac:cut-length
+    72  bit   IN           TRUE  qtpyvcp.stats-cut-time.enable
+    72  float IN              0  qtpyvcp.stats-cut-time.in <== plasmac:cut-time
+    72  bit   IN           TRUE  qtpyvcp.thc-delay.enable
+    72  float IN              0  qtpyvcp.thc-delay.in
+    72  float OUT           0.5  qtpyvcp.thc-delay.out ==> plasmac:thc-delay
+    72  bit   IN           TRUE  qtpyvcp.thc-enabled.check
+    72  bit   OUT          TRUE  qtpyvcp.thc-enabled.checked ==> plasmac:thc-enable
+    72  bit   IN           TRUE  qtpyvcp.thc-enabled.enable
+    72  bit   IN           TRUE  qtpyvcp.thc-pid-d-gain.enable
+    72  float IN              0  qtpyvcp.thc-pid-d-gain.in
+    72  float OUT             0  qtpyvcp.thc-pid-d-gain.out ==> plasmac:pid-d-gain
+    72  bit   IN           TRUE  qtpyvcp.thc-pid-i-gain.enable
+    72  float IN              0  qtpyvcp.thc-pid-i-gain.in
+    72  float OUT             0  qtpyvcp.thc-pid-i-gain.out ==> plasmac:pid-i-gain
+    72  bit   IN           TRUE  qtpyvcp.thc-pid-p-gain.enable
+    72  float IN              0  qtpyvcp.thc-pid-p-gain.in
+    72  float OUT            10  qtpyvcp.thc-pid-p-gain.out ==> plasmac:pid-p-gain
+    72  bit   IN           TRUE  qtpyvcp.thc-safe-height.enable
+    72  float IN              0  qtpyvcp.thc-safe-height.in
+    72  float OUT            25  qtpyvcp.thc-safe-height.out ==> plasmac:safe-height
+    72  bit   IN           TRUE  qtpyvcp.thc-threshold.enable
+    72  float IN              0  qtpyvcp.thc-threshold.in
+    72  float OUT             1  qtpyvcp.thc-threshold.out ==> plasmac:thc-threshold
+    72  bit   IN           TRUE  qtpyvcp.thc-vad-threshold.enable
+    72  float IN              0  qtpyvcp.thc-vad-threshold.in
+    72  float OUT            60  qtpyvcp.thc-vad-threshold.out ==> plasmac:cornerlock-threshold
+    72  bit   IN           TRUE  qtpyvcp.thc-void-override.enable
+    72  float IN              0  qtpyvcp.thc-void-override.in
+    72  float OUT           100  qtpyvcp.thc-void-override.out
+    72  bit   IN           TRUE  qtpyvcp.tile-columns.enable
+    72  u32   IN     0x00000000  qtpyvcp.tile-columns.in
+    72  u32   OUT    0x00000001  qtpyvcp.tile-columns.out
+    72  bit   IN           TRUE  qtpyvcp.tile-rows.enable
+    72  u32   IN     0x00000000  qtpyvcp.tile-rows.in
+    72  u32   OUT    0x00000001  qtpyvcp.tile-rows.out
+    72  bit   OUT         FALSE  qtpyvcp.torch-enable.checked ==> plasmac:torch-enable
+    72  bit   IN           TRUE  qtpyvcp.torch-enable.enable
+    72  bit   I/O         FALSE  qtpyvcp.torch-enable.io
+    72  bit   OUT         FALSE  qtpyvcp.torch-enable.out
+    72  bit   IN           TRUE  qtpyvcp.voltage-override.enable
+    72  float IN              0  qtpyvcp.voltage-override.in
+    72  float OUT             0  qtpyvcp.voltage-override.out ==> plasmac:height-override
+    73  bit   IN          FALSE  qtpyvcp_manualtoolchange.change
+    73  bit   IN          FALSE  qtpyvcp_manualtoolchange.change_button
+    73  bit   OUT         FALSE  qtpyvcp_manualtoolchange.changed
+    73  s32   IN              0  qtpyvcp_manualtoolchange.number
+
