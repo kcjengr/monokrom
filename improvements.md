@@ -40,6 +40,15 @@ Extracted from mainwindow (~65 lines → 167 line service with tests).
 - MainWindow delegates (`on_cut_recovery_button`, `on_cut_recovery_direction`, `on_cut_recovery_move`, `on_cut_recovery_cancel`) forward to the service.
 - Coordinate math (bounds checking, offset calculations) is now unit-testable as pure logic within the service.
 
+### Sheet Alignment Service (`src/monokrom/plasma/sheet_alignment.py`)
+Extracted from mainwindow (~140 lines → 205 line service with tests).
+
+- **Public API**: `handle_toggle()`, `set_point_1()`, `set_point_2()`, `align()`, `get_status_text()` — owns state machine for two-point coordinate rotation.
+- **Constructor injection**: Takes `HALBridge` in constructor.
+- **33 passing tests** in `tests/plasma/test_sheet_alignment.py`.
+- MainWindow delegates (`on_sheet_align_laser`, `on_sheet_align_pt1`, `on_sheet_align_pt2`, `on_sheet_align_doalign`) forward to the service.
+- Angle calculation (`_calculate_angle`) is now unit-testable as a static pure function — quadrant-aware atan logic with no Qt or HAL coupling.
+
 ---
 
 ## Structural problems (unchanged)
@@ -54,7 +63,7 @@ Extracted from mainwindow (~65 lines → 167 line service with tests).
 
 Each service takes a `HALBridge` in its constructor and owns its own state. MainWindow wires signals to thin delegate methods that forward to the service.
 
-1. **Sheet alignment** (`:1077-1219`) — ~140 lines, self-contained state machine with `sheet_align_toggle`, `sheet_align_set_p1/p2`, `sheet_align`, `build_status_text`. Depends on `HALBridge.send_mdi()` + `wait_complete()`. Extract to `sheet_alignment.py`.
+1. ~~**Sheet alignment** (`:1077-1219`)~~ — **DONE.** Extracted to `sheet_alignment.py` with 33 tests.
 
 2. ~~**Cut recovery** (`:518-582`)~~ — **DONE.** Extracted to `cut_recovery.py` with 26 tests.
 
@@ -80,7 +89,7 @@ src/monokrom/plasma/
 ├── hal_bridge.py          (7 public methods + lazy defaults — DONE)
 ├── consumable_change.py   (77 lines — DONE, 7 tests)
 ├── cut_recovery.py        (167 lines — DONE, 26 tests)
-├── sheet_alignment.py     (~140 lines)
+├── sheet_alignment.py     (205 lines — DONE, 33 tests)
 ├── process_filter.py      (~125 lines)
 ├── mdi_panel.py           (~60 lines)
 ├── shape_generator.py     (~150 lines — maps UI → quickshapes calls)
@@ -97,6 +106,7 @@ Each service owns its signals, state, and logic. `MainWindow.__init__` shrinks t
 - **`:207-209`** — `btn_feed_hold`, `btn_cycle_start`, `btn_stop_abort` are connected to both `cut_recovery` and the old `consumable_change`. ~~Cut recovery~~ Both now use typed delegates (`on_cut_recovery_button`, `on_consumable_button`).
 - **`:390-490`** — The `match/case` block reads 10+ UI values per shape. Each case becomes its own method in `shape_generator.py`.
 - **`:555-574`** — `cutrec_move` does coordinate math, bounds checking, and HAL writes all in one function. After extracting `CutRecoveryService`, the HAL calls go through `HALBridge` and the math can be unit-tested.
+- ~~**`:1038-1180`** — `sheet_align_toggle` uses `sender().objectName()` dispatch pattern. Extracted to `SheetAlignmentService` with typed delegates (`on_sheet_align_laser`, `on_sheet_align_pt1`, `on_sheet_align_pt2`, `on_sheet_align_doalign`). Angle calculation is now a static pure function in the service.~~
 
 ---
 
@@ -106,7 +116,7 @@ Each service owns its signals, state, and logic. `MainWindow.__init__` shrinks t
 |------|-------------------|------------------------|--------------------------|---------------------|---------------------------|
 | Largest single method | `__init__` at ~260 lines | ~280 (import + hal init added) | ~280 (service init added) | ~275 (cut_recovery_service added) | ~80 lines |
 | Longest method body | `clicked_qs_refresh` at ~130 lines | Still ~130 | Still ~130 | Still ~130 | Each shape generator at ~10 lines |
-| Testable without Qt | 0 methods | HALBridge: 14 tests pass | HALBridge: 14 + Consumable: 7 = 21 | HALBridge: 14 + Consumable: 7 + CutRecovery: 26 = 47 | Filter, file ops, alignment math |
+| Testable without Qt | 0 methods | HALBridge: 14 tests pass | HALBridge: 14 + Consumable: 7 = 21 | HALBridge: 14 + Consumable: 7 + CutRecovery: 26 + SheetAlign: 33 = 80 | Filter, file ops, shape gen |
 | Cohesion | Low — sender dispatch scattered across class | HALBridge is cohesive; mainwindow calls `self.hal` | Consumable service owns its logic with typed delegates | Cut recovery owns its state machine with typed delegates | High — each module owns its feature |
 | Hardware coupling | 53 direct calls to `cnchal`/`issue_mdi`/`CMD` | **0 direct calls** — all through `HALBridge` | **0 direct calls** — all through `HALBridge` → services | **0 direct calls** — all through `HALBridge` → services | 0 direct calls — all go through services |
 
@@ -114,13 +124,13 @@ Each service owns its signals, state, and logic. `MainWindow.__init__` shrinks t
 
 ## Next step
 
-**Extract services one by one.** Wiring, consumable change, and cut recovery are complete — all hardware calls flow through `self.hal`. Now extract the next responsibility into its own service class.
+**Extract services one by one.** Wiring, consumable change, cut recovery, and sheet alignment are complete — all hardware calls flow through `self.hal`. Now extract the next responsibility into its own service class.
 
 **Recommended order** (easiest to hardest):
 
 1. ~~Consumable change~~ — **DONE.** 77 lines, 3 public methods, 7 tests.
 2. ~~Cut recovery~~ — **DONE.** 167 lines, state machine with jog+offset logic and coordinate math, 26 tests.
-3. **Sheet alignment** — ~140 lines, angle math is testable as pure functions.
+3. ~~Sheet alignment~~ — **DONE.** 205 lines, state machine with quadrant-aware angle math, 33 tests.
 4. **Process filter** — ~125 lines, no HAL dependency, pure data plumbing.
 5. **Shape generator** — ~140 line match/case → lookup table + per-shape methods.
 6. **MDI panel** — ~60 lines, trivial state machine.

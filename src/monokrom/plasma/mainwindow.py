@@ -26,6 +26,7 @@ import quickshapes as qs
 from monokrom.plasma.hal_bridge import HALBridge
 from monokrom.plasma.consumable_change import ConsumableChangeService
 from monokrom.plasma.cut_recovery import CutRecoveryService
+from monokrom.plasma.sheet_alignment import SheetAlignmentService
 
 # import pydevd;pydevd.settrace()
 
@@ -110,6 +111,7 @@ class MainWindow(VCPMainWindow):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.hal = HALBridge()
         self.consumable_service = ConsumableChangeService(self.hal)
+        self.sheet_align_service = SheetAlignmentService(self.hal)
         self.cut_recovery_service = CutRecoveryService(self.hal)
         self._plasma_plugin = getPlugin('plasmaprocesses')
         self.filter_cutchart_id = None
@@ -175,9 +177,6 @@ class MainWindow(VCPMainWindow):
         self.consumable_offset_y.setMinimum(self.min_y + (10 * self.units_per_mm))
         self.consumable_offset_x.setMaximum(self.max_x - (10 * self.units_per_mm))
         self.consumable_offset_y.setMaximum(self.max_y - (10 * self.units_per_mm))
-        self.sheet_align_p1 = None
-        self.sheet_align_p2 = None
-        self.sheet_align_p3 = None
         # set the jog buttons to the active settings on start
         jog.set_increment(1 * self.units_per_mm)
         jog.set_jog_continuous(True)
@@ -271,10 +270,10 @@ class MainWindow(VCPMainWindow):
         self.btn_frame_job.clicked.connect(self.frame_work)
         
         # Sheet Alignment
-        self.btn_laser.toggled.connect(self.sheet_align_toggle)
-        self.btn_sheet_align_pt1.toggled.connect(self.sheet_align_toggle)
-        self.btn_sheet_align_pt2.toggled.connect(self.sheet_align_toggle)
-        self.btn_sheet_doalign.clicked.connect(self.sheet_align_toggle)
+        self.btn_laser.toggled.connect(self.on_sheet_align_laser)
+        self.btn_sheet_align_pt1.toggled.connect(self.on_sheet_align_pt1)
+        self.btn_sheet_align_pt2.toggled.connect(self.on_sheet_align_pt2)
+        self.btn_sheet_doalign.clicked.connect(self.on_sheet_align_doalign)
         #self.btn_sheet_align_pt1.clicked.connect(self.sheet_align_set_p1)
         #self.btn_sheet_align_pt2.clicked.connect(self.sheet_align_set_p2)
         #self.btn_sheet_doalign.clicked.connect(self.sheet_align)
@@ -1034,147 +1033,62 @@ class MainWindow(VCPMainWindow):
     #
     # Original code, concept and smarts from QTPlasmac author.
     #
-    
-    def sheet_align_toggle(self, checked=False):
-        sender = self.sender()
-        obj_name = sender.objectName()
-        match obj_name:
-            case 'btn_laser':
-                LOG.debug(f'laser {checked}')
-                if checked:
-                    self.btn_sheet_align_pt1.setEnabled(checked)
-                    set_mode.manual()
-                else:
-                    self.btn_sheet_align_pt1.setChecked(False)
-                    self.btn_sheet_align_pt2.setChecked(False)
-                    self.btn_sheet_align_pt1.setEnabled(False)
-                    self.btn_sheet_align_pt2.setEnabled(False)
-                    self.btn_sheet_doalign.setEnabled(False)
-                    self.sheet_align_p1 = None
-                    self.sheet_align_p2 = None
-                    self.build_status_text()
 
-            case 'btn_sheet_align_pt1':
-                LOG.debug('point 1')
-                if checked:
-                    self.btn_sheet_align_pt2.setEnabled(True)
-                    self.sheet_align_set_p1()
-                    set_mode.manual()
-                else:
-                    self.btn_sheet_align_pt2.setChecked(False)
-                    self.btn_sheet_align_pt2.setEnabled(False)
-                    self.btn_sheet_doalign.setEnabled(False)
-                    self.sheet_align_p1 = None
-                    self.build_status_text()
-            
-            case 'btn_sheet_align_pt2':
-                LOG.debug('point 2')
-                if checked:
-                    self.btn_sheet_doalign.setEnabled(True)
-                    self.sheet_align_set_p2()
-                    set_mode.manual()
-                else:
-                    self.btn_sheet_doalign.setEnabled(False)
-                    self.sheet_align_p2 = None
-                    self.build_status_text()
-
-            case 'btn_sheet_doalign':
-                # do sheet alignment
-                LOG.debug('Do alignment')
-                self.sheet_align()
-                # reset UI state
-                self.btn_sheet_align_pt1.setChecked(False)
-                self.btn_sheet_align_pt2.setChecked(False)
-                self.btn_laser.setChecked(False)
-                self.btn_sheet_align_pt1.setEnabled(False)
-                self.btn_sheet_align_pt2.setEnabled(False)
-                self.btn_sheet_doalign.setEnabled(False)
-    
-    def sheet_align(self):
-        if self.sheet_align_p1 is None or \
-           self.sheet_align_p2 is None:
-            LOG.debug("Sheet alignment attempted but not all points set.")
-            # reset UI state
-            self.btn_sheet_align_pt1.setChecked(False)
-            self.btn_sheet_align_pt2.setChecked(False)
-            self.btn_laser.setChecked(False)
-            self.btn_sheet_align_pt1.setEnabled(False)
-            self.btn_sheet_align_pt2.setEnabled(False)
-            self.btn_sheet_doalign.setEnabled(False)
-            return
-        # need p1 and p2 set for edge only alignment.
-        # Assumed that p1 will be X0Y0
-    
-        self.hal.send_mdi('G10 L2 P0 R0')
-        self.hal.wait_complete()
-        self.hal.send_mdi('G10 L2 P0 X0 Y0')
-        self.hal.wait_complete()
+    def on_sheet_align_laser(self, checked):
+        changes = self.sheet_align_service.handle_toggle('btn_laser', checked)
+        if 'btn_sheet_align_pt1' in changes:
+            self.btn_sheet_align_pt1.setEnabled(changes['btn_sheet_align_pt1'].get('enabled', False))
+            if 'checked' in changes['btn_sheet_align_pt1']:
+                self.btn_sheet_align_pt1.setChecked(changes['btn_sheet_align_pt1']['checked'])
+        if 'btn_sheet_align_pt2' in changes:
+            self.btn_sheet_align_pt2.setEnabled(changes['btn_sheet_align_pt2'].get('enabled', False))
+            if 'checked' in changes['btn_sheet_align_pt2']:
+                self.btn_sheet_align_pt2.setChecked(changes['btn_sheet_align_pt2']['checked'])
+        if 'btn_sheet_doalign' in changes:
+            self.btn_sheet_doalign.setEnabled(changes['btn_sheet_doalign'].get('enabled', False))
         set_mode.manual()
-        self.hal.wait_complete()
-        #xDiff = self.sheet_align_p2[0] - self.sheet_align_p1[0]
-        #yDiff = self.sheet_align_p2[1] - self.sheet_align_p1[1]
-        xDiff = self.sheet_align_p2[0] - self.sheet_align_p1[0]
-        yDiff = self.sheet_align_p2[1]- self.sheet_align_p1[1]
-        if xDiff and yDiff:
-            zAngle = math.degrees(math.atan(yDiff / xDiff))
-            if xDiff > 0:
-                zAngle += 180
-            elif yDiff > 0:
-                zAngle += 360
-            if abs(xDiff) < abs(yDiff):
-                zAngle -= 90
-        elif xDiff:
-            if xDiff > 0:
-                zAngle = 180
-            else:
-                zAngle = 0
-        elif yDiff:
-            if yDiff > 0:
-                zAngle = 180
-            else:
-                zAngle = 0
-        else:
-            zAngle = 0
+        self.lbl_align_data.setText(self.sheet_align_service.get_status_text())
 
-        laser_x = self.laser_offset_x.value()
-        laser_y = self.laser_offset_y.value()
-        LOG.debug(f'G10 L2 P0 X{self.sheet_align_p1[0]-laser_x} Y{self.sheet_align_p1[1]-laser_y}')
-        LOG.debug(f'G10 L2 P0 R{zAngle}')
-        #self.hal.send_mdi(f'G10 L2 P0 X{self.sheet_align_p1[0]-laser_x} Y{self.sheet_align_p1[1]-laser_y}')
-        self.hal.send_mdi(f'G10 L20 P0 X{laser_x} Y{laser_y}')
-        self.hal.wait_complete()
-        self.hal.send_mdi(f'G10 L2 P0 R{zAngle}')
-        self.hal.wait_complete()
-        self.hal.send_mdi('G0 X0 Y0')
-        self.hal.wait_complete()
-        LOG.debug('Alignment done.')
-        self.sheet_align_p1 = None
-        self.sheet_align_p2 = None
-        self.build_status_text()
-    
-    def build_status_text(self):
-        widget = self.lbl_align_data
-        ref1 = "REF1:..."
-        ref2 = "REF2:..."
-        if self. sheet_align_p1 is not None:
-            ref1 = f"REF1:\n{self.sheet_align_p1[0]:.4f},\n{self.sheet_align_p1[1]:.4f}"
+    def on_sheet_align_pt1(self, checked):
+        changes = self.sheet_align_service.handle_toggle('btn_sheet_align_pt1', checked)
+        if 'btn_sheet_align_pt2' in changes:
+            self.btn_sheet_align_pt2.setEnabled(changes['btn_sheet_align_pt2'].get('enabled', False))
+            if 'checked' in changes['btn_sheet_align_pt2']:
+                self.btn_sheet_align_pt2.setChecked(changes['btn_sheet_align_pt2']['checked'])
+        if 'btn_sheet_doalign' in changes:
+            self.btn_sheet_doalign.setEnabled(changes['btn_sheet_doalign'].get('enabled', False))
+        if checked:
+            self.sheet_align_service.set_point_1(POS)
+        set_mode.manual()
+        self.lbl_align_data.setText(self.sheet_align_service.get_status_text())
+
+    def on_sheet_align_pt2(self, checked):
+        changes = self.sheet_align_service.handle_toggle('btn_sheet_align_pt2', checked)
+        if 'btn_sheet_doalign' in changes:
+            self.btn_sheet_doalign.setEnabled(changes['btn_sheet_doalign'].get('enabled', False))
+        if checked:
+            self.sheet_align_service.set_point_2(POS)
+        set_mode.manual()
+        self.lbl_align_data.setText(self.sheet_align_service.get_status_text())
+
+    def on_sheet_align_doalign(self):
+        changes = self.sheet_align_service.handle_toggle('btn_sheet_doalign', False)
         
-        if self. sheet_align_p2 is not None:
-            ref2 = f"REF2:\n{self.sheet_align_p2[0]:.4f},\n{self.sheet_align_p2[1]:.4f}"
-        widget.setText(f'{ref1}\n{ref2}')
-    
-    def sheet_align_set_p1(self):
-        self.hal.send_mdi('G10 L2 P0 R0')
-        x_current_pos = float(POS.Absolute(0))
-        y_current_pos = float(POS.Absolute(1))
-        self.sheet_align_p1 = [x_current_pos, y_current_pos]
-        self.build_status_text()
-
-    
-    def sheet_align_set_p2(self):
-        self.hal.send_mdi('G10 L2 P0 R0')
-        x_current_pos = float(POS.Absolute(0))
-        y_current_pos = float(POS.Absolute(1))
-        self.sheet_align_p2 = [x_current_pos, y_current_pos]
-        self.build_status_text()
+        success = self.sheet_align_service.align(
+            self.laser_offset_x.value(),
+            self.laser_offset_y.value()
+        )
+        
+        if not success:
+            LOG.debug("Sheet alignment attempted but not all points set.")
+        
+        # Apply UI reset state
+        for widget_name, state in changes.items():
+            widget = getattr(self, widget_name)
+            if 'enabled' in state:
+                widget.setEnabled(state['enabled'])
+            if 'checked' in state:
+                widget.setChecked(state['checked'])
+        
+        self.lbl_align_data.setText(self.sheet_align_service.get_status_text())
     
