@@ -2,7 +2,7 @@ from math import cos, sin, atan, atan2, asin, degrees, radians, sqrt, hypot, pi
 from qtpyvcp.utilities import logger
 LOG = logger.getLogger('qtpyvcp.' + __name__)
 
-__updated__ = "2026-05-10 20:46"
+__updated__ = "2026-05-12 12:21"
 
 def fix(v):
     return round(v, 5)
@@ -295,7 +295,7 @@ def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, internal_kerf, smarthole, separati
             lines.append(f"G3 X0 Y{leadin} I-{wh} J-{cd}\n")
         except ValueError as e:
             # math calc issue so just do plan straight line
-            LOG.warn(f"Error {e} found.  Check rb is large enough.")
+            LOG.warning(f"Error {e} found.  Check rb is large enough.")
             error_msg = "rb is too small. rb should be >= (w1 / 2). Or put another way, (rb * 2) >= w1"
             lines.append("G1 X0\n")
 

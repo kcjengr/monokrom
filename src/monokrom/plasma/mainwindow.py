@@ -7,8 +7,8 @@ import hal as cnchal
 from qtpyvcp import hal as qthal
 import linuxcnc
 ### Supports the @Slot decorator to solve property type issues.
-from qtpy.QtCore import Qt, QItemSelectionModel, Slot, QTimer
-from qtpy.QtWidgets import QLabel, QListWidgetItem, QAbstractButton
+from qtpy.QtCore import Qt, Slot, QTimer
+from qtpy.QtWidgets import QLabel, QAbstractButton
 from qtpy.QtWidgets import QTableView, QListWidget
 import qtpyvcp
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
@@ -28,6 +28,8 @@ from monokrom.plasma.cut_recovery import CutRecoveryService
 from monokrom.plasma.sheet_alignment import SheetAlignmentService
 from monokrom.plasma.mdi_panel import MdiPanelService
 from monokrom.plasma.shape_generator import ShapeGeneratorService
+from monokrom.plasma.file_ops import FileOpsService
+from monokrom.plasma.process_filter import ProcessFilterService
 
 # import pydevd;pydevd.settrace()
 
@@ -115,7 +117,9 @@ class MainWindow(VCPMainWindow):
         self.sheet_align_service = SheetAlignmentService(self.hal)
         self.cut_recovery_service = CutRecoveryService(self.hal)
         self.shape_gen_service = ShapeGeneratorService(self)
+        self.file_ops = FileOpsService(self)
         self._plasma_plugin = getPlugin('plasmaprocesses')
+        self.process_filter_service = ProcessFilterService(self)
         self.filter_cutchart_id = None
         self.detail_index_num = 0
         self.latest_real_file=""
@@ -519,196 +523,32 @@ class MainWindow(VCPMainWindow):
         
 
     def load_plasma_ui_filter_data(self):
-        # build up the starting position data for process filters
-        # in the UI
-        for k in MainWindow.filter_fld_map:
-            # get filter data and set to self
-            if k == 'thicknesses':
-                setattr(self, '_'+k, getattr(self._plasma_plugin, k)(self._linear_setting_id))
-            else:
-                setattr(self, '_'+k, getattr(self._plasma_plugin, k)())
-            # with this key populate the data into UI field
-            ui_fld = getattr(self, MainWindow.filter_fld_map[k])
-            # clear down this combo list before adding starting data
-            ui_fld.clear()
-            for data in getattr(self, '_'+k):
-                # add the str name, and the ID as part of user_role data
-                ui_fld.addItem(data.name, data.id)
+        self.process_filter_service.load_ui_filter_data()
 
     def get_filter_query(self):
-        arglist = []
-        for v in MainWindow.filter_fld_map.values():
-            uifld = getattr(self, v)
-            arglist.append(uifld.currentData())
-            LOG.debug(f"---> {v} = {uifld.currentData()}")
-        LOG.debug(f"Cutlist search args: {arglist}")
-        cutlist = self._plasma_plugin.cut(arglist)
-        if len(cutlist) > 0:
-            return cutlist
-        else:
-            return None
-    
+        return self.process_filter_service.get_filter_query()
+
     def get_current_cut(self):
-        tool_id = self.param_process_id.text().upper()
-        if tool_id == 'NONE':
-            return None
-        else:
-            tool_id = int(tool_id)
-        cutlist = self._plasma_plugin.tool_id(tool_id)
-        if len(cutlist) > 0:
-            return cutlist
-        else:
-            return None
-        
+        return self.process_filter_service.get_current_cut()
 
-    # Filter content has changed
     def param_update_from_filters(self, index=0):
-        sender = self.sender()
-        if hasattr(sender, 'currentText'):
-            LOG.debug(f"Update params '{index}' '{sender.currentText()}'")
-        else:
-            LOG.debug('Update params.')
-        # cutlist = self._plasma_plugin.cut(arglist)
-        data = self.get_filter_query()
-        if data is not None:
-            select_row = 0
-            if len(data) > 1:
-                self.grp_filter_sub_list.show()
-                # if there is more than one item in the list then do special processing
-                self.filter_sub_list.clear()
-                for nm in data:
-                    item = QListWidgetItem(nm.name)
-                    item.setData(Qt.UserRole, nm.id)
-                    self.filter_sub_list.addItem(item)
-                    if nm.id == self.filter_cutchart_id:
-                        select_row = self.filter_sub_list.row(item)
-                    self.filter_sub_list.setCurrentRow(select_row, QItemSelectionModel.ClearAndSelect)
-            else:
-                self.grp_filter_sub_list.hide()
+        self.process_filter_service.param_update_from_filters(index)
 
-            data = data[select_row]
-            # Update the actual param fields.
-            # Is called through gcode parsing change to cut ID or via
-            # human interaction with the UI
-            for k in MainWindow.param_fld_map:
-                fld_data = getattr(data, k)
-                ui_fld = getattr(self, MainWindow.param_fld_map[k])
-                if isinstance(ui_fld, QLabel):
-                    ui_fld.setText(str(fld_data))
-                    if k == 'tool_number':
-                        self._tool_number = int(fld_data)
-                else:
-                    ui_fld.setValue(fld_data)
-                    # due to events not seeming to trigger we need to force an update
-                    if hasattr(ui_fld, "forceUpdatePinValue"):
-                        ui_fld.forceUpdatePinValue()
-            LOG.debug(f"param_update_from_filters: Thickness = {data.thickness.thickness}")
-            LOG.debug(f"param_update_from_filters: MaterialID = {data.materialid}")
-            self.hal.set_p("qtpyvcp.material-id", f"{data.materialid}")
-            
-            self._material_thickness = data.thickness.thickness
-        else:
-            self.grp_filter_sub_list.hide()
-            # set cut params to 0
-            ui_fld = getattr(self, 'param_name')
-            ui_fld.setText('NONE')
-            ui_fld = getattr(self, 'param_process_id')
-            ui_fld.setText('NONE')
-            self._tool_number = 0
-            self._material_thickness = 0
-            for v in MainWindow.param_fld_map.values():
-                if v not in ('param_name', 'param_process_id'):
-                    ui_fld = getattr(self, v)
-                    ui_fld.setValue(0)
-        # All fields have been set, update any slave displays
-        LOG.debug(f"param_update_from_filters: Tool Number = {self._tool_number}")
-        ui_fld = getattr(self, 'param_name')
-        self.lbl_process_name.setText(ui_fld.text())
-    
     def filter_sub_list_select(self, item):
-        data = self.get_filter_query()
-        item_id = item.data(Qt.UserRole)
-        for d in data:
-            if d.id == item_id:
-                for k in MainWindow.param_fld_map:
-                    fld_data = getattr(d, k)
-                    ui_fld = getattr(self, MainWindow.param_fld_map[k])
-                    if isinstance(ui_fld, QLabel):
-                        ui_fld.setText(str(fld_data))
-                        if k == 'tool_number':
-                            self._tool_number = int(fld_data)
-                            LOG.debug(f"Tool Number = {self._tool_number}")
-                    else:
-                        ui_fld.setValue(fld_data) 
-                LOG.debug(f"filter_sub_list_select: Thickness = {d.thickness.thickness}")
-                self._material_thickness = d.thickness.thickness
-    
+        self.process_filter_service.filter_sub_list_select(item)
+
     def setMode(self):
         LOG.debug("main window initalise")
-    
+
     def add_new_cut_process(self, name=None):
-        if name is None:
-            LOG.debug('No name set for cut process Add. Do nothing.')
-            return
-        
-        # gather filter and cut params
-        arglist = {}
-        for k in MainWindow.filter_fld_map:
-            uifld = getattr(self, MainWindow.filter_fld_map[k])
-            arglist[k] = uifld.currentData()
-        # get cut params
-        for k in MainWindow.param_fld_map:
-            uifld = getattr(self, MainWindow.param_fld_map[k])
-            if hasattr(uifld, 'value'):
-                arglist[k] = uifld.value()
-            else:
-                # must be a label
-                arglist[k] = uifld.text()
-        # correctly set the name
-        arglist['name'] = name
-        # correctly set the tool_number
-        self.last_tool_num_assigned += 1
-        arglist['tool_number'] = self.last_tool_num_assigned
-        self._plasma_plugin.addCut(**arglist)
-        # update the UI with the newly loaded item
-        self.param_update_from_filters()
+        self.process_filter_service.add_new_cut_process(name)
 
     def update_cut(self):
-        # Cut update should be based off param_process_id as the unique id
-        # within overall filters for machine, linear system and pressure system
-        q = self.get_current_cut()
-        
-        if q is None:
-            LOG.warn("No current cut content found. No action taken.")
-            return
-        
-        arglst = {}
-        for k in MainWindow.param_fld_map:
-            ui_fld = getattr(self, MainWindow.param_fld_map[k])
-            if isinstance(ui_fld, QLabel):
-                arglst[k] = ui_fld.text()
-            else:
-                arglst[k] = ui_fld.value() 
-        
-        self._plasma_plugin.updateCut(q, **arglst)
+        self.process_filter_service.update_cut()
 
     def openLatest(self):
         """Opens the latest file by date/time in the default ngc location"""
-        search_dir = os.path.expanduser(NGC_LOC)
-        newist = None
-        with os.scandir(search_dir) as it:
-            for entry in it:
-                if not entry.name.startswith('.') and entry.is_file():
-                    file_stat = entry.stat()
-                    if newist is None:
-                        newist = (entry.path, file_stat.st_mtime)
-                    elif newist[1] < file_stat.st_mtime:
-                        newist = (entry.path, file_stat.st_mtime)
-        # should have a latest file from standard directory
-        if newist is not None:
-            self.latest_real_file=newist[0]
-            self.reset_vtk_btns()
-            loadProgram(newist[0])
+        self.file_ops.open_latest()
 
     def single_cut_limits(self):
         # Assumes an axis sequence of x:0, y:1, z:2
@@ -773,37 +613,10 @@ class MainWindow(VCPMainWindow):
     # GCode Editor
     #
     def save_file(self):
-        # Get the current loaded file per the recent file combo
-        # and use that as the save name.
-        # Need to do as the STATs  file name will be the temp file
-        # generated as part of the filter program mechanic.
-        # Once save trigger a linuxcnc level program reload to force
-        # filter program reprocessing.
-        #real_file = self.gcode_recentfile.currentData()
-        real_file = self.latest_real_file
-        if real_file is None:
-            return
-        
-        # test and slice the name to save as a parsed version of it
-        name_parts = real_file.rsplit(".", 1)
-        if name_parts[0].endswith("_parsed"):
-            ppart = "."
-        else:
-            ppart = "_parsed."
-        new_name = name_parts[0] + ppart + name_parts[1]
-        
-        self.gcode_editor.saveFile(new_name)
-        loadProgram(new_name)
-        self.reset_vtk_btns()
-    
-    # Reload the current file.  That means the most recently loaded file
-    def reload_file(self):    
-        #real_file = self.gcode_recentfile.currentData()
-        real_file = self.latest_real_file
-        if real_file is None or real_file == "":
-            return
-        loadProgram(real_file)
-        self.reset_vtk_btns()
+        self.file_ops.save_file()
+
+    def reload_file(self):
+        self.file_ops.reload_file()
 
     #
     # Frame prog on work piece
