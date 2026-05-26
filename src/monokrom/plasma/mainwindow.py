@@ -28,7 +28,7 @@ import quickshapes as qs
 
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-03-15"
+__updated__ = "2026-05-01"
 
 
 # Setup logging
@@ -481,7 +481,7 @@ class MainWindow(VCPMainWindow):
                 h = self.id12_dbl_h.value()
                 w1 = self.id12_dbl_w1.value()
                 h1 = self.id12_dbl_h1.value()
-                qs.truss_support(self, w, h, w1, h1, kerf=kerf, leadin=leadin, conv=1, lines=lines)
+                qs.truss_support(w, h, w1, h1, kerf=kerf, leadin=leadin, conv=1, lines=lines)
             case 13:
                 w = self.id13_dbl_w.value()
                 h = self.id13_dbl_h.value()

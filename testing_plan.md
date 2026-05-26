@@ -25,8 +25,8 @@ This plan focuses on `common/` and `plasma/` only.
 ### 3. Refactoring Completed
 - **`common/widgets/mk_dro/mk_dro.py`** — replaced module-level `INFO = Info()` and `STATUS = getPlugin('status')` with lazy initialization functions `_get_info()` and `_get_status()`. All internal usages updated. This unlocks import-time testing without LinuxCNC.
 
-### 4. Test Isolation Fix (TODO — documented but not yet implemented)
-- Fixture teardown currently deletes all non-imported modules from `sys.modules`, which would delete PySide6/shiboken6/cffi/_pytest/qtpyvcp and cause `ImportError: cannot import name 'QIcon' from 'PySide6.QtGui'` when tests run across files. The fix (protecting these prefixes from cleanup) is documented but the teardown code in `test_mk_dro.py` does not yet implement it. Tests pass now only because pytest restarts the Python process between test files.
+### 4. Test Isolation Fix ✅ DONE
+- Fixture teardown in `test_mk_dro.py:156-164` implements prefix protection (`PySide6`, `shiboken6`, `cffi`, `_pytest`, `qtpyvcp`) to prevent `ImportError` when tests run across files in the same process. Tests pass both with and without process restarts.
 
 ---
 
@@ -288,15 +288,8 @@ The conftest sets up qtpyvcp mocks at module level (`sys.modules['qtpyvcp'] = ..
 
 ## Pending (Before Expanding Test Coverage)
 
-### 1. Implement sys.modules Prefix Protection in Teardown
-The teardown logic in `test_mk_dro.py` currently deletes all non-imported modules from `sys.modules`. Add a guard to protect these prefixes:
-```python
-PROTECTED_PREFIXES = ('PySide6', 'shiboken6', 'cffi', '_pytest', 'qtpyvcp')
-...
-if any(key.startswith(p) for p in PROTECTED_PREFIXES):
-    continue  # skip deletion
-```
-This is needed before running tests sequentially without process restarts.
+### 1. Implement sys.modules Prefix Protection in Teardown ✅ DONE
+Implemented in `test_mk_dro.py:156-164`. The fixture teardown protects `PySide6`, `shiboken6`, `cffi`, `_pytest`, and `qtpyvcp` modules from deletion, preventing `ImportError` across test files.
 
 ### 2. Add pytest Config to pyproject.toml
 Add `[tool.pytest.ini_options]` as described above to pin `qt_api = pyside6` and enable strict markers.

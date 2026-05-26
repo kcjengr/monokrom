@@ -924,7 +924,7 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
             if cfr == 0:
                 lines.append(f"G0 X{xo-(chw-leadin)} Y{yo}\n")
                 start_cut(lines)
-                lines.append(f"G1 X{rotxo(-chw)} Y{rotyo(yo)}\n")
+                lines.append(f"G1 X{rotxo(-chw, yo)} Y{rotyo(-chw, yo)}\n")
                 stop_cut(lines)
             else:
                 lines.append(f"G0 X{rotxo(xo-(chw-leadin),yo)} Y{rotyo(xo-(chw-leadin),yo)}\n")      # rapid to leadin start
@@ -1092,7 +1092,7 @@ def angle_gusset(w, h, c1, c2, a, kerf, cutting_pair=False, xoffset=0, yoffset=0
         
 
 
-def truss_support(self, w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
+def truss_support(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
     kh=kerf/2
     hw = w/2
     hw1 = w1/2
