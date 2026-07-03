@@ -1,4 +1,10 @@
 """Process filter data management service for plasma main window."""
+# Import these at module level (used by param_update_from_filters and filter_sub_list_select)
+from qtpy.QtCore import QItemSelectionModel, Qt
+from qtpy.QtWidgets import QLabel, QListWidgetItem
+
+import logging
+LOG = logging.getLogger('qtpyvcp.plasma.process_filter')
 
 
 class ProcessFilterService:
@@ -179,11 +185,3 @@ class ProcessFilterService:
                 arglst[k] = ui_fld.value()
 
         parent._plasma_plugin.updateCut(q, **arglst)
-
-
-# Import these at module level (used by param_update_from_filters and filter_sub_list_select)
-from qtpy.QtCore import QItemSelectionModel, Qt
-from qtpy.QtWidgets import QLabel, QListWidgetItem
-
-import logging
-LOG = logging.getLogger('qtpyvcp.plasma.process_filter')

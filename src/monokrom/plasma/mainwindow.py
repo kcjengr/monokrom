@@ -1,27 +1,22 @@
 import os
-import math
 # import time
 from tempfile import NamedTemporaryFile
 
-import hal as cnchal
 from qtpyvcp import hal as qthal
 import linuxcnc
 ### Supports the @Slot decorator to solve property type issues.
-from qtpy.QtCore import Qt, Slot, QTimer
-from qtpy.QtWidgets import QLabel, QAbstractButton
+from qtpy.QtCore import Slot, QTimer
+from qtpy.QtWidgets import QAbstractButton
 from qtpy.QtWidgets import QTableView, QListWidget
 import qtpyvcp
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
-from qtpyvcp import hal
 from qtpyvcp.actions.program_actions import load as loadProgram
-from qtpyvcp.actions.machine_actions import issue_mdi
 from qtpyvcp.actions.machine_actions import mode as set_mode
 from qtpyvcp.actions.machine_actions import jog
 ### mdi GCODE text created by JT from linuxcnc
 import monokrom_rc
-import quickshapes as qs
 from monokrom.plasma.hal_bridge import HALBridge
 from monokrom.plasma.consumable_change import ConsumableChangeService
 from monokrom.plasma.cut_recovery import CutRecoveryService
