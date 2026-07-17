@@ -41,7 +41,7 @@ Extracted from mainwindow (~65 lines → 167 line service with tests).
 - Coordinate math (bounds checking, offset calculations) is now unit-testable as pure logic within the service.
 
 ### Sheet Alignment Service (`src/monokrom/plasma/sheet_alignment.py`)
-Extracted from mainwindow (~140 lines → 205 line service with tests).
+Extracted from mainwindow (~140 lines → 223 line service with tests).
 
 - **Public API**: `handle_toggle()`, `set_point_1()`, `set_point_2()`, `align()`, `get_status_text()` — owns state machine for two-point coordinate rotation.
 - **Constructor injection**: Takes `HALBridge` in constructor.
@@ -50,7 +50,7 @@ Extracted from mainwindow (~140 lines → 205 line service with tests).
 - Angle calculation (`_calculate_angle`) is now unit-testable as a static pure function — quadrant-aware atan logic with no Qt or HAL coupling.
 
 ### MDI Panel Service (`src/monokrom/plasma/mdi_panel.py`)
-Extracted from mainwindow (~59 lines → 85 line service with tests).
+Extracted from mainwindow (~59 lines → 71 line service with tests).
 
 - **Public API**: `append_char(char)`, `lookup_params(gcode_text)`, `clear_params()`, `backspace()`, `add_space()` — manages MDI text entry and G-code parameter lookups.
 - **Constructor injection**: Takes main window reference for widget access.
@@ -62,8 +62,10 @@ Extracted from mainwindow (~59 lines → 85 line service with tests).
 Extracted from mainwindow's `openLatest`, `save_file`, `reload_file` (~50 lines → 3 delegate lines).
 
 - **Public API**: `open_latest()`, `save_file()`, `reload_file()` — handles G-code file loading, saving, and reloading.
-- **Constructor injection**: Takes MainWindow reference for widget/state access (`latest_real_file`, `gcode_editor`, `reset_vtk_btns`).
+- **Constructor injection**: Takes MainWindow reference for widget/state access plus optional `load_program_fn` and `ngc_loc` for testability.
+- Lazy import of `loadProgram` from QtPyVCP — module can be imported without a running Qt/LinuxCNC instance.
 - No HAL dependency — purely file I/O operations with LinuxCNC program loader integration.
+- **13 passing tests** in `tests/plasma/test_file_ops.py`.
 - MainWindow delegates (`openLatest`, `save_file`, `reload_file`) forward to the service.
 
 ### Process Filter Service (`src/monokrom/plasma/process_filter.py`)
@@ -84,13 +86,17 @@ Extracted from mainwindow's `clicked_qs_refresh` (~134 lines → ~15 lines).
 - Removed `lifting_lug`'s only remaining Qt coupling: 3 `parent.id4_error_text.setText()` calls replaced with error message returns.
 - MainWindow's `clicked_qs_refresh` now delegates to `self.shape_gen_service.generate(self.detail_index_num)` and handles temp file writing + VTK loading.
 
+### Quickshapes Tests (`tests/plasma/test_quickshapes_helpers.py`, `test_quickshapes_shapes.py`)
+- **92 passing tests** — 38 helper function tests + 54 shape-specific tests.
+- Quickshapes functions (`quickshapes.py`) now return `(lines, error_msg)` tuples instead of mutating parent widgets for errors.
+
 ---
 
 ## Structural problems (unchanged)
 
-**`__init__` is ~240 lines** — Signal wiring, HAL pin creation, UI setup, config loading, and state initialization are all in one block. External-trigger pin boilerplate (lines 324-346) has not yet been extracted into a helper method.
+**`__init__` is 6 lines** — Split into `_init_services()`, `_setup_ui_defaults()`, `_connect_signals()`, and `_create_hal_pins()`. External-trigger pin boilerplate (lines 334-346 in `_create_hal_pins()`) could be extracted further when ready.
 
-**God class — ~751 lines, ~40 methods, 6+ responsibilities** — Every method couples Qt widget access, business logic, and hardware communication.
+**God class — 742 lines, ~40 methods, 6+ responsibilities** — Every method couples Qt widget access, business logic, and hardware communication.
 
 ---
 
@@ -110,7 +116,7 @@ Each service takes a `HALBridge` in its constructor and owns its own state. Main
 
 6. ~~**Quickshapes G-code generation** (`:371-504`)~~ — **DONE.** Extracted to `shape_generator.py` (271 lines, 33 tests). All 14 shape functions return `(lines, error_msg)` tuples.
 
-7. ~~**HAL pin management** (`:290-343`)~~ — **DONE.** Replaced by `HALBridge`. External-trigger pin boilerplate (lines 324-346) still in `__init__` — extract into a helper method once remaining services are wired up.
+7. ~~**HAL pin management** (`:290-343`)~~ — **DONE.** Replaced by `HALBridge`. External-trigger pin boilerplate (lines 334-346 in `_create_hal_pins()`) is in its own method — can be extracted further when ready.
 
 8. ~~**Filter/process data management** (`:636-809`)~~ — **DONE.** Extracted to `process_filter.py` (~175 lines → 7 delegate lines). Depends on `_plasma_plugin` for DB access (not HAL).
 
@@ -120,15 +126,15 @@ Each service takes a `HALBridge` in its constructor and owns its own state. Main
 
 ```
 src/monokrom/plasma/
-├── mainwindow.py          (~751 lines, thin coordinator in progress)
+├── mainwindow.py          (742 lines, thin coordinator — DONE)
 ├── hal_bridge.py          (7 public methods + lazy defaults — DONE)
 ├── consumable_change.py   (77 lines — DONE, 7 tests)
 ├── cut_recovery.py        (167 lines — DONE, 26 tests)
-├── sheet_alignment.py     (205 lines — DONE, 33 tests)
-├── mdi_panel.py           (85 lines — DONE, 16 tests)
+├── sheet_alignment.py     (223 lines — DONE, 33 tests)
+├── mdi_panel.py           (71 lines — DONE, 16 tests)
 ├── shape_generator.py     (271 lines — DONE, 33 tests)
-├── file_ops.py            (~45 lines — DONE)
-└── process_filter.py      (~180 lines — DONE)
+├── file_ops.py            (~65 lines — DONE, 13 tests)
+└── process_filter.py      (~189 lines — DONE, 30 tests)
 ```
 
 Each service owns its signals, state, and logic. `MainWindow.__init__` shrinks to creating instances and connecting Qt signals to delegate methods.
@@ -150,10 +156,10 @@ Each service owns its signals, state, and logic. `MainWindow.__init__` shrinks t
 
 | Area | Before refactoring | After HALBridge wiring | After consumable service | After cut recovery | After sheet alignment | After MDI panel | After Shape Generator (current) | Target after full refactor |
 |------|-------------------|------------------------|--------------------------|---------------------|-----------------------|-----------------|---------------------------------|---------------------------|
-| mainwindow.py | 1219 lines | ~1220 | ~1220 | ~1220 | 1094 lines | 1054 lines | 751 lines | 751 lines | ~600 lines |
-| Largest single method | `__init__` at ~260 lines | ~280 (import + hal init added) | ~280 (service init added) | ~275 (cut_recovery_service added) | ~240 (external-trigger boilerplate still in __init__) | ~240 (external-trigger boilerplate still in __init__) | ~240 (external-trigger boilerplate still in __init__) | ~240 (external-trigger boilerplate still in __init__) | ~80 lines |
+| mainwindow.py | 1219 lines | ~1220 | ~1220 | ~1220 | 1094 lines | 1054 lines | 742 lines | 742 lines | ~600 lines |
+| Largest single method | `__init__` at ~260 lines | ~280 (import + hal init added) | ~280 (service init added) | ~275 (cut_recovery_service added) | ~6 (split into 4 helpers) | ~6 (split into 4 helpers) | ~6 (split into 4 helpers) | ~6 (split into 4 helpers) | ~80 lines |
 | Longest method body | `clicked_qs_refresh` at ~130 lines | Still ~130 | Still ~130 | Still ~130 | Still ~134 | Still ~134 | ~15 lines (delegates to service) | ~1 line (delegates to service) | Each shape generator at ~10 lines |
-| Testable without Qt | 0 methods | HALBridge: 14 tests pass | HALBridge: 14 + Consumable: 7 = 21 | HALBridge: 14 + Consumable: 7 + CutRecovery: 26 + SheetAlign: 33 = 80 | 162 tests (HALBridge 14 + Consumable 7 + CutRecovery 26 + SheetAlign 33 + Quickshapes 82) | 178 tests (+ MDI panel 16) | 221 tests (+ Shape Generator 33) | 221 tests (+ File Ops, Process Filter — need tests) | Full coverage |
+| Testable without Qt | 0 methods | HALBridge: 14 tests pass | HALBridge: 14 + Consumable: 7 = 21 | HALBridge: 14 + Consumable: 7 + CutRecovery: 26 + SheetAlign: 33 = 80 | 172 tests (HALBridge 14 + Consumable 7 + CutRecovery 26 + SheetAlign 33 + Quickshapes 92) | 188 tests (+ MDI panel 16) | 221 tests (+ Shape Generator 33) | 264 tests (+ File Ops 13 + Process Filter 30) | Full coverage |
 | Cohesion | Low — sender dispatch scattered across class | HALBridge is cohesive; mainwindow calls `self.hal` | Consumable service owns its logic with typed delegates | Cut recovery owns its state machine with typed delegates | Sheet alignment owns coordinate rotation with typed delegates | MDI panel owns text entry + param lookup logic | Shape generator maps UI → quickshapes with error tuple returns | File ops + Process filter delegate to services | High — each module owns its feature |
 | Hardware coupling | 53 direct calls to `cnchal`/`issue_mdi`/`CMD` | **0 direct calls** — all through `HALBridge` | **0 direct calls** — all through `HALBridge` → services | **0 direct calls** — all through `HALBridge` → services | **0 direct calls** — all through `HALBridge` → services | **0 direct calls** — all through `HALBridge` → services | **0 direct calls** — all through `HALBridge` → services | **0 direct calls** — all through `HALBridge` → services | 0 direct calls — all go through services |
 
@@ -161,19 +167,19 @@ Each service owns its signals, state, and logic. `MainWindow.__init__` shrinks t
 
 ## Next step
 
-**All planned service extractions are complete.** MainWindow is now ~751 lines (down from 1219), with 8 service classes handling distinct responsibilities:
+**All planned service extractions are complete.** MainWindow is now 742 lines (down from 1219), with 8 service classes handling distinct responsibilities:
 
 1. ~~Consumable change~~ — **DONE.** 77 lines, 3 public methods, 7 tests.
 2. ~~Cut recovery~~ — **DONE.** 167 lines, state machine with jog+offset logic and coordinate math, 26 tests.
-3. ~~Sheet alignment~~ — **DONE.** 205 lines, state machine with quadrant-aware angle math, 33 tests.
-4. ~~MDI panel~~ — **DONE.** 85 lines, self-contained button/entry logic, 16 tests.
+3. ~~Sheet alignment~~ — **DONE.** 223 lines, state machine with quadrant-aware angle math, 33 tests.
+4. ~~MDI panel~~ — **DONE.** 71 lines, self-contained button/entry logic, 16 tests.
 5. ~~Shape generator~~ — **DONE.** 271 lines, lookup table routing 14 shapes, all quickshape functions return `(lines, error_msg)` tuples, 33 tests.
-6. ~~File ops~~ — **DONE.** ~45 lines, straightforward `open_latest`/`save_file`/`reload_file`. No HAL dependency.
-7. ~~Process filter~~ — **DONE.** ~180 lines, depends on `_plasma_plugin` for DB access (not HAL). 7 public methods extracted.
+6. ~~File ops~~ — **DONE.** ~65 lines, straightforward `open_latest`/`save_file`/`reload_file`, lazy QtPyVCP import, 13 tests.
+7. ~~Process filter~~ — **DONE.** ~189 lines, depends on `_plasma_plugin` for DB access (not HAL). 30 tests.
+8. ~~Quickshapes~~ — **DONE.** 92 tests (38 helpers + 54 shapes) for `quickshapes.py` functions that return `(lines, error_msg)` tuples.
 
 **Remaining work:**
-- Write tests for `file_ops.py` and `process_filter.py` services
-- Reduce `__init__` from ~240 lines by extracting signal wiring and external-trigger pin boilerplate
+- Extract external-trigger pin boilerplate from `_create_hal_pins()` into its own method
 - Further reduce mainwindow.py toward ~600 line target if desired
 
 Each extraction follows the same pattern: create the service class, inject `HALBridge`, wire MainWindow signals to thin delegates, verify existing tests still pass (they should — mainwindow.py behavior is unchanged).

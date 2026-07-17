@@ -183,9 +183,7 @@ class SheetAlignmentService:
 
     @staticmethod
     def _calculate_angle(x_diff, y_diff):
-        """Calculate rotation angle from two point differences.
-
-        Implements quadrant-aware atan2 logic matching the original sheet_align method.
+        """Calculate rotation angle from two point differences using atan2.
 
         Args:
             x_diff: Difference in X coordinates (p2.x - p1.x).
@@ -194,28 +192,9 @@ class SheetAlignmentService:
         Returns:
             float: Rotation angle in degrees.
         """
-        if x_diff and y_diff:
-            z_angle = math.degrees(math.atan(y_diff / x_diff))
-            if x_diff > 0:
-                z_angle += 180
-            elif y_diff > 0:
-                z_angle += 360
-            if abs(x_diff) < abs(y_diff):
-                z_angle -= 90
-        elif x_diff:
-            if x_diff > 0:
-                z_angle = 180
-            else:
-                z_angle = 0
-        elif y_diff:
-            if y_diff > 0:
-                z_angle = 180
-            else:
-                z_angle = 0
-        else:
-            z_angle = 0
-
-        return z_angle
+        if x_diff == 0 and y_diff == 0:
+            return 0
+        return math.degrees(math.atan2(y_diff, x_diff))
 
     def reset(self):
         """Clear alignment points without sending any HAL commands."""

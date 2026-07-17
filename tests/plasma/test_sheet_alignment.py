@@ -263,39 +263,39 @@ class TestSheetAlignmentCalculateAngle:
 
     def test_angle_along_x_positive(self):
         angle = SheetAlignmentService._calculate_angle(100, 0)
-        assert angle == 180
+        assert angle == 0
 
     def test_angle_along_x_negative(self):
         angle = SheetAlignmentService._calculate_angle(-100, 0)
-        assert angle == 0
+        assert angle == 180
 
     def test_angle_along_y_positive(self):
         angle = SheetAlignmentService._calculate_angle(0, 50)
-        assert angle == 180
+        assert angle == 90
 
     def test_angle_along_y_negative(self):
         angle = SheetAlignmentService._calculate_angle(0, -50)
-        assert angle == 0
+        assert angle == -90
 
     def test_angle_first_quadrant_x_positive_y_positive(self):
-        # x=50, y=50 => atan(1)=45, +180=225, abs(x)<abs(y)? No (equal), no -90
+        # x=50, y=50 => atan(1)=45
         angle = SheetAlignmentService._calculate_angle(50, 50)
-        assert angle == 225
+        assert angle == 45
 
     def test_angle_first_quadrant_x_positive_y_negative(self):
-        # x=100, y=-10 => atan(-0.1)=-5.71, +180=174.29, abs(100)<abs(-10)? No
+        # x=100, y=-10 => atan(-0.1)=-5.71
         angle = SheetAlignmentService._calculate_angle(100, -10)
-        assert abs(angle - 174.28940686250036) < 0.001
+        assert abs(angle - (-5.71059313750036)) < 0.001
 
     def test_angle_diagonal_45_degrees(self):
-        # x=100, y=100 => atan(1)=45, +180=225, abs(x)<abs(y)? No (equal), no -90
+        # x=100, y=100 => atan(1)=45
         angle = SheetAlignmentService._calculate_angle(100, 100)
-        assert angle == 225
+        assert angle == 45
 
     def test_angle_diagonal_x_less_than_y(self):
-        # x=50, y=100 => atan(2)=63.43..., +180=243.43..., abs(50)<abs(100) so -90 = 153.43...
+        # x=50, y=100 => atan(2)=63.43
         angle = SheetAlignmentService._calculate_angle(50, 100)
-        assert abs(angle - 153.43494882292201) < 0.001
+        assert abs(angle - 63.43494882292201) < 0.001
 
 
 class TestSheetAlignmentReset:

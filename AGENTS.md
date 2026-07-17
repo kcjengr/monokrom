@@ -1,8 +1,15 @@
 # Monokrom — Agent Instructions
 
+## Critical Formating Rule
+- You are operating inside an OpenCode agent harness.
+
+- You must output tool-calling schemas in absolute, flawless JSON.
+
+- Never truncate code blocks or slip out of the requested JSON structure.
+
 ## Project layout
 - `src/monokrom/` — three sub-packages: `common` (shared widgets/styles), `mill`, `plasma`
-- `tests/` — pytest only; covers `quickshapes.py` helpers and shape generators
+- `tests/` — pytest only; covers quickshapes, cut_recovery, consumable_change, hal_bridge, sheet_alignment, mdi_panel
 - Entry points: `monokrom_plasma` → `monokrom.plasma:main`, `monokrom_mill` → `monokrom.mill:main`
 - Both launch via `qtpyvcp.run_vcp()` after loading `{VCP_DIR}/{machine}/config.yml`
 
@@ -31,9 +38,9 @@ pyuic5 input.ui -o output_ui.py
 ```
 
 ## Stylesheets
-- `.scss/` source compiles to `.qss` (Qt stylesheets). Each sub-package has its own sass dir.
-- Mill uses `sass/build-yellow-plasma.sh` for SCSS→QSS build; plasma has `plasma.scss`.
-- The app loads `monokrom.qss` and package-specific `.qss` at runtime.
+- Common SCSS in `src/monokrom/common/sass/` compiles to `monokrom.qss`; themes: blue, red, yellow, dark, light. Build script: `common/sass/build-yellow-plasma.sh`.
+- Plasma has its own `sass/plasma.scss` → `plasma.qss`.
+- Mill has no SCSS of its own.
 
 ## Testing notes
 - Tests use class-based pytest organization (`class TestXxx`).
@@ -43,6 +50,6 @@ pyuic5 input.ui -o output_ui.py
 
 ## Plasma package
 The largest and most actively developed package. Key files:
-- `mainwindow.py` (~1200 lines) — full plasma UI logic, cut recovery, consumable change, sheet alignment, VTK backplot
-- `quickshapes.py` (1152 lines) — G-code shape generator for circles, rectangles, donuts, pipe flanges, gussets, etc.
+- `mainwindow.py` (747 lines) — full plasma UI logic, cut recovery, consumable change, sheet alignment, VTK backplot
+- `quickshapes.py` (1159 lines) — G-code shape generator for circles, rectangles, donuts, pipe flanges, gussets, etc.
 - Three `.ui` variants: default, `mainwindow-1024-768.ui`, `mainwindow-less-greedy.ui`
