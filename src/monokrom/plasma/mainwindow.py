@@ -16,6 +16,8 @@ from qtpyvcp.actions.program_actions import load as loadProgram
 from qtpyvcp.actions.machine_actions import mode as set_mode
 from qtpyvcp.actions.machine_actions import jog
 
+import monokrom_rc
+
 ### mdi GCODE text created by JT from linuxcnc
 from monokrom.plasma.hal_bridge import HALBridge
 from monokrom.plasma.consumable_change import ConsumableChangeService
