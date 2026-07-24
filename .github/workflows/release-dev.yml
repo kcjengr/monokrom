@@ -37,7 +37,7 @@ jobs:
           apt-get update
 
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: source
           fetch-depth: 0
@@ -69,7 +69,7 @@ jobs:
         run: dpkg-buildpackage -b -uc
 
       - name: Upload built package
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: monokrom-bookworm-dev-${{ matrix.arch }}
           path: '*.deb'
@@ -80,14 +80,14 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Download built packages
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: monokrom-bookworm-dev-*
           path: debs
           merge-multiple: true
 
       - name: Checkout apt repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: kcjengr/apt
           path: apt-repo
