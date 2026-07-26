@@ -20,14 +20,21 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+ python = "^3.7"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0"
 pytest-qt = "^4.2"
 pytest-mock = "^3.12"
 
-[tool.poetry.scripts]
+ [tool.pytest.ini_options]
+ testpaths = ["tests"]
+ python_files = ["test_*.py"]
+ python_classes = ["Test*"]
+ python_functions = ["test_*"]
+ addopts = "-v"
+
+ [tool.poetry.scripts]
 # monokrom = "monokrom:main"
 monokrom_plasma = "monokrom.plasma:main"
 monokrom_mill = "monokrom.mill:main"

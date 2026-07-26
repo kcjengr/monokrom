@@ -8,7 +8,6 @@ os.environ.setdefault('QT_API', 'pyside6')
 os.environ.setdefault('QSG_RHI_BACKEND', 'opengl')
 import qtpyvcp
 from distutils.dir_util import copy_tree
-
 #import pydevd;pydevd.settrace()
 
 """Main entry point for MyVCP.
@@ -87,7 +86,6 @@ Note:
 """
 
 __version__ = '0.0.1'
-
 
 VCP_DIR = os.path.realpath(os.path.dirname(__file__))
 
