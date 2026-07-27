@@ -189,6 +189,15 @@ class TestPipeSaddle:
 class TestExhaustFlange:
     """Tests for exhaust_flange() shape generation."""
 
+    def test_exhaust_flange_slot_equals_bolt_diameter(self, lines_list):
+        """sw == bd triggers the circle path in build_slot (sw - bd == 0)."""
+        exhaust_flange(id=100, wt=20, pcd=80, bd=10, sw=10, nb=3,
+                       kerf=2, internal_kerf=2, smarthole=False, leadin=4,
+                       lines=lines_list)
+        gcode = "".join(lines_list)
+        # Circle path uses M67 E3 Q60/Q100 commands
+        assert "M67" in gcode
+
     def test_exhaust_flange_has_center_hole(self, lines_list):
         exhaust_flange(id=100, wt=20, pcd=80, bd=10, sw=15, nb=3,
                        kerf=2, internal_kerf=2, smarthole=False, leadin=4, lines=lines_list)
@@ -205,6 +214,64 @@ class TestExhaustFlange:
         exhaust_flange(id=100, wt=20, pcd=80, bd=10, sw=15, nb=3,
                        kerf=2, internal_kerf=2, smarthole=True, leadin=4, lines=lines_list)
         assert len(lines_list) > 0
+
+    def test_exhaust_flange_2_bolt_theta_negative(self, lines_list):
+        """nb==2 with large wall/small bolt hole triggers theta < 0 (lines 694-696).
+
+        r1 = id/2 + wt = 50 + 30 = 80, rr1 = 81
+        r2 = bd = 5, rr2 = 6
+        d = pcr + (sw - bd)/2 = 40 + 5 = 45
+        (rr1 - rr2) / d = 75 / 45 = 1.667
+        cos(1.667) = -0.097 < 0
+        """
+        exhaust_flange(id=100, wt=30, pcd=80, bd=5, sw=15, nb=2,
+                       kerf=2, internal_kerf=2, smarthole=False, leadin=4,
+                       lines=lines_list)
+        gcode = "".join(lines_list)
+        assert "G1" in gcode
+        assert "M5" in gcode
+
+    def test_exhaust_flange_2_bolt_theta_negative_no_lead(self, lines_list):
+        """nb==2, theta < 0 with leadin=0 triggers lines 720-725.
+
+        When leadin=0 the code skips the G0+G1 lead-in and does G0 straight to
+        bigarc1_start_x/y, which is the else branch of line 715.
+        """
+        exhaust_flange(id=100, wt=30, pcd=80, bd=5, sw=15, nb=2,
+                       kerf=2, internal_kerf=2, smarthole=False, leadin=0,
+                       lines=lines_list)
+        gcode = "".join(lines_list)
+        assert "G1" in gcode
+        assert "M5" in gcode
+
+    def test_exhaust_flange_3_bolt_theta_negative(self, lines_list):
+        """nb==3 with large wall/small bolt hole triggers theta < 0 (lines 744-746).
+
+        r1 = 80, rr1 = 81
+        r2 = 5, rr2 = 6
+        d = pcr = 40 (no offset for nb!=2 branch)
+        (rr1 - rr2) / d = 75 / 40 = 1.875
+        cos(1.875) = -0.295 < 0
+        """
+        exhaust_flange(id=100, wt=30, pcd=80, bd=5, sw=15, nb=3,
+                       kerf=2, internal_kerf=2, smarthole=False, leadin=4,
+                       lines=lines_list)
+        gcode = "".join(lines_list)
+        assert "G1" in gcode
+        assert "M5" in gcode
+
+    def test_exhaust_flange_3_bolt_theta_negative_no_lead(self, lines_list):
+        """nb==3, theta < 0 with leadin=0 triggers lines 772-778.
+
+        When leadin=0 the code skips the G0+G1 lead-in and does G0 straight to
+        bigarc1_start_x/y, which is the else branch of line 767.
+        """
+        exhaust_flange(id=100, wt=30, pcd=80, bd=5, sw=15, nb=3,
+                       kerf=2, internal_kerf=2, smarthole=False, leadin=0,
+                       lines=lines_list)
+        gcode = "".join(lines_list)
+        assert "G1" in gcode
+        assert "M5" in gcode
 
 
 class TestNSquare:
@@ -228,6 +295,16 @@ class TestNSquare:
                  kerf=2, internal_kerf=2, smarthole=False, ch_dim_dict=ch_dict, leadin=4, lines=lines_list)
         gcode = "".join(lines_list)
         assert "G3" in gcode
+
+    def test_n_square_rect_center_hole_no_fillet(self, lines_list):
+        """chfr==0 triggers the simple straight-line path (lines 928-931)."""
+        ch_dict = {"chs": 0, "chw": 20, "chh": 15, "chfr": 0, "cha": 0, "chxo": 0, "chyo": 0}
+        n_square(w=100, h=80, hhn=2, hhs=30, vhn=2, vhs=30, hd=8, fr=0, ch_type="Rectangle",
+                 kerf=2, internal_kerf=2, smarthole=False, ch_dim_dict=ch_dict, leadin=4, lines=lines_list)
+        gcode = "".join(lines_list)
+        assert "G1" in gcode
+        assert "M3" in gcode
+        assert "M5" in gcode
 
     def test_n_square_rect_center_hole(self, lines_list):
         ch_dict = {"chs": 0, "chw": 20, "chh": 15, "chfr": 3, "cha": 45, "chxo": 0, "chyo": 0}
@@ -318,6 +395,30 @@ class TestWebStiffener:
 
 class TestLiftingLug:
     """Tests for lifting_lug() shape generation."""
+
+    def test_lifting_lug_without_lines_arg_creates_list(self):
+        result = lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=50,
+                             kerf=2, internal_kerf=2, smarthole=False, leadin=4)
+        lines, error_msg = result
+        assert isinstance(lines, list)
+        assert len(lines) > 0
+        assert error_msg is None
+
+    def test_lifting_lug_cutting_pair_rb_zero(self):
+        lines, error_msg = lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=0,
+                                       kerf=2, internal_kerf=2, smarthole=False,
+                                       separation=5, cutting_pair=True, leadin=4)
+        gcode = "".join(lines)
+        # rb==0 path uses straight G1 line for the closing edge of the pair
+        assert "G1" in gcode
+        assert error_msg is None
+
+    def test_lifting_lug_cutting_pair_rb_too_small(self):
+        lines, error_msg = lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=10,
+                                       kerf=2, internal_kerf=2, smarthole=False,
+                                       separation=5, cutting_pair=True, leadin=4)
+        assert error_msg is not None
+        assert "rb is too small" in error_msg
 
     def test_lifting_lug_has_start_stop(self, lines_list):
         lifting_lug(w1=80, d1=20, h1=60, h2=10, d2=12, rb=50, kerf=2, internal_kerf=2, smarthole=False, leadin=4, lines=lines_list)
