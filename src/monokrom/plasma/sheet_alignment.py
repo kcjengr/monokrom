@@ -124,6 +124,7 @@ class SheetAlignmentService:
             pos_absolute: Plugin providing absolute axis positions [x, y].
         """
         self.hal.send_mdi('G10 L2 P0 R0')
+        self.hal.wait_complete()
         x_current_pos = float(pos_absolute.Absolute(0))
         y_current_pos = float(pos_absolute.Absolute(1))
         self.sheet_align_p1 = [x_current_pos, y_current_pos]
@@ -135,6 +136,7 @@ class SheetAlignmentService:
             pos_absolute: Plugin providing absolute axis positions [x, y].
         """
         self.hal.send_mdi('G10 L2 P0 R0')
+        self.hal.wait_complete()
         x_current_pos = float(pos_absolute.Absolute(0))
         y_current_pos = float(pos_absolute.Absolute(1))
         self.sheet_align_p2 = [x_current_pos, y_current_pos]
@@ -159,7 +161,6 @@ class SheetAlignmentService:
         self.hal.send_mdi('G10 L2 P0 R0')
         self.hal.wait_complete()
         self.hal.send_mdi('G10 L2 P0 X0 Y0')
-        self.hal.wait_complete()
         self.hal.wait_complete()
 
         # Calculate rotation angle from two points
