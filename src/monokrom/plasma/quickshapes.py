@@ -2,7 +2,7 @@ from math import cos, sin, atan, atan2, asin, degrees, radians, sqrt, hypot, pi
 from qtpyvcp.utilities import logger
 LOG = logger.getLogger('qtpyvcp.' + __name__)
 
-__updated__ = "2026-07-25"
+__updated__ = "2026-07-27"
 
 def fix(v):
     return round(v, 5)
@@ -40,7 +40,10 @@ def postamble(lines):
     lines.append(';end post-amble\n')
     lines.append(' M30 (end program)\n')
 
-def magic_material(kw, ph, pd, ch, fr, mt, th=0, ca=0, cv=0, pe=0, gp=0, cm=0, jh=0, jd=0, lines=[]):
+def magic_material(kw, ph, pd, ch, fr, mt, th=0, ca=0, cv=0, pe=0, gp=0, cm=0, jh=0, jd=0, lines=None):
+    if lines is None:
+        lines = []
+
     lines.append(';\n;begin material setup\n')
     lines.append(f" (o=0, kw={kw}, ph={ph}, pd={pd}, ch={ch}, fr={fr}, mt={mt}, th={th:.0f}, ca={ca:.0f}, cv={cv:.0f}, pe={pe}, gp={gp}, cm={cm:.0f}, jh={jh}, jd={jd})\n")
     lines.append(' F#<_hal[plasmac.cut-feed-rate]>\n')
@@ -93,7 +96,7 @@ def calculate_slope(x1, y1, x2, y2):
         return delta_y / delta_x
 
 
-def circle(diameter, kerf, leadin=4, conv=1, lines=[]):
+def circle(diameter, kerf, leadin=4, conv=1, lines=None):
     """
     Build the gcode for a circle
     
@@ -103,6 +106,8 @@ def circle(diameter, kerf, leadin=4, conv=1, lines=[]):
     leadin: length of lead-in in measurement units
     conv: the conversation factor for measurement units.  Assumes mm as base
     """
+    if lines is None:
+        lines = []
     # build the circle around 0,0
     # use a straight lead in
     # calc where leadin starts
@@ -121,7 +126,7 @@ def circle(diameter, kerf, leadin=4, conv=1, lines=[]):
     
     return lines, None
 
-def rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
+def rectangle(width, height, kerf, leadin=4, conv=1, lines=None):
     """
     Build the gcode for a rectangle
     
@@ -131,6 +136,8 @@ def rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
     leadin: length of lead-in in measurement units
     conv: the conversation factor for measurement units.  Assumes mm as base
     """
+    if lines is None:
+        lines = []
     # build the rectangle with 0,0 as lower left corner
     # use a straight lead in
     kh=kerf/2
@@ -146,7 +153,9 @@ def rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
     stop_cut(lines)
     return lines, None
 
-def donut(od, id, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=[]):
+def donut(od, id, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=None):
+    if lines is None:
+        lines = []
     if internal_kerf == 0:
         internal_kerf = kerf
     if smarthole:
@@ -175,9 +184,11 @@ def donut(od, id, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=[]):
     stop_cut(lines)
     return lines, None
 
-def convex_rectangle(width, height, kerf, leadin=4, conv=1, lines=[]):
+def convex_rectangle(width, height, kerf, leadin=4, conv=1, lines=None):
     # build the rectangle with 0,0 as lower left corner
     # use a straight lead in
+    if lines is None:
+        lines = []
     kh=kerf/2
     # x=0
     # y=0
@@ -345,7 +356,9 @@ def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, internal_kerf, smarthole, separati
     stop_cut(lines)
     return lines, error_msg
 
-def u_lug(w1, w2, h, kerf, leadin=4, conv=1, lines=[]):
+def u_lug(w1, w2, h, kerf, leadin=4, conv=1, lines=None):
+    if lines is None:
+        lines = []
     outer_radius = w1/2
     inner_radius = w2/2
     leg_size = (w1-w2)/2
@@ -365,7 +378,9 @@ def u_lug(w1, w2, h, kerf, leadin=4, conv=1, lines=[]):
     stop_cut(lines)
     return lines, None
     
-def pipe_flange(od, pcd, holes, hd, hole_type, id, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=[]):
+def pipe_flange(od, pcd, holes, hd, hole_type, id, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=None):
+    if lines is None:
+        lines = []
     if internal_kerf == 0:
         internal_kerf = kerf
     kh = kerf/2
@@ -426,7 +441,9 @@ def pipe_flange(od, pcd, holes, hd, hole_type, id, kerf, internal_kerf, smarthol
     stop_cut(lines)
     return lines, None
 
-def pipe_saddle(w, h, pd, o, kerf, leadin=4, conv=1, lines=[]):
+def pipe_saddle(w, h, pd, o, kerf, leadin=4, conv=1, lines=None):
+    if lines is None:
+        lines = []
     kh = kerf/2
     lines.append("\n")
     # calc the needed values
@@ -452,7 +469,7 @@ def pipe_saddle(w, h, pd, o, kerf, leadin=4, conv=1, lines=[]):
     stop_cut(lines)
     return lines, None
 
-def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=[]):
+def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, leadin=4, conv=1, lines=None):
     def build_corner(rr1, rr2, xx2, yy2, corners, lines):
         """
         Build the mounting hole corners and slopped sides.
@@ -645,6 +662,8 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
         stop_cut(lines)
         LOG.debug("+---------------------------------------------------+")
         
+    if lines is None:
+        lines = []
     
     # r1 is the outside major radius.  i.e. hole + wall thickness.
     if internal_kerf == 0:
@@ -783,7 +802,7 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
         stop_cut(lines)
     return lines, None
 
-def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, smarthole, ch_dim_dict=None, leadin=4, conv=1, lines=[]):
+def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, smarthole, ch_dim_dict=None, leadin=4, conv=1, lines=None):
     """
     w: overall width
     h: overall height
@@ -797,6 +816,8 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
     kerf: kerf width
     ch_dim_dict: dictonary of params relating to central hole dimensions
     """
+    if lines is None:
+        lines = []
     # TODO: Add in kerf adjustment using kh
     def rotxo(x,y):
         #rotxo = lambda x: ((x-xo)*cos(ar) -(y-yo)*sin(ar)) + xo
@@ -997,8 +1018,10 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
     stop_cut(lines)
     return lines, None
 
-def L_gusset(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
+def L_gusset(w, h, w1, h1, kerf, leadin=4, conv=1, lines=None):
     # dxf.add_polyline_2d([(0, h), (0,0,), (w,0), (w, h-h1), (w-w1,h-h1), (w-w1, h)], closed=True)
+    if lines is None:
+        lines = []
     kh=kerf/2
     lines.append("(L Gusset)\n")
     lines.append(f"G0 X{-kh} Y{-leadin}\n")
@@ -1012,7 +1035,7 @@ def L_gusset(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
     stop_cut(lines)
     return lines, None
     
-def angle_gusset(w, h, c1, c2, a, kerf, cutting_pair=False, xoffset=0, yoffset=0, leadin=4, conv=1, lines=[]):
+def angle_gusset(w, h, c1, c2, a, kerf, cutting_pair=False, xoffset=0, yoffset=0, leadin=4, conv=1, lines=None):
     # calc all the verts and add to list
     # relevant verts in clock wise order for a 90 degree angle are"
     # origin - for reference: 0,0
@@ -1024,6 +1047,8 @@ def angle_gusset(w, h, c1, c2, a, kerf, cutting_pair=False, xoffset=0, yoffset=0
     # v5: w, 0
     # v6: c1, w
     # V7: 0, c1
+    if lines is None:
+        lines = []
     kh=kerf/2
     verts = []
 
@@ -1097,7 +1122,9 @@ def angle_gusset(w, h, c1, c2, a, kerf, cutting_pair=False, xoffset=0, yoffset=0
     return lines, None
 
 
-def truss_support(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
+def truss_support(w, h, w1, h1, kerf, leadin=4, conv=1, lines=None):
+    if lines is None:
+        lines = []
     kh=kerf/2
     hw = w/2
     hw1 = w1/2
@@ -1128,7 +1155,9 @@ def truss_support(w, h, w1, h1, kerf, leadin=4, conv=1, lines=[]):
     stop_cut(lines)
     return lines, None
 
-def web_stiffener(w, h, c, kerf, leadin=4, conv=1, lines=[]):
+def web_stiffener(w, h, c, kerf, leadin=4, conv=1, lines=None):
+    if lines is None:
+        lines = []
     kh=kerf/2
     verts = []
     verts.append((w+kh,h+kh))
