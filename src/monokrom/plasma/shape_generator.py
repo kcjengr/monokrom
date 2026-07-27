@@ -1,4 +1,5 @@
 """Quickshape G-code generation service."""
+from . import quickshapes as qs
 
 
 class ShapeGeneratorService:
@@ -52,7 +53,6 @@ class ShapeGeneratorService:
     def _common_params(self):
         """Return shared parameters used by all shapes."""
         mw = self.main_window
-        from . import quickshapes as qs
         from qtpyvcp.utilities.info import Info
 
         lines = []
@@ -78,7 +78,6 @@ class ShapeGeneratorService:
 
     def _postamble(self, lines):
         """Append postamble and return the completed lines list."""
-        from . import quickshapes as qs
         qs.postamble(lines)
         return lines
 
@@ -87,7 +86,6 @@ class ShapeGeneratorService:
     def _circle(self):
         lines, kerf, _, _ = self._common_params()
         diameter = self.main_window.id0_dbl_diam.value()
-        from . import quickshapes as qs
         qs.circle(diameter=diameter, kerf=kerf, leadin=4, conv=1, lines=lines)
         self._postamble(lines)
         return lines, None
@@ -96,7 +94,6 @@ class ShapeGeneratorService:
         lines, kerf, _, _ = self._common_params()
         width = self.main_window.id1_dbl_width.value()
         height = self.main_window.id1_dbl_height.value()
-        from . import quickshapes as qs
         qs.rectangle(width, height, kerf=kerf, leadin=4, conv=1, lines=lines)
         self._postamble(lines)
         return lines, None
@@ -105,7 +102,6 @@ class ShapeGeneratorService:
         lines, kerf, internal_kerf, smart_hole = self._common_params()
         inner_diam = self.main_window.id2_dbl_inner_diam.value()
         outer_diam = self.main_window.id2_dbl_outer_diam.value()
-        from . import quickshapes as qs
         qs.donut(od=outer_diam, id=inner_diam, kerf=kerf,
                  internal_kerf=internal_kerf, smarthole=smart_hole,
                  leadin=4, conv=1, lines=lines)
@@ -116,7 +112,6 @@ class ShapeGeneratorService:
         lines, kerf, _, _ = self._common_params()
         width = self.main_window.id3_dbl_width.value()
         height = self.main_window.id3_dbl_height.value()
-        from . import quickshapes as qs
         qs.convex_rectangle(width, height, kerf=kerf, leadin=4, conv=1, lines=lines)
         self._postamble(lines)
         return lines, None
@@ -131,7 +126,6 @@ class ShapeGeneratorService:
         rb = self.main_window.id4_dbl_rb.value()
         pair = self.main_window.id4_chk_pair.isChecked()
         separation = self.main_window.id4_dbl_separation.value()
-        from . import quickshapes as qs
         lines, error_msg = qs.lifting_lug(w1, d1, h1, h2, d2, rb, kerf=kerf,
                        internal_kerf=internal_kerf, smarthole=smart_hole,
                        separation=separation, cutting_pair=pair,
@@ -144,7 +138,6 @@ class ShapeGeneratorService:
         w1 = self.main_window.id5_dbl_w1.value()
         w2 = self.main_window.id5_dbl_w2.value()
         h = self.main_window.id5_dbl_h.value()
-        from . import quickshapes as qs
         qs.u_lug(w1, w2, h, kerf=kerf, leadin=4, conv=1, lines=lines)
         self._postamble(lines)
         return lines, None
@@ -157,7 +150,6 @@ class ShapeGeneratorService:
         hd = self.main_window.id6_dbl_hd.value()
         hole_type = self.main_window.id6_combo_hole.currentText()
         id_ = self.main_window.id6_dbl_id.value()
-        from . import quickshapes as qs
         qs.pipe_flange(od, pcd, holes, hd, hole_type, id_,
                        kerf=kerf, internal_kerf=internal_kerf,
                        smarthole=smart_hole, leadin=4, conv=1, lines=lines)
@@ -170,7 +162,6 @@ class ShapeGeneratorService:
         h = self.main_window.id7_dbl_h.value()
         pd = self.main_window.id7_dbl_pd.value()
         o = self.main_window.id7_dbl_o.value()
-        from . import quickshapes as qs
         qs.pipe_saddle(w, h, pd, o, kerf=kerf, leadin=4, conv=1, lines=lines)
         self._postamble(lines)
         return lines, None
@@ -183,7 +174,6 @@ class ShapeGeneratorService:
         bd = self.main_window.id8_dbl_bd.value()
         sw = self.main_window.id8_dbl_sw.value()
         nb = self.main_window.id8_int_nb.value()
-        from . import quickshapes as qs
         qs.exhaust_flange(id_, wt, pcd, bd, sw, nb,
                           kerf=kerf, internal_kerf=internal_kerf,
                           smarthole=smart_hole, leadin=4, conv=1, lines=lines)
@@ -213,7 +203,6 @@ class ShapeGeneratorService:
                 "chxo": mw.id9_dbl_chxo.value(),
                 "chyo": mw.id9_dbl_chyo.value(),
             }
-        from . import quickshapes as qs
         qs.n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type,
                     kerf=kerf, internal_kerf=internal_kerf,
                     smarthole=smart_hole, ch_dim_dict=ch_dim_dict,
@@ -227,7 +216,6 @@ class ShapeGeneratorService:
         h = self.main_window.id10_dbl_h.value()
         w1 = self.main_window.id10_dbl_w1.value()
         h1 = self.main_window.id10_dbl_h1.value()
-        from . import quickshapes as qs
         qs.L_gusset(w, h, w1, h1, kerf=kerf, leadin=4, conv=1, lines=lines)
         self._postamble(lines)
         return lines, None
@@ -242,7 +230,6 @@ class ShapeGeneratorService:
         pair = self.main_window.id11_chk_pair.isChecked()
         xoffset = self.main_window.id11_dbl_xoffset.value()
         yoffset = self.main_window.id11_dbl_yoffset.value()
-        from . import quickshapes as qs
         qs.angle_gusset(w, h, c1, c2, a, kerf=kerf, cutting_pair=pair,
                         xoffset=xoffset, yoffset=yoffset,
                         leadin=4, conv=1, lines=lines)
@@ -255,7 +242,6 @@ class ShapeGeneratorService:
         h = self.main_window.id12_dbl_h.value()
         w1 = self.main_window.id12_dbl_w1.value()
         h1 = self.main_window.id12_dbl_h1.value()
-        from . import quickshapes as qs
         qs.truss_support(w, h, w1, h1, kerf=kerf, leadin=4, conv=1, lines=lines)
         self._postamble(lines)
         return lines, None
@@ -265,7 +251,6 @@ class ShapeGeneratorService:
         w = self.main_window.id13_dbl_w.value()
         h = self.main_window.id13_dbl_h.value()
         c = self.main_window.id13_dbl_c.value()
-        from . import quickshapes as qs
         qs.web_stiffener(w, h, c, kerf=kerf, leadin=4, conv=1, lines=lines)
         self._postamble(lines)
         return lines, None
