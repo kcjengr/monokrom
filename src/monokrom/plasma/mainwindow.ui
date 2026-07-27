@@ -26,8 +26,8 @@
    <string>Form</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../common/icons/icon.png</normaloff>../common/icons/icon.png</iconset>
+   <iconset resource="../common.qrc">
+    <normaloff>:/image/common/icons/icon.png</normaloff>:/image/common/icons/icon.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_26">
@@ -92,9 +92,8 @@
             </property>
             <widget class="QWidget" name="tab_4">
              <attribute name="icon">
-              <iconset>
-               <normaloff>../common/icons/crosshairs-solid.png</normaloff>
-               <normalon>../common/icons/crosshairs-solid.bg.png</normalon>../common/icons/crosshairs-solid.png</iconset>
+              <iconset resource="../common.qrc">
+               <normaloff>:/image/common/icons/crosshairs-solid.png</normaloff>:/image/common/icons/crosshairs-solid.png</iconset>
              </attribute>
              <attribute name="title">
               <string>WORK</string>
@@ -313,11 +312,8 @@ in G5x</string>
             </widget>
             <widget class="QWidget" name="tab_3">
              <attribute name="icon">
-              <iconset>
-               <normaloff>../common/icons/crosshairs-solid.png</normaloff>
-               <normalon>../common/icons/crosshairs-solid.bg.png</normalon>
-               <activeoff>icons/crosshairs-solid.on.png</activeoff>
-               <selectedoff>icons/crosshairs-solid.on.png</selectedoff>../common/icons/crosshairs-solid.png</iconset>
+              <iconset resource="../common.qrc">
+               <normaloff>:/image/common/icons/crosshairs-solid.png</normaloff>:/image/common/icons/crosshairs-solid.png</iconset>
              </attribute>
              <attribute name="title">
               <string>MACHINE</string>
@@ -404,8 +400,8 @@ in G5x</string>
                     <string notr="true">background-color: rgb(255, 238, 6)</string>
                    </property>
                    <property name="icon">
-                    <iconset>
-                     <normaloff>../common/icons/unhomed.png</normaloff>../common/icons/unhomed.png</iconset>
+                    <iconset resource="../common.qrc">
+                     <normaloff>:/image/common/icons/unhomed.png</normaloff>:/image/common/icons/unhomed.png</iconset>
                    </property>
                    <property name="actionName" stdset="0">
                     <string>machine.unhome.axis:x</string>
@@ -430,8 +426,8 @@ in G5x</string>
                     <string notr="true">background-color: rgb(255, 238, 6)</string>
                    </property>
                    <property name="icon">
-                    <iconset>
-                     <normaloff>../common/icons/unhomed.png</normaloff>../common/icons/unhomed.png</iconset>
+                    <iconset resource="../common.qrc">
+                     <normaloff>:/image/common/icons/unhomed.png</normaloff>:/image/common/icons/unhomed.png</iconset>
                    </property>
                    <property name="actionName" stdset="0">
                     <string>machine.unhome.axis:y</string>
@@ -456,8 +452,8 @@ in G5x</string>
                     <string notr="true">background-color: rgb(255, 238, 6)</string>
                    </property>
                    <property name="icon">
-                    <iconset>
-                     <normaloff>../common/icons/unhomed.png</normaloff>../common/icons/unhomed.png</iconset>
+                    <iconset resource="../common.qrc">
+                     <normaloff>:/image/common/icons/unhomed.png</normaloff>:/image/common/icons/unhomed.png</iconset>
                    </property>
                    <property name="actionName" stdset="0">
                     <string>machine.unhome.axis:z</string>
@@ -485,9 +481,8 @@ in G5x</string>
                  <string notr="true">max-width: 40px;</string>
                 </property>
                 <property name="icon">
-                 <iconset>
-                  <normaloff>../common/icons/homed.png</normaloff>
-                  <disabledoff>../common/icons/homed.png</disabledoff>../common/icons/homed.png</iconset>
+                 <iconset resource="../common.qrc">
+                  <normaloff>:/image/common/icons/homed.png</normaloff>:/image/common/icons/homed.png</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -2149,8 +2144,8 @@ TORCH</string>
                    <item row="2" column="1">
                     <widget class="ActionButton" name="actionbutton_4">
                      <property name="icon">
-                      <iconset>
-                       <normaloff>../common/icons/y-down.png</normaloff>../common/icons/y-down.png</iconset>
+                      <iconset resource="../common.qrc">
+                       <normaloff>:/image/common/icons/y-down.png</normaloff>:/image/common/icons/y-down.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -2169,8 +2164,8 @@ TORCH</string>
                    <item row="1" column="0">
                     <widget class="ActionButton" name="actionbutton_21">
                      <property name="icon">
-                      <iconset>
-                       <normaloff>../common/icons/x-left.png</normaloff>../common/icons/x-left.png</iconset>
+                      <iconset resource="../common.qrc">
+                       <normaloff>:/image/common/icons/x-left.png</normaloff>:/image/common/icons/x-left.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -2189,8 +2184,8 @@ TORCH</string>
                    <item row="0" column="1">
                     <widget class="ActionButton" name="actionbutton">
                      <property name="icon">
-                      <iconset>
-                       <normaloff>../common/icons/y-up.png</normaloff>../common/icons/y-up.png</iconset>
+                      <iconset resource="../common.qrc">
+                       <normaloff>:/image/common/icons/y-up.png</normaloff>:/image/common/icons/y-up.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -2230,8 +2225,8 @@ TORCH</string>
                    <item row="1" column="2">
                     <widget class="ActionButton" name="actionbutton_22">
                      <property name="icon">
-                      <iconset>
-                       <normaloff>../common/icons/x-right.png</normaloff>../common/icons/x-right.png</iconset>
+                      <iconset resource="../common.qrc">
+                       <normaloff>:/image/common/icons/x-right.png</normaloff>:/image/common/icons/x-right.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -2284,8 +2279,8 @@ TORCH</string>
                    <item row="2" column="3">
                     <widget class="ActionButton" name="actionbutton_25">
                      <property name="icon">
-                      <iconset>
-                       <normaloff>../common/icons/z-down.png</normaloff>../common/icons/z-down.png</iconset>
+                      <iconset resource="../common.qrc">
+                       <normaloff>:/image/common/icons/z-down.png</normaloff>:/image/common/icons/z-down.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -2310,8 +2305,8 @@ TORCH</string>
                       </size>
                      </property>
                      <property name="icon">
-                      <iconset>
-                       <normaloff>../common/icons/z-up.png</normaloff>../common/icons/z-up.png</iconset>
+                      <iconset resource="../common.qrc">
+                       <normaloff>:/image/common/icons/z-up.png</normaloff>:/image/common/icons/z-up.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -6621,7 +6616,7 @@ ANTI-DIVE</string>
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>icons/donut_dimensions.png</pixmap>
+            <pixmap resource="monokrom.qrc">:/image/icons/donut_dimensions.png</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -11409,11 +11404,11 @@ ANTI-DIVE</string>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="machine_state"/>
-  <buttongroup name="jog_inc_values"/>
   <buttongroup name="jog_type"/>
-  <buttongroup name="dry_run_torch_enable"/>
+  <buttongroup name="machine_state"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="dry_run_torch_enable"/>
+  <buttongroup name="jog_inc_values"/>
   <buttongroup name="grp_shape_btns"/>
  </buttongroups>
 </ui>

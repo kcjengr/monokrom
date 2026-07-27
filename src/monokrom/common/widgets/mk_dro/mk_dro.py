@@ -9,13 +9,27 @@ from qtpyvcp.utilities.info import Info
 from qtpyvcp.actions import machine_actions as machine
 from qtpyvcp.utilities.pyside_ui_loader import PySide6Ui
 
-INFO = Info()
-BASE_PATH = os.path.join(os.path.dirname(__file__))
+_BASE_PATH = os.path.join(os.path.dirname(__file__))
 UI_FILE = os.path.join(os.path.dirname(__file__), "mk_dro.ui")
 
-ICON_PATH = os.path.join(BASE_PATH, 'icons')
+ICON_PATH = os.path.join(_BASE_PATH, 'icons')
 
-STATUS = getPlugin('status')
+_info = None
+_status = None
+
+
+def _get_info():
+    global _info
+    if _info is None:
+        _info = Info()
+    return _info
+
+
+def _get_status():
+    global _status
+    if _status is None:
+        _status = getPlugin('status')
+    return _status
 
 
 class MonokromDroWidget(QWidget):
@@ -34,7 +48,7 @@ class MonokromDroWidget(QWidget):
         if axis_number is not None:
             self.axisNumber = axis_number
 
-        STATUS.homed.notify(self.updateHomedStatus)
+        _get_status().homed.notify(self.updateHomedStatus)
         
         self.ui.axis_actions_button.clicked.connect(self.zeroWCS)
 
@@ -83,11 +97,12 @@ class MonokromDroWidget(QWidget):
         self.ui.axis_actions_button.setText(self._aletter.upper())
 
     def updateHomedStatus(self, homed):
-        axis_ltr = INFO.AXIS_LETTER_LIST[self._anum]
+        info = _get_info()
+        axis_ltr = info.AXIS_LETTER_LIST[self._anum]
         axis_homed = []
-        for ax in INFO.ALETTER_JNUM_DICT:
+        for ax in info.ALETTER_JNUM_DICT:
             if axis_ltr == ax[0]:
-                axis_homed.append(homed[INFO.ALETTER_JNUM_DICT[ax]])
+                axis_homed.append(homed[info.ALETTER_JNUM_DICT[ax]])
         if 0 in axis_homed:
             self.ui.homed_indicator.setPixmap(self.getPixmap('homed.png'))
             self.axisHomed = False
@@ -118,7 +133,7 @@ class MonokromDroGroup(QWidget):
         self.layout.setSpacing(8)
         self.layout.setContentsMargins(0, 0, 0, 0)
 
-        axes = STATUS.axis_mask.getValue(format='list') or [0, 1, 3]
+        axes = _get_status().axis_mask.getValue(format='list') or [0, 1, 3]
 
         for anum in axes:
             dro = MonokromDroWidget(self, anum)

@@ -49,3 +49,4 @@ debian/python3-monokrom.substvars
 poetry.lock
 
 *.prefs
+/.pytest_cache/
