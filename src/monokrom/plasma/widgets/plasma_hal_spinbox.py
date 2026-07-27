@@ -21,7 +21,7 @@ class PlasmaHalSpinBox(HalQSpinBox):
         ========================= ========= =========
         HAL Pin Name              Type      Direction
         ========================= ========= =========
-        qtpyvcp.spinbox.enable    s32       in
+        qtpyvcp.spinbox.enable    bit       in
         qtpyvcp.spinbox.in        s32       in
         qtpyvcp.spinbox.out       s32       out
         ========================= ========= =========
