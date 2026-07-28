@@ -853,8 +853,8 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
     # horizontal top row
     x = -halfw 
     y = halfh
-    LOG.debug("---- Horiztonal top row ----")
-    lines.append("(Horiztonal top row)\n")
+    LOG.debug("---- Horizontal top row ----")
+    lines.append("(Horizontal top row)\n")
     for c in range(hhn):
         # dxf.add_circle((x,y), hd/2)
         # LOG.debug(f"---- x/y={(x,y)}, kh={kh}, hd/2={hd/2}")
@@ -873,8 +873,8 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
     # horizontal bottom row
     x = -halfw 
     y = -halfh
-    LOG.debug("---- Horiztonal bottom row ----")
-    # lines.append("(Horiztonal bottom row)\n")
+    LOG.debug("---- Horizontal bottom row ----")
+    # lines.append("(Horizontal bottom row)\n")
     for c in range(hhn):
         # dxf.add_circle((x,y), hd/2)
         # LOG.debug(f"---- x/y={(x,y)}, ikh={ikh}, hd/2={hd/2}")

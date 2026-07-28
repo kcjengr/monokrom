@@ -59,9 +59,9 @@ class PlasmaHalCheckBox(HalCheckBox):
         self._setting_name = name
 
     def initialize(self):
-        LOG.debug(f"Initalizing PlasmaHalCheckBox: '{self.objectName()}'")
+        LOG.debug(f"Initializing PlasmaHalCheckBox: '{self.objectName()}'")
         if self._setting_name is not None:
-            LOG.debug(f"Initalizing PlasmaHalCheckBox - setting: '{self._setting_name}'")
+            LOG.debug(f"Initializing PlasmaHalCheckBox - setting: '{self._setting_name}'")
             self._setting = SETTINGS.get(self._setting_name)
             if self._setting is not None:
 
@@ -76,7 +76,7 @@ class PlasmaHalCheckBox(HalCheckBox):
         comp = hal.getComponent()
         obj_name = self.getPinBaseName()
         if obj_name is not None:
-            LOG.debug(f"Initalizing PlasmaHalCheckBox - pin: '{obj_name}'")
+            LOG.debug(f"Initializing PlasmaHalCheckBox - pin: '{obj_name}'")
 
             # add checkbox.enable HAL pin
             self._enable_pin = comp.addPin(obj_name + ".enable", "bit", "in")
@@ -91,4 +91,4 @@ class PlasmaHalCheckBox(HalCheckBox):
             # add checkbox.checked HAL pin
             self._checked_pin = comp.addPin(obj_name + ".checked", "bit", "out")
             self._checked_pin.value = self.isChecked()
-        LOG.debug(f"DONE - Initalizing PlasmaHalCheckBox: '{self.objectName()}'")
+        LOG.debug(f"DONE - Initializing PlasmaHalCheckBox: '{self.objectName()}'")

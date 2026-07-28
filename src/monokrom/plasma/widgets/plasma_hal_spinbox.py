@@ -51,9 +51,9 @@ class PlasmaHalSpinBox(HalQSpinBox):
             self._value_pin.value = self.value()
 
     def initialize(self):
-        LOG.debug(f"Initalizing PlasmaHalSpinBox: '{self.objectName()}'")
+        LOG.debug(f"Initializing PlasmaHalSpinBox: '{self.objectName()}'")
         if self._setting_name is not None:
-            LOG.debug(f"Initalizing PlasmaHalSpinBox - setting: '{self._setting_name}'")
+            LOG.debug(f"Initializing PlasmaHalSpinBox - setting: '{self._setting_name}'")
             self._setting = SETTINGS.get(self._setting_name)
             if self._setting is not None:
                 if self._setting.max_value is not None:
@@ -68,7 +68,7 @@ class PlasmaHalSpinBox(HalQSpinBox):
         comp = hal.getComponent()
         obj_name = self.getPinBaseName()
         if obj_name is not None:
-            LOG.debug(f"Initalizing PlasmaHalSpinBox - pin: '{obj_name}'")
+            LOG.debug(f"Initializing PlasmaHalSpinBox - pin: '{obj_name}'")
     
             pin_typ = 's32'
             # add spinbox.enable HAL pin
@@ -83,4 +83,4 @@ class PlasmaHalSpinBox(HalQSpinBox):
             # add spinbox.in HAL pin
             self._set_value_pin = comp.addPin(obj_name + ".in", pin_typ, "in")
             self._set_value_pin.valueChanged.connect(self.setValue)
-        LOG.debug(f"DONE - Initalizing PlasmaHalSpinBox: '{self.objectName()}'")
+        LOG.debug(f"DONE - Initializing PlasmaHalSpinBox: '{self.objectName()}'")

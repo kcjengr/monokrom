@@ -38,7 +38,7 @@ def _make_mock_mainwindow(overrides=None):
     """Build a mock MainWindow-like object with all required widgets."""
     mw = MagicMock()
     defaults = {
-        "param_kirfwidth": MockValueWidget(2),
+        "param_kerfwidth": MockValueWidget(2),
         "quickshape_internal_kerf": MockValueWidget(0),
         "chkb_hole_detect_enable": MockCheckWidget(False),
         "param_pierceheight": MockValueWidget(5),

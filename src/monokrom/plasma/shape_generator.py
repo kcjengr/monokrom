@@ -56,7 +56,7 @@ class ShapeGeneratorService:
         from qtpyvcp.utilities.info import Info
 
         lines = []
-        kerf = mw.param_kirfwidth.value()
+        kerf = mw.param_kerfwidth.value()
         internal_kerf = mw.quickshape_internal_kerf.value()
         smart_hole = mw.chkb_hole_detect_enable.isChecked()
         INFO = Info()

@@ -225,7 +225,7 @@ class MockMainWindow:
         'cut_speed': 'param_cutfeedrate',
         'plunge_rate': 'param_plungefeedrate',
         'volts': 'param_cutvolts',
-        'kerf_width': 'param_kirfwidth',
+        'kerf_width': 'param_kerfwidth',
         'puddle_height': 'param_puddlejumpheight',
         'puddle_delay': 'param_puddlejumpdelay',
         'amps': 'param_cutamps',
@@ -267,7 +267,7 @@ class MockMainWindow:
         self.param_cutfeedrate = MockWidget()
         self.param_plungefeedrate = MockWidget()
         self.param_cutvolts = MockWidget()
-        self.param_kirfwidth = MockWidget()
+        self.param_kerfwidth = MockWidget()
         self.param_puddlejumpheight = MockWidget()
         self.param_puddlejumpdelay = MockWidget()
         self.param_cutamps = MockWidget()
@@ -578,7 +578,7 @@ class TestProcessFilterParamUpdateFromFilters:
         parent.param_cutfeedrate._text = "100"
         parent.param_plungefeedrate._text = "50"
         parent.param_cutvolts._text = "40"
-        parent.param_kirfwidth._text = "2"
+        parent.param_kerfwidth._text = "2"
         parent.param_puddlejumpheight._text = "5"
         parent.param_puddlejumpdelay._text = "10"
         parent.param_cutamps._text = "80"
@@ -596,7 +596,7 @@ class TestProcessFilterParamUpdateFromFilters:
         assert parent.param_cutfeedrate._value == 100
         assert parent.param_plungefeedrate._value == 50
         assert parent.param_cutvolts._value == 40
-        assert parent.param_kirfwidth._value == 2
+        assert parent.param_kerfwidth._value == 2
         assert parent.param_puddlejumpheight._value == 5
         assert parent.param_puddlejumpdelay._value == 10
         assert parent.param_cutamps._value == 80
@@ -623,7 +623,7 @@ class TestProcessFilterParamUpdateFromFilters:
         parent.param_cutfeedrate._text = "100"
         parent.param_plungefeedrate._text = "50"
         parent.param_cutvolts._text = "40"
-        parent.param_kirfwidth._text = "2"
+        parent.param_kerfwidth._text = "2"
         parent.param_puddlejumpheight._text = "5"
         parent.param_puddlejumpdelay._text = "10"
         parent.param_cutamps._text = "80"
@@ -675,7 +675,7 @@ class TestProcessFilterParamUpdateFromFilters:
         parent.param_cutfeedrate._text = "100"
         parent.param_plungefeedrate._text = "50"
         parent.param_cutvolts._text = "40"
-        parent.param_kirfwidth._text = "2"
+        parent.param_kerfwidth._text = "2"
         parent.param_puddlejumpheight._text = "5"
         parent.param_puddlejumpdelay._text = "10"
         parent.param_cutamps._text = "80"
@@ -726,7 +726,7 @@ class TestProcessFilterParamUpdateFromFilters:
         parent.param_cutfeedrate._text = "100"
         parent.param_plungefeedrate._text = "50"
         parent.param_cutvolts._text = "40"
-        parent.param_kirfwidth._text = "2"
+        parent.param_kerfwidth._text = "2"
         parent.param_puddlejumpheight._text = "5"
         parent.param_puddlejumpdelay._text = "10"
         parent.param_cutamps._text = "80"
@@ -779,7 +779,7 @@ class TestProcessFilterParamUpdateFromFilters:
         parent.param_cutfeedrate._text = "100"
         parent.param_plungefeedrate._text = "50"
         parent.param_cutvolts._text = "40"
-        parent.param_kirfwidth._text = "2"
+        parent.param_kerfwidth._text = "2"
         parent.param_puddlejumpheight._text = "5"
         parent.param_puddlejumpdelay._text = "10"
         parent.param_cutamps._text = "80"
@@ -834,7 +834,7 @@ class TestProcessFilterFilterSubListSelect:
         parent.param_cutfeedrate._text = "100"
         parent.param_plungefeedrate._text = "50"
         parent.param_cutvolts._text = "40"
-        parent.param_kirfwidth._text = "2"
+        parent.param_kerfwidth._text = "2"
         parent.param_puddlejumpheight._text = "5"
         parent.param_puddlejumpdelay._text = "10"
         parent.param_cutamps._text = "80"
@@ -890,7 +890,7 @@ class TestProcessFilterFilterSubListSelect:
         parent.param_cutfeedrate._text = "100"
         parent.param_plungefeedrate._text = "50"
         parent.param_cutvolts._text = "40"
-        parent.param_kirfwidth._text = "2"
+        parent.param_kerfwidth._text = "2"
         parent.param_puddlejumpheight._text = "5"
         parent.param_puddlejumpdelay._text = "10"
         parent.param_cutamps._text = "80"
@@ -946,7 +946,7 @@ class TestProcessFilterAddNewCutProcess:
         parent.param_cutfeedrate._text = "100"
         parent.param_plungefeedrate._text = "50"
         parent.param_cutvolts._text = "40"
-        parent.param_kirfwidth._text = "2"
+        parent.param_kerfwidth._text = "2"
         parent.param_puddlejumpheight._text = "5"
         parent.param_puddlejumpdelay._text = "10"
         parent.param_cutamps._text = "80"
@@ -995,7 +995,7 @@ class TestProcessFilterAddNewCutProcess:
         parent.param_cutfeedrate._text = "100"
         parent.param_plungefeedrate._text = "50"
         parent.param_cutvolts._text = "40"
-        parent.param_kirfwidth._text = "2"
+        parent.param_kerfwidth._text = "2"
         parent.param_puddlejumpheight._text = "5"
         parent.param_puddlejumpdelay._text = "10"
         parent.param_cutamps._text = "80"
@@ -1041,7 +1041,7 @@ class TestProcessFilterAddNewCutProcess:
         parent.param_cutfeedrate._text = "100"
         parent.param_plungefeedrate._text = "50"
         parent.param_cutvolts._text = "40"
-        parent.param_kirfwidth._text = "2"
+        parent.param_kerfwidth._text = "2"
         parent.param_puddlejumpheight._text = "5"
         parent.param_puddlejumpdelay._text = "10"
         parent.param_cutamps._text = "80"
@@ -1084,7 +1084,7 @@ class TestProcessFilterUpdateCut:
         parent.param_cutfeedrate._text = "120"
         parent.param_plungefeedrate._text = "60"
         parent.param_cutvolts._text = "45"
-        parent.param_kirfwidth._text = "3"
+        parent.param_kerfwidth._text = "3"
         parent.param_puddlejumpheight._text = "8"
         parent.param_puddlejumpdelay._text = "15"
         parent.param_cutamps._text = "90"

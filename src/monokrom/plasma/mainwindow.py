@@ -100,7 +100,7 @@ class MainWindow(VCPMainWindow):
         "cut_speed": "param_cutfeedrate",
         "plunge_rate": "param_plungefeedrate",
         "volts": "param_cutvolts",
-        "kerf_width": "param_kirfwidth",
+        "kerf_width": "param_kerfwidth",
         "puddle_height": "param_puddlejumpheight",
         "puddle_delay": "param_puddlejumpdelay",
         "amps": "param_cutamps",
@@ -624,7 +624,7 @@ class MainWindow(VCPMainWindow):
     #
     # VTK Display and Gcode
     #
-    def tranformUI_reset(self):
+    def transformUI_reset(self):
         LOG.debug("Reset to default values")
 
     #

@@ -67,9 +67,9 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
         self.setDisplayValue(self._setting.getValue())
 
     def initialize(self):
-        LOG.debug(f"Initalizing PlasmaHalDoubleSpinBox: '{self.objectName()}'")
+        LOG.debug(f"Initializing PlasmaHalDoubleSpinBox: '{self.objectName()}'")
         if self._setting_name is not None:
-            LOG.debug(f"Initalizing PlasmaHalDoubleSpinBox - setting: '{self._setting_name}'")
+            LOG.debug(f"Initializing PlasmaHalDoubleSpinBox - setting: '{self._setting_name}'")
             self._setting = SETTINGS.get(self._setting_name)
             self._original_value = self._setting
             if self._setting is not None:
@@ -86,7 +86,7 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
         comp = hal.getComponent()
         obj_name = self.getPinBaseName()
         if obj_name is not None:
-            LOG.debug(f"Initalizing PlasmaHalDoubleSpinBox - pin: '{obj_name}'")
+            LOG.debug(f"Initializing PlasmaHalDoubleSpinBox - pin: '{obj_name}'")
 
             # add spinbox.enabled HAL pin
             self._enabled_pin = comp.addPin(obj_name + ".enable", "bit", "in")
@@ -100,4 +100,4 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
             # add spinbox.checked HAL pin
             self._set_value_pin = comp.addPin(obj_name + ".in", "float", "in")
             self._set_value_pin.valueChanged.connect(self.setValue)
-        LOG.debug(f"DONE - Initalizing PlasmaHalDoubleSpinBox: '{self.objectName()}'")
+        LOG.debug(f"DONE - Initializing PlasmaHalDoubleSpinBox: '{self.objectName()}'")
