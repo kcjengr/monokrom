@@ -31,7 +31,7 @@ from monokrom.plasma.process_filter import ProcessFilterService
 # Part of debug tracing enablement under Eclipse/Pydev - leave.
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-07-27"
+__updated__ = "2026-07-28"
 
 
 # Setup logging
@@ -147,8 +147,10 @@ class MainWindow(VCPMainWindow):
 
         if INFO.getIsMachineMetric():
             self._linear_setting = "mm"
+            LOG.debug("Machine is Metric")
         else:
             self._linear_setting = "inch"
+            LOG.debug("Machine is Imperial")
 
         self.units_per_mm = self.hal.get_value("halui.machine.units-per-mm")
         self._pressure_setting = INFO.ini.find("PLASMAC", "PRESSURE")
@@ -158,6 +160,7 @@ class MainWindow(VCPMainWindow):
         for s in self._plasma_plugin.linearsystems():
             if s.name == self._linear_setting:
                 self._linear_setting_id = s.id
+                LOG.debug(f"Linear system ID held = {self._linear_setting_id}")
 
     def _setup_ui_defaults(self):
         # -- Dialog widget handles ------------------------------------------------
@@ -608,7 +611,7 @@ class MainWindow(VCPMainWindow):
         self.mdi_service.append_char(str(button.text()))
 
     def btnParams_clicked(self):
-        text = self.mdiEntry.text() or "null"
+        text = self.mdiEntry.text()
         LOG.debug(f"MDI button clicked text: {text}")
         self.mdi_service.lookup_params(text)
 
