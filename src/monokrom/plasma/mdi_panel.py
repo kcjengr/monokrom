@@ -19,11 +19,7 @@ class MdiPanelService:
         Args:
             char: Single character string to append.
         """
-        text = self.main_window.mdiEntry.text() or 'null'
-        if text != 'null':
-            text += char
-        else:
-            text = char
+        text = self.main_window.mdiEntry.text() + char
         self.main_window.mdiEntry.setText(text)
 
     def clear_params(self):
@@ -42,7 +38,7 @@ class MdiPanelService:
         """
         import monokrom.plasma.mdi_text as mdiText
 
-        if gcode_text == 'null' or not gcode_text:
+        if not gcode_text:
             self.clear_params()
             return False
 
@@ -65,7 +61,7 @@ class MdiPanelService:
 
     def add_space(self):
         """Append a space to the MDI entry text if it has content."""
-        text = self.main_window.mdiEntry.text() or 'null'
-        if text != 'null':
+        text = self.main_window.mdiEntry.text()
+        if text:
             text += ' '
             self.main_window.mdiEntry.setText(text)

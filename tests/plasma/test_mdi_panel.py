@@ -115,14 +115,6 @@ class TestMdiPanelLookupParams:
         assert result is False
         assert mw.btnGcodeP1._text == ''
 
-    def test_lookup_null_text_clears_params(self):
-        mw = MockMainWindow()
-        mw.btnGcodeP1.setText('X')
-        service = MdiPanelService(mw)
-        result = service.lookup_params('null')
-        assert result is False
-        assert mw.btnGcodeP1._text == ''
-
     def test_lookup_empty_text_clears_params(self):
         mw = MockMainWindow()
         mw.btnGcodeP1.setText('X')
