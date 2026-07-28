@@ -1,8 +1,8 @@
-from math import cos, sin, atan, atan2, asin, degrees, radians, sqrt, hypot, pi
+from math import cos, sin, atan, atan2, asin, acos, degrees, radians, sqrt, hypot, pi
 from qtpyvcp.utilities import logger
 LOG = logger.getLogger('qtpyvcp.' + __name__)
 
-__updated__ = "2026-07-27"
+__updated__ = "2026-07-28"
 
 def fix(v):
     return round(v, 5)
@@ -498,13 +498,13 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
         rr2 += kh
         #d= sqrt(xx2**2 + yy2**2)
         d = hypot(xx2, yy2)
-        theta = cos((rr1 - rr2) / d)
-        # LOG.debug(f"Initial theta={degrees(theta)}")
-        theta2 = (pi / corners) - theta
-        
-        if theta < 0:
+        ratio = (rr1 - rr2) / d
+        if abs(ratio) >= 1.0:
             theta = pi / corners
             theta2 = 0
+        else:
+            theta = acos(ratio)
+        theta2 = (pi / corners) - theta
         
         a = a_start = atan2(xx2, yy2) - theta
         s = s_start = sin(a)
@@ -573,38 +573,38 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
             # i.e. drawing from smaller angle to larger angle in ccw direction
             # Also theta is a modifier.  Add it to the start angle to get end angle.
             #writer.add_arc((0,0), rr1, degrees(ang1), degrees(ang1)+degrees(theta2 *2))
-            LOG.debug(">>> Big Arc <<<")
-            LOG.debug(f"big arc1 data: start x1/y1={(fix(bigarc1_start_x) ,fix(bigarc1_start_y))}, radius={fix(rr1)}")
-            LOG.debug(f"big arc1 data: end x1/y1={(fix(bigarc1_end_x) ,fix(bigarc1_end_y))}, I/J offsets={(-fix(bigarc1_start_x), -fix(bigarc1_start_y))}")
-            LOG.debug(f"big arc1 data: effective center x/y = {(fix(bigarc1_start_x)+-fix(bigarc1_start_x), fix(bigarc1_start_y)+-fix(bigarc1_start_y))}")
-            LOG.debug(f"big arc1 data: angle1 = {degrees(ang1)}, angle2 = {degrees(ang1 + (theta2 *2))}")
-            LOG.debug("big arc1 data: data to build angles:")
-            LOG.debug(f"big arc1 data: a = atan2{(xx2,yy2)} - {theta} = {a_start} : sin(a)={s_start} : cos(a)={c_start}")
-            LOG.debug(f"big arc1 data: angle1 = atan2{(bigarc1_end_y, bigarc1_end_x)} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
-            LOG.debug(f"big arc1 data: angle2 used to calc big arc start x/y. r1 = {rr1}")
+            # LOG.debug(">>> Big Arc <<<")
+            # LOG.debug(f"big arc1 data: start x1/y1={(fix(bigarc1_start_x) ,fix(bigarc1_start_y))}, radius={fix(rr1)}")
+            # LOG.debug(f"big arc1 data: end x1/y1={(fix(bigarc1_end_x) ,fix(bigarc1_end_y))}, I/J offsets={(-fix(bigarc1_start_x), -fix(bigarc1_start_y))}")
+            # LOG.debug(f"big arc1 data: effective center x/y = {(fix(bigarc1_start_x)+-fix(bigarc1_start_x), fix(bigarc1_start_y)+-fix(bigarc1_start_y))}")
+            # LOG.debug(f"big arc1 data: angle1 = {degrees(ang1)}, angle2 = {degrees(ang1 + (theta2 *2))}")
+            # LOG.debug("big arc1 data: data to build angles:")
+            # LOG.debug(f"big arc1 data: a = atan2{(xx2,yy2)} - {theta} = {a_start} : sin(a)={s_start} : cos(a)={c_start}")
+            # LOG.debug(f"big arc1 data: angle1 = atan2{(bigarc1_end_y, bigarc1_end_x)} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
+            # LOG.debug(f"big arc1 data: angle2 used to calc big arc start x/y. r1 = {rr1}")
             lines.append(f"G2 X{fix(bigarc1_end_x)} Y{fix(bigarc1_end_y)} I{-fix(bigarc1_start_x)} J{-fix(bigarc1_start_y)}\n")
             line1_start_x = fix(bigarc1_end_x)
             line1_start_y = fix(bigarc1_end_y)
         
-        LOG.debug(">>> Line 1 <<<")
-        LOG.debug(f"line1 data: Start={(line1_start_x,line1_start_y)}, End={(line1_end_x, line1_end_y)}")
+        # LOG.debug(">>> Line 1 <<<")
+        # LOG.debug(f"line1 data: Start={(line1_start_x,line1_start_y)}, End={(line1_end_x, line1_end_y)}")
         # first line to corner arc
         lines.append(f"G1 X{line1_end_x} Y{line1_end_y}\n")
-        LOG.debug(">>> Small Arc <<<")
+        # LOG.debug(">>> Small Arc <<<")
         # small corner
-        LOG.debug(f"Small arc: Start={(smallarc_start_x, smallarc_start_y)}, End={(smallarc_end_x, smallarc_end_y)}")
-        LOG.debug(f"Small arc: I/J={(smallarc_I, smallarc_J)}, radius={fix(r)}")
-        LOG.debug(f"Small arc: effective center x/y = {(smallarc_start_x+smallarc_I, smallarc_start_y+smallarc_J)}")
+        # LOG.debug(f"Small arc: Start={(smallarc_start_x, smallarc_start_y)}, End={(smallarc_end_x, smallarc_end_y)}")
+        # LOG.debug(f"Small arc: I/J={(smallarc_I, smallarc_J)}, radius={fix(r)}")
+        # LOG.debug(f"Small arc: effective center x/y = {(smallarc_start_x+smallarc_I, smallarc_start_y+smallarc_J)}")
         lines.append(f"G2 X{smallarc_end_x} Y{smallarc_end_y} I{smallarc_I} J{smallarc_J}\n")
         # line 2
-        LOG.debug(">>> Line 2 <<<")
-        LOG.debug(f"line2 data: Start={(line2_start_x, line2_start_y)}, End={(line2_end_x, line2_end_y)}")
+        # LOG.debug(">>> Line 2 <<<")
+        # LOG.debug(f"line2 data: Start={(line2_start_x, line2_start_y)}, End={(line2_end_x, line2_end_y)}")
         lines.append(f"G1 X{line2_end_x} Y{line2_end_y}\n")
-        LOG.debug("+---------------------------------------------------+")
+        # LOG.debug("+---------------------------------------------------+")
     
     def build_slot(x, y, sw, bd, lines):
         # Kerf factored in using ikh
-        LOG.debug("============= build_slot ===========")
+        # LOG.debug("============= build_slot ===========")
         # kh = kerf/2
         ikh = internal_kerf/2
         if sw - bd == 0:
@@ -628,8 +628,8 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
         y1 = y + s
         x2 = x - c
         y2 = y - s
-        LOG.debug(f"build slot: x/y={(x,y)}, sw={sw}, bd={bd}, a={degrees(a)}, r1={r1}, r2={r2}")
-        LOG.debug(f"build slot: s={s}, c={c}")
+        # LOG.debug(f"build slot: x/y={(x,y)}, sw={sw}, bd={bd}, a={degrees(a)}, r1={r1}, r2={r2}")
+        # LOG.debug(f"build slot: s={s}, c={c}")
         
         # we need to calculate the lines either side of the middle line.
         # Find the points that are are 90 degree to each end point.
@@ -639,14 +639,14 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
         # sine gives the Opposite == y axis
         s = sin(a + (pi / 2)) * (r1-ikh)
         c = cos(a + (pi / 2)) * (r1-ikh)
-        LOG.debug(f"build slot: recalced s={s}, c={c}")
-        LOG.debug(f"build slot: mirror line x1/y1={(x1,y1)}, x2/y2={(x2,y2)}")
+        # LOG.debug(f"build slot: recalced s={s}, c={c}")
+        # LOG.debug(f"build slot: mirror line x1/y1={(x1,y1)}, x2/y2={(x2,y2)}")
         # writer.add_polyline_2d([(x1+c,y1+s), (x2+c, y2+s)])
         # writer.add_polyline_2d([(x1-c,y1-s), (x2-c, y2-s)])
         # work out the start/end angles for arc1
         a_start = atan2(s, c)
         a_end = atan2(-s, -c)
-        LOG.debug(f"a_start={degrees(a_start)}, a_end={degrees(a_end)}")
+        # LOG.debug(f"a_start={degrees(a_start)}, a_end={degrees(a_end)}")
         # writer.add_arc((x1,y1),r1, degrees(a_end), degrees(a_start))
         # writer.add_arc((x2,y2),r1, degrees(a_start), degrees(a_end))
         lines.append("(Got to start of slot line 1)\n")
@@ -660,7 +660,7 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
         lines.append(f"G3 X{fix(x1+c)} Y{fix(y1+s)} I{fix(c)} J{fix(s)}\n")
         lines.append("M67 E3 Q100\n")
         stop_cut(lines)
-        LOG.debug("+---------------------------------------------------+")
+        # LOG.debug("+---------------------------------------------------+")
         
     if lines is None:
         lines = []
@@ -707,13 +707,13 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
         xx2 = pcr + offset
         yy2 = 0
         d = hypot(xx2, yy2)
-        theta = cos((r1 - r2) / d)
-        theta2 = (pi / nb) - theta
-        #
-        if theta < 0:
+        ratio = (r1 - r2) / d
+        if abs(ratio) >= 1.0:
             theta = pi / nb
             theta2 = 0
-        #
+        else:
+            theta = acos(ratio)
+        theta2 = (pi / nb) - theta
         a = atan2(xx2, yy2) - theta
         s = sin(a)
         c = cos(a)
@@ -726,11 +726,11 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
             bigarc1_start_y = fix((r1+kh) * sin(ang1 + (theta2 *2)))
             bigarc1_leadin_x = fix((r1+kh+leadin) * cos(ang1 + (theta2 *2)))
             bigarc1_leadin_y = fix((r1+kh+leadin) * sin(ang1 + (theta2 *2)))
-            LOG.debug(f"Move to external start: X/y = {(bigarc1_start_x, bigarc1_start_y)} for end = {(fix(bigarc1_end_x), fix(bigarc1_end_y))}")
-            LOG.debug("Move to external start: data to build angles:")
-            LOG.debug(f"Move to external start: a = atan2{(xx2,yy2)} - {theta} = {a} : sin(a)={s} : cos(a)={c}")
-            LOG.debug(f"Move to external start: angle1 = atan2{(fix(bigarc1_end_y), fix(bigarc1_end_x))} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
-            LOG.debug(f"Move to external start: angle2 used to calc big arc start x/y. r1 = {r1}")
+            # LOG.debug(f"Move to external start: X/y = {(bigarc1_start_x, bigarc1_start_y)} for end = {(fix(bigarc1_end_x), fix(bigarc1_end_y))}")
+            # LOG.debug("Move to external start: data to build angles:")
+            # LOG.debug(f"Move to external start: a = atan2{(xx2,yy2)} - {theta} = {a} : sin(a)={s} : cos(a)={c}")
+            # LOG.debug(f"Move to external start: angle1 = atan2{(fix(bigarc1_end_y), fix(bigarc1_end_x))} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
+            # LOG.debug(f"Move to external start: angle2 used to calc big arc start x/y. r1 = {r1}")
             if leadin > 0:
                 lines.append(f"G0 X{bigarc1_leadin_x} Y{bigarc1_leadin_y}\n")
                 start_cut(lines)
@@ -757,13 +757,13 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
 
         # calc big arc start point based on the right hand side hole on x axis at (pcr + offset, 0)
         d = hypot(x_leftside, y_leftside)
-        theta = cos((r1 - r2) / d)
-        theta2 = (pi / nb) - theta
-        #
-        if theta < 0:
+        ratio = (r1 - r2) / d
+        if abs(ratio) >= 1.0:
             theta = pi / nb
             theta2 = 0
-        #
+        else:
+            theta = acos(ratio)
+        theta2 = (pi / nb) - theta
         a = atan2(pcr + offset, 0) - theta
         s = sin(a)
         c = cos(a)
@@ -777,11 +777,11 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
             bigarc1_start_y = fix((r1+kh) * sin(ang1 + (theta2 *2)))
             bigarc1_leadin_x = fix((r1+kh+leadin) * cos(ang1 + (theta2 *2)))
             bigarc1_leadin_y = fix((r1+kh+leadin) * sin(ang1 + (theta2 *2)))
-            LOG.debug(f"Move to external start: X/y = {(bigarc1_start_x, bigarc1_start_y)} for end = {(fix(bigarc1_end_x), fix(bigarc1_end_y))}")
-            LOG.debug("Move to external start: data to build angles:")
-            LOG.debug(f"Move to external start: a = atan2{(pcr + offset,0)} - {theta} = {a} : sin(a)={s} : cos(a)={c}")
-            LOG.debug(f"Move to external start: angle1 = atan2{(fix(bigarc1_end_y), fix(bigarc1_end_x))} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
-            LOG.debug(f"Move to external start: angle2 used to calc big arc start x/y. r1 = {r1}")
+            # LOG.debug(f"Move to external start: X/y = {(bigarc1_start_x, bigarc1_start_y)} for end = {(fix(bigarc1_end_x), fix(bigarc1_end_y))}")
+            # LOG.debug("Move to external start: data to build angles:")
+            # LOG.debug(f"Move to external start: a = atan2{(pcr + offset,0)} - {theta} = {a} : sin(a)={s} : cos(a)={c}")
+            # LOG.debug(f"Move to external start: angle1 = atan2{(fix(bigarc1_end_y), fix(bigarc1_end_x))} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
+            # LOG.debug(f"Move to external start: angle2 used to calc big arc start x/y. r1 = {r1}")
             # lines.append(f"G0 X{fix(s*r1)} Y{fix(c*r1)}\n")
             if leadin > 0:
                 lines.append(f"G0 X{bigarc1_leadin_x} Y{bigarc1_leadin_y}\n")
@@ -857,43 +857,43 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
     lines.append("(Horiztonal top row)\n")
     for c in range(hhn):
         # dxf.add_circle((x,y), hd/2)
-        LOG.debug(f"---- x/y={(x,y)}, kh={kh}, hd/2={hd/2}")
+        # LOG.debug(f"---- x/y={(x,y)}, kh={kh}, hd/2={hd/2}")
         lines.append(f"G0 X{x}Y{y}\n")
         start_cut(lines)
-        LOG.debug(f"---- G1 X{x - (fix(hd/2) - ikh)}")
+        # LOG.debug(f"---- G1 X{x - (fix(hd/2) - ikh)}")
         lines.append(f"G1 X{x - (fix(hd/2) - ikh)}\n")
         lines.append("M67 E3 Q60\n")
-        LOG.debug(f"---- G3 I{fix(hd/2) - ikh}")
-        LOG.debug(f"---- effective center = {( (x - (fix(hd/2) - ikh))+(fix(hd/2) - ikh), y )}")
+        # LOG.debug(f"---- G3 I{fix(hd/2) - ikh}")
+        # LOG.debug(f"---- effective center = {( (x - (fix(hd/2) - ikh))+(fix(hd/2) - ikh), y )}")
         lines.append(f"G3 I{fix(hd/2) - ikh}\n")
         lines.append("M67 E3 Q100\n")
         stop_cut(lines)
         x += hhs
-        LOG.debug("-------------------------")
+        # LOG.debug("-------------------------")
     # horizontal bottom row
     x = -halfw 
     y = -halfh
     LOG.debug("---- Horiztonal bottom row ----")
-    lines.append("(Horiztonal bottom row)\n")
+    # lines.append("(Horiztonal bottom row)\n")
     for c in range(hhn):
         # dxf.add_circle((x,y), hd/2)
-        LOG.debug(f"---- x/y={(x,y)}, ikh={ikh}, hd/2={hd/2}")
+        # LOG.debug(f"---- x/y={(x,y)}, ikh={ikh}, hd/2={hd/2}")
         lines.append(f"G0 X{x}Y{y}\n")
         start_cut(lines)
-        lines.append(f"G1 X{x - (fix(hd/2) - ikh)}\n")
-        lines.append("M67 E3 Q60\n")
-        lines.append(f"G3 I{fix(hd/2) - ikh}\n")
-        lines.append("M67 E3 Q100\n")
+        # lines.append(f"G1 X{x - (fix(hd/2) - ikh)}\n")
+        # lines.append("M67 E3 Q60\n")
+        # lines.append(f"G3 I{fix(hd/2) - ikh}\n")
+        # lines.append("M67 E3 Q100\n")
         stop_cut(lines)
         x += hhs
         LOG.debug("-------------------------")
     # virtical holes (left and right)
     y = halfh - vhs
     LOG.debug("---- Vertical holes between top/bottom rows - left and right ----")
-    lines.append("(Vertical holes between top/bottom rows - left and right)\n")
+    # lines.append("(Vertical holes between top/bottom rows - left and right)\n")
     for c in range(1,vhn):
         # dxf.add_circle((-halfw, y), hd/2)
-        LOG.debug(f"---- x/y={(-halfw,y)}, ikh={ikh}, hd/2={hd/2}")
+        # LOG.debug(f"---- x/y={(-halfw,y)}, ikh={ikh}, hd/2={hd/2}")
         lines.append(f"G0 X{-halfw}Y{y}\n")
         start_cut(lines)
         lines.append(f"G1 X{-halfw - (fix(hd/2) - ikh)}\n")
@@ -903,7 +903,7 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
         stop_cut(lines)
 
         # dxf.add_circle((halfw, y), hd/2)
-        LOG.debug(f"---- x/y={(halfw,y)}, ikh={ikh}, hd/2={hd/2}")
+        # LOG.debug(f"---- x/y={(halfw,y)}, ikh={ikh}, hd/2={hd/2}")
         lines.append(f"G0 X{halfw}Y{y}\n")
         start_cut(lines)
         lines.append(f"G1 X{halfw - (fix(hd/2) - ikh)}\n")
@@ -912,7 +912,7 @@ def n_square(w, h, hhn, hhs, vhn, vhs, hd, fr, ch_type, kerf, internal_kerf, sma
         lines.append("M67 E3 Q100\n")
         stop_cut(lines)
         y = y - vhs
-        LOG.debug("-------------------------")
+        # LOG.debug("-------------------------")
 
     # center hole processing
     LOG.debug(f"n_square: center hole tye = {ch_type}")
