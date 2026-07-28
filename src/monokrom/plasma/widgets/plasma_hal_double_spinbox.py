@@ -64,7 +64,7 @@ class PlasmaHalDoubleSpinBox(HalDoubleSpinBox):
 
     def resetToOriginal(self):
         self._setting = self._original_value
-        self.setDisplayValue(self._setting)
+        self.setDisplayValue(self._setting.getValue())
 
     def initialize(self):
         LOG.debug(f"Initalizing PlasmaHalDoubleSpinBox: '{self.objectName()}'")
