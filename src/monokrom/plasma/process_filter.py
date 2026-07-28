@@ -63,9 +63,6 @@ class ProcessFilterService:
 
     def param_update_from_filters(self, index=0):
         """Update param fields from filter query results."""
-        from qtpy.QtCore import Qt
-        from qtpy.QtWidgets import QListWidgetItem
-
         parent = self.parent
         sender = parent.sender()
         if hasattr(sender, 'currentText'):
@@ -125,8 +122,6 @@ class ProcessFilterService:
 
     def filter_sub_list_select(self, item):
         """Handle sub-list selection to update param fields."""
-        from qtpy.QtCore import Qt
-
         parent = self.parent
         data = self.get_filter_query()
         item_id = item.data(Qt.UserRole)
