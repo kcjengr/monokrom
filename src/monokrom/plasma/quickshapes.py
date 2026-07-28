@@ -279,7 +279,7 @@ def lifting_lug(w1, d1, h1, h2, d2, rb, kerf, internal_kerf, smarthole, separati
     lines.append("M67 E3 Q60\n")
     lines.append(f"G3 I{r2}\n")
     lines.append("M67 E3 Q100\n")
-    LOG.debug(f"g3 for liftring lug: startX={wh-r2} I={r2}")
+    LOG.debug(f"g3 for lifting lug: startX={wh-r2} I={r2}")
     stop_cut(lines)
     lines.append("(Leadin for outer shape)\n")
     lines.append("G0 X0 Y0\n")
