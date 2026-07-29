@@ -99,6 +99,8 @@ class CycleStartActionButton(VCPButton, HALWidget):
             self.pulse_timer.start(500)
         else:
             self.pulse_timer.stop()
+            self.setText('CYCLE START')
+            self.setStyleClass('cycle_stopped')
 
     def isPaused(self):
         return bool(self._program_is_paused_pin.value)
