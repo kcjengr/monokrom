@@ -2,7 +2,7 @@ from math import cos, sin, atan, atan2, asin, acos, degrees, radians, sqrt, hypo
 from qtpyvcp.utilities import logger
 LOG = logger.getLogger('qtpyvcp.' + __name__)
 
-__updated__ = "2026-07-28"
+__updated__ = "2026-07-29"
 
 def fix(v):
     return round(v, 5)
@@ -506,14 +506,17 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
             theta = acos(ratio)
         theta2 = (pi / corners) - theta
         
-        a = a_start = atan2(xx2, yy2) - theta
-        s = s_start = sin(a)
-        c = c_start = cos(a)
+        a = atan2(xx2, yy2) - theta
+        s = sin(a)
+        c = cos(a)
+        # a_start = atan2(xx2, yy2) - theta
+        # s_start = sin(a)
+        # c_start = cos(a)
         # LOG.debug(f"corner data: rr1={rr1}, rr2={rr2}, xx2={xx2}, yy2={yy2}, corners={corners}")
         # LOG.debug(f"corner data: d={d}, theta={(theta)}, theta2={(theta2)}, a={a}")
         # LOG.debug(f"corner data: s={s}, c={c}")
-        line1_start_x = fix(s*rr1)
-        line1_start_y = fix(c*rr1)
+        # line1_start_x = fix(s*rr1)
+        # line1_start_y = fix(c*rr1)
         line1_end_x = fix((s*rr2)+xx2)
         line1_end_y = fix((c*rr2)+yy2)
         
@@ -529,11 +532,11 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
         bigarc1_end_x = s*rr1
         bigarc1_end_y = c*rr1
         ang1 = atan2(arc_start_y - arc_center_y, arc_start_x - arc_center_x)
-        r = hypot(arc_start_x - arc_center_x, arc_start_y - arc_center_y)
+        # r = hypot(arc_start_x - arc_center_x, arc_start_y - arc_center_y)
 
         # need to calc small arc start before new s & c recalc'd
-        smallarc_start_x = fix((s*rr2)+xx2)
-        smallarc_start_y = fix((c*rr2)+yy2)
+        # smallarc_start_x = fix((s*rr2)+xx2)
+        # smallarc_start_y = fix((c*rr2)+yy2)
 
         
         a += (theta * 2)
@@ -554,8 +557,8 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
         smallarc_I = -fix(arc_center_offset_x)
         smallarc_J = -fix(arc_center_offset_y)
         # line on bottom
-        line2_start_x = fix((s*rr2)+xx2)
-        line2_start_y = fix((c*rr2)+yy2)
+        # line2_start_x = fix((s*rr2)+xx2)
+        # line2_start_y = fix((c*rr2)+yy2)
         line2_end_x = fix(s*rr1)
         line2_end_y = fix(c*rr1)
 
@@ -583,8 +586,8 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
             # LOG.debug(f"big arc1 data: angle1 = atan2{(bigarc1_end_y, bigarc1_end_x)} = {degrees(ang1)}, angle2 = angle1 + theta2*2 = {degrees(ang1 + (theta2 *2))}")
             # LOG.debug(f"big arc1 data: angle2 used to calc big arc start x/y. r1 = {rr1}")
             lines.append(f"G2 X{fix(bigarc1_end_x)} Y{fix(bigarc1_end_y)} I{-fix(bigarc1_start_x)} J{-fix(bigarc1_start_y)}\n")
-            line1_start_x = fix(bigarc1_end_x)
-            line1_start_y = fix(bigarc1_end_y)
+            # line1_start_x = fix(bigarc1_end_x)
+            # line1_start_y = fix(bigarc1_end_y)
         
         # LOG.debug(">>> Line 1 <<<")
         # LOG.debug(f"line1 data: Start={(line1_start_x,line1_start_y)}, End={(line1_end_x, line1_end_y)}")
@@ -644,8 +647,8 @@ def exhaust_flange(id, wt, pcd, bd, sw, nb, kerf, internal_kerf, smarthole, lead
         # writer.add_polyline_2d([(x1+c,y1+s), (x2+c, y2+s)])
         # writer.add_polyline_2d([(x1-c,y1-s), (x2-c, y2-s)])
         # work out the start/end angles for arc1
-        a_start = atan2(s, c)
-        a_end = atan2(-s, -c)
+        # a_start = atan2(s, c)
+        # a_end = atan2(-s, -c)
         # LOG.debug(f"a_start={degrees(a_start)}, a_end={degrees(a_end)}")
         # writer.add_arc((x1,y1),r1, degrees(a_end), degrees(a_start))
         # writer.add_arc((x2,y2),r1, degrees(a_start), degrees(a_end))
