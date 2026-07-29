@@ -5,8 +5,8 @@ from qtpyvcp import hal as qthal
 import linuxcnc
 
 ### Supports the @Slot decorator to solve property type issues.
-from PySide6.QtCore import Qt, QItemSelectionModel, Slot, QTimer
-from PySide6.QtWidgets import QLabel, QListWidgetItem, QAbstractButton, QTableView, QListWidget
+from PySide6.QtCore import Slot, QTimer
+from PySide6.QtWidgets import QAbstractButton, QTableView, QListWidget
 import qtpyvcp
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.plugins import getPlugin
@@ -15,8 +15,8 @@ from qtpyvcp.actions.program_actions import load as loadProgram
 from qtpyvcp.actions.machine_actions import mode as set_mode
 from qtpyvcp.actions.machine_actions import jog
 
-import monokrom_rc
-import common_rc
+import monokrom_rc as monokrom_rc
+import common_rc as common_rc
 
 ### mdi GCODE text created by JT from linuxcnc
 from monokrom.plasma.hal_bridge import HALBridge
@@ -31,7 +31,7 @@ from monokrom.plasma.process_filter import ProcessFilterService
 # Part of debug tracing enablement under Eclipse/Pydev - leave.
 # import pydevd;pydevd.settrace()
 
-__updated__ = "2026-07-28"
+__updated__ = "2026-07-29"
 
 
 # Setup logging
