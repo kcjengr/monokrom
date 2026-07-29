@@ -92,11 +92,11 @@ class CutRecoveryService:
         max_move = 0.4 if linear_setting == 'inch' else 10
 
         laser_on = bool(self.hal.get_value('qtpyvcp.laser.out'))
-        kirf_width = float(self.hal.get_value('qtpyvcp.param-kirfwidth.out'))
-        LOG.debug(f"kirf_width = {kirf_width}")
+        kerf_width = float(self.hal.get_value('qtpyvcp.param-kerfwidth.out'))
+        LOG.debug(f"kerf_width = {kerf_width}")
 
-        dist_x = kirf_width * x_dir
-        dist_y = kirf_width * y_dir
+        dist_x = kerf_width * x_dir
+        dist_y = kerf_width * y_dir
         
         LOG.debug(f"Distance x={dist_x}, y={dist_y}")
 
