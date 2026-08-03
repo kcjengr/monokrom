@@ -233,6 +233,7 @@ class MainWindow(VCPMainWindow):
             filter_widget.currentIndexChanged.connect(self.param_update_from_filters)
 
         # -- General UI signals ---------------------------------------------------
+        self.exitAppBtn.clicked.connect(self.on_exitAppBtn_clicked)
         self.btn_zero_xy.clicked.connect(self.zero_wcs_xy)
         self.btn_probe_test.toggled.connect(self.probe_test)
         self.vtk_no_lines.toggled.connect(self.breadcrumbs_tracked)
