@@ -1,6 +1,8 @@
 """File operations service for plasma main window."""
 
 import os
+from qtpyvcp.utilities.logger import getLogger
+LOG = getLogger(__name__)
 
 
 class FileOpsService:
@@ -60,6 +62,7 @@ class FileOpsService:
         """Reloads the most recently loaded G-code file."""
         real_file = self.parent.latest_real_file
         if real_file is None or real_file == "":
+            LOG.debug("Reload file not triggered. real_file is None or '' string.")
             return
         self._get_load_program()(real_file)
         self.parent.reset_vtk_btns()
