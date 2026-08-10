@@ -6,7 +6,7 @@ import linuxcnc
 
 ### Supports the @Slot decorator to solve property type issues.
 from PySide6.QtCore import Slot, QTimer
-from PySide6.QtWidgets import QAbstractButton, QTableView, QListWidget
+from PySide6.QtWidgets import QAbstractButton, QTableView
 import qtpyvcp
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.plugins import getPlugin
@@ -27,6 +27,7 @@ from monokrom.plasma.mdi_panel import MdiPanelService
 from monokrom.plasma.shape_generator import ShapeGeneratorService
 from monokrom.plasma.file_ops import FileOpsService
 from monokrom.plasma.process_filter import ProcessFilterService
+from monokrom.common.widgets.recent_file_list_view import MkRecentFileListView
 
 # Part of debug tracing enablement under Eclipse/Pydev - leave.
 # import pydevd;pydevd.settrace()
@@ -169,7 +170,7 @@ class MainWindow(VCPMainWindow):
             QTableView
         )
         self.recent_files_dialog_widget = qtpyvcp.DIALOGS["recent_files"].findChild(
-            QListWidget
+            MkRecentFileListView
         )
 
         # -- Probe timer ----------------------------------------------------------

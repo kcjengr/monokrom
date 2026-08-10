@@ -50,8 +50,8 @@ class MkRecentFileListView(QListWidget):
         try:
             item = self.selectedItems()[0]
             fpath = item.data(Qt.UserRole)
-            loadProgram(fpath)
             self.fileLoadFromDialog.emit(fpath)
+            loadProgram(fpath)
             hideActiveDialog()
         except (IndexError, AttributeError):
             pass

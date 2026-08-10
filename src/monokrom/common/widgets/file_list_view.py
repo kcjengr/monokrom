@@ -191,8 +191,8 @@ class MkFileTableView(QTableView):
                 LOG.warn("Unsuported NC program type with extention .%s",
                          file_info.completeSuffix())
             hideActiveDialog()
-            loadProgram(absolute_path)
             self.fileLoadFromDialog.emit(absolute_path)
+            loadProgram(absolute_path)
 
     @Slot()
     def getSelection(self):
