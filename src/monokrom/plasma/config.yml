@@ -1,5 +1,5 @@
 # Include the QtPyVCP default menubar.
-{% include "default_menubar.yml" %}
+#{% include "default_menubar.yml" %}
 
 qtdesigner:
   ui_file: ( windows.mainwindow.kwargs.ui_file )
@@ -60,7 +60,8 @@ windows:
     # Keyword arguments to pass when initializing the class.
     kwargs:
       # Specify the mainwindow menubar as the default.
-      menu: ( default_menubar )
+      # menu: ( default_menubar )
+      menu: null
       # Specify the UI file to load the window layout from.
       ui_file: {{ file.dir }}/mainwindow.ui
       # Specify a stylesheet to use only for mainwindow.
