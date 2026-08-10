@@ -44,18 +44,16 @@ class FileOpsService:
     def save_file(self):
         """Saves the current G-code editor content and reloads it."""
         real_file = self.parent.latest_real_file
-        if real_file is None:
+        if real_file is None or real_file == "":
             return
 
-        name_parts = real_file.rsplit(".", 1)
-        if name_parts[0].endswith("_parsed"):
-            ppart = "."
-        else:
-            ppart = "_parsed."
-        new_name = name_parts[0] + ppart + name_parts[1]
+        self.parent.gcode_editor.saveFile()
 
-        self.parent.gcode_editor.saveFile(new_name)
-        self._get_load_program()(new_name)
+        from qtpyvcp.plugins import getPlugin
+        STATUS = getPlugin('status')
+        temp_file = str(STATUS.file)
+        if temp_file:
+            self._get_load_program()(temp_file)
         self.parent.reset_vtk_btns()
 
     def reload_file(self):
