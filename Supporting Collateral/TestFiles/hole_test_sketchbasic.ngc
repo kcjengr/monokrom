@@ -1,0 +1,84 @@
+;     file name: hole_test_sketchbasic.ngc
+; date and time: Sun Aug 09 2026    10:42:41 AM
+; postprocessor: LinuxCNC Monokrom.scpost rev: 0.1
+;
+;begin pre-amble
+ G21 (units: metric)
+ G40 (cutter compensation: off)
+ G90 (distance mode: absolute)
+ M52 P1 (adaptive feed: on)
+ M65 P2 (enable THC)
+ M65 P3 (enable torch)
+ M68 E3 Q0 (velocity 100%)
+ G64 P0.0254 Q0.025 (tracking tolerances: 0.0254mm)
+;end pre-amble
+;
+;begin material setup
+ (o=0,kw=1.6, ph=3.5, pd=0.3, ch=1.5, fr=1600, mt=6, th=1, cv=107, pe=0, jh=0, jd=0)
+ F#<_hal[plasmac.cut-feed-rate]>
+;end material setup
+ G0 X154.8 Y8
+ M3 $0 S1 (plasma start)
+ M67 E3 Q100
+ G1 X150.8 Y8
+ G2 X142 Y-0.8 I-8.8 J0
+ G1 X8 Y-0.8
+ G2 X-0.8 Y8 I0 J8.8
+ G1 X-0.8 Y92
+ G2 X8 Y100.8 I8.8 J0
+ G1 X142 Y100.8
+ G2 X150.8 Y92 I-0 J-8.8
+ G1 X150.8 Y8
+ M5 $0 (plasma end)
+ G0 X65.541 Y62.003
+ M3 $0 S1 (plasma start)
+ G3 X65.541 Y62.003 I-10.041 J-10.041
+ M5 $0 (plasma end)
+ G0 X50.447 Y15.828
+ M3 $0 S1 (plasma start)
+ G3 X50.447 Y15.828 I5.091 J5.091
+ M5 $0 (plasma end)
+ G0 X75.569 Y18.041
+ M3 $0 S1 (plasma start)
+ G3 X75.569 Y18.041 I2.97 J2.97
+ M5 $0 (plasma end)
+ G0 X95.161 Y17.767
+ M3 $0 S1 (plasma start)
+ G3 X95.161 Y17.767 I2.263 J2.263
+ M5 $0 (plasma end)
+ G0 X112.674 Y19.147
+ M3 $0 S1 (plasma start)
+ G3 X112.674 Y19.147 I0.849 J0.849
+ M5 $0 (plasma end)
+ G0 X126.934 Y45.734
+ M3 $0 S1 (plasma start)
+ G3 X126.934 Y45.734 I-17.112 J17.112
+ M5 $0 (plasma end)
+ G0 X32.173 Y16.709
+ M3 $0 S1 (plasma start)
+ G3 X32.173 Y16.709 I-8.273 J8.273
+ M5 $0 (plasma end)
+ G0 X46.691 Y85.743
+ M3 $0 S1 (plasma start)
+ G3 X43.014 Y87.266 I-3.677 J-3.677
+ G1 X18.014 Y87.266
+ G3 X18.014 Y76.866 I0 J-5.2
+ G1 X43.014 Y76.866
+ G3 X46.691 Y85.743 I-0 J5.2
+ M5 $0 (plasma end)
+ ;
+ ;begin post-amble
+ G40 (cutter compensation: off)
+ G90 (distance mode: absolute)
+ M65 P2 (enable THC)
+ M65 P3 (enable torch)
+ M68 E3 Q0 (velocity 100%)
+ M5 $-1 (backup stop)
+ ;end post-amble
+ ;
+ ;begin statistics
+ ;Pierces = 9
+ ;   Cuts = 9,    Length = 992.031
+ ;end statistics
+ ;
+ M30 (end program)
