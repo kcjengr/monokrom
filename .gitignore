@@ -50,3 +50,4 @@ poetry.lock
 
 *.prefs
 /.pytest_cache/
+/.mypy_cache/
