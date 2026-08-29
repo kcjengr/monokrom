@@ -49,7 +49,7 @@ class CycleStartActionButton(VCPButton, HALWidget):
         self._pressed_pin = None
         self._checked_pin = None
 
-        self.pulse_timer = None
+        self.pulse_timer = QTimer(self)
         self.pulse_state = -1
 
         self.pressed.connect(self.onPress)
@@ -118,6 +118,8 @@ class CycleStartActionButton(VCPButton, HALWidget):
             self.click()
 
     def flashButton(self):
+        if not self.pulse_timer or not self.pulse_timer.isActive():
+            return
         if self.pulse_state > 0:
             self.setStyleClass('cycle_running')
         else:
@@ -155,5 +157,4 @@ class CycleStartActionButton(VCPButton, HALWidget):
             self._checked_pin = comp.addPin(obj_name + ".checked", "bit", "out")
             self._checked_pin.value = self.isChecked()
 
-        self.pulse_timer = QTimer(self)
         self.pulse_timer.timeout.connect(self.flashButton)
