@@ -1,5 +1,8 @@
 """Consumable change state machine for offset management."""
 
+from qtpyvcp.utilities.logger import getLogger
+LOG = getLogger(__name__)
+
 
 class ConsumableChangeService:
     """Manages consumable change mode with X/Y offset handling.
@@ -52,6 +55,14 @@ class ConsumableChangeService:
         x_current_pos = float(pos_absolute.Absolute(0))
         y_current_pos = float(pos_absolute.Absolute(1))
         scale = self.hal.get_value('plasmac.offset-scale')
+
+        if not scale or scale == 0:
+            LOG.error("offset-scale is zero or missing, cannot compute consumable offset")
+            return {
+                'btn_cycle_start': {'enabled': False},
+                'btn_consumable_change': {'checked': False}
+            }
+
         self.hal.set_p('plasmac.x-offset',
                        f'{(consumable_offset_x_value - x_current_pos)/scale:.0f}')
         self.hal.set_p('plasmac.y-offset',
