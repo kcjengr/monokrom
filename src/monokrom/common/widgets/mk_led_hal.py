@@ -8,7 +8,7 @@ class MkHalLedIndicator(HalLedIndicator):
 
     # Override paint to implement monokrom visual
     def paintEvent(self, event):
-        painter = QPainter()
+        painter = QPainter(self)
         x = 0
         y = 0
         if self._alignment & Qt.AlignLeft:
@@ -40,8 +40,6 @@ class MkHalLedIndicator(HalLedIndicator):
         if not self.isEnabled():
             draw_color.setAlpha(30)
 
-        # Start actual painting process
-        painter.begin(self)
         brush = QBrush(draw_color)
         painter.setPen(pen_color)
         painter.setRenderHint(QPainter.Antialiasing, True)
@@ -53,5 +51,3 @@ class MkHalLedIndicator(HalLedIndicator):
             self._timer.start(self._flashRate)
         else:
             self._timer.stop()
-
-        painter.end()
