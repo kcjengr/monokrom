@@ -87,6 +87,10 @@ class CutRecoveryService:
             LOG.debug("Cut Recovery status = FALSE, exit move.")
             return False
 
+        if self.o_scale is None or self.o_scale == 0:
+            LOG.error("o_scale not initialized — recovery may be in inconsistent state")
+            return False
+
         LOG.debug(f"Cut Recovery button push (x,y) {x_dir}, {y_dir}")
 
         max_move = 0.4 if linear_setting == 'inch' else 10
