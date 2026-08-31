@@ -17,16 +17,20 @@ class MkInputOverlay(QWidget):
         self.btn.setStyleSheet("font-weight: bold")
         self.btn.pressed.connect(self.hide)
 
+        self.content_widget = None
+
         if ui_file is not None:
             self.loadUiFile(ui_file)
 
     def loadUiFile(self, ui_file):
         form_class, base_class = PySide6Ui(ui_file).load()
-        self.ui = form_class()
-        self.ui.setupUi(self)
-        # layout = QHBoxLayout(self)
-        # layout.addWidget(form_class())
-        # self.setLayout(layout)
+        # Create the root widget (MkTransparentWidget from .ui) as a child of self.
+        # setupUi(self) would treat self as the root and set its geometry to
+        # 800x600, preventing the overlay from filling the window.
+        # Instead we create a separate MkTransparentWidget and set up the UI on it.
+        from monokrom.common.widgets.transparent_widget import MkTransparentWidget
+        self.content_widget = MkTransparentWidget(self)
+        form_class().setupUi(self.content_widget)
 
     # track parent window resize events
     def eventFilter(self, obj, event):
@@ -34,6 +38,12 @@ class MkInputOverlay(QWidget):
             size = QResizeEvent.size(event)
             self.resize(size)
             self.btn.move(size.width() - 100, 20)
+
+            if self.content_widget is not None:
+                self.content_widget.move(
+                    (size.width() - self.content_widget.width()) // 2,
+                    (size.height() - self.content_widget.height()) // 2
+                )
 
         return super(MkInputOverlay, self).eventFilter(obj, event)
 
@@ -54,6 +64,17 @@ class MkInputOverlay(QWidget):
         self.resize(win.width(), win.height())
         self.btn.move(win.width() - 100, 20)
 
+        # Center content widget within the overlay
+        if self.content_widget is not None:
+            self.content_widget.move(
+                (self.width() - self.content_widget.width()) // 2,
+                (self.height() - self.content_widget.height()) // 2
+            )
+
+        # Raise CLOSE button to ensure it's on top of content
+        self.btn.raise_()
+
     def hide(self):
         super(MkInputOverlay, self).hide()
-        self.parent().removeEventFilter(self)
+        if self.parent():
+            self.parent().removeEventFilter(self)
