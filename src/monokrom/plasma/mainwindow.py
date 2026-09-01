@@ -11,6 +11,7 @@ import qtpyvcp
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities.info import Info
+from qtpyvcp.utilities.settings import getSetting
 from qtpyvcp.actions.program_actions import load as loadProgram
 from qtpyvcp.actions.machine_actions import mode as set_mode
 from qtpyvcp.actions.machine_actions import jog
@@ -186,6 +187,12 @@ class MainWindow(VCPMainWindow):
             plot.setViewZ()
             plot.enable_panning(True)
             plot.setProgramViewWhenLoadingProgram(True, "z")
+
+        # -- Sync extent buttons to saved settings --------------------------------
+        prog_bounds = getSetting('backplot.show-program-bounds')
+        self.vtk_prog_extent.setChecked(prog_bounds and prog_bounds.value)
+        mach_bounds = getSetting('backplot.show-machine-bounds')
+        self.vtk_mach_extent.setChecked(mach_bounds and mach_bounds.value)
 
         # -- Widget states / visibility -------------------------------------------
         self.widget_recovery.setEnabled(False)
@@ -374,14 +381,19 @@ class MainWindow(VCPMainWindow):
         QApplication.instance().quit()
 
     def reset_vtk_btns(self):
-        self.vtk_prog_extent.setChecked(False)
-        self.vtk_mach_extent.setChecked(False)
-        self.vtkbackplot.showProgramBounds(False)
-        self.vtkbackplot.showMachineBounds(False)
+        # Sync buttons to the VTK actors' current state (which may have been
+        # rebuilt with saved settings when a file was loaded)
+        if (self.vtkbackplot.program_bounds_actors and
+                self.vtkbackplot.active_wcs_index in self.vtkbackplot.program_bounds_actors):
+            self.vtk_prog_extent.setChecked(
+                self.vtkbackplot.program_bounds_actors[
+                    self.vtkbackplot.active_wcs_index].GetXAxisVisibility())
+        if self.vtkbackplot.machine_actor is not None:
+            self.vtk_mach_extent.setChecked(
+                self.vtkbackplot.machine_actor.GetXAxisVisibility())
 
     def set_openfile(self, file_str):
         self.latest_real_file = file_str
-        self.reset_vtk_btns()
         LOG.debug(f"set_openfile:  file_str = {file_str}")
 
     def clicked_shape_btn(self, btn):

@@ -38,8 +38,8 @@ class FileOpsService:
                         newest = (entry.path, file_stat.st_mtime)
         if newest is not None:
             self.parent.latest_real_file = newest[0]
-            self.parent.reset_vtk_btns()
             self._get_load_program()(newest[0])
+            self.parent.reset_vtk_btns()
 
     def save_file(self):
         """Saves the current G-code editor content and reloads it."""
