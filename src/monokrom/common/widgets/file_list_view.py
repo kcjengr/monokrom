@@ -193,6 +193,10 @@ class MkFileTableView(QTableView):
             hideActiveDialog()
             self.fileLoadFromDialog.emit(absolute_path)
             loadProgram(absolute_path)
+            # Sync extent buttons to the newly rebuilt VTK actor state
+            w = self.window()
+            if w is not None and hasattr(w, 'reset_vtk_btns'):
+                w.reset_vtk_btns()
 
     @Slot()
     def getSelection(self):
