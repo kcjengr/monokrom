@@ -34,6 +34,11 @@ pytest-mock = "^3.12"
  python_functions = ["test_*"]
  addopts = "-v"
 
+[tool.poetry.group.docs.dependencies]
+sphinx = "^7.0"
+myst-parser = "^2.0"
+sphinx-rtd-theme = "^2.0"
+
  [tool.poetry.scripts]
 # monokrom = "monokrom:main"
 monokrom_plasma = "monokrom.plasma:main"

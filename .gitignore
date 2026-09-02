@@ -51,3 +51,6 @@ poetry.lock
 *.prefs
 /.pytest_cache/
 /.mypy_cache/
+
+# Sphinx build output
+docs/_build/

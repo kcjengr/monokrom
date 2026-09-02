@@ -1,0 +1,218 @@
+# Post-GUI HAL
+
+The post-GUI HAL file contains pin mappings that are loaded after the QtPyVCP GUI has
+initialized. This ensures all VCP widgets are ready to receive HAL signals.
+
+## File Structure
+
+The post-GUI call list sources individual HAL files:
+
+```hal
+# postgui_call_list_plasmac_sim.hal
+source postgui_plasmac_sim.hal
+source postgui_sim_plasmac_sim.hal
+```
+
+## `postgui_plasmac_sim.hal`
+
+This file contains the extensive HAL pin mappings for the plasmaC component. It maps
+LinuxCNC internal signals to plasmac parameters and VCP widget indicators.
+
+### Axis Limit Connections
+
+```hal
+# Map axis limits to plasmac parameters
+setp plasmac.x-min-limit -2.0
+setp plasmac.x-max-limit 1200.0
+setp plasmac.y-min-limit -2.0
+setp plasmac.y-max-limit 1200.0
+setp plasmac.z-min-limit -70.0
+```
+
+These limits are used by plasmac for boundary checking during cutting operations.
+
+### PlasmaC Parameter Mappings
+
+```hal
+# Cut parameters from plasmac to VCP
+net plasmac.cut-feed-rate => halui.feed-override
+net plasmac.cut-height => ...
+net plasmac.cut-volts => ...
+net plasmac.cut-chart => ...
+net plasmac.cut-amperage => ...
+net plasmac.pierce-height => ...
+net plasmac.pierce-delay => ...
+```
+
+### Probe Settings
+
+```hal
+# Float switch travel distance
+net plasmac.float-switch-travel => ...
+
+# Probe feed rate
+net plasmac.probe-feed-rate => ...
+
+# Ohmic probe enable flag
+net plasmac.ohmic-probe-enable => ...
+
+# Probe test trigger (HAL controlled)
+net plasmac.probe-test => ...
+```
+
+### THC Settings
+
+```hal
+# THC enable/disable
+net plasmac.thc-enable => ...
+
+# THC delay
+net plasmac.thc-delay => ...
+
+# THC PID gains
+net plasmac.thc-p => ...
+net plasmac.thc-i => ...
+net plasmac.thc-d => ...
+
+# Safe height
+net plasmac.safe-height => ...
+
+# Height override
+net plasmac.height-override => ...
+
+# Height per volt calibration
+net plasmac.height-per-volt => ...
+```
+
+### Arc Settings
+
+```hal
+# Arc OK voltage thresholds
+net plasmac.arc-ok-high => ...
+net plasmac.arc-ok-low => ...
+
+# Arc fail delay
+net plasmac.arc-fail-delay => ...
+
+# Arc max starts
+net plasmac.arc-max-starts => ...
+
+# Arc retry delay
+net plasmac.arc-retry-delay => ...
+```
+
+### Scribe Settings
+
+```hal
+# Scribe arming delay
+net plasmac.scribe-arm-delay => ...
+
+# Scribe on delay
+net plasmac.scribe-on-delay => ...
+```
+
+### LED Output Connections
+
+These pins drive the status LED indicators on the Main Tab:
+
+```hal
+# Consumable changing indicator
+net plasmac.consumable-changing => mk_led.consumable-changing
+
+# Corner lock indicator
+net plasmac.cornerlock => mk_led.cornerlock
+
+# THC up indicator
+net plasmac.thc-up => mk_led.thc-up
+
+# THC down indicator
+net plasmac.thc-down => mk_led.thc-down
+
+# Arc OK indicator
+net plasmac.arc-ok => mk_led.arc-ok
+
+# Torch on indicator
+net plasmac.torch-on => mk_led.torch-on
+
+# Cut length counter
+net plasmac.cut-length => mk_dro.cut-length
+
+# Cut time counter
+net plasmac.cut-time => mk_dro.cut-time
+```
+
+### Cycle Start Connections
+
+```hal
+# Program state indicators
+net program-is-paused => cycle_start.paused
+net program-is-running => cycle_start.running
+net program-is-idle => cycle_start.idle
+net machine-is-homed => machine.homed
+```
+
+### Pendant UI Links
+
+For pendant or external control integration:
+
+```hal
+# Pendant macro buttons
+net pendant.macro0 => halui.mdi-command.0
+net pendant.macro1 => halui.mdi-command.1
+net pendant.macro2 => halui.mdi-command.2
+net pendant.macro3 => halui.mdi-command.3
+...
+```
+
+## `postgui_sim_plasmac_sim.hal`
+
+This file contains simulator-specific HAL connections:
+
+```hal
+# Simulated axis positions for VTK backplot
+# (These connect simulated joint positions to the VTK display)
+```
+
+## Customizing Post-GUI HAL
+
+### Adding Custom LED Indicators
+
+To add a custom LED indicator:
+
+1. Create a HAL pin connection:
+   ```hal
+   net my-custom-signal => mk_led.my-custom-led
+   ```
+
+2. Add the LED widget to the UI (requires UI modification).
+
+### Adding Custom DRO Displays
+
+To add a custom digital readout:
+
+1. Create a HAL pin connection:
+   ```hal
+   net my-custom-value => mk_dro.my-custom-dro
+   ```
+
+2. Add the DRO widget to the UI.
+
+### Modifying Existing Mappings
+
+To change an existing parameter mapping:
+
+1. Locate the mapping in `postgui_plasmac_sim.hal`.
+2. Change the source or target pin.
+3. Restart LinuxCNC.
+
+**Warning:** Modifications to generated HAL files may be overwritten by updates. Place
+custom modifications in `custom.hal` or `custom_postgui.hal` instead.
+
+## Troubleshooting Post-GUI HAL
+
+| Symptom | Check | Solution |
+|---------|-------|----------|
+| LED indicators not showing | Pin not connected in postgui HAL | Verify net connection |
+| DRO showing 0 | Pin not connected or source inactive | Check source pin in HalScope |
+| Cycle start state wrong | `program-is-running` not connected | Verify halui connection |
+| THC indicators wrong | `thc-up`/`thc-down` not connected | Check plasmac pin names |

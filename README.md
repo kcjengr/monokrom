@@ -1,79 +1,149 @@
 # MonoKrom Virtual Control Panel
 
-Monochrome style VCPs for LinuxCNC controlled Lathes, Mills and Plasma cutters.
+Monochrome-style VCPs (Virtual Control Panels) for LinuxCNC-controlled lathes, mills, and plasma cutters.
 
-*Mill*
+## Projects
 
-![](docs/images/Web19201.png)
+| Project | Description | Status |
+|---------|-------------|--------|
+| **Mill** | Milling machine VCP | Stable |
+| **Plasma** | Plasma cutting VCP with THC, probing, Quickshapes | Active development |
 
+## Plasma VCP
 
-*Plasma*
+A feature-rich plasma cutting interface built on [QtPyVCP](https://www.qtpyvcp.com/) with:
 
-![](docs/images/plasma/main.png)
-![](docs/images/plasma/cut_material.png)
-![](docs/images/plasma/cut_material_config.png)
+- **Process Filter Database** — SQLite-backed cut parameter management with multi-field filtering (gas, machine, material, thickness, consumable)
+- **14 Quickshape Primitives** — Circle, rectangle, donut, flanges, gussets, truss supports, and more
+- **Cut Recovery** — 8-directional jog pad for recovering from interrupted cuts
+- **Consumable Change** — Automated X/Y offset management for tip/wheel changes
+- **Sheet Alignment** — Two-point coordinate system rotation with laser offset compensation
+- **VTK Backplot** — 3D visualization of G-code programs with breadcrumbs and WCS support
+- **Process Logging** — Cut length, time, and arc OK statistics
+- **THC** — Thermal Height Control with PID tuning, VAD, void sensing, mesh mode
+- **Probing** — Ohmic probe and float switch support
+- **MDI Assistance** — G-code word parameter lookup with suggestion buttons
 
+### Screenshots
 
+![Plasma Main Tab](docs/images/plasma/main.png)
+![Plasma Parameters](docs/images/plasma/cut_material.png)
+![Plasma Parameters Config](docs/images/plasma/cut_material_config.png)
 
 ## Installation
+### Prerequisites
 
+- Linux (Debian 12/Bookworm recommended)
+- Python 3.7+
+- PySide6
+- LinuxCNC (master branch, v2.10+)
 
->>> UPDATE NEEDED due to changes to use python virtual env framework <<<
+### Step 1: Install QtPyVCP
 
-If you have not already done so, install the [QtPyVCP software dependencies](http://www.qtpyvcp.com/install/prerequisites.html#software-dependencies)
+MonoKrom Plasma requires a forked branch of qtpyvcp that adds the SQLite-backed plasma
+processes plugin. Choose the branch that matches your Debian version:
 
-*Dependency*
+| Debian Version | Branch |
+|----------------|--------|
+| Debian 12 (Bookworm) | `main` |
+| Debian 13 (Trixie) | `pyside6` |
 
-Monokrom plasma requires the plasma_db branch from qtpyvcp.  To get access to this branch it is recommended to use a developer install of qtpyvcp. If you already have such an install you will need to install sqlalchemy via pip.
-
-If you have yet to install a developer version of qtpyvcp then BEFORE performing the pip install per normal dev instructions you need to
-
-`git checkout plasma_db`
-
-THEN
-
-`python3 -m pip install -e .`
-
-
-Install MonoKrom (includes mill and plasma VCPs)
-
-The current Plasma development version which is under active development is located at:
-https://github.com/joco-nz/monokrom-vcp
-
-If the Plasma UI is of interest then the recommended install is:
-
+```bash
+git clone https://github.com/kcjengr/qtpyvcp
+cd qtpyvcp
+git checkout main    # Debian 12
+# git checkout pyside6  # Debian 13
+python3 -m pip install -e .
 ```
-cd <directory where you want to have the git cloned repo>
+
+If you already have a developer install of qtpyvcp, switch to the appropriate branch and
+install SQLAlchemy:
+
+```bash
+cd <your-qtpyvcp-directory>
+git checkout main    # Debian 12
+# git checkout pyside6  # Debian 13
+python3 -m pip install sqlalchemy
+```
+### Step 2: Install MonoKrom
+
+```bash
+cd <directory where you want the repo>
 git clone https://github.com/joco-nz/monokrom-vcp
 cd monokrom-vcp
 python3 -m pip install -e .
 ```
-This will create an editable installe of Monokrom.  To update to the latest development state cd into monokrom-vcp and perform
 
-`git pull`
+This creates an editable install. To update to the latest development version:
 
+```bash
+cd monokrom-vcp
+git pull
+python3 -m pip install -e .
+```
 
-To install the MonoKrom LinuxCNC sim configs run:
+### Step 3: Install Simulation Config
 
-`monokrom --install-sim`
+```bash
+monokrom --install-sim
+```
 
+This copies the simulation configuration files to `~/linuxcnc/configs/sim.monokrom/`.
+
+### Step 4: Start LinuxCNC Simulator
+
+```bash
+linuxcnc ~/linuxcnc/configs/sim.monokrom/plasmac/plasmac_sim.ini
+```
+
+## Documentation
+
+Full documentation is available in the `docs/` directory, built with Sphinx:
+
+- [Overview](docs/overview.md) — Architecture and feature comparison
+- [Quick Start](docs/quick-start.md) — Installation and first run
+- [User Guide](docs/user-guide/index.md) — Operating the VCP
+- [Integrator Guide](docs/integrator-guide/index.md) — Hardware setup and configuration
+- [Reference](docs/reference/index.md) — HAL pins, settings, G-code syntax
+- [Developer Guide](docs/developer-guide.md) — Extending the VCP
+- [Changelog](docs/changelog.md) — Release notes
+
+### Building Documentation Locally
+
+```bash
+cd docs
+pip install -e .[docs]  # or: pip install sphinx myst-parser sphinx-rtd-theme
+make html
+```
+
+Open `docs/_build/html/index.html` in a browser.
 
 ## Final Adjustments
-This section collects the final "tweaks" that may be needed to get success.
 
-[1] Ensure there is write access to /tmp
-The simplest is to assume the access permissions looks like:
-```
-drwxrwxrwt  26 root root  4096 Dec 20 21:26 tmp
-```
+### Write Access to /tmp
 
-If adjustment is needed use the command:
-```
-sudo chmod o+rw tmp
-```
+Ensure there is write access to `/tmp`:
 
+```bash
+# Check permissions (should be drwxrwxrwt)
+ls -ld /tmp
+
+# If needed, fix permissions:
+sudo chmod o+rw /tmp
+```
 
 ## Acknowledgements
 
 Designed by: [@pinder](https://forum.linuxcnc.org/cb-profile/pinder)  
 Forum Thread: [forum.linuxcnc.org/qtpyvcp/40082](https://forum.linuxcnc.org/qtpyvcp/40082)
+
+MonoKrom Plasma draws functional inspiration from [QTPlasmaC](https://linuxcnc.org/docs/html/customizing/qtplasmac.html),
+the stock LinuxCNC plasma cutting screen. QTPlasmaC served as the reference point for core
+plasma cutting functionality including THC, probing, arc start, and cut management.
+
+## Links
+
+- [LinuxCNC](https://linuxcnc.org)
+- [QtPyVCP](https://www.qtpyvcp.com)
+- [QTPlasmaC](https://linuxcnc.org/docs/html/customizing/qtplasmac.html)
+- [MonoKrom GitHub](https://github.com/joco-nz/monokrom-vcp)
