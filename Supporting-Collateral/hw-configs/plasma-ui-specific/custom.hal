@@ -1,0 +1,52 @@
+# Include your custom HAL commands here
+# This file will not be overwritten when you run PNCconf again
+
+# ---COMMON PLASMAC DEBOUNCE---
+# for the float and ohmic inputs each increment in delay is
+# is a 0.001mm (0.00004") increase in any probed height result
+setp db_float.delay     5
+# set to zero if using internal ohmic sensing
+setp db_ohmic.delay     0
+setp db_breakaway.delay 5
+setp db_arc-ok.delay    5
+
+
+
+########################################
+# The following variables are available for fine tuning some parameters.
+# To use any of these, uncomment the required setp line and set an appropriate value.
+
+# Dampen excessive noise on the arc voltage input
+# default = 0 (volts)
+#setp plasmac.lowpass-frequency 0
+
+# The time delay from losing the arc ok signal until QtPlasmaC reacts to the arc loss.
+# default = 0.0 (seconds)
+#setp plasmac.arc-lost-delay 0.0
+
+# For mode 0 Arc-OK only, the number of consecutive readings within the threshold that are required to set the Arc-OK signal.
+# default = 6
+#setp plasmac.arc-ok-counts 6
+
+# For mode 0 Arc-OK only, the maximum voltage deviation that is allowed for a valid voltage to set the Arc OK signal.
+# default = 10 (volts)
+#setp plasmac.arc-ok-threshold 10
+
+# The voltage above and below 0V that will display as 0V. Prevents small fluctuations from flickering the voltage display.
+# default = 0 (volts)
+#setp plasmac.zero-window 0
+
+# The distance (in millimeters) away from the Z MAX_LIMIT that QtPlasmaC will allow the Z axis to travel while under machine control.
+# default = 5 (mm)
+#setp plasmac.max-offset 5
+
+# The required number of consecutive times that the threshold has been exceeded before applying the void lock to the THC.
+# default = 2
+#setp plasmac.kerf-error-max 2
+
+
+# ---OHMIC SENSE CONTACT DEBOUNCE---
+setp plasmac.ohmic-sense-off-delay  3
+setp plasmac.ohmic-sense-on-delay   3
+
+source ohmic.hal

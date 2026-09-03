@@ -1,0 +1,24 @@
+; Set g5x work system to 0,0
+; Based on Laser position offset
+; Offset on Settings Tab and collected
+; from those fields.
+O<laser_off> sub
+#<laser_offset_x> = #1
+#<laser_offset_y> = #2
+
+G21
+
+o110 if [#<_absolute> EQ 1]
+   #<is_absolute> = 1
+   G91
+o110 endif
+
+g10 l20 p0 x[#<laser_offset_x>/#<_hal[halui.machine.units-per-mm]>] y[#<laser_offset_y>/#<_hal[halui.machine.units-per-mm]>]
+
+o115 if[EXISTS[#<is_absolute>]]
+   G90
+o115 endif
+
+G0 x0 y0
+
+O<laser_off> endsub

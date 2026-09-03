@@ -1,0 +1,70 @@
+#!/usr/bin/python3
+'''
+M150
+
+Copyright (C) 2023  James Walker
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+'''
+
+import sys
+import time
+from subprocess import run as RUN
+
+timeout = 0.5
+# P param.    1 = unlink cut height, 2 = relink cut height
+try:
+    action = int(float(sys.argv[1]))
+    if action == 1:
+        # Q param
+        actionValue = float(sys.argv[2])
+except:
+    pass
+
+
+#
+#
+#
+
+# Component Pins:
+# Owner   Type  Dir         Value  Name
+#     33  float IN              1  plasmac.cut-height <== plasmac:cut-height
+#     33  float IN              0  plasmac.cut-height-delay
+# Component Pins:
+# Owner   Type  Dir         Value  Name
+#     33  float IN              3  plasmac.pierce-height <== plasmac:pierce-height
+
+def unlinkCutHeight():
+    RUN(['halcmd', 'unlinkp', 'plasmac.cut-height'])
+
+def relinkCutHeight():
+    RUN(['halcmd', 'net', 'plasmac:cut-height', 'plasmac.cut-height'])
+
+def setCutHeight(value):
+    RUN(['halcmd', 'setp', 'plasmac.cut-height', '{}'.format(value)])
+
+#
+#
+#
+
+try:
+    if action == 1:
+        unlinkCutHeight()
+        setCutHeight(actionValue)
+    else:
+        relinkCutHeight()
+except:
+    pass
+exit()

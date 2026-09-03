@@ -1,0 +1,142 @@
+[PLASMA_PARAMETERS]
+Arc Voltage Offset = 3687.5
+Arc Voltage Scale = 0.006744
+Setup Feed Rate = 1500.0
+Arc Fail Timeout = 3.0
+Arc OK High = 250.0
+Arc OK Low = 60.0
+Arc Maximum Starts = 3
+Velocity Anti Dive Threshold = 60.0
+Float Switch Travel = 2.900000000000013
+Height Per Volt = 0.1
+Void Sense Slope = 500
+Ohmic Maximum Attempts = 0
+Ohmic Probe Offset = 0.0
+Pid P Gain = 10.0
+Pid D Gain = 0.0
+Pid I Gain = 0.0
+Probe Feed Rate = 300.0
+Probe Start Height = 25.0
+Arc Restart Delay = 1.0
+Safe Height = 25.0
+Scribe Arming Delay = 0.0
+Scribe On Delay = 0.0
+Skip IHS Distance = 0.0
+Spotting Threshold = 1.0
+Spotting Time = 0.0
+THC Delay = 0.5
+THC Sample Counts = 50
+THC Sample Threshold = 1.0
+THC Threshold = 1.0
+
+[GUI_OPTIONS]
+Mode = 1
+Estop type = 2
+DRO position = bottom
+Flash error = 0
+Hide run = 0
+Hide pause = 0
+Hide abort = 0
+Autorepeat all = False
+Use keyboard shortcuts = True
+Use soft keyboard = False
+Show materials = True
+Run from line = True
+Tool tips = True
+Exit warning = True
+Exit warning text = 
+Preview cone size = 0.5
+Preview grid size = 0.0
+T view zoom scale = 1.0
+Override jog inhibit via Z+ = False
+Default material = 0
+Custom style = None
+
+[BUTTONS]
+1 Name = PROBE\TEST
+1 Code = probe-test 10
+2 Name = OHMIC\TEST
+2 Code = ohmic-test
+3 Name = SINGLE\CUT
+3 Code = single-cut
+4 Name = NORMAL\CUT
+4 Code = cut-type
+5 Name = TORCH\PULSE
+5 Code = torch-pulse 0.5
+6 Name = PARK
+6 Code = G53 G0 X[#<_ini[axis_x]max_limit>-200] Y[#<_ini[axis_y]max_limit> - 200]
+7 Name = CHANGE\CONS
+7 Code = change-consumables X600 Y0 F1500
+8 Name = FRONT\CENTRE
+8 Code = G53 G0 X[#<_ini[axis_x]max_limit> / 2] Y0
+9 Name = GO WRK\X0Y0
+9 Code = g0x0y0
+10 Name = LASER
+10 Code = toggle-laser
+11 Name = 
+11 Code = 
+12 Name = 
+12 Code = 
+13 Name = 
+13 Code = 
+14 Name = 
+14 Code = 
+15 Name = 
+15 Code = 
+16 Name = 
+16 Code = 
+17 Name = 
+17 Code = 
+18 Name = 
+18 Code = 
+19 Name = 
+19 Code = 
+20 Name = 
+20 Code = 
+
+[POWERMAX]
+Port = 
+
+[COLOR_OPTIONS]
+Foreground = #ffee06
+Highlight = #ffee06
+LED = #ffee06
+Background = #16160e
+Background Alt = #36362e
+Frames = #ffee06
+Estop = #ff0000
+Disabled = #b0b0b0
+Preview = #000000
+
+[ENABLE_OPTIONS]
+THC enable = True
+Corner lock enable = True
+Void lock enable = False
+Use auto volts = False
+Ohmic probe enable = False
+THC auto = True
+
+[CAMERA_OFFSET]
+Camera port = 0
+X axis = 0.0
+Y axis = 0.0
+
+[STATISTICS]
+Cut time = 110.47
+Paused time = 0.0
+Probe time = 95.24
+Program run time = 262.82
+Torch on time = 126.42
+Rapid time = 31.76
+Cut length = 3766.46
+Pierce count = 23
+
+[LASER_OFFSET]
+X axis = 14.16
+Y axis = 37.3633
+
+[OFFSET_PROBING]
+X axis = 0.0
+Y axis = 0.0
+Delay = 0.0
+

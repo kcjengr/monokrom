@@ -1,0 +1,114 @@
+#!/usr/bin/python3
+'''
+M138
+
+Copyright (C) 2023  James Walker
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+'''
+
+import sys
+import linuxcnc
+from time import sleep
+from subprocess import run as RUN
+
+# P param.      Code for function to be performed
+# Q param,      Value to be used by the function selected
+
+# Explanation of the function codes passed to P
+# 601 = Setup for G38.n command
+# 602 = Post probe restore pins and set a new probe height via Q value
+# 603 = Reset back to standard QTPlasmac behaviour
+
+
+def abort(msg):
+    try:
+        linuxcnc.command().error_msg(msg)
+        linuxcnc.command().abort()
+        exit()
+    except KeyboardInterrupt:
+        pass
+
+action = int(float(sys.argv[1]))
+value = float(sys.argv[2])
+if action == -1:
+    abort("M238 - Missing P parameter")
+elif action not in [601, 602, 603]:
+    abort(f"M238 - Invalid parameter: P{action}")
+elif action == 602 and value == -1:
+    abort(f"M238 P{action} - Missing Q parameter")
+
+
+def get_min_z():
+    try:
+        response = RUN(['halcmd', 'gets', 'plasmac:axis-z-min-limit'], capture_output=True)
+        response.check_returncode()
+    except:
+        abort(f"M238 - Error getting min z")
+
+    return float(response.stdout.decode())
+
+def unlink():
+    try:
+        RUN(['halcmd', 'unlinkp', 'plasmac.probe-start-height']).check_returncode()
+        RUN(['halcmd', 'unlinkp', 'plasmac.ohmic-probe']).check_returncode()
+        RUN(['halcmd', 'unlinkp', 'ohmicsense.is-probing']).check_returncode()
+        print("unlink")
+    except:
+        abort(f"M238 - Error unlikning")
+
+def pre_probe():
+    try:
+        RUN(['halcmd', 'linksp', 'plasmac:ohmic-probe-out','motion.probe-input']).check_returncode()
+        RUN(['halcmd', 'setp', 'ohmicsense.is-probing','1']).check_returncode()
+        print("pre probe")
+    except:
+        abort(f"M238 - Error linking signal")
+
+def post_probe(new_probe_height):
+    try:
+        RUN(['halcmd', 'setp', 'ohmicsense.is-probing','0']).check_returncode()
+        RUN(['halcmd', 'unlinkp', 'motion.probe-input']).check_returncode()
+        RUN(['halcmd', 'setp', 'plasmac.probe-start-height',f'{new_probe_height - get_min_z()+3}']).check_returncode()
+        RUN(['halcmd', 'linkps', 'plasmac.ohmic-probe','plasmac:ohmic-probe-out']).check_returncode()
+        RUN(['halcmd', 'linkps', 'ohmicsense.is-probing','plasmac:ohmic-enable']).check_returncode()
+        print("post probe")
+    except:
+        abort(f"M238 - Error post probe")
+
+def original():
+    try:
+        RUN(['halcmd', 'linkps', 'plasmac.probe-start-height','plasmac:probe-start-height']).check_returncode()
+        RUN(['halcmd', 'linkps', 'plasmac.ohmic-probe','plasmac:ohmic-probe-out']).check_returncode()
+        RUN(['halcmd', 'linkps', 'ohmicsense.is-probing','plasmac:ohmic-enable']).check_returncode()
+        print("original")
+    except:
+        abort(f"M238 - Error in original reset")
+
+
+try:
+    if action == 601:
+        original()
+        unlink()
+        pre_probe()
+    elif action == 602:
+        post_probe(value)
+    elif action == 603:
+        original()
+except:
+    abort(f"M238 - Error setting HAL pin")
+
+
+exit()

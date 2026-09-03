@@ -1,0 +1,16 @@
+; configured by:
+; [RS274NGC]
+; REMAP=M238  modalgroup=10 argspec=p ngc=m238
+;
+o<m238> sub
+#5599 = 1  (turn on debug, output)
+; Set up for probe
+G53 G0 Z-5
+M138 P601
+G38.3 Z-65 F200
+; Rapid back to Z home
+G53 G0 Z-5
+; Use probe result to set new height
+M138 P602 Q#5063
+o<m238> endsub
+M2

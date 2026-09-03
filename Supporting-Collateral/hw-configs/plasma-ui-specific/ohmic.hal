@@ -1,0 +1,25 @@
+loadrt ohmic3 names=ohmicsense
+addf ohmicsense servo-thread
+
+# --- 7i76e ENCODER SETUP FOR OHMIC SENSING---
+setp hm2_7i76e.0.encoder.01.counter-mode  1
+setp hm2_7i76e.0.encoder.01.filter        1
+setp hm2_7i76e.0.encoder.01.scale        -1
+
+# Settings per calibration sticker on back of THCAD - DONE
+setp ohmicsense.thcad-0-volt-freq    137300
+setp ohmicsense.thcad-max-volt-freq  960400
+# Per jumper setting on THCAD
+setp ohmicsense.thcad-divide         32
+# Parameters for sensing
+setp ohmicsense.thcad-fullscale      5
+setp ohmicsense.volt-divider         4.9
+setp ohmicsense.ohmic-threshold      22
+setp ohmicsense.ohmic-low            21.5
+setp ohmicsense.mode                 1 
+setp ohmicsense.num-readings         10
+net ohmic-vel ohmicsense.velocity-in <= hm2_7i76e.0.encoder.01.velocity
+
+unlinkp db_ohmic.in
+net ohmic-true ohmicsense.ohmic-on  =>  db_ohmic.in
+net plasmac:ohmic-enable            =>  ohmicsense.is-probing

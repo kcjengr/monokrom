@@ -1,0 +1,16 @@
+--- QtVCP Screen Started on: Fri, Oct 18 2024 19:10:41 ---
+--- plasma-ui-specific - QtPlasmaC v2.9-238.315, powered by QtVCP and LinuxCNC ---
+Fri18 19:10: Tool 0: No Tool
+Fri18 19:12: Emergency stop cleared
+Fri18 19:12: GUI power on
+Fri18 19:13: Machine homed
+Fri18 19:13: Tool 0: torch
+Fri18 19:14: Program cleared
+Fri18 19:16: Program cleared
+Fri18 19:18: Program cleared
+Fri18 20:14: Program cleared
+Fri18 20:16: Program cleared
+Fri18 20:27: Program cleared
+Fri18 20:30: Program cleared
+Fri18 20:51: Program cleared
+Fri18 21:00: Program cleared

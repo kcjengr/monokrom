@@ -1,0 +1,82 @@
+#-----------------------------------------------------------------------
+#                        Joypad Preloader HAL
+#
+#      Add a loader line into your ini file in the HAL section
+#-----------------------------------------------------------------------
+
+loadrt or2 names=or_speed1,or_speed2,or_incStep,FF1combine,FF2combine
+addf or_speed1 servo-thread
+addf or_speed2 servo-thread
+addf or_incStep servo-thread
+addf FF1combine servo-thread
+addf FF2combine servo-thread
+
+loadrt mux4 names=speedon,incSizes
+addf incSizes servo-thread
+addf speedon servo-thread
+
+loadrt abs names=incX,incY,incZ
+addf incX servo-thread
+addf incY servo-thread
+addf incZ servo-thread
+
+loadrt mult2 names=multJoyXclamp,multJoyYclamp,multJoyZclamp,linear_velocity_per_min,multJoyXclampAxis,multJoyYclampAxis,multJoyZclampAxis
+addf multJoyXclamp servo-thread
+addf multJoyYclamp servo-thread
+addf multJoyZclamp servo-thread
+addf multJoyXclampAxis servo-thread
+addf multJoyYclampAxis servo-thread
+addf multJoyZclampAxis servo-thread
+addf linear_velocity_per_min servo-thread
+
+loadrt conv_bit_float names=convJoyXbtn,convJoyYbtn,convJoyZbtn,convJoyClampXbtn
+addf convJoyXbtn servo-thread
+addf convJoyYbtn servo-thread
+addf convJoyZbtn servo-thread
+addf convJoyClampXbtn servo-thread
+
+loadrt deadzone names=deadX,deadY,deadZ
+addf deadX servo-thread
+addf deadY servo-thread
+addf deadZ servo-thread
+
+loadrt flipflop names=incFF1,incFF2,joy_eStopFF,x_gateFF,y_gateFF
+addf incFF1 servo-thread
+addf incFF2 servo-thread
+addf joy_eStopFF servo-thread
+# exclusive clamp
+addf x_gateFF servo-thread
+addf y_gateFF servo-thread
+
+loadrt not names=joy_eStopNot,joy_x_wNot,joy_y_wNot,joy_x_gateNot,joy_y_gateNot
+addf joy_eStopNot servo-thread
+# exclusive clamp
+addf joy_x_wNot servo-thread
+addf joy_y_wNot servo-thread
+addf joy_x_gateNot servo-thread
+addf joy_y_gateNot servo-thread
+
+loadrt and2 names=joy_eStopAndActive,joy_eStopAndReset,joy_y_selectAnd,joy_xy_deselectAnd,joy_x_setAnd,joy_y_setAnd,joy_BlockXAna,joy_BlockYAna
+addf joy_eStopAndActive servo-thread
+addf joy_eStopAndReset servo-thread
+# exclusive clamp
+addf joy_y_selectAnd servo-thread
+addf joy_xy_deselectAnd servo-thread
+addf joy_x_setAnd servo-thread
+addf joy_y_setAnd servo-thread
+# block analogue feed if speed is zero
+addf joy_BlockXAna servo-thread
+addf joy_BlockYAna servo-thread
+
+loadrt edge names=joy_eStopEdge
+addf joy_eStopEdge servo-thread
+
+loadrt conv_s32_float names=x_count_to_float,y_count_to_float
+# exclusive clamp
+addf x_count_to_float servo-thread
+addf y_count_to_float servo-thread
+
+loadrt wcomp names=x_wcomp,y_wcomp
+# exclusive clamp
+addf x_wcomp servo-thread
+addf y_wcomp servo-thread

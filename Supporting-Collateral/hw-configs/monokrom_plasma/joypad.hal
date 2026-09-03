@@ -1,0 +1,252 @@
+#-----------------------------------------------------------------------
+#                 Joypad HAL for a Logitech F710
+#
+#                  Set joypad mode switch to "X", NOT "D"
+#-----------------------------------------------------------------------
+
+
+# Load the hal_input component that creates pins for axes and buttons
+# See man hal_input for details and finding input devices
+# for remote joypad
+loadusr -W hal_input -KRAL F710
+
+# load joyhandle component and attach to threads (in this case 3 instances)
+loadrt joyhandle names=joyX,joyY,joyZ
+addf joyX servo-thread
+addf joyY servo-thread
+addf joyZ servo-thread
+
+
+
+#-----------------------------------------------------------------------
+# Clamping Logic
+
+# which axis is active outside of a dead band
+net x-jog-count-int     input.0.abs-x-counts => x_count_to_float.in
+net x-jog-count-raw     x_count_to_float.out => x_wcomp.in
+setp x_wcomp.min -1000
+setp x_wcomp.max 1000
+net X-inactive          x_wcomp.out => joy_x_wNot.in
+net X-active            joy_x_wNot.out
+
+net y-jog-count-int     input.0.abs-y-counts => y_count_to_float.in
+net y-jog-count-raw     y_count_to_float.out => y_wcomp.in
+setp y_wcomp.min -1000
+setp y_wcomp.max 1000
+net Y-inactive          y_wcomp.out => joy_y_wNot.in
+net Y-active            joy_y_wNot.out
+
+# latch the knob motion
+net X-inactive          joy_y_selectAnd.in0
+net Y-active            joy_y_selectAnd.in1
+net Y-select            joy_y_selectAnd.out
+
+net X-inactive          joy_xy_deselectAnd.in0
+net Y-inactive          joy_xy_deselectAnd.in1
+net XY-Deselect         joy_xy_deselectAnd.out
+
+net X-active            joy_x_setAnd.in0
+net Y-gate-not          joy_x_setAnd.in1
+net X-set               joy_x_setAnd.out => x_gateFF.set
+
+net XY-Deselect         x_gateFF.reset
+net X-gate              x_gateFF.out => joy_x_gateNot.in
+net X-gate-not          joy_x_gateNot.out
+
+net Y-select            joy_y_setAnd.in0
+net X-gate-not          joy_y_setAnd.in1
+net Y-set               joy_y_setAnd.out => y_gateFF.set
+
+net XY-Deselect         y_gateFF.reset
+net Y-gate              y_gateFF.out => joy_y_gateNot.in
+net Y-gate-not          joy_y_gateNot.out
+
+
+#-----------------------------------------------------------------------
+# Set jog speed.
+# This uses a mux4 component to get the jog speed from two possible
+# sets of button selections.
+# No press = 0, Either TL/TR = a speed, Either BL/BR = a speed,
+# Dual press across top/bottom = 0
+#
+# calc the velocity per min where ini has per sec
+setp linear_velocity_per_min.in0 60
+setp linear_velocity_per_min.in1 [TRAJ]MAX_LINEAR_VELOCITY
+net  max_linear_vel  linear_velocity_per_min.out
+
+
+# setup the mux4 lookup table for speed. Either 0 or >0
+setp speedon.in0 0
+# continuous jog speed
+net  max_linear_vel  => speedon.in1
+# increment jog speed
+setp speedon.in2 200
+#net  max_linear_vel  => speedon.in2
+setp speedon.in3 0
+
+net lockbtnTL       input.0.btn-tl => or_speed1.in0
+net lockbtnTR       input.0.btn-tr => or_speed1.in1
+net lockbtnBL       input.0.abs-z-is-pos => or_speed2.in0
+net lockbtnBR       input.0.abs-rz-is-pos => or_speed2.in1
+
+net unlockJoyAna    or_speed1.out => speedon.sel0
+net unlockJoyInc    or_speed2.out => speedon.sel1
+
+# link speed for pre homing movements
+# link speed for post homing movements
+# note: jog-speed signal is predefined for us by Pncconf
+net jog-speed    speedon.out => halui.axis.jog-speed
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+# These parameters are used to set up joyhandle
+# important: default value is 0.2, would override joyhandle.deadband
+setp halui.joint.jog-deadband 0.0
+setp halui.axis.jog-deadband 0.0
+# select nonlinearity to handele low jog values
+setp joyX.power 3.0
+setp joyY.power 3.0
+# in my case the z-axis is set up more sensitive
+setp joyZ.power 4.0
+setp joyX.deadband 0.1
+setp joyY.deadband 0.1
+setp joyZ.deadband 0.1
+setp joyX.scale  0.75
+# negative values invert jogging
+setp joyY.scale -0.75
+# in my case the z-axis is scaled to lower speed
+setp joyZ.scale -0.50
+# connect joypad sticks to joyhandles
+net velX        input.0.abs-x-position => joyX.in
+net velY        input.0.abs-y-position => joyY.in
+net velZ        input.0.abs-ry-position => joyZ.in
+#-----------------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------------
+# Configure joypad clamps to support using mini joysticks
+# for both conintuous movement and step increment movement.
+# The pattern used is to:
+# 1. get the TRUE/FALSE value from the unlockJoyAna signal
+# 2. convert that bit into a float so it will be 1 or 0
+# 3. use the result from #2 to multiply the joyhandle.out value
+# 4. pass the 0 or 1 * <value> to the analog pins
+
+# determine the blocks
+net unlockJoyAna    => joy_BlockXAna.in0
+net X-gate          => joy_BlockXAna.in1
+net X-gate-block    <= joy_BlockXAna.out
+
+net unlockJoyAna    => joy_BlockYAna.in0
+net Y-gate          => joy_BlockYAna.in1
+net Y-gate-block    <= joy_BlockYAna.out
+
+# X clamp and Connect to the joints and axis analog pins
+net X-gate-block    => convJoyXbtn.in
+net joyXclampBit    convJoyXbtn.out => multJoyXclamp.in0
+net velXout         joyX.out => multJoyXclamp.in1
+# note: jog-x-analog signal is predefined for us by Pncconf
+net jog-x-analog multJoyXclamp.out => halui.axis.x.analog
+
+# Y clamp and Connect to the joints and axis analog pins
+net Y-gate-block    => convJoyYbtn.in
+net joyYclampBit    convJoyYbtn.out => multJoyYclamp.in0
+net velYout         joyY.out => multJoyYclamp.in1
+# note: jog-y-analog signal is predefined for us by Pncconf
+net jog-y-analog multJoyYclamp.out => halui.axis.y.analog
+
+# Z clamp and Connect to the joints and axis analog pins
+net unlockJoyAna => convJoyZbtn.in
+net joyZclampBit    convJoyZbtn.out => multJoyZclamp.in0
+net velZout         joyZ.out => multJoyZclamp.in1
+# note: jog-z-analog signal is predefined for us by Pncconf
+net jog-z-analog multJoyZclamp.out => halui.axis.z.analog
+
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+# Setup Incremental jog based on selected incremental step
+#
+
+# filter the raw velocity through a deadzone so as to not get
+# trigger on an increment until the joystick is locked to
+# an axis by the the joyhandle component.
+# Use the default deadzone settings per manual
+net velXout  => deadX.in
+net velYout  => deadY.in
+net velZout  => deadZ.in
+
+# pass the dampened velocity outs by axis into math absolute value components
+net deadVelXout  deadX.out => incX.in
+net deadVelYout  deadY.out => incY.in
+net deadVelZout  deadZ.out => incZ.in
+
+# the abs function has bit pins for positive and negative.
+# link these matching halui pins.
+net incXplus    incX.is-positive => halui.axis.x.increment-plus => halui.joint.0.increment-plus
+net incXneg     incX.is-negative => halui.axis.x.increment-minus => halui.joint.0.increment-minus
+
+net incYplus    incY.is-positive => halui.axis.y.increment-plus  => halui.joint.1.increment-plus
+net incYneg     incY.is-negative => halui.axis.y.increment-minus => halui.joint.1.increment-minus
+
+net incZplus    incZ.is-positive => halui.axis.z.increment-plus => halui.joint.2.increment-plus
+net incZneg     incZ.is-negative => halui.axis.z.increment-minus => halui.joint.2.increment-minus
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+# Define the button increment selectors
+#
+setp incSizes.in0 0
+setp incSizes.in1 1
+setp incSizes.in2 0.1
+setp incSizes.in3 0.01
+
+net joyBtnX_out         input.0.btn-x => FF1combine.in0 => incFF2.reset
+net joyBtnA_out         input.0.btn-a => incFF1.reset => FF2combine.in0
+net joyBtnB_out         input.0.btn-b => FF1combine.in1 => FF2combine.in1
+net FF1SetCombine       FF1combine.out => incFF1.set
+net FF2SetCombine       FF2combine.out => incFF2.set
+
+net incSelect1          incFF1.out => incSizes.sel0
+net incSelect2          incFF2.out => incSizes.sel1
+
+net axisIncSet          incSizes.out
+net axisIncSet          halui.axis.x.increment halui.axis.y.increment halui.axis.z.increment
+net axisIncSet          halui.joint.0.increment halui.joint.1.increment halui.joint.2.increment
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+# Program Stop/Abort
+# Use halui.program.stop.   There is also halui.abort which does same
+# as stop and also clears most popup error messages.
+#
+#net joyProgStop         input.0.btn-thumbl => halui.program.stop
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+# Program eStop
+# Use halui.estop.activate
+#
+net joyeStop            input.0.btn-thumbr => halui.estop.activate
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+# Feed +/- 10%.  Max feed override is set in the master config ini file
+# Use halui.feed-override.scale, halui.feed-override.decrease,
+# halui.feed-override.increase
+# The direction of the D-pad pins is opposite to what would expect
+# D-pad UP is negative, D-pad DOWN is positive.
+#
+
+# set the feed override scale
+setp halui.feed-override.scale 0.1
+net joyFeedIncrease     input.0.abs-hat0y-is-neg => halui.feed-override.increase
+net joyFeedDecrease     input.0.abs-hat0y-is-pos => halui.feed-override.decrease
+#-----------------------------------------------------------------------
