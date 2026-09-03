@@ -250,8 +250,8 @@ file_locations:
 
 ## Customizing Persistent Settings
 
-Persistent settings are defined in `config.yml` and saved to the `.prefs` file. To add
-new persistent settings:
+Persistent settings are defined in `config.yml` and saved to `config.yml` settings section
+and pickle files. To add new persistent settings:
 
 ```yaml
 persistent_settings:

@@ -3,7 +3,20 @@
 User Buttons provide quick access to custom NGC subroutines from the Main Tab. Up to 10
 user buttons (USER1-USER10) can be configured.
 
-## Configuration
+## Auto-Generation from qtplasmac
+
+When migrating from a qtplasmac configuration using `monokrom_plasma setup`, user buttons are
+automatically generated from the `.prefs` `[BUTTONS]` section. Each button creates an NGC
+subroutine in the `user_buttons/` directory.
+
+```bash
+monokrom_plasma setup --from-config ~/linuxcnc/configs/my_qtplasmac_config
+```
+
+The generated `user_buttons/` directory contains one `.ngc` file per button, and the INI's
+`SUBROUTINE_PATH` is automatically updated to include `./user_buttons`.
+
+## Manual Configuration
 
 User buttons are configured in the INI file's `[DISPLAY]` section:
 

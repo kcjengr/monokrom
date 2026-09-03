@@ -83,29 +83,26 @@ SPINDLE = jet_tracking_crosshair.stl
 |-----------|-------------|
 | `SPINDLE` | 3D model file for the spindle/jet display |
 
-### [QTPLASMAC]
-
-```ini
-[QTPLASMAC]
-MODE = 0
-ESTOP_TYPE = 0
-```
-
-| Parameter | Description |
-|-----------|-------------|
-| `MODE` | Operating mode (0, 1, or 2) — see [Hardware Setup](hardware-setup.md) |
-| `ESTOP_TYPE` | E-Stop behavior: 0 = indicator only, 1 = software controllable |
-
 ### [PLASMAC]
 
 ```ini
 [PLASMAC]
+MODE = 0
 DBOUNCE = TRUE
 MACHINE = A120
 PRESSURE = bar
 DEFAULT_CUTCHART = 2
 SLAT_TOP = -65.0
 ```
+
+| Parameter | Description |
+|-----------|-------------|
+| `MODE` | Operating mode (0, 1, or 2) — see [Hardware Setup](hardware-setup.md) |
+| `DBOUNCE` | Enable built-in debounce (TRUE/FALSE) |
+| `MACHINE` | Plasma power source model name (for cut chart lookup) |
+| `PRESSURE` | Pressure units (psi, bar, or MPa) |
+| `DEFAULT_CUTCHART` | Default cut chart number |
+| `SLAT_TOP` | Z position of slat top (for height calculations) |
 
 | Parameter | Description |
 |-----------|-------------|
@@ -347,7 +344,17 @@ Up to 10 user buttons (USER1-USER10) are supported. See [User Buttons](user-butt
 
 ## Customizing the INI File
 
-### Creating a New Configuration
+### Converting from qtplasmac (Recommended)
+
+The fastest way to create a MonoKrom configuration from an existing qtplasmac setup is to use the
+`monokrom_plasma setup` command. This automatically transforms the INI, generates HAL files, migrates
+settings from `.prefs`, and creates user buttons. See [Config Migration](config-migration.md) for details.
+
+```bash
+monokrom_plasma setup --from-config ~/linuxcnc/configs/my_qtplasmac_config
+```
+
+### Creating a New Configuration from Scratch
 
 1. Copy the simulation config as a starting point:
    ```bash
@@ -358,7 +365,7 @@ Up to 10 user buttons (USER1-USER10) are supported. See [User Buttons](user-butt
 2. Edit the INI file:
    - Update `MACHINE` name
    - Adjust axis limits and velocities for your machine
-   - Configure operating mode
+   - Configure operating mode in `[PLASMAC]`
    - Set up HAL files
 
 3. Create corresponding HAL files (see [HAL Connections](hal-connections.md)).

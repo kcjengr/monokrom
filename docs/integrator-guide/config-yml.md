@@ -24,7 +24,31 @@ Which resolves to:
 
 ## Custom Config
 
-The `custom_config.yml` file overrides specific settings from the main `config.yml`:
+The `custom_config.yml` file overrides specific settings from the main `config.yml`. When created by the
+`monokrom_plasma setup` command, it includes window options and file locations:
+
+```yaml
+# MonoKrom Plasma VCP config — auto-generated
+windows:
+  mainwindow:
+    kwargs:
+      confirm_exit: true
+      fullscreen: true
+
+data_plugins:
+  file_locations:
+    provider: qtpyvcp.plugins.file_locations:FileLocations
+    kwargs:
+      default_location: NC Files
+      local_locations:
+        Home: ~/
+        Desktop: ~/Desktop
+        NC Files: ~/linuxcnc/nc_files
+```
+
+### Manual Custom Config
+
+For manual installations, `custom_config.yml` can contain just the overrides you need:
 
 ```yaml
 # Override file locations
@@ -191,7 +215,8 @@ gcode_syntax:
 
 ## Persistent Settings
 
-MonoKrom Plasma defines over 110 persistent settings that are saved to the `.prefs` file.
+MonoKrom Plasma defines over 110 persistent settings that are saved to the `config.yml` settings section
+and backed up as pickle files.
 These are organized into categories:
 
 ### THC Settings

@@ -88,6 +88,20 @@ Once the VCP has loaded:
 6. **Probe test** — On the Probe tab, click **PROBE TEST**. The Z axis should probe down,
    find the material surface, and move up to the pierce height.
 
+## Migrating from qtplasmac
+
+If you already have a working qtplasmac configuration, you can convert it to MonoKrom:
+
+```bash
+# Interactive wizard
+monokrom_plasma setup --wizard --from-config ~/linuxcnc/configs/my_qtplasmac_config
+
+# Non-interactive
+monokrom_plasma setup --from-config ~/linuxcnc/configs/my_qtplasmac_config
+```
+
+See [Config Migration](integrator-guide/config-migration.md) for full details.
+
 ## Next Steps
 
 - Read the [User Guide](user-guide/index.md) for detailed operation of each tab and panel.

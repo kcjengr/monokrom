@@ -24,7 +24,7 @@ installations. It assumes familiarity with LinuxCNC basic configuration (stepcon
 MonoKrom Plasma supports three operating modes, selected in the INI file:
 
 ```ini
-[QTPLASMAC]
+[PLASMAC]
 MODE = 0
 ```
 

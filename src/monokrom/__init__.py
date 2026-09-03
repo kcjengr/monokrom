@@ -32,6 +32,7 @@ cmd_doc = """
 
 Usage:
   {vcp_cmd} --ini INI [options]
+  {vcp_cmd} setup --from-config <path> [options]
   {vcp_cmd} --install-sim
   {vcp_cmd} (-h | --help)
   {vcp_cmd} (-v | --version)
@@ -40,20 +41,26 @@ Usage:
 Required Arguments:
   --ini INI            Path to INI file, relative to ~/linuxcnc/configs.
 
+Setup Command:
+  Convert a qtplasmac configuration (from StepConf/PnCconf) to MonoKrom.
+  --from-config <path>   Path to the qtplasmac config directory
+  --output-dir <path>    Output directory (default: monokrom_<source>)
+  --auto                 Non-interactive, accept defaults
+
 Commands:
   --install-sim        Installs LinuxCNC configs, data files etc. in the correct
-                       locations. This should always be run after updating.
+                        locations. This should always be run after updating.
 
 Display  Options:
   --theme THEME        The Qt theme to use, defaults to system theme.
   --stylesheet STYLESHEET
-                       Path to QSS file containing styles to be applied
-                       to specific Qt and/or QtPyVCP widget classes.
+                        Path to QSS file containing styles to be applied
+                        to specific Qt and/or QtPyVCP widget classes.
   --size WIDTHxHEIGHT  Initial size of the window in pixels.
   --position XPOSxYPOS
-                       Initial position of the window, specified as the
-                       coordinates of the top left corner of the window
-                       relative to the top left corner of the screen.
+                        Initial position of the window, specified as the
+                        coordinates of the top left corner of the window
+                        relative to the top left corner of the screen.
   --fullscreen BOOL    Flag to start with window fullscreen.
   --maximize BOOL      Flag to start with window maximized.
   --hide-menu-bar      Hides the menu bar, if present.
@@ -63,15 +70,15 @@ Display  Options:
 
 Application Options:
   --log-level=(DEBUG | INFO | WARN | ERROR | CRITICAL)
-                       Sets the log level. Default INFO.
+                        Sets the log level. Default INFO.
   --config-file PATH   Specify the YML config file relative to $CONFIG_DIR.
   --log-file PATH      Specify the log file relative to $CONFIG_DIR.
   --qt-api (pyqt5 | pyqt | pyside2 | pyside)
-                       Specify the Qt Python binding to use.
+                        Specify the Qt Python binding to use.
   --perfmon            Monitor and log system performance.
   --develop            Development mode. Enables live reloading of QSS styles.
   --command_line_args <args>...
-                       Additional args passed to the QtApplication.
+                        Additional args passed to the QtApplication.
 
 General Options:
   -h --help            Show this help and exit.

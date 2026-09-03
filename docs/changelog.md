@@ -9,11 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `monokrom_plasma setup` subcommand — converts qtplasmac configs to MonoKrom
+- Interactive 6-step wizard (`--wizard`) for config migration
+- Non-interactive mode (`--from-config <path>`) for scripted migrations
+- Auto-generated `[VTK]`, `[PLASMAC]`, `TWOPASS`, and `MDI_COMMAND` entries in INI
+- Settings persistence via `config.yml` settings section + pickle (replaces `.prefs`)
+- Auto-generated `custom_config.yml` with `confirm_exit`, `fullscreen`, `file_locations`
+- Auto-generated `postgui.hal` from template (60+ VCP→plasmac nets)
+- Auto-generated `user_buttons/` from `.prefs` BUTTONS section
+- `setup.log` written to output directory documenting all changes
 - Initial documentation structure (Sphinx + MyST + RTD theme)
 - User guide (12 pages): Main tab, conversational, parameters, settings, statistics,
   probe, THC, arc start, recovery, sheet alignment, MDI
-- Integrator guide (8 pages): Hardware setup, INI config, HAL connections, config.yml,
-  postgui-HAL, user buttons, process database, customization
+- Integrator guide (9 pages): Hardware setup, INI config, config migration, HAL connections,
+  config.yml, postgui-HAL, user buttons, process database, customization
 - Reference materials (5 pages): HAL pin map, persistent settings, G-code syntax,
   state machine, Quickshape reference
 - GitHub Actions workflow for automated documentation builds

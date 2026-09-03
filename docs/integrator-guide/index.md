@@ -8,6 +8,7 @@ customization for system integrators setting up a MonoKrom Plasma installation.
 
 hardware-setup
 ini-config
+config-migration
 hal-connections
 config-yml
 postgui-hal

@@ -1,0 +1,94 @@
+# Keep your post GUI customisations here to prevent them from being overwritten
+# by updates or pncconf/stepconf changes.
+
+net plasmac:axis-z-max-limit     ini.z.max_limit             =>  plasmac.axis-z-max-limit
+net plasmac:axis-z-min-limit     ini.z.min_limit             =>  plasmac.axis-z-min-limit
+net plasmac:axis-x-max-limit     ini.x.max_limit             =>  plasmac.axis-x-max-limit
+net plasmac:axis-x-min-limit     ini.x.min_limit             =>  plasmac.axis-x-min-limit
+net plasmac:axis-y-max-limit     ini.y.max_limit             =>  plasmac.axis-y-max-limit
+net plasmac:axis-y-min-limit     ini.y.min_limit             =>  plasmac.axis-y-min-limit
+
+# Inputs
+net plasmac:cornerlock-enable                qtpyvcp.plasma-vad.checked => plasmac.cornerlock-enable
+net plasmac:cornerlock-threshold          qtpyvcp.thc-vad-threshold.out => plasmac.cornerlock-threshold
+
+net plasmac:cut-feed-rate                 qtpyvcp.param-cutfeedrate.out => plasmac.cut-feed-rate
+net plasmac:cut-height                      qtpyvcp.param-cutheight.out => plasmac.cut-height
+net plasmac:cut-volts                        qtpyvcp.param-cutvolts.out => plasmac.cut-volts
+net plasmac:arc-voltage-scale             qtpyvcp.arc-voltage-scale.out => plasmac.arc-voltage-scale
+net plasmac:arc-voltage-offset           qtpyvcp.arc-voltage-offset.out => plasmac.arc-voltage-offset
+
+net plasmac:float-switch-travel          qtpyvcp.probe-float-travel.out => plasmac.float-switch-travel
+net plasmac:height-override                qtpyvcp.voltage-override.out => plasmac.height-override
+net plasmac:height-per-volt             qtpyvcp.arc-height-per-volt.out => plasmac.height-per-volt
+net plasmac:mesh-enable               qtpyvcp.plasma-mesh-sense.checked => plasmac.mesh-enable
+
+net plasmac:probe-feed-rate                     qtpyvcp.probe-speed.out => plasmac.probe-feed-rate
+net plasmac:probe-start-height                 qtpyvcp.probe-height.out => plasmac.probe-start-height
+net plasmac:ohmic-max-attempts          qtpyvcp.probe-ohmic-retries.out => plasmac.ohmic-max-attempts
+net plasmac:ohmic-probe-enable    qtpyvcp.ohmic-sensing-enabled.checked => plasmac.ohmic-probe-enable
+net plasmac:ohmic-probe-offset                 qtpyvcp.probe-offset.out => plasmac.ohmic-probe-offset
+net plasmac:setup-feed-rate               qtpyvcp.probe-setup-speed.out => plasmac.setup-feed-rate
+net plasmac:skip-ihs-distance                qtpyvcp.probe-skip-ihs.out => plasmac.skip-ihs-distance
+
+net plasmac:pause-at-end                   qtpyvcp.param-pauseatend.out => plasmac.pause-at-end
+
+net plasmac:pierce-delay                  qtpyvcp.param-piercedelay.out => plasmac.pierce-delay
+net plasmac:pierce-height                qtpyvcp.param-pierceheight.out => plasmac.pierce-height
+net plasmac:puddle-jump-delay         qtpyvcp.param-puddlejumpdelay.out => plasmac.puddle-jump-delay
+net plasmac:puddle-jump-height       qtpyvcp.param-puddlejumpheight.out => plasmac.puddle-jump-height
+net plasmac:restart-delay                   qtpyvcp.arc-retry-delay.out => plasmac.restart-delay
+net plasmac:arc-fail-delay                 qtpyvcp.arc-fail-timeout.out => plasmac.arc-fail-delay
+net plasmac:arc-max-starts                   qtpyvcp.arc-max-starts.out => plasmac.arc-max-starts
+
+net plasmac:scribe-arm-delay               qtpyvcp.scribe-arm-delay.out => plasmac.scribe-arm-delay
+net plasmac:scribe-on-delay                 qtpyvcp.scribe-on-delay.out => plasmac.scribe-on-delay
+
+net plasmac:spotting-threshold               qtpyvcp.spot-threshold.out => plasmac.spotting-threshold
+net plasmac:spotting-time                        qtpyvcp.spot-delay.out => plasmac.spotting-time
+
+net plasmac:thc-enable                      qtpyvcp.thc-enabled.checked => plasmac.thc-enable
+net plasmac:thc-delay                             qtpyvcp.thc-delay.out => plasmac.thc-delay
+net plasmac:thc-feed-rate                                                  plasmac.thc-feed-rate
+net plasmac:thc-threshold                     qtpyvcp.thc-threshold.out => plasmac.thc-threshold
+net plasmac:pid-d-gain                       qtpyvcp.thc-pid-d-gain.out => plasmac.pid-d-gain
+net plasmac:pid-i-gain                       qtpyvcp.thc-pid-i-gain.out => plasmac.pid-i-gain
+net plasmac:pid-p-gain                       qtpyvcp.thc-pid-p-gain.out => plasmac.pid-p-gain
+net plasmac:safe-height                     qtpyvcp.thc-safe-height.out => plasmac.safe-height
+
+net plasmac:use-auto-volts            qtpyvcp.plasma-auto-volts.checked => plasmac.use-auto-volts
+net plasmac:torch-enable                   qtpyvcp.torch-enable.checked => plasmac.torch-enable
+
+net plasmac:torch-pulse                  qtpyvcp.plasma-torch-pulse.out => plasmac.torch-pulse-start
+net plasmac:torch-pulse-time         qtpyvcp.plasma-torch-pulse-sec.out => plasmac.torch-pulse-time
+
+net plasmac:arc-ok-high                   qtpyvcp.arc-ok-high-volts.out => plasmac.arc-ok-high
+net plasmac:arc-ok-low                     qtpyvcp.arc-ok-low-volts.out => plasmac.arc-ok-low
+
+net plasmac:xy-feed-rate            qtpyvcp.consumable-xy-feed-rate.out => plasmac.xy-feed-rate
+net plasmac:laser-on                <= qtpyvcp.laser.checked
+
+# Outputs
+net plasmac:consumable-changing     plasmac.consumable-changing         => qtpyvcp.led-change-consumable.on
+net plasmac:cornerlock-is-locked    plasmac.cornerlock-is-locked        => qtpyvcp.led-corner-lock.on
+net plasmac:led-down                plasmac.led-down                    => qtpyvcp.led-thc-down.on
+net plasmac:led-up                  plasmac.led-up                      => qtpyvcp.led-thc-up.on
+net plasmac:pierce-count            plasmac.pierce-count
+net plasmac:probe-test-error        plasmac.probe-test-error
+net plasmac:state                   plasmac.state-out
+net plasmac:thc-active              plasmac.thc-active                  => qtpyvcp.led-thc-active.on
+net plasmac:z-height                plasmac.z-height
+net plasmac:arc-ok-out              plasmac.arc-ok-out                  => qtpyvcp.led-arc-ok.on
+net plasmac:torch-on                plasmac.torch-on                    => qtpyvcp.led-torch-on.on
+net plasmac:cut-length              plasmac.cut-length                  => qtpyvcp.stats-cut-length.in
+net plasmac:cut-time                plasmac.cut-time                    => qtpyvcp.stats-cut-time.in
+
+# Cycle Start Connections
+net plasmac:program-is-paused                                           => qtpyvcp.cycle-start.program-is-paused
+net plasmac:program-is-running                                          => qtpyvcp.cycle-start.program-is-running
+net plasmac:program-is-idle                                             => qtpyvcp.cycle-start.program-is-idle
+net plasmac:machine-is-homed                                            => qtpyvcp.cycle-start.enable
+
+# Feed and Current Velocity display links
+net plasmac:feed-upm                                                    => qtpyvcp.mk-feedrate.in
+net plasmac:current-velocity                                            => qtpyvcp.mk-current-velcoity.in

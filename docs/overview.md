@@ -55,10 +55,10 @@ arc start, cut types, hole cutting) while adding:
 ## Operating Modes
 
 MonoKrom Plasma supports three operating modes. The mode is set in
-the `[QTPLASMAC]` section of the INI file:
+the `[PLASMAC]` section of the INI file:
 
 ```ini
-[QTPLASMAC]
+[PLASMAC]
 MODE = 0
 ```
 
