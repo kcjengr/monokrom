@@ -4,9 +4,19 @@ on:
   push:
     branches: [pyside6]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+ 
+concurrency:
+  group: docs-pages
+  cancel-in-progress: false
+ 
+
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
