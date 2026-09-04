@@ -4,9 +4,9 @@ Monochrome-style VCPs (Virtual Control Panels) for LinuxCNC-controlled lathes, m
 
 ## Projects
 
-| Project | Description | Status |
-|---------|-------------|--------|
-| **Mill** | Milling machine VCP | Stable |
+| Project    | Description                                       | Status             |
+| ---------- | ------------------------------------------------- | ------------------ |
+| **Mill**   | Milling machine VCP                               | Stable             |
 | **Plasma** | Plasma cutting VCP with THC, probing, Quickshapes | Active development |
 
 ## Plasma VCP
@@ -31,6 +31,7 @@ A feature-rich plasma cutting interface built on [QtPyVCP](https://www.qtpyvcp.c
 ![Plasma Parameters Config](docs/images/plasma/cut_material_config.png)
 
 ## Installation
+
 ### Prerequisites
 
 - Linux (Debian 12/Bookworm recommended)
@@ -43,10 +44,10 @@ A feature-rich plasma cutting interface built on [QtPyVCP](https://www.qtpyvcp.c
 MonoKrom Plasma requires a forked branch of qtpyvcp that adds the SQLite-backed plasma
 processes plugin. Choose the branch that matches your Debian version:
 
-| Debian Version | Branch |
-|----------------|--------|
-| Debian 12 (Bookworm) | `main` |
-| Debian 13 (Trixie) | `pyside6` |
+| Debian Version       | Branch    |
+| -------------------- | --------- |
+| Debian 12 (Bookworm) | `main`    |
+| Debian 13 (Trixie)   | `pyside6` |
 
 ```bash
 git clone https://github.com/kcjengr/qtpyvcp
@@ -65,6 +66,7 @@ git checkout main    # Debian 12
 # git checkout pyside6  # Debian 13
 python3 -m pip install sqlalchemy
 ```
+
 ### Step 2: Install MonoKrom
 
 ```bash
