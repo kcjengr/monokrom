@@ -1,5 +1,5 @@
 # Force re-trigger
-name: Docs
+name: Documentation
 
 on:
   push:
