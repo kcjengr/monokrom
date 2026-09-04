@@ -1,18 +1,19 @@
-name: Deploy Docs to GitHub Pages
+name: Docs
 
 on:
   push:
     branches: [pyside6]
+    paths:
+      - '.github/workflows/docs.yml'
+      - 'docs/'
+  workflow_dispatch
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
- 
+  contents: write
+
 concurrency:
   group: docs-pages
   cancel-in-progress: false
- 
 
 jobs:
   build-and-deploy:
@@ -21,6 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Set up Python
@@ -34,9 +36,24 @@ jobs:
       - name: Build documentation
         run: cd docs && make html
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/_build/html
-          force_orphan: true
+      - name: Publish to gh-pages
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin gh-pages
+          git worktree add ../pages origin/gh-pages
+
+          # Replace the published tree with the fresh build, preserving .git.
+          find ../pages -mindepth 1 -maxdepth 1 -not -name '.git' -exec rm -rf {} +
+          cp -a ./docs/_build/html/. ../pages/
+
+          cd ../pages
+          git add -A
+          if git diff --cached --quiet; then
+            echo "documentation unchanged, nothing to publish"
+            exit 0
+          fi
+          git commit -m "Deploy docs from ${GITHUB_SHA}"
+          git push origin HEAD:gh-pages
