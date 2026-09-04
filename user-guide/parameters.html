@@ -1,0 +1,531 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parameters &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Settings" href="settings.html" />
+    <link rel="prev" title="Conversational (Quickshapes)" href="conversational.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#layout-overview">Layout Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-filters">Process Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-settings">Run Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-parameters">Process Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#process-identification">Process Identification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editable-parameters">Editable Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hole-processing">Hole Processing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#hole-processing-options">Hole Processing Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hole-size-lead-in-values">Hole Size &amp; Lead-in Values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#path-segment-feed-percentages">Path Segment Feed Percentages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overburn-explanation">Overburn Explanation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#thc-torch-ohmic">THC, Torch &amp; Ohmic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bottom-navigation-bar">Bottom Navigation Bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-parameters">Using the Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database">Database</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#seeding-from-csv">Seeding from CSV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backup">Backup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing">Editing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#layout-overview">Layout Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#process-filters">Process Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-settings">Run Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#process-parameters">Process Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#process-identification">Process Identification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editable-parameters">Editable Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hole-processing">Hole Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hole-processing-options">Hole Processing Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hole-size-lead-in-values">Hole Size &amp; Lead-in Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#path-segment-feed-percentages">Path Segment Feed Percentages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overburn-explanation">Overburn Explanation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#thc-torch-ohmic">THC, Torch &amp; Ohmic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bottom-navigation-bar">Bottom Navigation Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-parameters">Using the Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#database">Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#seeding-from-csv">Seeding from CSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backup">Backup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing">Editing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User Guide</a></li>
+      <li class="breadcrumb-item active">Parameters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user-guide/parameters.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="parameters">
+<h1>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h1>
+<p>The Parameters tab (on the <strong>CUT &amp; MATERIAL</strong> section) manages cut parameters through a filter-based system backed by a SQLite database.</p>
+<p><img alt="Parameters Screenshot" src="../_images/parameters.png" /></p>
+<section id="layout-overview">
+<h2>Layout Overview<a class="headerlink" href="#layout-overview" title="Link to this heading"></a></h2>
+<p>The screen is divided into four main areas:</p>
+<ol class="arabic simple">
+<li><p><strong>Process Filters &amp; Run Settings</strong> — left column</p></li>
+<li><p><strong>Process Parameters</strong> — centre-left</p></li>
+<li><p><strong>Hole Processing</strong> — centre-right</p></li>
+<li><p><strong>THC, Torch &amp; Ohmic</strong> — far right</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="process-filters">
+<h2>Process Filters<a class="headerlink" href="#process-filters" title="Link to this heading"></a></h2>
+<p>The <strong>Process Filters</strong> panel contains six dropdown selectors used to narrow down the cut process database:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Filter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example Values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Material</strong></p></td>
+<td><p>Material type</p></td>
+<td><p>Generic</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Thickness</strong></p></td>
+<td><p>Material thickness</p></td>
+<td><p>8mm</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Consumable</strong></p></td>
+<td><p>Tip/wheel/Nozzle combination</p></td>
+<td><p>Shielded</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Operation</strong></p></td>
+<td><p>Type of operation</p></td>
+<td><p>Cut</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Gas</strong></p></td>
+<td><p>Cutting gas type</p></td>
+<td><p>Air - Air</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Quality</strong></p></td>
+<td><p>Cut quality setting</p></td>
+<td><p>Production</p></td>
+</tr>
+</tbody>
+</table>
+<p>These selections define the displayed cutting-process configuration. The SUB-LIST below the filters shows all matching cut entries.</p>
+</section>
+<hr class="docutils" />
+<section id="run-settings">
+<h2>Run Settings<a class="headerlink" href="#run-settings" title="Link to this heading"></a></h2>
+<p>The <strong>Run Settings</strong> panel contains four action buttons for managing process records:</p>
+<ul class="simple">
+<li><p><strong>SAVE</strong> — Save changes to the currently selected cut.</p></li>
+<li><p><strong>RELOAD</strong> — Reload the selected cut from the database.</p></li>
+<li><p><strong>DELETE</strong> — Remove the selected cut from the database.</p></li>
+<li><p><strong>NEW</strong> — Create a new cut entry.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="process-parameters">
+<h2>Process Parameters<a class="headerlink" href="#process-parameters" title="Link to this heading"></a></h2>
+<p>The <strong>Process Parameters</strong> panel displays the selected process identity and its main cutting values.</p>
+<section id="process-identification">
+<h3>Process Identification<a class="headerlink" href="#process-identification" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Process Name</strong></p></td>
+<td><p>Display name for the process</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Process / Cutchart / Tool ID</strong></p></td>
+<td><p>Unique identifier for the process</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="editable-parameters">
+<h3>Editable Parameters<a class="headerlink" href="#editable-parameters" title="Link to this heading"></a></h3>
+<p>Each numeric field uses a minus / value / plus control for adjustment.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Kerf Width</strong></p></td>
+<td><p>Width of the cut (used for path compensation)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pierce Height</strong></p></td>
+<td><p>Distance from workpiece to torch at pierce</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Pierce Delay</strong></p></td>
+<td><p>Time torch stays on at pierce height before lowering</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cut Height</strong></p></td>
+<td><p>Torch distance from workpiece during cutting</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cut Feed Rate</strong></p></td>
+<td><p>Cutting speed (mm/min or in/min)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Setup Feed Rate</strong></p></td>
+<td><p>Feed rate for setup / rapid movements</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cut Amps</strong></p></td>
+<td><p>Plasma current (requires RS485 communications)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cut Volts</strong></p></td>
+<td><p>Expected arc voltage during cut</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>P-Jump Height</strong></p></td>
+<td><p>Piercing jump height (percentage)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>P-Jump Delay</strong></p></td>
+<td><p>Piercing jump delay (seconds)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Pause at End</strong></p></td>
+<td><p>Pause time at end of cut (seconds)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Gas Pressure</strong></p></td>
+<td><p>Gas pressure setting</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="hole-processing">
+<h2>Hole Processing<a class="headerlink" href="#hole-processing" title="Link to this heading"></a></h2>
+<p>The <strong>Holes</strong> panel configures how circular holes are cut.</p>
+<section id="hole-processing-options">
+<h3>Hole Processing Options<a class="headerlink" href="#hole-processing-options" title="Link to this heading"></a></h3>
+<p>Five checkboxes control hole-processing behaviour:</p>
+<ul class="simple">
+<li><p><strong>Enable</strong> — Enable hole processing for this process.</p></li>
+<li><p><strong>Small Hole Marking</strong> — Use marking (arc start) for small holes.</p></li>
+<li><p><strong>Straight Leadins</strong> — Use straight lead-in paths instead of arcs.</p></li>
+<li><p><strong>Kerf Adjusted</strong> — Adjust kerf for hole cutting.</p></li>
+<li><p><strong>Use Hidef if Available</strong> — Use high-definition consumables for holes if available.</p></li>
+</ul>
+</section>
+<section id="hole-size-lead-in-values">
+<h3>Hole Size &amp; Lead-in Values<a class="headerlink" href="#hole-size-lead-in-values" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hole Size ratio</strong></p></td>
+<td><p>Hole size relative to Material Thickness (x:1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Maximum hole size</strong></p></td>
+<td><p>Maximum hole size to process with special handling</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Leadin Arc Radius</strong></p></td>
+<td><p>Radius of the arc lead-in (<code class="docutils literal notranslate"><span class="pre">0</span></code> = auto calculate leadin)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Small hole threshold</strong></p></td>
+<td><p>Threshold below which small-hole processing is applied</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hole Kerf Width</strong></p></td>
+<td><p>Kerf width for holes (<code class="docutils literal notranslate"><span class="pre">0</span></code> = use process kerf)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="path-segment-feed-percentages">
+<h3>Path Segment Feed Percentages<a class="headerlink" href="#path-segment-feed-percentages" title="Link to this heading"></a></h3>
+<p>The <strong>% of Feed</strong> section lets you adjust cutting speed for different segments of a hole cut:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Path Segment</p></th>
+<th class="head text-right"><p>% of Feed</p></th>
+<th class="head text-right"><p>Adjustment</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Lead-in</strong></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">60.0</span> <span class="pre">%</span></code></p></td>
+<td class="text-right"><p>—</p></td>
+<td><p>Speed during the lead-in arc</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc 1</strong></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">60.0</span> <span class="pre">%</span></code></p></td>
+<td class="text-right"><p>—</p></td>
+<td><p>Speed during the first arc segment</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Arc 2</strong></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">40.0</span> <span class="pre">%</span></code></p></td>
+<td class="text-right"><p>—</p></td>
+<td><p>Speed during the second arc segment</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc 3</strong></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">100.0</span> <span class="pre">%</span></code></p></td>
+<td class="text-right"><p>—</p></td>
+<td><p>Speed during the third arc segment</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Overburn</strong></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">100.0</span> <span class="pre">%</span></code></p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">0.0000</span></code></p></td>
+<td><p>Speed during overburn; Adjustment shifts torch-off position</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p><strong>Note:</strong> The value used is the larger of the two supplied, once calculated and processing commences.</p>
+</div></blockquote>
+</section>
+<section id="overburn-explanation">
+<h3>Overburn Explanation<a class="headerlink" href="#overburn-explanation" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>Overburn can push torch-off past 12 o’clock position.</p>
+<p>Torch-off is at kerf size BEFORE 12 o’clock. Overburn Adjustment shifts that position left for a positive value and right for a negative value.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="thc-torch-ohmic">
+<h2>THC, Torch &amp; Ohmic<a class="headerlink" href="#thc-torch-ohmic" title="Link to this heading"></a></h2>
+<p>The <strong>THC, Torch &amp; Ohmic</strong> panel configures torch-height-control and sensing options. Each setting is a checkbox:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>THC Enabled</strong></p></td>
+<td><p>Enable torch-height control</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>THC Auto Volts</strong></p></td>
+<td><p>Auto-set THC voltage based on process</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>THC (Velocity) Anti-Dive</strong></p></td>
+<td><p>Prevent torch dive during arc initiation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Void Anti Dive</strong></p></td>
+<td><p>Anti-dive behaviour for void cuts</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Mesh Sense</strong></p></td>
+<td><p>Enable mesh sensing (for uneven surfaces)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ohmic Sense</strong></p></td>
+<td><p>Enable ohmic sensing for height detection</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="bottom-navigation-bar">
+<h2>Bottom Navigation Bar<a class="headerlink" href="#bottom-navigation-bar" title="Link to this heading"></a></h2>
+<p>The application navigation bar runs along the bottom of the screen:</p>
+<ul class="simple">
+<li><p><strong>Control &amp; Run</strong></p></li>
+<li><p><strong>Cut &amp; Material</strong> — active section (shown highlighted)</p></li>
+<li><p><strong>Quickshapes</strong></p></li>
+<li><p><strong>Settings</strong></p></li>
+<li><p><strong>Diagnostics</strong></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="using-the-parameters">
+<h2>Using the Parameters<a class="headerlink" href="#using-the-parameters" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Select filter values</strong> — Use the dropdowns in the Process Filters panel to select each field.</p></li>
+<li><p><strong>View matching cuts</strong> — The SUB-LIST below the filters shows all matching cut entries.</p></li>
+<li><p><strong>Select a cut</strong> — Click a row in the SUB-LIST to load its parameters.</p></li>
+<li><p><strong>Edit parameters</strong> — Modify values in the Process Parameters or Hole Processing panels.</p></li>
+<li><p><strong>Save changes</strong> — Click <strong>SAVE</strong> in the Run Settings panel.</p></li>
+<li><p><strong>Create a new cut</strong> — Click <strong>NEW</strong>, set all filter fields, enter the desired parameters, and click <strong>SAVE</strong>.</p></li>
+<li><p><strong>Delete a cut</strong> — Select the cut from the SUB-LIST and click <strong>DELETE</strong>.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="database">
+<h2>Database<a class="headerlink" href="#database" title="Link to this heading"></a></h2>
+<p>The process database is stored in <code class="docutils literal notranslate"><span class="pre">plasma_table.db</span></code> (SQLite format).</p>
+<section id="seeding-from-csv">
+<h3>Seeding from CSV<a class="headerlink" href="#seeding-from-csv" title="Link to this heading"></a></h3>
+<p>A seed CSV file (<code class="docutils literal notranslate"><span class="pre">master-seed-source.csv</span></code>) is provided in the config directory. The database is automatically populated on first run if seed data exists.</p>
+</section>
+<section id="backup">
+<h3>Backup<a class="headerlink" href="#backup" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>plasma_table.db<span class="w"> </span>plasma_table.db.backup
+</pre></div>
+</div>
+</section>
+<section id="editing">
+<h3>Editing<a class="headerlink" href="#editing" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite3<span class="w"> </span>plasma_table.db<span class="w"> </span><span class="s2">"SELECT * FROM cuts WHERE material = 'Mild Steel';"</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conversational.html" class="btn btn-neutral float-left" title="Conversational (Quickshapes)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="settings.html" class="btn btn-neutral float-right" title="Settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

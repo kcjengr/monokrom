@@ -1,0 +1,2009 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation Review Results &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=837179f8"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Documentation Review Results</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/review.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="documentation-review-results">
+<h1>Documentation Review Results<a class="headerlink" href="#documentation-review-results" title="Link to this heading"></a></h1>
+<p><strong>Date:</strong> 2026-09-01
+<strong>Scope:</strong> All <code class="docutils literal notranslate"><span class="pre">.md</span></code> files in <code class="docutils literal notranslate"><span class="pre">docs/user-guide/</span></code>, <code class="docutils literal notranslate"><span class="pre">docs/reference/</span></code>, <code class="docutils literal notranslate"><span class="pre">docs/integrator-guide/</span></code>
+<strong>Method:</strong> Systematic cross-reference against <code class="docutils literal notranslate"><span class="pre">src/monokrom/plasma/</span></code> codebase and <code class="docutils literal notranslate"><span class="pre">linuxcnc/configs/sim.monokrom/plasmac/plasmac_sim.ini</span></code></p>
+<hr class="docutils" />
+<section id="reference-screenshot-backing">
+<h2>Reference: Screenshot Backing<a class="headerlink" href="#reference-screenshot-backing" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Doc File</p></th>
+<th class="head"><p>Screenshot Exists</p></th>
+<th class="head"><p>Screenshot Matches UI?</p></th>
+<th class="head"><p>Likely Correct?</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">main-tab.md</span></code></p></td>
+<td><p>Yes (<code class="docutils literal notranslate"><span class="pre">main-tab.png</span></code>)</p></td>
+<td><p>Yes — rewritten to match</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>No action needed</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">conversational.md</span></code></p></td>
+<td><p>Yes (<code class="docutils literal notranslate"><span class="pre">conversational.png</span></code>)</p></td>
+<td><p>Partially — omits kerf/smart-hole</p></td>
+<td><p>Mostly</p></td>
+<td><p>Fix shape params (shapes 3, 4, 5, 6, 8, 9, 11)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">parameters.md</span></code></p></td>
+<td><p>Yes (<code class="docutils literal notranslate"><span class="pre">parameters.png</span></code>)</p></td>
+<td><p>No — describes old layout</p></td>
+<td><p><strong>No</strong></p></td>
+<td><p>Complete rewrite of layout, filters, parameters; add hole processing &amp; THC panel docs</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">settings.md</span></code></p></td>
+<td><p>No (<code class="docutils literal notranslate"><span class="pre">settings.png</span></code> Missing)</p></td>
+<td><p>N/A</p></td>
+<td><p><strong>No</strong></p></td>
+<td><p>Rewrite to match 2 sub-tabs; update all defaults; remove Height Override; add missing settings</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">recovery.md</span></code></p></td>
+<td><p>Yes (<code class="docutils literal notranslate"><span class="pre">recovery.png</span></code>)</p></td>
+<td><p>Partially — describes tab not control group</p></td>
+<td><p>Partially</p></td>
+<td><p>Fix direction indicators, speed slider, cancel button; rewrite consumable workflow/state machine; fix run from line context</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mdi.md</span></code></p></td>
+<td><p>Yes (<code class="docutils literal notranslate"><span class="pre">mdi.png</span></code>)</p></td>
+<td><p>No — omits most of the screen</p></td>
+<td><p><strong>No</strong></p></td>
+<td><p>Fix location; add missing sections (keypad, queue, toolbar, file controls)</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">statistics.md</span></code></p></td>
+<td><p>No (<code class="docutils literal notranslate"><span class="pre">statistics.png</span></code> Missing)</p></td>
+<td><p>N/A</p></td>
+<td><p>Unknown</p></td>
+<td><p>Verify against codebase; clarify tab location</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">arc-start.md</span></code></p></td>
+<td><p>No</p></td>
+<td><p>N/A</p></td>
+<td><p>Partially (values now CSV-based)</p></td>
+<td><p>Update Arc OK High/Low, Arc Retry Delay defaults</p></td>
+<td><p>Done.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">probe.md</span></code></p></td>
+<td><p>No</p></td>
+<td><p>N/A</p></td>
+<td><p>Partially</p></td>
+<td><p>Update Probe Speed, Probe Height defaults; add missing defaults</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thc.md</span></code></p></td>
+<td><p>No</p></td>
+<td><p>N/A</p></td>
+<td><p>Partially</p></td>
+<td><p>Update all defaults; remove Height Override; fix Corner Lock &amp; THC indicators</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sheet-alignment.md</span></code></p></td>
+<td><p>No</p></td>
+<td><p>N/A</p></td>
+<td><p>Unknown</p></td>
+<td><p>Verify against codebase</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="user-guide-settings-md-major-issues-solved">
+<h2>1. <code class="docutils literal notranslate"><span class="pre">user-guide/settings.md</span></code> — MAJOR ISSUES - SOLVED<a class="headerlink" href="#user-guide-settings-md-major-issues-solved" title="Link to this heading"></a></h2>
+<p>The documentation covers settings from both sub-pages (THC/ARC/Probe AND Machine) as if they were on a single Settings tab. The screenshot <code class="docutils literal notranslate"><span class="pre">settings.png</span></code> does not exist.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase (config.yml / mainwindow.ui)</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Tab structure</strong></p></td>
+<td><p>Single “Settings tab” with sections</p></td>
+<td><p>Two sub-tabs: “THC / ARC / PROBE &amp;&amp; MARKING” and “MACHINE”</p></td>
+<td><p>Major</p></td>
+<td><p>Rewritten — two sub-tabs: THC/ARC/PROBE &amp;&amp; MACHINE</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>THC Threshold default</strong></p></td>
+<td><p>5.0 V</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_threshold</span></code> default = <strong>1.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 1.0</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>THC PID P default</strong></p></td>
+<td><p>1.0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_pid_p_gain</span></code> default = <strong>10.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 10.0</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>THC PID I default</strong></p></td>
+<td><p>0.1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_pid_i_gain</span></code> default = <strong>0.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 0.0</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>THC PID D default</strong></p></td>
+<td><p>0.05</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_pid_d_gain</span></code> default = <strong>0.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 0.0</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Safe Height default</strong></p></td>
+<td><p>2.0 mm</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_safe_height</span></code> default = <strong>25.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 40.0 (pickle)</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Height Override</strong></p></td>
+<td><p>Range 0.0-2.0, default 1.0</p></td>
+<td><p><strong>Does not exist</strong> in config.yml. The codebase has <code class="docutils literal notranslate"><span class="pre">height_per_volt</span></code> (default 0.100) but no “height override” multiplier</p></td>
+<td><p><strong>Does not exist</strong></p></td>
+<td><p>Done — removed Height Override section</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VAD Threshold default</strong></p></td>
+<td><p>20.0 V</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_vad_threshold</span></code> default = <strong>60.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 60.0</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>VAD Override</strong></p></td>
+<td><p>Default 0.5</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_void_override</span></code> default = <strong>100</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 99 (pickle)</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc Retry Delay default</strong></p></td>
+<td><p>1.0 second</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_retry_delay</span></code> default = <strong>60.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 5.0 (pickle)</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Arc OK High default</strong></p></td>
+<td><p>40.0 V</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_ok_high_volts</span></code> default = <strong>250.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 250.0</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc OK Low default</strong></p></td>
+<td><p>20.0 V</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_ok_low_volts</span></code> default = <strong>60.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 60.0</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Probe Speed default</strong></p></td>
+<td><p>25 mm/min</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_speed</span></code> default = <strong>200</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 300 (pickle)</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Probe Setup Speed</strong></p></td>
+<td><p>No default given</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_setup_speed</span></code> default = <strong>3000</strong></p></td>
+<td><p>Missing</p></td>
+<td><p>Done — added default 3000</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Puddle Jump Height</strong></p></td>
+<td><p>No default given</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">puddle_jump_height</span></code> default = <strong>0.0</strong></p></td>
+<td><p>Missing</p></td>
+<td><p>Done — added default 0.0</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Puddle Jump Delay</strong></p></td>
+<td><p>No default given</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">puddle_jump_delay</span></code> default = <strong>0.0</strong></p></td>
+<td><p>Missing</p></td>
+<td><p>Done — added default 0.0</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Torch Pulse default</strong></p></td>
+<td><p>No default given</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasma_torch_pulse_sec</span></code> default = <strong>0.3</strong></p></td>
+<td><p>Missing</p></td>
+<td><p>Done — added default 1.0 (pickle)</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Missing settings</strong></p></td>
+<td><p>—</p></td>
+<td><p>Scribe Arm/On Delay, Spot Threshold/Delay, Arc Voltage Scale/Offset, Height Per Volt, Arc Height Per Volt, DRO Format settings, Display Units, Virtual Keyboard, DB Seeding, Job Favorites, Consumable XY Feedrate, Framing Feed</p></td>
+<td><p>Major omissions</p></td>
+<td><p>Done — added Scribe, Spot, Arc Voltage, DRO, Display Units, Virtual Keyboard, DB Seeding, Job Favorites, Consumable XY Feed, Framing Feed (Scribe, Spot, Arc Voltage, DRO, Display Units, Virtual Keyboard, DB Seeding, Job Favorites, Consumable XY Feed, Framing Feed)</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>“View Material” setting</strong></p></td>
+<td><p>Referenced in <a class="reference external" href="http://main-tab.md">main-tab.md</a></p></td>
+<td><p>Setting exists (<code class="docutils literal notranslate"><span class="pre">view_material</span></code> is not in config.yml — likely <code class="docutils literal notranslate"><span class="pre">dro.display-units</span></code> instead)</p></td>
+<td><p>Unclear</p></td>
+<td><p>Clarified</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Exit Warning</strong></p></td>
+<td><p>Referenced in <a class="reference external" href="http://main-tab.md">main-tab.md</a></p></td>
+<td><p>Setting exists (<code class="docutils literal notranslate"><span class="pre">run_delete_confirm</span></code> is for delete confirm, not exit warning)</p></td>
+<td><p>Unclear</p></td>
+<td><p>Clarified</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Scribe/Spot sections</strong></p></td>
+<td><p>Not documented at all</p></td>
+<td><p>Real settings: <code class="docutils literal notranslate"><span class="pre">scribe_arm_delay</span></code>, <code class="docutils literal notranslate"><span class="pre">scribe_on_delay</span></code>, <code class="docutils literal notranslate"><span class="pre">spot_threshold</span></code>, <code class="docutils literal notranslate"><span class="pre">spot_delay</span></code></p></td>
+<td><p>Missing</p></td>
+<td><p>Done — added Scribe and Spot sections</p></td>
+<td><p>Done</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="user-guide-parameters-md-major-issues">
+<h2>2. <code class="docutils literal notranslate"><span class="pre">user-guide/parameters.md</span></code> — MAJOR ISSUES<a class="headerlink" href="#user-guide-parameters-md-major-issues" title="Link to this heading"></a></h2>
+<p>The screenshot <code class="docutils literal notranslate"><span class="pre">parameters.png</span></code> exists but the documentation describes a layout that doesn’t match the actual UI.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase (mainwindow.py:70-111)</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Tab name/location</strong></p></td>
+<td><p>“Parameters tab (on the right column)”</p></td>
+<td><p>It’s “CUT &amp;&amp; MATERIAL” tab in bottom nav; FILTERS are in LEFT column</p></td>
+<td><p>Major</p></td>
+<td><p>Rename to “CUT &amp;&amp; MATERIAL” tab; move filters description to left column</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Filter fields</strong></p></td>
+<td><p>5 fields: Gas, Machine, Material, Thickness, Consumable</p></td>
+<td><p><strong>8 fields</strong>: Gas, Machine, Material, Thickness, Consumable, <strong>Operation, Quality</strong>, plus <strong>Distance System, Pressure System</strong> (locked to INI)</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Update to 8 fields (add Operation, Quality, Distance System, Pressure System)</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Parameter display</strong></p></td>
+<td><p>7 parameters listed</p></td>
+<td><p><strong>15 fields</strong>: Process Name, Process/Tool ID, Pierce Height, Pierce Delay, Cut Height, Cut Feed Rate, Setup Feed Rate, Cut Volts, Cut Amps, Kerf Width, P-Jump Height, P-Jump Delay, Pause at End, Gas Pressure</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Update to 15 fields</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>“SUB-LIST” reference</strong></p></td>
+<td><p>“SUB-LIST below the filters shows all matching cut entries”</p></td>
+<td><p>No “SUB-LIST” widget — the matching cuts are shown in a list widget (<code class="docutils literal notranslate"><span class="pre">grp_filter_sub_list</span></code>)</p></td>
+<td><p>Minor naming</p></td>
+<td><p>Rename to “filter sub-list” or “matching cuts list”</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>“PARAMS tab”</strong></p></td>
+<td><p>“PARAMS tab displays the cut parameters”</p></td>
+<td><p>Parameters are in a “PROCESS PARAMETERS” group box, not a tab</p></td>
+<td><p>Minor naming</p></td>
+<td><p>Rename to “PROCESS PARAMETERS” group box</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>“ADD NEW CUT” / “UPDATE CUT”</strong></p></td>
+<td><p>Button names given</p></td>
+<td><p>Buttons are “SAVE”, “RELOAD”, “DELETE”, “NEW” (in RUN SETTINGS group)</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Update button names to SAVE, RELOAD, DELETE, NEW</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Missing: Hole Processing</strong></p></td>
+<td><p>Not documented at all</p></td>
+<td><p>Large “HOLES” section with Enable, Small Hole Marking, Straight Leadins, Kerf Adjusted, Use Hidef, Hole Size Ratio, Max Hole Size, Leadin Arc Radius, Small Hole Threshold, Hole Kerf Width, % of Feed (Lead-in, Arc 1, Arc 2, Arc 3, Overburn)</p></td>
+<td><p>Major omission</p></td>
+<td><p>Add documentation for HOLES section</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Missing: THC/Torch/Ohmic</strong></p></td>
+<td><p>Not documented</p></td>
+<td><p>“THC, TORCH &amp;&amp; OHMIC” group with 6 checkboxes (THC Enabled, THC Auto Volts, THC Anti-Dive, Void Anti Dive, Mesh Sense, Ohmic Sense)</p></td>
+<td><p>Major omission</p></td>
+<td><p>Add documentation for THC/TORCH/OHMIC group</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Material Settings section</strong></p></td>
+<td><p>Describes a “material settings section”</p></td>
+<td><p>No such section exists — materials are managed through the process database filters</p></td>
+<td><p><strong>Does not exist</strong></p></td>
+<td><p>Remove this section</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Locked Filters</strong></p></td>
+<td><p>Described correctly</p></td>
+<td><p>Exists but on Parameters tab, not Settings tab</p></td>
+<td><p>Minor</p></td>
+<td><p>Move to Parameters tab context</p></td>
+<td><p>Fixed. Done.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="user-guide-conversational-md-minor-issues">
+<h2>3. <code class="docutils literal notranslate"><span class="pre">user-guide/conversational.md</span></code> — MINOR ISSUES<a class="headerlink" href="#user-guide-conversational-md-minor-issues" title="Link to this heading"></a></h2>
+<p>Screenshot exists and matches well. Shape names and structure are correct.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Shape 2 (Donut)</strong></p></td>
+<td><p>“Annulus with inner and outer cuts”</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">donut(od,</span> <span class="pre">id,</span> <span class="pre">...)</span></code> — correct</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Shape 3 (Convex Rectangle)</strong></p></td>
+<td><p>“Rectangle with one rounded corner”</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">convex_rectangle(width,</span> <span class="pre">height,</span> <span class="pre">...)</span></code> — no corner radius param in docs</p></td>
+<td><p><strong>Wrong</strong> — no corner radius parameter; it’s just a convex rectangle</p></td>
+<td><p>Remove corner radius mention; describe as plain convex rectangle</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Shape 4 (Lifting Lug)</strong></p></td>
+<td><p>“Width, Height, Hole Position, Lug Thickness”</p></td>
+<td><p>8 params: w1, d1, h1, h2, d2, rb, separation, cutting_pair — docs are incomplete</p></td>
+<td><p><strong>Wrong</strong> — missing h2 (lug flat height), d2 (inner hole), rb (bottom radius), separation</p></td>
+<td><p>Add missing params: h2, d2, rb, separation</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Shape 5 (U-Lug)</strong></p></td>
+<td><p>“Width, Height, Leg Width, Leg Length”</p></td>
+<td><p>3 params: w1, w2, h — docs are <strong>wrong</strong> — no “Leg Length” param, only w1, w2, h</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Fix params to w1, w2, h (remove Leg Length)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Shape 6 (Pipe Flange)</strong></p></td>
+<td><p>“Outer Diameter, Bolt Circle Diameter, Hole Count, Hole Diameter”</p></td>
+<td><p>6 params: od, pcd, holes, hd, hole_type, id — docs missing hole_type and center ID</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Add hole_type and center ID params</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Shape 8 (Exhaust Flange)</strong></p></td>
+<td><p>“Width, Height, Slot Count, Slot Width”</p></td>
+<td><p>6 params: id, wt, pcd, bd, sw, nb — docs are <strong>wrong</strong> — uses ID/WT not Width/Height, and has PCD and BD not just slot count</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Rewrite params: id, wt, pcd, bd, sw, nb</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Shape 9 (N-Square Grid)</strong></p></td>
+<td><p>“Grid Spacing, Hole Count X, Hole Count Y, Hole Diameter”</p></td>
+<td><p>17 params including fillet radius, central hole options — docs severely incomplete</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Expand to all 17 params</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Shape 11 (Angle Gusset)</strong></p></td>
+<td><p>“Width, Height, Leg Width, Thickness”</p></td>
+<td><p>8 params including angle, cutting pair, x/y offset — docs incomplete</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Add missing params: angle, cutting pair, x/y offset</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Shape 13 (Web Stiffener)</strong></p></td>
+<td><p>“Width, Height, Web Height”</p></td>
+<td><p>3 params: w, h, c — docs correct but “Web Height” should be “Cutoff”</p></td>
+<td><p>Minor</p></td>
+<td><p>Rename “Web Height” to “Cutoff”</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>“REFRESH” button</strong></p></td>
+<td><p>“Click REFRESH to generate the G-code”</p></td>
+<td><p>Button is “Refresh” (not all-caps) in UI</p></td>
+<td><p>Minor</p></td>
+<td><p>Change to “Refresh”</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Missing: Internal Kerf</strong></p></td>
+<td><p>Not mentioned</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">quickshape_internal_kerf</span></code> setting exists</p></td>
+<td><p>Minor</p></td>
+<td><p>Add mention of quickshape_internal_kerf setting</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="user-guide-recovery-md-moderate-issues">
+<h2>4. <code class="docutils literal notranslate"><span class="pre">user-guide/recovery.md</span></code> — MODERATE ISSUES<a class="headerlink" href="#user-guide-recovery-md-moderate-issues" title="Link to this heading"></a></h2>
+<p>Screenshot exists but describes Cut Recovery as a control group within the JOG tab, not as a “Recovery tab.”</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase (cut_recovery.py + mainwindow.ui)</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Recovery location</strong></p></td>
+<td><p>“Recovery tab appears at the bottom of the interface”</p></td>
+<td><p>It’s a <code class="docutils literal notranslate"><span class="pre">widget_recovery</span></code> embedded in the bottom tab widget — technically a tab, but it’s <strong>within</strong> the CONTROL &amp; RUN tab, not a top-level tab</p></td>
+<td><p>Minor</p></td>
+<td><p>Clarify it’s within CONTROL &amp; RUN tab</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Direction indicators</strong></p></td>
+<td><p>“Visual feedback for current jog direction”</p></td>
+<td><p>No direction indicators exist — only the 8 arrow buttons around a “kerf” label</p></td>
+<td><p><strong>Does not exist</strong></p></td>
+<td><p>Remove (doesn’t exist)</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Speed slider labels</strong></p></td>
+<td><p>“Left (slow) ~10%, Center ~50%, Right (fast) ~100%”</p></td>
+<td><p>Slider is vertical (0-100), no labels shown in UI</p></td>
+<td><p><strong>Invented</strong></p></td>
+<td><p>Remove label descriptions</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Canceling recovery</strong></p></td>
+<td><p>“Press ABORT — cancels recovery mode”</p></td>
+<td><p>Cancel button is “Cancel Movement” — ABORT goes to MAX_HEIGHT</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Change ABORT to “Cancel Movement”</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Consumable Change workflow</strong></p></td>
+<td><p>“Machine moves to consumable change position”</p></td>
+<td><p>Code applies X/Y offset via HAL pins — <strong>machine does NOT move</strong> to a position</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Rewrite: applies X/Y offset via HAL pins, doesn’t move machine</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Consumable Change state machine</strong></p></td>
+<td><p>5 states: IDLE, FEED_HOLD_WAIT, APPLYING_OFFSET, OFFSET_APPLIED, RESETTING</p></td>
+<td><p>Code has: IDLE → FEED_HOLD_WAIT → OFFSET_APPLIED → IDLE (no APPLYING_OFFSET or RESETTING states)</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Update to 3 states: IDLE → FEED_HOLD_WAIT → OFFSET_APPLIED</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Consumable Change trigger</strong></p></td>
+<td><p>“button on the WORK tab becomes active”</p></td>
+<td><p>Button is <code class="docutils literal notranslate"><span class="pre">btn_consumable_change</span></code> — it’s a HalButton toggle, enabled only during feed hold</p></td>
+<td><p>Partially correct</p></td>
+<td><p>Clarify it’s a HalButton toggle enabled during feed hold</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Consumable offset settings</strong></p></td>
+<td><p>“Configured per material”</p></td>
+<td><p>Offsets are in Settings → MACHINE tab: <code class="docutils literal notranslate"><span class="pre">consumable_offset_x</span></code>, <code class="docutils literal notranslate"><span class="pre">consumable_offset_y</span></code>, <code class="docutils literal notranslate"><span class="pre">consumable_xy_feed_rate</span></code></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Move to Settings → MACHINE tab context</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Run From Line</strong></p></td>
+<td><p>Described as part of recovery</p></td>
+<td><p>“Run From Line” is a queue button (<code class="docutils literal notranslate"><span class="pre">btn_run_from</span></code>) in the MDI workspace, not recovery-related</p></td>
+<td><p><strong>Wrong context</strong></p></td>
+<td><p>Move to MDI/queue context</p></td>
+<td><p>Done</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="user-guide-mdi-md-moderate-issues">
+<h2>5. <code class="docutils literal notranslate"><span class="pre">user-guide/mdi.md</span></code> — MODERATE ISSUES<a class="headerlink" href="#user-guide-mdi-md-moderate-issues" title="Link to this heading"></a></h2>
+<p>Screenshot exists but documentation covers only a small fraction of the MDI screen.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase (mainwindow.ui + screenshot description)</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>MDI location</strong></p></td>
+<td><p>“at the bottom of the interface in the MDI tab”</p></td>
+<td><p>MDI is in the <strong>lower workspace</strong> of the CONTROL &amp; RUN tab, not a separate tab</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Fix to “lower workspace of CONTROL &amp; RUN tab”</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Screen structure</strong></p></td>
+<td><p>Single “MDI tab”</p></td>
+<td><p>Two horizontal sections: upper (tool-path viewer) and lower (MDI queue + input + keypad)</p></td>
+<td><p>Major omission</p></td>
+<td><p>Describe two horizontal sections</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Parameter buttons</strong></p></td>
+<td><p>“G-code Parameter Buttons (P1-P10)”</p></td>
+<td><p>There is a single <strong>PARAMS</strong> button on the on-screen keypad, not P1-P10</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Change to single PARAMS button</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>On-screen keypad</strong></p></td>
+<td><p>Not mentioned</p></td>
+<td><p>Full keypad with ROW UP/DOWN, F/T/M/G letter keys, numeric keys (0-9, ., -), SPACE, BKSP, SEND</p></td>
+<td><p>Major omission</p></td>
+<td><p>Add full keypad documentation</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Command queue</strong></p></td>
+<td><p>Not mentioned</p></td>
+<td><p>Large queue area with DEL ALL, DEL ROW, RUN FROM, RUN SINGLE, TO EDITOR buttons</p></td>
+<td><p>Major omission</p></td>
+<td><p>Add queue area documentation</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Queue controls</strong></p></td>
+<td><p>Not mentioned</p></td>
+<td><p>PAUSE QUEUE, CLEAR QUEUE buttons</p></td>
+<td><p>Major omission</p></td>
+<td><p>Add PAUSE QUEUE, CLEAR QUEUE</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>File controls</strong></p></td>
+<td><p>Not mentioned</p></td>
+<td><p>OPEN, RELOAD, RECENT buttons below the tool-path viewport</p></td>
+<td><p>Major omission</p></td>
+<td><p>Add OPEN, RELOAD, RECENT</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Toolbar</strong></p></td>
+<td><p>Not mentioned</p></td>
+<td><p>8-button toolbar: +, -, CENTER PLOT, CLEAR, PROG EXTENT, MACH EXTENT, TRANSFORM, SHOW TRAILS</p></td>
+<td><p>Major omission</p></td>
+<td><p>Add 8-button toolbar documentation</p></td>
+<td><p>Done</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Keyboard shortcuts</strong></p></td>
+<td><p>Ctrl+O, Ctrl+S, Ctrl+R</p></td>
+<td><p>These are standard Qt shortcuts, not MDI-specific</p></td>
+<td><p>Minor</p></td>
+<td><p>Note as standard Qt shortcuts</p></td>
+<td><p>Done</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="user-guide-statistics-md-unknown">
+<h2>6. <code class="docutils literal notranslate"><span class="pre">user-guide/statistics.md</span></code> — UNKNOWN<a class="headerlink" href="#user-guide-statistics-md-unknown" title="Link to this heading"></a></h2>
+<p>No screenshot exists. Cannot verify against codebase.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Tab location</strong></p></td>
+<td><p>“on the right column, below the SUB-LIST”</p></td>
+<td><p>There is no “STATISTICS” tab — statistics are displayed via HAL pins (<code class="docutils literal notranslate"><span class="pre">plasmac.cut-length</span></code>, <code class="docutils literal notranslate"><span class="pre">plasmac.cut-time</span></code>) on various indicators</p></td>
+<td><p><strong>Unclear</strong></p></td>
+<td><p>Clarify there’s no statistics tab; metrics shown via HAL pins</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc OK Indicator</strong></p></td>
+<td><p>Described as a visual indicator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mk_led.arc-ok</span></code> LED exists in UI</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Session Information</strong></p></td>
+<td><p>Session Start, Current Program, Total Cuts, Machine State</p></td>
+<td><p>Not clearly visible as a “Session Information” section in the UI</p></td>
+<td><p>Unclear</p></td>
+<td><p>Clarify visibility</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cut Length / Cut Time</strong></p></td>
+<td><p>Described as displaying metrics</p></td>
+<td><p>HAL pins <code class="docutils literal notranslate"><span class="pre">plasmac.cut-length</span></code> and <code class="docutils literal notranslate"><span class="pre">plasmac.cut-time</span></code> exist</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="user-guide-arc-start-md-minor-issues">
+<h2>7. <code class="docutils literal notranslate"><span class="pre">user-guide/arc-start.md</span></code> — MINOR ISSUES<a class="headerlink" href="#user-guide-arc-start-md-minor-issues" title="Link to this heading"></a></h2>
+<p>Values now sourced from Hypertherm 45 CSV data.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase (config.yml)</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Arc OK High default</strong></p></td>
+<td><p>40.0 V</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_ok_high_volts</span></code> default = <strong>250.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 250.0</p></td>
+<td><p>config.yml: 250.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc OK Low default</strong></p></td>
+<td><p>20.0 V</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_ok_low_volts</span></code> default = <strong>60.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 60.0</p></td>
+<td><p>config.yml: 60.0</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Arc Retry Delay default</strong></p></td>
+<td><p>1.0 second</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_retry_delay</span></code> default = <strong>60.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 60.0</p></td>
+<td><p>pickle: 5.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Puddle Jump Height</strong></p></td>
+<td><p>“2-4 mm above cut height”</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">puddle_jump_height</span></code> default = <strong>0.0</strong> (stored as %)</p></td>
+<td><p>Minor</p></td>
+<td><p>Note stored as %</p></td>
+<td><p>config.yml: 0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Puddle Jump Delay</strong></p></td>
+<td><p>“0.2-0.5 seconds”</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">puddle_jump_delay</span></code> default = <strong>0.0</strong></p></td>
+<td><p>Minor</p></td>
+<td><p>Update</p></td>
+<td><p>config.yml: 0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Torch Pulse</strong></p></td>
+<td><p>“0.1-0.3 seconds”</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasma_torch_pulse_sec</span></code> default = <strong>0.3</strong></p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p>pickle: 1.0</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Arc Fail Timeout</strong></p></td>
+<td><p>3.0 seconds</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_fail_timeout</span></code> default = <strong>3.0</strong></p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p>config.yml: 3.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc Max Starts</strong></p></td>
+<td><p>3 attempts</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_max_starts</span></code> default = <strong>3</strong></p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p>config.yml: 3</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="user-guide-probe-md-minor-issues">
+<h2>8. <code class="docutils literal notranslate"><span class="pre">user-guide/probe.md</span></code> — MINOR ISSUES<a class="headerlink" href="#user-guide-probe-md-minor-issues" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Probe Speed default</strong></p></th>
+<th class="head"><p>25 mm/min</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">probe_speed</span></code> default = <strong>200</strong></p></th>
+<th class="head"><p><strong>Wrong</strong></p></th>
+<th class="head"><p>Done — updated to 200</p></th>
+<th class="head"><p>pickle: 300</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Probe Setup Speed default</strong></p></td>
+<td><p>Not given</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_setup_speed</span></code> default = <strong>3000</strong></p></td>
+<td><p>Missing</p></td>
+<td><p>Done — added default 3000</p></td>
+<td><p>config.yml: 3000</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Probe Float Travel default</strong></p></td>
+<td><p>Not given</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_float_travel</span></code> default = <strong>3.2</strong></p></td>
+<td><p>Missing</p></td>
+<td><p>Done — added default 3.2</p></td>
+<td><p>config.yml: 3.2</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Probe Height default</strong></p></td>
+<td><p>“set near Z axis minimum”</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_height</span></code> default = <strong>15.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 15.0 mm</p></td>
+<td><p>pickle: 14.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Probe Test Duration</strong></p></td>
+<td><p>“10 seconds (configurable in .prefs)”</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_test_time</span></code> = <strong>10</strong> (int, not in config.yml — internal)</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p>config.yml: 10</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>OHMIC_PROBE_OFFSET</strong></p></td>
+<td><p>Described as “Probe Offset”</p></td>
+<td><p>Setting is <code class="docutils literal notranslate"><span class="pre">probe_offset</span></code> (labeled “OHMIC PROBE OFFSET” in UI)</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p>config.yml: 0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Slat Top reference</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SLAT_TOP</span> <span class="pre">=</span> <span class="pre">-65.0</span></code></p></td>
+<td><p>INI has <code class="docutils literal notranslate"><span class="pre">SLAT_TOP</span> <span class="pre">=</span> <span class="pre">-65.0</span></code></p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p>INI: SLAT_TOP = -65.0</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slat Top reference</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SLAT_TOP</span> <span class="pre">=</span> <span class="pre">-65.0</span></code></p></td>
+<td><p>INI has <code class="docutils literal notranslate"><span class="pre">SLAT_TOP</span> <span class="pre">=</span> <span class="pre">-65.0</span></code></p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="user-guide-thc-md-major-issues">
+<h2>9. <code class="docutils literal notranslate"><span class="pre">user-guide/thc.md</span></code> — MAJOR ISSUES<a class="headerlink" href="#user-guide-thc-md-major-issues" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase (config.yml)</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>THC Threshold default</strong></p></td>
+<td><p>5.0 V</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_threshold</span></code> default = <strong>1.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 1.0</p></td>
+<td><p>config.yml: 1.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>THC PID P default</strong></p></td>
+<td><p>1.0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_pid_p_gain</span></code> default = <strong>10.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 10.0</p></td>
+<td><p>config.yml: 10.0</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>THC PID I default</strong></p></td>
+<td><p>0.1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_pid_i_gain</span></code> default = <strong>0.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 0.0</p></td>
+<td><p>config.yml: 0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>THC PID D default</strong></p></td>
+<td><p>0.05</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_pid_d_gain</span></code> default = <strong>0.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 0.0</p></td>
+<td><p>config.yml: 0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>VAD Threshold default</strong></p></td>
+<td><p>20.0 V</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_vad_threshold</span></code> default = <strong>60.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 60.0</p></td>
+<td><p>config.yml: 60.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Safe Height default</strong></p></td>
+<td><p>2.0 mm</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_safe_height</span></code> default = <strong>25.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 25.0</p></td>
+<td><p>pickle: 40.0</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Height Override</strong></p></td>
+<td><p>Range 0.0-2.0, default 1.0</p></td>
+<td><p><strong>Does not exist</strong> in config.yml</p></td>
+<td><p><strong>Does not exist</strong></p></td>
+<td><p>Remove (doesn’t exist)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Corner Lock</strong></p></td>
+<td><p>“Checkbox on the Settings tab”</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">corner_lock</span></code> setting exists but there is no UI checkbox labeled “Corner Lock” — it’s a HAL pin (<code class="docutils literal notranslate"><span class="pre">plasmac.corner-lock</span></code>)</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Clarify it’s a HAL pin, not UI checkbox</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>THC State Indicators</strong></p></td>
+<td><p>“THC IDLE” listed as indicator</p></td>
+<td><p>No “THC IDLE” indicator in UI — only THC UP, THC DOWN, THC ACTIVE, THC AUTO Vs</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — replaced with THC ACTIVE and THC AUTO Vs</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="integrator-guide-config-yml-md-major-issues">
+<h2>10. <code class="docutils literal notranslate"><span class="pre">integrator-guide/config-yml.md</span></code> — MAJOR ISSUES<a class="headerlink" href="#integrator-guide-config-yml-md-major-issues" title="Link to this heading"></a></h2>
+<p>This file has its own settings tables that also diverge from config.yml.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>config.yml</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>THC Threshold default</strong></p></td>
+<td><p>5.0</p></td>
+<td><p><strong>1.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 1.0</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>THC PID P default</strong></p></td>
+<td><p>1.0</p></td>
+<td><p><strong>10.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 10.0</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>THC PID I default</strong></p></td>
+<td><p>0.1</p></td>
+<td><p><strong>0.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 0.0</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>THC PID D default</strong></p></td>
+<td><p>0.05</p></td>
+<td><p><strong>0.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 0.0</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Safe Height default</strong></p></td>
+<td><p>2.0</p></td>
+<td><p><strong>25.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 40.0 (pickle)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Float Travel default</strong></p></td>
+<td><p>4.0</p></td>
+<td><p><strong>3.2</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 3.2</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Probe Speed default</strong></p></td>
+<td><p>25.0</p></td>
+<td><p><strong>200</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 300 (pickle)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Probe Setup Speed default</strong></p></td>
+<td><p>25.0</p></td>
+<td><p><strong>3000</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 3000</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Arc OK High default</strong></p></td>
+<td><p>40.0</p></td>
+<td><p><strong>250.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 250.0</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc OK Low default</strong></p></td>
+<td><p>20.0</p></td>
+<td><p><strong>60.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 60.0</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Arc Retry Delay default</strong></p></td>
+<td><p>1.0</p></td>
+<td><p><strong>60.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 5.0 (pickle)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc Voltage Scale default</strong></p></td>
+<td><p>1.0</p></td>
+<td><p><strong>0.006744</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 0.006744</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Arc Voltage Offset default</strong></p></td>
+<td><p>0.0</p></td>
+<td><p><strong>3687.5</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 3687.5</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc Height Per Volt</strong></p></td>
+<td><p>Not listed</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_height_per_volt</span></code> default = <strong>0.100</strong></p></td>
+<td><p>Missing</p></td>
+<td><p>Done — added default 0.100</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Spot Threshold default</strong></p></td>
+<td><p>5.0</p></td>
+<td><p><strong>0.1</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 5.0 (pickle)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Spot Delay default</strong></p></td>
+<td><p>0.0</p></td>
+<td><p><strong>600.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 100.0 (pickle)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hole Thickness Ratio default</strong></p></td>
+<td><p>2.0</p></td>
+<td><p><strong>5</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 5</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Max Hole Size default</strong></p></td>
+<td><p>25.0</p></td>
+<td><p><strong>50.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 50.0</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Small Hole Threshold default</strong></p></td>
+<td><p>25.0</p></td>
+<td><p><strong>3.5</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 3.5</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Consumable XY Feed default</strong></p></td>
+<td><p>1000.0</p></td>
+<td><p><strong>0.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 0.0</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Framing Feed default</strong></p></td>
+<td><p>100.0</p></td>
+<td><p><strong>0.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 2000.0 (pickle)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Run Delete Confirm default</strong></p></td>
+<td><p>false</p></td>
+<td><p><strong>true</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to true</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Height Override</strong></p></td>
+<td><p>Listed as 1.0</p></td>
+<td><p><strong>Does not exist</strong></p></td>
+<td><p><strong>Does not exist</strong></p></td>
+<td><p>Remove (doesn’t exist)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Corner Lock</strong></p></td>
+<td><p>Listed</p></td>
+<td><p>Exists but not in settings tables shown</p></td>
+<td><p>Missing</p></td>
+<td><p>Done — added to settings tables</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Auto Volts</strong></p></td>
+<td><p>Listed</p></td>
+<td><p>Exists but not in settings tables shown</p></td>
+<td><p>Missing</p></td>
+<td><p>Done — added to settings tables</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc Height Per Volt</strong></p></td>
+<td><p>Not listed</p></td>
+<td><p>Exists</p></td>
+<td><p>Missing</p></td>
+<td><p>Done — added to settings tables</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="reference-persistent-settings-md-major-issues">
+<h2>11. <code class="docutils literal notranslate"><span class="pre">reference/persistent-settings.md</span></code> — MAJOR ISSUES<a class="headerlink" href="#reference-persistent-settings-md-major-issues" title="Link to this heading"></a></h2>
+<p>Same settings tables as <a class="reference external" href="http://config-yml.md">config-yml.md</a>, same divergences.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>config.yml</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Same 20+ defaults wrong</p></td>
+<td><p>See <a class="reference external" href="http://config-yml.md">config-yml.md</a> table above</p></td>
+<td><p>—</p></td>
+<td><p><strong>Same as above</strong></p></td>
+<td><p>Done — applied same fixes as <a class="reference external" href="http://config-yml.md">config-yml.md</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Probe Float Travel</strong></p></td>
+<td><p>4.0</p></td>
+<td><p><strong>3.2</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 3.2</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Probe Setup Speed</strong></p></td>
+<td><p>25.0</p></td>
+<td><p><strong>3000</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 3000</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Spot Threshold</strong></p></td>
+<td><p>5.0</p></td>
+<td><p><strong>0.1</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 5.0 (pickle)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Spot Delay</strong></p></td>
+<td><p>0.0</p></td>
+<td><p><strong>600.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 100.0 (pickle)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Hole Thickness Ratio</strong></p></td>
+<td><p>2.0</p></td>
+<td><p><strong>5</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 5</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Max Hole Size</strong></p></td>
+<td><p>25.0</p></td>
+<td><p><strong>50.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 50.0</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Small Hole Threshold</strong></p></td>
+<td><p>25.0</p></td>
+<td><p><strong>3.5</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 3.5</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Consumable XY Feed</strong></p></td>
+<td><p>1000.0</p></td>
+<td><p><strong>0.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 0.0</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Framing Feed</strong></p></td>
+<td><p>100.0</p></td>
+<td><p><strong>0.0</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to 2000.0 (pickle)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Run Delete Confirm</strong></p></td>
+<td><p>false</p></td>
+<td><p><strong>true</strong></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Done — updated to true</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="reference-state-machine-md-minor-issues">
+<h2>12. <code class="docutils literal notranslate"><span class="pre">reference/state-machine.md</span></code> — MINOR ISSUES<a class="headerlink" href="#reference-state-machine-md-minor-issues" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase (explorer results)</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>PROBE_DOWN transition</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PROBE_DOWN</span> <span class="pre">-&gt;</span> <span class="pre">{PROBE_TEST,</span> <span class="pre">MAX_HEIGHT,</span> <span class="pre">PROBE_HEIGHT,</span> <span class="pre">PROBE_UP}</span></code></p></td>
+<td><p>Explorer found: <code class="docutils literal notranslate"><span class="pre">PROBE_DOWN</span> <span class="pre">-&gt;</span> <span class="pre">{PROBE_TEST,</span> <span class="pre">MAX_HEIGHT,</span> <span class="pre">PROBE_HEIGHT</span> <span class="pre">PROBE_UP}</span></code></p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PROBE_UP transition</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PROBE_UP</span> <span class="pre">-&gt;</span> <span class="pre">{PROBE_TEST,</span> <span class="pre">PROBE_DOWN,</span> <span class="pre">PIERCE_HEIGHT,</span> <span class="pre">MAX_HEIGHT}</span></code></p></td>
+<td><p>Explorer found: <code class="docutils literal notranslate"><span class="pre">PROBE_UP</span> <span class="pre">-&gt;</span> <span class="pre">{PROBE_TEST,</span> <span class="pre">PROBE_DOWN</span> <span class="pre">PIERCE_HEIGHT</span> <span class="pre">MAX_HEIGHT}</span></code></p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PUDDLE_JUMP state</strong></p></td>
+<td><p>Listed in state descriptions</p></td>
+<td><p>Not in explorer’s state list — state exists in code</p></td>
+<td><p>Missing from descriptions</p></td>
+<td><p>Add Puddle Jump state description</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PAUSED_MOTION</strong></p></td>
+<td><p>Listed as a state</p></td>
+<td><p>Exists in code</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Total states</strong></p></td>
+<td><p>22 states documented</p></td>
+<td><p>Explorer found 22 states</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="reference-hal-pin-map-md-minor-issues">
+<h2>13. <code class="docutils literal notranslate"><span class="pre">reference/hal-pin-map.md</span></code> — MINOR ISSUES<a class="headerlink" href="#reference-hal-pin-map-md-minor-issues" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">plasmac.arc-voltage-in</span></code></strong></p></td>
+<td><p>Direction: IN</p></td>
+<td><p>Exists</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">plasmac.arc-voltage</span></code></strong></p></td>
+<td><p>Direction: OUT</p></td>
+<td><p>Exists</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">plasmac.ohmic-enable</span></code></strong></p></td>
+<td><p>Direction: OUT</p></td>
+<td><p>Exists</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">plasmac.probe-test</span></code></strong></p></td>
+<td><p>Direction: IN</p></td>
+<td><p>Exists</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">plasmac.probe-test-error</span></code></strong></p></td>
+<td><p>Direction: OUT, type: s32</p></td>
+<td><p>Exists</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">plasmac.consumable-change</span></code></strong></p></td>
+<td><p>Direction: IN</p></td>
+<td><p>Exists</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">plasmac.cut-chart</span></code></strong></p></td>
+<td><p>Direction: IN/OUT</p></td>
+<td><p>Exists</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">plasmac.lowpass-frequency</span></code></strong></p></td>
+<td><p>Direction: IN</p></td>
+<td><p>Exists</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="reference-quickshape-reference-md-moderate-issues">
+<h2>14. <code class="docutils literal notranslate"><span class="pre">reference/quickshape-reference.md</span></code> — MODERATE ISSUES<a class="headerlink" href="#reference-quickshape-reference-md-moderate-issues" title="Link to this heading"></a></h2>
+<p>Same shape name/parameter issues as <code class="docutils literal notranslate"><span class="pre">conversational.md</span></code> (see section 3 above).</p>
+</section>
+<hr class="docutils" />
+<section id="reference-gcode-syntax-md-minor-issues">
+<h2>15. <code class="docutils literal notranslate"><span class="pre">reference/gcode-syntax.md</span></code> — MINOR ISSUES<a class="headerlink" href="#reference-gcode-syntax-md-minor-issues" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Title says “MonoKorn”</strong></p></td>
+<td><p>“MonoKorn Plasma” (typo)</p></td>
+<td><p>Package is “MonoKrom”</p></td>
+<td><p><strong>Typo</strong></p></td>
+<td><p>Fix typo: MonoKorn → MonoKrom</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>G95</strong></p></td>
+<td><p>Listed as “Feed rate per revolution”</p></td>
+<td><p>LinuxCNC supports G95 but plasma rarely uses it</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>M7/M8/M9</strong></p></td>
+<td><p>Listed as coolant commands</p></td>
+<td><p>Plasma machines typically don’t have coolant</p></td>
+<td><p>OK (standard LinuxCNC)</p></td>
+<td><p>Note as standard LinuxCNC</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Example program</strong></p></td>
+<td><p>Pierce Height 6.0, Cut Height 3.5, Feed Rate 1200</p></td>
+<td><p>Not verifiable without a specific material in CSV</p></td>
+<td><p>Minor</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>G0 Z50 retract</strong></p></td>
+<td><p>Uses Z50</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SAFE_HEIGHT</span></code> default = 25.0, but Z max = 0.001 (MIN_LIMIT = -70.001) — Z50 would be above safe height</p></td>
+<td><p>OK (safe)</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="integrator-guide-ini-config-md-minor-issues">
+<h2>16. <code class="docutils literal notranslate"><span class="pre">integrator-guide/ini-config.md</span></code> — MINOR ISSUES<a class="headerlink" href="#integrator-guide-ini-config-md-minor-issues" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>plasmac_sim.ini</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>SPINDLES = 3</strong></p></td>
+<td><p>“3 for plasma: main, THC, offset”</p></td>
+<td><p>INI has <code class="docutils literal notranslate"><span class="pre">SPINDLES</span> <span class="pre">=</span> <span class="pre">3</span></code></p></td>
+<td><p>OK (but explanation is misleading — LinuxCNC always has 3 spindles)</p></td>
+<td><p>Clarify LinuxCNC always has 3 spindles</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NO_FORCE_HOMING = 1</strong></p></td>
+<td><p>“Skip forced homing”</p></td>
+<td><p>INI has <code class="docutils literal notranslate"><span class="pre">NO_FORCE_HOMING</span> <span class="pre">=</span> <span class="pre">1</span></code></p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>USER button config</strong></p></td>
+<td><p>Described correctly</p></td>
+<td><p>INI has USER1/2/3_NAME and USER1/2/3_ACTION</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CONFIG_FILE</strong></p></td>
+<td><p>Shows <code class="docutils literal notranslate"><span class="pre">custom_config.yml</span></code></p></td>
+<td><p>INI has <code class="docutils literal notranslate"><span class="pre">CONFIG_FILE</span> <span class="pre">=</span> <span class="pre">custom_config.yml</span></code></p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PREFERENCE_FILE</strong></p></td>
+<td><p>Shows <code class="docutils literal notranslate"><span class="pre">sim.pref</span></code></p></td>
+<td><p>INI has <code class="docutils literal notranslate"><span class="pre">PREFERENCE_FILE</span> <span class="pre">=</span> <span class="pre">sim.pref</span></code></p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="integrator-guide-hal-connections-md-minor-issues">
+<h2>17. <code class="docutils literal notranslate"><span class="pre">integrator-guide/hal-connections.md</span></code> — MINOR ISSUES<a class="headerlink" href="#integrator-guide-hal-connections-md-minor-issues" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>HAL file names</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasmac_sim_overlay.hal</span></code>, <code class="docutils literal notranslate"><span class="pre">qtplasmac_connections_sim.hal</span></code></p></td>
+<td><p>INI has these exact files</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Debounce component names</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">db_breakaway,</span> <span class="pre">db_float,</span> <span class="pre">db_ohmic,</span> <span class="pre">db_arc-ok</span></code></p></td>
+<td><p>HAL file uses these names</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Mode 0/1/2 descriptions</strong></p></td>
+<td><p>Correctly described</p></td>
+<td><p>INI <code class="docutils literal notranslate"><span class="pre">MODE</span> <span class="pre">=</span> <span class="pre">0</span></code></p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="integrator-guide-process-db-md-moderate-issues">
+<h2>18. <code class="docutils literal notranslate"><span class="pre">integrator-guide/process-db.md</span></code> — MODERATE ISSUES<a class="headerlink" href="#integrator-guide-process-db-md-moderate-issues" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase (CSV columns)</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Schema columns</strong></p></td>
+<td><p>13 columns: gas, machine, material, thickness, consumable, pierce_height, pierce_delay, cut_height, cut_feed_rate, cut_volts, cut_amperage, kerf, tool_number</p></td>
+<td><p>CSV has <strong>22 columns</strong>: machine_name, material, thickness, thickness_unit, thickness_name, name, consumable, tool_number, kerf_width, plunge_rate, pierce_delay, pause_at_end, pierce_height, cut_height, cut_speed, amps, pressure, pressuresys, volts, puddle_height, puddle_delay</p></td>
+<td><p><strong>Wrong</strong> — schema is incomplete</p></td>
+<td><p>Update to 22 columns</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Filter fields</strong></p></td>
+<td><p>Lists 5: Gas, Machine, Material, Thickness, Consumable</p></td>
+<td><p>Code has <strong>8</strong>: Gas, Machine, Material, Thickness, Consumable, Operation, Quality, plus 2 locked fields</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Update to 8 fields (add Operation, Quality, plus 2 locked)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Database file name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasma_table.db</span></code></p></td>
+<td><p>Exists</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="quick-start-md-minor-issues">
+<h2>19. <code class="docutils literal notranslate"><span class="pre">quick-start.md</span></code> — MINOR ISSUES<a class="headerlink" href="#quick-start-md-minor-issues" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue</p></th>
+<th class="head"><p>Docs Say</p></th>
+<th class="head"><p>Codebase</p></th>
+<th class="head"><p>Severity</p></th>
+<th class="head"><p>Action to Take</p></th>
+<th class="head"><p>User Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Repo URL</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">monokrom-vcp</span></code></p></td>
+<td><p>Repo is <code class="docutils literal notranslate"><span class="pre">monokrom</span></code></p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Fix repo name: monokrom-vcp → monokrom</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Command</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">monokrom</span> <span class="pre">--install-sim</span></code></p></td>
+<td><p>Entry point is <code class="docutils literal notranslate"><span class="pre">monokrom_plasma</span> <span class="pre">--install-sim</span></code> (or <code class="docutils literal notranslate"><span class="pre">monokrom_mill</span> <span class="pre">--install-sim</span></code>)</p></td>
+<td><p><strong>Wrong</strong></p></td>
+<td><p>Fix command: monokrom → monokrom_plasma</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Home button</strong></p></td>
+<td><p>“Click the HOME button”</p></td>
+<td><p>Home buttons exist for each axis</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Probe test button</strong></p></td>
+<td><p>“On the Probe tab, click PROBE TEST”</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">btn_probe_test</span></code> exists in Settings → THC/ARC/Probe tab</p></td>
+<td><p>OK</p></td>
+<td><p>No action needed</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="summary-by-severity">
+<h2>Summary by Severity<a class="headerlink" href="#summary-by-severity" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Severity</p></th>
+<th class="head"><p>Count</p></th>
+<th class="head"><p>Affected Files</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Wrong defaults</strong> (settings values diverge from config.yml)</p></td>
+<td><p><strong>28+ instances</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">settings.md</span></code>, <code class="docutils literal notranslate"><span class="pre">thc.md</span></code>, <code class="docutils literal notranslate"><span class="pre">arc-start.md</span></code>, <code class="docutils literal notranslate"><span class="pre">probe.md</span></code>, <code class="docutils literal notranslate"><span class="pre">config-yml.md</span></code>, <code class="docutils literal notranslate"><span class="pre">persistent-settings.md</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Does not exist</strong> (features/settings documented but not in code)</p></td>
+<td><p><strong>3</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">settings.md</span></code> (Height Override), <code class="docutils literal notranslate"><span class="pre">parameters.md</span></code> (Material Settings section)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Wrong layout/structure</strong> (UI description doesn’t match code)</p></td>
+<td><p><strong>5</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">parameters.md</span></code>, <code class="docutils literal notranslate"><span class="pre">settings.md</span></code>, <code class="docutils literal notranslate"><span class="pre">mdi.md</span></code>, <code class="docutils literal notranslate"><span class="pre">recovery.md</span></code>, <code class="docutils literal notranslate"><span class="pre">conversational.md</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wrong shape parameters</strong> (quickshape docs don’t match code)</p></td>
+<td><p><strong>6 shapes</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">conversational.md</span></code>, <code class="docutils literal notranslate"><span class="pre">quickshape-reference.md</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Major omissions</strong> (significant features not documented)</p></td>
+<td><p><strong>8</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">parameters.md</span></code> (hole processing, THC panel), <code class="docutils literal notranslate"><span class="pre">mdi.md</span></code> (keypad, queue), <code class="docutils literal notranslate"><span class="pre">settings.md</span></code> (scribe/spot, DRO format)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Typo/Wrong naming</strong></p></td>
+<td><p><strong>3</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gcode-syntax.md</span></code> (MonoKorn), <code class="docutils literal notranslate"><span class="pre">quick-start.md</span></code> (repo name, command)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Minor</strong> (naming, missing defaults, cosmetic)</p></td>
+<td><p><strong>15+</strong></p></td>
+<td><p>Various files</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="recommended-priority-order">
+<h2>Recommended Priority Order<a class="headerlink" href="#recommended-priority-order" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Fix settings defaults</strong> — 28+ wrong values across 6 files, same root cause (values diverging from <code class="docutils literal notranslate"><span class="pre">config.yml</span></code>)</p></li>
+<li><p><strong>Fix UI layout descriptions</strong> — <code class="docutils literal notranslate"><span class="pre">parameters.md</span></code>, <code class="docutils literal notranslate"><span class="pre">mdi.md</span></code>, <code class="docutils literal notranslate"><span class="pre">recovery.md</span></code> describe structures that don’t match the actual UI</p></li>
+<li><p><strong>Fix quickshape parameters</strong> — 6 shapes with incorrect parameter lists</p></li>
+<li><p><strong>Fix process DB schema</strong> — update to match actual CSV columns</p></li>
+<li><p><strong>Clean up typos and non-existent features</strong></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="changes-made-pickle-config-yml-defaults-applied">
+<h2>Changes Made (Pickle + config.yml Defaults Applied)<a class="headerlink" href="#changes-made-pickle-config-yml-defaults-applied" title="Link to this heading"></a></h2>
+<section id="files-updated">
+<h3>Files Updated<a class="headerlink" href="#files-updated" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Changes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">settings.md</span></code></p></td>
+<td><p>Updated all defaults; removed Height Override section; added Scribe, Spot, Arc Height Per Volt, Consumable XY Feed, Framing Feed, Run Delete Confirm sections</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thc.md</span></code></p></td>
+<td><p>Updated THC Threshold, PID gains, VAD Threshold, VAD Override, Safe Height; removed Height Override; fixed THC state indicators</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arc-start.md</span></code></p></td>
+<td><p>Updated Arc OK High/Low, Arc Retry Delay; changed Torch Pulse from “Typical” to “Default”</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">probe.md</span></code></p></td>
+<td><p>Updated Probe Speed, Probe Height references</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">config-yml.md</span></code></p></td>
+<td><p>Updated all settings tables with correct defaults and setting names matching config.yml</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">persistent-settings.md</span></code></p></td>
+<td><p>Updated all settings tables with correct defaults and setting names matching config.yml</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="default-values-updated-pickle-values-used-as-priority">
+<h3>Default Values Updated (Pickle values used as priority)<a class="headerlink" href="#default-values-updated-pickle-values-used-as-priority" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Pickle Value</p></th>
+<th class="head"><p>config.yml Default</p></th>
+<th class="head"><p>Docs Now Show</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thc_safe_height</span></code></p></td>
+<td><p>40.0</p></td>
+<td><p>25.0</p></td>
+<td><p>40.0 (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thc_void_override</span></code></p></td>
+<td><p>99</p></td>
+<td><p>100</p></td>
+<td><p>99 (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">probe_speed</span></code></p></td>
+<td><p>300</p></td>
+<td><p>200</p></td>
+<td><p>300 (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">probe_height</span></code></p></td>
+<td><p>14.0</p></td>
+<td><p>15.0</p></td>
+<td><p>14.0 (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">probe_offset</span></code></p></td>
+<td><p>-0.5</p></td>
+<td><p>0.0</p></td>
+<td><p>-0.5 (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">arc_retry_delay</span></code></p></td>
+<td><p>5.0</p></td>
+<td><p>60.0</p></td>
+<td><p>5.0 (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spot_threshold</span></code></p></td>
+<td><p>5.0</p></td>
+<td><p>0.1</p></td>
+<td><p>5.0 (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spot_delay</span></code></p></td>
+<td><p>100.0</p></td>
+<td><p>600.0</p></td>
+<td><p>100.0 (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_torch_pulse_sec</span></code></p></td>
+<td><p>1.0</p></td>
+<td><p>0.3</p></td>
+<td><p>1.0 (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_auto_volts</span></code></p></td>
+<td><p>True</p></td>
+<td><p>false</p></td>
+<td><p>true (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">framing_feed_rate</span></code></p></td>
+<td><p>2000.0</p></td>
+<td><p>0.0</p></td>
+<td><p>2000.0 (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">consumable_offset_x</span></code></p></td>
+<td><p>10.0</p></td>
+<td><p>0.0</p></td>
+<td><p>10.0 (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_vad</span></code></p></td>
+<td><p>True</p></td>
+<td><p>false</p></td>
+<td><p>true (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_void_sense</span></code></p></td>
+<td><p>True</p></td>
+<td><p>false</p></td>
+<td><p>true (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thc_enabled</span></code></p></td>
+<td><p>True</p></td>
+<td><p>false</p></td>
+<td><p>true (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thc_feed_rate</span></code></p></td>
+<td><p>3000.0</p></td>
+<td><p>0.0</p></td>
+<td><p>3000.0 (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ohmic_sensing_enabled</span></code></p></td>
+<td><p>True</p></td>
+<td><p>false</p></td>
+<td><p>true (pickle)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="settings-not-in-pickle-using-config-yml-defaults">
+<h3>Settings NOT in Pickle (using config.yml defaults)<a class="headerlink" href="#settings-not-in-pickle-using-config-yml-defaults" title="Link to this heading"></a></h3>
+<p>All remaining settings use config.yml defaults since they were not found in the pickle file:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">thc_threshold</span></code> = 1.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thc_pid_p_gain</span></code> = 10.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thc_pid_i_gain</span></code> = 0.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thc_pid_d_gain</span></code> = 0.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thc_vad_threshold</span></code> = 60.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arc_ok_high_volts</span></code> = 250.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arc_ok_low_volts</span></code> = 60.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">probe_setup_speed</span></code> = 3000</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arc_voltage_scale</span></code> = 0.006744</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arc_voltage_offset</span></code> = 3687.5</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arc_height_per_volt</span></code> = 0.100</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plasma_hole_thickness_ratio</span></code> = 5</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plasma_max_hole_size</span></code> = 50.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plasma_small_hole_threshold</span></code> = 3.5</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">consumable_xy_feed_rate</span></code> = 0.0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_delete_confirm</span></code> = true</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thc_feed_rate</span></code> = 0.0</p></li>
+</ul>
+</section>
+<section id="items-flagged-for-investigation">
+<h3>Items Flagged for Investigation<a class="headerlink" href="#items-flagged-for-investigation" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Pickle Value</p></th>
+<th class="head"><p>config.yml Default</p></th>
+<th class="head"><p>Docs Now Show</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thc_safe_height</span></code></p></td>
+<td><p>40.0</p></td>
+<td><p>25.0</p></td>
+<td><p>40.0</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thc_void_override</span></code></p></td>
+<td><p>99</p></td>
+<td><p>100</p></td>
+<td><p>99</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">probe_speed</span></code></p></td>
+<td><p>300</p></td>
+<td><p>200</p></td>
+<td><p>300</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">probe_height</span></code></p></td>
+<td><p>14.0</p></td>
+<td><p>15.0</p></td>
+<td><p>14.0</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">probe_offset</span></code></p></td>
+<td><p>-0.5</p></td>
+<td><p>0.0</p></td>
+<td><p>-0.5</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">arc_retry_delay</span></code></p></td>
+<td><p>5.0</p></td>
+<td><p>60.0</p></td>
+<td><p>5.0</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spot_threshold</span></code></p></td>
+<td><p>5.0</p></td>
+<td><p>0.1</p></td>
+<td><p>5.0</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spot_delay</span></code></p></td>
+<td><p>100.0</p></td>
+<td><p>600.0</p></td>
+<td><p>100.0</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_torch_pulse_sec</span></code></p></td>
+<td><p>1.0</p></td>
+<td><p>0.3</p></td>
+<td><p>1.0</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_auto_volts</span></code></p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_vad</span></code></p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_void_sense</span></code></p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thc_enabled</span></code></p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>NOT in docs</p></td>
+<td><p>Investigate</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thc_feed_rate</span></code></p></td>
+<td><p>3000.0</p></td>
+<td><p>0.0</p></td>
+<td><p>3000.0</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ohmic_sensing_enabled</span></code></p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>NOT in docs</p></td>
+<td><p>Investigate</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">consumable_offset_x</span></code></p></td>
+<td><p>10.0</p></td>
+<td><p>0.0</p></td>
+<td><p>10.0</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">framing_feed_rate</span></code></p></td>
+<td><p>2000.0</p></td>
+<td><p>0.0</p></td>
+<td><p>2000.0</p></td>
+<td><p>Done (pickle)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">backplot.multitool-colors</span></code></p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>Same</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> Pickle values are used as priority per user instruction. Settings not found in the pickle file fall back to config.yml defaults. The pickle file represents user-modified values stored in <code class="docutils literal notranslate"><span class="pre">vcp_persistent_data.pickle</span></code> — these reflect a real machine configuration, not a fresh install.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

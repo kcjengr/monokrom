@@ -1,0 +1,1125 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HAL Pin Map &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Persistent Settings" href="persistent-settings.html" />
+    <link rel="prev" title="Customization" href="../integrator-guide/customization.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HAL Pin Map</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#plasmac-component-pins">PlasmaC Component Pins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#arc-voltage">Arc Voltage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-ok">Arc OK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#torch-control">Torch Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#probe-inputs">Probe Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thc-control">THC Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#probe-settings">Probe Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-start-settings">Arc Start Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cut-parameters">Cut Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-power-levels">Arc Power Levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scribe">Scribe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spot-detection">Spot Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consumable-change">Consumable Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#offsets">Offsets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#laser">Laser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#state-indicators-outputs">State Indicators (Outputs)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mode-2-thc-external">Mode 2 THC (External)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#axis-external-offset-pins">Axis External Offset Pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debounce-component-pins">Debounce Component Pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cycle-start-state-pins">Cycle Start State Pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pendant-external-control-pins">Pendant / External Control Pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#full-hal-pin-map">Full HAL Pin Map</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">HAL Pin Map</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/hal-pin-map.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hal-pin-map">
+<h1>HAL Pin Map<a class="headerlink" href="#hal-pin-map" title="Link to this heading"></a></h1>
+<p>This reference documents the key HAL pins used by MonoKrom Plasma. The full pin map
+(from the simulation) contains 2000+ lines — this document covers the plasma-specific
+pins relevant to MonoKrom operation.</p>
+<section id="plasmac-component-pins">
+<h2>PlasmaC Component Pins<a class="headerlink" href="#plasmac-component-pins" title="Link to this heading"></a></h2>
+<section id="arc-voltage">
+<h3>Arc Voltage<a class="headerlink" href="#arc-voltage" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-voltage-in</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>float</p></td>
+<td><p>Arc voltage input for THC (Modes 0, 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-voltage</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>float</p></td>
+<td><p>Calculated arc voltage</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="arc-ok">
+<h3>Arc OK<a class="headerlink" href="#arc-ok" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-ok-in</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>External Arc OK input (Modes 1, 2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-ok</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Arc OK status (soft or external)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="torch-control">
+<h3>Torch Control<a class="headerlink" href="#torch-control" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.torch-on</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Torch on/off control</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="probe-inputs">
+<h3>Probe Inputs<a class="headerlink" href="#probe-inputs" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.float-switch</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Float switch input</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.ohmic-probe</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Ohmic probe input</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.ohmic-enable</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Ohmic probe enable output</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.breakaway</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Breakaway switch input</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="thc-control">
+<h3>THC Control<a class="headerlink" href="#thc-control" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.thc-enable</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>bit</p></td>
+<td><p>THC enable flag</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.thc-delay</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>THC delay (seconds)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.thc-p</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>THC proportional gain</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.thc-i</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>THC integral gain</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.thc-d</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>THC derivative gain</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.thc-up</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>THC commanding Z up</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.thc-down</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>THC commanding Z down</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.safe-height</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Minimum Z height during cutting</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.height-override</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>THC height correction multiplier</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.height-per-volt</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Z movement per volt calibration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.vad-threshold</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>VAD detection threshold</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.vad-override</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>VAD void retraction override</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.void-sense</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Void sensing enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.mesh-sense</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Mesh mode enabled</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.corner-lock</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Corner lock enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.auto-volts</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Auto volts mode</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.lowpass-frequency</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>float</p></td>
+<td><p>Low-pass filter cutoff (Hz)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="probe-settings">
+<h3>Probe Settings<a class="headerlink" href="#probe-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.float-switch-travel</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Float switch travel distance</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.probe-feed-rate</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Probe feed rate</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.probe-height</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Target height after probing</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.probe-offset</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Additional probe offset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.ohmic-retries</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>int</p></td>
+<td><p>Number of ohmic probe retries</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.skip-ihs</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Skip initial height search distance</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.probe-setup-speed</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Probe setup approach speed</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.probe-test</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Probe test trigger (HAL controlled)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.probe-test-error</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>s32</p></td>
+<td><p>Probe test error code</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="arc-start-settings">
+<h3>Arc Start Settings<a class="headerlink" href="#arc-start-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.pierce-height</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Pierce height</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.pierce-delay</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Pierce delay (seconds)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.cut-height</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Cut height</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.cut-feed-rate</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Cut feed rate</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.cut-volts</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Cut voltage</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.cut-amperage</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Cut amperage</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.puddle-jump-height</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Puddle jump retraction height</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.puddle-jump-delay</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Puddle jump delay (seconds)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.torch-pulse</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Torch pulse duration (seconds)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.pause-at-end</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Pause at end of cut</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-fail-delay</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc fail timeout (seconds)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-max-starts</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>int</p></td>
+<td><p>Max arc start attempts</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-retry-delay</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Delay between arc retries</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-ok-high</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc OK high voltage threshold</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-ok-low</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc OK low voltage threshold</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.voltage-scale</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc voltage scale calibration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.voltage-offset</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc voltage offset calibration</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cut-parameters">
+<h3>Cut Parameters<a class="headerlink" href="#cut-parameters" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.cut-chart</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>int</p></td>
+<td><p>Cut chart number</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.kerf</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Kerf width</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.hole-thickness-ratio</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Hole detection thickness ratio</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.max-hole-size</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Maximum hole size for through-cut</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.hole-detect</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Hole detection enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.overburn</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Overburn mode enabled</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.leadin</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Lead-in length</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.small-hole-detect</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Small hole detection enabled</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.small-hole-straight-lead-in</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Straight lead-in for small holes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.small-hole-threshold</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Small hole threshold</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.small-hole-kerf</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Small hole kerf compensation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.hidef-mode</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>bit</p></td>
+<td><p>High definition mode enabled</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="arc-power-levels">
+<h3>Arc Power Levels<a class="headerlink" href="#arc-power-levels" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc1-percent</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc 1 power percentage</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc1-distance</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc 1 distance</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc1-radius</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc 1 radius</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc2-percent</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc 2 power percentage</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc2-distance</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc 2 distance</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc2-radius</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc 2 radius</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc3-percent</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc 3 power percentage</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc3-distance</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc 3 distance</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc3-radius</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Arc 3 radius</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="scribe">
+<h3>Scribe<a class="headerlink" href="#scribe" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.scribe-arm</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Scribe arming output</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.scribe-on</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Scribe on output</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.scribe-arm-delay</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Scribe arming delay</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.scribe-on-delay</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Scribe on delay</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spot-detection">
+<h3>Spot Detection<a class="headerlink" href="#spot-detection" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.spot-threshold</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Spot detection threshold</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.spot-delay</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Spot delay</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="consumable-change">
+<h3>Consumable Change<a class="headerlink" href="#consumable-change" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.consumable-change</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Consumable change HAL trigger</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.consumable-x</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Consumable change X offset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.consumable-y</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Consumable change Y offset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.consumable-xy-feed</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Consumable change XY feed rate</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="offsets">
+<h3>Offsets<a class="headerlink" href="#offsets" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.laser-offset-x</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Laser pointer X offset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.laser-offset-y</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Laser pointer Y offset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.camera-offset-x</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Camera X offset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.camera-offset-y</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Camera Y offset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.scribe-offset-x</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Scribe X offset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.scribe-offset-y</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Scribe Y offset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.ohmic-offset-x</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Ohmic probe X offset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.ohmic-offset-y</span></code></p></td>
+<td><p>IN/OUT</p></td>
+<td><p>float</p></td>
+<td><p>Ohmic probe Y offset</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="laser">
+<h3>Laser<a class="headerlink" href="#laser" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">qtplasmac.laser-on</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Laser pointer control</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="state-indicators-outputs">
+<h3>State Indicators (Outputs)<a class="headerlink" href="#state-indicators-outputs" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.consumable-changing</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Consumable change active</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.cornerlock</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Corner lock active</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.cut-length</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>float</p></td>
+<td><p>Total cut length</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.cut-time</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>float</p></td>
+<td><p>Total cut time</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mode-2-thc-external">
+<h3>Mode 2 THC (External)<a class="headerlink" href="#mode-2-thc-external" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.move-up</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>External THC up command</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.move-down</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>External THC down command</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="axis-external-offset-pins">
+<h2>Axis External Offset Pins<a class="headerlink" href="#axis-external-offset-pins" title="Link to this heading"></a></h2>
+<p>MonoKrom uses LinuxCNC external offsets for Z axis motion (and X/Y for consumable change/recovery):</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">axis.z.eoffset-request</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>float</p></td>
+<td><p>Z offset request from plasmac</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">axis.z.eoffset-enable</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Z offset enable</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">axis.z.eoffset-clear</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Z offset clear</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">axis.z.eoffset-counts</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>s32</p></td>
+<td><p>Z offset counts</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">axis.z.eoffset-scale</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>float</p></td>
+<td><p>Z offset scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">axis.x.eoffset-request</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>float</p></td>
+<td><p>X offset request (consumable/recovery)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">axis.x.eoffset-enable</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>X offset enable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">axis.x.eoffset-clear</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>X offset clear</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">axis.y.eoffset-request</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>float</p></td>
+<td><p>Y offset request (consumable/recovery)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">axis.y.eoffset-enable</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Y offset enable</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">axis.y.eoffset-clear</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Y offset clear</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="debounce-component-pins">
+<h2>Debounce Component Pins<a class="headerlink" href="#debounce-component-pins" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">db_float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">in</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Float switch input</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">db_float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">out</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Debounced float switch</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">db_float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">delay</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>float</p></td>
+<td><p>Debounce delay (servo periods)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">db_ohmic</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">in</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Ohmic probe input</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">db_ohmic</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">out</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Debounced ohmic probe</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">db_ohmic</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">delay</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>float</p></td>
+<td><p>Debounce delay (servo periods)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">db_breakaway</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">in</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Breakaway switch input</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">db_breakaway</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">out</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Debounced breakaway</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">db_breakaway</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">delay</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>float</p></td>
+<td><p>Debounce delay (servo periods)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">db_arc-ok</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">in</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>Arc OK input</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">db_arc-ok</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">out</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Debounced arc OK</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">db_arc-ok</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">delay</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>float</p></td>
+<td><p>Debounce delay (servo periods)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cycle-start-state-pins">
+<h2>Cycle Start State Pins<a class="headerlink" href="#cycle-start-state-pins" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">program-is-paused</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Program is paused (feed hold)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">program-is-running</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Program is running</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">program-is-idle</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Program is idle</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">machine-is-homed</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>bit</p></td>
+<td><p>Machine is homed</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pendant-external-control-pins">
+<h2>Pendant / External Control Pins<a class="headerlink" href="#pendant-external-control-pins" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">halui.mdi-command.0</span></code> through <code class="docutils literal notranslate"><span class="pre">halui.mdi-command.15</span></code></p></td>
+<td><p>IN</p></td>
+<td><p>bit</p></td>
+<td><p>MDI command triggers (pendant macros)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="full-hal-pin-map">
+<h2>Full HAL Pin Map<a class="headerlink" href="#full-hal-pin-map" title="Link to this heading"></a></h2>
+<p>The complete HAL pin map (2000+ lines) is available in the source repository at:
+<code class="docutils literal notranslate"><span class="pre">docs/qtplasmac_hal_map.txt</span></code></p>
+<p>To regenerate:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run LinuxCNC with the config, then:</span>
+halcmd<span class="w"> </span>show<span class="w"> </span>&gt;<span class="w"> </span>docs/qtplasmac_hal_map.txt
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../integrator-guide/customization.html" class="btn btn-neutral float-left" title="Customization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="persistent-settings.html" class="btn btn-neutral float-right" title="Persistent Settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

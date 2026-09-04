@@ -1,0 +1,613 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Guide &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=837179f8"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Troubleshooting" href="troubleshooting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#architecture-overview">Architecture Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#service-layer">Service Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#halbridge">HALBridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#processfilterservice">ProcessFilterService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shapegeneratorservice">ShapeGeneratorService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consumablechangeservice">ConsumableChangeService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cutrecoveryservice">CutRecoveryService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sheetalignmentservice">SheetAlignmentService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fileopsservice">FileOpsService</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mdipanelservice">MdiPanelService</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#development-workflow">Development Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-development-environment">Setting Up the Development Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-vcp-in-development-mode">Running the VCP in Development Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-style">Code Style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-new-service">Adding a New Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-new-quickshape">Adding a New Quickshape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-new-hal-pin-connection">Adding a New HAL Pin Connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-debug-output">Enabling Debug Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hal-debugging">HAL Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qt-debugging">Qt Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#extending-the-ui">Extending the UI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-new-tab">Adding a New Tab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-new-widget">Adding a New Widget</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#yaml-configuration">YAML Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#persistent-settings">Persistent Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing">Contributing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pull-request-checklist">Pull Request Checklist</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Developer Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/developer-guide.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="developer-guide">
+<h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Link to this heading"></a></h1>
+<p>This guide covers the MonoKorn Plasma architecture, development workflow, and conventions
+for developers who want to extend or modify the VCP.</p>
+<section id="architecture-overview">
+<h2>Architecture Overview<a class="headerlink" href="#architecture-overview" title="Link to this heading"></a></h2>
+<p>MonoKorn Plasma follows a service-oriented architecture built on <a class="reference external" href="https://www.qtpyvcp.com/">QtPyVCP</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+--------------------------------------------------+</span>
+<span class="o">|</span>                   <span class="n">Main</span> <span class="n">Window</span>                     <span class="o">|</span>
+<span class="o">+--------------------------------------------------+</span>
+<span class="o">|</span>  <span class="n">Tab</span> <span class="n">Widget</span> <span class="p">(</span><span class="n">Main</span> <span class="o">|</span> <span class="n">Preview</span> <span class="o">|</span> <span class="n">Parameters</span> <span class="o">|</span> <span class="o">...</span><span class="p">)</span>   <span class="o">|</span>
+<span class="o">+--------------------------------------------------+</span>
+<span class="o">|</span>              <span class="n">Service</span> <span class="n">Layer</span> <span class="p">(</span><span class="n">DI</span><span class="p">)</span>                   <span class="o">|</span>
+<span class="o">|</span>  <span class="o">+----------+</span> <span class="o">+-----------+</span> <span class="o">+----------------+</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="o">|</span> <span class="n">HALBridge</span> <span class="o">|</span> <span class="o">|</span> <span class="n">Process</span>   <span class="o">|</span> <span class="o">|</span> <span class="n">ShapeGenerator</span> <span class="o">|</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="o">|</span>           <span class="o">|</span> <span class="o">|</span> <span class="n">Filter</span>    <span class="o">|</span> <span class="o">|</span> <span class="n">Service</span>        <span class="o">|</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="o">+----------+</span> <span class="o">+-----------+</span> <span class="o">+----------------+</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="o">+----------+</span> <span class="o">+-----------+</span> <span class="o">+----------------+</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="o">|</span> <span class="n">Consumable</span><span class="o">|</span> <span class="o">|</span> <span class="n">Cut</span>       <span class="o">|</span> <span class="o">|</span> <span class="n">SheetAlign</span>     <span class="o">|</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="o">|</span> <span class="n">Change</span>    <span class="o">|</span> <span class="o">|</span> <span class="n">Recovery</span>  <span class="o">|</span> <span class="o">|</span> <span class="n">Service</span>        <span class="o">|</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="o">+----------+</span> <span class="o">+-----------+</span> <span class="o">+----------------+</span>   <span class="o">|</span>
+<span class="o">|</span>  <span class="o">+----------+</span> <span class="o">+-----------+</span>                      <span class="o">|</span>
+<span class="o">|</span>  <span class="o">|</span> <span class="n">FileOps</span>  <span class="o">|</span> <span class="o">|</span> <span class="n">MdiPanel</span>  <span class="o">|</span>                      <span class="o">|</span>
+<span class="o">|</span>  <span class="o">|</span> <span class="n">Service</span>  <span class="o">|</span> <span class="o">|</span> <span class="n">Service</span>   <span class="o">|</span>                      <span class="o">|</span>
+<span class="o">|</span>  <span class="o">+----------+</span> <span class="o">+-----------+</span>                      <span class="o">|</span>
+<span class="o">+--------------------------------------------------+</span>
+<span class="o">|</span>              <span class="n">QtPyVCP</span> <span class="n">Framework</span>                    <span class="o">|</span>
+<span class="o">+--------------------------------------------------+</span>
+<span class="o">|</span>              <span class="n">LinuxCNC</span> <span class="o">/</span> <span class="n">HAL</span>                       <span class="o">|</span>
+<span class="o">+--------------------------------------------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="service-layer">
+<h2>Service Layer<a class="headerlink" href="#service-layer" title="Link to this heading"></a></h2>
+<p>All application logic is encapsulated in services. Each service is a Python class that
+handles a specific workflow. Services are instantiated by the main window using dependency
+injection.</p>
+<section id="halbridge">
+<h3>HALBridge<a class="headerlink" href="#halbridge" title="Link to this heading"></a></h3>
+<p>The HALBridge service abstracts HAL/LinuxCNC communication. It provides:</p>
+<ul class="simple">
+<li><p>Lazy factory pattern for HAL pin connections</p></li>
+<li><p>Type-safe pin access (bit, float, s32)</p></li>
+<li><p>Signal/slot connections for pin value changes</p></li>
+<li><p>Configuration from YAML files</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example: Getting a HAL pin through HALBridge</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">monokrom.plasma.services.hal_bridge</span><span class="w"> </span><span class="kn">import</span> <span class="n">HALBridge</span>
+
+<span class="n">bridge</span> <span class="o">=</span> <span class="n">HALBridge</span><span class="p">()</span>
+<span class="n">arc_ok</span> <span class="o">=</span> <span class="n">bridge</span><span class="o">.</span><span class="n">get_pin</span><span class="p">(</span><span class="s2">"plasmac.arc-ok"</span><span class="p">,</span> <span class="s2">"bit"</span><span class="p">)</span>
+<span class="n">arc_ok</span><span class="o">.</span><span class="n">value_changed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_arc_ok_changed</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="processfilterservice">
+<h3>ProcessFilterService<a class="headerlink" href="#processfilterservice" title="Link to this heading"></a></h3>
+<p>Manages the SQLite-backed process filter database. Provides:</p>
+<ul class="simple">
+<li><p>CRUD operations for cut processes</p></li>
+<li><p>Multi-field filtering (gas, machine, material, thickness, consumable)</p></li>
+<li><p>Signal/slot for filter changes and selections</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">monokrom.plasma.services.process_filter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProcessFilterService</span>
+
+<span class="n">service</span> <span class="o">=</span> <span class="n">ProcessFilterService</span><span class="p">()</span>
+<span class="c1"># Get all cuts matching filters</span>
+<span class="n">cuts</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">get_cuts</span><span class="p">(</span><span class="n">gas</span><span class="o">=</span><span class="s2">"Air"</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"Mild Steel"</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="s2">"3mm"</span><span class="p">)</span>
+<span class="c1"># Add a new cut</span>
+<span class="n">service</span><span class="o">.</span><span class="n">add_cut</span><span class="p">(</span><span class="n">gas</span><span class="o">=</span><span class="s2">"Air"</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"Mild Steel"</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="s2">"3mm"</span><span class="p">,</span>
+                <span class="n">pierce_height</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span> <span class="n">cut_height</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">cut_feed_rate</span><span class="o">=</span><span class="mi">1200</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="shapegeneratorservice">
+<h3>ShapeGeneratorService<a class="headerlink" href="#shapegeneratorservice" title="Link to this heading"></a></h3>
+<p>Generates G-code for Quickshape primitives. Provides:</p>
+<ul class="simple">
+<li><p>14 built-in shape generators</p></li>
+<li><p>Kerf compensation</p></li>
+<li><p>Smart hole detection</p></li>
+<li><p>Lead-in generation</p></li>
+<li><p>Plasma start/stop sequences</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">monokrom.plasma.services.shape_generator</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShapeGeneratorService</span>
+
+<span class="n">service</span> <span class="o">=</span> <span class="n">ShapeGeneratorService</span><span class="p">()</span>
+<span class="c1"># Generate a circle</span>
+<span class="n">gcode</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">generate_circle</span><span class="p">(</span><span class="n">diameter</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s2">"Mild Steel 3mm"</span><span class="p">)</span>
+<span class="c1"># Save to file</span>
+<span class="n">service</span><span class="o">.</span><span class="n">save_gcode</span><span class="p">(</span><span class="n">gcode</span><span class="p">,</span> <span class="s2">"/home/user/linuxcnc/nc_files/circle.ngc"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="consumablechangeservice">
+<h3>ConsumableChangeService<a class="headerlink" href="#consumablechangeservice" title="Link to this heading"></a></h3>
+<p>Manages X/Y offsets for consumable change. Provides:</p>
+<ul class="simple">
+<li><p>State machine for consumable change workflow</p></li>
+<li><p>Offset application and removal</p></li>
+<li><p>HAL pin integration</p></li>
+</ul>
+</section>
+<section id="cutrecoveryservice">
+<h3>CutRecoveryService<a class="headerlink" href="#cutrecoveryservice" title="Link to this heading"></a></h3>
+<p>Manages cut recovery after interruptions. Provides:</p>
+<ul class="simple">
+<li><p>8-directional jog pad control</p></li>
+<li><p>Kerf-width incremental moves</p></li>
+<li><p>Speed slider integration</p></li>
+</ul>
+</section>
+<section id="sheetalignmentservice">
+<h3>SheetAlignmentService<a class="headerlink" href="#sheetalignmentservice" title="Link to this heading"></a></h3>
+<p>Manages sheet alignment via two-point rotation. Provides:</p>
+<ul class="simple">
+<li><p>Two-point coordinate system rotation</p></li>
+<li><p>Laser offset compensation</p></li>
+<li><p>G10 L2 P0 R command generation</p></li>
+</ul>
+</section>
+<section id="fileopsservice">
+<h3>FileOpsService<a class="headerlink" href="#fileopsservice" title="Link to this heading"></a></h3>
+<p>Manages G-code file operations. Provides:</p>
+<ul class="simple">
+<li><p>Load, save, reload G-code files</p></li>
+<li><p>File browser integration</p></li>
+<li><p>Program validation</p></li>
+</ul>
+</section>
+<section id="mdipanelservice">
+<h3>MdiPanelService<a class="headerlink" href="#mdipanelservice" title="Link to this heading"></a></h3>
+<p>Provides MDI entry assistance. Provides:</p>
+<ul class="simple">
+<li><p>G-code word parameter lookup</p></li>
+<li><p>Suggestion buttons for common parameters</p></li>
+</ul>
+</section>
+</section>
+<section id="development-workflow">
+<h2>Development Workflow<a class="headerlink" href="#development-workflow" title="Link to this heading"></a></h2>
+<section id="setting-up-the-development-environment">
+<h3>Setting Up the Development Environment<a class="headerlink" href="#setting-up-the-development-environment" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clone the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/kcjengr/monokrom
+
+<span class="nb">cd</span><span class="w"> </span>monokrom
+<span class="c1"># Install in editable mode</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+
+<span class="c1"># Install dev dependencies (if any)</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt<span class="w">  </span><span class="c1"># if exists</span>
+</pre></div>
+</div>
+</section>
+<section id="running-the-vcp-in-development-mode">
+<h3>Running the VCP in Development Mode<a class="headerlink" href="#running-the-vcp-in-development-mode" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run with live QSS reload</span>
+monokrom_plasma<span class="w"> </span>--ini<span class="w"> </span>&lt;config&gt;<span class="w"> </span>--develop
+
+<span class="c1"># Run with specific config</span>
+monokrom_plasma<span class="w"> </span>--ini<span class="w"> </span>~/linuxcnc/configs/sim.monokrom/plasmac/plasmac_sim.ini
+</pre></div>
+</div>
+</section>
+<section id="code-style">
+<h3>Code Style<a class="headerlink" href="#code-style" title="Link to this heading"></a></h3>
+<p>MonoKorn Plasma does not currently have a linter or formatter configured. However, the
+existing code follows these conventions:</p>
+<ul class="simple">
+<li><p><strong>Indentation:</strong> 4 spaces (no tabs)</p></li>
+<li><p><strong>Line length:</strong> 100 characters maximum</p></li>
+<li><p><strong>Naming:</strong></p>
+<ul>
+<li><p>Classes: <code class="docutils literal notranslate"><span class="pre">PascalCase</span></code></p></li>
+<li><p>Functions/variables: <code class="docutils literal notranslate"><span class="pre">snake_case</span></code></p></li>
+<li><p>Constants: <code class="docutils literal notranslate"><span class="pre">UPPER_SNAKE_CASE</span></code></p></li>
+<li><p>Private members: <code class="docutils literal notranslate"><span class="pre">_leading_underscore</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Imports:</strong> Standard library first, then third-party, then local</p></li>
+<li><p><strong>Docstrings:</strong> Google-style docstrings for public APIs</p></li>
+</ul>
+</section>
+<section id="adding-a-new-service">
+<h3>Adding a New Service<a class="headerlink" href="#adding-a-new-service" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Create a new service class in <code class="docutils literal notranslate"><span class="pre">src/monokrom/plasma/services/</span></code>:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># src/monokrom/plasma/services/my_service.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">pyqtSignal</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyService</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Description of the service."""</span>
+
+    <span class="n">value_changed</span> <span class="o">=</span> <span class="n">pyqtSignal</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Get the current value."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Set the value and emit change signal."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value_changed</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Instantiate the service in the main window:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># src/monokrom/plasma/main_window.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">monokrom.plasma.services.my_service</span><span class="w"> </span><span class="kn">import</span> <span class="n">MyService</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MainWindow</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+        <span class="c1"># ...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_service</span> <span class="o">=</span> <span class="n">MyService</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Connect the service to UI widgets as needed.</p></li>
+</ol>
+</section>
+<section id="adding-a-new-quickshape">
+<h3>Adding a New Quickshape<a class="headerlink" href="#adding-a-new-quickshape" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Add the shape generator function in <code class="docutils literal notranslate"><span class="pre">src/monokrom/plasma/services/shape_generator.py</span></code>:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">generate_my_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Generate G-code for my shape."""</span>
+    <span class="c1"># Get material parameters</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_material_params</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+
+    <span class="c1"># Generate G-code</span>
+    <span class="n">gcode</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""; MonoKrom Quickshape - My Shape</span>
+<span class="s2">G0 Z</span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">'pierce_height'</span><span class="p">]</span><span class="si">}</span>
+<span class="s2">...</span>
+<span class="s2">"""</span>
+    <span class="k">return</span> <span class="n">gcode</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Add a button for the shape in the Quickshapes UI:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the Quickshapes widget</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">"My Shape"</span><span class="p">)</span>
+<span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_shape</span><span class="p">(</span><span class="s1">'my_shape'</span><span class="p">,</span> <span class="o">...</span><span class="p">))</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Update the shape reference table in <code class="docutils literal notranslate"><span class="pre">docs/reference/quickshape-reference.md</span></code>.</p></li>
+</ol>
+</section>
+<section id="adding-a-new-hal-pin-connection">
+<h3>Adding a New HAL Pin Connection<a class="headerlink" href="#adding-a-new-hal-pin-connection" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Define the pin in the HAL file (<code class="docutils literal notranslate"><span class="pre">postgui.hal</span></code> or custom HAL file):</p></li>
+</ol>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span># Connect a custom HAL pin
+net my-custom-pin =&gt; plasmac.my-pin
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Access the pin through HALBridge:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_pin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hal_bridge</span><span class="o">.</span><span class="n">get_pin</span><span class="p">(</span><span class="s2">"plasmac.my-pin"</span><span class="p">,</span> <span class="s2">"bit"</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Connect to the pin’s value change signal:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_pin</span><span class="o">.</span><span class="n">value_changed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_my_pin_changed</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h3>
+<p>MonoKorn Plasma does not currently have a test framework configured. To test changes:</p>
+<ol class="arabic">
+<li><p>Run the VCP with the simulation config:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>monokrom_plasma<span class="w"> </span>--ini<span class="w"> </span>~/linuxcnc/configs/sim.monokrom/plasmac/plasmac_sim.ini
+</pre></div>
+</div>
+</li>
+<li><p>Verify the changes in the VCP interface.</p></li>
+<li><p>Test with real hardware if available.</p></li>
+</ol>
+</section>
+</section>
+<section id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Link to this heading"></a></h2>
+<section id="enabling-debug-output">
+<h3>Enabling Debug Output<a class="headerlink" href="#enabling-debug-output" title="Link to this heading"></a></h3>
+<p>Set the environment variable <code class="docutils literal notranslate"><span class="pre">MONOKROM_DEBUG=1</span></code> to enable debug logging:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">MONOKROM_DEBUG</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>monokrom_plasma<span class="w"> </span>--ini<span class="w"> </span>&lt;config&gt;
+</pre></div>
+</div>
+</section>
+<section id="hal-debugging">
+<h3>HAL Debugging<a class="headerlink" href="#hal-debugging" title="Link to this heading"></a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">halcmd</span></code> to inspect HAL pins during runtime:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all pins</span>
+halcmd<span class="w"> </span>show
+
+<span class="c1"># Show a specific pin</span>
+halcmd<span class="w"> </span>show<span class="w"> </span>pin<span class="w"> </span>plasmac.arc-ok
+
+<span class="c1"># Watch a pin for changes</span>
+halcmd<span class="w"> </span>watch<span class="w"> </span>plasmac.arc-ok
+</pre></div>
+</div>
+</section>
+<section id="qt-debugging">
+<h3>Qt Debugging<a class="headerlink" href="#qt-debugging" title="Link to this heading"></a></h3>
+<p>Use Qt’s built-in debugging tools:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable Qt debug output</span>
+<span class="nv">QT_DEBUG_PLUGINS</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>monokrom_plasma<span class="w"> </span>--ini<span class="w"> </span>&lt;config&gt;
+</pre></div>
+</div>
+</section>
+</section>
+<section id="extending-the-ui">
+<h2>Extending the UI<a class="headerlink" href="#extending-the-ui" title="Link to this heading"></a></h2>
+<section id="adding-a-new-tab">
+<h3>Adding a New Tab<a class="headerlink" href="#adding-a-new-tab" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Create a new widget class:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># src/monokrom/plasma/widgets/my_tab.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyTab</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="c1"># Add widgets to layout</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Add the tab to the main window:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In main_window.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">monokrom.plasma.widgets.my_tab</span><span class="w"> </span><span class="kn">import</span> <span class="n">MyTab</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">my_tab</span> <span class="o">=</span> <span class="n">MyTab</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">tab_widget</span><span class="o">.</span><span class="n">addTab</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_tab</span><span class="p">,</span> <span class="s2">"My Tab"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-a-new-widget">
+<h3>Adding a New Widget<a class="headerlink" href="#adding-a-new-widget" title="Link to this heading"></a></h3>
+<p>Create a new widget class in <code class="docutils literal notranslate"><span class="pre">src/monokrom/plasma/widgets/</span></code> or <code class="docutils literal notranslate"><span class="pre">src/monokrom/common/widgets/</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># src/monokrom/plasma/widgets/my_widget.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QLabel</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">"My Widget"</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<section id="yaml-configuration">
+<h3>YAML Configuration<a class="headerlink" href="#yaml-configuration" title="Link to this heading"></a></h3>
+<p>MonoKorn Plasma uses YAML with Jinja2 templating for configuration. See the
+<a class="reference internal" href="integrator-guide/config-yml.html"><span class="std std-doc">Integrator Guide - config.yml</span></a> for details.</p>
+</section>
+<section id="persistent-settings">
+<h3>Persistent Settings<a class="headerlink" href="#persistent-settings" title="Link to this heading"></a></h3>
+<p>Settings are stored in a pickle file and managed by QtPyVCP’s persistent settings system.
+See the <a class="reference internal" href="reference/persistent-settings.html"><span class="std std-doc">Persistent Settings</span></a> reference for the full
+list of settings.</p>
+</section>
+</section>
+<section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h2>
+<p>Contributions are welcome! To contribute:</p>
+<ol class="arabic simple">
+<li><p>Fork the repository on GitHub.</p></li>
+<li><p>Create a feature branch from <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
+<li><p>Make your changes.</p></li>
+<li><p>Submit a pull request.</p></li>
+</ol>
+<section id="pull-request-checklist">
+<h3>Pull Request Checklist<a class="headerlink" href="#pull-request-checklist" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Code follows the existing style conventions.</p></li>
+<li><p>[ ] Changes are documented (docstrings, comments).</p></li>
+<li><p>[ ] Documentation is updated (if applicable).</p></li>
+<li><p>[ ] Changes are tested with the simulation config.</p></li>
+<li><p>[ ] Changelog is updated (if applicable).</p></li>
+</ul>
+</section>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="overview.html"><span class="std std-doc">Overview</span></a> — Architecture and feature overview</p></li>
+<li><p><a class="reference internal" href="integrator-guide/index.html"><span class="std std-doc">Integrator Guide</span></a> — Hardware setup and configuration</p></li>
+<li><p><a class="reference internal" href="reference/quickshape-reference.html"><span class="doc std std-doc">Quickshape Reference</span></a> — Quickshape primitives</p></li>
+<li><p><a class="reference internal" href="reference/gcode-syntax.html"><span class="doc std std-doc">G-Code Syntax</span></a> — G-code reference</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="troubleshooting.html" class="btn btn-neutral float-left" title="Troubleshooting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

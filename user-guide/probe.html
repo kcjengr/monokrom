@@ -1,0 +1,441 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Probe &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="THC (Thermal Height Control)" href="thc.html" />
+    <link rel="prev" title="Statistics" href="statistics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Probe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#probing-methods">Probing Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ohmic-probe">Ohmic Probe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#float-switch">Float Switch</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#probe-test-workflow">Probe Test Workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calibration-steps">Calibration Steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calculating-overrun">Calculating Overrun</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#height-reference-diagrams">Height Reference Diagrams</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#probe-height-only">Probe Height Only</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#slat-height-material-thickness">Slat Height + Material Thickness</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#z-zero-setup">Z Zero Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ohmic-probe-calibration">Ohmic Probe Calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-probing">Troubleshooting Probing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Probe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#probing-methods">Probing Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ohmic-probe">Ohmic Probe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#float-switch">Float Switch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#probe-test-workflow">Probe Test Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calibration-steps">Calibration Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calculating-overrun">Calculating Overrun</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#height-reference-diagrams">Height Reference Diagrams</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#probe-height-only">Probe Height Only</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slat-height-material-thickness">Slat Height + Material Thickness</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#z-zero-setup">Z Zero Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ohmic-probe-calibration">Ohmic Probe Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-probing">Troubleshooting Probing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User Guide</a></li>
+      <li class="breadcrumb-item active">Probe</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user-guide/probe.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="probe">
+<h1>Probe<a class="headerlink" href="#probe" title="Link to this heading"></a></h1>
+<p>Probing establishes the Z zero reference at the workpiece surface. MonoKrom Plasma supports
+two probing methods: ohmic probe (primary) and float switch (fallback).</p>
+<section id="probing-methods">
+<h2>Probing Methods<a class="headerlink" href="#probing-methods" title="Link to this heading"></a></h2>
+<section id="ohmic-probe">
+<h3>Ohmic Probe<a class="headerlink" href="#ohmic-probe" title="Link to this heading"></a></h3>
+<p>The ohmic probe uses electronic touch-off. Voltage is applied to the torch consumable, and
+when the torch contacts (or comes very close to) the workpiece, a circuit is completed through
+the material. The system detects this circuit and records the Z position.</p>
+<p><strong>Requirements:</strong></p>
+<ul class="simple">
+<li><p>Ohmic probe input connected to a breakout board digital input</p></li>
+<li><p>Ohmic probe enable output connected to control the ohmic probe circuit</p></li>
+<li><p><strong>Ohmic Probe Enable</strong> checkbox checked on the Settings tab</p></li>
+</ul>
+<p><strong>HAL Pins:</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.ohmic-probe</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Ohmic probe signal from breakout board</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.ohmic-enable</span></code></p></td>
+<td><p>Output</p></td>
+<td><p>Enable signal for ohmic probe circuit</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="float-switch">
+<h3>Float Switch<a class="headerlink" href="#float-switch" title="Link to this heading"></a></h3>
+<p>The float switch is a mechanical switch on the torch floating head. When the torch contacts
+the workpiece, the float switch activates and stops the Z axis descent.</p>
+<p><strong>Requirements:</strong></p>
+<ul class="simple">
+<li><p>Float switch input connected to a breakout board digital input</p></li>
+<li><p>No ohmic probe installed (or used as fallback when ohmic fails)</p></li>
+</ul>
+<p><strong>HAL Pins:</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.float-switch</span></code></p></td>
+<td><p>Input</p></td>
+<td><p>Float switch signal from breakout board</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="probe-test-workflow">
+<h2>Probe Test Workflow<a class="headerlink" href="#probe-test-workflow" title="Link to this heading"></a></h2>
+<p>The Probe Test cycle verifies and calibrates the probing setup. Follow this procedure after
+initial machine setup or when probing results seem inaccurate.</p>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Machine is homed.</p></li>
+<li><p>Machine is in the home position (X0, Y0).</p></li>
+<li><p>Nothing is below the torch (for safety during initial test).</p></li>
+<li><p>Z axis MIN_LIMIT is set correctly (just below the top of the slats).</p></li>
+</ol>
+</section>
+<section id="calibration-steps">
+<h3>Calibration Steps<a class="headerlink" href="#calibration-steps" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Set probe parameters</strong> — On the Settings tab, verify:</p>
+<ul class="simple">
+<li><p>Probe Speed is appropriate for your machine (default: 300 mm/min)</p></li>
+<li><p>Probe Height is set near the Z axis minimum (default: 14.0 mm)</p></li>
+</ul>
+</li>
+<li><p><strong>Position material</strong> — Place a piece of scrap material on the slats under the torch.</p></li>
+<li><p><strong>Run Probe Test</strong> — Click the <strong>PROBE TEST</strong> button on the Probe tab.</p></li>
+<li><p><strong>Observe the cycle:</strong></p>
+<ul class="simple">
+<li><p>Z axis probes down at probe speed</p></li>
+<li><p>When the workpiece is detected (ohmic or float switch), Z stops</p></li>
+<li><p>Z moves up to the pierce height for the currently selected material</p></li>
+<li><p>Torch holds at pierce height for 10 seconds (configurable in <code class="docutils literal notranslate"><span class="pre">.prefs</span></code> file)</p></li>
+<li><p>Z returns to the starting height</p></li>
+</ul>
+</li>
+<li><p><strong>Measure the gap</strong> — While the torch is holding at pierce height, measure the actual
+distance between the torch tip and the material surface.</p></li>
+<li><p><strong>Adjust Float Travel:</strong></p>
+<ul class="simple">
+<li><p>If measured distance &gt; pierce height: <strong>reduce</strong> Float Travel by the difference</p></li>
+<li><p>If measured distance &lt; pierce height: <strong>increase</strong> Float Travel by the difference</p></li>
+</ul>
+</li>
+<li><p><strong>Repeat</strong> — Run Probe Test again and verify the measurement matches the pierce height.
+Repeat until accurate.</p></li>
+</ol>
+</section>
+<section id="calculating-overrun">
+<h3>Calculating Overrun<a class="headerlink" href="#calculating-overrun" title="Link to this heading"></a></h3>
+<p>If your machine has sufficient float switch travel to absorb Z axis overrun during probing,
+you can set Probe Height near the Z axis minimum and probe at full speed. Overrun can be
+calculated:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">o</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">v</span> <span class="o">/</span> <span class="n">a</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">o</span></code> = overrun (mm or inches)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> = Z axis acceleration (mm/s² or in/s²)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> = Z axis velocity during probing (mm/s or in/s)</p></li>
+</ul>
+<p><strong>Metric example:</strong> MAX_ACCELERATION = 600 mm/s², MAX_VELOCITY = 60 mm/s → overrun = 3 mm</p>
+<p><strong>Imperial example:</strong> MAX_ACCELERATION = 24 in/s², MAX_VELOCITY = 2.4 in/s → overrun = 0.12 in</p>
+</section>
+</section>
+<section id="height-reference-diagrams">
+<h2>Height Reference Diagrams<a class="headerlink" href="#height-reference-diagrams" title="Link to this heading"></a></h2>
+<section id="probe-height-only">
+<h3>Probe Height Only<a class="headerlink" href="#probe-height-only" title="Link to this heading"></a></h3>
+<p>When using probe height only (no slat height + material thickness):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                    <span class="o">^</span> <span class="n">Z</span> <span class="n">axis</span> <span class="n">positive</span>
+                    <span class="o">|</span>
+   <span class="n">Safe</span> <span class="n">Height</span>  <span class="o">----+-------------------</span>
+                    <span class="o">|</span>
+   <span class="n">Pierce</span> <span class="n">Height</span>  <span class="o">--+-------------------</span>  <span class="p">(</span><span class="n">target</span> <span class="n">after</span> <span class="n">probing</span><span class="p">)</span>
+                    <span class="o">|</span>
+   <span class="n">Workpiece</span> <span class="n">Surface</span> <span class="o">--+----------------</span>  <span class="p">(</span><span class="n">probed</span> <span class="n">surface</span><span class="p">)</span>
+                    <span class="o">|</span>
+   <span class="n">Slat</span> <span class="n">Top</span>  <span class="o">------</span> <span class="o">+-------------------</span>
+                    <span class="o">|</span>
+   <span class="n">Z</span> <span class="n">MIN_LIMIT</span>  <span class="o">---</span> <span class="o">+-------------------</span>
+</pre></div>
+</div>
+<p>Probe height is measured from the Z axis MIN_LIMIT upward.</p>
+</section>
+<section id="slat-height-material-thickness">
+<h3>Slat Height + Material Thickness<a class="headerlink" href="#slat-height-material-thickness" title="Link to this heading"></a></h3>
+<p>When using slat height and material thickness:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                    <span class="o">^</span> <span class="n">Z</span> <span class="n">axis</span> <span class="n">positive</span>
+                    <span class="o">|</span>
+   <span class="n">Safe</span> <span class="n">Height</span>  <span class="o">----+-------------------</span>
+                    <span class="o">|</span>
+   <span class="n">Pierce</span> <span class="n">Height</span>  <span class="o">--+-------------------</span>  <span class="p">(</span><span class="n">target</span> <span class="n">after</span> <span class="n">probing</span><span class="p">)</span>
+                    <span class="o">|</span>
+   <span class="n">Workpiece</span> <span class="n">Surface</span> <span class="o">--+----------------</span>  <span class="p">(</span><span class="n">top</span> <span class="n">of</span> <span class="n">material</span><span class="p">)</span>
+                    <span class="o">|</span>
+   <span class="n">Material</span> <span class="n">Thickness</span>
+                    <span class="o">|</span>
+   <span class="n">Slat</span> <span class="n">Top</span>  <span class="o">------</span> <span class="o">+-------------------</span>
+                    <span class="o">|</span>
+   <span class="n">Z</span> <span class="n">MIN_LIMIT</span>  <span class="o">---</span> <span class="o">+-------------------</span>
+</pre></div>
+</div>
+<p>In this mode, the slat height is set in the INI file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[PLASMAC]</span>
+<span class="na">SLAT_TOP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-65.0</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="z-zero-setup">
+<h2>Z Zero Setup<a class="headerlink" href="#z-zero-setup" title="Link to this heading"></a></h2>
+<p>To set the Z DRO relative to Z MIN_LIMIT (making probe height visualization easier):</p>
+<ol class="arabic simple">
+<li><p>Home the Z axis.</p></li>
+<li><p>Jog Z down until it stops at Z MIN_LIMIT.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">0</span></code> button next to the Z DRO to touch off (set Z = 0).</p></li>
+<li><p>Home the Z axis again.</p></li>
+</ol>
+<p>Now the Z DRO value represents the distance above Z MIN_LIMIT, making it easy to visualize
+probe height settings.</p>
+<p><strong>Important:</strong> Touching off the Z DRO has no effect on Z position while running a G-code
+program. It only affects the displayed value.</p>
+</section>
+<section id="ohmic-probe-calibration">
+<h2>Ohmic Probe Calibration<a class="headerlink" href="#ohmic-probe-calibration" title="Link to this heading"></a></h2>
+<p>If you have an ohmic probe, you must also calibrate the X/Y offset between the ohmic probe
+tip and the torch consumable center. See <a class="reference internal" href="sheet-alignment.html"><span class="std std-doc">Sheet Alignment</span></a> for details
+on applying offsets.</p>
+</section>
+<section id="troubleshooting-probing">
+<h2>Troubleshooting Probing<a class="headerlink" href="#troubleshooting-probing" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Problem</p></th>
+<th class="head"><p>Possible Cause</p></th>
+<th class="head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Probe never triggers</p></td>
+<td><p>Ohmic probe not enabled</p></td>
+<td><p>Check <strong>Ohmic Probe Enable</strong> on Settings tab</p></td>
+</tr>
+<tr class="row-odd"><td><p>Probe triggers too early</p></td>
+<td><p>Contact bounce</p></td>
+<td><p>Increase debounce delay in HAL (see <a class="reference internal" href="../troubleshooting.html"><span class="std std-doc">Troubleshooting</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>Probe triggers too late</p></td>
+<td><p>Float switch stuck</p></td>
+<td><p>Check mechanical switch movement</p></td>
+</tr>
+<tr class="row-odd"><td><p>Probe crashes into material</p></td>
+<td><p>Float Travel incorrect</p></td>
+<td><p>Run Probe Test calibration</p></td>
+</tr>
+<tr class="row-even"><td><p>Ohmic probe fails consistently</p></td>
+<td><p>Dirty workpiece surface</p></td>
+<td><p>Clean workpiece, increase ohmic retries</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inconsistent probe results</p></td>
+<td><p>Arc interference</p></td>
+<td><p>Enable low-pass filter on arc voltage (see <a class="reference internal" href="../troubleshooting.html"><span class="std std-doc">Troubleshooting</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="statistics.html" class="btn btn-neutral float-left" title="Statistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="thc.html" class="btn btn-neutral float-right" title="THC (Thermal Height Control)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

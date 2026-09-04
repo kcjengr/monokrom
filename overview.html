@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=837179f8"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick Start" href="quick-start.html" />
+    <link rel="prev" title="MonoKrom Plasma Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#acknowledgements">Acknowledgements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#monokrom-vs-qtplasmac">MonoKrom vs QTPlasmaC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operating-modes">Operating Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#display">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts">Key Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#thermal-height-control-thc">Thermal Height Control (THC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#probing">Probing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-filter-database">Process Filter Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quickshapes">Quickshapes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cut-recovery">Cut Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consumable-change">Consumable Change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sheet-alignment">Sheet Alignment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/overview.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
+<p>MonoKrom Plasma is a custom PySide6-based Virtual Control Panel (VCP) for LinuxCNC plasma
+cutting machines. It is built on the <a class="reference external" href="https://www.qtpyvcp.com/">QtPyVCP</a> framework
+(<a class="reference external" href="https://github.com/kcjengr/qtpyvcp">source</a>).</p>
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading"></a></h2>
+<p>MonoKrom Plasma draws functional inspiration from <a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a>,
+the stock LinuxCNC plasma cutting screen. QTPlasmaC served as the reference point for core
+plasma cutting functionality including THC, probing, arc start, and cut management. MonoKrom
+extends these concepts with additional capabilities for process management, cut recovery, and
+sheet alignment.</p>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading"></a></h2>
+<p>MonoKrom Plasma consists of two main layers:</p>
+<ol class="arabic simple">
+<li><p><strong>QtPyVCP</strong> — The GUI framework providing the window management, data plugins,
+persistent settings, and widget infrastructure. MonoKrom uses a forked qtpyvcp branch
+that adds a SQLite-backed plasma processes plugin.</p></li>
+<li><p><strong>MonoKrom Services</strong> — A set of application-level services instantiated by the main
+window, each handling a specific workflow:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HALBridge</span></code> — Abstraction layer for HAL/LinuxCNC communication</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ProcessFilterService</span></code> — Cut parameter database management and filtering</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ShapeGeneratorService</span></code> — Quickshape G-code generation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ConsumableChangeService</span></code> — Consumable change offset state machine</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CutRecoveryService</span></code> — Post-interruption recovery jog state machine</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SheetAlignmentService</span></code> — Two-point coordinate system rotation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FileOpsService</span></code> — G-code file load/save/reload operations</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MdiPanelService</span></code> — MDI entry assistance</p></li>
+</ul>
+</li>
+</ol>
+<p>All services use dependency injection, making them testable and swappable.</p>
+</section>
+<section id="monokrom-vs-qtplasmac">
+<h2>MonoKrom vs QTPlasmaC<a class="headerlink" href="#monokrom-vs-qtplasmac" title="Link to this heading"></a></h2>
+<p>MonoKrom Plasma retains the core plasma cutting functionality of QTPlasmaC (THC, probing,
+arc start, cut types, hole cutting) while adding:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>QTPlasmaC</p></th>
+<th class="head"><p>MonoKrom Plasma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Process database</p></td>
+<td><p>Built-in cut chart selection</p></td>
+<td><p>SQLite database with multi-field filtering (gas, machine, material, thickness, consumable)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quickshapes</p></td>
+<td><p>Basic shapes</p></td>
+<td><p>14 primitives with kerf compensation and smart hole detection</p></td>
+</tr>
+<tr class="row-even"><td><p>Cut recovery</p></td>
+<td><p>Basic feed hold</p></td>
+<td><p>8-directional jog pad with kerf-width incremental moves</p></td>
+</tr>
+<tr class="row-odd"><td><p>Consumable change</p></td>
+<td><p>Manual offset</p></td>
+<td><p>Automated X/Y offset state machine via HAL pin</p></td>
+</tr>
+<tr class="row-even"><td><p>Sheet alignment</p></td>
+<td><p>Manual coordinate rotation</p></td>
+<td><p>Two-point alignment service with laser offset compensation</p></td>
+</tr>
+<tr class="row-odd"><td><p>VTK backplot</p></td>
+<td><p>Basic 3D view</p></td>
+<td><p>Enhanced with breadcrumbs, WCS support, program/machine bounds</p></td>
+</tr>
+<tr class="row-even"><td><p>Process logging</p></td>
+<td><p>Limited</p></td>
+<td><p>Cut length, cut time, arc OK indicator on stats tab</p></td>
+</tr>
+<tr class="row-odd"><td><p>MDI assistance</p></td>
+<td><p>Basic entry</p></td>
+<td><p>G-code word parameter lookup with suggestion buttons</p></td>
+</tr>
+<tr class="row-even"><td><p>Config system</p></td>
+<td><p>INI-based</p></td>
+<td><p>YAML with Jinja2 templating, persistent settings via pickle</p></td>
+</tr>
+<tr class="row-odd"><td><p>HAL abstraction</p></td>
+<td><p>Direct pin wiring</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HALBridge</span></code> service with lazy factories and dependency injection</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="operating-modes">
+<h2>Operating Modes<a class="headerlink" href="#operating-modes" title="Link to this heading"></a></h2>
+<p>MonoKrom Plasma supports three operating modes. The mode is set in
+the <code class="docutils literal notranslate"><span class="pre">[PLASMAC]</span></code> section of the INI file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[PLASMAC]</span>
+<span class="na">MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mode</p></th>
+<th class="head"><p>Arc Voltage</p></th>
+<th class="head"><p>Arc OK</p></th>
+<th class="head"><p>THC Method</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Used for both arc voltage calculation and soft arc OK</p></td>
+<td><p>Soft (calculated)</p></td>
+<td><p>Arc voltage-based</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Used for arc voltage calculation</p></td>
+<td><p>External digital input</p></td>
+<td><p>Arc voltage-based</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Not used</p></td>
+<td><p>External digital input</p></td>
+<td><p>External up/down signals</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation:</strong> If your plasma power source provides an Arc OK (Transfer) output, use
+Mode 1 or 2 with the external Arc OK signal rather than the soft calculated Arc OK from Mode 0.</p>
+</section>
+<section id="display">
+<h2>Display<a class="headerlink" href="#display" title="Link to this heading"></a></h2>
+<p>MonoKrom Plasma is designed for 16:9 displays at 1080p (1920 x 1080).</p>
+<p>The display is set in the INI file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DISPLAY]</span>
+<span class="na">DISPLAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">monokrom_plasma</span>
+</pre></div>
+</div>
+</section>
+<section id="key-concepts">
+<h2>Key Concepts<a class="headerlink" href="#key-concepts" title="Link to this heading"></a></h2>
+<section id="thermal-height-control-thc">
+<h3>Thermal Height Control (THC)<a class="headerlink" href="#thermal-height-control-thc" title="Link to this heading"></a></h3>
+<p>THC maintains the correct torch-to-workpiece distance during cutting by monitoring arc voltage
+and adjusting the Z axis. MonoKrom Plasma provides full PID tuning controls, voltage arc
+detection (VAD), void sensing, and mesh mode on the Settings tab.</p>
+</section>
+<section id="probing">
+<h3>Probing<a class="headerlink" href="#probing" title="Link to this heading"></a></h3>
+<p>MonoKrom supports two probing methods for finding the workpiece surface:</p>
+<ul class="simple">
+<li><p><strong>Ohmic probe</strong> — Electronic touch-off using the workpiece and torch consumables to complete
+a circuit. This is the primary probing method.</p></li>
+<li><p><strong>Float switch</strong> — Mechanical switch on the floating head. Used as a fallback if ohmic probe
+fails, or as the sole probing method if no ohmic probe is installed.</p></li>
+</ul>
+</section>
+<section id="process-filter-database">
+<h3>Process Filter Database<a class="headerlink" href="#process-filter-database" title="Link to this heading"></a></h3>
+<p>The process filter database stores cut parameters (pierce height, cut height, feed rate,
+volts, amps, kerf) indexed by gas type, machine type, material, thickness, and consumable.
+Users select filters from dropdowns on the Parameters tab, and the matching cut parameters
+are displayed and applied automatically.</p>
+</section>
+<section id="quickshapes">
+<h3>Quickshapes<a class="headerlink" href="#quickshapes" title="Link to this heading"></a></h3>
+<p>MonoKrom includes 14 built-in shape primitives that generate complete G-code programs with
+plasma start/stop sequences, kerf compensation, lead-ins, and smart hole detection:</p>
+<p>Circle, Rectangle, Donut, Convex Rectangle, Lifting Lug, U-Lug, Pipe Flange, Pipe Saddle,
+Exhaust Flange, N-Square Grid, L-Gusset, Angle Gusset, Truss Support, Web Stiffener.</p>
+</section>
+<section id="cut-recovery">
+<h3>Cut Recovery<a class="headerlink" href="#cut-recovery" title="Link to this heading"></a></h3>
+<p>When a cut is interrupted (feed hold), the Cut Recovery tab provides an 8-directional jog
+pad and speed slider to manually reposition the torch back to the cut path. Moves are
+incremented by kerf width for precision.</p>
+</section>
+<section id="consumable-change">
+<h3>Consumable Change<a class="headerlink" href="#consumable-change" title="Link to this heading"></a></h3>
+<p>The consumable change feature manages X/Y offsets for tip and wheel wear. When enabled via
+HAL pin (<code class="docutils literal notranslate"><span class="pre">plasmac.consumable-change</span></code>), the machine applies the configured offset and returns
+to the home position for consumable replacement.</p>
+</section>
+<section id="sheet-alignment">
+<h3>Sheet Alignment<a class="headerlink" href="#sheet-alignment" title="Link to this heading"></a></h3>
+<p>The sheet alignment service performs two-point coordinate system rotation. The operator marks
+two reference points on the workpiece using the laser pointer, and MonoKrom computes the
+rotation angle (via <code class="docutils literal notranslate"><span class="pre">atan2</span></code>) and applies it using a <code class="docutils literal notranslate"><span class="pre">G10</span> <span class="pre">L2</span> <span class="pre">P0</span> <span class="pre">R</span></code> command.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="MonoKrom Plasma Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quick-start.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

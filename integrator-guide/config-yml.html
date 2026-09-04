@@ -1,0 +1,977 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Config YAML &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Post-GUI HAL" href="postgui-hal.html" />
+    <link rel="prev" title="HAL Connections" href="hal-connections.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrator Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ini-config.html">INI Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config-migration.html">Config Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Config YAML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#config-file-location">Config File Location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-config">Custom Config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#manual-custom-config">Manual Custom Config</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#main-config-structure">Main Config Structure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vcp-information">VCP Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-plugins">Data Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dialogs">Dialogs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#g-code-editor-styling">G-code Editor Styling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#g-code-syntax-profile">G-code Syntax Profile</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#persistent-settings">Persistent Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#thc-settings">THC Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#probe-settings">Probe Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arc-settings">Arc Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scribe-settings">Scribe Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spot-settings">Spot Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plasma-cut-settings">Plasma Cut Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#offset-settings">Offset Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#consumable-settings">Consumable Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ui-settings">UI Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#confirmation-settings">Confirmation Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rate-settings">Rate Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#jinja2-templating">Jinja2 Templating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-config">Customizing the Config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#changing-file-locations">Changing File Locations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#switching-to-mysql">Switching to MySQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-custom-settings">Adding Custom Settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-buttons.html">User Buttons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process-db.html">Process Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customization.html">Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Config YAML</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#config-file-location">Config File Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-config">Custom Config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#manual-custom-config">Manual Custom Config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#main-config-structure">Main Config Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vcp-information">VCP Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-plugins">Data Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#status-plugin">Status Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#persistent-data-manager">Persistent Data Manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plasma-processes-plugin">Plasma Processes Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-locations-plugin">File Locations Plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#main-window">Main Window</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dialogs">Dialogs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#open-file-dialog">Open File Dialog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recent-files-dialog">Recent Files Dialog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#new-process-dialog">New Process Dialog</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#g-code-editor-styling">G-code Editor Styling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#g-code-syntax-profile">G-code Syntax Profile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#persistent-settings">Persistent Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#thc-settings">THC Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#probe-settings">Probe Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-settings">Arc Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scribe-settings">Scribe Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spot-settings">Spot Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plasma-cut-settings">Plasma Cut Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#offset-settings">Offset Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consumable-settings">Consumable Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ui-settings">UI Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#confirmation-settings">Confirmation Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rate-settings">Rate Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#jinja2-templating">Jinja2 Templating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-config">Customizing the Config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#changing-file-locations">Changing File Locations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switching-to-mysql">Switching to MySQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-custom-settings">Adding Custom Settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Integrator Guide</a></li>
+      <li class="breadcrumb-item active">Config YAML</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integrator-guide/config-yml.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="config-yaml">
+<h1>Config YAML<a class="headerlink" href="#config-yaml" title="Link to this heading"></a></h1>
+<p>MonoKrom Plasma uses a YAML configuration file (<code class="docutils literal notranslate"><span class="pre">config.yml</span></code>) for QtPyVCP settings. This
+file defines data plugins, windows, dialogs, and persistent settings.</p>
+<section id="config-file-location">
+<h2>Config File Location<a class="headerlink" href="#config-file-location" title="Link to this heading"></a></h2>
+<p>The config file is specified in the INI file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DISPLAY]</span>
+<span class="na">CONFIG_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">custom_config.yml</span>
+</pre></div>
+</div>
+<p>The simulation config uses:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">CONFIG_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">custom_config.yml</span>
+</pre></div>
+</div>
+<p>Which resolves to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/</span><span class="n">linuxcnc</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">sim</span><span class="o">.</span><span class="n">monokrom</span><span class="o">/</span><span class="n">plasmac</span><span class="o">/</span><span class="n">custom_config</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-config">
+<h2>Custom Config<a class="headerlink" href="#custom-config" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">custom_config.yml</span></code> file overrides specific settings from the main <code class="docutils literal notranslate"><span class="pre">config.yml</span></code>. When created by the
+<code class="docutils literal notranslate"><span class="pre">monokrom_plasma</span> <span class="pre">setup</span></code> command, it includes window options and file locations:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># MonoKrom Plasma VCP config — auto-generated</span>
+<span class="nt">windows</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mainwindow</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">confirm_exit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">fullscreen</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">data_plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">file_locations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qtpyvcp.plugins.file_locations:FileLocations</span>
+<span class="w">    </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">default_location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NC Files</span>
+<span class="w">      </span><span class="nt">local_locations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">Home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/</span>
+<span class="w">        </span><span class="nt">Desktop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/Desktop</span>
+<span class="w">        </span><span class="nt">NC Files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/linuxcnc/nc_files</span>
+</pre></div>
+</div>
+<section id="manual-custom-config">
+<h3>Manual Custom Config<a class="headerlink" href="#manual-custom-config" title="Link to this heading"></a></h3>
+<p>For manual installations, <code class="docutils literal notranslate"><span class="pre">custom_config.yml</span></code> can contain just the overrides you need:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Override file locations</span>
+<span class="nt">file_locations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">local_locations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">NC Files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/linuxcnc/nc_files</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="main-config-structure">
+<h2>Main Config Structure<a class="headerlink" href="#main-config-structure" title="Link to this heading"></a></h2>
+<p>The main <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> is located at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">src</span><span class="o">/</span><span class="n">monokrom</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">monokrom</span><span class="o">/</span><span class="n">plasma</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<section id="vcp-information">
+<h3>VCP Information<a class="headerlink" href="#vcp-information" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">vcp</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MonoKrom Plasma</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.0.5</span>
+<span class="w">  </span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kurt Jacobson, James Walker</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">    </span><span class="no">Plasma UI leveraging the qtpyvcp plasma processes plugin.</span>
+</pre></div>
+</div>
+</section>
+<section id="data-plugins">
+<h3>Data Plugins<a class="headerlink" href="#data-plugins" title="Link to this heading"></a></h3>
+<section id="status-plugin">
+<h4>Status Plugin<a class="headerlink" href="#status-plugin" title="Link to this heading"></a></h4>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">data_plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">status</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cycle_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span><span class="w">  </span><span class="c1"># 50ms update cycle</span>
+</pre></div>
+</div>
+</section>
+<section id="persistent-data-manager">
+<h4>Persistent Data Manager<a class="headerlink" href="#persistent-data-manager" title="Link to this heading"></a></h4>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">persistent_data_manager</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qtpyvcp.plugins.persistent_data_manager:PersistentDataManager</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">serialization_method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pickle</span>
+</pre></div>
+</div>
+<p>Settings are serialized as pickle files and stored in the machine configuration directory.</p>
+</section>
+<section id="plasma-processes-plugin">
+<h4>Plasma Processes Plugin<a class="headerlink" href="#plasma-processes-plugin" title="Link to this heading"></a></h4>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">plasmaprocesses</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qtpyvcp.plugins.plasma_processes:PlasmaProcesses</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">db_type</span><span class="p">:</span><span class="w"> </span><span class="s">"sqlite"</span>
+</pre></div>
+</div>
+<p>This plugin provides the SQLite-backed plasma process database. It requires the forked
+qtpyvcp branch (<code class="docutils literal notranslate"><span class="pre">plasma_db</span></code>).</p>
+</section>
+<section id="file-locations-plugin">
+<h4>File Locations Plugin<a class="headerlink" href="#file-locations-plugin" title="Link to this heading"></a></h4>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">file_locations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qtpyvcp.plugins.file_locations:FileLocations</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">default_location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NC Files</span>
+<span class="w">    </span><span class="nt">local_locations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">Home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/</span>
+<span class="w">      </span><span class="nt">Desktop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/Desktop</span>
+<span class="w">      </span><span class="nt">NC Files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/linuxcnc/nc_files</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
+<section id="main-window">
+<h4>Main Window<a class="headerlink" href="#main-window" title="Link to this heading"></a></h4>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">windows</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mainwindow</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monokrom.plasma.mainwindow:MainWindow</span>
+<span class="w">    </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">menu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="w">      </span><span class="nt">ui_file</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">file.dir</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">/mainwindow.ui</span>
+<span class="w">      </span><span class="nt">stylesheet</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">file.dir</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">/../common/monokrom.qss</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">( vcp.name ) ( vcp.version)</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">provider</span></code></p></td>
+<td><p>Python class for the main window</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ui_file</span></code></p></td>
+<td><p>Qt Designer UI file path</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stylesheet</span></code></p></td>
+<td><p>QSS stylesheet path</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p>Window title (uses Jinja2 template)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="dialogs">
+<h3>Dialogs<a class="headerlink" href="#dialogs" title="Link to this heading"></a></h3>
+<section id="open-file-dialog">
+<h4>Open File Dialog<a class="headerlink" href="#open-file-dialog" title="Link to this heading"></a></h4>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">dialogs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">open_file</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monokrom.common.widgets.input_overlay:MkInputOverlay</span>
+<span class="w">    </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ui_file</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">file.dir</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">/../common/widgets/file_chooser.ui</span>
+</pre></div>
+</div>
+</section>
+<section id="recent-files-dialog">
+<h4>Recent Files Dialog<a class="headerlink" href="#recent-files-dialog" title="Link to this heading"></a></h4>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">recent_files</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monokrom.common.widgets.input_overlay:MkInputOverlay</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ui_file</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">file.dir</span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">/../common/widgets/recent_file_chooser.ui</span>
+</pre></div>
+</div>
+</section>
+<section id="new-process-dialog">
+<h4>New Process Dialog<a class="headerlink" href="#new-process-dialog" title="Link to this heading"></a></h4>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">new_process</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monokrom.common.widgets.input_overlay:MkInputOverlay</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ui_file</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">file.dir</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">/new_process.ui</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="g-code-editor-styling">
+<h3>G-code Editor Styling<a class="headerlink" href="#g-code-editor-styling" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gcode_editor</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">background</span><span class="p">:</span><span class="w"> </span><span class="s">"#16160e"</span>
+<span class="w">    </span><span class="nt">text_color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">    </span><span class="nt">current_line_color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">    </span><span class="nt">current_line_background</span><span class="p">:</span><span class="w"> </span><span class="s">"#16160e"</span>
+<span class="w">    </span><span class="nt">font_family</span><span class="p">:</span><span class="w"> </span><span class="s">"Noto</span><span class="nv"> </span><span class="s">Sans</span><span class="nv"> </span><span class="s">Mono"</span>
+<span class="w">    </span><span class="nt">font_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">11</span>
+<span class="w">    </span><span class="nt">line_number_color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">    </span><span class="nt">line_number_background</span><span class="p">:</span><span class="w"> </span><span class="s">"#505050"</span>
+</pre></div>
+</div>
+</section>
+<section id="g-code-syntax-profile">
+<h3>G-code Syntax Profile<a class="headerlink" href="#g-code-syntax-profile" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gcode_syntax</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">flat-token-groups</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">styles</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcode</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcode</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axis</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operator</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comment</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">      </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="persistent-settings">
+<h2>Persistent Settings<a class="headerlink" href="#persistent-settings" title="Link to this heading"></a></h2>
+<p>MonoKrom Plasma defines over 110 persistent settings that are saved to the <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> settings section
+and backed up as pickle files.
+These are organized into categories:</p>
+<section id="thc-settings">
+<h3>THC Settings<a class="headerlink" href="#thc-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thc_delay</span></code></p></td>
+<td><p>0.5</p></td>
+<td><p>THC enable delay (seconds)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thc_threshold</span></code></p></td>
+<td><p>1.0</p></td>
+<td><p>THC voltage threshold (V)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thc_pid_p_gain</span></code></p></td>
+<td><p>10.0</p></td>
+<td><p>THC proportional gain</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thc_pid_i_gain</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>THC integral gain</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thc_pid_d_gain</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>THC derivative gain</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thc_enabled</span></code></p></td>
+<td><p>true</p></td>
+<td><p>THC enabled flag</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thc_feed_rate</span></code></p></td>
+<td><p>3000.0</p></td>
+<td><p>THC feed rate (mm/min)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thc_vad_threshold</span></code></p></td>
+<td><p>60.0</p></td>
+<td><p>VAD detection threshold (V)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thc_void_override</span></code></p></td>
+<td><p>99</p></td>
+<td><p>VAD void retraction override</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thc_safe_height</span></code></p></td>
+<td><p>40.0</p></td>
+<td><p>Minimum Z height during cutting</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">height_per_volt</span></code></p></td>
+<td><p>0.100</p></td>
+<td><p>Z movement per volt calibration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_vad</span></code></p></td>
+<td><p>true</p></td>
+<td><p>VAD enabled</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_void_sense</span></code></p></td>
+<td><p>true</p></td>
+<td><p>Void sensing enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_mesh_sense</span></code></p></td>
+<td><p>false</p></td>
+<td><p>Mesh mode enabled</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">corner_lock</span></code></p></td>
+<td><p>false</p></td>
+<td><p>Corner lock enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_auto_volts</span></code></p></td>
+<td><p>true</p></td>
+<td><p>Auto volts mode</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="probe-settings">
+<h3>Probe Settings<a class="headerlink" href="#probe-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">probe_float_travel</span></code></p></td>
+<td><p>3.2</p></td>
+<td><p>Float switch travel distance (mm)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">probe_speed</span></code></p></td>
+<td><p>300</p></td>
+<td><p>Probe feed rate (mm/min)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">probe_height</span></code></p></td>
+<td><p>14.0</p></td>
+<td><p>Target height after probing (mm)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">probe_offset</span></code></p></td>
+<td><p>-0.5</p></td>
+<td><p>Additional probe offset (mm)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ohmic_sensing_enabled</span></code></p></td>
+<td><p>false</p></td>
+<td><p>Ohmic probe enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">probe_ohmic_retries</span></code></p></td>
+<td><p>3</p></td>
+<td><p>Number of ohmic probe retries</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">probe_skip_ihs</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Skip initial height search distance</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">probe_setup_speed</span></code></p></td>
+<td><p>3000</p></td>
+<td><p>Probe setup approach speed (mm/min)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="arc-settings">
+<h3>Arc Settings<a class="headerlink" href="#arc-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arc_fail_timeout</span></code></p></td>
+<td><p>3.0</p></td>
+<td><p>Arc fail timeout (seconds)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">arc_max_starts</span></code></p></td>
+<td><p>3</p></td>
+<td><p>Max arc start attempts</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arc_retry_delay</span></code></p></td>
+<td><p>5.0</p></td>
+<td><p>Delay between arc retries (seconds)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">arc_ok_high_volts</span></code></p></td>
+<td><p>250.0</p></td>
+<td><p>Arc OK high voltage threshold (V)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arc_ok_low_volts</span></code></p></td>
+<td><p>60.0</p></td>
+<td><p>Arc OK low voltage threshold (V)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">puddle_jump_height</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Puddle jump retraction height</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">puddle_jump_delay</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Puddle jump delay (seconds)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_torch_pulse_sec</span></code></p></td>
+<td><p>1.0</p></td>
+<td><p>Torch pulse duration (seconds)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pause_at_end</span></code></p></td>
+<td><p>false</p></td>
+<td><p>Pause at end of cut</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">arc_voltage_scale</span></code></p></td>
+<td><p>0.006744</p></td>
+<td><p>Arc voltage scale calibration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arc_voltage_offset</span></code></p></td>
+<td><p>3687.5</p></td>
+<td><p>Arc voltage offset calibration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">arc_height_per_volt</span></code></p></td>
+<td><p>0.100</p></td>
+<td><p>Arc height per volt calibration</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="scribe-settings">
+<h3>Scribe Settings<a class="headerlink" href="#scribe-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scribe_arm_delay</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Scribe arming delay (seconds)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scribe_on_delay</span></code></p></td>
+<td><p>0.3</p></td>
+<td><p>Scribe on delay (seconds)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spot-settings">
+<h3>Spot Settings<a class="headerlink" href="#spot-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spot_threshold</span></code></p></td>
+<td><p>5.0</p></td>
+<td><p>Spot detection threshold</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spot_delay</span></code></p></td>
+<td><p>100.0</p></td>
+<td><p>Spot delay (seconds)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plasma-cut-settings">
+<h3>Plasma Cut Settings<a class="headerlink" href="#plasma-cut-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_hole_thickness_ratio</span></code></p></td>
+<td><p>5</p></td>
+<td><p>Hole detection thickness ratio</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_max_hole_size</span></code></p></td>
+<td><p>50.0</p></td>
+<td><p>Maximum hole size for through-cut (mm)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_hole_detect_enable</span></code></p></td>
+<td><p>true</p></td>
+<td><p>Hole detection enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_arc1_percent</span></code></p></td>
+<td><p>60.0</p></td>
+<td><p>Arc 1 power percentage</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_arc1_distance</span></code></p></td>
+<td><p>80.0</p></td>
+<td><p>Arc 1 distance</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_arc2_percent</span></code></p></td>
+<td><p>40.0</p></td>
+<td><p>Arc 2 power percentage</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_arc2_distance</span></code></p></td>
+<td><p>20.0</p></td>
+<td><p>Arc 2 distance</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_arc3_percent</span></code></p></td>
+<td><p>100.0</p></td>
+<td><p>Arc 3 power percentage</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_arc3_distance</span></code></p></td>
+<td><p>20.0</p></td>
+<td><p>Arc 3 distance</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_overburn_percent</span></code></p></td>
+<td><p>100.0</p></td>
+<td><p>Overburn percentage</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_leadin_percent</span></code></p></td>
+<td><p>60.0</p></td>
+<td><p>Lead-in percentage</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_leadin_radius</span></code></p></td>
+<td><p>3.0</p></td>
+<td><p>Lead-in radius</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_small_hole_detect</span></code></p></td>
+<td><p>false</p></td>
+<td><p>Small hole detection enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_force_straight_leadin</span></code></p></td>
+<td><p>false</p></td>
+<td><p>Straight lead-in for small holes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_small_hole_threshold</span></code></p></td>
+<td><p>3.5</p></td>
+<td><p>Small hole threshold</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_hole_kerf</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Small hole kerf compensation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasma_use_hidef</span></code></p></td>
+<td><p>false</p></td>
+<td><p>High definition mode enabled</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="offset-settings">
+<h3>Offset Settings<a class="headerlink" href="#offset-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">laser_offset_x</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Laser pointer X offset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">laser_offset_y</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Laser pointer Y offset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">camera_offset_x</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Camera X offset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">camera_offset_y</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Camera Y offset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scribe_offset_x</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Scribe X offset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scribe_offset_y</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Scribe Y offset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ohmic_offset_x</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Ohmic probe X offset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ohmic_offset_y</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Ohmic probe Y offset</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="consumable-settings">
+<h3>Consumable Settings<a class="headerlink" href="#consumable-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">consumable_offset_x</span></code></p></td>
+<td><p>10.0</p></td>
+<td><p>Consumable change X offset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">consumable_offset_y</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Consumable change Y offset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">consumable_xy_feed_rate</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>Consumable change XY feed rate (mm/min)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ui-settings">
+<h3>UI Settings<a class="headerlink" href="#ui-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">backplot_multitool-colors</span></code></p></td>
+<td><p>true</p></td>
+<td><p>Backplot multi-tool colors</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="confirmation-settings">
+<h3>Confirmation Settings<a class="headerlink" href="#confirmation-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">run_save_confirm</span></code></p></td>
+<td><p>false</p></td>
+<td><p>Confirm before saving program</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">run_delete_confirm</span></code></p></td>
+<td><p>true</p></td>
+<td><p>Confirm before deleting program</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rate-settings">
+<h3>Rate Settings<a class="headerlink" href="#rate-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thc_feed_rate</span></code></p></td>
+<td><p>0.0</p></td>
+<td><p>THC feed rate (mm/min)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">framing_feed_rate</span></code></p></td>
+<td><p>2000.0</p></td>
+<td><p>Framing feed rate (mm/min)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="jinja2-templating">
+<h2>Jinja2 Templating<a class="headerlink" href="#jinja2-templating" title="Link to this heading"></a></h2>
+<p>The config.yml supports Jinja2 templating for dynamic values:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># File path relative to config directory</span>
+<span class="nt">ui_file</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">file.dir</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">/mainwindow.ui</span>
+
+<span class="c1"># Value from another config section</span>
+<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">( vcp.name ) ( vcp.version)</span>
+
+<span class="c1"># Include shared fragments</span>
+<span class="c1">#{% include "default_menubar.yml" %}</span>
+</pre></div>
+</div>
+</section>
+<section id="customizing-the-config">
+<h2>Customizing the Config<a class="headerlink" href="#customizing-the-config" title="Link to this heading"></a></h2>
+<section id="changing-file-locations">
+<h3>Changing File Locations<a class="headerlink" href="#changing-file-locations" title="Link to this heading"></a></h3>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">custom_config.yml</span></code> to override file locations:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">file_locations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">local_locations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">NC Files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/your/nc_files</span>
+<span class="w">      </span><span class="nt">Home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/your/home</span>
+</pre></div>
+</div>
+</section>
+<section id="switching-to-mysql">
+<h3>Switching to MySQL<a class="headerlink" href="#switching-to-mysql" title="Link to this heading"></a></h3>
+<p>For networked installations, you can switch the plasma processes database from SQLite to MySQL:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">plasmaprocesses</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qtpyvcp.plugins.plasma_processes:PlasmaProcesses</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">db_type</span><span class="p">:</span><span class="w"> </span><span class="s">"mysql"</span>
+<span class="w">    </span><span class="nt">db_host</span><span class="p">:</span><span class="w"> </span><span class="s">"localhost"</span>
+<span class="w">    </span><span class="nt">db_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
+<span class="w">    </span><span class="nt">db_name</span><span class="p">:</span><span class="w"> </span><span class="s">"monokrom_plasma"</span>
+<span class="w">    </span><span class="nt">db_user</span><span class="p">:</span><span class="w"> </span><span class="s">"monokrom"</span>
+<span class="w">    </span><span class="nt">db_password</span><span class="p">:</span><span class="w"> </span><span class="s">"secret"</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-custom-settings">
+<h3>Adding Custom Settings<a class="headerlink" href="#adding-custom-settings" title="Link to this heading"></a></h3>
+<p>Add new persistent settings to the config.yml:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">persistent_settings</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">my_custom_setting</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span>
+<span class="w">    </span><span class="nt">widget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hal_spinbox</span>
+</pre></div>
+</div>
+<p>The setting will be automatically saved to the <code class="docutils literal notranslate"><span class="pre">.prefs</span></code> file and restored on VCP restart.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hal-connections.html" class="btn btn-neutral float-left" title="HAL Connections" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="postgui-hal.html" class="btn btn-neutral float-right" title="Post-GUI HAL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

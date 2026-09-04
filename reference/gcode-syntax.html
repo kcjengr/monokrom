@@ -1,0 +1,612 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G-Code Syntax &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="State Machine" href="state-machine.html" />
+    <link rel="prev" title="Persistent Settings" href="persistent-settings.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">G-Code Syntax</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#supported-g-code-commands">Supported G-Code Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#motion-commands">Motion Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plasma-specific-m-codes">Plasma-Specific M-Codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plasma-specific-macros">Plasma-Specific Macros</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#quickshape-g-code-structure">Quickshape G-Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arc-start-sequence">Arc Start Sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hole-cutting">Hole Cutting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kerf-compensation">Kerf Compensation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coordinate-systems">Coordinate Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sheet-alignment">Sheet Alignment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#comments">Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#program-control">Program Control</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-from-line">Run From Line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#block-delete">Block Delete</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-stop">Optional Stop</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#special-directives">Special Directives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#material-selection-directive">Material Selection Directive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-parameters">Custom Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#g-code-validation">G-Code Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-complete-quickshape-program">Example: Complete Quickshape Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">G-Code Syntax</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/gcode-syntax.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="g-code-syntax">
+<h1>G-Code Syntax<a class="headerlink" href="#g-code-syntax" title="Link to this heading"></a></h1>
+<p>This reference documents the G-code syntax and structure used by MonoKorn Plasma. It covers
+the G-code commands generated by Quickshapes, the M-codes used for plasma control, and the
+special comments and directives recognized by the VCP.</p>
+<section id="supported-g-code-commands">
+<h2>Supported G-Code Commands<a class="headerlink" href="#supported-g-code-commands" title="Link to this heading"></a></h2>
+<p>MonoKorn Plasma supports the standard LinuxCNC G-code command set, with the following
+plasma-specific conventions:</p>
+<section id="motion-commands">
+<h3>Motion Commands<a class="headerlink" href="#motion-commands" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G0</span></code></p></td>
+<td><p>Rapid positioning</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G1</span></code></p></td>
+<td><p>Linear interpolation (cutting feed)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G2</span></code></p></td>
+<td><p>Clockwise arc interpolation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G3</span></code></p></td>
+<td><p>Counter-clockwise arc interpolation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G4</span></code></p></td>
+<td><p>Dwell (delay)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G10</span></code></p></td>
+<td><p>Set coordinate system offset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G28</span></code></p></td>
+<td><p>Return to home position</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G30</span></code></p></td>
+<td><p>Return to reference position</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G54</span></code> - <code class="docutils literal notranslate"><span class="pre">G59</span></code></p></td>
+<td><p>Coordinate system selection</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G90</span></code></p></td>
+<td><p>Absolute programming (default)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G91</span></code></p></td>
+<td><p>Incremental programming</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G94</span></code></p></td>
+<td><p>Feed rate per minute (default)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G95</span></code></p></td>
+<td><p>Feed rate per revolution</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plasma-specific-m-codes">
+<h3>Plasma-Specific M-Codes<a class="headerlink" href="#plasma-specific-m-codes" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M3</span></code></p></td>
+<td><p>Torch on (spindle forward = arc start)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M4</span></code></p></td>
+<td><p>Torch on (spindle reverse — rarely used)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M5</span></code></p></td>
+<td><p>Torch off (spindle stop = arc stop)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M7</span></code></p></td>
+<td><p>Coolant mist on (if equipped)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M8</span></code></p></td>
+<td><p>Coolant flood on (if equipped)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M9</span></code></p></td>
+<td><p>Coolant off</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plasma-specific-macros">
+<h3>Plasma-Specific Macros<a class="headerlink" href="#plasma-specific-macros" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M30</span></code></p></td>
+<td><p>Program end and rewind</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M0</span></code></p></td>
+<td><p>Program stop (operator pause)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M1</span></code></p></td>
+<td><p>Optional stop (if enabled)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="quickshape-g-code-structure">
+<h2>Quickshape G-Code Structure<a class="headerlink" href="#quickshape-g-code-structure" title="Link to this heading"></a></h2>
+<p>Each Quickshape generates a complete G-code program with the following structure:</p>
+<div class="highlight-gcode notranslate"><div class="highlight"><pre><span></span><span class="c">; MonoKrom Quickshape - &lt;shape name&gt;</span>
+<span class="c">; Material: &lt;selected material&gt;</span>
+<span class="c">; Gas: &lt;gas type&gt;</span>
+<span class="c">; Machine: &lt;machine type&gt;</span>
+<span class="c">; Thickness: &lt;thickness&gt;</span>
+<span class="c">; Kerf: &lt;kerf value&gt;</span>
+<span class="c">; Lead-in: &lt;lead-in length&gt;</span>
+<span class="c">; Pierce Height: &lt;pierce height&gt;</span>
+<span class="c">; Pierce Delay: &lt;pierce delay&gt;</span>
+<span class="c">; Cut Height: &lt;cut height&gt;</span>
+<span class="c">; Cut Feed Rate: &lt;cut feed rate&gt;</span>
+<span class="c">; Cut Volts: &lt;cut volts&gt;</span>
+
+(Start of shape program)
+<span class="nb">G90 </span>G94          (Absolute mode, feed per minute)
+<span class="nb">G0 </span>Z&lt;pierce height&gt;              (Rapid to pierce height)
+<span class="nb">G1 </span>Z&lt;pierce height&gt; F&lt;probe speed&gt;  (Probe approach at probe speed)
+<span class="c">; Ohmic probe or height sense occurs here if enabled</span>
+<span class="nb">G0 </span>Z&lt;pierce height&gt;              (Rapid to pierce height again)
+<span class="nb">G4 </span>P&lt;pierce delay&gt;               (Pierce delay)
+<span class="nb">G1 </span>Z&lt;cut height&gt; F&lt;cut feed rate&gt;  (Lower to cut height)
+<span class="nb">G4 </span>P&lt;pierce delay&gt;               (Pierce delay at cut height)
+<span class="nb">M3 </span><span class="w">                              </span>(Torch on)
+<span class="nb">G1 </span>X&lt;lead-in start&gt; F&lt;cut feed rate&gt;  (Lead-in move)
+<span class="nb">G1 </span>&lt;cut path&gt; F&lt;cut feed rate&gt;      (Cut path with kerf compensation)
+<span class="nb">M5 </span><span class="w">                              </span>(Torch off)
+<span class="nb">G0 </span>Z&lt;safe height&gt;                (Retract to safe height)
+<span class="nb">M30 </span><span class="w">                             </span>(Program end)
+</pre></div>
+</div>
+</section>
+<section id="arc-start-sequence">
+<h2>Arc Start Sequence<a class="headerlink" href="#arc-start-sequence" title="Link to this heading"></a></h2>
+<p>The arc start sequence is standardized across all cut operations:</p>
+<div class="highlight-gcode notranslate"><div class="highlight"><pre><span></span><span class="c">; Step 1: Rapid to pierce height</span>
+<span class="nb">G0 </span>Z&lt;pierce height&gt;
+
+<span class="c">; Step 2: Approach to pierce height at probe speed</span>
+<span class="nb">G1 </span>Z&lt;pierce height&gt; F&lt;probe speed&gt;
+
+<span class="c">; Step 3: Ohmic probe (if enabled)</span>
+<span class="c">; The VCP applies ohmic voltage and detects contact with the workpiece.</span>
+<span class="c">; If ohmic probe succeeds, the Z position is recorded.</span>
+<span class="c">; If ohmic probe fails, the float switch is used as fallback.</span>
+
+<span class="c">; Step 4: Rapid to pierce height (after probe)</span>
+<span class="nb">G0 </span>Z&lt;pierce height&gt;
+
+<span class="c">; Step 5: Pierce delay</span>
+<span class="nb">G4 </span>P&lt;pierce delay&gt;
+
+<span class="c">; Step 6: Lower to cut height</span>
+<span class="nb">G1 </span>Z&lt;cut height&gt; F&lt;cut feed rate&gt;
+
+<span class="c">; Step 7: Pierce delay at cut height</span>
+<span class="nb">G4 </span>P&lt;pierce delay&gt;
+
+<span class="c">; Step 8: Torch on</span>
+<span class="nb">M3</span>
+
+<span class="c">; Step 9: Optional puddle jump</span>
+<span class="c">; If puddle jump is enabled:</span>
+<span class="nb">G0 </span>Z&lt;puddle jump height&gt;
+<span class="nb">G4 </span>P&lt;puddle jump delay&gt;
+<span class="nb">G1 </span>Z&lt;cut height&gt; F&lt;cut feed rate&gt;
+
+<span class="c">; Step 10: Begin cutting</span>
+<span class="nb">G1 </span>&lt;cut path&gt; F&lt;cut feed rate&gt;
+</pre></div>
+</div>
+</section>
+<section id="hole-cutting">
+<h2>Hole Cutting<a class="headerlink" href="#hole-cutting" title="Link to this heading"></a></h2>
+<p>Holes smaller than the hole detection threshold are cut as through-cuts without lead-ins:</p>
+<div class="highlight-gcode notranslate"><div class="highlight"><pre><span></span><span class="c">; Small hole (through-cut, no lead-in)</span>
+<span class="nb">G0 </span>Z&lt;pierce height&gt;
+<span class="nb">G1 </span>Z&lt;pierce height&gt; F&lt;probe speed&gt;
+<span class="nb">G0 </span>Z&lt;pierce height&gt;
+<span class="nb">G4 </span>P&lt;pierce delay&gt;
+<span class="nb">G1 </span>Z&lt;cut height&gt; F&lt;cut feed rate&gt;
+<span class="nb">G4 </span>P&lt;pierce delay&gt;
+<span class="nb">M3</span>
+<span class="nb">G1 </span>X&lt;hole center X&gt; Y&lt;hole center Y&gt; F&lt;cut feed rate&gt;  (Position over hole)
+G3/X&lt;hole end&gt; I&lt;J offset&gt; F&lt;cut feed rate&gt;  (Circle cut, no lead-in)
+<span class="nb">M5</span>
+<span class="nb">G0 </span>Z&lt;safe height&gt;
+</pre></div>
+</div>
+<p>Large holes (above the threshold) use lead-ins:</p>
+<div class="highlight-gcode notranslate"><div class="highlight"><pre><span></span><span class="c">; Large hole (with lead-in)</span>
+<span class="nb">G0 </span>Z&lt;pierce height&gt;
+<span class="nb">G1 </span>Z&lt;pierce height&gt; F&lt;probe speed&gt;
+<span class="nb">G0 </span>Z&lt;pierce height&gt;
+<span class="nb">G4 </span>P&lt;pierce delay&gt;
+<span class="nb">G1 </span>Z&lt;cut height&gt; F&lt;cut feed rate&gt;
+<span class="nb">G4 </span>P&lt;pierce delay&gt;
+<span class="nb">M3</span>
+<span class="nb">G1 </span>X&lt;lead-in start&gt; F&lt;cut feed rate&gt;  (Lead-in to hole)
+G3/X&lt;hole end&gt; I&lt;J offset&gt; F&lt;cut feed rate&gt;  (Circle cut with lead-in)
+<span class="nb">G1 </span>X&lt;lead-in end&gt; F&lt;cut feed rate&gt;  (Lead-out)
+<span class="nb">M5</span>
+<span class="nb">G0 </span>Z&lt;safe height&gt;
+</pre></div>
+</div>
+</section>
+<section id="kerf-compensation">
+<h2>Kerf Compensation<a class="headerlink" href="#kerf-compensation" title="Link to this heading"></a></h2>
+<p>Kerf compensation is applied automatically to all cut paths. The compensation offset is
+calculated as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">compensation</span> <span class="o">=</span> <span class="n">kerf</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>For external cuts (outer perimeters), the path is offset outward by the compensation amount.
+For internal cuts (holes, cutouts), the path is offset inward by the compensation amount.</p>
+<p>The kerf value is stored per material in the process database.</p>
+</section>
+<section id="coordinate-systems">
+<h2>Coordinate Systems<a class="headerlink" href="#coordinate-systems" title="Link to this heading"></a></h2>
+<p>MonoKorn Plasma supports the standard LinuxCNC coordinate systems:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>G-Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G54</span></code></p></td>
+<td><p>Work coordinate system 1 (default)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G55</span></code></p></td>
+<td><p>Work coordinate system 2</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G56</span></code></p></td>
+<td><p>Work coordinate system 3</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G57</span></code></p></td>
+<td><p>Work coordinate system 4</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G58</span></code></p></td>
+<td><p>Work coordinate system 5</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G59</span></code></p></td>
+<td><p>Work coordinate system 6</p></td>
+</tr>
+</tbody>
+</table>
+<p>Coordinate system offsets are set in the INI file or via <code class="docutils literal notranslate"><span class="pre">G10</span> <span class="pre">L2</span> <span class="pre">P&lt;n&gt;</span> <span class="pre">X&lt;offset&gt;</span> <span class="pre">Y&lt;offset&gt;</span></code>.</p>
+<section id="sheet-alignment">
+<h3>Sheet Alignment<a class="headerlink" href="#sheet-alignment" title="Link to this heading"></a></h3>
+<p>The Sheet Alignment service applies a rotation to the work coordinate system using <code class="docutils literal notranslate"><span class="pre">G10</span></code>:</p>
+<div class="highlight-gcode notranslate"><div class="highlight"><pre><span></span><span class="c">; Set rotation angle for work coordinate system 1</span>
+<span class="nb">G10 </span><span class="k">L</span><span class="m">2</span><span class="w"> </span><span class="k">P</span><span class="m">0</span><span class="w"> </span>R&lt;angle&gt;
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;angle&gt;</span></code> is the rotation angle in degrees, calculated from two reference points
+marked by the operator using the laser pointer.</p>
+</section>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
+<p>MonoKorn Plasma uses standard LinuxCNC comment syntax:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Syntax</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">;</span> <span class="pre">comment</span></code></p></td>
+<td><p>Semicolon comment (ignored by LinuxCNC)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">(comment)</span></code></p></td>
+<td><p>Parentheses comment (ignored by LinuxCNC)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Comments in generated G-code include:</p>
+<ul class="simple">
+<li><p>Material information (material name, gas, machine, thickness)</p></li>
+<li><p>Cut parameters (kerf, lead-in, pierce height, cut height, feed rate)</p></li>
+<li><p>Shape name and generation timestamp</p></li>
+</ul>
+</section>
+<section id="program-control">
+<h2>Program Control<a class="headerlink" href="#program-control" title="Link to this heading"></a></h2>
+<section id="run-from-line">
+<h3>Run From Line<a class="headerlink" href="#run-from-line" title="Link to this heading"></a></h3>
+<p>MonoKorn Plasma supports resuming a program from a specific line:</p>
+<ol class="arabic simple">
+<li><p>Open the G-code editor.</p></li>
+<li><p>Place the cursor on the desired line.</p></li>
+<li><p>Press <code class="docutils literal notranslate"><span class="pre">Ctrl+R</span></code> or click <strong>Run From Line</strong>.</p></li>
+<li><p>The program resumes from the selected line.</p></li>
+</ol>
+<p><strong>Important:</strong> When resuming from a line, ensure the torch is at the correct position
+and height. Use Cut Recovery to reposition if necessary.</p>
+</section>
+<section id="block-delete">
+<h3>Block Delete<a class="headerlink" href="#block-delete" title="Link to this heading"></a></h3>
+<p>Block delete skips lines preceded by a <code class="docutils literal notranslate"><span class="pre">/</span></code> character. This can be used to skip optional
+operations (e.g., probe sequences) for testing:</p>
+<div class="highlight-gcode notranslate"><div class="highlight"><pre><span></span>/ G0 Z&lt;pierce height&gt;    (Skipped if block delete is enabled)
+<span class="nb">G1 </span>Z&lt;pierce height&gt; F&lt;probe speed&gt;  (Not skipped)
+</pre></div>
+</div>
+<p>Block delete is controlled by the LinuxCNC HALUI pin <code class="docutils literal notranslate"><span class="pre">halui.program.block-delete</span></code>.</p>
+</section>
+<section id="optional-stop">
+<h3>Optional Stop<a class="headerlink" href="#optional-stop" title="Link to this heading"></a></h3>
+<p>Optional stop (<code class="docutils literal notranslate"><span class="pre">M1</span></code>) pauses the program if optional stop is enabled. This can be used
+to mark specific points in a program for operator inspection:</p>
+<div class="highlight-gcode notranslate"><div class="highlight"><pre><span></span><span class="nb">M1 </span><span class="w">   </span>(Pause if optional stop is enabled)
+</pre></div>
+</div>
+<p>Optional stop is controlled by the LinuxCNC HALUI pin <code class="docutils literal notranslate"><span class="pre">halui.program.optional-stop</span></code>.</p>
+</section>
+</section>
+<section id="special-directives">
+<h2>Special Directives<a class="headerlink" href="#special-directives" title="Link to this heading"></a></h2>
+<section id="material-selection-directive">
+<h3>Material Selection Directive<a class="headerlink" href="#material-selection-directive" title="Link to this heading"></a></h3>
+<p>Some G-code files may include a directive to select a material from the process database:</p>
+<div class="highlight-gcode notranslate"><div class="highlight"><pre><span></span><span class="c">; MONOKROM_MATERIAL: Mild Steel 6mm</span>
+</pre></div>
+</div>
+<p>This directive is ignored by LinuxCNC but can be parsed by MonoKorn Plasma to automatically
+select the matching material from the process database when the file is loaded.</p>
+</section>
+<section id="custom-parameters">
+<h3>Custom Parameters<a class="headerlink" href="#custom-parameters" title="Link to this heading"></a></h3>
+<p>Custom parameters can be passed to the VCP via G-code comments:</p>
+<div class="highlight-gcode notranslate"><div class="highlight"><pre><span></span><span class="c">; MONOKROM_CUSTOM_PARAM: value</span>
+</pre></div>
+</div>
+<p>These are currently not processed by the VCP but are reserved for future use.</p>
+</section>
+</section>
+<section id="g-code-validation">
+<h2>G-Code Validation<a class="headerlink" href="#g-code-validation" title="Link to this heading"></a></h2>
+<p>MonoKorn Plasma includes basic G-code validation when loading a program:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Check</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Syntax</strong></p></td>
+<td><p>Validates G-code syntax (valid commands, proper format)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Limits</strong></p></td>
+<td><p>Checks that positions are within machine limits</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Spindle</strong></p></td>
+<td><p>Warns if M3/M4/M5 commands are missing or malformed</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Z axis</strong></p></td>
+<td><p>Warns if Z moves are missing before X/Y moves</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Program end</strong></p></td>
+<td><p>Warns if program does not end with M30</p></td>
+</tr>
+</tbody>
+</table>
+<p>Validation errors are displayed in the status bar when loading a program.</p>
+</section>
+<section id="example-complete-quickshape-program">
+<h2>Example: Complete Quickshape Program<a class="headerlink" href="#example-complete-quickshape-program" title="Link to this heading"></a></h2>
+<p>Here is a complete example of a Quickshape-generated program for a 100mm circle on
+3mm mild steel with air plasma:</p>
+<div class="highlight-gcode notranslate"><div class="highlight"><pre><span></span><span class="c">; MonoKrom Quickshape - Circle</span>
+<span class="c">; Material: Mild Steel</span>
+<span class="c">; Gas: Air</span>
+<span class="c">; Machine: A120</span>
+<span class="c">; Thickness: 3mm</span>
+<span class="c">; Kerf: 1.2mm</span>
+<span class="c">; Lead-in: 5mm</span>
+<span class="c">; Pierce Height: 6.0mm</span>
+<span class="c">; Pierce Delay: 1.0s</span>
+<span class="c">; Cut Height: 3.5mm</span>
+<span class="c">; Cut Feed Rate: 1200mm/min</span>
+<span class="c">; Cut Volts: 85V</span>
+
+<span class="nb">G90 </span>G94
+<span class="nb">G0 </span><span class="k">Z</span><span class="m">6.0</span>
+<span class="nb">G1 </span><span class="k">Z</span><span class="m">6.0</span><span class="w"> </span><span class="k">F</span><span class="m">25</span>
+<span class="nb">G0 </span><span class="k">Z</span><span class="m">6.0</span>
+<span class="nb">G4 </span><span class="k">P</span><span class="m">1.0</span>
+<span class="nb">G1 </span><span class="k">Z</span><span class="m">3.5</span><span class="w"> </span><span class="k">F</span><span class="m">1200</span>
+<span class="nb">G4 </span><span class="k">P</span><span class="m">1.0</span>
+<span class="nb">M3</span>
+<span class="nb">G1 </span><span class="k">X</span><span class="m">-5</span><span class="w"> </span><span class="k">F</span><span class="m">1200</span>
+<span class="nb">G1 </span><span class="k">X</span><span class="m">0</span><span class="w"> </span><span class="k">Y</span><span class="m">0</span><span class="w"> </span><span class="k">F</span><span class="m">1200</span>
+<span class="nb">G3 </span><span class="k">X</span><span class="m">0</span><span class="w"> </span><span class="k">I</span><span class="m">50</span><span class="w"> </span><span class="k">F</span><span class="m">1200</span>
+<span class="nb">G1 </span><span class="k">X</span><span class="m">-5</span><span class="w"> </span><span class="k">F</span><span class="m">1200</span>
+<span class="nb">M5</span>
+<span class="nb">G0 </span><span class="k">Z</span><span class="m">50</span>
+<span class="nb">M30</span>
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="quickshape-reference.html"><span class="std std-doc">Quickshape Reference</span></a> — All 14 Quickshape primitives</p></li>
+<li><p><a class="reference internal" href="../user-guide/conversational.html"><span class="std std-doc">Conversational (Quickshapes)</span></a> — User guide for Quickshapes</p></li>
+<li><p><a class="reference external" href="https://linuxcnc.org/docs/html/gcode/">LinuxCNC G-Code Manual</a> — Official G-code reference</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="persistent-settings.html" class="btn btn-neutral float-left" title="Persistent Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="state-machine.html" class="btn btn-neutral float-right" title="State Machine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

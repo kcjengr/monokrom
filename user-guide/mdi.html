@@ -1,0 +1,523 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MDI (Manual Data Input) &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Integrator Guide" href="../integrator-guide/index.html" />
+    <link rel="prev" title="Sheet Alignment" href="sheet-alignment.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MDI (Manual Data Input)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#layout-overview">Layout Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tool-path-g-code-tabs">Tool Path / G-code Tabs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tool-path-toolbar">Tool-path Toolbar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tool-path-viewport">Tool-path Viewport</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#program-file-controls">Program File Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-queue">Command Queue</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#queue-action-buttons">Queue Action Buttons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mdi-input">MDI Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#queue-controls">Queue Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#on-screen-keypad">On-screen Keypad</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#navigation">Navigation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#letter-keys">Letter Keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numeric-keys">Numeric Keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#command-controls">Command Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-mdi">Using MDI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-entry">Basic Entry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#queueing-commands">Queueing Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#common-mdi-commands">Common MDI Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mdi-limitations">MDI Limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MDI (Manual Data Input)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#layout-overview">Layout Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tool-path-g-code-tabs">Tool Path / G-code Tabs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tool-path-toolbar">Tool-path Toolbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tool-path-viewport">Tool-path Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#program-file-controls">Program File Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-queue">Command Queue</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#queue-action-buttons">Queue Action Buttons</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mdi-input">MDI Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#queue-controls">Queue Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#on-screen-keypad">On-screen Keypad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#navigation">Navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#letter-keys">Letter Keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numeric-keys">Numeric Keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-controls">Command Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-mdi">Using MDI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-entry">Basic Entry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#queueing-commands">Queueing Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-mdi-commands">Common MDI Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mdi-limitations">MDI Limitations</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User Guide</a></li>
+      <li class="breadcrumb-item active">MDI (Manual Data Input)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user-guide/mdi.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mdi-manual-data-input">
+<h1>MDI (Manual Data Input)<a class="headerlink" href="#mdi-manual-data-input" title="Link to this heading"></a></h1>
+<p>The MDI area combines a tool-path viewer with controls for loading programs, managing an MDI command queue, entering commands through an on-screen keypad, and sending commands to the machine controller.</p>
+<p><img alt="MDI Screenshot" src="../_images/mdi.png" /></p>
+<section id="layout-overview">
+<h2>Layout Overview<a class="headerlink" href="#layout-overview" title="Link to this heading"></a></h2>
+<p>The MDI area is divided into two principal horizontal sections:</p>
+<ol class="arabic simple">
+<li><p><strong>Tool Path viewer</strong> — upper portion with toolbar and plotting area</p></li>
+<li><p><strong>MDI command and queue workspace</strong> — lower portion with command queue, input field, and on-screen keypad</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="tool-path-g-code-tabs">
+<h2>Tool Path / G-code Tabs<a class="headerlink" href="#tool-path-g-code-tabs" title="Link to this heading"></a></h2>
+<p>Two tabs span the top of the screen:</p>
+<ul class="simple">
+<li><p><strong>TOOL PATH</strong> — filled yellow, selected view showing the plotted geometry</p></li>
+<li><p><strong>GCODE</strong> — dark background with yellow text, alternate view for raw G-code</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="tool-path-toolbar">
+<h2>Tool-path Toolbar<a class="headerlink" href="#tool-path-toolbar" title="Link to this heading"></a></h2>
+<p>Eight controls appear below the tabs:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Control</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>+</strong></p></td>
+<td><p>Increase the plot scale (zoom in)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>-</strong></p></td>
+<td><p>Decrease the plot scale (zoom out)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CENTER PLOT</strong></p></td>
+<td><p>Centre the plotted geometry in the viewport</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CLEAR</strong></p></td>
+<td><p>Clear the visible plot</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PROG EXTENT</strong></p></td>
+<td><p>Fit or display the program extents</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MACH EXTENT</strong></p></td>
+<td><p>Fit or display the machine extents</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>TRANSFORM</strong></p></td>
+<td><p>Access plot or coordinate transformation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SHOW TRAILS</strong></p></td>
+<td><p>Display tool or movement trails</p></td>
+</tr>
+</tbody>
+</table>
+<p>Some buttons (PROG EXTENT, MACH EXTENT, SHOW TRAILS) appear filled yellow, indicating an active state.</p>
+</section>
+<hr class="docutils" />
+<section id="tool-path-viewport">
+<h2>Tool-path Viewport<a class="headerlink" href="#tool-path-viewport" title="Link to this heading"></a></h2>
+<p>A large black rectangular viewport displays the program geometry. No tool path or part geometry is visible when no program is loaded.</p>
+</section>
+<hr class="docutils" />
+<section id="program-file-controls">
+<h2>Program File Controls<a class="headerlink" href="#program-file-controls" title="Link to this heading"></a></h2>
+<p>Three buttons below the viewport manage program files:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>OPEN</strong></p></td>
+<td><p>Open a program file</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>RELOAD</strong></p></td>
+<td><p>Reload the current program (may be unavailable)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>RECENT</strong></p></td>
+<td><p>Access recently opened programs</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="command-queue">
+<h2>Command Queue<a class="headerlink" href="#command-queue" title="Link to this heading"></a></h2>
+<p>The lower-left area displays the MDI command queue. Commands entered via the MDI field are added to this list for batch execution.</p>
+<section id="queue-action-buttons">
+<h3>Queue Action Buttons<a class="headerlink" href="#queue-action-buttons" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>DEL ALL</strong></p></td>
+<td><p>Delete all commands from the queue</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>DEL ROW</strong></p></td>
+<td><p>Delete the selected row from the queue</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>RUN FROM</strong></p></td>
+<td><p>Run the queue starting from the selected row</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>RUN SINGLE</strong></p></td>
+<td><p>Run a single command from the queue</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>TO EDITOR</strong></p></td>
+<td><p>Transfer queue content to the G-code editor</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="mdi-input">
+<h2>MDI Input<a class="headerlink" href="#mdi-input" title="Link to this heading"></a></h2>
+<p>The <strong>MDI:</strong> input field at the top of the lower-right workspace accepts manual G-code commands.</p>
+</section>
+<hr class="docutils" />
+<section id="queue-controls">
+<h2>Queue Controls<a class="headerlink" href="#queue-controls" title="Link to this heading"></a></h2>
+<p>Two buttons manage the command queue:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>PAUSE QUEUE</strong></p></td>
+<td><p>Pause execution of the command queue</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CLEAR QUEUE</strong></p></td>
+<td><p>Clear all commands from the queue</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="on-screen-keypad">
+<h2>On-screen Keypad<a class="headerlink" href="#on-screen-keypad" title="Link to this heading"></a></h2>
+<p>The lower-right area contains a structured keypad for entering MDI commands via touchscreen.</p>
+<section id="navigation">
+<h3>Navigation<a class="headerlink" href="#navigation" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>ROW UP</strong></p></td>
+<td><p>Move up in the keypad layout</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ROW DOWN</strong></p></td>
+<td><p>Move down in the keypad layout</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="letter-keys">
+<h3>Letter Keys<a class="headerlink" href="#letter-keys" title="Link to this heading"></a></h3>
+<p>A vertical column of command-letter keys:</p>
+<ul class="simple">
+<li><p><strong>F</strong> — Feed rate</p></li>
+<li><p><strong>T</strong> — Tool</p></li>
+<li><p><strong>M</strong> — M-code</p></li>
+<li><p><strong>G</strong> — G-code</p></li>
+</ul>
+</section>
+<section id="numeric-keys">
+<h3>Numeric Keys<a class="headerlink" href="#numeric-keys" title="Link to this heading"></a></h3>
+<p>Calculator-style numeric keypad:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Row</p></th>
+<th class="head"><p>Keys</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Upper</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">7</span></code>, <code class="docutils literal notranslate"><span class="pre">8</span></code>, <code class="docutils literal notranslate"><span class="pre">9</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Middle</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">5</span></code>, <code class="docutils literal notranslate"><span class="pre">6</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Lower</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Bottom</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">.</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="command-controls">
+<h3>Command Controls<a class="headerlink" href="#command-controls" title="Link to this heading"></a></h3>
+<p>The bottom row contains:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>SPACE</strong></p></td>
+<td><p>Insert a space</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PARAMS</strong></p></td>
+<td><p>Access parameter values</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>BKSP</strong></p></td>
+<td><p>Backspace — delete last character</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SEND</strong></p></td>
+<td><p>Submit the command to the machine controller</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="using-mdi">
+<h2>Using MDI<a class="headerlink" href="#using-mdi" title="Link to this heading"></a></h2>
+<section id="basic-entry">
+<h3>Basic Entry<a class="headerlink" href="#basic-entry" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Type a G-code command using the on-screen keypad or the MDI input field.</p></li>
+<li><p>Press <strong>SEND</strong> to execute the command.</p></li>
+</ol>
+</section>
+<section id="queueing-commands">
+<h3>Queueing Commands<a class="headerlink" href="#queueing-commands" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Enter commands via the MDI field or keypad.</p></li>
+<li><p>Commands are added to the queue list.</p></li>
+<li><p>Use queue controls to manage execution:</p>
+<ul class="simple">
+<li><p><strong>RUN SINGLE</strong> — execute one command at a time</p></li>
+<li><p><strong>RUN FROM</strong> — start execution from a selected row</p></li>
+<li><p><strong>PAUSE QUEUE</strong> / <strong>CLEAR QUEUE</strong> — control queue execution</p></li>
+<li><p><strong>DEL ROW</strong> / <strong>DEL ALL</strong> — remove commands from the queue</p></li>
+<li><p><strong>TO EDITOR</strong> — transfer queue content to the editor</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="common-mdi-commands">
+<h3>Common MDI Commands<a class="headerlink" href="#common-mdi-commands" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G0</span> <span class="pre">Z50</span></code></p></td>
+<td><p>Rapid Z to 50 mm</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G1</span> <span class="pre">Z5</span> <span class="pre">F25</span></code></p></td>
+<td><p>Linear Z to 5 mm at 25 mm/min</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">M3</span></code></p></td>
+<td><p>Torch on</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M5</span></code></p></td>
+<td><p>Torch off</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G10</span> <span class="pre">L2</span> <span class="pre">P0</span> <span class="pre">R5</span></code></p></td>
+<td><p>Rotate WCS by 5 degrees</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G10</span> <span class="pre">L20</span> <span class="pre">P0</span> <span class="pre">X0</span> <span class="pre">Y0</span></code></p></td>
+<td><p>Set WCS zero at current position</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G92</span> <span class="pre">Z0</span></code></p></td>
+<td><p>Set Z offset to zero</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="mdi-limitations">
+<h2>MDI Limitations<a class="headerlink" href="#mdi-limitations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>MDI commands are executed immediately and cannot be undone.</p></li>
+<li><p>Complex G-code programs should be loaded as files rather than entered via MDI.</p></li>
+<li><p>Some plasma-specific G-codes may require special handling — see the
+<a class="reference internal" href="../reference/gcode-syntax.html"><span class="std std-doc">G-code Syntax</span></a> reference.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sheet-alignment.html" class="btn btn-neutral float-left" title="Sheet Alignment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../integrator-guide/index.html" class="btn btn-neutral float-right" title="Integrator Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

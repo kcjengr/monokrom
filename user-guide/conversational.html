@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conversational (Quickshapes) &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Parameters" href="parameters.html" />
+    <link rel="prev" title="Control &amp; Run Tab" href="main-tab.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Conversational (Quickshapes)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-quickshapes">Using Quickshapes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shape-reference">Shape Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shape-features">Shape Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#g-code-structure">G-code Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-quickshapes">Customizing Quickshapes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Conversational (Quickshapes)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-quickshapes">Using Quickshapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shape-reference">Shape Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shape-features">Shape Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#g-code-structure">G-code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-quickshapes">Customizing Quickshapes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User Guide</a></li>
+      <li class="breadcrumb-item active">Conversational (Quickshapes)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user-guide/conversational.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conversational-quickshapes">
+<h1>Conversational (Quickshapes)<a class="headerlink" href="#conversational-quickshapes" title="Link to this heading"></a></h1>
+<p>The Conversational tab provides 14 built-in shape primitives that generate complete G-code
+programs. These are accessed via the <strong>Quickshapes</strong> tab at the bottom of the interface.</p>
+<p><img alt="Quickshapes Screenshot" src="../_images/conversational.png" /></p>
+<section id="using-quickshapes">
+<h2>Using Quickshapes<a class="headerlink" href="#using-quickshapes" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Select a shape</strong> — Click one of the 14 shape buttons (id0 through id13).</p></li>
+<li><p><strong>Enter dimensions</strong> — Fill in the parameter fields that appear below the shape buttons.</p></li>
+<li><p><strong>Generate</strong> — Click <strong>REFRESH</strong> to generate the G-code.</p></li>
+<li><p><strong>Load</strong> — The generated G-code appears in the editor. Review and load it to run.</p></li>
+</ol>
+</section>
+<section id="shape-reference">
+<h2>Shape Reference<a class="headerlink" href="#shape-reference" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>Shape</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Key Parameters</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Circle</p></td>
+<td><p>Circle with lead-in</p></td>
+<td><p>Diameter</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Rectangle</p></td>
+<td><p>Rectangle with lead-in</p></td>
+<td><p>Width, Height</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Donut</p></td>
+<td><p>Annulus (ring) with inner and outer cuts</p></td>
+<td><p>Outer Diameter, Inner Diameter</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Convex Rectangle</p></td>
+<td><p>Rectangle with one rounded corner</p></td>
+<td><p>Width, Height, Corner Radius</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Lifting Lug</p></td>
+<td><p>Lifting lug with hole, optional pair</p></td>
+<td><p>Width, Height, Hole Position, Lug Thickness</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>U-Lug</p></td>
+<td><p>U-shaped lug</p></td>
+<td><p>Width, Height, Leg Width, Leg Length</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Pipe Flange</p></td>
+<td><p>Pipe flange with center hole and bolt holes</p></td>
+<td><p>Outer Diameter, Bolt Circle Diameter, Hole Count, Hole Diameter</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Pipe Saddle</p></td>
+<td><p>Pipe saddle profile</p></td>
+<td><p>Pipe Diameter, Pipe Width, Saddle Depth</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Exhaust Flange</p></td>
+<td><p>Exhaust flange with slot holes</p></td>
+<td><p>Width, Height, Slot Count, Slot Width</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>N-Square Grid</p></td>
+<td><p>N-hole rectangle grid with optional center hole</p></td>
+<td><p>Grid Spacing, Hole Count X, Hole Count Y, Hole Diameter</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>L-Gusset</p></td>
+<td><p>L-shaped gusset</p></td>
+<td><p>Width, Height, Leg Width, Thickness</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Angle Gusset</p></td>
+<td><p>Angle gusset with optional mirrored pair</p></td>
+<td><p>Width, Height, Leg Width, Thickness</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Truss Support</p></td>
+<td><p>Truss support shape</p></td>
+<td><p>Width, Height, Web Height</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>Web Stiffener</p></td>
+<td><p>Web stiffener shape</p></td>
+<td><p>Width, Height, Web Height</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="shape-features">
+<h2>Shape Features<a class="headerlink" href="#shape-features" title="Link to this heading"></a></h2>
+<p>All quickshape generators include:</p>
+<ul class="simple">
+<li><p><strong>Kerf compensation</strong> — Cut paths are offset by the current kerf value from the selected material.</p></li>
+<li><p><strong>Smart hole detection</strong> — Internal features that are smaller than the threshold defined in
+settings are cut as through-cuts (no lead-in needed).</p></li>
+<li><p><strong>Lead-ins</strong> — External cuts use the configured lead-in type and length from the material
+settings.</p></li>
+<li><p><strong>Plasma start/stop sequences</strong> — Each shape includes proper M3 (torch on) and M5 (torch off)
+commands with pierce and cut height settings.</p></li>
+<li><p><strong>Material selection</strong> — Parameters are applied based on the currently selected material from
+the process database.</p></li>
+</ul>
+</section>
+<section id="g-code-structure">
+<h2>G-code Structure<a class="headerlink" href="#g-code-structure" title="Link to this heading"></a></h2>
+<p>Each generated shape follows this structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">;</span> <span class="n">MonoKrom</span> <span class="n">Quickshape</span> <span class="o">-</span> <span class="o">&lt;</span><span class="n">shape</span> <span class="n">name</span><span class="o">&gt;</span>
+<span class="p">;</span> <span class="n">Material</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">selected</span> <span class="n">material</span><span class="o">&gt;</span>
+<span class="p">;</span> <span class="n">Kerf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">kerf</span> <span class="n">value</span><span class="o">&gt;</span>
+
+<span class="p">(</span><span class="n">Start</span> <span class="n">of</span> <span class="n">shape</span> <span class="n">program</span><span class="p">)</span>
+<span class="n">G0</span> <span class="n">Z</span><span class="o">&lt;</span><span class="n">pierce</span> <span class="n">height</span><span class="o">&gt;</span>      <span class="p">(</span><span class="n">Rapid</span> <span class="n">to</span> <span class="n">pierce</span> <span class="n">height</span><span class="p">)</span>
+<span class="n">G1</span> <span class="n">Z</span><span class="o">&lt;</span><span class="n">pierce</span> <span class="n">height</span><span class="o">&gt;</span> <span class="n">F</span><span class="o">&lt;</span><span class="n">probe</span> <span class="n">speed</span><span class="o">&gt;</span>  <span class="p">(</span><span class="n">Probe</span> <span class="n">approach</span><span class="p">)</span>
+<span class="p">(</span><span class="n">Ohmic</span> <span class="n">probe</span> <span class="ow">or</span> <span class="n">height</span> <span class="n">sense</span><span class="p">)</span>
+<span class="n">G0</span> <span class="n">Z</span><span class="o">&lt;</span><span class="n">pierce</span> <span class="n">height</span><span class="o">&gt;</span>      <span class="p">(</span><span class="n">Rapid</span> <span class="n">to</span> <span class="n">pierce</span> <span class="n">height</span><span class="p">)</span>
+<span class="n">G4</span> <span class="n">P</span><span class="o">&lt;</span><span class="n">pierce</span> <span class="n">delay</span><span class="o">&gt;</span>       <span class="p">(</span><span class="n">Pierce</span> <span class="n">delay</span><span class="p">)</span>
+<span class="n">G1</span> <span class="n">Z</span><span class="o">&lt;</span><span class="n">cut</span> <span class="n">height</span><span class="o">&gt;</span> <span class="n">F</span><span class="o">&lt;</span><span class="n">cut</span> <span class="n">feed</span> <span class="n">rate</span><span class="o">&gt;</span>  <span class="p">(</span><span class="n">Lower</span> <span class="n">to</span> <span class="n">cut</span> <span class="n">height</span><span class="p">)</span>
+<span class="n">G4</span> <span class="n">P</span><span class="o">&lt;</span><span class="n">pierce</span> <span class="n">delay</span><span class="o">&gt;</span>       <span class="p">(</span><span class="n">Pierce</span> <span class="n">delay</span> <span class="n">at</span> <span class="n">cut</span> <span class="n">height</span><span class="p">)</span>
+<span class="n">M3</span>                       <span class="p">(</span><span class="n">Torch</span> <span class="n">on</span><span class="p">)</span>
+<span class="p">(</span><span class="n">Lead</span><span class="o">-</span><span class="ow">in</span> <span class="n">move</span><span class="p">)</span>
+<span class="n">G1</span> <span class="o">&lt;</span><span class="n">cut</span> <span class="n">path</span><span class="o">&gt;</span> <span class="n">F</span><span class="o">&lt;</span><span class="n">cut</span> <span class="n">feed</span> <span class="n">rate</span><span class="o">&gt;</span>  <span class="p">(</span><span class="n">Cut</span> <span class="n">path</span> <span class="k">with</span> <span class="n">kerf</span> <span class="n">compensation</span><span class="p">)</span>
+<span class="n">M5</span>                       <span class="p">(</span><span class="n">Torch</span> <span class="n">off</span><span class="p">)</span>
+<span class="n">G0</span> <span class="n">Z</span><span class="o">&lt;</span><span class="n">higher</span> <span class="n">safe</span> <span class="n">height</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">Retract</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="customizing-quickshapes">
+<h2>Customizing Quickshapes<a class="headerlink" href="#customizing-quickshapes" title="Link to this heading"></a></h2>
+<p>Quickshape parameters (kerf, lead-in type, hole detection threshold, etc.) are controlled by
+the currently selected material in the process database. See <a class="reference internal" href="parameters.html"><span class="std std-doc">Parameters</span></a> for
+details on managing materials and cut parameters.</p>
+<p>To modify the shape geometry or add new shapes, see the <a class="reference internal" href="../developer-guide.html"><span class="std std-doc">Developer Guide</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="main-tab.html" class="btn btn-neutral float-left" title="Control &amp; Run Tab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="parameters.html" class="btn btn-neutral float-right" title="Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

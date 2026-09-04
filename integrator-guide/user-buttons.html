@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Buttons &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Process Database" href="process-db.html" />
+    <link rel="prev" title="Post-GUI HAL" href="postgui-hal.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrator Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ini-config.html">INI Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config-migration.html">Config Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config-yml.html">Config YAML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">User Buttons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#auto-generation-from-qtplasmac">Auto-Generation from qtplasmac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manual-configuration">Manual Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-user-buttons-from-sim-config">Example User Buttons (from sim config)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-button-subroutines">User Button Subroutines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-user-buttons-park-ngc">Example: <code class="docutils literal notranslate"><span class="pre">user_buttons/park.ngc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-user-buttons-single-cut-ngc">Example: <code class="docutils literal notranslate"><span class="pre">user_buttons/single_cut.ngc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-user-buttons-laser-off-ngc">Example: <code class="docutils literal notranslate"><span class="pre">user_buttons/laser_off.ngc</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-custom-user-buttons">Creating Custom User Buttons</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#step-1-create-the-ngc-subroutine">Step 1: Create the NGC Subroutine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2-configure-the-ini-file">Step 2: Configure the INI File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3-test">Step 3: Test</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#user-button-limitations">User Button Limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-user-buttons-with-parameters">Advanced: User Buttons with Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-buttons-and-hal">User Buttons and HAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-user-buttons">Troubleshooting User Buttons</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="process-db.html">Process Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customization.html">Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Buttons</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#auto-generation-from-qtplasmac">Auto-Generation from qtplasmac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manual-configuration">Manual Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-user-buttons-from-sim-config">Example User Buttons (from sim config)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-button-subroutines">User Button Subroutines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-user-buttons-park-ngc">Example: <code class="docutils literal notranslate"><span class="pre">user_buttons/park.ngc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-user-buttons-single-cut-ngc">Example: <code class="docutils literal notranslate"><span class="pre">user_buttons/single_cut.ngc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-user-buttons-laser-off-ngc">Example: <code class="docutils literal notranslate"><span class="pre">user_buttons/laser_off.ngc</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-custom-user-buttons">Creating Custom User Buttons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-create-the-ngc-subroutine">Step 1: Create the NGC Subroutine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-configure-the-ini-file">Step 2: Configure the INI File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-test">Step 3: Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#user-button-limitations">User Button Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-user-buttons-with-parameters">Advanced: User Buttons with Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-buttons-and-hal">User Buttons and HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-user-buttons">Troubleshooting User Buttons</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Integrator Guide</a></li>
+      <li class="breadcrumb-item active">User Buttons</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integrator-guide/user-buttons.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user-buttons">
+<h1>User Buttons<a class="headerlink" href="#user-buttons" title="Link to this heading"></a></h1>
+<p>User Buttons provide quick access to custom NGC subroutines from the Main Tab. Up to 10
+user buttons (USER1-USER10) can be configured.</p>
+<section id="auto-generation-from-qtplasmac">
+<h2>Auto-Generation from qtplasmac<a class="headerlink" href="#auto-generation-from-qtplasmac" title="Link to this heading"></a></h2>
+<p>When migrating from a qtplasmac configuration using <code class="docutils literal notranslate"><span class="pre">monokrom_plasma</span> <span class="pre">setup</span></code>, user buttons are
+automatically generated from the <code class="docutils literal notranslate"><span class="pre">.prefs</span></code> <code class="docutils literal notranslate"><span class="pre">[BUTTONS]</span></code> section. Each button creates an NGC
+subroutine in the <code class="docutils literal notranslate"><span class="pre">user_buttons/</span></code> directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>monokrom_plasma<span class="w"> </span>setup<span class="w"> </span>--from-config<span class="w"> </span>~/linuxcnc/configs/my_qtplasmac_config
+</pre></div>
+</div>
+<p>The generated <code class="docutils literal notranslate"><span class="pre">user_buttons/</span></code> directory contains one <code class="docutils literal notranslate"><span class="pre">.ngc</span></code> file per button, and the INI’s
+<code class="docutils literal notranslate"><span class="pre">SUBROUTINE_PATH</span></code> is automatically updated to include <code class="docutils literal notranslate"><span class="pre">./user_buttons</span></code>.</p>
+</section>
+<section id="manual-configuration">
+<h2>Manual Configuration<a class="headerlink" href="#manual-configuration" title="Link to this heading"></a></h2>
+<p>User buttons are configured in the INI file’s <code class="docutils literal notranslate"><span class="pre">[DISPLAY]</span></code> section:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DISPLAY]</span>
+<span class="na">USER1_NAME</span><span class="o">=</span><span class="s">EXAMPLE USER 1</span>
+<span class="na">USER1_ACTION</span><span class="o">=</span><span class="s">testfn1.ngc</span>
+<span class="na">USER2_NAME</span><span class="o">=</span><span class="s">EXAMPLE USER 2</span>
+<span class="na">USER2_ACTION</span><span class="o">=</span><span class="s">testfn2.ngc</span>
+<span class="na">USER3_NAME</span><span class="o">=</span><span class="s">LASER OFF</span>
+<span class="na">USER3_ACTION</span><span class="o">=</span><span class="s">laser_off.ngc</span>
+<span class="c1"># USER4 through USER10 can be added similarly</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">USER&lt;n&gt;_NAME</span></code></p></td>
+<td><p>Display name shown on the button</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">USER&lt;n&gt;_ACTION</span></code></p></td>
+<td><p>NGC subroutine filename to execute</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-user-buttons-from-sim-config">
+<h2>Example User Buttons (from sim config)<a class="headerlink" href="#example-user-buttons-from-sim-config" title="Link to this heading"></a></h2>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">USER1_NAME</span><span class="o">=</span><span class="s">EXAMPLE USER 1</span>
+<span class="na">USER1_ACTION</span><span class="o">=</span><span class="s">testfn1.ngc</span>
+<span class="na">USER2_NAME</span><span class="o">=</span><span class="s">EXAMPLE USER 2</span>
+<span class="na">USER2_ACTION</span><span class="o">=</span><span class="s">testfn2.ngc</span>
+<span class="na">USER3_NAME</span><span class="o">=</span><span class="s">LASER OFF</span>
+<span class="na">USER3_ACTION</span><span class="o">=</span><span class="s">laser_off.ngc</span>
+</pre></div>
+</div>
+</section>
+<section id="user-button-subroutines">
+<h2>User Button Subroutines<a class="headerlink" href="#user-button-subroutines" title="Link to this heading"></a></h2>
+<p>User button subroutines are NGC files located in the subroutine path:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[RS274NGC]</span>
+<span class="na">SUBROUTINE_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">./:./user_buttons:../../nc_files/subroutines</span>
+</pre></div>
+</div>
+<section id="example-user-buttons-park-ngc">
+<h3>Example: <code class="docutils literal notranslate"><span class="pre">user_buttons/park.ngc</span></code><a class="headerlink" href="#example-user-buttons-park-ngc" title="Link to this heading"></a></h3>
+<p>Parks the gantry to a safe position:</p>
+<div class="highlight-ngc notranslate"><div class="highlight"><pre><span></span>; Park gantry to X-min+1, Y-max-1
+G90
+G0 X[#&lt;_x_min&gt; + 1] Y[#&lt;_y_max&gt; - 1]
+</pre></div>
+</div>
+</section>
+<section id="example-user-buttons-single-cut-ngc">
+<h3>Example: <code class="docutils literal notranslate"><span class="pre">user_buttons/single_cut.ngc</span></code><a class="headerlink" href="#example-user-buttons-single-cut-ngc" title="Link to this heading"></a></h3>
+<p>Performs a single cut at a fixed distance from the current point:</p>
+<div class="highlight-ngc notranslate"><div class="highlight"><pre><span></span>; Single cut subroutine
+; Requires: #1 = distance, #2 = feed rate
+G91
+G1 X[#1] F[#2]
+G90
+</pre></div>
+</div>
+</section>
+<section id="example-user-buttons-laser-off-ngc">
+<h3>Example: <code class="docutils literal notranslate"><span class="pre">user_buttons/laser_off.ngc</span></code><a class="headerlink" href="#example-user-buttons-laser-off-ngc" title="Link to this heading"></a></h3>
+<p>Turns off the laser pointer:</p>
+<div class="highlight-ngc notranslate"><div class="highlight"><pre><span></span>; Laser off subroutine
+o&lt;laser_off&gt; sub
+#100 = 0  ; Laser off
+#&lt;_laser_on&gt; = #100
+o&lt;laser_off&gt; endsub
+</pre></div>
+</div>
+</section>
+</section>
+<section id="creating-custom-user-buttons">
+<h2>Creating Custom User Buttons<a class="headerlink" href="#creating-custom-user-buttons" title="Link to this heading"></a></h2>
+<section id="step-1-create-the-ngc-subroutine">
+<h3>Step 1: Create the NGC Subroutine<a class="headerlink" href="#step-1-create-the-ngc-subroutine" title="Link to this heading"></a></h3>
+<p>Create a new file in the <code class="docutils literal notranslate"><span class="pre">user_buttons/</span></code> directory:</p>
+<div class="highlight-ngc notranslate"><div class="highlight"><pre><span></span>; user_buttons/my_custom_action.ngc
+; Description: My custom action
+; Author: Your Name
+
+o&lt;my_custom_action&gt; sub
+
+; Your G-code here
+G0 Z50
+G0 X100 Y100
+o&lt;my_custom_action&gt; endsub
+</pre></div>
+</div>
+</section>
+<section id="step-2-configure-the-ini-file">
+<h3>Step 2: Configure the INI File<a class="headerlink" href="#step-2-configure-the-ini-file" title="Link to this heading"></a></h3>
+<p>Add the user button configuration:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DISPLAY]</span>
+<span class="na">USER4_NAME</span><span class="o">=</span><span class="s">MY CUSTOM ACTION</span>
+<span class="na">USER4_ACTION</span><span class="o">=</span><span class="s">my_custom_action.ngc</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-test">
+<h3>Step 3: Test<a class="headerlink" href="#step-3-test" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Restart LinuxCNC.</p></li>
+<li><p>Verify the button appears on the Main Tab.</p></li>
+<li><p>Click the button to execute the subroutine.</p></li>
+</ol>
+</section>
+</section>
+<section id="user-button-limitations">
+<h2>User Button Limitations<a class="headerlink" href="#user-button-limitations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>User buttons execute NGC subroutines, not arbitrary G-code.</p></li>
+<li><p>Subroutines must use the <code class="docutils literal notranslate"><span class="pre">o&lt;name&gt;</span> <span class="pre">sub</span> <span class="pre">...</span> <span class="pre">o&lt;name&gt;</span> <span class="pre">endsub</span></code> format.</p></li>
+<li><p>User buttons cannot accept parameters directly (use global variables or MDI).</p></li>
+<li><p>Long-running subroutines may block the VCP UI.</p></li>
+</ul>
+</section>
+<section id="advanced-user-buttons-with-parameters">
+<h2>Advanced: User Buttons with Parameters<a class="headerlink" href="#advanced-user-buttons-with-parameters" title="Link to this heading"></a></h2>
+<p>For parameterized user buttons, use global variables:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; Set a variable before pressing the user button</span>
+<span class="k">[HALUI]</span>
+<span class="na">MDI_COMMAND</span><span class="o">=</span><span class="s">G10 L20 P0 X100</span><span class="w">  </span><span class="c1">; Set X position</span>
+</pre></div>
+</div>
+<div class="highlight-ngc notranslate"><div class="highlight"><pre><span></span>; user_buttons/position_to_x.ngc
+o&lt;position_to_x&gt; sub
+G90
+G0 X[#&lt;_x_pos&gt;]
+o&lt;position_to_x&gt; endsub
+</pre></div>
+</div>
+</section>
+<section id="user-buttons-and-hal">
+<h2>User Buttons and HAL<a class="headerlink" href="#user-buttons-and-hal" title="Link to this heading"></a></h2>
+<p>User buttons can also trigger HAL MDI commands:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DISPLAY]</span>
+<span class="na">USER5_NAME</span><span class="o">=</span><span class="s">HOME ALL</span>
+<span class="na">USER5_ACTION</span><span class="o">=</span><span class="s">halui.home-all.ngc</span>
+</pre></div>
+</div>
+<div class="highlight-ngc notranslate"><div class="highlight"><pre><span></span>; user_buttons/halui.home-all.ngc
+; This file contains HAL MDI commands
+o&lt;halui_home_all&gt; sub
+; The halui module handles the actual homing
+o&lt;halui_home_all&gt; endsub
+</pre></div>
+</div>
+</section>
+<section id="troubleshooting-user-buttons">
+<h2>Troubleshooting User Buttons<a class="headerlink" href="#troubleshooting-user-buttons" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>Possible Cause</p></th>
+<th class="head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Button doesn’t appear</p></td>
+<td><p>Not configured in INI</p></td>
+<td><p>Add USER<n>_NAME and USER<n>_ACTION</p></td>
+</tr>
+<tr class="row-odd"><td><p>Subroutine not found</p></td>
+<td><p>Wrong path or filename</p></td>
+<td><p>Check SUBROUTINE_PATH in INI</p></td>
+</tr>
+<tr class="row-even"><td><p>Subroutine errors</p></td>
+<td><p>NGC syntax error</p></td>
+<td><p>Verify <code class="docutils literal notranslate"><span class="pre">o&lt;name&gt;</span> <span class="pre">sub</span></code> / <code class="docutils literal notranslate"><span class="pre">o&lt;name&gt;</span> <span class="pre">endsub</span></code> format</p></td>
+</tr>
+<tr class="row-odd"><td><p>Button does nothing</p></td>
+<td><p>Subroutine is empty</p></td>
+<td><p>Add G-code commands to subroutine</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="postgui-hal.html" class="btn btn-neutral float-left" title="Post-GUI HAL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="process-db.html" class="btn btn-neutral float-right" title="Process Database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

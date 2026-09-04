@@ -1,0 +1,665 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customization &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HAL Pin Map" href="../reference/hal-pin-map.html" />
+    <link rel="prev" title="Process Database" href="process-db.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrator Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ini-config.html">INI Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config-migration.html">Config Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config-yml.html">Config YAML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-buttons.html">User Buttons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process-db.html">Process Database</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Customization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stylesheets">Stylesheets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stylesheet-sources">Stylesheet Sources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#applying-a-stylesheet">Applying a Stylesheet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compiling-sass-to-qss">Compiling SASS to QSS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sass-structure">SASS Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-custom-style">Creating a Custom Style</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#runtime-stylesheet-loading">Runtime Stylesheet Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-widgets">Custom Widgets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#common-widgets">Common Widgets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plasma-widgets">Plasma Widgets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registering-custom-widgets">Registering Custom Widgets</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-custom-service">Adding a Custom Service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-service">Creating a New Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registering-the-service">Registering the Service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-custom-user-buttons">Adding Custom User Buttons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-g-code-filter">Custom G-code Filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-preview-view">Customizing the Preview View</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#view-controls">View Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-jog-settings">Customizing Jog Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-file-locations">Customizing File Locations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-persistent-settings">Customizing Persistent Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-g-code-editor">Customizing the G-code Editor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-g-code-syntax-profile">Customizing the G-code Syntax Profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-window-title">Customizing the Window Title</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-menubar">Customizing the Menubar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process-db.html">Process Database</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Customization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stylesheets">Stylesheets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stylesheet-sources">Stylesheet Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#applying-a-stylesheet">Applying a Stylesheet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling-sass-to-qss">Compiling SASS to QSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sass-structure">SASS Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-custom-style">Creating a Custom Style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#runtime-stylesheet-loading">Runtime Stylesheet Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-widgets">Custom Widgets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-widgets">Common Widgets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plasma-widgets">Plasma Widgets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#registering-custom-widgets">Registering Custom Widgets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-a-custom-service">Adding a Custom Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-service">Creating a New Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#registering-the-service">Registering the Service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-custom-user-buttons">Adding Custom User Buttons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-g-code-filter">Custom G-code Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-preview-view">Customizing the Preview View</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#view-controls">View Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-jog-settings">Customizing Jog Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-file-locations">Customizing File Locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-persistent-settings">Customizing Persistent Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-g-code-editor">Customizing the G-code Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-g-code-syntax-profile">Customizing the G-code Syntax Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-window-title">Customizing the Window Title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-menubar">Customizing the Menubar</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Integrator Guide</a></li>
+      <li class="breadcrumb-item active">Customization</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integrator-guide/customization.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="customization">
+<h1>Customization<a class="headerlink" href="#customization" title="Link to this heading"></a></h1>
+<p>This guide covers customizing the MonoKrom Plasma appearance, behavior, and functionality.</p>
+<section id="stylesheets">
+<h2>Stylesheets<a class="headerlink" href="#stylesheets" title="Link to this heading"></a></h2>
+<p>MonoKrom Plasma uses Qt Stylesheets (QSS) for theming. Stylesheets are compiled from SASS
+source files.</p>
+<section id="stylesheet-sources">
+<h3>Stylesheet Sources<a class="headerlink" href="#stylesheet-sources" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">src/monokrom/common/monokrom.qss</span></code></p></td>
+<td><p>Master stylesheet (compiled from SASS)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">src/monokrom/plasma/plasma.qss</span></code></p></td>
+<td><p>Plasma-specific overrides (minimal)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">linuxcnc/configs/sim.monokrom/plasmac/qtplasmac_sim.qss</span></code></p></td>
+<td><p>Sim-specific overrides</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="applying-a-stylesheet">
+<h3>Applying a Stylesheet<a class="headerlink" href="#applying-a-stylesheet" title="Link to this heading"></a></h3>
+<p>The stylesheet is applied in <code class="docutils literal notranslate"><span class="pre">config.yml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">windows</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mainwindow</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">stylesheet</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">file.dir</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">/../common/monokrom.qss</span>
+</pre></div>
+</div>
+</section>
+<section id="compiling-sass-to-qss">
+<h3>Compiling SASS to QSS<a class="headerlink" href="#compiling-sass-to-qss" title="Link to this heading"></a></h3>
+<p>SASS sources are in <code class="docutils literal notranslate"><span class="pre">src/monokrom/common/sass/</span></code> and <code class="docutils literal notranslate"><span class="pre">src/monokrom/plasma/sass/</span></code>.</p>
+<p>Compile manually:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>src/monokrom/common/sass
+qtsass<span class="w"> </span>./yellow.scss<span class="w"> </span>-o<span class="w"> </span>../monokrom.qss
+</pre></div>
+</div>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">qtsass</span></code> is a dev-only tool, not a runtime dependency.</p>
+</section>
+<section id="sass-structure">
+<h3>SASS Structure<a class="headerlink" href="#sass-structure" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>src/monokrom/common/sass/
+├── yellow.scss          # Yellow theme (default)
+└── _variables.scss      # Shared variables
+
+src/monokrom/plasma/sass/
+└── plasma.scss          # Plasma-specific partial (imports common yellow.scss)
+</pre></div>
+</div>
+</section>
+<section id="creating-a-custom-style">
+<h3>Creating a Custom Style<a class="headerlink" href="#creating-a-custom-style" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Create a new SASS file:</strong></p>
+<div class="highlight-scss notranslate"><div class="highlight"><pre><span></span><span class="c1">// src/monokrom/common/sass/custom.scss</span>
+<span class="k">@import</span><span class="w"> </span><span class="s1">'variables'</span><span class="p">;</span>
+
+<span class="c1">// Override colors</span>
+<span class="nv">$primary-color</span><span class="o">:</span><span class="w"> </span><span class="mh">#3498db</span><span class="p">;</span>
+<span class="nv">$background-color</span><span class="o">:</span><span class="w"> </span><span class="mh">#1a1a2e</span><span class="p">;</span>
+<span class="nv">$text-color</span><span class="o">:</span><span class="w"> </span><span class="mh">#eee</span><span class="p">;</span>
+
+<span class="c1">// Your custom styles</span>
+<span class="nt">QPushButton</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">background</span><span class="nd">:</span><span class="w"> </span><span class="nv">$primary-color</span><span class="o">;</span>
+<span class="w">    </span><span class="nt">color</span><span class="nd">:</span><span class="w"> </span><span class="nv">$text-color</span><span class="o">;</span>
+<span class="w">    </span><span class="nt">border</span><span class="nd">:</span><span class="w"> </span><span class="nt">1px</span><span class="w"> </span><span class="nt">solid</span><span class="w"> </span><span class="nt">darken</span><span class="o">(</span><span class="nv">$primary-color</span><span class="o">,</span><span class="w"> </span><span class="nt">10</span><span class="err">%</span><span class="o">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Compile to QSS:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qtsass<span class="w"> </span>./custom.scss<span class="w"> </span>-o<span class="w"> </span>../custom.qss
+</pre></div>
+</div>
+</li>
+<li><p><strong>Apply in config.yml:</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">windows</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mainwindow</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">stylesheet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/custom.qss</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="runtime-stylesheet-loading">
+<h3>Runtime Stylesheet Loading<a class="headerlink" href="#runtime-stylesheet-loading" title="Link to this heading"></a></h3>
+<p>In development mode, the VCP supports live QSS reload:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>monokrom_plasma<span class="w"> </span>--ini<span class="w"> </span>&lt;config&gt;<span class="w"> </span>--develop
+</pre></div>
+</div>
+<p>This enables automatic stylesheet reloading when the QSS file changes.</p>
+</section>
+</section>
+<section id="custom-widgets">
+<h2>Custom Widgets<a class="headerlink" href="#custom-widgets" title="Link to this heading"></a></h2>
+<p>MonoKrom provides custom Qt widgets in the <code class="docutils literal notranslate"><span class="pre">monokrom.common.widgets</span></code> and
+<code class="docutils literal notranslate"><span class="pre">monokrom.plasma.widgets</span></code> packages.</p>
+<section id="common-widgets">
+<h3>Common Widgets<a class="headerlink" href="#common-widgets" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Widget</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>File</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LED</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MkLed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mk_led.py</span></code></p></td>
+<td><p>LED indicator</p></td>
+</tr>
+<tr class="row-odd"><td><p>HAL LED</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MkLedHal</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mk_led_hal.py</span></code></p></td>
+<td><p>HAL-connected LED</p></td>
+</tr>
+<tr class="row-even"><td><p>Push Button</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MkPushButton</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mk_push_button.py</span></code></p></td>
+<td><p>Styled push button</p></td>
+</tr>
+<tr class="row-odd"><td><p>Line Edit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MkLineEdit</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mk_line_edit.py</span></code></p></td>
+<td><p>Styled line edit</p></td>
+</tr>
+<tr class="row-even"><td><p>MDI Entry</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MkMdiEntry</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mdi_entry.py</span></code></p></td>
+<td><p>MDI text entry</p></td>
+</tr>
+<tr class="row-odd"><td><p>File List</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MkFileListView</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">file_list_view.py</span></code></p></td>
+<td><p>File browser</p></td>
+</tr>
+<tr class="row-even"><td><p>Recent Files</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MkRecentFileListView</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">recent_file_list_view.py</span></code></p></td>
+<td><p>Recent files</p></td>
+</tr>
+<tr class="row-odd"><td><p>Group Box</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MkGroupBox</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">group_box.py</span></code></p></td>
+<td><p>Styled group box</p></td>
+</tr>
+<tr class="row-even"><td><p>Input Overlay</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MkInputOverlay</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">input_overlay.py</span></code></p></td>
+<td><p>Dialog overlay</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tab Widget</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MkTabWidget</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tab_widget.py</span></code></p></td>
+<td><p>Custom tab widget</p></td>
+</tr>
+<tr class="row-even"><td><p>DRO</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MkDro</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mk_dro/</span></code></p></td>
+<td><p>Digital readout</p></td>
+</tr>
+<tr class="row-odd"><td><p>Transparent Widget</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MkTransparentWidget</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">transparent_widget.py</span></code></p></td>
+<td><p>Transparent base</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plasma-widgets">
+<h3>Plasma Widgets<a class="headerlink" href="#plasma-widgets" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Widget</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>File</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HAL SpinBox</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PlasmaHalSpinBox</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasma_hal_spinbox.py</span></code></p></td>
+<td><p>HAL-connected integer spinbox</p></td>
+</tr>
+<tr class="row-odd"><td><p>HAL Double SpinBox</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PlasmaHalDoubleSpinBox</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasma_hal_double_spinbox.py</span></code></p></td>
+<td><p>HAL-connected float spinbox</p></td>
+</tr>
+<tr class="row-even"><td><p>HAL CheckBox</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PlasmaHalCheckBox</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasma_hal_checkbox.py</span></code></p></td>
+<td><p>HAL-connected checkbox</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cycle Start Button</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CycleStartActionButton</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cyclestart_action_button.py</span></code></p></td>
+<td><p>State-aware cycle start</p></td>
+</tr>
+<tr class="row-even"><td><p>Add Process</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PlasmaAddProcess</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasma_add_process.py</span></code></p></td>
+<td><p>New cut process entry</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="registering-custom-widgets">
+<h3>Registering Custom Widgets<a class="headerlink" href="#registering-custom-widgets" title="Link to this heading"></a></h3>
+<p>Custom widgets are registered in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.plugins.</span><span class="s2">"qtpyvcp.widgets"</span><span class="k">]</span>
+<span class="n">monokrom_common_widgets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"monokrom.common.widgets"</span>
+<span class="n">monokrom_plasma_widgets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"monokrom.plasma.widgets"</span>
+<span class="n">monokrom_mill_widgets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"monokrom.mill.widgets"</span>
+</pre></div>
+</div>
+<p>Widgets can then be used in Qt Designer by promoting standard Qt widgets to the custom class.</p>
+</section>
+</section>
+<section id="adding-a-custom-service">
+<h2>Adding a Custom Service<a class="headerlink" href="#adding-a-custom-service" title="Link to this heading"></a></h2>
+<p>Services are instantiated in <code class="docutils literal notranslate"><span class="pre">mainwindow.py</span></code> and use dependency injection.</p>
+<section id="creating-a-new-service">
+<h3>Creating a New Service<a class="headerlink" href="#creating-a-new-service" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># src/monokrom/plasma/my_service.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyService</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hal_bridge</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hal</span> <span class="o">=</span> <span class="n">hal_bridge</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pin</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hal</span><span class="o">.</span><span class="n">create_pin</span><span class="p">(</span><span class="s2">"bit"</span><span class="p">,</span> <span class="s2">"in"</span><span class="p">,</span> <span class="s2">"plasmac.my-signal"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">do_something</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hal</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pin</span><span class="p">)</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+</section>
+<section id="registering-the-service">
+<h3>Registering the Service<a class="headerlink" href="#registering-the-service" title="Link to this heading"></a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">mainwindow.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">.my_service</span><span class="w"> </span><span class="kn">import</span> <span class="n">MyService</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MainWindow</span><span class="p">(</span><span class="n">VCPMainWindow</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_init_services</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># ... existing services ...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_service</span> <span class="o">=</span> <span class="n">MyService</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hal</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">my_service</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="adding-custom-user-buttons">
+<h2>Adding Custom User Buttons<a class="headerlink" href="#adding-custom-user-buttons" title="Link to this heading"></a></h2>
+<p>See <a class="reference internal" href="user-buttons.html"><span class="std std-doc">User Buttons</span></a> for configuration details.</p>
+</section>
+<section id="custom-g-code-filter">
+<h2>Custom G-code Filter<a class="headerlink" href="#custom-g-code-filter" title="Link to this heading"></a></h2>
+<p>MonoKrom uses the <code class="docutils literal notranslate"><span class="pre">plasma_gcode_preprocessor</span></code> as the G-code filter. To create a custom
+filter:</p>
+<ol class="arabic">
+<li><p>Create a Python module that implements the filter interface.</p></li>
+<li><p>Register it in the INI file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[FILTER]</span>
+<span class="na">PROGRAM_EXTENSION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">.ngc GCode File (*.ngc)</span>
+<span class="na">ngc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">my_custom_filter</span>
+</pre></div>
+</div>
+</li>
+<li><p>The filter module must be importable by Python.</p></li>
+</ol>
+</section>
+<section id="customizing-the-preview-view">
+<h2>Customizing the Preview View<a class="headerlink" href="#customizing-the-preview-view" title="Link to this heading"></a></h2>
+<p>The VTK backplot can be customized through the INI file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[VTK]</span>
+<span class="na">SPINDLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">jet_tracking_crosshair.stl</span>
+</pre></div>
+</div>
+<section id="view-controls">
+<h3>View Controls<a class="headerlink" href="#view-controls" title="Link to this heading"></a></h3>
+<p>The preview window provides these view controls:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>T</strong></p></td>
+<td><p>Top-down full table view</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>P</strong></p></td>
+<td><p>Isometric (perspective) view</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Z</strong></p></td>
+<td><p>Top-down centered on program</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pan</strong></p></td>
+<td><p>← → ↑ ↓ buttons</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Zoom</strong></p></td>
+<td><p>+ / - buttons</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Clear</strong></p></td>
+<td><p>C button clears the live plot</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="customizing-jog-settings">
+<h2>Customizing Jog Settings<a class="headerlink" href="#customizing-jog-settings" title="Link to this heading"></a></h2>
+<p>Jog increments are configured in the INI file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DISPLAY]</span>
+<span class="na">INCREMENTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">JOG 10mm 5mm 1mm 0.1mm</span>
+</pre></div>
+</div>
+<p>Override limits:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DISPLAY]</span>
+<span class="na">MAX_FEED_OVERRIDE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2.000000</span>
+<span class="na">DEFAULT_LINEAR_VELOCITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">50.0000</span>
+<span class="na">MAX_LINEAR_VELOCITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">125.0000</span>
+<span class="na">MIN_LINEAR_VELOCITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5000</span>
+</pre></div>
+</div>
+</section>
+<section id="customizing-file-locations">
+<h2>Customizing File Locations<a class="headerlink" href="#customizing-file-locations" title="Link to this heading"></a></h2>
+<p>File locations are configured in <code class="docutils literal notranslate"><span class="pre">custom_config.yml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">file_locations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">default_location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NC Files</span>
+<span class="w">    </span><span class="nt">local_locations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">Home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/</span>
+<span class="w">      </span><span class="nt">Desktop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/Desktop</span>
+<span class="w">      </span><span class="nt">NC Files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/linuxcnc/nc_files</span>
+<span class="w">    </span><span class="c1"># network_locations:</span>
+<span class="w">    </span><span class="c1">#   DropBox: ~/DropBox/gcode</span>
+</pre></div>
+</div>
+</section>
+<section id="customizing-persistent-settings">
+<h2>Customizing Persistent Settings<a class="headerlink" href="#customizing-persistent-settings" title="Link to this heading"></a></h2>
+<p>Persistent settings are defined in <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> and saved to <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> settings section
+and pickle files. To add new persistent settings:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">persistent_settings</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">my_setting</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span>
+<span class="w">    </span><span class="nt">widget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hal_spinbox</span>
+<span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">"My</span><span class="nv"> </span><span class="s">Setting"</span>
+</pre></div>
+</div>
+<p>The setting will be automatically loaded, displayed in the UI, and saved to the prefs file.</p>
+</section>
+<section id="customizing-the-g-code-editor">
+<h2>Customizing the G-code Editor<a class="headerlink" href="#customizing-the-g-code-editor" title="Link to this heading"></a></h2>
+<p>G-code editor styling is configured in <code class="docutils literal notranslate"><span class="pre">config.yml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gcode_editor</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">background</span><span class="p">:</span><span class="w"> </span><span class="s">"#16160e"</span>
+<span class="w">    </span><span class="nt">text_color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">    </span><span class="nt">current_line_color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">    </span><span class="nt">current_line_background</span><span class="p">:</span><span class="w"> </span><span class="s">"#16160e"</span>
+<span class="w">    </span><span class="nt">font_family</span><span class="p">:</span><span class="w"> </span><span class="s">"Noto</span><span class="nv"> </span><span class="s">Sans</span><span class="nv"> </span><span class="s">Mono"</span>
+<span class="w">    </span><span class="nt">font_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">11</span>
+</pre></div>
+</div>
+</section>
+<section id="customizing-the-g-code-syntax-profile">
+<h2>Customizing the G-code Syntax Profile<a class="headerlink" href="#customizing-the-g-code-syntax-profile" title="Link to this heading"></a></h2>
+<p>Syntax highlighting is defined in <code class="docutils literal notranslate"><span class="pre">gcode_syntax.yml</span></code> (located in the config directory):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">flat-token-groups</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">styles</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcode</span>
+<span class="w">    </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcode</span>
+<span class="w">    </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axis</span>
+<span class="w">    </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">"#ffee06"</span>
+<span class="w">  </span><span class="c1"># ... more styles</span>
+</pre></div>
+</div>
+<p>The INI file references this profile:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DISPLAY]</span>
+<span class="na">GCODE_SYNTAX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">gcode_syntax.yml</span>
+</pre></div>
+</div>
+</section>
+<section id="customizing-the-window-title">
+<h2>Customizing the Window Title<a class="headerlink" href="#customizing-the-window-title" title="Link to this heading"></a></h2>
+<p>The window title is set from the VCP info in <code class="docutils literal notranslate"><span class="pre">config.yml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">windows</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mainwindow</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">( vcp.name ) ( vcp.version)</span>
+</pre></div>
+</div>
+<p>This produces a title like: <code class="docutils literal notranslate"><span class="pre">MonoKrom</span> <span class="pre">Plasma</span> <span class="pre">v0.0.5</span></code></p>
+</section>
+<section id="customizing-the-menubar">
+<h2>Customizing the Menubar<a class="headerlink" href="#customizing-the-menubar" title="Link to this heading"></a></h2>
+<p>The menubar is included from <code class="docutils literal notranslate"><span class="pre">default_menubar.yml</span></code> (commented out by default):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">#{% include "default_menubar.yml" %}</span>
+</pre></div>
+</div>
+<p>To use the default menubar, uncomment this line. To create a custom menubar, define
+your own menu structure in the config.yml.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="process-db.html" class="btn btn-neutral float-left" title="Process Database" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../reference/hal-pin-map.html" class="btn btn-neutral float-right" title="HAL Pin Map" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

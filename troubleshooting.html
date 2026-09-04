@@ -1,0 +1,526 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Troubleshooting &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=837179f8"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Developer Guide" href="developer-guide.html" />
+    <link rel="prev" title="Quickshape Reference" href="reference/quickshape-reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#qt-runtime-issues">Qt / Runtime Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#black-screen-opengl-issues">Black Screen / OpenGL Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qt-dependency-errors">Qt Dependency Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#write-access-to-tmp">Write Access to /tmp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hal-linuxcnc-issues">HAL / LinuxCNC Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vcp-fails-to-connect-to-linuxcnc">VCP Fails to Connect to LinuxCNC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#e-stop-not-responding">E-Stop Not Responding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contact-bounce">Contact Bounce</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#arc-plasma-issues">Arc / Plasma Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#arc-never-transfers">Arc Never Transfers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-lost-during-cutting">Arc Lost During Cutting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#excessive-spatter">Excessive Spatter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#probing-issues">Probing Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#probe-never-triggers">Probe Never Triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inconsistent-probe-results">Inconsistent Probe Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#process-database-issues">Process Database Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#no-materials-showing-in-dropdown">No Materials Showing in Dropdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filters-not-matching">Filters Not Matching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#g-code-file-issues">G-code / File Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#program-won-t-load">Program Won’t Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backplot-not-displaying">Backplot Not Displaying</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#error-messages">Error Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#critical-errors">Critical Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#warning-messages">Warning Messages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Troubleshooting</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/troubleshooting.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h1>
+<p>This section covers common issues, error messages, and troubleshooting procedures for
+MonoKrom Plasma.</p>
+<section id="qt-runtime-issues">
+<h2>Qt / Runtime Issues<a class="headerlink" href="#qt-runtime-issues" title="Link to this heading"></a></h2>
+<section id="black-screen-opengl-issues">
+<h3>Black Screen / OpenGL Issues<a class="headerlink" href="#black-screen-opengl-issues" title="Link to this heading"></a></h3>
+<p>MonoKrom Plasma requires OpenGL and forces the OpenGL RHI backend. If you see a black screen:</p>
+<ol class="arabic">
+<li><p><strong>Verify OpenGL is available:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>glxinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"OpenGL renderer"</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Check environment variables</strong> — MonoKrom sets these automatically in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">QT_API</span><span class="o">=</span>pyside6
+<span class="nb">export</span><span class="w"> </span><span class="nv">QSG_RHI_BACKEND</span><span class="o">=</span>opengl
+</pre></div>
+</div>
+</li>
+<li><p><strong>If using PyQt5 alongside PySide6</strong>, force PySide6:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">QT_API</span><span class="o">=</span>pyside6<span class="w"> </span>monokrom_plasma<span class="w"> </span>--ini<span class="w"> </span>&lt;config&gt;
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="qt-dependency-errors">
+<h3>Qt Dependency Errors<a class="headerlink" href="#qt-dependency-errors" title="Link to this heading"></a></h3>
+<p>If you encounter Qt dependency errors:</p>
+<ol class="arabic">
+<li><p><strong>Run the QtPyVCP installation script:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Package installation:</span>
+/usr/lib/python3/dist-packages/qtpyvcp/designer/install_script
+
+<span class="c1"># Run in place:</span>
+~/linuxcnc-dev/lib/python/qtpyvcp/designer/install_script
+</pre></div>
+</div>
+</li>
+<li><p><strong>Verify PySide6 is installed:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import PySide6; print(PySide6.__version__)"</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="write-access-to-tmp">
+<h3>Write Access to /tmp<a class="headerlink" href="#write-access-to-tmp" title="Link to this heading"></a></h3>
+<p>MonoKrom requires write access to <code class="docutils literal notranslate"><span class="pre">/tmp</span></code>. Verify permissions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-ld<span class="w"> </span>/tmp
+<span class="c1"># Expected: drwxrwxrwt  (others must have write)</span>
+</pre></div>
+</div>
+<p>If adjustment is needed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chmod<span class="w"> </span>o+rw<span class="w"> </span>/tmp
+</pre></div>
+</div>
+</section>
+</section>
+<section id="hal-linuxcnc-issues">
+<h2>HAL / LinuxCNC Issues<a class="headerlink" href="#hal-linuxcnc-issues" title="Link to this heading"></a></h2>
+<section id="vcp-fails-to-connect-to-linuxcnc">
+<h3>VCP Fails to Connect to LinuxCNC<a class="headerlink" href="#vcp-fails-to-connect-to-linuxcnc" title="Link to this heading"></a></h3>
+<p>MonoKrom Plasma requires a running LinuxCNC instance. If the VCP fails to initialize:</p>
+<ol class="arabic">
+<li><p><strong>Ensure LinuxCNC is running:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>linuxcnc<span class="w"> </span>~/linuxcnc/configs/sim.monokrom/plasmac/plasmac_sim.ini
+</pre></div>
+</div>
+</li>
+<li><p><strong>Check HAL socket connectivity</strong> — The VCP connects via HAL sockets. Verify the
+LinuxCNC instance is using the same config.</p></li>
+<li><p><strong>Check for port conflicts</strong> — Only one instance of the VCP can connect to a given
+LinuxCNC configuration.</p></li>
+</ol>
+</section>
+<section id="e-stop-not-responding">
+<h3>E-Stop Not Responding<a class="headerlink" href="#e-stop-not-responding" title="Link to this heading"></a></h3>
+<p>If the E-Stop button doesn’t work:</p>
+<ol class="arabic">
+<li><p><strong>Check hardware E-Stop</strong> — Verify the physical E-Stop circuit is complete.</p></li>
+<li><p><strong>Check <code class="docutils literal notranslate"><span class="pre">ESTOP_TYPE</span></code></strong> — In the INI file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[QTPLASMAC]</span>
+<span class="na">ESTOP_TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0</span><span class="w">  </span><span class="c1"># 0 = indicator only, 1 = software controllable</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Check HAL connections</strong> — Verify <code class="docutils literal notranslate"><span class="pre">estop-out</span></code> is connected in the HAL files.</p></li>
+</ol>
+</section>
+<section id="contact-bounce">
+<h3>Contact Bounce<a class="headerlink" href="#contact-bounce" title="Link to this heading"></a></h3>
+<p>Mechanical relays, switches, or external interference can cause inconsistent behavior on:</p>
+<ul class="simple">
+<li><p>Float switch</p></li>
+<li><p>Ohmic probe</p></li>
+<li><p>Breakaway switch</p></li>
+<li><p>Arc OK (Modes 1 &amp; 2)</p></li>
+</ul>
+<p><strong>Symptoms:</strong></p>
+<ul class="simple">
+<li><p>Probing triggers prematurely or not at all</p></li>
+<li><p>Arc OK flickers during cutting</p></li>
+<li><p>Float switch reports false triggers</p></li>
+</ul>
+<p><strong>Solution — Add debounce in HAL:</strong></p>
+<p>In <code class="docutils literal notranslate"><span class="pre">custom.hal</span></code>, add debounce components:</p>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span>loadrt dbounce names=db_float,db_ohmic,db_breakaway,db_arcok
+addf db_float servo-thread
+addf db_ohmic servo-thread
+addf db_breakaway servo-thread
+addf db_arcok servo-thread
+
+# Each increment = one servo thread cycle (1ms at 1MHz period)
+setp db_float.delay 5      # 5ms debounce
+setp db_ohmic.delay 5
+setp db_breakaway.delay 5
+setp db_arcok.delay 5
+
+net float-switch =&gt; db_float.in
+net ohmic-probe =&gt; db_ohmic.in
+net breakaway =&gt; db_breakaway.in
+net arc-ok =&gt; db_arcok.in
+</pre></div>
+</div>
+<p><strong>Tuning:</strong></p>
+<ul class="simple">
+<li><p>Use Halscope to plot the input signal and observe bounce duration.</p></li>
+<li><p>Start with <code class="docutils literal notranslate"><span class="pre">delay</span> <span class="pre">=</span> <span class="pre">5</span></code> (5ms at 1MHz servo period).</p></li>
+<li><p>Increase if bounce persists, decrease for faster response.</p></li>
+</ul>
+<p><strong>Note:</strong> Each increment of debounce delay adds approximately 0.001 mm (0.00004”) to the
+probed height result.</p>
+</section>
+</section>
+<section id="arc-plasma-issues">
+<h2>Arc / Plasma Issues<a class="headerlink" href="#arc-plasma-issues" title="Link to this heading"></a></h2>
+<section id="arc-never-transfers">
+<h3>Arc Never Transfers<a class="headerlink" href="#arc-never-transfers" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Check pierce height</strong> — Too high prevents arc transfer. Reduce pierce height.</p></li>
+<li><p><strong>Check pierce delay</strong> — Too short may not allow full penetration. Increase pierce delay.</p></li>
+<li><p><strong>Check consumables</strong> — Worn tip or nozzle prevents proper arc formation. Replace.</p></li>
+<li><p><strong>Check gas pressure</strong> — Verify gas supply and regulator settings.</p></li>
+<li><p><strong>Check torch on signal</strong> — Verify <code class="docutils literal notranslate"><span class="pre">plasmac.torch-on</span></code> is connected and active.</p></li>
+<li><p><strong>Enable torch pulse</strong> — Try adding a short torch pulse (0.1-0.3s) for difficult materials.</p></li>
+</ol>
+</section>
+<section id="arc-lost-during-cutting">
+<h3>Arc Lost During Cutting<a class="headerlink" href="#arc-lost-during-cutting" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Check THC settings</strong> — VAD threshold may be too sensitive. Adjust VAD threshold.</p></li>
+<li><p><strong>Check for voids</strong> — Material gaps or edges trigger void retraction. Enable/disable
+void sense as appropriate.</p></li>
+<li><p><strong>Check arc OK signal</strong> — Intermittent Arc OK causes arc loss detection. Add debounce
+(see Contact Bounce above).</p></li>
+<li><p><strong>Check contact load</strong> — Gold contacts need minimal current; other materials may need
+a parallel resistor (see QTPlasmac docs).</p></li>
+</ol>
+</section>
+<section id="excessive-spatter">
+<h3>Excessive Spatter<a class="headerlink" href="#excessive-spatter" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Check cut height</strong> — Too low causes consumable contact. Increase cut height.</p></li>
+<li><p><strong>Check cut feed rate</strong> — Too fast for material thickness. Reduce feed rate.</p></li>
+<li><p><strong>Check consumables</strong> — Worn or damaged consumables cause poor arc focus. Replace.</p></li>
+<li><p><strong>Check gas type</strong> — Wrong gas for material causes poor cut quality.</p></li>
+</ol>
+</section>
+</section>
+<section id="probing-issues">
+<h2>Probing Issues<a class="headerlink" href="#probing-issues" title="Link to this heading"></a></h2>
+<section id="probe-never-triggers">
+<h3>Probe Never Triggers<a class="headerlink" href="#probe-never-triggers" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Ohmic probe enabled?</strong> — Check <strong>Ohmic Probe Enable</strong> on Settings tab.</p></li>
+<li><p><strong>Ohmic probe connected?</strong> — Verify <code class="docutils literal notranslate"><span class="pre">plasmac.ohmic-probe</span></code> HAL pin is connected.</p></li>
+<li><p><strong>Ohmic enable active?</strong> — Verify <code class="docutils literal notranslate"><span class="pre">plasmac.ohmic-enable</span></code> output is wired.</p></li>
+<li><p><strong>Float switch stuck?</strong> — Check mechanical movement of float switch.</p></li>
+<li><p><strong>Workpiece conductivity</strong> — Paint, rust, or oxide layer may prevent ohmic detection.
+Clean the workpiece surface.</p></li>
+</ol>
+</section>
+<section id="inconsistent-probe-results">
+<h3>Inconsistent Probe Results<a class="headerlink" href="#inconsistent-probe-results" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Run Probe Test</strong> — Follow the calibration procedure in <a class="reference internal" href="#probe.md"><span class="xref myst">Probe</span></a>.</p></li>
+<li><p><strong>Check float travel</strong> — Incorrect float travel causes height offset errors.</p></li>
+<li><p><strong>Check debounce</strong> — Too little debounce causes false triggers; too much causes delayed
+triggers.</p></li>
+<li><p><strong>Check low-pass filter</strong> — Arc voltage noise may interfere with ohmic probing. Enable
+low-pass filter if needed:</p>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span>setp plasmac.lowpass-frequency 100  # 100 Hz cutoff
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="process-database-issues">
+<h2>Process Database Issues<a class="headerlink" href="#process-database-issues" title="Link to this heading"></a></h2>
+<section id="no-materials-showing-in-dropdown">
+<h3>No Materials Showing in Dropdown<a class="headerlink" href="#no-materials-showing-in-dropdown" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Check database exists</strong> — Verify <code class="docutils literal notranslate"><span class="pre">plasma_table.db</span></code> exists in the config directory.</p></li>
+<li><p><strong>Check database is populated</strong> — Use sqlite3 to verify:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite3<span class="w"> </span>plasma_table.db<span class="w"> </span><span class="s2">"SELECT COUNT(*) FROM cuts;"</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Seed the database</strong> — If empty, import from <code class="docutils literal notranslate"><span class="pre">master-seed-source.csv</span></code>.</p></li>
+</ol>
+</section>
+<section id="filters-not-matching">
+<h3>Filters Not Matching<a class="headerlink" href="#filters-not-matching" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Check filter field values</strong> — Ensure filter selections match database entries exactly
+(case-sensitive).</p></li>
+<li><p><strong>Check locked filters</strong> — A locked filter may be preventing desired selections.</p></li>
+<li><p><strong>Check database encoding</strong> — Ensure no encoding issues in the CSV seed file.</p></li>
+</ol>
+</section>
+</section>
+<section id="g-code-file-issues">
+<h2>G-code / File Issues<a class="headerlink" href="#g-code-file-issues" title="Link to this heading"></a></h2>
+<section id="program-won-t-load">
+<h3>Program Won’t Load<a class="headerlink" href="#program-won-t-load" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Check file extension</strong> — Only <code class="docutils literal notranslate"><span class="pre">.ngc</span></code>, <code class="docutils literal notranslate"><span class="pre">.nc</span></code>, and <code class="docutils literal notranslate"><span class="pre">.tap</span></code> files are accepted.</p></li>
+<li><p><strong>Check file location</strong> — Files must be in the configured NC Files directory.</p></li>
+<li><p><strong>Check file format</strong> — Verify the file contains valid G-code.</p></li>
+<li><p><strong>Check filter configuration</strong> — In the INI file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[FILTER]</span>
+<span class="na">PROGRAM_EXTENSION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">.ngc,.nc,.tap GCode File (*.ngc, *.nc, *.tap)</span>
+<span class="na">ngc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">plasma_gcode_preprocessor</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="backplot-not-displaying">
+<h3>Backplot Not Displaying<a class="headerlink" href="#backplot-not-displaying" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Check VTK configuration</strong> — Verify the SPINDLE model is configured:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[VTK]</span>
+<span class="na">SPINDLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">jet_tracking_crosshair.stl</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Check file is loaded</strong> — Backplot only shows after a file is loaded.</p></li>
+<li><p><strong>Check OpenGL</strong> — Black VTK window indicates OpenGL issues (see above).</p></li>
+</ol>
+</section>
+</section>
+<section id="error-messages">
+<h2>Error Messages<a class="headerlink" href="#error-messages" title="Link to this heading"></a></h2>
+<section id="critical-errors">
+<h3>Critical Errors<a class="headerlink" href="#critical-errors" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Message</p></th>
+<th class="head"><p>Cause</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“Cannot connect to LinuxCNC”</p></td>
+<td><p>LinuxCNC not running</p></td>
+<td><p>Start LinuxCNC instance</p></td>
+</tr>
+<tr class="row-odd"><td><p>“E-Stop active”</p></td>
+<td><p>Hardware or software E-Stop</p></td>
+<td><p>Release E-Stop, reset</p></td>
+</tr>
+<tr class="row-even"><td><p>“Probe failed”</p></td>
+<td><p>Ohmic or float probe didn’t trigger</p></td>
+<td><p>Check connections, clean workpiece</p></td>
+</tr>
+<tr class="row-odd"><td><p>“Arc fail timeout”</p></td>
+<td><p>No arc transfer within timeout</p></td>
+<td><p>Check pierce params, consumables</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="warning-messages">
+<h3>Warning Messages<a class="headerlink" href="#warning-messages" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Message</p></th>
+<th class="head"><p>Cause</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“Arc OK intermittent”</p></td>
+<td><p>Flickering arc OK signal</p></td>
+<td><p>Check debounce, connections</p></td>
+</tr>
+<tr class="row-odd"><td><p>“Void detected”</p></td>
+<td><p>Torch over material gap</p></td>
+<td><p>Reposition and resume</p></td>
+</tr>
+<tr class="row-even"><td><p>“THC threshold exceeded”</p></td>
+<td><p>Voltage outside THC range</p></td>
+<td><p>Check THC settings, cut params</p></td>
+</tr>
+<tr class="row-odd"><td><p>“Consumable change active”</p></td>
+<td><p>Offset applied for consumable wear</p></td>
+<td><p>Replace consumables, deactivate</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="getting-help">
+<h2>Getting Help<a class="headerlink" href="#getting-help" title="Link to this heading"></a></h2>
+<p>If issues persist:</p>
+<ol class="arabic simple">
+<li><p><strong>Check the log file</strong> — Set <code class="docutils literal notranslate"><span class="pre">LOG_LEVEL</span> <span class="pre">=</span> <span class="pre">DEBUG</span></code> in the INI file and check <code class="docutils literal notranslate"><span class="pre">sim.log</span></code>.</p></li>
+<li><p><strong>Use Halscope</strong> — Plot relevant HAL signals to diagnose timing issues.</p></li>
+<li><p><strong>Check the LinuxCNC forum</strong> — The QtPyVCP section at <a class="reference external" href="https://forum.linuxcnc.org/qtpyvcp/">forum.linuxcnc.org/qtpyvcp</a> has active discussions.</p></li>
+<li><p><strong>Review the MonoKrom forum thread</strong> — See acknowledgements in README for the original
+forum thread.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="reference/quickshape-reference.html" class="btn btn-neutral float-left" title="Quickshape Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="developer-guide.html" class="btn btn-neutral float-right" title="Developer Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

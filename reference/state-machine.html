@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>State Machine &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quickshape Reference" href="quickshape-reference.html" />
+    <link rel="prev" title="G-Code Syntax" href="gcode-syntax.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">State Machine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#state-diagram">State Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#state-descriptions">State Descriptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#idle-states">Idle States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#probing-states">Probing States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pierce-states">Pierce States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-states">Arc States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cut-states">Cut States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#height-states">Height States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recovery-states">Recovery States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consumable-change-states">Consumable Change States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#special-states">Special States</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#state-transitions">State Transitions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-transition-triggers">Common Transition Triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-recovery">Error Recovery</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#state-machine-in-hal">State Machine in HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#state-machine-diagram-text">State Machine Diagram (Text)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">State Machine</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/state-machine.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="state-machine">
+<h1>State Machine<a class="headerlink" href="#state-machine" title="Link to this heading"></a></h1>
+<p>This page documents the internal state machine of MonoKrom Plasma (plasmac). Understanding
+the state machine is essential for integrators wiring HAL connections and for developers
+extending the plasma control logic.</p>
+<section id="state-diagram">
+<h2>State Diagram<a class="headerlink" href="#state-diagram" title="Link to this heading"></a></h2>
+digraph plasmac_state {
+    rankdir=TB;
+    compound=true;
+    fontname=&quot;Helvetica&quot;;
+    node [fontname=&quot;Helvetica&quot;, fontsize=10, shape=ellipse];
+    edge [fontname=&quot;Helvetica&quot;, fontsize=8];
+
+    IDLE [shape=doublecircle];
+    END_JOB [shape=doublecircle];
+
+    IDLE -&gt; {PROBE_HEIGHT PIERCE_HEIGHT PAUSED_MOTION MAX_HEIGHT CONSUMABLE_CHANGE_OFF CUT_RECOVERY_ON PROBE_TEST SCRIBING OHMIC_TEST TORCHPULSE PROBE_DOWN};
+    PROBE_HEIGHT -&gt; {PROBE_TEST MAX_HEIGHT PROBE_DOWN PROBE_UP};
+    PROBE_DOWN -&gt; {PROBE_TEST MAX_HEIGHT PROBE_HEIGHT PROBE_UP};
+    PROBE_UP -&gt; {PROBE_TEST PROBE_DOWN PIERCE_HEIGHT MAX_HEIGHT};
+    PIERCE_HEIGHT -&gt; {PROBE_TEST PIERCE_DELAY TORCH_ON MAX_HEIGHT};
+    TORCH_ON -&gt; {MAX_HEIGHT ARC_OK};
+    ARC_OK -&gt; {SAFE_HEIGHT TORCH_ON PIERCE_DELAY};
+    PIERCE_DELAY -&gt; {CUT_HEIGHT PUDDLE_JUMP};
+    PUDDLE_JUMP -&gt; CUT_HEIGHT;
+    CUT_HEIGHT -&gt; {CUT_RECOVERY CUT_MODE_01 CUT_MODE_02};
+    CUT_MODE_01 -&gt; {IDLE MAX_HEIGHT};
+    CUT_MODE_02 -&gt; {IDLE MAX_HEIGHT};
+    PAUSE_AT_END -&gt; {MAX_HEIGHT SAFE_HEIGHT};
+    SAFE_HEIGHT -&gt; END_CUT;
+    MAX_HEIGHT -&gt; {CUT_RECOVERY_ON END_CUT CONSUMABLE_CHANGE_ON};
+    END_CUT -&gt; {IDLE END_JOB};
+    END_JOB -&gt; {CONSUMABLE_CHANGE_OFF CUT_RECOVERY_OFF IDLE};
+    TORCHPULSE -&gt; IDLE;
+    PAUSED_MOTION -&gt; {IDLE CUT_RECOVERY_ON};
+    OHMIC_TEST -&gt; IDLE;
+    PROBE_TEST -&gt; END_CUT;
+    SCRIBING -&gt; IDLE;
+    CONSUMABLE_CHANGE_ON -&gt; IDLE;
+    CONSUMABLE_CHANGE_OFF -&gt; IDLE;
+    CUT_RECOVERY_ON -&gt; {IDLE CUT_RECOVERY_OFF PAUSED_MOTION};
+    CUT_RECOVERY_OFF -&gt; {CUT_MODE_01 CUT_MODE_02 IDLE};
+}</section>
+<section id="state-descriptions">
+<h2>State Descriptions<a class="headerlink" href="#state-descriptions" title="Link to this heading"></a></h2>
+<section id="idle-states">
+<h3>Idle States<a class="headerlink" href="#idle-states" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IDLE</span></code></p></td>
+<td><p>Machine is idle, ready for commands. Entry point after power-up or reset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">END_JOB</span></code></p></td>
+<td><p>Cut job has completed. Final state before returning to IDLE.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="probing-states">
+<h3>Probing States<a class="headerlink" href="#probing-states" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PROBE_HEIGHT</span></code></p></td>
+<td><p>Probing to find workpiece surface. Can transition to PROBE_DOWN, PROBE_UP, or MAX_HEIGHT.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PROBE_DOWN</span></code></p></td>
+<td><p>Z axis moving down during probe. Can transition to PROBE_TEST, PROBE_UP, or MAX_HEIGHT.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PROBE_UP</span></code></p></td>
+<td><p>Z axis moving up after probe detected. Can transition to PIERCE_HEIGHT or MAX_HEIGHT.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PROBE_TEST</span></code></p></td>
+<td><p>Ohmic probe test mode. Transitions to END_CUT when complete.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OHMIC_TEST</span></code></p></td>
+<td><p>Standalone ohmic probe test. Returns to IDLE when complete.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SCRIBING</span></code></p></td>
+<td><p>Scribe mode (marking without cutting). Returns to IDLE when complete.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pierce-states">
+<h3>Pierce States<a class="headerlink" href="#pierce-states" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PIERCE_HEIGHT</span></code></p></td>
+<td><p>Torch at pierce height, waiting to ignite arc. Can transition to PIERCE_DELAY or TORCH_ON.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PIERCE_DELAY</span></code></p></td>
+<td><p>Delay at pierce height before lowering to cut height. Transitions to CUT_HEIGHT or PUDDLE_JUMP.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="arc-states">
+<h3>Arc States<a class="headerlink" href="#arc-states" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TORCH_ON</span></code></p></td>
+<td><p>Torch energized, waiting for arc transfer. Transitions to ARC_OK or MAX_HEIGHT.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ARC_OK</span></code></p></td>
+<td><p>Arc established and stable. Transitions to SAFE_HEIGHT or PIERCE_DELAY (retry).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cut-states">
+<h3>Cut States<a class="headerlink" href="#cut-states" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CUT_HEIGHT</span></code></p></td>
+<td><p>Torch at cut height, ready to begin cutting. Transitions to CUT_MODE_01, CUT_MODE_02, or CUT_RECOVERY.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CUT_MODE_01</span></code></p></td>
+<td><p>Normal cutting mode (Mode 0 or 1). Returns to IDLE or MAX_HEIGHT when complete.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CUT_MODE_02</span></code></p></td>
+<td><p>Normal cutting mode (Mode 0 or 1). Returns to IDLE or MAX_HEIGHT when complete.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CUT_RECOVERY</span></code></p></td>
+<td><p>Cut interrupted, entering recovery mode.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="height-states">
+<h3>Height States<a class="headerlink" href="#height-states" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MAX_HEIGHT</span></code></p></td>
+<td><p>Z axis at maximum safe height. Entry point for recovery from errors. Can transition to END_CUT, CONSUMABLE_CHANGE_ON, or CUT_RECOVERY_ON.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SAFE_HEIGHT</span></code></p></td>
+<td><p>Z axis at safe cutting height (above workpiece). Transitions to END_CUT.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="recovery-states">
+<h3>Recovery States<a class="headerlink" href="#recovery-states" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CUT_RECOVERY_ON</span></code></p></td>
+<td><p>Cut recovery active, operator can jog to recovery point. Transitions to IDLE, CUT_RECOVERY_OFF, or PAUSED_MOTION.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CUT_RECOVERY_OFF</span></code></p></td>
+<td><p>Cut recovery cancelled. Returns to IDLE or CUT_MODE_01/02.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PAUSED_MOTION</span></code></p></td>
+<td><p>Motion paused (feed hold). Transitions to IDLE or CUT_RECOVERY_ON.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="consumable-change-states">
+<h3>Consumable Change States<a class="headerlink" href="#consumable-change-states" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CONSUMABLE_CHANGE_ON</span></code></p></td>
+<td><p>Consumable change offset applied. Machine is at home position for operator to replace tip/wheel. Returns to IDLE.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CONSUMABLE_CHANGE_OFF</span></code></p></td>
+<td><p>Consumable change offset removed. Returns to IDLE.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="special-states">
+<h3>Special States<a class="headerlink" href="#special-states" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TORCHPULSE</span></code></p></td>
+<td><p>Torch pulse mode for difficult materials. Returns to IDLE when complete.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">END_CUT</span></code></p></td>
+<td><p>Cut operation complete, Z axis retracting. Transitions to IDLE or END_JOB.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PAUSE_AT_END</span></code></p></td>
+<td><p>Pause at end of cut (if enabled). Transitions to MAX_HEIGHT or SAFE_HEIGHT.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="state-transitions">
+<h2>State Transitions<a class="headerlink" href="#state-transitions" title="Link to this heading"></a></h2>
+<section id="common-transition-triggers">
+<h3>Common Transition Triggers<a class="headerlink" href="#common-transition-triggers" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Trigger</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Cycle Start</strong></p></td>
+<td><p>Transitions from IDLE to PROBE_HEIGHT or PIERCE_HEIGHT</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc OK</strong></p></td>
+<td><p>Transitions from TORCH_ON to ARC_OK</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Arc Fail</strong></p></td>
+<td><p>Transitions from TORCH_ON to PIERCE_DELAY (retry) or MAX_HEIGHT (abort)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Feed Hold</strong></p></td>
+<td><p>Transitions from CUT_MODE_01/02 to CUT_RECOVERY</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cycle Start (recovery)</strong></p></td>
+<td><p>Transitions from CUT_RECOVERY to CUT_MODE_01/02</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Abort</strong></p></td>
+<td><p>Transitions from any state to MAX_HEIGHT</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>End of Program</strong></p></td>
+<td><p>Transitions from CUT_MODE_01/02 to SAFE_HEIGHT -&gt; END_CUT -&gt; END_JOB</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Consumable Change (HAL)</strong></p></td>
+<td><p>Transitions from IDLE to CONSUMABLE_CHANGE_ON</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Probe Test (HAL)</strong></p></td>
+<td><p>Transitions from IDLE to PROBE_TEST</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ohmic Test (HAL)</strong></p></td>
+<td><p>Transitions from IDLE to OHMIC_TEST</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="error-recovery">
+<h3>Error Recovery<a class="headerlink" href="#error-recovery" title="Link to this heading"></a></h3>
+<p>When an error occurs (estop, limit switch, fault), the state machine transitions to
+<code class="docutils literal notranslate"><span class="pre">MAX_HEIGHT</span></code> regardless of the current state. From <code class="docutils literal notranslate"><span class="pre">MAX_HEIGHT</span></code>, the operator can:</p>
+<ol class="arabic simple">
+<li><p>Clear the error condition</p></li>
+<li><p>Return to <code class="docutils literal notranslate"><span class="pre">IDLE</span></code> for normal operation</p></li>
+<li><p>Enter <code class="docutils literal notranslate"><span class="pre">CUT_RECOVERY_ON</span></code> if a cut was interrupted</p></li>
+<li><p>Enter <code class="docutils literal notranslate"><span class="pre">CONSUMABLE_CHANGE_ON</span></code> if consumables need replacement</p></li>
+</ol>
+</section>
+</section>
+<section id="state-machine-in-hal">
+<h2>State Machine in HAL<a class="headerlink" href="#state-machine-in-hal" title="Link to this heading"></a></h2>
+<p>The current state is exposed via the HAL pin:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.state</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>s32</p></td>
+<td><p>Current state machine state (integer code)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plasmac.state-name</span></code></p></td>
+<td><p>OUT</p></td>
+<td><p>string</p></td>
+<td><p>Human-readable state name</p></td>
+</tr>
+</tbody>
+</table>
+<p>State codes are defined in the plasmac source and may change between versions. Use the
+<code class="docutils literal notranslate"><span class="pre">state-name</span></code> pin for human-readable diagnostics.</p>
+</section>
+<section id="state-machine-diagram-text">
+<h2>State Machine Diagram (Text)<a class="headerlink" href="#state-machine-diagram-text" title="Link to this heading"></a></h2>
+<p>For integrators wiring custom HAL logic, here is a simplified view of the main cutting
+flow:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IDLE</span> <span class="o">-&gt;</span> <span class="n">PROBE_HEIGHT</span> <span class="o">-&gt;</span> <span class="n">PROBE_DOWN</span> <span class="o">-&gt;</span> <span class="n">PROBE_UP</span> <span class="o">-&gt;</span> <span class="n">PIERCE_HEIGHT</span> <span class="o">-&gt;</span> <span class="n">PIERCE_DELAY</span> <span class="o">-&gt;</span> <span class="n">CUT_HEIGHT</span> <span class="o">-&gt;</span> <span class="n">CUT_MODE_01</span> <span class="o">-&gt;</span> <span class="n">SAFE_HEIGHT</span> <span class="o">-&gt;</span> <span class="n">END_CUT</span> <span class="o">-&gt;</span> <span class="n">IDLE</span>
+                                                                                                         <span class="o">|</span>
+                                                                                                         <span class="o">+-&gt;</span> <span class="n">CUT_MODE_02</span> <span class="o">-&gt;</span> <span class="n">SAFE_HEIGHT</span> <span class="o">-&gt;</span> <span class="n">END_CUT</span> <span class="o">-&gt;</span> <span class="n">IDLE</span>
+                                                                                                         <span class="o">|</span>
+                                                                                                         <span class="o">+-&gt;</span> <span class="n">CUT_RECOVERY</span> <span class="o">-&gt;</span> <span class="n">CUT_MODE_01</span><span class="o">/</span><span class="mi">02</span> <span class="o">-&gt;</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Error path (from any state):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ANY_STATE</span> <span class="o">-&gt;</span> <span class="n">MAX_HEIGHT</span> <span class="o">-&gt;</span> <span class="n">END_CUT</span> <span class="o">-&gt;</span> <span class="n">IDLE</span>
+                      <span class="o">-&gt;</span> <span class="n">CONSUMABLE_CHANGE_ON</span> <span class="o">-&gt;</span> <span class="n">IDLE</span>
+                      <span class="o">-&gt;</span> <span class="n">CUT_RECOVERY_ON</span> <span class="o">-&gt;</span> <span class="n">IDLE</span>
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="hal-pin-map.html"><span class="std std-doc">HAL Pin Map</span></a> — Full list of HAL pins including state indicators</p></li>
+<li><p><a class="reference internal" href="../integrator-guide/postgui-hal.html"><span class="std std-doc">Post-GUI HAL</span></a> — Example HAL file wiring for state monitoring</p></li>
+<li><p><a class="reference internal" href="../troubleshooting.html"><span class="std std-doc">Troubleshooting</span></a> — Common state machine issues and fixes</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gcode-syntax.html" class="btn btn-neutral float-left" title="G-Code Syntax" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quickshape-reference.html" class="btn btn-neutral float-right" title="Quickshape Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

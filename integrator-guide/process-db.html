@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Process Database &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Customization" href="customization.html" />
+    <link rel="prev" title="User Buttons" href="user-buttons.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrator Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ini-config.html">INI Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config-migration.html">Config Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config-yml.html">Config YAML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-buttons.html">User Buttons</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Process Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#database-location">Database Location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database-schema">Database Schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-the-database">Accessing the Database</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#via-qtpyvcp-plugin">Via QtPyVCP Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#via-sqlite-cli">Via SQLite CLI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#common-queries">Common Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#seeding-the-database">Seeding the Database</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#from-csv">From CSV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#via-the-vcp-ui">Via the VCP UI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-field-filtering">Multi-Field Filtering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#filtering-logic">Filtering Logic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-filter-combinations">Example Filter Combinations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#updating-cuts">Updating Cuts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#via-vcp-ui">Via VCP UI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#via-sql">Via SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#deleting-cuts">Deleting Cuts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Via SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#material-configuration-file">Material Configuration File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switching-to-mysql">Switching to MySQL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#in-config-yml">In config.yml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mysql-schema">MySQL Schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backup-and-migration">Backup and Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-database">Customizing the Database</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-custom-fields">Adding Custom Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-database-providers">Custom Database Providers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="customization.html">Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Process Database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#database-location">Database Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#database-schema">Database Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#accessing-the-database">Accessing the Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#via-qtpyvcp-plugin">Via QtPyVCP Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#via-sqlite-cli">Via SQLite CLI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-queries">Common Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#seeding-the-database">Seeding the Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#from-csv">From CSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#via-the-vcp-ui">Via the VCP UI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-field-filtering">Multi-Field Filtering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-logic">Filtering Logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-filter-combinations">Example Filter Combinations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#updating-cuts">Updating Cuts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#via-vcp-ui">Via VCP UI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#via-sql">Via SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deleting-cuts">Deleting Cuts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Via SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#material-configuration-file">Material Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#switching-to-mysql">Switching to MySQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#in-config-yml">In config.yml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mysql-schema">MySQL Schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backup-and-migration">Backup and Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-database">Customizing the Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-custom-fields">Adding Custom Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-database-providers">Custom Database Providers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Integrator Guide</a></li>
+      <li class="breadcrumb-item active">Process Database</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integrator-guide/process-db.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="process-database">
+<h1>Process Database<a class="headerlink" href="#process-database" title="Link to this heading"></a></h1>
+<p>The process database stores cut parameters (pierce height, cut height, feed rate, volts,
+amps, kerf) indexed by gas type, machine type, material, thickness, and consumable. It is
+backed by SQLite and managed through the ProcessFilterService.</p>
+<section id="database-location">
+<h2>Database Location<a class="headerlink" href="#database-location" title="Link to this heading"></a></h2>
+<p>The database file is located in the machine configuration directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/</span><span class="n">linuxcnc</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">sim</span><span class="o">.</span><span class="n">monokrom</span><span class="o">/</span><span class="n">plasmac</span><span class="o">/</span><span class="n">plasma_table</span><span class="o">.</span><span class="n">db</span>
+</pre></div>
+</div>
+</section>
+<section id="database-schema">
+<h2>Database Schema<a class="headerlink" href="#database-schema" title="Link to this heading"></a></h2>
+<p>The plasma processes plugin creates a SQLite database with the following schema:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">cuts</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">gas</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">machine</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">thickness</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">consumable</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pierce_height</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pierce_delay</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">cut_height</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">cut_feed_rate</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">cut_volts</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">cut_amperage</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">kerf</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">tool_number</span><span class="w"> </span><span class="nb">INTEGER</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="accessing-the-database">
+<h2>Accessing the Database<a class="headerlink" href="#accessing-the-database" title="Link to this heading"></a></h2>
+<section id="via-qtpyvcp-plugin">
+<h3>Via QtPyVCP Plugin<a class="headerlink" href="#via-qtpyvcp-plugin" title="Link to this heading"></a></h3>
+<p>The database is accessed through the <code class="docutils literal notranslate"><span class="pre">plasmaprocesses</span></code> data plugin:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In config.yml</span>
+<span class="n">plasmaprocesses</span><span class="p">:</span>
+  <span class="n">provider</span><span class="p">:</span> <span class="n">qtpyvcp</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">plasma_processes</span><span class="p">:</span><span class="n">PlasmaProcesses</span>
+  <span class="n">kwargs</span><span class="p">:</span>
+    <span class="n">db_type</span><span class="p">:</span> <span class="s2">"sqlite"</span>
+</pre></div>
+</div>
+</section>
+<section id="via-sqlite-cli">
+<h3>Via SQLite CLI<a class="headerlink" href="#via-sqlite-cli" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite3<span class="w"> </span>plasma_table.db
+</pre></div>
+</div>
+</section>
+<section id="common-queries">
+<h3>Common Queries<a class="headerlink" href="#common-queries" title="Link to this heading"></a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- List all cuts</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cuts</span><span class="p">;</span>
+
+<span class="c1">-- Find cuts for a specific material</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cuts</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Mild Steel'</span><span class="p">;</span>
+
+<span class="c1">-- Find cuts for a specific thickness</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cuts</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">thickness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">-- Find cuts matching multiple filters</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cuts</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">gas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Air'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Mild Steel'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">thickness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">-- Count cuts per material</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">material</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cuts</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">material</span><span class="p">;</span>
+
+<span class="c1">-- Get the highest tool number</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">tool_number</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cuts</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="seeding-the-database">
+<h2>Seeding the Database<a class="headerlink" href="#seeding-the-database" title="Link to this heading"></a></h2>
+<section id="from-csv">
+<h3>From CSV<a class="headerlink" href="#from-csv" title="Link to this heading"></a></h3>
+<p>A seed CSV file (<code class="docutils literal notranslate"><span class="pre">master-seed-source.csv</span></code>) is provided in the config directory. The format:</p>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>gas,machine,material,thickness,consumable,pierce_height,pierce_delay,cut_height,cut_feed_rate,cut_volts,cut_amperage,kerf,tool_number
+Air,A120,Mild Steel,3,Standard,5.0,1.0,3.0,1500,28.5,120,1.2,1
+Air,A120,Mild Steel,6,Standard,6.0,1.5,4.0,1000,30.0,150,1.5,2
+</pre></div>
+</div>
+<p>To import from CSV, use the PlasmaProcesses plugin API or a custom import script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'plasma_table.db'</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'master-seed-source.csv'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">'''</span>
+<span class="s1">            INSERT INTO cuts (gas, machine, material, thickness, consumable,</span>
+<span class="s1">                            pierce_height, pierce_delay, cut_height, cut_feed_rate,</span>
+<span class="s1">                            cut_volts, cut_amperage, kerf, tool_number)</span>
+<span class="s1">            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</span>
+<span class="s1">        '''</span><span class="p">,</span> <span class="p">(</span>
+            <span class="n">row</span><span class="p">[</span><span class="s1">'gas'</span><span class="p">],</span>
+            <span class="n">row</span><span class="p">[</span><span class="s1">'machine'</span><span class="p">],</span>
+            <span class="n">row</span><span class="p">[</span><span class="s1">'material'</span><span class="p">],</span>
+            <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'thickness'</span><span class="p">]),</span>
+            <span class="n">row</span><span class="p">[</span><span class="s1">'consumable'</span><span class="p">],</span>
+            <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'pierce_height'</span><span class="p">]),</span>
+            <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'pierce_delay'</span><span class="p">]),</span>
+            <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'cut_height'</span><span class="p">]),</span>
+            <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'cut_feed_rate'</span><span class="p">]),</span>
+            <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'cut_volts'</span><span class="p">]),</span>
+            <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'cut_amperage'</span><span class="p">]),</span>
+            <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'kerf'</span><span class="p">]),</span>
+            <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'tool_number'</span><span class="p">])</span>
+        <span class="p">))</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="via-the-vcp-ui">
+<h3>Via the VCP UI<a class="headerlink" href="#via-the-vcp-ui" title="Link to this heading"></a></h3>
+<p>New cuts can be added directly through the VCP:</p>
+<ol class="arabic simple">
+<li><p>Go to the Parameters tab.</p></li>
+<li><p>Set all filter fields (Gas, Machine, Material, Thickness, Consumable).</p></li>
+<li><p>Enter cut parameters in the PARAMS fields.</p></li>
+<li><p>Click <strong>ADD NEW CUT</strong>.</p></li>
+</ol>
+<p>The tool number is auto-incremented.</p>
+</section>
+</section>
+<section id="multi-field-filtering">
+<h2>Multi-Field Filtering<a class="headerlink" href="#multi-field-filtering" title="Link to this heading"></a></h2>
+<p>The process database supports filtering by any combination of fields:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Filter Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Example Values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Gas</p></td>
+<td><p>Text</p></td>
+<td><p>Air, Oxygen, Nitrogen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Machine</p></td>
+<td><p>Text</p></td>
+<td><p>A120, Hypertherm 45, Hypertherm 85</p></td>
+</tr>
+<tr class="row-even"><td><p>Material</p></td>
+<td><p>Text</p></td>
+<td><p>Mild Steel, Stainless Steel, Aluminum</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thickness</p></td>
+<td><p>Real (float)</p></td>
+<td><p>1.0, 3.0, 6.0, 10.0, 12.0</p></td>
+</tr>
+<tr class="row-even"><td><p>Consumable</p></td>
+<td><p>Text</p></td>
+<td><p>Standard, Extended Life, HD</p></td>
+</tr>
+</tbody>
+</table>
+<section id="filtering-logic">
+<h3>Filtering Logic<a class="headerlink" href="#filtering-logic" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Each filter field is independent.</p></li>
+<li><p>Selecting a value for a filter restricts results to that value.</p></li>
+<li><p>Unselected filters match all values.</p></li>
+<li><p>The SUB-LIST shows all matching cuts.</p></li>
+<li><p>Selecting a row from the SUB-LIST loads that cut’s parameters.</p></li>
+</ul>
+</section>
+<section id="example-filter-combinations">
+<h3>Example Filter Combinations<a class="headerlink" href="#example-filter-combinations" title="Link to this heading"></a></h3>
+<p><strong>All Air cuts on Mild Steel:</strong></p>
+<ul class="simple">
+<li><p>Gas = Air</p></li>
+<li><p>Material = Mild Steel</p></li>
+<li><p>Machine, Thickness, Consumable = (unselected)</p></li>
+</ul>
+<p><strong>All 6mm cuts regardless of material:</strong></p>
+<ul class="simple">
+<li><p>Thickness = 6.0</p></li>
+<li><p>All other filters = (unselected)</p></li>
+</ul>
+<p><strong>Air, A120, 3mm, Standard consumable:</strong></p>
+<ul class="simple">
+<li><p>Gas = Air</p></li>
+<li><p>Machine = A120</p></li>
+<li><p>Thickness = 3.0</p></li>
+<li><p>Consumable = Standard</p></li>
+<li><p>Material = (unselected)</p></li>
+</ul>
+</section>
+</section>
+<section id="updating-cuts">
+<h2>Updating Cuts<a class="headerlink" href="#updating-cuts" title="Link to this heading"></a></h2>
+<section id="via-vcp-ui">
+<h3>Via VCP UI<a class="headerlink" href="#via-vcp-ui" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Select the cut from the SUB-LIST.</p></li>
+<li><p>Modify the desired parameters in the PARAMS fields.</p></li>
+<li><p>Click <strong>UPDATE CUT</strong>.</p></li>
+</ol>
+</section>
+<section id="via-sql">
+<h3>Via SQL<a class="headerlink" href="#via-sql" title="Link to this heading"></a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">cut_feed_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1200</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">cuts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">pierce_height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">.</span><span class="mi">5</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Mild Steel'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">thickness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="deleting-cuts">
+<h2>Deleting Cuts<a class="headerlink" href="#deleting-cuts" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Via SQL<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cuts</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cuts</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Old Material'</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Warning:</strong> Deleting cuts via SQL bypasses the VCP’s confirmation dialogs. Use with caution.</p>
+</section>
+</section>
+<section id="material-configuration-file">
+<h2>Material Configuration File<a class="headerlink" href="#material-configuration-file" title="Link to this heading"></a></h2>
+<p>When materials are first used, a material configuration file is generated:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">machine_name</span><span class="o">&gt;</span><span class="n">_material</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+<p>This file stores material-specific settings and is automatically created/updated by the VCP.</p>
+</section>
+<section id="switching-to-mysql">
+<h2>Switching to MySQL<a class="headerlink" href="#switching-to-mysql" title="Link to this heading"></a></h2>
+<p>For networked installations with multiple machines, the database can be switched from SQLite
+to MySQL:</p>
+<section id="in-config-yml">
+<h3>In config.yml<a class="headerlink" href="#in-config-yml" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">plasmaprocesses</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qtpyvcp.plugins.plasma_processes:PlasmaProcesses</span>
+<span class="w">  </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">db_type</span><span class="p">:</span><span class="w"> </span><span class="s">"mysql"</span>
+<span class="w">    </span><span class="nt">db_host</span><span class="p">:</span><span class="w"> </span><span class="s">"localhost"</span>
+<span class="w">    </span><span class="nt">db_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
+<span class="w">    </span><span class="nt">db_name</span><span class="p">:</span><span class="w"> </span><span class="s">"monokrom_plasma"</span>
+<span class="w">    </span><span class="nt">db_user</span><span class="p">:</span><span class="w"> </span><span class="s">"monokrom"</span>
+<span class="w">    </span><span class="nt">db_password</span><span class="p">:</span><span class="w"> </span><span class="s">"secret"</span>
+</pre></div>
+</div>
+</section>
+<section id="mysql-schema">
+<h3>MySQL Schema<a class="headerlink" href="#mysql-schema" title="Link to this heading"></a></h3>
+<p>The MySQL schema is automatically created on first connection. The table structure is
+identical to the SQLite schema.</p>
+</section>
+<section id="backup-and-migration">
+<h3>Backup and Migration<a class="headerlink" href="#backup-and-migration" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># SQLite backup</span>
+cp<span class="w"> </span>plasma_table.db<span class="w"> </span>plasma_table.db.backup
+
+<span class="c1"># Export SQLite to SQL</span>
+sqlite3<span class="w"> </span>plasma_table.db<span class="w"> </span>.dump<span class="w"> </span>&gt;<span class="w"> </span>plasma_table.sql
+
+<span class="c1"># Import to MySQL</span>
+mysql<span class="w"> </span>-u<span class="w"> </span>monokrom<span class="w"> </span>-p<span class="w"> </span>monokrom_plasma<span class="w"> </span>&lt;<span class="w"> </span>plasma_table.sql
+</pre></div>
+</div>
+</section>
+</section>
+<section id="customizing-the-database">
+<h2>Customizing the Database<a class="headerlink" href="#customizing-the-database" title="Link to this heading"></a></h2>
+<section id="adding-custom-fields">
+<h3>Adding Custom Fields<a class="headerlink" href="#adding-custom-fields" title="Link to this heading"></a></h3>
+<p>To add custom fields to the cuts table:</p>
+<ol class="arabic">
+<li><p>Modify the database schema:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">cuts</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">custom_field</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Update the PlasmaProcesses plugin to handle the new field (requires code modification).</p></li>
+<li><p>Update the VCP UI to display/edit the new field (requires UI modification).</p></li>
+</ol>
+</section>
+<section id="custom-database-providers">
+<h3>Custom Database Providers<a class="headerlink" href="#custom-database-providers" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">db_type</span></code> parameter supports:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sqlite</span></code> — Default, single-file database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mysql</span></code> — MySQL/MariaDB for networked installations</p></li>
+<li><p>Custom providers can be added by implementing the PlasmaProcesses interface</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user-buttons.html" class="btn btn-neutral float-left" title="User Buttons" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="customization.html" class="btn btn-neutral float-right" title="Customization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

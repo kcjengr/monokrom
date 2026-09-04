@@ -1,0 +1,869 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INI Configuration &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Config Migration" href="config-migration.html" />
+    <link rel="prev" title="Hardware Setup" href="hardware-setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrator Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">INI Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-ini-file">Example INI File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#required-sections">Required Sections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#emc">[EMC]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#display">[DISPLAY]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vtk">[VTK]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plasmac">[PLASMAC]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filter">[FILTER]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rs274ngc">[RS274NGC]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task">[TASK]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#emcmot">[EMCMOT]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hal">[HAL]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#halui">[HALUI]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kins">[KINS]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#traj">[TRAJ]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#axis-sections-axis-x-axis-y-axis-z">Axis Sections ([AXIS_X], [AXIS_Y], [AXIS_Z])</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#joint-sections-joint-0-joint-1-joint-2">Joint Sections ([JOINT_0], [JOINT_1], [JOINT_2])</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#emcio">[EMCIO]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#user-button-configuration">User Button Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-ini-file">Customizing the INI File</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#converting-from-qtplasmac-recommended">Converting from qtplasmac (Recommended)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-configuration-from-scratch">Creating a New Configuration from Scratch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config-migration.html">Config Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config-yml.html">Config YAML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-buttons.html">User Buttons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process-db.html">Process Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customization.html">Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">INI Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-ini-file">Example INI File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#required-sections">Required Sections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#emc">[EMC]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display">[DISPLAY]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vtk">[VTK]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plasmac">[PLASMAC]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filter">[FILTER]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rs274ngc">[RS274NGC]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task">[TASK]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#emcmot">[EMCMOT]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hal">[HAL]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#halui">[HALUI]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kins">[KINS]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#traj">[TRAJ]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#axis-sections-axis-x-axis-y-axis-z">Axis Sections ([AXIS_X], [AXIS_Y], [AXIS_Z])</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#joint-sections-joint-0-joint-1-joint-2">Joint Sections ([JOINT_0], [JOINT_1], [JOINT_2])</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#emcio">[EMCIO]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#user-button-configuration">User Button Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-ini-file">Customizing the INI File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#converting-from-qtplasmac-recommended">Converting from qtplasmac (Recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-configuration-from-scratch">Creating a New Configuration from Scratch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Integrator Guide</a></li>
+      <li class="breadcrumb-item active">INI Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integrator-guide/ini-config.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ini-configuration">
+<h1>INI Configuration<a class="headerlink" href="#ini-configuration" title="Link to this heading"></a></h1>
+<p>The INI file defines the LinuxCNC machine configuration. MonoKrom Plasma uses a modified
+INI format with additional sections for plasma-specific settings.</p>
+<section id="example-ini-file">
+<h2>Example INI File<a class="headerlink" href="#example-ini-file" title="Link to this heading"></a></h2>
+<p>The simulation config <code class="docutils literal notranslate"><span class="pre">plasmac_sim.ini</span></code> serves as a reference. Key sections are documented
+below.</p>
+</section>
+<section id="required-sections">
+<h2>Required Sections<a class="headerlink" href="#required-sections" title="Link to this heading"></a></h2>
+<section id="emc">
+<h3>[EMC]<a class="headerlink" href="#emc" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[EMC]</span>
+<span class="na">VERSION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1.1</span>
+<span class="na">MACHINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Monokrom Plasma - Metric XYZ</span>
+<span class="na">DEBUG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">VERSION</span></code></p></td>
+<td><p>INI file version (always 1.1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MACHINE</span></code></p></td>
+<td><p>Machine name (displayed in VCP title)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DEBUG</span></code></p></td>
+<td><p>Debug level (0 = normal, higher = more verbose)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="display">
+<h3>[DISPLAY]<a class="headerlink" href="#display" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DISPLAY]</span>
+<span class="na">DISPLAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">monokrom_plasma</span>
+<span class="na">KEYBOARD_JOG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">JET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">CONFIRM_EXIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">False</span>
+<span class="na">FULLSCREEN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">False</span>
+<span class="na">GCODE_SYNTAX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">gcode_syntax.yml</span>
+<span class="na">LOG_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">sim.log</span>
+<span class="na">LOG_LEVEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">DEBUG</span>
+<span class="na">PREFERENCE_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">sim.pref</span>
+<span class="na">CONFIG_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">custom_config.yml</span>
+<span class="na">POSITION_OFFSET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">RELATIVE</span>
+<span class="na">POSITION_FEEDBACK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ACTUAL</span>
+<span class="na">DEFAULT_LINEAR_VELOCITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">50.0000</span>
+<span class="na">MAX_LINEAR_VELOCITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">125.0000</span>
+<span class="na">MIN_LINEAR_VELOCITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5000</span>
+<span class="na">MAX_FEED_OVERRIDE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2.000000</span>
+<span class="na">PROGRAM_PREFIX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">~/linuxcnc/nc_files</span>
+<span class="na">INCREMENTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">JOG 10mm 5mm 1mm 0.1mm</span>
+<span class="na">GEOMETRY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">xyz</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DISPLAY</span></code></p></td>
+<td><p>VCP to launch — <code class="docutils literal notranslate"><span class="pre">monokrom_plasma</span></code> (16:9, 1080p)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">KEYBOARD_JOG</span></code></p></td>
+<td><p>Enable keyboard jogging</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">JET</span></code></p></td>
+<td><p>Enable VTK jet/spindle display</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CONFIRM_EXIT</span></code></p></td>
+<td><p>Require confirmation on exit</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FULLSCREEN</span></code></p></td>
+<td><p>Start in fullscreen mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GCODE_SYNTAX</span></code></p></td>
+<td><p>Syntax highlighting profile file</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">LOG_FILE</span></code></p></td>
+<td><p>Log file name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LOG_LEVEL</span></code></p></td>
+<td><p>Log verbosity (DEBUG, INFO, WARNING, ERROR)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PREFERENCE_FILE</span></code></p></td>
+<td><p>QtPyVCP preferences file name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CONFIG_FILE</span></code></p></td>
+<td><p>QtPyVCP config.yml file</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">POSITION_OFFSET</span></code></p></td>
+<td><p>Position display mode (RELATIVE or ABSOLUTE)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">POSITION_FEEDBACK</span></code></p></td>
+<td><p>Position feedback source (ACTUAL or COMMAND)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_LINEAR_VELOCITY</span></code></p></td>
+<td><p>Default jog velocity</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MAX_LINEAR_VELOCITY</span></code></p></td>
+<td><p>Maximum jog velocity</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MIN_LINEAR_VELOCITY</span></code></p></td>
+<td><p>Minimum jog velocity</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MAX_FEED_OVERRIDE</span></code></p></td>
+<td><p>Maximum feed override multiplier</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PROGRAM_PREFIX</span></code></p></td>
+<td><p>Default directory for G-code files</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">INCREMENTS</span></code></p></td>
+<td><p>Jog increment sizes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code></p></td>
+<td><p>Axis geometry (xyz, xyza, etc.)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="vtk">
+<h3>[VTK]<a class="headerlink" href="#vtk" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[VTK]</span>
+<span class="na">SPINDLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">jet_tracking_crosshair.stl</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SPINDLE</span></code></p></td>
+<td><p>3D model file for the spindle/jet display</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plasmac">
+<h3>[PLASMAC]<a class="headerlink" href="#plasmac" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[PLASMAC]</span>
+<span class="na">MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0</span>
+<span class="na">DBOUNCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">TRUE</span>
+<span class="na">MACHINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">A120</span>
+<span class="na">PRESSURE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">bar</span>
+<span class="na">DEFAULT_CUTCHART</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span>
+<span class="na">SLAT_TOP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-65.0</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MODE</span></code></p></td>
+<td><p>Operating mode (0, 1, or 2) — see <a class="reference internal" href="hardware-setup.html"><span class="std std-doc">Hardware Setup</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DBOUNCE</span></code></p></td>
+<td><p>Enable built-in debounce (TRUE/FALSE)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MACHINE</span></code></p></td>
+<td><p>Plasma power source model name (for cut chart lookup)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PRESSURE</span></code></p></td>
+<td><p>Pressure units (psi, bar, or MPa)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_CUTCHART</span></code></p></td>
+<td><p>Default cut chart number</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SLAT_TOP</span></code></p></td>
+<td><p>Z position of slat top (for height calculations)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DBOUNCE</span></code></p></td>
+<td><p>Enable built-in debounce (TRUE/FALSE)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MACHINE</span></code></p></td>
+<td><p>Plasma power source model name (for cut chart lookup)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PRESSURE</span></code></p></td>
+<td><p>Pressure units (psi, bar, or MPa)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_CUTCHART</span></code></p></td>
+<td><p>Default cut chart number</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SLAT_TOP</span></code></p></td>
+<td><p>Z position of slat top (for height calculations)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="filter">
+<h3>[FILTER]<a class="headerlink" href="#filter" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[FILTER]</span>
+<span class="na">PROGRAM_EXTENSION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">.ngc,.nc,.tap GCode File (*.ngc, *.nc, *.tap)</span>
+<span class="na">ngc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">plasma_gcode_preprocessor</span>
+<span class="na">nc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">plasma_gcode_preprocessor</span>
+<span class="na">tap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">plasma_gcode_preprocessor</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PROGRAM_EXTENSION</span></code></p></td>
+<td><p>File extensions accepted by the VCP</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ngc</span></code> / <code class="docutils literal notranslate"><span class="pre">nc</span></code> / <code class="docutils literal notranslate"><span class="pre">tap</span></code></p></td>
+<td><p>Preprocessor command for each extension</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rs274ngc">
+<h3>[RS274NGC]<a class="headerlink" href="#rs274ngc" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[RS274NGC]</span>
+<span class="na">PARAMETER_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">sim.var</span>
+<span class="na">RS274NGC_STARTUP_CODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">o&lt;metric_startup&gt; call</span>
+<span class="na">SUBROUTINE_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">./:./user_buttons:../../nc_files/subroutines</span>
+<span class="na">USER_M_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">./:./plasmac</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PARAMETER_FILE</span></code></p></td>
+<td><p>RS274/NGC parameter file (.var)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RS274NGC_STARTUP_CODE</span></code></p></td>
+<td><p>Startup G-code (G21 for metric, G20 for imperial)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SUBROUTINE_PATH</span></code></p></td>
+<td><p>Colon-separated paths for NGC subroutines</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">USER_M_PATH</span></code></p></td>
+<td><p>Paths for user M-code handlers</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> For imperial configs, replace <code class="docutils literal notranslate"><span class="pre">G21</span></code> with <code class="docutils literal notranslate"><span class="pre">G20</span></code> in <code class="docutils literal notranslate"><span class="pre">RS274NGC_STARTUP_CODE</span></code>.</p>
+</section>
+<section id="task">
+<h3>[TASK]<a class="headerlink" href="#task" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[TASK]</span>
+<span class="na">TASK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">milltask</span>
+<span class="na">CYCLE_TIME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.010</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TASK</span></code></p></td>
+<td><p>Task module (always <code class="docutils literal notranslate"><span class="pre">milltask</span></code> for plasma)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CYCLE_TIME</span></code></p></td>
+<td><p>Task cycle time in seconds</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="emcmot">
+<h3>[EMCMOT]<a class="headerlink" href="#emcmot" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[EMCMOT]</span>
+<span class="na">EMCMOT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">motmod</span>
+<span class="na">COMM_TIMEOUT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1.0</span>
+<span class="na">COMM_WAIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.010</span>
+<span class="na">BASE_PERIOD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000</span>
+<span class="na">SERVO_PERIOD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000000</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EMCMOT</span></code></p></td>
+<td><p>Motion module</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">COMM_TIMEOUT</span></code></p></td>
+<td><p>Communication timeout (seconds)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">COMM_WAIT</span></code></p></td>
+<td><p>Communication wait time (seconds)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">BASE_PERIOD</span></code></p></td>
+<td><p>Base thread period (nanoseconds)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SERVO_PERIOD</span></code></p></td>
+<td><p>Servo thread period (nanoseconds)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hal">
+<h3>[HAL]<a class="headerlink" href="#hal" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[HAL]</span>
+<span class="na">TWOPASS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ON</span>
+<span class="na">HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">plasmac_sim_overlay.hal</span>
+<span class="na">HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">qtplasmac_connections_sim.hal</span>
+<span class="na">HALUI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">halui</span>
+<span class="na">HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">../common/hallib/core_sim_3.hal</span>
+<span class="na">HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">../common/hallib/spindle_sim.hal</span>
+<span class="na">HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">../common/hallib/simulated_home.hal</span>
+<span class="na">POSTGUI_HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">postgui_call_list_plasmac_sim.hal</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TWOPASS</span></code></p></td>
+<td><p>Enable two-pass HAL processing</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HALFILE</span></code></p></td>
+<td><p>HAL files to load (multiple entries allowed)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">HALUI</span></code></p></td>
+<td><p>HAL UI module (always <code class="docutils literal notranslate"><span class="pre">halui</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">POSTGUI_HALFILE</span></code></p></td>
+<td><p>HAL file loaded after GUI initializes</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="halui">
+<h3>[HALUI]<a class="headerlink" href="#halui" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[HALUI]</span>
+<span class="na">MDI_COMMAND</span><span class="o">=</span><span class="s">(debug,macro0)</span>
+<span class="na">MDI_COMMAND</span><span class="o">=</span><span class="s">(debug,macro1)</span>
+<span class="na">MDI_COMMAND</span><span class="o">=</span><span class="s">G0X0Y0</span>
+<span class="na">...</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MDI_COMMAND</span></code></p></td>
+<td><p>MDI commands accessible via HAL pins (for pendants, user buttons)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="kins">
+<h3>[KINS]<a class="headerlink" href="#kins" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[KINS]</span>
+<span class="na">KINEMATICS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">trivkins coordinates=XYZ</span>
+<span class="na">JOINTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">KINEMATICS</span></code></p></td>
+<td><p>Kinematics module</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">JOINTS</span></code></p></td>
+<td><p>Number of joints</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="traj">
+<h3>[TRAJ]<a class="headerlink" href="#traj" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[TRAJ]</span>
+<span class="na">AXES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span>
+<span class="na">SPINDLES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span>
+<span class="na">COORDINATES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">XYZ</span>
+<span class="na">LINEAR_UNITS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">mm</span>
+<span class="na">ANGULAR_UNITS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">degree</span>
+<span class="na">DEFAULT_LINEAR_VELOCITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100</span>
+<span class="na">MAX_LINEAR_VELOCITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">350</span>
+<span class="na">DEFAULT_LINEAR_ACCELERATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2500</span>
+<span class="na">MAX_LINEAR_ACCELERATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2500</span>
+<span class="na">NO_FORCE_HOMING</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AXES</span></code></p></td>
+<td><p>Number of axes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SPINDLES</span></code></p></td>
+<td><p>Number of spindles (3 for plasma: main, THC, offset)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">COORDINATES</span></code></p></td>
+<td><p>Axis names</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LINEAR_UNITS</span></code></p></td>
+<td><p>Units (mm or inches)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ANGULAR_UNITS</span></code></p></td>
+<td><p>Angular units (degree)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_LINEAR_VELOCITY</span></code></p></td>
+<td><p>Default linear velocity</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MAX_LINEAR_VELOCITY</span></code></p></td>
+<td><p>Maximum linear velocity</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_LINEAR_ACCELERATION</span></code></p></td>
+<td><p>Default acceleration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MAX_LINEAR_ACCELERATION</span></code></p></td>
+<td><p>Maximum acceleration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NO_FORCE_HOMING</span></code></p></td>
+<td><p>Skip forced homing (1 = yes)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="axis-sections-axis-x-axis-y-axis-z">
+<h3>Axis Sections ([AXIS_X], [AXIS_Y], [AXIS_Z])<a class="headerlink" href="#axis-sections-axis-x-axis-y-axis-z" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[AXIS_X]</span>
+<span class="na">MIN_LIMIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-2.001</span>
+<span class="na">MAX_LIMIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1200.001</span>
+<span class="na">MAX_VELOCITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">500.0</span>
+<span class="na">MAX_ACCELERATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5000.0</span>
+<span class="na">OFFSET_AV_RATIO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MIN_LIMIT</span></code></p></td>
+<td><p>Minimum axis limit</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MAX_LIMIT</span></code></p></td>
+<td><p>Maximum axis limit</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MAX_VELOCITY</span></code></p></td>
+<td><p>Maximum velocity (should be double the joint value)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MAX_ACCELERATION</span></code></p></td>
+<td><p>Maximum acceleration (should be double the joint value)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OFFSET_AV_RATIO</span></code></p></td>
+<td><p>Offset/velocity ratio for external offsets (always 0.5)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="joint-sections-joint-0-joint-1-joint-2">
+<h3>Joint Sections ([JOINT_0], [JOINT_1], [JOINT_2])<a class="headerlink" href="#joint-sections-joint-0-joint-1-joint-2" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[JOINT_0]</span>
+<span class="na">MIN_LIMIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-2.001</span>
+<span class="na">MAX_LIMIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1200.001</span>
+<span class="na">MAX_VELOCITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">250</span>
+<span class="na">MAX_ACCELERATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2500</span>
+<span class="na">TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">LINEAR</span>
+<span class="na">HOME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.000</span>
+<span class="na">HOME_OFFSET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0</span>
+<span class="na">HOME_SEQUENCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+<span class="na">HOME_USE_INDEX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">NO</span>
+<span class="na">HOME_SEARCH_VEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1.0</span>
+<span class="na">HOME_LATCH_VEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.1</span>
+<span class="na">HOME_IGNORE_LIMITS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">NO</span>
+<span class="na">HOME_IS_SHARED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MIN_LIMIT</span></code> / <code class="docutils literal notranslate"><span class="pre">MAX_LIMIT</span></code></p></td>
+<td><p>Joint limits</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MAX_VELOCITY</span></code> / <code class="docutils literal notranslate"><span class="pre">MAX_ACCELERATION</span></code></p></td>
+<td><p>Joint max velocity/acceleration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TYPE</span></code></p></td>
+<td><p>Joint type (LINEAR or ANGULAR)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HOME</span></code></p></td>
+<td><p>Home position</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">HOME_OFFSET</span></code></p></td>
+<td><p>Offset from home switch to reference</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HOME_SEQUENCE</span></code></p></td>
+<td><p>Homing order (0 = Z first, then X/Y)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">HOME_USE_INDEX</span></code></p></td>
+<td><p>Use index mark for homing</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HOME_SEARCH_VEL</span></code></p></td>
+<td><p>Search velocity during homing</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">HOME_LATCH_VEL</span></code></p></td>
+<td><p>Latch velocity during homing</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HOME_IGNORE_LIMITS</span></code></p></td>
+<td><p>Ignore limits during homing</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">HOME_IS_SHARED</span></code></p></td>
+<td><p>Shared home (true for XYZ on same axis)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="emcio">
+<h3>[EMCIO]<a class="headerlink" href="#emcio" title="Link to this heading"></a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[EMCIO]</span>
+<span class="na">EMCIO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">io</span>
+<span class="na">CYCLE_TIME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.100</span>
+<span class="na">DB_PROGRAM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/path/to/plasma_tooldbpipe</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EMCIO</span></code></p></td>
+<td><p>IO control module</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CYCLE_TIME</span></code></p></td>
+<td><p>IO cycle time</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DB_PROGRAM</span></code></p></td>
+<td><p>Plasma tool database pipe program</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="user-button-configuration">
+<h2>User Button Configuration<a class="headerlink" href="#user-button-configuration" title="Link to this heading"></a></h2>
+<p>User buttons are configured in the <code class="docutils literal notranslate"><span class="pre">[DISPLAY]</span></code> section:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">USER1_NAME</span><span class="o">=</span><span class="s">EXAMPLE USER 1</span>
+<span class="na">USER1_ACTION</span><span class="o">=</span><span class="s">testfn1.ngc</span>
+<span class="na">USER2_NAME</span><span class="o">=</span><span class="s">EXAMPLE USER 2</span>
+<span class="na">USER2_ACTION</span><span class="o">=</span><span class="s">testfn2.ngc</span>
+<span class="na">USER3_NAME</span><span class="o">=</span><span class="s">LASER OFF</span>
+<span class="na">USER3_ACTION</span><span class="o">=</span><span class="s">laser_off.ngc</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">USER&lt;n&gt;_NAME</span></code></p></td>
+<td><p>Display name for the button</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">USER&lt;n&gt;_ACTION</span></code></p></td>
+<td><p>NGC subroutine to execute</p></td>
+</tr>
+</tbody>
+</table>
+<p>Up to 10 user buttons (USER1-USER10) are supported. See <a class="reference internal" href="user-buttons.html"><span class="std std-doc">User Buttons</span></a> for details.</p>
+</section>
+<section id="customizing-the-ini-file">
+<h2>Customizing the INI File<a class="headerlink" href="#customizing-the-ini-file" title="Link to this heading"></a></h2>
+<section id="converting-from-qtplasmac-recommended">
+<h3>Converting from qtplasmac (Recommended)<a class="headerlink" href="#converting-from-qtplasmac-recommended" title="Link to this heading"></a></h3>
+<p>The fastest way to create a MonoKrom configuration from an existing qtplasmac setup is to use the
+<code class="docutils literal notranslate"><span class="pre">monokrom_plasma</span> <span class="pre">setup</span></code> command. This automatically transforms the INI, generates HAL files, migrates
+settings from <code class="docutils literal notranslate"><span class="pre">.prefs</span></code>, and creates user buttons. See <a class="reference internal" href="config-migration.html"><span class="std std-doc">Config Migration</span></a> for details.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>monokrom_plasma<span class="w"> </span>setup<span class="w"> </span>--from-config<span class="w"> </span>~/linuxcnc/configs/my_qtplasmac_config
+</pre></div>
+</div>
+</section>
+<section id="creating-a-new-configuration-from-scratch">
+<h3>Creating a New Configuration from Scratch<a class="headerlink" href="#creating-a-new-configuration-from-scratch" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Copy the simulation config as a starting point:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>~/linuxcnc/configs/sim.monokrom/plasmac/plasmac_sim.ini<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>~/linuxcnc/configs/my_machine/my_machine.ini
+</pre></div>
+</div>
+</li>
+<li><p>Edit the INI file:</p>
+<ul class="simple">
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">MACHINE</span></code> name</p></li>
+<li><p>Adjust axis limits and velocities for your machine</p></li>
+<li><p>Configure operating mode in <code class="docutils literal notranslate"><span class="pre">[PLASMAC]</span></code></p></li>
+<li><p>Set up HAL files</p></li>
+</ul>
+</li>
+<li><p>Create corresponding HAL files (see <a class="reference internal" href="hal-connections.html"><span class="std std-doc">HAL Connections</span></a>).</p></li>
+<li><p>Test with the simulator before connecting to real hardware.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hardware-setup.html" class="btn btn-neutral float-left" title="Hardware Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="config-migration.html" class="btn btn-neutral float-right" title="Config Migration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

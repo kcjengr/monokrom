@@ -1,0 +1,644 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Config Migration &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HAL Connections" href="hal-connections.html" />
+    <link rel="prev" title="INI Configuration" href="ini-config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrator Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ini-config.html">INI Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Config Migration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-location">Output Location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wizard-flow">Wizard Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#step-1-select-qtplasmac-config-directory">Step 1: Select qtplasmac config directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2-review-detected-hardware">Step 2: Review detected hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3-review-settings-migration">Step 3: Review settings migration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-4-configure-vcp-options">Step 4: Configure VCP options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-5-review-generated-files">Step 5: Review generated files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-6-confirm-and-generate">Step 6: Confirm and generate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#what-gets-generated">What Gets Generated</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ini-file-monokrom-ini">INI File (<code class="docutils literal notranslate"><span class="pre">monokrom.ini</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hal-files">HAL Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vcp-configuration">VCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-buttons">User Buttons</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-files">Other Files</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#settings-migration-details">Settings Migration Details</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapped-settings">Mapped Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#monokrom-only-settings">MonoKrom-Only Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qtplasmac-only-settings">qtplasmac-Only Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-log">Setup Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-migration">Post-Migration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#no-prefs-file-found">No .prefs file found</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#duplicate-option-errors">Duplicate option errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#template-files-not-found">Template files not found</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output-directory-already-exists">Output directory already exists</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config-yml.html">Config YAML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-buttons.html">User Buttons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process-db.html">Process Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customization.html">Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Integrator Guide</a></li>
+      <li class="breadcrumb-item active">Config Migration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integrator-guide/config-migration.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="config-migration">
+<h1>Config Migration<a class="headerlink" href="#config-migration" title="Link to this heading"></a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">monokrom_plasma</span> <span class="pre">setup</span></code> subcommand converts a working qtplasmac configuration (generated by StepConf/PnCconf)
+into a MonoKrom-compatible configuration. The hardware layer (HAL, INI axis/joint settings) is preserved; only
+the VCP-specific layer is transformed.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>A working qtplasmac configuration (from StepConf/PnCconf)</p></li>
+<li><p>MonoKrom Plasma installed (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code>)</p></li>
+<li><p>PySide6 and the forked qtpyvcp (<code class="docutils literal notranslate"><span class="pre">plasma_db</span></code> branch) installed</p></li>
+</ul>
+</section>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Non-interactive: accept all defaults</span>
+monokrom_plasma<span class="w"> </span>setup<span class="w"> </span>--from-config<span class="w"> </span>~/linuxcnc/configs/my_qtplasmac_config
+
+<span class="c1"># Interactive wizard (6 steps)</span>
+monokrom_plasma<span class="w"> </span>setup<span class="w"> </span>--wizard<span class="w"> </span>--from-config<span class="w"> </span>~/linuxcnc/configs/my_qtplasmac_config
+
+<span class="c1"># Custom output directory</span>
+monokrom_plasma<span class="w"> </span>setup<span class="w"> </span>--from-config<span class="w"> </span>~/linuxcnc/configs/my_qtplasmac_config<span class="w"> </span><span class="se">\</span>
+<span class="w">                      </span>--output-dir<span class="w"> </span>~/linuxcnc/configs/my_monokrom_config
+</pre></div>
+</div>
+</section>
+<section id="output-location">
+<h2>Output Location<a class="headerlink" href="#output-location" title="Link to this heading"></a></h2>
+<p>By default, the output is placed in a sibling directory named <code class="docutils literal notranslate"><span class="pre">monokrom_&lt;source-name&gt;</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~/linuxcnc/configs/
+├── my_qtplasmac_config/          ← source (qtplasmac)
+└── monokrom_my_qtplasmac_config/ ← output (MonoKrom)
+</pre></div>
+</div>
+<p>If the source directory name already starts with <code class="docutils literal notranslate"><span class="pre">monokrom_</span></code>, the output goes into the same directory.</p>
+</section>
+<section id="wizard-flow">
+<h2>Wizard Flow<a class="headerlink" href="#wizard-flow" title="Link to this heading"></a></h2>
+<p>The interactive wizard (<code class="docutils literal notranslate"><span class="pre">--wizard</span></code>) guides you through 6 steps:</p>
+<section id="step-1-select-qtplasmac-config-directory">
+<h3>Step 1: Select qtplasmac config directory<a class="headerlink" href="#step-1-select-qtplasmac-config-directory" title="Link to this heading"></a></h3>
+<p>Scans <code class="docutils literal notranslate"><span class="pre">~/linuxcnc/configs/</span></code> for INI files containing “qtplasmac” or “qt” in the display setting.
+Lists found configs for selection. You can also provide the path directly with <code class="docutils literal notranslate"><span class="pre">--from-config</span></code>.</p>
+</section>
+<section id="step-2-review-detected-hardware">
+<h3>Step 2: Review detected hardware<a class="headerlink" href="#step-2-review-detected-hardware" title="Link to this heading"></a></h3>
+<p>Displays:</p>
+<ul class="simple">
+<li><p>Machine name (from <code class="docutils literal notranslate"><span class="pre">[EMC]</span> <span class="pre">MACHINE</span></code>)</p></li>
+<li><p>Axes and joint count (from <code class="docutils literal notranslate"><span class="pre">[TRAJ]</span> <span class="pre">COORDINATES</span></code> and <code class="docutils literal notranslate"><span class="pre">[KINS]</span> <span class="pre">JOINTS</span></code>)</p></li>
+<li><p>Controller type (detected from HAL files: HM2 7i76E, Parport, etc.)</p></li>
+<li><p>Pressure units (from <code class="docutils literal notranslate"><span class="pre">[PLASMAC]</span> <span class="pre">PRESSURE</span></code>)</p></li>
+</ul>
+</section>
+<section id="step-3-review-settings-migration">
+<h3>Step 3: Review settings migration<a class="headerlink" href="#step-3-review-settings-migration" title="Link to this heading"></a></h3>
+<p>Shows a table of settings that differ from MonoKrom defaults, with options to:</p>
+<ul class="simple">
+<li><p><strong>Skip</strong> settings you don’t want to migrate</p></li>
+<li><p><strong>Force-update</strong> settings that match defaults but you want to change</p></li>
+</ul>
+<p>Settings are categorized as:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Category</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">UPDATED</span></code></p></td>
+<td><p>Setting differs from MonoKrom default — will be written to <code class="docutils literal notranslate"><span class="pre">config.yml</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SKIPPED</span></code></p></td>
+<td><p>Setting matches MonoKrom default — no change needed</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NOT_FOUND_IN_PREFS</span></code></p></td>
+<td><p>MonoKrom-only setting (uses default)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NOT_FOUND_IN_CONFIG</span></code></p></td>
+<td><p>qtplasmac-only setting (no MonoKrom equivalent)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="step-4-configure-vcp-options">
+<h3>Step 4: Configure VCP options<a class="headerlink" href="#step-4-configure-vcp-options" title="Link to this heading"></a></h3>
+<p>Configure:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">confirm_exit</span></code> — Require confirmation on exit (yes/no)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fullscreen</span></code> — Start in fullscreen mode (yes/no)</p></li>
+<li><p>File locations — NC files path and other directories</p></li>
+<li><p>User buttons — Import from <code class="docutils literal notranslate"><span class="pre">.prefs</span></code> or configure fresh</p></li>
+</ul>
+</section>
+<section id="step-5-review-generated-files">
+<h3>Step 5: Review generated files<a class="headerlink" href="#step-5-review-generated-files" title="Link to this heading"></a></h3>
+<p>Shows a summary of:</p>
+<ul class="simple">
+<li><p>INI transformations (what changed)</p></li>
+<li><p>New files to be created</p></li>
+<li><p>Files copied as-is</p></li>
+</ul>
+</section>
+<section id="step-6-confirm-and-generate">
+<h3>Step 6: Confirm and generate<a class="headerlink" href="#step-6-confirm-and-generate" title="Link to this heading"></a></h3>
+<p>Writes all files and generates <code class="docutils literal notranslate"><span class="pre">setup.log</span></code> in the output directory.</p>
+</section>
+</section>
+<section id="what-gets-generated">
+<h2>What Gets Generated<a class="headerlink" href="#what-gets-generated" title="Link to this heading"></a></h2>
+<section id="ini-file-monokrom-ini">
+<h3>INI File (<code class="docutils literal notranslate"><span class="pre">monokrom.ini</span></code>)<a class="headerlink" href="#ini-file-monokrom-ini" title="Link to this heading"></a></h3>
+<p>Transformed from the source INI:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DISPLAY</span> <span class="pre">=</span> <span class="pre">monokrom_plasma</span></code> (replaces <code class="docutils literal notranslate"><span class="pre">qtvcp</span> <span class="pre">qtplasmac</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONFIG_FILE</span> <span class="pre">=</span> <span class="pre">custom_config.yml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FILTER</span></code>: <code class="docutils literal notranslate"><span class="pre">qtplasmac_gcode</span></code> → <code class="docutils literal notranslate"><span class="pre">plasma_gcode_preprocessor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EMCIO</span></code>: <code class="docutils literal notranslate"><span class="pre">TOOL_TABLE</span></code> → <code class="docutils literal notranslate"><span class="pre">DB_PROGRAM</span> <span class="pre">=</span> <span class="pre">/usr/bin/plasma_tooldbpipe</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[PYTHON]</span></code> section added (if <code class="docutils literal notranslate"><span class="pre">python/</span></code> directory exists)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[HAL]</span></code>: Source HAL file renamed to <code class="docutils literal notranslate"><span class="pre">monokrom.hal</span></code>, <code class="docutils literal notranslate"><span class="pre">TWOPASS</span> <span class="pre">=</span> <span class="pre">ON</span></code> added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[HALUI]</span></code>: 17 <code class="docutils literal notranslate"><span class="pre">MDI_COMMAND=(debug,macroN)</span></code> entries for pendant macros</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[DISPLAY]</span></code>: MonoKrom options added (<code class="docutils literal notranslate"><span class="pre">JET</span></code>, <code class="docutils literal notranslate"><span class="pre">CONFIRM_EXIT</span></code>, <code class="docutils literal notranslate"><span class="pre">FULLSCREEN</span></code>, <code class="docutils literal notranslate"><span class="pre">KEYBOARD_JOG</span></code>, <code class="docutils literal notranslate"><span class="pre">HIDE_MENU_BAR</span></code>, <code class="docutils literal notranslate"><span class="pre">GCODE_SYNTAX</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[QTPLASMAC]</span></code> section removed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[PLASMAC]</span></code> section added with <code class="docutils literal notranslate"><span class="pre">DEBOUNCE</span></code>, <code class="docutils literal notranslate"><span class="pre">PRESSURE</span></code>, <code class="docutils literal notranslate"><span class="pre">MACHINE</span></code>, <code class="docutils literal notranslate"><span class="pre">DEFAULT_CUTCHART</span></code>, <code class="docutils literal notranslate"><span class="pre">SLAT_TOP</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[VTK]</span></code> section added with <code class="docutils literal notranslate"><span class="pre">SPINDLE</span></code> model path</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUBROUTINE_PATH</span></code> updated to include <code class="docutils literal notranslate"><span class="pre">./user_buttons</span></code></p></li>
+</ul>
+</section>
+<section id="hal-files">
+<h3>HAL Files<a class="headerlink" href="#hal-files" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Source</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">monokrom.hal</span></code></p></td>
+<td><p>Renamed from source HAL (e.g., <code class="docutils literal notranslate"><span class="pre">my_config.hal</span></code> → <code class="docutils literal notranslate"><span class="pre">monokrom.hal</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">qtplasmac_comp.hal</span></code></p></td>
+<td><p>Copied as-is</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">custom.hal</span></code></p></td>
+<td><p>Copied as-is</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">postgui.hal</span></code></p></td>
+<td><p>Generated from template (60+ VCP→plasmac nets)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">custom_postgui.hal</span></code></p></td>
+<td><p>Generated — sources <code class="docutils literal notranslate"><span class="pre">postgui.hal</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">shutdown.hal</span></code></p></td>
+<td><p>Copied as-is</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ohmic.hal</span></code></p></td>
+<td><p>Copied as-is (if present in source)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">xhc-whb04b-6.hal</span></code></p></td>
+<td><p>Copied as-is (if present in source)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="vcp-configuration">
+<h3>VCP Configuration<a class="headerlink" href="#vcp-configuration" title="Link to this heading"></a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">custom_config.yml</span></code></strong> — Generated with wizard options:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># MonoKrom Plasma VCP config — auto-generated</span>
+<span class="nt">windows</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mainwindow</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">confirm_exit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">fullscreen</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">data_plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">file_locations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qtpyvcp.plugins.file_locations:FileLocations</span>
+<span class="w">    </span><span class="nt">kwargs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">default_location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NC Files</span>
+<span class="w">      </span><span class="nt">local_locations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">Home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/</span>
+<span class="w">        </span><span class="nt">Desktop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/Desktop</span>
+<span class="w">        </span><span class="nt">NC Files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/linuxcnc/nc_files</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">gcode_syntax.yml</span></code></strong> — Copied from templates (syntax highlighting rules)</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">plasma_table.db</span></code></strong> — Pre-seeded SQLite database from templates</p>
+</section>
+<section id="user-buttons">
+<h3>User Buttons<a class="headerlink" href="#user-buttons" title="Link to this heading"></a></h3>
+<p>Generated from <code class="docutils literal notranslate"><span class="pre">.prefs</span></code> <code class="docutils literal notranslate"><span class="pre">[BUTTONS]</span></code> section as NGC subroutines in <code class="docutils literal notranslate"><span class="pre">user_buttons/</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user_buttons/
+├── probe-test.ngc
+├── ohmic-test.ngc
+├── single-cut.ngc
+├── cut-type.ngc
+└── ...
+</pre></div>
+</div>
+</section>
+<section id="other-files">
+<h3>Other Files<a class="headerlink" href="#other-files" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tool.tbl</span></code></p></td>
+<td><p>Copied as-is</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">M159</span></code>, <code class="docutils literal notranslate"><span class="pre">M190</span></code></p></td>
+<td><p>Copied as-is (if present)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">python/</span></code></p></td>
+<td><p>Copied as-is (if present)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">linuxcnc.var</span></code></p></td>
+<td><p>Not copied (generated at runtime by LinuxCNC)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">material.cfg</span></code></p></td>
+<td><p>Not copied (not used by MonoKrom)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="settings-migration-details">
+<h2>Settings Migration Details<a class="headerlink" href="#settings-migration-details" title="Link to this heading"></a></h2>
+<p>The setup tool reads plasma settings from the source <code class="docutils literal notranslate"><span class="pre">.prefs</span></code> file and writes them to the
+output <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> <strong>only when they differ from MonoKrom defaults</strong>.</p>
+<section id="mapped-settings">
+<h3>Mapped Settings<a class="headerlink" href="#mapped-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>.prefs Key</p></th>
+<th class="head"><p>config.yml Setting</p></th>
+<th class="head"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Arc</span> <span class="pre">Voltage</span> <span class="pre">Offset</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_voltage_offset</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Arc</span> <span class="pre">Voltage</span> <span class="pre">Scale</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_voltage_scale</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">THC</span> <span class="pre">Threshold</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_threshold</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">THC</span> <span class="pre">Delay</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_delay</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PID</span> <span class="pre">P</span> <span class="pre">Gain</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_pid_p_gain</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PID</span> <span class="pre">I</span> <span class="pre">Gain</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_pid_i_gain</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PID</span> <span class="pre">D</span> <span class="pre">Gain</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_pid_d_gain</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Velocity</span> <span class="pre">Anti</span> <span class="pre">Dive</span> <span class="pre">Threshold</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_vad_threshold</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Safe</span> <span class="pre">Height</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_safe_height</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Float</span> <span class="pre">Switch</span> <span class="pre">Travel</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_float_travel</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Probe</span> <span class="pre">Feed</span> <span class="pre">Rate</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_speed</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Probe</span> <span class="pre">Start</span> <span class="pre">Height</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_height</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Ohmic</span> <span class="pre">Probe</span> <span class="pre">Offset</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_offset</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Ohmic</span> <span class="pre">Maximum</span> <span class="pre">Attempts</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_ohmic_retries</span></code></p></td>
+<td><p>int</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Feed</span> <span class="pre">Rate</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_setup_speed</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Skip</span> <span class="pre">IHS</span> <span class="pre">Distance</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">probe_skip_ihs</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Arc</span> <span class="pre">Fail</span> <span class="pre">Timeout</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_fail_timeout</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Arc</span> <span class="pre">Maximum</span> <span class="pre">Starts</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_max_starts</span></code></p></td>
+<td><p>int</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Arc</span> <span class="pre">Restart</span> <span class="pre">Delay</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_retry_delay</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Arc</span> <span class="pre">OK</span> <span class="pre">High</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_ok_high_volts</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Arc</span> <span class="pre">OK</span> <span class="pre">Low</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_ok_low_volts</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Height</span> <span class="pre">Per</span> <span class="pre">Volt</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arc_height_per_volt</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Scribe</span> <span class="pre">Arming</span> <span class="pre">Delay</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scribe_arm_delay</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Scribe</span> <span class="pre">On</span> <span class="pre">Delay</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scribe_on_delay</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Spotting</span> <span class="pre">Threshold</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">spot_threshold</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Spotting</span> <span class="pre">Time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">spot_delay</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Offset</span> <span class="pre">Feed</span> <span class="pre">Rate</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">consumable_xy_feed_rate</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Void</span> <span class="pre">Sense</span> <span class="pre">Slope</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thc_void_override</span></code></p></td>
+<td><p>float</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="monokrom-only-settings">
+<h3>MonoKrom-Only Settings<a class="headerlink" href="#monokrom-only-settings" title="Link to this heading"></a></h3>
+<p>These have no <code class="docutils literal notranslate"><span class="pre">.prefs</span></code> equivalent and use defaults (logged as <code class="docutils literal notranslate"><span class="pre">NOT_FOUND_IN_PREFS</span></code>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">thc_enabled</span></code>, <code class="docutils literal notranslate"><span class="pre">plasma_vad</span></code>, <code class="docutils literal notranslate"><span class="pre">plasma_void_sense</span></code>, <code class="docutils literal notranslate"><span class="pre">plasma_mesh_sense</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ohmic_sensing_enabled</span></code>, <code class="docutils literal notranslate"><span class="pre">plasma_auto_volts</span></code>, <code class="docutils literal notranslate"><span class="pre">torch_enable</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">laser_offset_x/y</span></code>, <code class="docutils literal notranslate"><span class="pre">camera_offset_x/y</span></code>, <code class="docutils literal notranslate"><span class="pre">scribe_offset_x/y</span></code>, <code class="docutils literal notranslate"><span class="pre">ohmic_offset_x/y</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plasma_hole_thickness_ratio</span></code>, <code class="docutils literal notranslate"><span class="pre">plasma_max_hole_size</span></code>, <code class="docutils literal notranslate"><span class="pre">plasma_hole_detect_enable</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plasma_arc1/2/3_percent</span></code>, <code class="docutils literal notranslate"><span class="pre">plasma_arc1/2/3_distance</span></code>, <code class="docutils literal notranslate"><span class="pre">plasma_leadin_percent/radius</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plasma_overburn_percent/adjustment</span></code>, <code class="docutils literal notranslate"><span class="pre">plasma_small_hole_*</span></code>, <code class="docutils literal notranslate"><span class="pre">plasma_use_hidef</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">framing_feed_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">consumable_offset_x/y</span></code>, <code class="docutils literal notranslate"><span class="pre">probe_test_time</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_save_confirm</span></code>, <code class="docutils literal notranslate"><span class="pre">run_delete_confirm</span></code></p></li>
+</ul>
+</section>
+<section id="qtplasmac-only-settings">
+<h3>qtplasmac-Only Settings<a class="headerlink" href="#qtplasmac-only-settings" title="Link to this heading"></a></h3>
+<p>These have no MonoKrom equivalent (logged as <code class="docutils literal notranslate"><span class="pre">NOT_FOUND_IN_CONFIG</span></code>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">THC</span> <span class="pre">Sample</span> <span class="pre">Counts</span></code>, <code class="docutils literal notranslate"><span class="pre">THC</span> <span class="pre">Sample</span> <span class="pre">Threshold</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DRO</span> <span class="pre">position</span></code>, <code class="docutils literal notranslate"><span class="pre">Flash</span> <span class="pre">error</span></code>, <code class="docutils literal notranslate"><span class="pre">Hide</span> <span class="pre">run</span></code>, <code class="docutils literal notranslate"><span class="pre">Hide</span> <span class="pre">pause</span></code>, <code class="docutils literal notranslate"><span class="pre">Hide</span> <span class="pre">abort</span></code></p></li>
+<li><p>Button names/codes beyond what MonoKrom uses</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Port</span></code> (Powermax serial)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keyboard</span> <span class="pre">shortcuts</span></code>, <code class="docutils literal notranslate"><span class="pre">soft</span> <span class="pre">keyboard</span></code>, <code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">materials</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Cut</span> <span class="pre">Height</span> <span class="pre">Delay</span></code>, <code class="docutils literal notranslate"><span class="pre">Gouge</span> <span class="pre">Speed</span></code>, <code class="docutils literal notranslate"><span class="pre">Gouge</span> <span class="pre">Distance</span></code>, <code class="docutils literal notranslate"><span class="pre">Creep</span> <span class="pre">Speed</span></code>, <code class="docutils literal notranslate"><span class="pre">Creep</span> <span class="pre">Distance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Pierce</span> <span class="pre">Type</span></code>, <code class="docutils literal notranslate"><span class="pre">Pierce</span> <span class="pre">Motion</span> <span class="pre">Delay</span></code>, <code class="docutils literal notranslate"><span class="pre">Pierce</span> <span class="pre">End</span> <span class="pre">Height</span></code></p></li>
+<li><p>All <code class="docutils literal notranslate"><span class="pre">[STATISTICS]</span></code> values, <code class="docutils literal notranslate"><span class="pre">[COLOR_OPTIONS]</span></code>, <code class="docutils literal notranslate"><span class="pre">[CAMERA_OFFSET]</span></code>, <code class="docutils literal notranslate"><span class="pre">[POWERMAX]</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="setup-log">
+<h2>Setup Log<a class="headerlink" href="#setup-log" title="Link to this heading"></a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">setup.log</span></code> file is written to the output directory documenting:</p>
+<ul class="simple">
+<li><p>Source and output config paths</p></li>
+<li><p>Date/time of generation</p></li>
+<li><p>Settings migration details (UPDATED, SKIPPED, NOT_FOUND_IN_PREFS, NOT_FOUND_IN_CONFIG)</p></li>
+<li><p>INI transformations (section changes)</p></li>
+<li><p>Files copied, generated, and derived</p></li>
+</ul>
+</section>
+<section id="post-migration">
+<h2>Post-Migration<a class="headerlink" href="#post-migration" title="Link to this heading"></a></h2>
+<p>After running the setup:</p>
+<ol class="arabic">
+<li><p><strong>Review the generated <code class="docutils literal notranslate"><span class="pre">monokrom.ini</span></code></strong> — Verify axis limits, velocities, and HAL files are correct</p></li>
+<li><p><strong>Check <code class="docutils literal notranslate"><span class="pre">custom_config.yml</span></code></strong> — Verify file locations and VCP options</p></li>
+<li><p><strong>Review <code class="docutils literal notranslate"><span class="pre">setup.log</span></code></strong> — Check for any unexpected settings or missing files</p></li>
+<li><p><strong>Test with LinuxCNC simulator</strong> before connecting to real hardware</p></li>
+<li><p><strong>Update your desktop launcher</strong> to point to the new config:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">sh -c "linuxcnc $HOME/linuxcnc/configs/monokrom_my_config/monokrom.ini"</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="no-prefs-file-found">
+<h3>No .prefs file found<a class="headerlink" href="#no-prefs-file-found" title="Link to this heading"></a></h3>
+<p>The source config directory must contain a <code class="docutils literal notranslate"><span class="pre">.prefs</span></code> file. If missing, the setup will fail.
+This file is generated by PnCconf/StepConf and contains the plasma settings.</p>
+</section>
+<section id="duplicate-option-errors">
+<h3>Duplicate option errors<a class="headerlink" href="#duplicate-option-errors" title="Link to this heading"></a></h3>
+<p>Some qtplasmac configs have duplicate INI keys (e.g., <code class="docutils literal notranslate"><span class="pre">POSITION_FEEDBACK</span></code> appearing twice).
+The setup tool handles this by using the last occurrence for single-value keys.</p>
+</section>
+<section id="template-files-not-found">
+<h3>Template files not found<a class="headerlink" href="#template-files-not-found" title="Link to this heading"></a></h3>
+<p>If the <code class="docutils literal notranslate"><span class="pre">linuxcnc/configs/templates/plasmac/</span></code> directory is missing, the setup will still
+run but some files (like <code class="docutils literal notranslate"><span class="pre">plasma_table.db</span></code>) may not be generated. Ensure the templates
+directory exists in your MonoKrom installation.</p>
+</section>
+<section id="output-directory-already-exists">
+<h3>Output directory already exists<a class="headerlink" href="#output-directory-already-exists" title="Link to this heading"></a></h3>
+<p>If the output directory already exists, the setup will overwrite files. Back up your
+existing config before running the setup.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ini-config.html" class="btn btn-neutral float-left" title="INI Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hal-connections.html" class="btn btn-neutral float-right" title="HAL Connections" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

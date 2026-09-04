@@ -1,0 +1,660 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control &amp; Run Tab &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Conversational (Quickshapes)" href="conversational.html" />
+    <link rel="prev" title="User Guide" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Control &amp; Run Tab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#layout">Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#left-area-position-and-controls">Left Area: Position and Controls</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#work-and-machine-tabs">WORK and MACHINE Tabs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-system-selection">Coordinate System Selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#axis-position-readouts">Axis Position Readouts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#positioning-and-zeroing-controls">Positioning and Zeroing Controls</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#status-strip">Status Strip</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#control-panel">Control Panel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#override-sliders">Override Sliders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#status-message">Status Message</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#center-area-monitoring-and-process-controls">Center Area: Monitoring and Process Controls</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#run-monitor-and-jog-tabs">RUN &amp; MONITOR and JOG Tabs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#status-indicators">Status Indicators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#torch-height-and-anti-dive-controls">Torch-Height and Anti-Dive Controls</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arc-voltage-override">Arc-Voltage Override</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operating-mode-selection">Operating Mode Selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#program-and-torch-utility-controls">Program and Torch Utility Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#right-area-tool-path-and-g-code-viewer">Right Area: Tool Path and G-code Viewer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tool-path-and-gcode-tabs">TOOL PATH and GCODE Tabs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewer-toolbar">Viewer Toolbar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool-path-viewport">Tool-Path Viewport</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-controls">File Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#bottom-navigation-bar">Bottom Navigation Bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exiting-the-vcp">Exiting the VCP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Control &amp; Run Tab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#layout">Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#left-area-position-and-controls">Left Area: Position and Controls</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#work-and-machine-tabs">WORK and MACHINE Tabs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coordinate-system-selection">Coordinate System Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#axis-position-readouts">Axis Position Readouts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#positioning-and-zeroing-controls">Positioning and Zeroing Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#status-strip">Status Strip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#control-panel">Control Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#override-sliders">Override Sliders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#status-message">Status Message</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#center-area-monitoring-and-process-controls">Center Area: Monitoring and Process Controls</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-monitor-and-jog-tabs">RUN &amp; MONITOR and JOG Tabs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#status-indicators">Status Indicators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#torch-height-and-anti-dive-controls">Torch-Height and Anti-Dive Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-voltage-override">Arc-Voltage Override</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operating-mode-selection">Operating Mode Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#program-and-torch-utility-controls">Program and Torch Utility Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#right-area-tool-path-and-g-code-viewer">Right Area: Tool Path and G-code Viewer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tool-path-and-gcode-tabs">TOOL PATH and GCODE Tabs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viewer-toolbar">Viewer Toolbar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tool-path-viewport">Tool-Path Viewport</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-controls">File Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bottom-navigation-bar">Bottom Navigation Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exiting-the-vcp">Exiting the VCP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User Guide</a></li>
+      <li class="breadcrumb-item active">Control &amp; Run Tab</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user-guide/main-tab.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="control-run-tab">
+<h1>Control &amp; Run Tab<a class="headerlink" href="#control-run-tab" title="Link to this heading"></a></h1>
+<p>The Control &amp; Run tab (labeled <strong>CONTROL &amp; RUN</strong> in the bottom navigation bar) is the primary operational panel. It is divided into three vertical work areas: a coordinate and machine-controls area on the left, a monitoring and process-controls area in the center, and a tool-path and G-code visualization area on the right.</p>
+<p><img alt="Main Tab Screenshot" src="../_images/main-tab.png" /></p>
+<section id="layout">
+<h2>Layout<a class="headerlink" href="#layout" title="Link to this heading"></a></h2>
+<p>The Control &amp; Run screen is divided into three vertical areas:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Area</p></th>
+<th class="head"><p>Content</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Left</strong></p></td>
+<td><p>WORK and MACHINE tabs, coordinate selection, axis readouts, control panel, and override sliders</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Center</strong></p></td>
+<td><p>RUN &amp; MONITOR and JOG tabs, status indicators, plasma-process controls, and utility buttons</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Right</strong></p></td>
+<td><p>TOOL PATH and GCODE tabs, viewer toolbar, tool-path viewport, and file controls</p></td>
+</tr>
+</tbody>
+</table>
+<p>A persistent navigation bar runs along the bottom of the screen.</p>
+</section>
+<hr class="docutils" />
+<section id="left-area-position-and-controls">
+<h2>Left Area: Position and Controls<a class="headerlink" href="#left-area-position-and-controls" title="Link to this heading"></a></h2>
+<section id="work-and-machine-tabs">
+<h3>WORK and MACHINE Tabs<a class="headerlink" href="#work-and-machine-tabs" title="Link to this heading"></a></h3>
+<p>The upper-left panel has two tabs:</p>
+<ul class="simple">
+<li><p><strong>WORK</strong>: selected and highlighted in yellow. Provides coordinate system and setup functions.</p></li>
+<li><p><strong>MACHINE</strong>: an alternate coordinate or machine-state view.</p></li>
+</ul>
+</section>
+<section id="coordinate-system-selection">
+<h3>Coordinate System Selection<a class="headerlink" href="#coordinate-system-selection" title="Link to this heading"></a></h3>
+<p>A row of six buttons selects the active coordinate system:</p>
+<ul class="simple">
+<li><p><strong>G54</strong> — currently selected</p></li>
+<li><p><strong>G55</strong></p></li>
+<li><p><strong>G56</strong></p></li>
+<li><p><strong>G57</strong></p></li>
+<li><p><strong>G58</strong></p></li>
+<li><p><strong>G59</strong></p></li>
+</ul>
+</section>
+<section id="axis-position-readouts">
+<h3>Axis Position Readouts<a class="headerlink" href="#axis-position-readouts" title="Link to this heading"></a></h3>
+<p>Three large digital displays show the current machine or work coordinates:</p>
+<ul class="simple">
+<li><p><strong>X:</strong> — X-axis position</p></li>
+<li><p><strong>Y:</strong> — Y-axis position</p></li>
+<li><p><strong>Z:</strong> — Z-axis position</p></li>
+</ul>
+<p>Each axis row includes a home-style icon, suggesting an axis reference, homing, or zero-related function.</p>
+</section>
+<section id="positioning-and-zeroing-controls">
+<h3>Positioning and Zeroing Controls<a class="headerlink" href="#positioning-and-zeroing-controls" title="Link to this heading"></a></h3>
+<p>To the right of the axis readouts are two tall buttons:</p>
+<ul class="simple">
+<li><p>A large button with a <strong>home icon</strong> — homing or reference function</p></li>
+<li><p><strong>ZERO XY in G5x</strong> — set the X and Y work zero for the selected G5x coordinate system (see <a class="reference internal" href="sheet-alignment.html"><span class="std std-doc">Sheet Alignment</span></a>)</p></li>
+</ul>
+</section>
+<section id="status-strip">
+<h3>Status Strip<a class="headerlink" href="#status-strip" title="Link to this heading"></a></h3>
+<p>Below the coordinate panel, a status strip displays:</p>
+<ul class="simple">
+<li><p><strong>FEED RATE</strong> — current feed rate</p></li>
+<li><p><strong>CURRENT VELOCITY</strong> — current machine velocity</p></li>
+<li><p><strong>ACTIVE CUT PROCESS</strong> — the selected cutting process or material preset (click to change; see <a class="reference internal" href="parameters.html"><span class="std std-doc">Parameters</span></a>)</p></li>
+</ul>
+</section>
+<section id="control-panel">
+<h3>Control Panel<a class="headerlink" href="#control-panel" title="Link to this heading"></a></h3>
+<p>The lower-left <strong>CONTROL</strong> panel contains the principal machine-operation buttons:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CYCLE START</strong></p></td>
+<td><p>Resume or start the loaded G-code program</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>FEED HOLD</strong></p></td>
+<td><p>Pause the program mid-cut</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>STOP / ABORT</strong></p></td>
+<td><p>Stop or abort the current operation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>M1 BREAK</strong></p></td>
+<td><p>Enable or invoke an optional program stop</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CONSUMABLE CHANGE</strong></p></td>
+<td><p>Toggle consumable change offset mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>FRAME JOB</strong></p></td>
+<td><p>Trace or check the boundary of the loaded job</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PARK</strong></p></td>
+<td><p>Move the machine to a predefined parked position</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>GOTO WORK ZERO</strong></p></td>
+<td><p>Move to the active work-coordinate origin</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>GOTO HOME</strong></p></td>
+<td><p>Move toward the machine home position</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MACHINE POWER</strong></p></td>
+<td><p>Control machine power state</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ESTOP</strong></p></td>
+<td><p>Emergency-stop status/control area</p></td>
+</tr>
+</tbody>
+</table>
+<p>Several controls may appear dimmed when their corresponding functions are unavailable or inactive.</p>
+</section>
+<section id="override-sliders">
+<h3>Override Sliders<a class="headerlink" href="#override-sliders" title="Link to this heading"></a></h3>
+<p>Three tall vertical sliders occupy the lower center of the left section. Each slider has a <strong>RESET</strong> button above it:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Override</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>RAPID</strong></p></td>
+<td><p>Manual override of rapid travel speed</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>FEED</strong></p></td>
+<td><p>Manual override of programmed feed speed</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>JOG</strong></p></td>
+<td><p>Manual override of jog speed</p></td>
+</tr>
+</tbody>
+</table>
+<p>Override limits are configured in the INI file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">MAX_FEED_OVERRIDE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2.000000</span>
+</pre></div>
+</div>
+</section>
+<section id="status-message">
+<h3>Status Message<a class="headerlink" href="#status-message" title="Link to this heading"></a></h3>
+<p>A status message at the bottom-left displays machine interlock information, such as:</p>
+<blockquote>
+<div><p>Can’t turn machine ON until out of E-Stop</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="center-area-monitoring-and-process-controls">
+<h2>Center Area: Monitoring and Process Controls<a class="headerlink" href="#center-area-monitoring-and-process-controls" title="Link to this heading"></a></h2>
+<section id="run-monitor-and-jog-tabs">
+<h3>RUN &amp; MONITOR and JOG Tabs<a class="headerlink" href="#run-monitor-and-jog-tabs" title="Link to this heading"></a></h3>
+<p>The narrow center panel has two tabs:</p>
+<ul class="simple">
+<li><p><strong>RUN &amp; MONITOR</strong>: selected. Shows status indicators, plasma-process controls, and utility buttons.</p></li>
+<li><p><strong>JOG</strong>: alternate manual-motion controls.</p></li>
+</ul>
+</section>
+<section id="status-indicators">
+<h3>Status Indicators<a class="headerlink" href="#status-indicators" title="Link to this heading"></a></h3>
+<p>The upper portion contains paired labels and circular status lamps that report digital inputs, torch states, and plasma-process conditions:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Indicator</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>PROBE</strong></p></td>
+<td><p>Probe status</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>UP / DOWN</strong></p></td>
+<td><p>Z-axis direction indicators</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>FLOAT</strong></p></td>
+<td><p>Float switch status</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>OHMIC</strong></p></td>
+<td><p>Ohmic probe status</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ARC-OK</strong></p></td>
+<td><p>Cutting arc is established and stable</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TORCH</strong></p></td>
+<td><p>Torch energized</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>KERF CROSS</strong></p></td>
+<td><p>Kerf cross status</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CRNR LOCK</strong></p></td>
+<td><p>THC corner lock active</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>THC ACTIVE</strong></p></td>
+<td><p>Thermal Height Control active</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CHG CON</strong></p></td>
+<td><p>Consumable change active</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>THC AUTO Vs</strong></p></td>
+<td><p>THC auto volts mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MESH</strong></p></td>
+<td><p>Mesh sensing mode</p></td>
+</tr>
+</tbody>
+</table>
+<p>Filled yellow circles indicate active states; outlined circles indicate inactive states.</p>
+</section>
+<section id="torch-height-and-anti-dive-controls">
+<h3>Torch-Height and Anti-Dive Controls<a class="headerlink" href="#torch-height-and-anti-dive-controls" title="Link to this heading"></a></h3>
+<p>A group of four large buttons provides direct plasma-process controls:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>TORCH ENABLE</strong></p></td>
+<td><p>Enable the torch</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>THC ENABLE</strong></p></td>
+<td><p>Enable Thermal Height Control (see <a class="reference internal" href="settings.html"><span class="std std-doc">Settings</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>VELOCITY ANTI DIVE</strong></p></td>
+<td><p>Prevent unwanted torch movement during velocity changes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VOID ANTI DIVE</strong></p></td>
+<td><p>Prevent unwanted torch movement when a void is detected</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="arc-voltage-override">
+<h3>Arc-Voltage Override<a class="headerlink" href="#arc-voltage-override" title="Link to this heading"></a></h3>
+<p>The panel displays:</p>
+<ul class="simple">
+<li><p><strong>ARC Voltage</strong> — current arc voltage reading</p></li>
+<li><p><strong>OVERRIDE</strong> — voltage override value</p></li>
+</ul>
+<p>Minus and plus buttons flank the voltage override value, allowing the operator to decrease or increase the override.</p>
+</section>
+<section id="operating-mode-selection">
+<h3>Operating Mode Selection<a class="headerlink" href="#operating-mode-selection" title="Link to this heading"></a></h3>
+<p>Three mode buttons are provided:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mode</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>MANUAL</strong></p></td>
+<td><p>Manual operation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MDI</strong></p></td>
+<td><p>Manual data input</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>AUTO</strong></p></td>
+<td><p>Automatic program execution</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="program-and-torch-utility-controls">
+<h3>Program and Torch Utility Controls<a class="headerlink" href="#program-and-torch-utility-controls" title="Link to this heading"></a></h3>
+<p>The lower portion contains paired utility buttons:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>LOAD NEWEST FILE</strong></p></td>
+<td><p>Load the most recently used file</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PULSE TORCH</strong></p></td>
+<td><p>Pulse the torch</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PIERCE ONLY</strong></p></td>
+<td><p>Pierce-only test mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>DRY RUN</strong></p></td>
+<td><p>Non-cutting program test mode</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>EXAMPLE USER 1</strong></p></td>
+<td><p>Configurable user function</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>EXAMPLE USER 2</strong></p></td>
+<td><p>Configurable user function</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>LASER OFF</strong></p></td>
+<td><p>Disable the alignment laser</p></td>
+</tr>
+</tbody>
+</table>
+<p>Several blank button positions may be reserved for configurable or future user functions.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="right-area-tool-path-and-g-code-viewer">
+<h2>Right Area: Tool Path and G-code Viewer<a class="headerlink" href="#right-area-tool-path-and-g-code-viewer" title="Link to this heading"></a></h2>
+<section id="tool-path-and-gcode-tabs">
+<h3>TOOL PATH and GCODE Tabs<a class="headerlink" href="#tool-path-and-gcode-tabs" title="Link to this heading"></a></h3>
+<p>The large right section has two primary tabs:</p>
+<ul class="simple">
+<li><p><strong>TOOL PATH</strong>: selected. Displays the tool-path visualization.</p></li>
+<li><p><strong>GCODE</strong>: alternate program-text view.</p></li>
+</ul>
+</section>
+<section id="viewer-toolbar">
+<h3>Viewer Toolbar<a class="headerlink" href="#viewer-toolbar" title="Link to this heading"></a></h3>
+<p>A horizontal toolbar sits above the drawing viewport:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>+</strong></p></td>
+<td><p>Zoom in</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>-</strong></p></td>
+<td><p>Zoom out</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CENTER PLOT</strong></p></td>
+<td><p>Center the drawing in the viewport</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CLEAR</strong></p></td>
+<td><p>Clear the displayed plot or trails</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PROG EXTENT</strong></p></td>
+<td><p>Fit the program extents to the view</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MACH EXTENT</strong></p></td>
+<td><p>Fit the machine extents to the view</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>TRANSFORM</strong></p></td>
+<td><p>Apply or open coordinate/view transformations</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SHOW TRAILS</strong></p></td>
+<td><p>Display motion or tool trails</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tool-path-viewport">
+<h3>Tool-Path Viewport<a class="headerlink" href="#tool-path-viewport" title="Link to this heading"></a></h3>
+<p>The central black viewport visualizes a cutting program. It displays programmed geometry (contours, holes, slots, cutting paths) and travel trails.</p>
+</section>
+<section id="file-controls">
+<h3>File Controls<a class="headerlink" href="#file-controls" title="Link to this heading"></a></h3>
+<p>Three large buttons appear below the viewport:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>OPEN</strong></p></td>
+<td><p>Open a program or G-code file</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>RELOAD</strong></p></td>
+<td><p>Reload the current file</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>RECENT</strong></p></td>
+<td><p>Access recently used files</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="bottom-navigation-bar">
+<h2>Bottom Navigation Bar<a class="headerlink" href="#bottom-navigation-bar" title="Link to this heading"></a></h2>
+<p>A persistent navigation strip spans the screen and provides access to the major application areas:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Section</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CONTROL &amp; RUN</strong></p></td>
+<td><p>Primary operational panel (current tab)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CUT &amp; MATERIAL</strong></p></td>
+<td><p>Process filters, cut parameters, and hole processing</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>QUICKSHAPES</strong></p></td>
+<td><p>Conversational shape primitives</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SETTINGS</strong></p></td>
+<td><p>Machine configuration and preferences</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>DIAGNOSTICS</strong></p></td>
+<td><p>Troubleshooting and diagnostics</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="exiting-the-vcp">
+<h2>Exiting the VCP<a class="headerlink" href="#exiting-the-vcp" title="Link to this heading"></a></h2>
+<p>There are two ways to exit MonoKrom Plasma:</p>
+<ol class="arabic simple">
+<li><p><strong>Window close button</strong> — Click the X on the window title bar.</p></li>
+<li><p><strong>Long press MACHINE POWER</strong> — Hold the MACHINE POWER button for several seconds.</p></li>
+</ol>
+<p>An exit warning can be enabled by checking the <strong>Exit Warning</strong> checkbox on the Settings tab.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="conversational.html" class="btn btn-neutral float-right" title="Conversational (Quickshapes)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

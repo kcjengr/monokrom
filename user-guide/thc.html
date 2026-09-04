@@ -1,0 +1,697 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THC (Thermal Height Control) &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Arc Start" href="arc-start.html" />
+    <link rel="prev" title="Probe" href="probe.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">THC (Thermal Height Control)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-thc-works">How THC Works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-thc">Enabling THC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pid-tuning">PID Tuning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#understanding-the-gains">Understanding the Gains</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tuning-p-proportional">Tuning P (Proportional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tuning-i-integral">Tuning I (Integral)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tuning-d-derivative">Tuning D (Derivative)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tuning-summary">Tuning Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#thc-delay">THC Delay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thc-threshold">THC Threshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vad-velocity-anti-dive">VAD (Velocity Anti-Dive)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vad-threshold">VAD Threshold</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vad-override">VAD Override</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#void-sensing">Void Sensing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-void-sensing">Enabling Void Sensing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-it-works">How It Works</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting-false-voids">Troubleshooting False Voids</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mesh-mode">Mesh Mode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-mesh-mode">Enabling Mesh Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">How It Works</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#corner-lock">Corner Lock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#safe-height">Safe Height</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#height-per-volt">Height Per Volt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-voltage-calibration">Arc Voltage Calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-ok-voltage-limits">Arc OK Voltage Limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thc-state-indicators">THC State Indicators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thc-troubleshooting">THC Troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tuning-decision-flow">Tuning Decision Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">THC (Thermal Height Control)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-thc-works">How THC Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enabling-thc">Enabling THC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pid-tuning">PID Tuning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-the-gains">Understanding the Gains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tuning-p-proportional">Tuning P (Proportional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tuning-i-integral">Tuning I (Integral)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tuning-d-derivative">Tuning D (Derivative)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tuning-summary">Tuning Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#thc-delay">THC Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#thc-threshold">THC Threshold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vad-velocity-anti-dive">VAD (Velocity Anti-Dive)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vad-threshold">VAD Threshold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vad-override">VAD Override</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#void-sensing">Void Sensing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-void-sensing">Enabling Void Sensing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-it-works">How It Works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-false-voids">Troubleshooting False Voids</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mesh-mode">Mesh Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-mesh-mode">Enabling Mesh Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">How It Works</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#corner-lock">Corner Lock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#safe-height">Safe Height</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#height-per-volt">Height Per Volt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arc-voltage-calibration">Arc Voltage Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arc-ok-voltage-limits">Arc OK Voltage Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#thc-state-indicators">THC State Indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#thc-troubleshooting">THC Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tuning-decision-flow">Tuning Decision Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User Guide</a></li>
+      <li class="breadcrumb-item active">THC (Thermal Height Control)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user-guide/thc.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="thc-thermal-height-control">
+<h1>THC (Thermal Height Control)<a class="headerlink" href="#thc-thermal-height-control" title="Link to this heading"></a></h1>
+<p>Thermal Height Control (THC) maintains the correct torch-to-workpiece distance during cutting
+by monitoring arc voltage and adjusting the Z axis. This page explains how THC works, how to
+tune it, and how to diagnose common problems.</p>
+<p>For parameter definitions and default values, see <a class="reference internal" href="settings.html"><span class="std std-doc">Settings → THC / ARC / PROBE &amp; MARKING</span></a>.</p>
+<hr class="docutils" />
+<section id="how-thc-works">
+<h2>How THC Works<a class="headerlink" href="#how-thc-works" title="Link to this heading"></a></h2>
+<p>During cutting, the arc voltage changes as the torch height changes:</p>
+<ul class="simple">
+<li><p><strong>Torch too high</strong> → Arc voltage increases (longer arc)</p></li>
+<li><p><strong>Torch too low</strong> → Arc voltage decreases (shorter arc)</p></li>
+</ul>
+<p>THC uses this relationship as a feedback loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Voltage</span> <span class="n">Error</span> <span class="o">=</span> <span class="n">Measured</span> <span class="n">Voltage</span> <span class="o">-</span> <span class="n">Target</span> <span class="n">Voltage</span>
+<span class="n">Z</span> <span class="n">Correction</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">Voltage</span> <span class="n">Error</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The target voltage comes from the current cut process. The measured voltage comes from the
+plasma power source via the arc voltage input. The PID controller combines three responses:</p>
+<ol class="arabic simple">
+<li><p><strong>Proportional</strong> — reacts to the current error</p></li>
+<li><p><strong>Integral</strong> — reacts to accumulated past errors</p></li>
+<li><p><strong>Derivative</strong> — reacts to the rate of error change</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="enabling-thc">
+<h2>Enabling THC<a class="headerlink" href="#enabling-thc" title="Link to this heading"></a></h2>
+<p>THC is enabled via the <strong>THC Enabled</strong> checkbox in the <strong>THC, Torch &amp; Ohmic</strong> panel on the
+right side of the Settings page. When disabled, the Z axis remains at the configured cut
+height regardless of arc voltage.</p>
+<p><strong>When to disable THC:</strong></p>
+<ul class="simple">
+<li><p>Piercing (THC should be off during pierce)</p></li>
+<li><p>Cutting non-conductive materials</p></li>
+<li><p>Testing new cut parameters</p></li>
+<li><p>When arc voltage is unreliable or noisy</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="pid-tuning">
+<h2>PID Tuning<a class="headerlink" href="#pid-tuning" title="Link to this heading"></a></h2>
+<p>PID tuning is the most important skill for getting good THC performance. This section walks
+through each gain and explains how to recognize correct and incorrect tuning.</p>
+<section id="understanding-the-gains">
+<h3>Understanding the Gains<a class="headerlink" href="#understanding-the-gains" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gain</p></th>
+<th class="head"><p>What it does</p></th>
+<th class="head"><p>Analogy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>P (Proportional)</strong></p></td>
+<td><p>Reacts to the current voltage error. Larger error → larger Z movement.</p></td>
+<td><p>Turning the steering wheel proportionally to how far off course you are.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>I (Integral)</strong></p></td>
+<td><p>Accumulates small errors over time. Eliminates persistent drift.</p></td>
+<td><p>Noticing you are consistently 10 cm to the left of center and gradually correcting.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D (Derivative)</strong></p></td>
+<td><p>Reacts to how fast the error is changing. Dampens sudden movements.</p></td>
+<td><p>Feeling the car start to sway and easing off the steering before it gets bad.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tuning-p-proportional">
+<h3>Tuning P (Proportional)<a class="headerlink" href="#tuning-p-proportional" title="Link to this heading"></a></h3>
+<p>P is the most important gain. Without P, the THC will not respond to voltage errors at all.</p>
+<p><strong>How to tune:</strong></p>
+<ol class="arabic simple">
+<li><p>Set I and D to zero.</p></li>
+<li><p>Start with P at zero.</p></li>
+<li><p>Run a test cut and slowly increase P in steps of 0.5–1.0.</p></li>
+<li><p>Watch the Z axis. When P is too low, the Z lags behind voltage changes — the torch cuts
+too deep on voltage drops and too high on voltage rises.</p></li>
+<li><p>Continue increasing P until the Z axis tracks voltage changes closely.</p></li>
+<li><p>Push P a bit further until you see slight oscillation (the Z wobbles up and down during
+the cut).</p></li>
+<li><p>Reduce P by 20–30% from that oscillation point. This is your starting P value.</p></li>
+</ol>
+<p><strong>What correct P looks like:</strong></p>
+<ul class="simple">
+<li><p>Z follows voltage changes smoothly</p></li>
+<li><p>No visible oscillation during steady cutting</p></li>
+<li><p>Corners and transitions are clean</p></li>
+</ul>
+<p><strong>What too-little P looks like:</strong></p>
+<ul class="simple">
+<li><p>Cuts run too deep when voltage drops (e.g., at material joints)</p></li>
+<li><p>Cuts run too shallow when voltage rises</p></li>
+<li><p>The Z axis moves too slowly to keep up</p></li>
+</ul>
+<p><strong>What too-much P looks like:</strong></p>
+<ul class="simple">
+<li><p>Z oscillates during cutting (visible up-and-down movement)</p></li>
+<li><p>Cut surface shows wavy pattern</p></li>
+<li><p>Excessive Z motor activity and noise</p></li>
+</ul>
+</section>
+<section id="tuning-i-integral">
+<h3>Tuning I (Integral)<a class="headerlink" href="#tuning-i-integral" title="Link to this heading"></a></h3>
+<p>I is usually set to zero on plasma machines. It is only needed when you observe persistent
+height drift during long cuts.</p>
+<p><strong>How to tune:</strong></p>
+<ol class="arabic simple">
+<li><p>Start with P tuned and I at zero.</p></li>
+<li><p>Run a long cut (10+ minutes) and watch the Z position relative to the cut surface.</p></li>
+<li><p>If the torch gradually drifts closer to or farther from the material, increase I in small
+steps of 0.01.</p></li>
+<li><p>Stop when the drift is eliminated.</p></li>
+<li><p>If the Z starts to oscillate slowly, reduce I.</p></li>
+</ol>
+<p><strong>What correct I looks like:</strong></p>
+<ul class="simple">
+<li><p>No height drift during extended cuts</p></li>
+<li><p>No slow oscillation</p></li>
+</ul>
+<p><strong>What too-much I looks like:</strong></p>
+<ul class="simple">
+<li><p>Slow, rolling oscillation (period of several seconds)</p></li>
+<li><p>Z position drifts in one direction, reverses, drifts back — repeating cycle</p></li>
+</ul>
+<p><strong>When I is not needed:</strong></p>
+<ul class="simple">
+<li><p>Short cuts (under 5 minutes)</p></li>
+<li><p>Machines with good voltage signal quality</p></li>
+<li><p>Machines with good mechanical Z axis response</p></li>
+</ul>
+</section>
+<section id="tuning-d-derivative">
+<h3>Tuning D (Derivative)<a class="headerlink" href="#tuning-d-derivative" title="Link to this heading"></a></h3>
+<p>D is the least commonly used gain. It dampens rapid voltage changes that P alone cannot handle.</p>
+<p><strong>How to tune:</strong></p>
+<ol class="arabic simple">
+<li><p>Start with P and I tuned and D at zero.</p></li>
+<li><p>If P causes oscillation that cannot be reduced by backing off P, try increasing D in
+small steps of 0.005.</p></li>
+<li><p>D should reduce oscillation without making the Z response sluggish.</p></li>
+<li><p>Stop when oscillation is eliminated or reduced to an acceptable level.</p></li>
+</ol>
+<p><strong>What correct D looks like:</strong></p>
+<ul class="simple">
+<li><p>Oscillation reduced without slowing response</p></li>
+<li><p>Sharp transitions (corners, material changes) are clean</p></li>
+</ul>
+<p><strong>What too-much D looks like:</strong></p>
+<ul class="simple">
+<li><p>Z responds to electrical noise</p></li>
+<li><p>Small voltage spikes cause small Z movements</p></li>
+<li><p>Generally not recommended for plasma cutting unless the voltage signal is very noisy</p></li>
+</ul>
+</section>
+<section id="tuning-summary">
+<h3>Tuning Summary<a class="headerlink" href="#tuning-summary" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Start: P=0, I=0, D=0
+  ↓
+Increase P until Z tracks voltage, then add 20-30% → P tuned
+  ↓
+Run long cut. If drift observed, increase I in small steps → I tuned
+  ↓
+If P causes oscillation, try increasing D in small steps → D tuned (optional)
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="thc-delay">
+<h2>THC Delay<a class="headerlink" href="#thc-delay" title="Link to this heading"></a></h2>
+<p>THC Delay is the time between arc transfer confirmation and when THC begins making corrections.
+This prevents the THC from reacting to pierce instability.</p>
+<p><strong>Default:</strong> 0.5 seconds</p>
+<p><strong>Tuning:</strong></p>
+<ul class="simple">
+<li><p><strong>Too short</strong> — The Z axis reacts to pierce voltage fluctuations, causing oscillation at cut start.</p></li>
+<li><p><strong>Too long</strong> — The THC responds slowly to real height changes after the pierce stabilizes.</p></li>
+</ul>
+<p>The delay is set in the <strong>THC</strong> panel on the Settings page.</p>
+</section>
+<hr class="docutils" />
+<section id="thc-threshold">
+<h2>THC Threshold<a class="headerlink" href="#thc-threshold" title="Link to this heading"></a></h2>
+<p>THC Threshold defines the voltage variation window around the target voltage. Voltage
+fluctuations within this window are ignored; the Z axis only moves when the voltage drifts
+beyond it.</p>
+<p><strong>Default:</strong> 1.0 V</p>
+<p><strong>Tuning:</strong></p>
+<ul class="simple">
+<li><p><strong>Too high</strong> — The THC ignores real voltage changes and becomes sluggish.</p></li>
+<li><p><strong>Too low</strong> — The THC reacts to electrical noise and causes unnecessary Z movement.</p></li>
+</ul>
+<p>The threshold is set in the <strong>THC</strong> panel on the Settings page.</p>
+</section>
+<hr class="docutils" />
+<section id="vad-velocity-anti-dive">
+<h2>VAD (Velocity Anti-Dive)<a class="headerlink" href="#vad-velocity-anti-dive" title="Link to this heading"></a></h2>
+<p>VAD prevents the torch from diving into the material when the arc voltage drops suddenly.
+This can happen at the start of a cut, when crossing a weld seam, or when the arc briefly
+interrupts.</p>
+<section id="vad-threshold">
+<h3>VAD Threshold<a class="headerlink" href="#vad-threshold" title="Link to this heading"></a></h3>
+<p>The percentage of the current cut feed rate the machine can slow to before locking the THC
+to prevent torch dive. Higher values require a greater voltage change to trigger the dive
+prevention.</p>
+<p><strong>Default:</strong> 60 %</p>
+<p><strong>Tuning:</strong> Set slightly above the expected idle/no-arc voltage, well below the cutting voltage.</p>
+</section>
+<section id="vad-override">
+<h3>VAD Override<a class="headerlink" href="#vad-override" title="Link to this heading"></a></h3>
+<p>Controls the size of the change in cut voltage per second necessary to lock the THC and
+prevent torch dive. Higher values require a greater voltage change rate to trigger.</p>
+<p><strong>Default:</strong> 100 %</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="void-sensing">
+<h2>Void Sensing<a class="headerlink" href="#void-sensing" title="Link to this heading"></a></h2>
+<p>Void sensing detects when the torch moves over a gap in the material — the edge of a cut
+piece, a hole, or an uncut area. When a void is detected, the torch retracts to the safe
+height to prevent damage.</p>
+<section id="enabling-void-sensing">
+<h3>Enabling Void Sensing<a class="headerlink" href="#enabling-void-sensing" title="Link to this heading"></a></h3>
+<p>Enable the <strong>Void Anti Dive</strong> checkbox in the <strong>THC, Torch &amp; Ohmic</strong> panel on the right
+side of the Settings page.</p>
+</section>
+<section id="how-it-works">
+<h3>How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>During cutting, the system monitors arc voltage.</p></li>
+<li><p>If voltage drops below the THC threshold for a sustained period, a void is detected.</p></li>
+<li><p>The torch retracts to safe height at the VAD override rate.</p></li>
+<li><p>The operator must manually resume cutting.</p></li>
+</ol>
+</section>
+<section id="troubleshooting-false-voids">
+<h3>Troubleshooting False Voids<a class="headerlink" href="#troubleshooting-false-voids" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>Cause</p></th>
+<th class="head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Torch retracts on every corner</p></td>
+<td><p>VAD threshold too low</p></td>
+<td><p>Increase VAD threshold</p></td>
+</tr>
+<tr class="row-odd"><td><p>Torch retracts on thin sections</p></td>
+<td><p>VAD threshold too sensitive for material</p></td>
+<td><p>Adjust VAD threshold per material</p></td>
+</tr>
+<tr class="row-even"><td><p>Torch doesn’t retract on actual voids</p></td>
+<td><p>Void anti-dive not enabled</p></td>
+<td><p>Check <strong>Void Anti Dive</strong> in THC, Torch &amp; Ohmic panel</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="mesh-mode">
+<h2>Mesh Mode<a class="headerlink" href="#mesh-mode" title="Link to this heading"></a></h2>
+<p>Mesh mode is designed for cutting expanded metal (mesh). The mesh pattern causes rapid
+voltage fluctuations that would confuse standard THC. In mesh mode, THC filters out these
+rapid fluctuations and maintains a stable cutting height.</p>
+<section id="enabling-mesh-mode">
+<h3>Enabling Mesh Mode<a class="headerlink" href="#enabling-mesh-mode" title="Link to this heading"></a></h3>
+<p>Enable the <strong>Mesh Sense</strong> checkbox in the <strong>THC, Torch &amp; Ohmic</strong> panel on the right side
+of the Settings page.</p>
+</section>
+<section id="id1">
+<h3>How It Works<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Mesh mode applies additional low-pass filtering to the arc voltage signal, ignoring
+fluctuations that occur faster than the mesh pattern frequency.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="corner-lock">
+<h2>Corner Lock<a class="headerlink" href="#corner-lock" title="Link to this heading"></a></h2>
+<p>Corner lock holds the torch at pierce height briefly at each corner of a cut path. This
+ensures clean corner cuts by allowing the material to fully melt through at the change of
+direction.</p>
+<p>Corner lock is controlled via the HAL pin <code class="docutils literal notranslate"><span class="pre">plasmac.corner-lock</span></code>. It is not a UI checkbox.</p>
+</section>
+<hr class="docutils" />
+<section id="safe-height">
+<h2>Safe Height<a class="headerlink" href="#safe-height" title="Link to this heading"></a></h2>
+<p>Safe Height is a hard lower limit on Z during cutting. The THC will never command the torch
+below this height, even if voltage readings suggest it should. This is a critical safety
+feature that prevents crashes if THC malfunctions.</p>
+<p><strong>Default:</strong> 25</p>
+<p><strong>Setting:</strong> Set safe height slightly above the slat top (for slat-table machines) or a few
+mm above the workpiece surface.</p>
+<p>The safe height is set in the <strong>THC</strong> panel on the Settings page.</p>
+</section>
+<hr class="docutils" />
+<section id="height-per-volt">
+<h2>Height Per Volt<a class="headerlink" href="#height-per-volt" title="Link to this heading"></a></h2>
+<p>Height Per Volt is the distance the Z axis must move to change arc voltage by one volt. It
+is used for manual height manipulation and initial THC calibration.</p>
+<p><strong>Default:</strong> 0.100</p>
+<p><strong>Setting procedure:</strong></p>
+<ol class="arabic simple">
+<li><p>Cut a test piece at a known height.</p></li>
+<li><p>Measure the actual arc voltage with a multimeter.</p></li>
+<li><p>Adjust Height Per Volt until the calculated height matches the actual height.</p></li>
+</ol>
+<p>This setting is in the <strong>ARC</strong> panel on the Settings page.</p>
+</section>
+<hr class="docutils" />
+<section id="arc-voltage-calibration">
+<h2>Arc Voltage Calibration<a class="headerlink" href="#arc-voltage-calibration" title="Link to this heading"></a></h2>
+<p>The <strong>ARC</strong> panel on the Settings page contains two settings that calibrate the arc voltage
+reading:</p>
+<p><strong>Voltage Scale</strong> — A multiplier applied to the raw arc voltage input. If the displayed
+voltage reads 10% high, reduce the scale by 10%.</p>
+<p><strong>Voltage Offset</strong> — A constant added to the raw voltage reading. Used to zero the reading
+when there is no arc. If the displayed voltage reads 5 V when the torch is off, adjust the
+offset.</p>
+<p>These values are typically set once during initial setup and rarely changed.</p>
+</section>
+<hr class="docutils" />
+<section id="arc-ok-voltage-limits">
+<h2>Arc OK Voltage Limits<a class="headerlink" href="#arc-ok-voltage-limits" title="Link to this heading"></a></h2>
+<p>In Mode 0 (soft arc OK), the system determines arc presence from voltage alone. Two settings
+define the valid arc voltage window:</p>
+<p><strong>OK High Volts</strong> — Minimum voltage considered a valid arc. Below this, the system considers
+the arc lost.</p>
+<p><strong>OK Low Volts</strong> — Maximum voltage below which the arc is considered lost. Above this, the
+system considers the arc present.</p>
+<p>Note: If the plasma power source provides a dedicated Arc OK signal, Mode 1 or 2 should be
+used instead, and these settings are not applicable.</p>
+</section>
+<hr class="docutils" />
+<section id="thc-state-indicators">
+<h2>THC State Indicators<a class="headerlink" href="#thc-state-indicators" title="Link to this heading"></a></h2>
+<p>The Settings page displays THC status via checkboxes in the <strong>THC, Torch &amp; Ohmic</strong> panel:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Indicator</p></th>
+<th class="head"><p>What it means</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>THC Enabled</strong></p></td>
+<td><p>THC is actively controlling Z height</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>THC Auto Volts</strong></p></td>
+<td><p>Target voltage is being adjusted automatically</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>THC (Velocity) Anti-Dive</strong></p></td>
+<td><p>Anti-dive is active, preventing torch dive</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Void Anti Dive</strong></p></td>
+<td><p>Void detection is monitoring for material gaps</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Ohmic Sense</strong></p></td>
+<td><p>Ohmic probing is enabled for height detection</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="thc-troubleshooting">
+<h2>THC Troubleshooting<a class="headerlink" href="#thc-troubleshooting" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Problem</p></th>
+<th class="head"><p>Likely Cause</p></th>
+<th class="head"><p>How to Fix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Z oscillates during cut</p></td>
+<td><p>P too high, or I too high</p></td>
+<td><p>Reduce P by 20%, or reduce I to zero</p></td>
+</tr>
+<tr class="row-odd"><td><p>Z drifts during long cuts</p></td>
+<td><p>I too low, or P too low</p></td>
+<td><p>Increase I in 0.01 steps, or increase P</p></td>
+</tr>
+<tr class="row-even"><td><p>Z lags behind voltage changes</p></td>
+<td><p>P too low</p></td>
+<td><p>Increase P</p></td>
+</tr>
+<tr class="row-odd"><td><p>THC not responding</p></td>
+<td><p>THC disabled</p></td>
+<td><p>Enable <strong>THC Enabled</strong> checkbox</p></td>
+</tr>
+<tr class="row-even"><td><p>Z reacts to electrical noise</p></td>
+<td><p>No low-pass filter, or D too high</p></td>
+<td><p>Enable low-pass in HAL (see <a class="reference internal" href="../troubleshooting.html"><span class="std std-doc">Troubleshooting</span></a>), or reduce D</p></td>
+</tr>
+<tr class="row-odd"><td><p>Torch crashes on void</p></td>
+<td><p>VAD not enabled</p></td>
+<td><p>Enable <strong>Void Anti Dive</strong> checkbox</p></td>
+</tr>
+<tr class="row-even"><td><p>Poor corner cuts</p></td>
+<td><p>Corner lock disabled</p></td>
+<td><p>Enable <code class="docutils literal notranslate"><span class="pre">plasmac.corner-lock</span></code> HAL pin</p></td>
+</tr>
+<tr class="row-odd"><td><p>Slow THC response</p></td>
+<td><p>Delay too long, or P too low</p></td>
+<td><p>Reduce Delay, or increase P</p></td>
+</tr>
+<tr class="row-even"><td><p>THC reacts at cut start</p></td>
+<td><p>Delay too short</p></td>
+<td><p>Increase THC Delay</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="tuning-decision-flow">
+<h2>Tuning Decision Flow<a class="headerlink" href="#tuning-decision-flow" title="Link to this heading"></a></h2>
+<p>Use this flowchart when troubleshooting THC performance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Problem: Z oscillates
+  ↓
+Is it fast oscillation (period &lt; 1s)?
+  YES → Reduce P
+  NO → Is it slow oscillation (period &gt; 2s)?
+    YES → Reduce I (or set to zero)
+    NO → Check for mechanical issues (backlash, loose couplings)
+
+Problem: Z drifts during cut
+  ↓
+Does it drift in one direction?
+  YES → Increase I
+  NO → Increase P
+
+Problem: Torch cuts too deep at joints
+  ↓
+Increase P slightly
+
+Problem: Torch crashes on void
+  ↓
+Enable Void Anti Dive. If still crashing, increase VAD Override.
+
+Problem: THC reacts to electrical noise
+  ↓
+Reduce Threshold. If noise persists, enable low-pass filter in HAL.
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="probe.html" class="btn btn-neutral float-left" title="Probe" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="arc-start.html" class="btn btn-neutral float-right" title="Arc Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

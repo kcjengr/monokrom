@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cut Recovery &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sheet Alignment" href="sheet-alignment.html" />
+    <link rel="prev" title="Arc Start" href="arc-start.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cut Recovery</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#activating-cut-recovery">Activating Cut Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cut-recovery-controls">Cut Recovery Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recovery-workflow">Recovery Workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#standard-recovery">Standard Recovery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-after-void-detection">Recovery After Void Detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#canceling-recovery">Canceling Recovery</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cut Recovery</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#activating-cut-recovery">Activating Cut Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cut-recovery-controls">Cut Recovery Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-workflow">Recovery Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#standard-recovery">Standard Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recovery-after-void-detection">Recovery After Void Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#canceling-recovery">Canceling Recovery</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User Guide</a></li>
+      <li class="breadcrumb-item active">Cut Recovery</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user-guide/recovery.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cut-recovery">
+<h1>Cut Recovery<a class="headerlink" href="#cut-recovery" title="Link to this heading"></a></h1>
+<p>Cut Recovery allows you to manually reposition the torch after a cut has been interrupted
+(feed hold). This is essential for recovering from dropped arcs, voids, or operator errors
+without restarting the entire program.</p>
+<section id="activating-cut-recovery">
+<h2>Activating Cut Recovery<a class="headerlink" href="#activating-cut-recovery" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Interrupt the cut</strong> — Press <strong>FEED HOLD</strong> during a cut, or the cut may be interrupted
+by a void detection, arc loss, or other error.</p></li>
+<li><p><strong>Access Recovery controls</strong> — The Cut Recovery controls appear in the <strong>JOG</strong> tab on the
+right side of the interface when a cut is paused (display shows <strong>CYCLE PAUSED</strong>).</p></li>
+<li><p><strong>Reposition the torch</strong> — Use the recovery controls to move the torch back to the cut path.</p></li>
+<li><p><strong>Resume cutting</strong> — Press <strong>CYCLE START</strong> to resume from the recovery point.</p></li>
+</ol>
+</section>
+<section id="cut-recovery-controls">
+<h2>Cut Recovery Controls<a class="headerlink" href="#cut-recovery-controls" title="Link to this heading"></a></h2>
+<p><img alt="Recovery Screenshot" src="../_images/recovery.png" /></p>
+<p>The Cut Recovery panel appears in the <strong>JOG</strong> tab (next to the <strong>RUN &amp; MONITOR</strong> tab) and
+contains the following controls:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Control</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>REVERSE</strong></p></td>
+<td><p>Move backward through the cut-recovery sequence</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>FORWARD</strong></p></td>
+<td><p>Move forward through the cut-recovery sequence</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Vertical slider</strong></p></td>
+<td><p>Adjustable recovery control positioned between REVERSE and FORWARD</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Directional arrows</strong></p></td>
+<td><p>Eight arrows arranged around the central “kerf” label for repositioning in cardinal or diagonal directions</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cancel Movement</strong></p></td>
+<td><p>Cancels recovery movement</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="recovery-workflow">
+<h2>Recovery Workflow<a class="headerlink" href="#recovery-workflow" title="Link to this heading"></a></h2>
+<section id="standard-recovery">
+<h3>Standard Recovery<a class="headerlink" href="#standard-recovery" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Cut is interrupted</strong> — Feed hold is active, machine is paused (display shows <strong>CYCLE PAUSED</strong>).</p></li>
+<li><p><strong>Assess the situation</strong> — Look at the VTK backplot to see where the cut stopped relative
+to the program path.</p></li>
+<li><p><strong>Access recovery controls</strong> — Open the <strong>JOG</strong> tab to reveal the Cut Recovery panel.</p></li>
+<li><p><strong>Reposition the torch</strong> — Use the directional arrows and REVERSE/FORWARD controls to
+move the torch to a point slightly before the interruption point (to re-establish the arc properly).</p></li>
+<li><p><strong>Verify position</strong> — Check the DRO values and VTK backplot to confirm position.</p></li>
+<li><p><strong>Resume</strong> — Press <strong>CYCLE START</strong>. The machine resumes cutting from the current position.</p></li>
+</ol>
+</section>
+<section id="recovery-after-void-detection">
+<h3>Recovery After Void Detection<a class="headerlink" href="#recovery-after-void-detection" title="Link to this heading"></a></h3>
+<p>When THC void detection retracts the torch:</p>
+<ol class="arabic simple">
+<li><p><strong>Torch is at safe height</strong> — Void detection has already retracted Z.</p></li>
+<li><p><strong>Move XY to restart point</strong> — Use the recovery directional arrows to position over the cut path.</p></li>
+<li><p><strong>Lower Z</strong> — Manually jog Z down to cut height (or use the DRO touch-off).</p></li>
+<li><p><strong>Resume</strong> — Press <strong>CYCLE START</strong>.</p></li>
+</ol>
+</section>
+<section id="canceling-recovery">
+<h3>Canceling Recovery<a class="headerlink" href="#canceling-recovery" title="Link to this heading"></a></h3>
+<p>To cancel recovery movement without resuming:</p>
+<ol class="arabic simple">
+<li><p>Press <strong>Cancel Movement</strong> — This cancels the recovery movement request.</p></li>
+<li><p>The program must be restarted from the beginning or from a specific line.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="arc-start.html" class="btn btn-neutral float-left" title="Arc Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sheet-alignment.html" class="btn btn-neutral float-right" title="Sheet Alignment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

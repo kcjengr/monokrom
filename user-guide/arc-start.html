@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arc Start &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cut Recovery" href="recovery.html" />
+    <link rel="prev" title="THC (Thermal Height Control)" href="thc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Arc Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#arc-start-sequence">Arc Start Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pierce-height">Pierce Height</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-hypertherm-45-mild-steel">Example: Hypertherm 45 — Mild Steel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-hypertherm-45-stainless-steel">Example: Hypertherm 45 — Stainless Steel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-hypertherm-45-aluminum">Example: Hypertherm 45 — Aluminum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pierce-delay">Pierce Delay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Example: Hypertherm 45 — Mild Steel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Example: Hypertherm 45 — Stainless Steel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Example: Hypertherm 45 — Aluminum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cut-height">Cut Height</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Example: Hypertherm 45 — Mild Steel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Example: Hypertherm 45 — Stainless Steel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Example: Hypertherm 45 — Aluminum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cut-feed-rate">Cut Feed Rate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#puddle-jump">Puddle Jump</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#puddle-jump-height">Puddle Jump Height</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#puddle-jump-delay">Puddle Jump Delay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#when-to-use-puddle-jump">When to Use Puddle Jump</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#when-not-to-use-puddle-jump">When NOT to Use Puddle Jump</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-fail-timeout">Arc Fail Timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-max-starts">Arc Max Starts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-retry-delay">Arc Retry Delay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-ok-voltage-thresholds">Arc OK Voltage Thresholds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#torch-pulse">Torch Pulse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-start-troubleshooting">Arc Start Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Arc Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#arc-start-sequence">Arc Start Sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pierce-height">Pierce Height</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-hypertherm-45-mild-steel">Example: Hypertherm 45 — Mild Steel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-hypertherm-45-stainless-steel">Example: Hypertherm 45 — Stainless Steel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-hypertherm-45-aluminum">Example: Hypertherm 45 — Aluminum</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pierce-delay">Pierce Delay</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Example: Hypertherm 45 — Mild Steel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Example: Hypertherm 45 — Stainless Steel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Example: Hypertherm 45 — Aluminum</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cut-height">Cut Height</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Example: Hypertherm 45 — Mild Steel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Example: Hypertherm 45 — Stainless Steel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Example: Hypertherm 45 — Aluminum</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cut-feed-rate">Cut Feed Rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#puddle-jump">Puddle Jump</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#puddle-jump-height">Puddle Jump Height</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#puddle-jump-delay">Puddle Jump Delay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-to-use-puddle-jump">When to Use Puddle Jump</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-not-to-use-puddle-jump">When NOT to Use Puddle Jump</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#arc-fail-timeout">Arc Fail Timeout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arc-max-starts">Arc Max Starts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arc-retry-delay">Arc Retry Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arc-ok-voltage-thresholds">Arc OK Voltage Thresholds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#torch-pulse">Torch Pulse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arc-start-troubleshooting">Arc Start Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User Guide</a></li>
+      <li class="breadcrumb-item active">Arc Start</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user-guide/arc-start.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="arc-start">
+<h1>Arc Start<a class="headerlink" href="#arc-start" title="Link to this heading"></a></h1>
+<p>Arc start controls how the torch ignites and transitions from pierce to cutting. This page
+covers pierce height, pierce delay, cut height, and related settings.</p>
+<section id="arc-start-sequence">
+<h2>Arc Start Sequence<a class="headerlink" href="#arc-start-sequence" title="Link to this heading"></a></h2>
+<p>The standard arc start sequence in MonoKrom Plasma follows these steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Rapid</span> <span class="n">to</span> <span class="n">pierce</span> <span class="n">height</span> <span class="p">(</span><span class="n">G0</span> <span class="n">Z</span><span class="o">&lt;</span><span class="n">pierce</span> <span class="n">height</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="mf">2.</span> <span class="n">Approach</span> <span class="n">to</span> <span class="n">pierce</span> <span class="n">height</span> <span class="n">at</span> <span class="n">probe</span> <span class="n">speed</span> <span class="p">(</span><span class="n">G1</span> <span class="n">Z</span><span class="o">&lt;</span><span class="n">pierce</span> <span class="n">height</span><span class="o">&gt;</span> <span class="n">F</span><span class="o">&lt;</span><span class="n">probe</span> <span class="n">speed</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="mf">3.</span> <span class="n">Ohmic</span> <span class="n">probe</span> <span class="o">/</span> <span class="n">height</span> <span class="n">sense</span> <span class="p">(</span><span class="k">if</span> <span class="n">enabled</span><span class="p">)</span>
+<span class="mf">4.</span> <span class="n">Rapid</span> <span class="n">to</span> <span class="n">pierce</span> <span class="n">height</span> <span class="p">(</span><span class="n">G0</span> <span class="n">Z</span><span class="o">&lt;</span><span class="n">pierce</span> <span class="n">height</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="mf">5.</span> <span class="n">Pierce</span> <span class="n">delay</span> <span class="p">(</span><span class="n">G4</span> <span class="n">P</span><span class="o">&lt;</span><span class="n">pierce</span> <span class="n">delay</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="mf">6.</span> <span class="n">Lower</span> <span class="n">to</span> <span class="n">cut</span> <span class="n">height</span> <span class="p">(</span><span class="n">G1</span> <span class="n">Z</span><span class="o">&lt;</span><span class="n">cut</span> <span class="n">height</span><span class="o">&gt;</span> <span class="n">F</span><span class="o">&lt;</span><span class="n">cut</span> <span class="n">feed</span> <span class="n">rate</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="mf">7.</span> <span class="n">Pierce</span> <span class="n">delay</span> <span class="n">at</span> <span class="n">cut</span> <span class="n">height</span> <span class="p">(</span><span class="n">G4</span> <span class="n">P</span><span class="o">&lt;</span><span class="n">pierce</span> <span class="n">delay</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="mf">8.</span> <span class="n">Torch</span> <span class="n">on</span> <span class="p">(</span><span class="n">M3</span><span class="p">)</span>
+<span class="mf">9.</span> <span class="n">Optional</span><span class="p">:</span> <span class="n">Puddle</span> <span class="n">jump</span>
+<span class="mf">10.</span> <span class="n">Begin</span> <span class="n">cutting</span>
+</pre></div>
+</div>
+</section>
+<section id="pierce-height">
+<h2>Pierce Height<a class="headerlink" href="#pierce-height" title="Link to this heading"></a></h2>
+<p>The distance between the torch tip and the workpiece during the pierce operation.</p>
+<p><strong>Setting:</strong></p>
+<ul class="simple">
+<li><p>Too high → Arc may not transfer, or pierce takes longer</p></li>
+<li><p>Too low → Spatter, consumable wear, risk of crash</p></li>
+</ul>
+<p><strong>Note:</strong> Pierce height depends on machine type, amperage, gas, and material. The values below
+are examples for a Hypertherm 45 cutting mild steel. Actual values are stored in the process
+database (see <a class="reference internal" href="parameters.html"><span class="std std-doc">Parameters</span></a>).</p>
+<section id="example-hypertherm-45-mild-steel">
+<h3>Example: Hypertherm 45 — Mild Steel<a class="headerlink" href="#example-hypertherm-45-mild-steel" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thickness</p></th>
+<th class="head"><p>Pierce Height</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>≤ 1 mm</p></td>
+<td><p>1.5 mm</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.3–6.4 mm</p></td>
+<td><p>3.8 mm</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-hypertherm-45-stainless-steel">
+<h3>Example: Hypertherm 45 — Stainless Steel<a class="headerlink" href="#example-hypertherm-45-stainless-steel" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thickness</p></th>
+<th class="head"><p>Pierce Height</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>≤ 1 mm</p></td>
+<td><p>1.5 mm</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.6–4 mm</p></td>
+<td><p>2.0–3.8 mm</p></td>
+</tr>
+<tr class="row-even"><td><p>&gt; 4 mm</p></td>
+<td><p>3.8 mm</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-hypertherm-45-aluminum">
+<h3>Example: Hypertherm 45 — Aluminum<a class="headerlink" href="#example-hypertherm-45-aluminum" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thickness</p></th>
+<th class="head"><p>Pierce Height</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>3.8 mm</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="pierce-delay">
+<h2>Pierce Delay<a class="headerlink" href="#pierce-delay" title="Link to this heading"></a></h2>
+<p>The time (in seconds) the torch stays energized at pierce height before lowering to cut
+height. This allows the material to fully melt through at the pierce point.</p>
+<p><strong>Setting:</strong></p>
+<ul class="simple">
+<li><p>Too short → Incomplete pierce, arc lost when lowering to cut height</p></li>
+<li><p>Too long → Excessive kerf at pierce point, reduced consumable life</p></li>
+</ul>
+<p><strong>Note:</strong> Pierce height depends on machine type, amperage, gas, and material. The values below
+are examples for a Hypertherm 45 cutting mild steel. Actual values are stored in the process
+database (see <a class="reference internal" href="parameters.html"><span class="std std-doc">Parameters</span></a>).</p>
+<section id="id1">
+<h3>Example: Hypertherm 45 — Mild Steel<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thickness</p></th>
+<th class="head"><p>Pierce Delay (s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h3>Example: Hypertherm 45 — Stainless Steel<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thickness</p></th>
+<th class="head"><p>Pierce Delay (s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>≤ 1 mm</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.6–2.0 mm</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="row-even"><td><p>2.5–3.2 mm</p></td>
+<td><p>0.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.8 mm</p></td>
+<td><p>1.0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3>Example: Hypertherm 45 — Aluminum<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thickness</p></th>
+<th class="head"><p>Pierce Delay (s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="cut-height">
+<h2>Cut Height<a class="headerlink" href="#cut-height" title="Link to this heading"></a></h2>
+<p>The distance between the torch tip and the workpiece during the cutting operation. Cut height
+is typically lower than pierce height for better cutting quality.</p>
+<p><strong>Setting:</strong></p>
+<ul class="simple">
+<li><p>Too high → Wide kerf, poor cut quality, excessive dross</p></li>
+<li><p>Too low → Consumable contact, spatter, risk of crash</p></li>
+</ul>
+<p><strong>Note:</strong> Cut height depends on machine type, amperage, gas, and material. The values below
+are examples for a Hypertherm 45 cutting mild steel. Actual values are stored in the process
+database (see <a class="reference internal" href="parameters.html"><span class="std std-doc">Parameters</span></a>).</p>
+<section id="id4">
+<h3>Example: Hypertherm 45 — Mild Steel<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thickness</p></th>
+<th class="head"><p>Cut Height</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>1.5 mm</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3>Example: Hypertherm 45 — Stainless Steel<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thickness</p></th>
+<th class="head"><p>Cut Height</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>≤ 1 mm</p></td>
+<td><p>1.5 mm</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.6–3.2 mm</p></td>
+<td><p>1.5 mm</p></td>
+</tr>
+<tr class="row-even"><td><p>4.0–6.4 mm</p></td>
+<td><p>1.5 mm</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3>Example: Hypertherm 45 — Aluminum<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thickness</p></th>
+<th class="head"><p>Cut Height</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>All</p></td>
+<td><p>1.5 mm</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="cut-feed-rate">
+<h2>Cut Feed Rate<a class="headerlink" href="#cut-feed-rate" title="Link to this heading"></a></h2>
+<p>The speed at which the torch moves during cutting, in mm/min (or in/min). This value is
+selected from the process database based on the current material filter settings.</p>
+<p><strong>Setting factors:</strong></p>
+<ul class="simple">
+<li><p>Material thickness (thicker = slower)</p></li>
+<li><p>Material type (stainless cuts slower than mild steel)</p></li>
+<li><p>Gas type (oxygen enables faster cutting on mild steel)</p></li>
+<li><p>Plasma power source (higher amperage = faster cutting)</p></li>
+</ul>
+</section>
+<section id="puddle-jump">
+<h2>Puddle Jump<a class="headerlink" href="#puddle-jump" title="Link to this heading"></a></h2>
+<p>A puddle jump retracts the torch to a higher height after pierce, holds briefly, then
+lowers to cut height. This creates a “puddle” of molten metal that improves arc transfer
+on certain materials.</p>
+<section id="puddle-jump-height">
+<h3>Puddle Jump Height<a class="headerlink" href="#puddle-jump-height" title="Link to this heading"></a></h3>
+<p>Height to which the torch retracts after pierce.</p>
+<p><strong>Typical:</strong> 2-4 mm above cut height</p>
+</section>
+<section id="puddle-jump-delay">
+<h3>Puddle Jump Delay<a class="headerlink" href="#puddle-jump-delay" title="Link to this heading"></a></h3>
+<p>Delay (in seconds) at puddle jump height before lowering to cut height.</p>
+<p><strong>Typical:</strong> 0.2-0.5 seconds</p>
+</section>
+<section id="when-to-use-puddle-jump">
+<h3>When to Use Puddle Jump<a class="headerlink" href="#when-to-use-puddle-jump" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Stainless steel (improves arc stability)</p></li>
+<li><p>Aluminum (helps break through oxide layer)</p></li>
+<li><p>Materials with poor arc transfer characteristics</p></li>
+</ul>
+</section>
+<section id="when-not-to-use-puddle-jump">
+<h3>When NOT to Use Puddle Jump<a class="headerlink" href="#when-not-to-use-puddle-jump" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Mild steel with oxygen (not needed, may worsen cut quality)</p></li>
+<li><p>Thin materials (&lt; 1 mm, may burn through)</p></li>
+</ul>
+</section>
+</section>
+<section id="arc-fail-timeout">
+<h2>Arc Fail Timeout<a class="headerlink" href="#arc-fail-timeout" title="Link to this heading"></a></h2>
+<p>Maximum time (in seconds) the system waits for arc transfer after the torch is energized.
+If no Arc OK signal is detected within this time, the cut is aborted.</p>
+<p><strong>Default:</strong> 3.0 seconds</p>
+<p><strong>Setting:</strong></p>
+<ul class="simple">
+<li><p>Too short → False arc failure on difficult materials</p></li>
+<li><p>Too long → Extended wait time before operator intervention</p></li>
+</ul>
+</section>
+<section id="arc-max-starts">
+<h2>Arc Max Starts<a class="headerlink" href="#arc-max-starts" title="Link to this heading"></a></h2>
+<p>Maximum number of arc start attempts before the system gives up and reports an error.</p>
+<p><strong>Default:</strong> 3 attempts</p>
+<p><strong>Setting:</strong></p>
+<ul class="simple">
+<li><p>Too low → Frustration on materials requiring multiple attempts</p></li>
+<li><p>Too high → Extended time on failed pierce attempts</p></li>
+</ul>
+</section>
+<section id="arc-retry-delay">
+<h2>Arc Retry Delay<a class="headerlink" href="#arc-retry-delay" title="Link to this heading"></a></h2>
+<p>Delay (in seconds) between arc start retry attempts. Allows the plasma to cool between
+attempts and gives the operator time to inspect the consumables.</p>
+<p><strong>Default:</strong> 5.0 seconds</p>
+</section>
+<section id="arc-ok-voltage-thresholds">
+<h2>Arc OK Voltage Thresholds<a class="headerlink" href="#arc-ok-voltage-thresholds" title="Link to this heading"></a></h2>
+<p>For Mode 0 (soft arc OK), the system calculates arc presence from arc voltage. The following
+thresholds define valid arc conditions:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Threshold</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Arc OK High</strong></p></td>
+<td><p>250.0 V</p></td>
+<td><p>Minimum voltage for valid arc OK</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Arc OK Low</strong></p></td>
+<td><p>60.0 V</p></td>
+<td><p>Maximum voltage below which arc is considered lost</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hysteresis:</strong> The difference between High and Low (20 V in this case) prevents rapid
+on/off switching when voltage is near the threshold.</p>
+</section>
+<section id="torch-pulse">
+<h2>Torch Pulse<a class="headerlink" href="#torch-pulse" title="Link to this heading"></a></h2>
+<p>Duration (in seconds) of the initial torch pulse at the start of each cut. The pulse helps
+establish arc transfer on difficult materials by pre-heating the pierce point.</p>
+<p><strong>Default:</strong> 1.0 seconds</p>
+<p><strong>When to use:</strong></p>
+<ul class="simple">
+<li><p>Stainless steel</p></li>
+<li><p>Aluminum</p></li>
+<li><p>Materials with oxide layers</p></li>
+<li><p>Cold plasma starts in cold weather</p></li>
+</ul>
+</section>
+<section id="arc-start-troubleshooting">
+<h2>Arc Start Troubleshooting<a class="headerlink" href="#arc-start-troubleshooting" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Problem</p></th>
+<th class="head"><p>Possible Cause</p></th>
+<th class="head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Arc never transfers</p></td>
+<td><p>Pierce height too high</p></td>
+<td><p>Reduce pierce height</p></td>
+</tr>
+<tr class="row-odd"><td><p>Arc transfers but immediately lost</p></td>
+<td><p>Pierce delay too short</p></td>
+<td><p>Increase pierce delay</p></td>
+</tr>
+<tr class="row-even"><td><p>Excessive spatter at pierce</p></td>
+<td><p>Pierce height too low</p></td>
+<td><p>Increase pierce height</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wide kerf at pierce point</p></td>
+<td><p>Pierce delay too long</p></td>
+<td><p>Reduce pierce delay</p></td>
+</tr>
+<tr class="row-even"><td><p>Consumable contact during cut</p></td>
+<td><p>Cut height too low</p></td>
+<td><p>Increase cut height</p></td>
+</tr>
+<tr class="row-odd"><td><p>Arc fail timeout</p></td>
+<td><p>Arc OK not connected (Mode 1/2)</p></td>
+<td><p>Check HAL connections</p></td>
+</tr>
+<tr class="row-even"><td><p>Multiple arc start attempts</p></td>
+<td><p>Poor arc transfer</p></td>
+<td><p>Enable torch pulse, check consumables</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inconsistent arc OK</p></td>
+<td><p>Contact bounce on Arc OK input</p></td>
+<td><p>Increase debounce (see <a class="reference internal" href="../troubleshooting.html"><span class="std std-doc">Troubleshooting</span></a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="thc.html" class="btn btn-neutral float-left" title="THC (Thermal Height Control)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="recovery.html" class="btn btn-neutral float-right" title="Cut Recovery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

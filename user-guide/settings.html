@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Statistics" href="statistics.html" />
+    <link rel="prev" title="Parameters" href="parameters.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#thc-arc-probe-marking">THC / ARC / PROBE &amp; MARKING</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#torch-height-control">Torch Height Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arc-detection-and-validation">Arc Detection and Validation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#height-sensing-and-probing">Height Sensing and Probing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#marking-and-spotting">Marking and Spotting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#thc-torch-ohmic-controls">THC, Torch &amp; Ohmic Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#machine">MACHINE</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#user-input">User Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dro-format">DRO Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#process-run-confirms">Process Run Confirms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#laser-camera-scribe-offsets">Laser, Camera &amp; Scribe Offsets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#machine-table-settings">Machine &amp; Table Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database-seeding">Database Seeding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#job-favorites">Job Favorites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#persistent-settings">Persistent Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Parameters</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#thc-arc-probe-marking">THC / ARC / PROBE &amp; MARKING</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#torch-height-control">Torch Height Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arc-detection-and-validation">Arc Detection and Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#height-sensing-and-probing">Height Sensing and Probing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#marking-and-spotting">Marking and Spotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thc-torch-ohmic-controls">THC, Torch &amp; Ohmic Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#machine">MACHINE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-input">User Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dro-format">DRO Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-run-confirms">Process Run Confirms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#laser-camera-scribe-offsets">Laser, Camera &amp; Scribe Offsets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#machine-table-settings">Machine &amp; Table Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database-seeding">Database Seeding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#job-favorites">Job Favorites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#persistent-settings">Persistent Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User Guide</a></li>
+      <li class="breadcrumb-item active">Settings</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user-guide/settings.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="settings">
+<h1>Settings<a class="headerlink" href="#settings" title="Link to this heading"></a></h1>
+<p>The Settings section provides configuration controls organized into two tabs: <strong>THC / ARC / PROBE &amp; MARKING</strong> and <strong>MACHINE</strong>.</p>
+<p><img alt="Plasma Settings Screenshot" src="../_images/settings_plasma.png" /></p>
+<hr class="docutils" />
+<section id="thc-arc-probe-marking">
+<h2>THC / ARC / PROBE &amp; MARKING<a class="headerlink" href="#thc-arc-probe-marking" title="Link to this heading"></a></h2>
+<p>This tab groups controls by function rather than panel layout. Each section explains what the setting does, when to adjust it, and what happens if it is set incorrectly.</p>
+<section id="torch-height-control">
+<h3>Torch Height Control<a class="headerlink" href="#torch-height-control" title="Link to this heading"></a></h3>
+<p>THC keeps the torch at the correct height during cutting by reading arc voltage and moving the Z axis. These settings define how aggressively and quickly the system responds.</p>
+<p><strong>Delay</strong> — How long the system waits after arc transfer before THC starts making corrections. If set too low, the Z axis will react to pierce instability and oscillate. If set too high, the system will respond slowly to real height changes.</p>
+<p><strong>Threshold</strong> — The voltage variation window around the target voltage. The THC ignores voltage fluctuations within this range and only moves the Z axis when the voltage drifts beyond it. A threshold that is too high makes the system sluggish; too low makes it react to electrical noise.</p>
+<p><strong>PID P Gain (Speed)</strong> — The proportional gain controls how strongly the Z axis reacts to voltage error. Higher values give faster correction but risk oscillation. Start at zero and increase in small steps until the Z axis responds to voltage changes, then back off by 20–30% for stability.</p>
+<p><strong>PID I Gain</strong> — The integral gain eliminates persistent height drift over long cuts by accumulating small errors over time. Set only if you notice the torch gradually drifting during extended cuts. Too much I causes slow oscillation.</p>
+<p><strong>PID D Gain</strong> — The derivative gain dampens rapid voltage changes and reduces oscillation. Most machines run well with D at zero. Increase only if P causes oscillation that I alone cannot stabilize.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Tuning tips</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Delay</p></td>
+<td><p>Too short → oscillation during pierce. Too long → slow response.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.50</span> <span class="pre">S</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Threshold</p></td>
+<td><p>Too high → sluggish. Too low → noise-driven movement.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.00</span> <span class="pre">V</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PID P Gain (Speed)</p></td>
+<td><p>Start at 0, increase until Z responds, back off 20–30%. Too high → oscillation.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PID I Gain</p></td>
+<td><p>Set only if drift occurs. Too high → slow oscillation.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PID D Gain</p></td>
+<td><p>Set only if oscillation persists. Too high → jittery Z.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Safe Height</strong> — A hard lower limit on Z during cutting. The THC will never command the torch below this height, even if voltage readings suggest it should. Set this slightly above the slat top to prevent crashes if THC malfunctions.</p>
+<p><strong>Max THC Feed Rate</strong> — The upper limit on feed rate when THC is actively controlling height. This value is displayed as plain text rather than an adjustable control. If set too high, the THC may not be able to keep up with fast cuts.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Safe Height</p></td>
+<td><p>Hard lower Z limit during cutting. Set above slat top.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">25</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Max THC Feed Rate</p></td>
+<td><p>Upper speed limit for THC-controlled cutting.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">7200.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="arc-detection-and-validation">
+<h3>Arc Detection and Validation<a class="headerlink" href="#arc-detection-and-validation" title="Link to this heading"></a></h3>
+<p>These settings control how the system detects that the arc has started and how it validates the arc voltage signal.</p>
+<p><strong>Fail Timeout</strong> — How long the system waits for arc transfer after commanding the torch on. If no arc OK signal arrives within this window, the cut is aborted and an error is displayed. Too short a timeout causes false aborts on difficult materials.</p>
+<p><strong>Max. Starts</strong> — The number of arc start attempts before the system gives up and reports an error. Some materials or consumables may require multiple attempts.</p>
+<p><strong>Retry Delay</strong> — How long the system waits between arc start attempts. A longer delay gives the plasma more time to cool between attempts.</p>
+<p><strong>Voltage Scale</strong> and <strong>Voltage Offset</strong> — Calibration values that convert the raw arc voltage input into a readable value. These are typically set once during initial setup and rarely changed. The scale is a multiplier and the offset is a constant added to the reading. If the displayed arc voltage does not match a multimeter reading, adjust these values.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Fail Timeout</p></td>
+<td><p>Abort if arc does not transfer within this time. Too short → false aborts.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3.00</span> <span class="pre">S</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Max. Starts</p></td>
+<td><p>Attempts before giving up. Increase for difficult materials.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Retry Delay</p></td>
+<td><p>Wait between start attempts.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">60</span> <span class="pre">S</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Voltage Scale</p></td>
+<td><p>Calibration multiplier for arc voltage reading.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.006744</span> <span class="pre">V</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Voltage Offset</p></td>
+<td><p>Calibration constant added to arc voltage reading.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3687.500</span> <span class="pre">V</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Height Per Volt</strong> — The distance the Z axis must move to change arc voltage by one volt. This is used by manual height controls and for initial THC calibration. The minus button is visibly muted in the UI, suggesting it may be a read-only or protected value.</p>
+<p><strong>OK High Volts</strong> and <strong>OK Low Volts</strong> — Voltage boundaries used in Mode 0 (soft arc OK) to determine whether the arc is present. OK High is the minimum voltage considered a valid arc; OK Low is the maximum voltage below which the arc is considered lost. The plus button beside OK Low is muted in the UI.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Height Per Volt</p></td>
+<td><p>Z movement per volt of arc voltage change.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.100</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>OK High Volts</p></td>
+<td><p>Minimum voltage for valid arc (Mode 0 soft arc OK).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">250.00</span> <span class="pre">V</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>OK Low Volts</p></td>
+<td><p>Maximum voltage below which arc is considered lost (Mode 0).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">60.00</span> <span class="pre">V</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="height-sensing-and-probing">
+<h3>Height Sensing and Probing<a class="headerlink" href="#height-sensing-and-probing" title="Link to this heading"></a></h3>
+<p>These settings control how the system finds the workpiece surface before cutting begins.</p>
+<p><strong>Float Travel</strong> — The distance the float switch physically travels when it activates. This value is critical for accurate probing because the system uses it to calculate where the material surface is. Set this by running a Probe Test and adjusting until the measured distance between material and torch tip matches the configured Pierce Height.</p>
+<p><strong>Probe Speed</strong> — How fast the Z axis moves during probing. Higher speeds are acceptable if the float switch has enough travel to absorb Z overrun. Overrun can be estimated as <code class="docutils literal notranslate"><span class="pre">0.5</span> <span class="pre">×</span> <span class="pre">acceleration</span> <span class="pre">×</span> <span class="pre">(velocity</span> <span class="pre">/</span> <span class="pre">acceleration)²</span></code>.</p>
+<p><strong>Probe Height</strong> — The Z height the system moves to before beginning the probe search. The probe then moves down from this height to find the material.</p>
+<p><strong>Ohmic Probe Offset</strong> — The distance above the material the torch moves to after a successful ohmic probe. This compensates for high probing speeds and accounts for consumable tip height.</p>
+<p><strong>Ohmic Retries</strong> — Number of times the system attempts ohmic probing before falling back to the float switch. Increase if ohmic contact is unreliable on dirty or painted surfaces.</p>
+<p><strong>Skip IHS</strong> — If the current Z position is closer to the material than this distance, the system skips the initial height search entirely. Useful when the torch starts near the workpiece. The minus button is muted in the UI.</p>
+<p><strong>Setup Speed</strong> — Z axis velocity for all setup moves (Probe Height, Pierce Height, Cut Height). This is the speed used for non-probing Z movements.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Float Travel</p></td>
+<td><p>Float switch travel distance. Set via Probe Test.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3.20</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Probe Speed</p></td>
+<td><p>Z velocity during probing.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">200</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Probe Height</p></td>
+<td><p>Starting Z height before probe search.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">15.00</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ohmic Probe Offset</p></td>
+<td><p>Post-ohmic-probe lift distance. Compensates for probing speed.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.000</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Ohmic Retries</p></td>
+<td><p>Ohmic attempts before falling back to float switch.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Skip IHS</p></td>
+<td><p>Skip initial height search if Z is closer than this distance.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Setup Speed</p></td>
+<td><p>Z velocity for setup moves (Probe, Pierce, Cut heights).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3000</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>PROBE TEST</strong> button is available at the lower-right of this panel for verifying and calibrating probe configuration. See <a class="reference internal" href="probe.html"><span class="std std-doc">Probe Test Workflow</span></a> for calibration instructions.</p>
+</section>
+<hr class="docutils" />
+<section id="marking-and-spotting">
+<h3>Marking and Spotting<a class="headerlink" href="#marking-and-spotting" title="Link to this heading"></a></h3>
+<p><strong>Scribe Arm Delay</strong> — Time between receiving a scribe command and positioning the scribe mechanism. Allows the scribe to reach the material surface before marking.</p>
+<p><strong>Scribe On Delay</strong> — Time between arming the scribe and activating the marking action. A short delay ensures the scribe is stable before contact.</p>
+<p><strong>Spot Threshold</strong> — The arc voltage at which the spot timer begins counting. The torch stays on for the configured Spot Delay after this voltage is reached. The minus button is muted in the UI.</p>
+<p><strong>Spot Delay</strong> — Duration the torch stays on after the spot threshold is reached. This creates a small molten spot useful for identifying cut start points or marking positions.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Scribe Arm Delay</p></td>
+<td><p>Wait before positioning scribe.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span> <span class="pre">S</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Scribe On Delay</p></td>
+<td><p>Wait before activating scribe marking.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.3</span> <span class="pre">S</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Spot Threshold</p></td>
+<td><p>Voltage that starts the spot timer.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">V</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Spot Delay</p></td>
+<td><p>Torch-on time after threshold reached.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">600</span> <span class="pre">ms</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="thc-torch-ohmic-controls">
+<h3>THC, Torch &amp; Ohmic Controls<a class="headerlink" href="#thc-torch-ohmic-controls" title="Link to this heading"></a></h3>
+<p>The checkboxes on the right side of the Settings page enable or disable THC-related features.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Checkbox</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>THC Enabled</strong></p></td>
+<td><p>Turns torch height control on or off. Disable for piercing or when arc voltage is unreliable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>THC Auto Volts</strong></p></td>
+<td><p>Automatically adjusts the target voltage based on material thickness and cut parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>THC (Velocity) Anti-Dive</strong></p></td>
+<td><p>Prevents the torch from diving when arc voltage drops suddenly (e.g., at the start of a cut).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Void Anti Dive</strong></p></td>
+<td><p>Retracts the torch when a void (gap in material) is detected.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Mesh Sense</strong></p></td>
+<td><p>Filters rapid voltage fluctuations caused by cutting expanded metal.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ohmic Sense</strong></p></td>
+<td><p>Enables ohmic probing for workpiece height detection.</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p><img alt="Machine Settings Screenshot" src="../_images/settings_machine.png" /></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="machine">
+<h2>MACHINE<a class="headerlink" href="#machine" title="Link to this heading"></a></h2>
+<p>The <strong>MACHINE</strong> tab contains user interface preferences, display formatting, machine and table settings, database seeding controls, and job favorites.</p>
+<section id="user-input">
+<h3>User Input<a class="headerlink" href="#user-input" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>On-Screen Keyboard</strong></p></td>
+<td><p>Shows or hides the virtual keyboard used for entering text and numbers.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="dro-format">
+<h3>DRO Format<a class="headerlink" href="#dro-format" title="Link to this heading"></a></h3>
+<p>Controls how numbers are displayed in the Digital Read Out fields.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Effect</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Inch Format</strong></p></td>
+<td><p>Number of decimal places for inch values. <code class="docutils literal notranslate"><span class="pre">%9.4f</span></code> shows four decimal places.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%9.4f</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Millimeter Format</strong></p></td>
+<td><p>Number of decimal places for millimetre values. <code class="docutils literal notranslate"><span class="pre">%9.3f</span></code> shows three decimal places.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%9.3f</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Degree Format</strong></p></td>
+<td><p>Number of decimal places for angle values. <code class="docutils literal notranslate"><span class="pre">%9.2f</span></code> shows two decimal places.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%9.2f</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Display Units</strong></p></td>
+<td><p>Which unit system the DROs show. <code class="docutils literal notranslate"><span class="pre">Auto</span></code> selects based on the current configuration.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Auto</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="process-run-confirms">
+<h3>Process Run Confirms<a class="headerlink" href="#process-run-confirms" title="Link to this heading"></a></h3>
+<p>Controls whether the system asks for confirmation before performing potentially destructive operations.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Ask before Process Run save</strong></p></td>
+<td><p>Prompts before overwriting an existing process.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ask before Process Run delete</strong></p></td>
+<td><p>Prompts before removing a process from the database.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="laser-camera-scribe-offsets">
+<h3>Laser, Camera &amp; Scribe Offsets<a class="headerlink" href="#laser-camera-scribe-offsets" title="Link to this heading"></a></h3>
+<p>X and Y offsets for auxiliary devices. These shift the coordinate system so that laser pointers, camera alignment, scribe marking, and ohmic probing all reference the same torch position.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Device</p></th>
+<th class="head text-right"><p>X Offset</p></th>
+<th class="head text-right"><p>Y Offset</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Laser</strong></p></td>
+<td class="text-right"><p>Laser pointer X/Y offset from torch center</p></td>
+<td class="text-right"><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Camera</strong></p></td>
+<td class="text-right"><p>Camera alignment X/Y offset from torch center</p></td>
+<td class="text-right"><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Scribe</strong></p></td>
+<td class="text-right"><p>Scribe mechanism X/Y offset from torch center</p></td>
+<td class="text-right"><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ohmic</strong></p></td>
+<td class="text-right"><p>Ohmic probe X/Y offset from torch center</p></td>
+<td class="text-right"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="machine-table-settings">
+<h3>Machine &amp; Table Settings<a class="headerlink" href="#machine-table-settings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Effect</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Distance System</strong></p></td>
+<td><p>Unit system for all distance values.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mm</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pressure System</strong></p></td>
+<td><p>Unit system for gas pressure readings.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bar</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Machine</strong></p></td>
+<td><p>Machine model identifier for configuration selection.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A120</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Effect</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Torch Pulse Duration</strong></p></td>
+<td><p>How long the initial torch pulse fires at the start of each cut. Helps arc transfer on difficult materials.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.300</span> <span class="pre">S</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Consumable XY Feedrate</strong></p></td>
+<td><p>Speed for XY movement when positioning for consumable changes.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.00</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Consumable X Offset</strong></p></td>
+<td><p>X position where consumable changes occur.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">7.99900</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Consumable Y Offset</strong></p></td>
+<td><p>Y position where consumable changes occur.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">7.99900</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Framing Feed</strong></p></td>
+<td><p>Speed for framing (outline) operations.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.00</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr class="docutils" />
+<section id="database-seeding">
+<h3>Database Seeding<a class="headerlink" href="#database-seeding" title="Link to this heading"></a></h3>
+<p>The <strong>DB SEEDING</strong> panel loads default cut parameters into the process database from a CSV file.</p>
+<ul class="simple">
+<li><p><strong>Seed DB from file</strong> — Imports cut parameters from the configured CSV file.</p></li>
+<li><p><strong>Seed source path</strong> — Location of the CSV file, e.g.:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/</span><span class="n">linuxcnc</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">sim</span><span class="o">.</span><span class="n">monokrom</span><span class="o">/</span><span class="n">plasmac</span><span class="o">/</span><span class="n">master</span><span class="o">-</span><span class="n">seed</span><span class="o">-</span><span class="n">source</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="job-favorites">
+<h3>Job Favorites<a class="headerlink" href="#job-favorites" title="Link to this heading"></a></h3>
+<p>The <strong>JOB FAVORITES</strong> panel stores frequently used processes for quick selection during operation.</p>
+<ul class="simple">
+<li><p><strong>Add</strong> — Saves the current process to the favorites list.</p></li>
+<li><p><strong>New</strong> — Creates a new empty favorite entry.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="persistent-settings">
+<h2>Persistent Settings<a class="headerlink" href="#persistent-settings" title="Link to this heading"></a></h2>
+<p>All settings on both tabs are saved to the persistent settings file (pickle format) and restore automatically on VCP restart. The settings file is located at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">machine_name</span><span class="o">&gt;.</span><span class="n">prefs</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="parameters.html" class="btn btn-neutral float-left" title="Parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="statistics.html" class="btn btn-neutral float-right" title="Statistics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

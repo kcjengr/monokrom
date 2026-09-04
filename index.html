@@ -1,1 +1,546 @@
-docs pending
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MonoKrom Plasma Documentation &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=837179f8"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/index.html">Integrator Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MonoKrom Plasma Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="monokrom-plasma-documentation">
+<h1>MonoKrom Plasma Documentation<a class="headerlink" href="#monokrom-plasma-documentation" title="Link to this heading"></a></h1>
+<p>Welcome to the MonoKrom Plasma documentation. This is a custom PySide6-based Virtual Control Panel
+(VCP) for LinuxCNC plasma cutting machines, built on the <a class="reference external" href="https://www.qtpyvcp.com/">QtPyVCP</a>
+framework (<a class="reference external" href="https://github.com/kcjengr/qtpyvcp">source</a>).</p>
+<section id="what-is-monokrom-plasma">
+<h2>What is MonoKrom Plasma?<a class="headerlink" href="#what-is-monokrom-plasma" title="Link to this heading"></a></h2>
+<p>MonoKrom Plasma is a feature-rich plasma cutting interface that leverages the concepts introduced
+by <a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a> with additional
+capabilities including:</p>
+<ul class="simple">
+<li><p><strong>Process Filter Database</strong> — SQLite-backed cut parameter management with multi-field filtering</p></li>
+<li><p><strong>14 Quickshape Primitives</strong> — Circle, rectangle, donut, flanges, gussets, and more</p></li>
+<li><p><strong>Cut Recovery</strong> — 8-directional jog pad for recovering from interrupted cuts</p></li>
+<li><p><strong>Consumable Change</strong> — Automated X/Y offset management for tip/wheel changes</p></li>
+<li><p><strong>Sheet Alignment</strong> — Two-point coordinate system rotation with laser offset compensation</p></li>
+<li><p><strong>VTK Backplot</strong> — 3D visualization of G-code programs</p></li>
+<li><p><strong>Process Logging</strong> — Cut length, time, and arc OK statistics</p></li>
+</ul>
+</section>
+<section id="documentation-sections">
+<h2>Documentation Sections<a class="headerlink" href="#documentation-sections" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#acknowledgements">Acknowledgements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#monokrom-vs-qtplasmac">MonoKrom vs QTPlasmaC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#operating-modes">Operating Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#display">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#key-concepts">Key Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#step-1-install-qtpyvcp">Step 1: Install QtPyVCP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#step-2-install-monokrom">Step 2: Install MonoKrom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#step-3-install-simulation-config">Step 3: Install Simulation Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#step-4-start-linuxcnc-simulator">Step 4: Start LinuxCNC Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#step-5-verify-basic-operation">Step 5: Verify Basic Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#migrating-from-qtplasmac">Migrating from qtplasmac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick-start.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/index.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/probe.html">Probe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/main-tab.html">Control &amp; Run Tab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/main-tab.html#layout">Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/main-tab.html#left-area-position-and-controls">Left Area: Position and Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/main-tab.html#center-area-monitoring-and-process-controls">Center Area: Monitoring and Process Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/main-tab.html#right-area-tool-path-and-g-code-viewer">Right Area: Tool Path and G-code Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/main-tab.html#bottom-navigation-bar">Bottom Navigation Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/main-tab.html#exiting-the-vcp">Exiting the VCP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/conversational.html">Conversational (Quickshapes)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/conversational.html#using-quickshapes">Using Quickshapes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/conversational.html#shape-reference">Shape Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/conversational.html#shape-features">Shape Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/conversational.html#g-code-structure">G-code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/conversational.html#customizing-quickshapes">Customizing Quickshapes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/parameters.html">Parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/parameters.html#layout-overview">Layout Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/parameters.html#process-filters">Process Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/parameters.html#run-settings">Run Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/parameters.html#process-parameters">Process Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/parameters.html#hole-processing">Hole Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/parameters.html#thc-torch-ohmic">THC, Torch &amp; Ohmic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/parameters.html#bottom-navigation-bar">Bottom Navigation Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/parameters.html#using-the-parameters">Using the Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/parameters.html#database">Database</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/settings.html">Settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/settings.html#thc-arc-probe-marking">THC / ARC / PROBE &amp; MARKING</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/settings.html#machine">MACHINE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/settings.html#persistent-settings">Persistent Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/statistics.html">Statistics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/statistics.html#cut-length">Cut Length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/statistics.html#cut-time">Cut Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/statistics.html#arc-ok-indicator">Arc OK Indicator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/statistics.html#session-information">Session Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/statistics.html#resetting-statistics">Resetting Statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/probe.html">Probe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/probe.html#probing-methods">Probing Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/probe.html#probe-test-workflow">Probe Test Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/probe.html#height-reference-diagrams">Height Reference Diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/probe.html#z-zero-setup">Z Zero Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/probe.html#ohmic-probe-calibration">Ohmic Probe Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/probe.html#troubleshooting-probing">Troubleshooting Probing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/thc.html">THC (Thermal Height Control)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#how-thc-works">How THC Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#enabling-thc">Enabling THC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#pid-tuning">PID Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#thc-delay">THC Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#thc-threshold">THC Threshold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#vad-velocity-anti-dive">VAD (Velocity Anti-Dive)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#void-sensing">Void Sensing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#mesh-mode">Mesh Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#corner-lock">Corner Lock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#safe-height">Safe Height</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#height-per-volt">Height Per Volt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#arc-voltage-calibration">Arc Voltage Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#arc-ok-voltage-limits">Arc OK Voltage Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#thc-state-indicators">THC State Indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#thc-troubleshooting">THC Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/thc.html#tuning-decision-flow">Tuning Decision Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/arc-start.html">Arc Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html#arc-start-sequence">Arc Start Sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html#pierce-height">Pierce Height</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html#pierce-delay">Pierce Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html#cut-height">Cut Height</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html#cut-feed-rate">Cut Feed Rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html#puddle-jump">Puddle Jump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html#arc-fail-timeout">Arc Fail Timeout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html#arc-max-starts">Arc Max Starts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html#arc-retry-delay">Arc Retry Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html#arc-ok-voltage-thresholds">Arc OK Voltage Thresholds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html#torch-pulse">Torch Pulse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/arc-start.html#arc-start-troubleshooting">Arc Start Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/recovery.html">Cut Recovery</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/recovery.html#activating-cut-recovery">Activating Cut Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/recovery.html#cut-recovery-controls">Cut Recovery Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/recovery.html#recovery-workflow">Recovery Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/sheet-alignment.html">Sheet Alignment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/sheet-alignment.html#why-sheet-alignment">Why Sheet Alignment?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/sheet-alignment.html#how-it-works">How It Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/sheet-alignment.html#laser-pointer">Laser Pointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/sheet-alignment.html#sheet-alignment-workflow">Sheet Alignment Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/sheet-alignment.html#laser-offset-compensation">Laser Offset Compensation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/sheet-alignment.html#cancelling-alignment">Cancelling Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/sheet-alignment.html#manual-coordinate-rotation">Manual Coordinate Rotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/sheet-alignment.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/mdi.html">MDI (Manual Data Input)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/mdi.html#layout-overview">Layout Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/mdi.html#tool-path-g-code-tabs">Tool Path / G-code Tabs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/mdi.html#tool-path-toolbar">Tool-path Toolbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/mdi.html#tool-path-viewport">Tool-path Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/mdi.html#program-file-controls">Program File Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/mdi.html#command-queue">Command Queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/mdi.html#mdi-input">MDI Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/mdi.html#queue-controls">Queue Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/mdi.html#on-screen-keypad">On-screen Keypad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/mdi.html#using-mdi">Using MDI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-guide/mdi.html#mdi-limitations">MDI Limitations</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/index.html">Integrator Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/ini-config.html">INI Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/config-migration.html">Config Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hal-connections.html">HAL Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/config-yml.html">Config YAML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/user-buttons.html">User Buttons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/process-db.html">Process Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html">Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/hardware-setup.html">Hardware Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hardware-setup.html#hardware-requirements">Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hardware-setup.html#operating-modes">Operating Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hardware-setup.html#available-i-os">Available I/Os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hardware-setup.html#wiring-guide">Wiring Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hardware-setup.html#z-axis-settings">Z Axis Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hardware-setup.html#contact-load">Contact Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hardware-setup.html#low-pass-filter">Low-Pass Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hardware-setup.html#desktop-launcher">Desktop Launcher</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/ini-config.html">INI Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/ini-config.html#example-ini-file">Example INI File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/ini-config.html#required-sections">Required Sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/ini-config.html#user-button-configuration">User Button Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/ini-config.html#customizing-the-ini-file">Customizing the INI File</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/hal-connections.html">HAL Connections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hal-connections.html#hal-file-structure">HAL File Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hal-connections.html#core-hal-files">Core HAL Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hal-connections.html#plasmac-connection-files">PlasmaC Connection Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hal-connections.html#post-gui-hal-file">Post-GUI HAL File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hal-connections.html#custom-hal-file">Custom HAL File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hal-connections.html#hal-pin-reference">HAL Pin Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/hal-connections.html#debugging-hal-connections">Debugging HAL Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/config-yml.html">Config YAML</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/config-yml.html#config-file-location">Config File Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/config-yml.html#custom-config">Custom Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/config-yml.html#main-config-structure">Main Config Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/config-yml.html#persistent-settings">Persistent Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/config-yml.html#jinja2-templating">Jinja2 Templating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/config-yml.html#customizing-the-config">Customizing the Config</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/postgui-hal.html">Post-GUI HAL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/postgui-hal.html#file-structure">File Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/postgui-hal.html#postgui-hal"><code class="docutils literal notranslate"><span class="pre">postgui.hal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/postgui-hal.html#postgui-sim-plasmac-sim-hal"><code class="docutils literal notranslate"><span class="pre">postgui_sim_plasmac_sim.hal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/postgui-hal.html#customizing-post-gui-hal">Customizing Post-GUI HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/postgui-hal.html#troubleshooting-post-gui-hal">Troubleshooting Post-GUI HAL</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/user-buttons.html">User Buttons</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/user-buttons.html#auto-generation-from-qtplasmac">Auto-Generation from qtplasmac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/user-buttons.html#manual-configuration">Manual Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/user-buttons.html#example-user-buttons-from-sim-config">Example User Buttons (from sim config)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/user-buttons.html#user-button-subroutines">User Button Subroutines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/user-buttons.html#creating-custom-user-buttons">Creating Custom User Buttons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/user-buttons.html#user-button-limitations">User Button Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/user-buttons.html#advanced-user-buttons-with-parameters">Advanced: User Buttons with Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/user-buttons.html#user-buttons-and-hal">User Buttons and HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/user-buttons.html#troubleshooting-user-buttons">Troubleshooting User Buttons</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/process-db.html">Process Database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/process-db.html#database-location">Database Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/process-db.html#database-schema">Database Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/process-db.html#accessing-the-database">Accessing the Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/process-db.html#seeding-the-database">Seeding the Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/process-db.html#multi-field-filtering">Multi-Field Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/process-db.html#updating-cuts">Updating Cuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/process-db.html#deleting-cuts">Deleting Cuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/process-db.html#material-configuration-file">Material Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/process-db.html#switching-to-mysql">Switching to MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/process-db.html#customizing-the-database">Customizing the Database</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrator-guide/customization.html">Customization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#stylesheets">Stylesheets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#custom-widgets">Custom Widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#adding-a-custom-service">Adding a Custom Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#adding-custom-user-buttons">Adding Custom User Buttons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#custom-g-code-filter">Custom G-code Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#customizing-the-preview-view">Customizing the Preview View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#customizing-jog-settings">Customizing Jog Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#customizing-file-locations">Customizing File Locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#customizing-persistent-settings">Customizing Persistent Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#customizing-the-g-code-editor">Customizing the G-code Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#customizing-the-g-code-syntax-profile">Customizing the G-code Syntax Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#customizing-the-window-title">Customizing the Window Title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrator-guide/customization.html#customizing-the-menubar">Customizing the Menubar</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/hal-pin-map.html">HAL Pin Map</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/hal-pin-map.html#plasmac-component-pins">PlasmaC Component Pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/hal-pin-map.html#axis-external-offset-pins">Axis External Offset Pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/hal-pin-map.html#debounce-component-pins">Debounce Component Pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/hal-pin-map.html#cycle-start-state-pins">Cycle Start State Pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/hal-pin-map.html#pendant-external-control-pins">Pendant / External Control Pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/hal-pin-map.html#full-hal-pin-map">Full HAL Pin Map</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/persistent-settings.html">Persistent Settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#thc-settings">THC Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#probe-settings">Probe Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#arc-start-settings">Arc Start Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#scribe-settings">Scribe Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#spot-settings">Spot Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#plasma-cut-settings">Plasma Cut Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#offset-settings">Offset Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#consumable-settings">Consumable Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#ui-settings">UI Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#confirmation-settings">Confirmation Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#rate-settings">Rate Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#locked-filter-settings">Locked Filter Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#file-locations">File Locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/persistent-settings.html#persistent-settings-file">Persistent Settings File</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/gcode-syntax.html">G-Code Syntax</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/gcode-syntax.html#supported-g-code-commands">Supported G-Code Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/gcode-syntax.html#quickshape-g-code-structure">Quickshape G-Code Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/gcode-syntax.html#arc-start-sequence">Arc Start Sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/gcode-syntax.html#hole-cutting">Hole Cutting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/gcode-syntax.html#kerf-compensation">Kerf Compensation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/gcode-syntax.html#coordinate-systems">Coordinate Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/gcode-syntax.html#comments">Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/gcode-syntax.html#program-control">Program Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/gcode-syntax.html#special-directives">Special Directives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/gcode-syntax.html#g-code-validation">G-Code Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/gcode-syntax.html#example-complete-quickshape-program">Example: Complete Quickshape Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/gcode-syntax.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/state-machine.html">State Machine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/state-machine.html#state-diagram">State Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/state-machine.html#state-descriptions">State Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/state-machine.html#state-transitions">State Transitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/state-machine.html#state-machine-in-hal">State Machine in HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/state-machine.html#state-machine-diagram-text">State Machine Diagram (Text)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/state-machine.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/quickshape-reference.html">Quickshape Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/quickshape-reference.html#shape-index">Shape Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/quickshape-reference.html#shape-details">Shape Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/quickshape-reference.html#common-features">Common Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/quickshape-reference.html#limitations">Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/quickshape-reference.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#qt-runtime-issues">Qt / Runtime Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#hal-linuxcnc-issues">HAL / LinuxCNC Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#arc-plasma-issues">Arc / Plasma Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#probing-issues">Probing Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#process-database-issues">Process Database Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#g-code-file-issues">G-code / File Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#error-messages">Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer-guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developer-guide.html#architecture-overview">Architecture Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer-guide.html#service-layer">Service Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer-guide.html#development-workflow">Development Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer-guide.html#debugging">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer-guide.html#extending-the-ui">Extending the UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer-guide.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer-guide.html#contributing">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer-guide.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#unreleased">Unreleased</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#yyyy-mm-dd">0.0 - YYYY-MM-DD</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

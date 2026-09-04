@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HAL Connections &mdash; MonoKrom Plasma 0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=837179f8"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Config YAML" href="config-yml.html" />
+    <link rel="prev" title="Config Migration" href="config-migration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MonoKrom Plasma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/main-tab.html">Control &amp; Run Tab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/conversational.html">Conversational (Quickshapes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/probe.html">Probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/thc.html">THC (Thermal Height Control)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/arc-start.html">Arc Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/recovery.html">Cut Recovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/sheet-alignment.html">Sheet Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/mdi.html">MDI (Manual Data Input)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integrator Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrator Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ini-config.html">INI Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config-migration.html">Config Migration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HAL Connections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hal-file-structure">HAL File Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#core-hal-files">Core HAL Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#core-sim-3-hal"><code class="docutils literal notranslate"><span class="pre">core_sim_3.hal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spindle-sim-hal"><code class="docutils literal notranslate"><span class="pre">spindle_sim.hal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simulated-home-hal"><code class="docutils literal notranslate"><span class="pre">simulated_home.hal</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#plasmac-connection-files">PlasmaC Connection Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#qtplasmac-connections-hal-real-hardware"><code class="docutils literal notranslate"><span class="pre">qtplasmac_connections.hal</span></code> (Real Hardware)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#post-gui-hal-file">Post-GUI HAL File</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#postgui-call-list-hal"><code class="docutils literal notranslate"><span class="pre">postgui_call_list.hal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#postgui-plasmac-sim-hal"><code class="docutils literal notranslate"><span class="pre">postgui_plasmac_sim.hal</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-hal-file">Custom HAL File</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-hal"><code class="docutils literal notranslate"><span class="pre">custom.hal</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hal-pin-reference">HAL Pin Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-hal-connections">Debugging HAL Connections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-halscope">Using HalScope</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-halcomp">Using HalComp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#common-hal-issues">Common HAL Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config-yml.html">Config YAML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-buttons.html">User Buttons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process-db.html">Process Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customization.html">Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-setup.html">Hardware Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ini-config.html">INI Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HAL Connections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hal-file-structure">HAL File Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-hal-files">Core HAL Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#core-sim-3-hal"><code class="docutils literal notranslate"><span class="pre">core_sim_3.hal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spindle-sim-hal"><code class="docutils literal notranslate"><span class="pre">spindle_sim.hal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulated-home-hal"><code class="docutils literal notranslate"><span class="pre">simulated_home.hal</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#plasmac-connection-files">PlasmaC Connection Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#qtplasmac-connections-hal-real-hardware"><code class="docutils literal notranslate"><span class="pre">qtplasmac_connections.hal</span></code> (Real Hardware)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#debounce-components">Debounce Components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arc-voltage-low-pass-filter">Arc Voltage Low-Pass Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mode-specific-connections">Mode-Specific Connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#common-connections-all-modes">Common Connections (All Modes)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scribe-connections-optional">Scribe Connections (Optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#laser-connection-optional">Laser Connection (Optional)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#post-gui-hal-file">Post-GUI HAL File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#postgui-call-list-hal"><code class="docutils literal notranslate"><span class="pre">postgui_call_list.hal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#postgui-plasmac-sim-hal"><code class="docutils literal notranslate"><span class="pre">postgui_plasmac_sim.hal</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#axis-limit-connections">Axis Limit Connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plasmac-parameter-mappings">PlasmaC Parameter Mappings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#probe-settings">Probe Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#thc-settings">THC Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arc-settings">Arc Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#led-output-connections">LED Output Connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cycle-start-connections">Cycle Start Connections</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-hal-file">Custom HAL File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#custom-hal"><code class="docutils literal notranslate"><span class="pre">custom.hal</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hal-pin-reference">HAL Pin Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging-hal-connections">Debugging HAL Connections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-halscope">Using HalScope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-halcomp">Using HalComp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-hal-issues">Common HAL Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config-yml.html">Config YAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postgui-hal.html">Post-GUI HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-buttons.html">User Buttons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process-db.html">Process Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customization.html">Customization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/hal-pin-map.html">HAL Pin Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/persistent-settings.html">Persistent Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/gcode-syntax.html">G-Code Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/state-machine.html">State Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/quickshape-reference.html">Quickshape Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/kcjengr/monokrom">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org">LinuxCNC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qtpyvcp.com">QtPyVCP</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://linuxcnc.org/docs/html/customizing/qtplasmac.html">QTPlasmaC</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MonoKrom Plasma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Integrator Guide</a></li>
+      <li class="breadcrumb-item active">HAL Connections</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/integrator-guide/hal-connections.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hal-connections">
+<h1>HAL Connections<a class="headerlink" href="#hal-connections" title="Link to this heading"></a></h1>
+<p>HAL (Hardware Abstraction Layer) files define the signal connections between LinuxCNC
+components and your hardware. MonoKrom Plasma uses a multi-file HAL structure.</p>
+<section id="hal-file-structure">
+<h2>HAL File Structure<a class="headerlink" href="#hal-file-structure" title="Link to this heading"></a></h2>
+<p>The HAL files are loaded in order as specified in the INI file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[HAL]</span>
+<span class="na">HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">plasmac_sim_overlay.hal</span><span class="w">       </span><span class="c1"># Axis/sim overlay</span>
+<span class="na">HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">qtplasmac_connections_sim.hal</span><span class="w"> </span><span class="c1"># PlasmaC connections</span>
+<span class="na">HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">../common/hallib/core_sim_3.hal</span><span class="w">  </span><span class="c1"># Core HAL library</span>
+<span class="na">HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">../common/hallib/spindle_sim.hal</span><span class="w">   </span><span class="c1"># Spindle simulation</span>
+<span class="na">HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">../common/hallib/simulated_home.hal</span><span class="w"> </span><span class="c1"># Home simulation</span>
+<span class="na">POSTGUI_HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">postgui_call_list_plasmac_sim.hal</span><span class="w"> </span><span class="c1"># Post-GUI</span>
+</pre></div>
+</div>
+</section>
+<section id="core-hal-files">
+<h2>Core HAL Files<a class="headerlink" href="#core-hal-files" title="Link to this heading"></a></h2>
+<section id="core-sim-3-hal">
+<h3><code class="docutils literal notranslate"><span class="pre">core_sim_3.hal</span></code><a class="headerlink" href="#core-sim-3-hal" title="Link to this heading"></a></h3>
+<p>Provides the core LinuxCNC HAL infrastructure for a 3-axis (XYZ) machine:</p>
+<ul class="simple">
+<li><p>Axis joints and encoders</p></li>
+<li><p>Trajectory planner</p></li>
+<li><p>Motion control</p></li>
+<li><p>Homing modules</p></li>
+</ul>
+<p>This file is shared across all MonoKrom configurations and should not be modified.</p>
+</section>
+<section id="spindle-sim-hal">
+<h3><code class="docutils literal notranslate"><span class="pre">spindle_sim.hal</span></code><a class="headerlink" href="#spindle-sim-hal" title="Link to this heading"></a></h3>
+<p>Provides simulated spindle control. For real plasma machines, replace with actual
+spindle/plasma power supply connections.</p>
+</section>
+<section id="simulated-home-hal">
+<h3><code class="docutils literal notranslate"><span class="pre">simulated_home.hal</span></code><a class="headerlink" href="#simulated-home-hal" title="Link to this heading"></a></h3>
+<p>Provides simulated home switch signals for the simulator. Not needed for real hardware.</p>
+</section>
+</section>
+<section id="plasmac-connection-files">
+<h2>PlasmaC Connection Files<a class="headerlink" href="#plasmac-connection-files" title="Link to this heading"></a></h2>
+<section id="qtplasmac-connections-hal-real-hardware">
+<h3><code class="docutils literal notranslate"><span class="pre">qtplasmac_connections.hal</span></code> (Real Hardware)<a class="headerlink" href="#qtplasmac-connections-hal-real-hardware" title="Link to this heading"></a></h3>
+<p>This is the primary file for plasma-specific HAL connections. The simulation version
+(<code class="docutils literal notranslate"><span class="pre">qtplasmac_connections_sim.hal</span></code>) uses the same structure but with commented-out
+hardware connections.</p>
+<section id="debounce-components">
+<h4>Debounce Components<a class="headerlink" href="#debounce-components" title="Link to this heading"></a></h4>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span>loadrt dbounce names=db_breakaway,db_float,db_ohmic,db_arc-ok
+addf db_float     servo-thread
+addf db_ohmic     servo-thread
+addf db_breakaway servo-thread
+addf db_arc-ok    servo-thread
+
+setp db_float.delay     5
+setp db_ohmic.delay     5
+setp db_breakaway.delay 5
+setp db_arc-ok.delay    5
+</pre></div>
+</div>
+</section>
+<section id="arc-voltage-low-pass-filter">
+<h4>Arc Voltage Low-Pass Filter<a class="headerlink" href="#arc-voltage-low-pass-filter" title="Link to this heading"></a></h4>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span># Set to 0 (disabled) unless Halscope shows noise issues
+setp plasmac.lowpass-frequency 0
+</pre></div>
+</div>
+</section>
+<section id="mode-specific-connections">
+<h4>Mode-Specific Connections<a class="headerlink" href="#mode-specific-connections" title="Link to this heading"></a></h4>
+<p><strong>Mode 0 (Arc voltage for both THC and soft Arc OK):</strong></p>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span>#net plasmac:arc-voltage-in  ***YOUR_PLASMA_ARC_VOLTAGE***  =&gt;  plasmac.arc-voltage-in
+</pre></div>
+</div>
+<p><strong>Mode 1 (Arc voltage for THC, external Arc OK):</strong></p>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span>#net plasmac:arc-voltage-in  ***YOUR_PLASMA_ARC_VOLTAGE***  =&gt;  plasmac.arc-voltage-in
+#net plasmac:arc-ok-in       ***YOUR_PLASMA_ARC_OK***       =&gt;  db_arc-ok.in
+</pre></div>
+</div>
+<p><strong>Mode 2 (External Arc OK, external THC up/down):</strong></p>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span>#net plasmac:arc-ok-in       ***YOUR_PLASMA_ARC_OK***       =&gt;  db_arc-ok.in
+#net plasmac:move-down       ***YOUR_MOVE_DOWN_SIGNAL***    =&gt;  plasmac.move-down
+#net plasmac:move-up         ***YOUR_MOVE_UP_SIGNAL***      =&gt;  plasmac.move-up
+</pre></div>
+</div>
+</section>
+<section id="common-connections-all-modes">
+<h4>Common Connections (All Modes)<a class="headerlink" href="#common-connections-all-modes" title="Link to this heading"></a></h4>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span>#net plasmac:float-switch    ***YOUR_FLOAT_SWITCH***        =&gt;  db_float.in
+#net plasmac:breakaway       ***YOUR_BREAKAWAY_SWITCH***    =&gt;  db_breakaway.in
+#net plasmac:ohmic-probe     ***YOUR_OHMIC_PROBE***        =&gt;  db_ohmic.in
+#net plasmac:torch-on                                        =&gt;  ***YOUR_TORCH_ON***
+#net plasmac:ohmic-enable    plasmac.ohmic-enable           =&gt;  ***YOUR_OHMIC_PROBE_ENABLING_CIRCUIT***
+</pre></div>
+</div>
+</section>
+<section id="scribe-connections-optional">
+<h4>Scribe Connections (Optional)<a class="headerlink" href="#scribe-connections-optional" title="Link to this heading"></a></h4>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span>#net plasmac:scribe-arm plasmac.scribe-arm =&gt; ***YOUR_SCRIBE_ARMING_OUTPUT***
+#net plasmac:scribe-on  plasmac.scribe-on  =&gt; ***YOUR_SCRIBE_ON_OUTPUT***
+</pre></div>
+</div>
+</section>
+<section id="laser-connection-optional">
+<h4>Laser Connection (Optional)<a class="headerlink" href="#laser-connection-optional" title="Link to this heading"></a></h4>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span>#net qtplasmac:laser_on =&gt; ***YOUR_LASER_OUTPUT***
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="post-gui-hal-file">
+<h2>Post-GUI HAL File<a class="headerlink" href="#post-gui-hal-file" title="Link to this heading"></a></h2>
+<section id="postgui-call-list-hal">
+<h3><code class="docutils literal notranslate"><span class="pre">postgui_call_list.hal</span></code><a class="headerlink" href="#postgui-call-list-hal" title="Link to this heading"></a></h3>
+<p>This file sources additional HAL files that are loaded after the GUI initializes.
+MonoKrom uses:</p>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span>source postgui_plasmac_sim.hal
+source postgui_sim_plasmac_sim.hal
+</pre></div>
+</div>
+</section>
+<section id="postgui-plasmac-sim-hal">
+<h3><code class="docutils literal notranslate"><span class="pre">postgui_plasmac_sim.hal</span></code><a class="headerlink" href="#postgui-plasmac-sim-hal" title="Link to this heading"></a></h3>
+<p>Contains extensive HAL pin mappings for plasmaC parameters. Key connections:</p>
+<section id="axis-limit-connections">
+<h4>Axis Limit Connections<a class="headerlink" href="#axis-limit-connections" title="Link to this heading"></a></h4>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span># Connect axis limits to plasmac
+setp plasmac.x-min-limit -2.0
+setp plasmac.x-max-limit 1200.0
+setp plasmac.y-min-limit -2.0
+setp plasmac.y-max-limit 1200.0
+setp plasmac.z-min-limit -70.0
+</pre></div>
+</div>
+</section>
+<section id="plasmac-parameter-mappings">
+<h4>PlasmaC Parameter Mappings<a class="headerlink" href="#plasmac-parameter-mappings" title="Link to this heading"></a></h4>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span># Cut parameters
+net plasmac.cut-feed-rate =&gt; halui.feed-override
+net plasmac.cut-height =&gt; ...
+net plasmac.cut-volts =&gt; ...
+net plasmac.cut-chart =&gt; ...
+</pre></div>
+</div>
+</section>
+<section id="probe-settings">
+<h4>Probe Settings<a class="headerlink" href="#probe-settings" title="Link to this heading"></a></h4>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span># Float switch travel
+net plasmac.float-switch-travel =&gt; ...
+
+# Probe feed rate
+net plasmac.probe-feed-rate =&gt; ...
+
+# Ohmic probe enable
+net plasmac.ohmic-probe-enable =&gt; ...
+</pre></div>
+</div>
+</section>
+<section id="thc-settings">
+<h4>THC Settings<a class="headerlink" href="#thc-settings" title="Link to this heading"></a></h4>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span># THC enable
+net plasmac.thc-enable =&gt; ...
+
+# THC delay
+net plasmac.thc-delay =&gt; ...
+
+# THC PID gains
+net plasmac.thc-p =&gt; ...
+net plasmac.thc-i =&gt; ...
+net plasmac.thc-d =&gt; ...
+
+# Safe height
+net plasmac.safe-height =&gt; ...
+</pre></div>
+</div>
+</section>
+<section id="arc-settings">
+<h4>Arc Settings<a class="headerlink" href="#arc-settings" title="Link to this heading"></a></h4>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span># Arc OK thresholds
+net plasmac.arc-ok-high =&gt; ...
+net plasmac.arc-ok-low =&gt; ...
+
+# Arc fail settings
+net plasmac.arc-fail-delay =&gt; ...
+net plasmac.arc-max-starts =&gt; ...
+</pre></div>
+</div>
+</section>
+<section id="led-output-connections">
+<h4>LED Output Connections<a class="headerlink" href="#led-output-connections" title="Link to this heading"></a></h4>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span># Status LEDs
+net plasmac.consumable-changing =&gt; ...
+net plasmac.cornerlock =&gt; ...
+net plasmac.thc-up =&gt; ...
+net plasmac.thc-down =&gt; ...
+net plasmac.arc-ok =&gt; ...
+net plasmac.torch-on =&gt; ...
+net plasmac.cut-length =&gt; ...
+net plasmac.cut-time =&gt; ...
+</pre></div>
+</div>
+</section>
+<section id="cycle-start-connections">
+<h4>Cycle Start Connections<a class="headerlink" href="#cycle-start-connections" title="Link to this heading"></a></h4>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span># Program state indicators
+net program-is-paused =&gt; ...
+net program-is-running =&gt; ...
+net program-is-idle =&gt; ...
+net machine-is-homed =&gt; ...
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="custom-hal-file">
+<h2>Custom HAL File<a class="headerlink" href="#custom-hal-file" title="Link to this heading"></a></h2>
+<section id="custom-hal">
+<h3><code class="docutils literal notranslate"><span class="pre">custom.hal</span></code><a class="headerlink" href="#custom-hal" title="Link to this heading"></a></h3>
+<p>This file is NOT overwritten by MonoKrom updates. Use it for:</p>
+<ul class="simple">
+<li><p>Additional debounce components</p></li>
+<li><p>Low-pass filter settings</p></li>
+<li><p>Custom signal routing</p></li>
+<li><p>User-specific HAL logic</p></li>
+</ul>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span># Example: Custom debounce for a specific input
+loadrt dbounce names=db_custom
+addf db_custom servo-thread
+setp db_custom.delay 10
+net custom-signal =&gt; db_custom.in
+
+# Example: Low-pass filter
+setp plasmac.lowpass-frequency 100
+</pre></div>
+</div>
+</section>
+</section>
+<section id="hal-pin-reference">
+<h2>HAL Pin Reference<a class="headerlink" href="#hal-pin-reference" title="Link to this heading"></a></h2>
+<p>For a complete list of HAL pins used by MonoKrom Plasma, see the
+<a class="reference internal" href="../reference/hal-pin-map.html"><span class="std std-doc">HAL Pin Map</span></a> reference.</p>
+</section>
+<section id="debugging-hal-connections">
+<h2>Debugging HAL Connections<a class="headerlink" href="#debugging-hal-connections" title="Link to this heading"></a></h2>
+<section id="using-halscope">
+<h3>Using HalScope<a class="headerlink" href="#using-halscope" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Start HalScope from the LinuxCNC display:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>halscope
+</pre></div>
+</div>
+</li>
+<li><p>Add signals to plot:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-voltage-in</span></code> — Arc voltage signal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-ok</span></code> — Arc OK status</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plasmac.float-switch</span></code> — Float switch state</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plasmac.ohmic-probe</span></code> — Ohmic probe state</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plasmac.torch-on</span></code> — Torch on state</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plasmac.thc-enable</span></code> — THC enable state</p></li>
+</ul>
+</li>
+<li><p>Observe signal timing and levels to verify correct operation.</p></li>
+</ol>
+</section>
+<section id="using-halcomp">
+<h3>Using HalComp<a class="headerlink" href="#using-halcomp" title="Link to this heading"></a></h3>
+<p>Create custom HAL components for debugging:</p>
+<div class="highlight-hal notranslate"><div class="highlight"><pre><span></span>loadrt and2 count=1
+addf and2 servo-thread
+net debug-and =&gt; and2.in1 plasmac.arc-ok
+net debug-and =&gt; and2.in2 plasmac.thc-enable
+# Probe the output to verify logic
+</pre></div>
+</div>
+</section>
+<section id="common-hal-issues">
+<h3>Common HAL Issues<a class="headerlink" href="#common-hal-issues" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>Check</p></th>
+<th class="head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Torch doesn’t turn on</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasmac.torch-on</span></code> pin</p></td>
+<td><p>Verify HAL connection to breakout board output</p></td>
+</tr>
+<tr class="row-odd"><td><p>Arc OK not detected</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-ok-in</span></code> pin</p></td>
+<td><p>Verify input wiring, check debounce</p></td>
+</tr>
+<tr class="row-even"><td><p>THC not responding</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasmac.arc-voltage-in</span></code> pin</p></td>
+<td><p>Verify analog input, check low-pass filter</p></td>
+</tr>
+<tr class="row-odd"><td><p>Probe doesn’t trigger</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasmac.ohmic-probe</span></code> or <code class="docutils literal notranslate"><span class="pre">plasmac.float-switch</span></code></p></td>
+<td><p>Verify wiring, check debounce, clean workpiece</p></td>
+</tr>
+<tr class="row-even"><td><p>Float switch false triggers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plasmac.float-switch</span></code> signal in HalScope</p></td>
+<td><p>Increase debounce delay</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="config-migration.html" class="btn btn-neutral float-left" title="Config Migration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="config-yml.html" class="btn btn-neutral float-right" title="Config YAML" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kurt Jacobson, James Walker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
