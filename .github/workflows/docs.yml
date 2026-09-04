@@ -56,4 +56,5 @@ jobs:
             exit 0
           fi
           git commit -m "Deploy docs from ${GITHUB_SHA}"
-          git push origin HEAD:gh-pages
+          # git push origin HEAD:gh-pages
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:gh-pages
