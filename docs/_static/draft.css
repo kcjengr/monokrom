@@ -1,0 +1,14 @@
+body::after {
+    content: "DRAFT";
+    position: fixed;
+    top: 50%;
+    left: 33%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    font-size: 8rem;
+    font-weight: bold;
+    /* color: rgba(255, 0, 0, 0.12); */
+    color: rgba(128, 128, 128, 0.15);
+    pointer-events: none;
+    z-index: 9999;
+    white-space: nowrap;
+}
