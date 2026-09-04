@@ -6,7 +6,7 @@ on:
     paths:
       - '.github/workflows/docs.yml'
       - 'docs/'
-  workflow_dispatch
+  workflow_dispatch:
 
 permissions:
   contents: write
