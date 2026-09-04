@@ -6,7 +6,7 @@
 project = "MonoKrom Plasma"
 copyright = "2024, Kurt Jacobson, James Walker"
 author = "Kurt Jacobson, James Walker"
-release = "0.0"
+release = "0.1"
 
 # -- General configuration ---------------------------------------------------
 extensions = [
