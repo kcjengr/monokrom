@@ -30,6 +30,7 @@ html_static_path = ["_static"]
 html_css_files = [
     "draft.css",
 ]
+html_baseurl = "https://kcjengr.github.io/monokrom/"
 
 html_sidebars = {
     "**": ["globaltoc.html", "relations.html", "searchbox.html"]
