@@ -42,15 +42,15 @@ python3 -m pip install sqlalchemy
 
 ```bash
 cd <directory-where-you-want-the-repo>
-git clone https://github.com/joco-nz/monokrom-vcp
-cd monokrom-vcp
+git clone https://github.com/kcjengr/monokrom
+cd monokrom
 python3 -m pip install -e .
 ```
 
 This creates an editable install. To update to the latest development version:
 
 ```bash
-cd monokrom-vcp
+cd monokrom
 git pull
 python3 -m pip install -e .
 ```

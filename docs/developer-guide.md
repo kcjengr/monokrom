@@ -141,9 +141,9 @@ Provides MDI entry assistance. Provides:
 
 ```bash
 # Clone the repository
-git clone https://github.com/joco-nz/monokrom-vcp
-cd monokrom-vcp
+git clone https://github.com/kcjengr/monokrom
 
+cd monokrom
 # Install in editable mode
 python3 -m pip install -e .
 

@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to MonoKorn Plasma will be documented in this file.
+All notable changes to MonoKrom Plasma will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -52,7 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Initial release of MonoKorn Plasma VCP
+- Initial release of MonoKrom Plasma VCP
 - PySide6-based plasma cutting interface
 - SQLite-backed process filter database
 - 14 Quickshape primitives
@@ -69,5 +69,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Arc start with puddle jump and torch pulse
 - Simulation config for LinuxCNC sim
 
-[Unreleased]: https://github.com/joco-nz/monokrom-vcp/compare/v0.0...HEAD
-[0.0]: https://github.com/joco-nz/monokrom-vcp/releases/tag/v0.0
+[Unreleased]: https://github.com/kcjengr/monokrom/compare/v0.0...HEAD
+[0.0]: https://github.com/kcjengr/monokrom/releases/tag/v0.0

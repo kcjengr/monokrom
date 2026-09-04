@@ -85,7 +85,7 @@ changelog
 :maxdepth: 1
 :caption: Links
 
-GitHub <https://github.com/joco-nz/monokrom-vcp>
+GitHub <https://github.com/kcjengr/monokrom>
 LinuxCNC <https://linuxcnc.org>
 QtPyVCP <https://www.qtpyvcp.com>
 QTPlasmaC <https://linuxcnc.org/docs/html/customizing/qtplasmac.html>
