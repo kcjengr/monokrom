@@ -25,7 +25,8 @@ capabilities including:
 :caption: Getting Started
 
 overview
-quick-start
+debian_12_bookworm/index
+debian_13_trixie/index
 ```
 
 ```{toctree}
