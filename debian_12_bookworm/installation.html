@@ -51,12 +51,25 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Debian 12 (Bookworm)</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#apt-install">APT Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apt-install-recommended">APT Install (Recommended)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-the-apt-repository">1. Add the APT Repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-monokrom-plasma">2. Install MonoKrom Plasma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-simulation-config">3. Install Simulation Config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-linuxcnc-simulator">4. Start LinuxCNC Simulator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#updating">Updating</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uninstall">Uninstall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting-missing-key-error">Troubleshooting: Missing Key Error</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#developer-install">Developer Install</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#install-qtpyvcp">Install QtPyVCP</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-monokrom">Install MonoKrom</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-simulation-config">Install Simulation Config</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#start-linuxcnc-simulator">Start LinuxCNC Simulator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-linuxcnc">1. Install LinuxCNC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-dependencies">2. Install Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-qtpyvcp">3. Install QtPyVCP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-monokrom">4. Install MonoKrom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">5. Install Simulation Config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">6. Start LinuxCNC Simulator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#updating-a-developer-install">Updating a Developer Install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uninstalling-a-developer-install">Uninstalling a Developer Install</a></li>
 </ul>
 </li>
 </ul>
@@ -146,28 +159,123 @@
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Linux (Debian 12/Bookworm)</p></li>
-<li><p>Python 3.7+</p></li>
-<li><p>PyQt5</p></li>
-<li><p>LinuxCNC (master branch, v2.10+)</p></li>
+<li><p>Debian 12 (Bookworm) with xfce4 desktop (recommended)</p></li>
+<li><p>1920×1080 screen resolution</p></li>
+<li><p>Graphics hardware supporting OpenGL 3.2 / GLSL 1.50+</p></li>
+<li><p>LinuxCNC 2.9.8+ (must be installed <strong>before</strong> MonoKrom)</p></li>
+<li><p><strong>Do not set a root password</strong> during Debian installation — leave it blank</p></li>
 </ul>
 </section>
-<section id="apt-install">
-<h2>APT Install<a class="headerlink" href="#apt-install" title="Link to this heading"></a></h2>
-<!-- TODO: Add actual apt install commands -->
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Add APT repository setup and package installation</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>update
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>&lt;packages&gt;
+<section id="apt-install-recommended">
+<h2>APT Install (Recommended)<a class="headerlink" href="#apt-install-recommended" title="Link to this heading"></a></h2>
+<p>The shared <a class="reference external" href="https://repository.qtpyvcp.com/">qtpyvcp repository</a> provides pre-built
+packages for MonoKrom Plasma on Debian 12. This is the simplest install path.</p>
+<blockquote>
+<div><p><strong>TODO:</strong> Verify <code class="docutils literal notranslate"><span class="pre">repository.qtpyvcp.com/install.sh</span></code> and <code class="docutils literal notranslate"><span class="pre">uninstall.sh</span></code> still include
+<code class="docutils literal notranslate"><span class="pre">python3-monokrom</span></code> in their package lists after each repository update. The scripts
+reference MonoKrom but this should be confirmed before publishing.</p>
+</div></blockquote>
+<section id="add-the-apt-repository">
+<h3>1. Add the APT Repository<a class="headerlink" href="#add-the-apt-repository" title="Link to this heading"></a></h3>
+<p>Run the following command to auto-detect your Debian release, architecture, and configure
+the repository with the correct signing key:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong> If you previously added the repository manually (e.g. via a <code class="docutils literal notranslate"><span class="pre">.list</span></code> file),
+this script will retire the old config and replace it with the correct one.</p>
+</div></blockquote>
+</section>
+<section id="install-monokrom-plasma">
+<h3>2. Install MonoKrom Plasma<a class="headerlink" href="#install-monokrom-plasma" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-monokrom
 </pre></div>
 </div>
 </section>
+<section id="install-simulation-config">
+<h3>3. Install Simulation Config<a class="headerlink" href="#install-simulation-config" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>monokrom_plasma<span class="w"> </span>--install-sim
+</pre></div>
+</div>
+<p>This copies the simulation configuration files to <code class="docutils literal notranslate"><span class="pre">~/linuxcnc/configs/sim.monokrom/</span></code>.</p>
+</section>
+<section id="start-linuxcnc-simulator">
+<h3>4. Start LinuxCNC Simulator<a class="headerlink" href="#start-linuxcnc-simulator" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>linuxcnc<span class="w"> </span>~/linuxcnc/configs/sim.monokrom/plasmac/plasmac_sim.ini
+</pre></div>
+</div>
+<p>You should see the LinuxCNC status window and the MonoKrom Plasma VCP loading. The simulator
+provides simulated HAL signals for all axes, plasma functions, and probing.</p>
+</section>
+<section id="updating">
+<h3>Updating<a class="headerlink" href="#updating" title="Link to this heading"></a></h3>
+<p>MonoKrom Plasma and its dependencies update through normal APT upgrades:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+</pre></div>
+</div>
+<p>During updates, the simulation configuration files shipped with MonoKrom may be overwritten.
+It is strongly recommended to keep your machine configuration files with unique names
+(avoid naming them <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> — use something like <code class="docutils literal notranslate"><span class="pre">my_machine.yml</span></code>) to prevent
+overwrites.</p>
+</section>
+<section id="uninstall">
+<h3>Uninstall<a class="headerlink" href="#uninstall" title="Link to this heading"></a></h3>
+<p>To completely remove MonoKrom Plasma, QtPyVCP, and the APT repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/uninstall.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
+</pre></div>
+</div>
+<p>This removes only the qtpyvcp repository’s packages, sources, and keys. Your LinuxCNC
+configs in <code class="docutils literal notranslate"><span class="pre">~/linuxcnc/configs/</span></code> are left untouched.</p>
+</section>
+<section id="troubleshooting-missing-key-error">
+<h3>Troubleshooting: Missing Key Error<a class="headerlink" href="#troubleshooting-missing-key-error" title="Link to this heading"></a></h3>
+<p>If <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code> shows a warning like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Missing</span> <span class="n">key</span> <span class="mi">50</span><span class="n">F874571F20C5B0BA225E2F0CDFCCE0388CFA48</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">verify</span> <span class="n">signature</span>
+</pre></div>
+</div>
+<p>Run the following one-liner to fix the repository configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/uninstall.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-monokrom
+</pre></div>
+</div>
+<p>This completely removes and reinstalls the repository configuration cleanly.</p>
+</section>
+</section>
 <section id="developer-install">
 <h2>Developer Install<a class="headerlink" href="#developer-install" title="Link to this heading"></a></h2>
+<p>This method installs from source into an editable (<code class="docutils literal notranslate"><span class="pre">-e</span></code>) pip install. Use this if you
+plan to modify MonoKrom or QtPyVCP code.</p>
+<section id="install-linuxcnc">
+<h3>1. Install LinuxCNC<a class="headerlink" href="#install-linuxcnc" title="Link to this heading"></a></h3>
+<p>Download and install LinuxCNC from the official deb package for your architecture:</p>
+<p><strong>AMD64 (PCs):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/Downloads
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./linuxcnc-uspace_*.deb
+</pre></div>
+</div>
+<p><strong>ARM64 (Raspberry Pi 4/5):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/Downloads
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./linuxcnc-uspace_*.deb
+</pre></div>
+</div>
+<p>If LinuxCNC is not yet available as a <code class="docutils literal notranslate"><span class="pre">.deb</span></code> for Bookworm, install it from the LinuxCNC
+apt repository first. See <a class="reference external" href="https://linuxcnc.org">linuxcnc.org</a> for details.</p>
+</section>
+<section id="install-dependencies">
+<h3>2. Install Dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>python3-pip<span class="w"> </span>python3-venv
+</pre></div>
+</div>
+</section>
 <section id="install-qtpyvcp">
-<h3>Install QtPyVCP<a class="headerlink" href="#install-qtpyvcp" title="Link to this heading"></a></h3>
+<h3>3. Install QtPyVCP<a class="headerlink" href="#install-qtpyvcp" title="Link to this heading"></a></h3>
 <p>MonoKrom Plasma requires a forked branch of qtpyvcp that adds the SQLite-backed plasma
 processes plugin.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/kcjengr/qtpyvcp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/dev
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/kcjengr/qtpyvcp
 <span class="nb">cd</span><span class="w"> </span>qtpyvcp
 git<span class="w"> </span>checkout<span class="w"> </span>main
 python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
@@ -182,34 +290,40 @@ python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </s
 </div>
 </section>
 <section id="install-monokrom">
-<h3>Install MonoKrom<a class="headerlink" href="#install-monokrom" title="Link to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;directory-where-you-want-the-repo&gt;
+<h3>4. Install MonoKrom<a class="headerlink" href="#install-monokrom" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/dev
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/kcjengr/monokrom
 <span class="nb">cd</span><span class="w"> </span>monokrom
 python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 </div>
-<p>This creates an editable install. To update to the latest development version:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>monokrom
-git<span class="w"> </span>pull
-python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
-</pre></div>
-</div>
 </section>
-<section id="install-simulation-config">
-<h3>Install Simulation Config<a class="headerlink" href="#install-simulation-config" title="Link to this heading"></a></h3>
+<section id="id1">
+<h3>5. Install Simulation Config<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>monokrom_plasma<span class="w"> </span>--install-sim
 </pre></div>
 </div>
-<p>This copies the simulation configuration files to <code class="docutils literal notranslate"><span class="pre">~/linuxcnc/configs/sim.monokrom/</span></code>.</p>
 </section>
-<section id="start-linuxcnc-simulator">
-<h3>Start LinuxCNC Simulator<a class="headerlink" href="#start-linuxcnc-simulator" title="Link to this heading"></a></h3>
+<section id="id2">
+<h3>6. Start LinuxCNC Simulator<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>linuxcnc<span class="w"> </span>~/linuxcnc/configs/sim.monokrom/plasmac/plasmac_sim.ini
 </pre></div>
 </div>
-<p>You should see the LinuxCNC status window and the MonoKrom Plasma VCP loading. The simulator
-provides simulated HAL signals for all axes, plasma functions, and probing.</p>
+</section>
+<section id="updating-a-developer-install">
+<h3>Updating a Developer Install<a class="headerlink" href="#updating-a-developer-install" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/dev/qtpyvcp
+git<span class="w"> </span>pull<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+<span class="nb">cd</span><span class="w"> </span>~/dev/monokrom
+git<span class="w"> </span>pull<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="uninstalling-a-developer-install">
+<h3>Uninstalling a Developer Install<a class="headerlink" href="#uninstalling-a-developer-install" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-rf<span class="w"> </span>~/dev/qtpyvcp<span class="w"> </span>~/dev/monokrom
+</pre></div>
+</div>
 </section>
 </section>
 </section>
