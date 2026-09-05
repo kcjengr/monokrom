@@ -106,41 +106,16 @@ Where:
 
 When using probe height only (no slat height + material thickness):
 
-```
-                    ^ Z axis positive
-                    |
-   Safe Height  ----+-------------------
-                    |
-   Pierce Height  --+-------------------  (target after probing)
-                    |
-   Workpiece Surface --+----------------  (probed surface)
-                    |
-   Slat Top  ------ +-------------------
-                    |
-   Z MIN_LIMIT  --- +-------------------
-```
+![Probe Height](../_static/diagrams/qtplasmac_heights_diagram_probe_height.png)
 
 Probe height is measured from the Z axis MIN_LIMIT upward.
+
 
 ### Slat Height + Material Thickness
 
 When using slat height and material thickness:
 
-```
-                    ^ Z axis positive
-                    |
-   Safe Height  ----+-------------------
-                    |
-   Pierce Height  --+-------------------  (target after probing)
-                    |
-   Workpiece Surface --+----------------  (top of material)
-                    |
-   Material Thickness
-                    |
-   Slat Top  ------ +-------------------
-                    |
-   Z MIN_LIMIT  --- +-------------------
-```
+![Slat and Material Height](../_static/diagrams/qtplasmac_heights_diagram_slat_and_material_height.png)
 
 In this mode, the slat height is set in the INI file:
 
@@ -148,6 +123,7 @@ In this mode, the slat height is set in the INI file:
 [PLASMAC]
 SLAT_TOP = -65.0
 ```
+> **Image source:** These diagrams are sourced from the opensource [QtPlasmac documentation](https://linuxcnc.org/docs/devel/html/plasma/qtplasmac.html).
 
 ## Z Zero Setup
 

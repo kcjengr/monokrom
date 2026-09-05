@@ -311,44 +311,21 @@ calculated:</p>
 <section id="probe-height-only">
 <h3>Probe Height Only<a class="headerlink" href="#probe-height-only" title="Link to this heading"></a></h3>
 <p>When using probe height only (no slat height + material thickness):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                    <span class="o">^</span> <span class="n">Z</span> <span class="n">axis</span> <span class="n">positive</span>
-                    <span class="o">|</span>
-   <span class="n">Safe</span> <span class="n">Height</span>  <span class="o">----+-------------------</span>
-                    <span class="o">|</span>
-   <span class="n">Pierce</span> <span class="n">Height</span>  <span class="o">--+-------------------</span>  <span class="p">(</span><span class="n">target</span> <span class="n">after</span> <span class="n">probing</span><span class="p">)</span>
-                    <span class="o">|</span>
-   <span class="n">Workpiece</span> <span class="n">Surface</span> <span class="o">--+----------------</span>  <span class="p">(</span><span class="n">probed</span> <span class="n">surface</span><span class="p">)</span>
-                    <span class="o">|</span>
-   <span class="n">Slat</span> <span class="n">Top</span>  <span class="o">------</span> <span class="o">+-------------------</span>
-                    <span class="o">|</span>
-   <span class="n">Z</span> <span class="n">MIN_LIMIT</span>  <span class="o">---</span> <span class="o">+-------------------</span>
-</pre></div>
-</div>
+<p><img alt="Probe Height" src="../_images/qtplasmac_heights_diagram_probe_height.png" /></p>
 <p>Probe height is measured from the Z axis MIN_LIMIT upward.</p>
 </section>
 <section id="slat-height-material-thickness">
 <h3>Slat Height + Material Thickness<a class="headerlink" href="#slat-height-material-thickness" title="Link to this heading"></a></h3>
 <p>When using slat height and material thickness:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                    <span class="o">^</span> <span class="n">Z</span> <span class="n">axis</span> <span class="n">positive</span>
-                    <span class="o">|</span>
-   <span class="n">Safe</span> <span class="n">Height</span>  <span class="o">----+-------------------</span>
-                    <span class="o">|</span>
-   <span class="n">Pierce</span> <span class="n">Height</span>  <span class="o">--+-------------------</span>  <span class="p">(</span><span class="n">target</span> <span class="n">after</span> <span class="n">probing</span><span class="p">)</span>
-                    <span class="o">|</span>
-   <span class="n">Workpiece</span> <span class="n">Surface</span> <span class="o">--+----------------</span>  <span class="p">(</span><span class="n">top</span> <span class="n">of</span> <span class="n">material</span><span class="p">)</span>
-                    <span class="o">|</span>
-   <span class="n">Material</span> <span class="n">Thickness</span>
-                    <span class="o">|</span>
-   <span class="n">Slat</span> <span class="n">Top</span>  <span class="o">------</span> <span class="o">+-------------------</span>
-                    <span class="o">|</span>
-   <span class="n">Z</span> <span class="n">MIN_LIMIT</span>  <span class="o">---</span> <span class="o">+-------------------</span>
-</pre></div>
-</div>
+<p><img alt="Slat and Material Height" src="../_images/qtplasmac_heights_diagram_slat_and_material_height.png" /></p>
 <p>In this mode, the slat height is set in the INI file:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[PLASMAC]</span>
 <span class="na">SLAT_TOP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-65.0</span>
 </pre></div>
 </div>
+<blockquote>
+<div><p><strong>Image source:</strong> These diagrams are sourced from the opensource <a class="reference external" href="https://linuxcnc.org/docs/devel/html/plasma/qtplasmac.html">QtPlasmac documentation</a>.</p>
+</div></blockquote>
 </section>
 </section>
 <section id="z-zero-setup">
