@@ -54,3 +54,5 @@ poetry.lock
 
 # Sphinx build output
 docs/_build/
+
+opencode.json
